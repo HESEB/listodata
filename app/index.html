@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>축산 시황 대시보드 (MVP v2)</title>
+  <style>
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Apple SD Gothic Neo,Noto Sans KR,sans-serif;background:#f5fafc;color:#1a2330}
+    header{position:sticky;top:0;z-index:10;background:rgba(245,250,252,.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(20,30,40,.08)}
+    .top{max-width:1100px;margin:0 auto;padding:14px}
+    .brand{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand h1{margin:0;font-size:16px;letter-spacing:-.2px}
+    .brand .mini{font-size:12px;opacity:.65;text-align:right}
+    nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .tab{border:1px solid rgba(20,30,40,.10);background:rgba(255,255,255,.75);padding:8px 10px;border-radius:999px;cursor:pointer;font-size:13px}
+    .tab.active{background:linear-gradient(90deg, rgba(241,133,174,.18), rgba(248,184,113,.16), rgba(165,115,237,.16), rgba(107,178,255,.16));border-color:rgba(20,30,40,.12)}
+    main{max-width:1100px;margin:0 auto;padding:14px}
+    .panel{display:none}
+    .panel.active{display:block}
+    .placeholder{border:1px dashed rgba(20,30,40,.12);background:rgba(255,255,255,.65);border-radius:18px;padding:18px;color:rgba(26,35,48,.75)}
+    .row{display:flex;gap:10px;flex-wrap:wrap}
+    .card{border:1px solid rgba(20,30,40,.08);background:rgba(255,255,255,.88);border-radius:18px;padding:12px;box-shadow:0 10px 22px rgba(18,28,40,.08)}
+    .card h3{margin:0 0 8px 0;font-size:14px}
+    .muted{font-size:12px;opacity:.7}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid rgba(20,30,40,.08);background:rgba(255,255,255,.7);font-size:12px}
+    table{width:100%;border-collapse:separate;border-spacing:0;overflow:hidden;border-radius:14px;border:1px solid rgba(20,30,40,.08)}
+    th,td{padding:10px 10px;border-bottom:1px solid rgba(20,30,40,.06);font-size:12px;text-align:left}
+    th{background:rgba(0,0,0,.03);font-weight:600}
+    tr:last-child td{border-bottom:none}
+    .spark{width:120px;height:22px}
+    .btn{border:1px solid rgba(20,30,40,.10);background:rgba(255,255,255,.75);padding:8px 10px;border-radius:12px;cursor:pointer;font-size:12px}
+  </style>
+  <link rel="icon" href="./favicon.png" type="image/png" />
+</head>
+<body>
+<header>
+  <div class="top">
+    <div class="brand">
+      <h1>축산 시황 대시보드 (MVP v2)</h1>
+      <div class="mini">
+        GitHub Pages /app · <span id="buildVersion"></span><br/>
+        데이터는 <b>/app/data</b> (상대경로 안정)
+      </div>
+    </div>
+    <nav>
+      <button class="tab active" data-tab="industry">업계이슈</button>
+      <button class="tab" data-tab="flow">시장흐름(인포그래픽)</button>
+      <button class="tab" data-tab="species">축종요약(표/그래프)</button>
+      <button class="tab" data-tab="settings">설정</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section id="panel-industry" class="panel active">
+    <!-- ===== 업계이슈 탭 UI ===== -->
+    <style>
+      :root{
+        --hese-bg:#f5fafc;
+        --hese-card:rgba(255,255,255,.92);
+        --hese-line:rgba(20,30,40,.08);
+        --hese-text:#1a2330;
+        --hese-sub:rgba(26,35,48,.68);
+        --hese-shadow:0 10px 26px rgba(18,28,40,.10);
+        --hese-r:18px;
+        --g1:#F185AE; --g2:#F8B871; --g3:#A573ED; --g4:#6BB2FF;
+      }
+      .hese-wrap{background: linear-gradient(160deg, rgba(241,133,174,.22), rgba(248,184,113,.20), rgba(165,115,237,.18), rgba(107,178,255,.18)); padding: 14px; border-radius: 22px;}
+      .board-shell{background: var(--hese-bg); border: 1px solid var(--hese-line); border-radius: 22px; padding: 14px; box-shadow: var(--hese-shadow);}
+      .board-header{display:flex; gap:12px; align-items:flex-start; justify-content:space-between; margin-bottom: 12px;}
+      .board-title{display:flex; flex-direction:column; gap:4px;}
+      .board-title h2{margin:0; font-size: 18px; color: var(--hese-text); letter-spacing: -.2px;}
+      .board-title .sub{font-size: 12px; color: var(--hese-sub);}
+      .toggle-row{display:flex; flex-direction:column; align-items:flex-end; gap:6px; min-width: 210px;}
+      .toggle{display:flex; align-items:center; gap:10px; user-select:none; cursor:pointer; font-size:13px; color: var(--hese-text);}
+      .toggle input{width: 18px; height: 18px; accent-color: var(--g4);}
+      .toggle-note{font-size: 11px; color: var(--hese-sub); text-align:right; line-height: 1.2;}
+      .filters{display:grid; grid-template-columns: 1.1fr .9fr .9fr 1.2fr; gap:10px; margin: 12px 0;}
+      @media (max-width: 860px){ .filters{ grid-template-columns: 1fr 1fr; } .toggle-row{ min-width: unset; } }
+      @media (max-width: 520px){ .filters{ grid-template-columns: 1fr; } }
+      .ctl{background: rgba(255,255,255,.85); border: 1px solid var(--hese-line); border-radius: 14px; padding: 10px 12px; display:flex; align-items:center; gap:10px;}
+      .ctl label{font-size:12px; color: var(--hese-sub); white-space:nowrap;}
+      .ctl select, .ctl input{width:100%; border: none; outline:none; background: transparent; font-size: 13px; color: var(--hese-text);}
+      .ctl input::placeholder{ color: rgba(26,35,48,.35); }
+      .stats-row{display:flex; flex-wrap:wrap; gap:8px; margin: 10px 0 4px;}
+      .pill2{padding: 6px 10px; border-radius: 999px; border: 1px solid var(--hese-line); background: rgba(255,255,255,.75); font-size: 12px; color: var(--hese-text);}
+      .list{margin-top: 12px; display:flex; flex-direction:column; gap:10px;}
+      .card2{border: 1px solid var(--hese-line); border-radius: var(--hese-r); background: var(--hese-card); padding: 12px; box-shadow: 0 8px 18px rgba(18,28,40,.06);}
+      .meta-line{display:flex; flex-wrap:wrap; align-items:center; gap: 8px; font-size: 12px; color: var(--hese-sub);}
+      .badge{display:inline-flex; align-items:center; gap:6px; padding: 4px 8px; border-radius: 999px; font-size: 11px; border: 1px solid var(--hese-line); background: rgba(255,255,255,.75); color: var(--hese-text);}
+      .badge.sev-low{ background: rgba(107,178,255,.14); }
+      .badge.sev-mid{ background: rgba(248,184,113,.16); }
+      .badge.sev-high{ background: rgba(255,74,126,.14); }
+      .badge.type-official{ background: linear-gradient(90deg, rgba(241,133,174,.14), rgba(107,178,255,.14)); }
+      .badge.type-news{ background: linear-gradient(90deg, rgba(165,115,237,.14), rgba(248,184,113,.14)); }
+      .title2{font-size: 14px; color: var(--hese-text); line-height: 1.35; margin: 6px 0 0 0;}
+      .desc2{font-size: 13px; color: rgba(26,35,48,.82); line-height: 1.4; margin-top: 6px;}
+      .card-actions{margin-top: 10px; display:flex; justify-content:space-between; align-items:center; gap: 10px;}
+      .tag{font-size: 11px; padding: 4px 8px; border-radius: 999px; background: rgba(0,0,0,.04); border: 1px solid var(--hese-line); color: var(--hese-sub);}
+      .link{font-size: 12px; text-decoration:none; color: #2d5bff;}
+      .empty{padding: 24px 10px; text-align:center; color: var(--hese-sub); border: 1px dashed var(--hese-line); border-radius: 18px; background: rgba(255,255,255,.6);}
+    </style>
+
+    <div class="hese-wrap">
+      <div class="board-shell">
+        <div class="board-header">
+          <div class="board-title">
+            <h2>업계이슈</h2>
+            <div class="sub">공식 업데이트 + (선택) 민간 뉴스 제목·링크만 표시</div>
+          </div>
+          <div class="toggle-row">
+            <label class="toggle">
+              <input id="chkShowNewsHeadlines" type="checkbox" />
+              <span>민간 뉴스(제목만) 표시</span>
+            </label>
+            <div class="toggle-note">본문 저장/요약/발췌 없음<br/>제목·링크만 제공</div>
+          </div>
+        </div>
+
+        <div class="filters">
+          <div class="ctl">
+            <label>축종</label>
+            <select id="fltSpecies">
+              <option value="ALL">전체</option>
+              <option value="POULTRY">가금육</option>
+              <option value="PORK">돈육</option>
+              <option value="BEEF">우육</option>
+              <option value="DUCK">오리</option>
+              <option value="EGG">계란</option>
+            </select>
+          </div>
+          <div class="ctl">
+            <label>구분</label>
+            <select id="fltType">
+              <option value="ALL">전체</option>
+              <option value="OFFICIAL">공식</option>
+              <option value="NEWS">뉴스</option>
+            </select>
+          </div>
+          <div class="ctl">
+            <label>기간</label>
+            <select id="fltRange">
+              <option value="7">최근 7일</option>
+              <option value="30" selected>최근 30일</option>
+              <option value="45">최근 45일</option>
+              <option value="ALL">전체</option>
+            </select>
+          </div>
+          <div class="ctl">
+            <label>검색</label>
+            <input id="fltQuery" placeholder="예) ASF, AI, 수입, 삼겹, 한우, 계란" />
+          </div>
+        </div>
+
+        <div class="stats-row" id="boardStats"></div>
+        <div class="list" id="industryBoardList">
+          <div class="empty">불러오는 중...</div>
+        </div>
+
+        <div style="margin-top:10px" class="muted">
+          * 민간 뉴스는 제목·링크만 제공합니다. 자세한 내용은 각 원문에서 확인하세요.
+        </div>
+      </div>
+    </div>
+
+    <script>
+const BUILD_VERSION = "v2.6.0";
+
+
+// --- v2.4.2 HOTFIX: time helpers must be global (avoid ReferenceError) ---
+window.__KST_HELPERS__ = true;
+window.fmtUTC = window.fmtUTC || function(iso){
+  if (!iso) return "N/A";
+  return String(iso).slice(0,19).replace("T"," ");
+};
+window.fmtKST = window.fmtKST || function(iso){
+  if (!iso) return "N/A";
+  try{
+    const d = new Date(iso);
+    if (Number.isNaN(d.getTime())) return "N/A";
+    return d.toLocaleString("ko-KR", { timeZone:"Asia/Seoul", hour12:false });
+  }catch(e){
+    return window.window.fmtUTC(iso);
+  }
+};
+// legacy aliases for summary tab
+window.window.fmtUTC2 = window.window.fmtUTC2 || window.fmtUTC;
+window.window.fmtKST2 = window.window.fmtKST2 || window.fmtKST;
+// ---------------------------------------------------------------
+
+    // ===== 업계이슈 로직 =====
+    const KEY_SHOW_NEWS = "SET_SHOW_NEWS_HEADLINES";
+    const PATH_OFFICIAL = "./data/events/events_official.json";
+    const PATH_NEWS     = "./data/events/events_news.json";
+
+    const el = (id) => document.getElementById(id);
+    const safeArray = (x) => Array.isArray(x) ? x : [];
+    const getShowNews = () => localStorage.getItem(KEY_SHOW_NEWS) === "1";
+    const setShowNews = (v) => localStorage.setItem(KEY_SHOW_NEWS, v ? "1" : "0");
+
+    const ymdOf = (obj) => ((obj?.date || obj?.published_at || "") + "").slice(0,10);
+    const tsOf  = (obj) => {
+      const s = obj?.published_at || obj?.date || "";
+      const t = Date.parse(s);
+      if (Number.isFinite(t)) return t;
+      return Date.parse((s+"").slice(0,10));
+    };
+    const escapeHTML = (s="") => String(s).replace(/[&<>"']/g, m => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[m]));
+    const severityClass = (sev="MID") => (sev||"").toUpperCase()==="HIGH"?"sev-high":((sev||"").toUpperCase()==="LOW"?"sev-low":"sev-mid");
+    const speciesLabel = (code) => ({POULTRY:"가금육",PORK:"돈육",BEEF:"우육",DUCK:"오리",EGG:"계란"}[code] || code);
+
+    async function fetchJSON(path){
+      const r = await fetch(path, { cache:"no-store" });
+      if (!r.ok) throw new Error("fetch failed: " + path);
+      return r.json();
+    }
+
+    function buildOfficialLine1(it){
+      const tmpl = it.template_id || "";
+      if (tmpl === "OFFICIAL_DISEASE_UPDATE") return "질병/방역 관련 공식 업데이트가 확인되었습니다.";
+      return "공식 공지/자료 업데이트가 확인되었습니다.";
+    }
+    function buildOfficialLine2(it){
+      const sp = safeArray(it.species);
+      if (sp.length) return `영향 축종: ${sp.map(speciesLabel).join(", ")}. 자세한 내용은 출처를 확인하세요.`;
+      return "자세한 내용은 출처를 확인하세요.";
+    }
+
+    function applyFilters(items){
+      const species = el("fltSpecies").value;
+      const type = el("fltType").value;
+      const range = el("fltRange").value;
+      const q = (el("fltQuery").value || "").trim().toLowerCase();
+
+      let cutoff = null;
+      if (range !== "ALL") {
+        const days = Number(range);
+        if (Number.isFinite(days)) cutoff = Date.now() - (days * 86400000);
+      }
+
+      return items.filter(it => {
+        if (type !== "ALL") {
+          if (type === "NEWS" && it.category !== "NEWS") return false;
+          if (type === "OFFICIAL" && it.category === "NEWS") return false;
+        }
+        if (cutoff != null) {
+          const ts = tsOf(it);
+          if (Number.isFinite(ts) && ts < cutoff) return false;
+        }
+        if (species !== "ALL") {
+          const sp = safeArray(it.species);
+          if (!sp.includes(species)) return false;
+        }
+        if (q) {
+          const hay = [it.title,it.publisher,it.category,it.subcategory,...safeArray(it.tags),...safeArray(it.species)].join(" ").toLowerCase();
+          if (!hay.includes(q)) return false;
+        }
+        return true;
+      });
+    }
+
+    function renderStats(all, filtered, meta){
+      const parts = [];
+      parts.push(`<span class="pill2">표시 ${filtered.length}건</span>`);
+      parts.push(`<span class="pill2">전체 ${all.length}건</span>`);
+      const offN = all.filter(x => x.category !== "NEWS").length;
+      const newsN = all.filter(x => x.category === "NEWS").length;
+      parts.push(`<span class="pill2">공식 ${offN} · 뉴스 ${newsN}</span>`);
+      const genOffIso = meta?.official?.generated_at || "";
+      const genNewsIso = meta?.news?.generated_at || "";
+      parts.push(`<span class="pill2">공식 갱신(KST) ${escapeHTML(window.fmtKST(genOffIso))}</span>`);
+      parts.push(`<span class="pill2">공식 갱신(UTC) ${escapeHTML(window.fmtUTC(genOffIso))}</span>`);
+      if (getShowNews()){
+        parts.push(`<span class="pill2">뉴스 갱신(KST) ${escapeHTML(window.fmtKST(genNewsIso))}</span>`);
+        parts.push(`<span class="pill2">뉴스 갱신(UTC) ${escapeHTML(window.fmtUTC(genNewsIso))}</span>`);
+      }
+      // feed status (if present)
+      const sOff = meta?.official?._sources || [];
+      const sNews = meta?.news?._sources || [];
+      const okOff = sOff.filter(x=>x.ok).length, allOff = sOff.length;
+      const okNews = sNews.filter(x=>x.ok).length, allNews = sNews.length;
+      if (allOff) parts.push(`<span class="pill2">공식 소스 ${okOff}/${allOff}</span>`);
+      if (getShowNews() && allNews) parts.push(`<span class="pill2">뉴스 소스 ${okNews}/${allNews}</span>`);
+      el("boardStats").innerHTML = parts.join("");
+    }
+
+    
+    function renderIndustryError(msg){
+      const box = document.getElementById("eventsList");
+      if (!box) return;
+      box.innerHTML = `<div class="empty">데이터를 불러오지 못했습니다.<br><span style="font-size:12px;opacity:.7">${escapeHTML(String(msg||""))}</span><br><br>
+      <span style="font-size:12px;opacity:.8">확인: /app/data/events/events_official.json, events_news.json 이 404가 아닌지</span>
+      </div>`;
+    }
+
+function renderList(items){
+      const root = el("industryBoardList");
+      if (!items.length){
+        root.innerHTML = `<div class="empty">조건에 맞는 업데이트가 없습니다.</div>`;
+        return;
+      }
+      root.innerHTML = items.map(it => {
+        const isNews = it.category === "NEWS";
+        const date = escapeHTML(ymdOf(it));
+        const sev = (it.severity || "MID").toUpperCase();
+        const sevCls = severityClass(sev);
+
+        const badges = [];
+        badges.push(`<span class="badge ${isNews ? "type-news":"type-official"}">${isNews ? "NEWS":"OFFICIAL"}</span>`);
+        badges.push(`<span class="badge ${sevCls}">Severity: ${escapeHTML(sev)}</span>`);
+        const sp = safeArray(it.species).slice(0,3);
+        if (sp.length) badges.push(`<span class="badge">${escapeHTML(sp.map(speciesLabel).join(" · "))}</span>`);
+
+        let title = "";
+        let desc = "";
+        let linkText = "출처 열기";
+        let linkUrl = "";
+
+        if (isNews){
+          title = it.title || "(제목 없음)";
+          desc = `* 제목/링크만 제공 (본문 요약·발췌 없음)`;
+          linkText = "원문 보기";
+          linkUrl = it.url || "#";
+        } else {
+          title = it.title || "공식 업데이트";
+          desc = `${escapeHTML(buildOfficialLine1(it))}<br/>${escapeHTML(buildOfficialLine2(it))}`;
+          linkUrl = it.source_url || "#";
+        }
+
+        const tags = [];
+        if (isNews) {
+          for (const t of safeArray(it.tags)) tags.push(`<span class="tag">#${escapeHTML(t)}</span>`);
+          if (it.publisher) tags.push(`<span class="tag">${escapeHTML(it.publisher)}</span>`);
+        } else {
+          if (it.subcategory) tags.push(`<span class="tag">${escapeHTML(it.subcategory)}</span>`);
+        }
+
+        return `
+          <div class="card2">
+            <div class="meta-line">
+              <b style="color:var(--hese-text)">${date}</b>
+              ${badges.join("")}
+            </div>
+            <p class="title2">${escapeHTML(title)}</p>
+            <div class="desc2">${desc}</div>
+            <div class="card-actions">
+              <div class="actions-left">${tags.join("")}</div>
+              <a class="link" href="${escapeHTML(linkUrl)}" target="_blank" rel="noopener">${escapeHTML(linkText)}</a>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    async function loadEvents(){
+      let official = { generated_at:"", items:[] };
+      let news = { generated_at:"", items:[] };
+      try { official = await fetchJSON(PATH_OFFICIAL); } catch(e) {}
+      if (getShowNews()){
+        try { news = await fetchJSON(PATH_NEWS); } catch(e) {}
+      }
+      const all = [...safeArray(official.items), ...safeArray(news.items)];
+      all.sort((a,b) => (tsOf(b)||0) - (tsOf(a)||0));
+      return { all, meta:{ official, news } };
+    }
+
+    async function refreshIndustry(){
+      const listEl = el("industryBoardList");
+      try{
+        const { all, meta } = await loadEvents();
+        const filtered = applyFilters(all);
+        renderStats(all, filtered, meta);
+        renderList(filtered);
+      }catch(e){
+        console.error(e);
+        if (listEl) listEl.innerHTML = `<div class="empty">불러오기 실패: ${escapeHTML(String(e?.message||e))}</div>`;
+        el("boardStats").innerHTML = `<span class="pill2">로딩 오류</span>`;
+      }
+    }
+
+    const AUTO_POLL_MS = 5 * 60 * 1000; // 5분
+    let _pollTimer = null;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      el("chkShowNewsHeadlines").checked = getShowNews();
+      el("chkShowNewsHeadlines").addEventListener("change", (ev) => {
+        setShowNews(ev.target.checked);
+        refreshIndustry();
+      });
+      ["fltSpecies","fltType","fltRange"].forEach(id => el(id).addEventListener("change", refreshIndustry));
+      el("fltQuery").addEventListener("input", debounce(refreshIndustry, 180));
+      refreshIndustry();
+      if (_pollTimer) clearInterval(_pollTimer);
+      _pollTimer = setInterval(refreshIndustry, AUTO_POLL_MS);
+    });
+
+    function debounce(fn, ms){
+      let t=null;
+      return (...args)=>{ clearTimeout(t); t=setTimeout(()=>fn(...args), ms); };
+    }
+    </script>
+  </section>
+
+  <section id="panel-flow" class="panel">
+    <div class="placeholder">
+      <b>시장흐름(인포그래픽)</b><br/>
+      다음 단계: (1) 상관 히트맵(12주/24개월/5년동월) (2) 네트워크(임계값) (3) 룰 기반 ‘영향도’ 카드
+    </div>
+  </section>
+
+  <section id="panel-species" class="panel">
+    <div class="row" style="margin-bottom:10px">
+      <div class="card" style="flex:1;min-width:260px">
+        <h3>축종요약</h3>
+        <div class="muted">데이터: <code>./data/aggregated/species_summary.json</code></div>
+        <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+          <span class="pill" id="sumUpdated">갱신 N/A</span>
+          <span class="pill" id="sumBasis">기준 N/A</span>
+          <button class="btn" id="btnReloadSummary">새로고침</button>
+        </div>
+      </div>
+      <div class="card" style="flex:1;min-width:260px">
+        <h3>비교 기준</h3>
+        <div class="muted">
+          - 저번주/지난달 대비는 <b>룰 템플릿</b>으로만 문장화 (예측 없음)<br/>
+          - 실제 가격/물량 데이터가 붙으면 자동으로 표/그래프가 채워집니다.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>요약 테이블</h3>
+      <div class="muted" style="margin-bottom:10px">스파크라인은 12주 추이를 간단히 표시합니다.</div>
+      <div style="overflow:auto">
+        <table>
+          <thead>
+            <tr>
+              <th>축종</th>
+              <th>핵심지표</th>
+              <th>현재</th>
+              <th>전주대비</th>
+              <th>전월대비</th>
+              <th>12주 추이</th>
+              <th>메모(룰 문장)</th>
+            </tr>
+          </thead>
+          <tbody id="summaryBody">
+            <tr><td colspan="7" class="muted">불러오는 중...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      const SUMMARY_PATH = "./data/aggregated/species_summary.json";
+
+      async function fetchJSON2(path){
+        const r = await fetch(path, { cache:"no-store" });
+        if (!r.ok) throw new Error("fetch failed: " + path);
+        return r.json();
+      }
+
+      function fmt(n, unit){
+        if (n == null || n === "") return "N/A";
+        if (typeof n === "number"){
+          const s = (Math.round(n*100)/100).toLocaleString("ko-KR");
+          return unit ? (s + " " + unit) : s;
+        }
+        return String(n);
+      }
+
+      function pct(p){
+        if (p == null || p === "") return "N/A";
+        const v = Number(p);
+        if (!Number.isFinite(v)) return "N/A";
+        const sign = v > 0 ? "+" : "";
+        return sign + (Math.round(v*1000)/10).toFixed(1) + "%";
+      }
+
+      function spLabel(code){
+        return ({POULTRY:"가금육",PORK:"돈육",BEEF:"우육",DUCK:"오리",EGG:"계란"}[code] || code);
+      }
+
+      function sparkSVG(values){
+        const w=120,h=22,p=2;
+        const arr = Array.isArray(values)?values.filter(v=>Number.isFinite(v)): [];
+        if (arr.length < 2) return `<svg class="spark" viewBox="0 0 ${w} ${h}"><path d="" fill="none" stroke="rgba(26,35,48,.35)" stroke-width="2"/></svg>`;
+        const min = Math.min(...arr), max = Math.max(...arr);
+        const dx = (w - p*2) / (arr.length - 1);
+        const scale = (v)=> {
+          if (max === min) return h/2;
+          const t = (v - min) / (max - min);
+          return (h - p) - t * (h - p*2);
+        };
+        let d = "";
+        arr.forEach((v,i)=>{
+          const x = p + dx*i;
+          const y = scale(v);
+          d += (i===0?`M ${x} ${y}`:` L ${x} ${y}`);
+        });
+        return `<svg class="spark" viewBox="0 0 ${w} ${h}">
+          <path d="${d}" fill="none" stroke="rgba(26,35,48,.45)" stroke-width="2" stroke-linecap="round"/>
+        </svg>`;
+      }
+
+      function ruleMemo(row){
+        // 룰 기반 문장(예측 금지)
+        const w = row.change_wow;
+        const m = row.change_mom;
+        const dirW = (w==null) ? "" : (w>0 ? "상승" : (w<0 ? "하락" : "보합"));
+        const dirM = (m==null) ? "" : (m>0 ? "상승" : (m<0 ? "하락" : "보합"));
+        let parts = [];
+        if (w!=null) parts.push(`전주대비 ${dirW}`);
+        if (m!=null) parts.push(`전월대비 ${dirM}`);
+        if (!parts.length) return "데이터 누적 중";
+        return parts.join(" · ") + " (정량 기준)";
+      }
+
+      
+      function renderSummaryError(msg){
+        const tbody = document.getElementById("sumBody");
+        if (!tbody) return;
+        tbody.innerHTML = `<tr><td colspan="7" style="padding:14px;opacity:.8">요약 데이터를 불러오지 못했습니다: ${escapeHTML(String(msg||""))}</td></tr>`;
+      }
+
+async function loadSummary(){
+        const body = document.getElementById("summaryBody");
+        try{
+          const j = await fetchJSON2(SUMMARY_PATH);
+
+          // --- schema compatibility (v2.4.x rows vs v2.5 items) ---
+          const iso = j.updated_at || j.generated_at || "";
+          document.getElementById("sumUpdated").textContent =
+            "갱신(KST) " + window.fmtKST2(iso) + " / (UTC) " + window.fmtUTC2(iso);
+
+          let basisTxt = "N/A";
+          if (typeof j.basis === "string") basisTxt = j.basis;
+          else if (j.basis && typeof j.basis === "object"){
+            const b = j.basis;
+            basisTxt = [b.week, b.month, b.yoy].filter(Boolean).join(" · ") || "N/A";
+          }
+          document.getElementById("sumBasis").textContent = "기준 " + basisTxt;
+
+          let rows = [];
+          if (Array.isArray(j.rows)){
+            rows = j.rows;
+          }else if (Array.isArray(j.items)){
+            rows = j.items.map(it=>({
+              species: it.species,
+              metric_label: it.metric,
+              unit: it.unit,
+              current: it.current,
+              change_wow: it.wow,
+              change_mom: it.mom,
+              spark_12w: it.series_12w,
+              _memo: it.memo
+            }));
+          }
+
+          if (!rows.length){
+            body.innerHTML = `<tr><td colspan="7" class="muted">데이터가 없습니다.</td></tr>`;
+            return;
+          }
+
+          body.innerHTML = rows.map(r=>{
+            const unit = r.unit || "";
+            return `<tr>
+              <td>${spLabel(r.species)}</td>
+              <td>${escapeHTML(r.metric_label || "")}</td>
+              <td>${fmt(r.current, unit)}</td>
+              <td>${pct(r.change_wow)}</td>
+              <td>${pct(r.change_mom)}</td>
+              <td>${sparkSVG(r.spark_12w || [])}</td>
+              <td>${escapeHTML(r._memo || ruleMemo(r) || "")}</td>
+            </tr>`;
+          }).join("");
+
+          const hint = document.getElementById("sumHint");
+          if (hint){
+            hint.textContent = j.mode ? `mode: ${j.mode}` : "";
+          }
+        }catch(e){
+          body.innerHTML = `<tr><td colspan="7" class="muted">요약 데이터를 불러오지 못했습니다: ${escapeHTML(e?.message || e)}</td></tr>`;
+        }
+      }
+
+const AUTO_POLL_SUMMARY_MS = 10 * 60 * 1000; // 10분
+      let _sumTimer = null;
+      document.addEventListener("DOMContentLoaded", ()=>{
+        document.getElementById("btnReloadSummary").addEventListener("click", loadSummary);
+        loadSummary();
+        if (_sumTimer) clearInterval(_sumTimer);
+        _sumTimer = setInterval(loadSummary, AUTO_POLL_SUMMARY_MS);
+      });
+    </script>
+  </section>
+
+  <section id="panel-settings" class="panel">
+    <div class="card">
+      <h3>설정</h3>
+      <div class="muted">
+        - ‘민간 뉴스(제목만) 표시’는 <b>업계이슈 탭 상단 체크박스</b>로 제공됩니다.<br/>
+        - WebView/오프라인 앱화를 위해 모든 경로를 <b>상대경로(./data…)</b>로 고정했습니다.
+      </div>
+      <div style="margin-top:10px" class="row">
+        <div class="pill">SET_SHOW_NEWS_HEADLINES = <span id="kvNews">N/A</span></div>
+        <button class="btn" id="btnReset">설정 초기화</button>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", ()=>{
+        const key = "SET_SHOW_NEWS_HEADLINES";
+        const kv = document.getElementById("kvNews");
+        const show = localStorage.getItem(key);
+        kv.textContent = show == null ? "(미설정)" : show;
+
+        document.getElementById("btnReset").addEventListener("click", ()=>{
+          localStorage.removeItem(key);
+          kv.textContent = "(미설정)";
+          alert("설정 초기화 완료");
+        });
+      });
+    </script>
+  </section>
+</main>
+
+<script>
+  // simple tab switching
+  const tabs = document.querySelectorAll(".tab");
+  const panels = {
+    industry: document.getElementById("panel-industry"),
+    flow: document.getElementById("panel-flow"),
+    species: document.getElementById("panel-species"),
+    settings: document.getElementById("panel-settings")
+  };
+  tabs.forEach(btn => {
+    btn.addEventListener("click", () => {
+      tabs.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      const t = btn.dataset.tab;
+      Object.keys(panels).forEach(k => panels[k].classList.toggle("active", k === t));
+    });
+  });
+</script>
+</body>
+</html>

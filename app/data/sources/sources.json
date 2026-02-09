@@ -1,0 +1,95 @@
+{
+  "version": "v2.6",
+  "updated_at": "2026-02-06T07:51:16Z",
+  "notes": "v2.6: 공식 OpenAPI(JSON/XML) 연동 전용 템플릿. url에는 '웹페이지'가 아니라 API 엔드포인트를 넣으세요. 키는 GitHub Actions Secrets로 주입됩니다.",
+  "secrets": {
+    "DATA_GO_KR_SERVICE_KEY": "(GitHub Secrets) DATA_GO_KR_SERVICE_KEY",
+    "KAMIS_CERT_KEY": "(GitHub Secrets) KAMIS_CERT_KEY",
+    "KAMIS_CERT_ID": "(GitHub Secrets) KAMIS_CERT_ID",
+    "EXIM_AUTHKEY": "(GitHub Secrets) EXIM_AUTHKEY"
+  },
+  "sources": [
+    {
+      "id": "kape_pork",
+      "species": "돈육",
+      "metric": "지육경락가",
+      "unit": "원/kg",
+      "provider": "KAPE OpenAPI (data.go.kr/ekape)",
+      "type": "official",
+      "frequency": "daily",
+      "format": "xml",
+      "url": "",
+      "params": {
+        "startYmd": "{{START_YMD}}",
+        "endYmd": "{{END_YMD}}",
+        "serviceKey": "{{DATA_GO_KR_SERVICE_KEY}}"
+      }
+    },
+    {
+      "id": "kape_beef",
+      "species": "우육",
+      "metric": "한우지육경락가",
+      "unit": "원/kg",
+      "provider": "KAPE OpenAPI (data.go.kr/ekape)",
+      "type": "official",
+      "frequency": "daily",
+      "format": "xml",
+      "url": "",
+      "params": {
+        "startYmd": "{{START_YMD}}",
+        "endYmd": "{{END_YMD}}",
+        "serviceKey": "{{DATA_GO_KR_SERVICE_KEY}}"
+      }
+    },
+    {
+      "id": "kamis_egg",
+      "species": "계란",
+      "metric": "특란산지가",
+      "unit": "원/개",
+      "provider": "KAMIS OpenAPI",
+      "type": "official",
+      "frequency": "weekly",
+      "format": "xml",
+      "url": "http://www.kamis.or.kr/service/price/xml.do",
+      "params": {
+        "action": "dailyPriceByCategoryList",
+        "p_cert_key": "{{KAMIS_CERT_KEY}}",
+        "p_cert_id": "{{KAMIS_CERT_ID}}",
+        "p_returntype": "xml"
+      }
+    },
+    {
+      "id": "kamis_chicken",
+      "species": "계육",
+      "metric": "닭도체가격",
+      "unit": "원/kg",
+      "provider": "KAMIS OpenAPI",
+      "type": "official",
+      "frequency": "weekly",
+      "format": "xml",
+      "url": "http://www.kamis.or.kr/service/price/xml.do",
+      "params": {
+        "action": "dailyPriceByCategoryList",
+        "p_cert_key": "{{KAMIS_CERT_KEY}}",
+        "p_cert_id": "{{KAMIS_CERT_ID}}",
+        "p_returntype": "xml"
+      }
+    },
+    {
+      "id": "fx_usdkrw",
+      "species": "공통",
+      "metric": "환율(USD/KRW)",
+      "unit": "원",
+      "provider": "한국수출입은행 OpenAPI",
+      "type": "official",
+      "frequency": "daily",
+      "format": "json",
+      "url": "https://www.koreaexim.go.kr/site/program/financial/exchangeJSON",
+      "params": {
+        "authkey": "{{EXIM_AUTHKEY}}",
+        "searchdate": "{{YYYYMMDD}}",
+        "data": "AP01"
+      }
+    }
+  ]
+}
