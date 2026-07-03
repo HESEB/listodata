@@ -1,0 +1,35 @@
+name: Update market data
+
+on:
+  workflow_dispatch:
+  schedule:
+    # KST 07:20, 11:20, 15:20, 19:20, 23:20
+    - cron: "20 22,2,6,10,14 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-market-data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Refresh market data JSON
+        run: python scripts/update_market_data.py
+
+      - name: Commit refreshed data
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: refresh livestock market data"
+          file_pattern: app/data/market_dashboard.json app/data/market_metrics.json app/data/events/events_news.json app/data/events/events_official.json app/data/update_status.json
