@@ -20,11 +20,14 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Collect public source status
+        run: python scripts/collect_public_sources.py
+
       - name: Build market metrics
         run: python scripts/build_market_metrics.py
 
-      - name: Commit updated metrics
+      - name: Commit updated metrics and source status
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Auto update market metrics"
-          file_pattern: app/data/market_metrics.json
+          commit_message: "Auto update market metrics and source status"
+          file_pattern: app/data/market_metrics.json app/data/source_snapshots/fetch_status.json
