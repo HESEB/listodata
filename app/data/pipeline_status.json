@@ -1,0 +1,71 @@
+{
+  "updated_at": "2026-07-03T13:20:00+09:00",
+  "title": "HESEB Livestock Terminal Pipeline",
+  "summary": "GitHub Actions가 공개 데이터를 수집·계산하고, JSON이 GitHub Pages 화면과 연결되는 구조입니다.",
+  "architecture": [
+    { "name": "GitHub Actions", "role": "데이터 수집, 지표 계산, 보고서 생성" },
+    { "name": "JSON", "role": "수집·계산 결과를 화면과 연결하는 데이터 계층" },
+    { "name": "GitHub Pages", "role": "Dashboard 화면 표시" }
+  ],
+  "stages": [
+    {
+      "step": 1,
+      "name": "수기/반자동 JSON",
+      "status": "active",
+      "description": "market_dashboard, market_metrics, market_reasoning 등 JSON 기반 화면 구조 검증"
+    },
+    {
+      "step": 2,
+      "name": "GitHub Actions 자동 갱신",
+      "status": "in_progress",
+      "description": "source_registry와 collect_public_sources를 통해 출처별 수집 상태 관리"
+    },
+    {
+      "step": 3,
+      "name": "지표 계산 자동화",
+      "status": "in_progress",
+      "description": "전월 대비, 전년 대비, 시장신호 점수, 데이터 신뢰도 계산"
+    },
+    {
+      "step": 4,
+      "name": "Dashboard 자동 반영",
+      "status": "active",
+      "description": "terminal.html이 market_metrics.json을 읽어 핵심지표 표시"
+    },
+    {
+      "step": 5,
+      "name": "뉴스 연계",
+      "status": "planned",
+      "description": "뉴스는 링크, 요약, 관련도, 보조 근거 중심으로 표시"
+    },
+    {
+      "step": 6,
+      "name": "AI 시황 분석 엔진",
+      "status": "planned",
+      "description": "가격, 수급, 질병, 정책, 뉴스 연결 기반 시황 문장 생성"
+    },
+    {
+      "step": 7,
+      "name": "보고서 자동 생성",
+      "status": "planned",
+      "description": "팀장님 스타일 시황보고, PPT, 메일 초안 생성"
+    }
+  ],
+  "data_flow": [
+    "정기 GitHub Actions 실행",
+    "공식 데이터 수집",
+    "source_snapshots 생성",
+    "지표 계산",
+    "market_metrics.json 생성",
+    "GitHub Pages Dashboard 반영",
+    "보고서 생성으로 확장"
+  ],
+  "principles": [
+    "공개 데이터만 사용",
+    "내부 매입단가, 재고, 계약물량, 벤더 정보 표시 금지",
+    "가격과 수급 데이터가 1차 판단 기준",
+    "뉴스는 보조 근거로 사용",
+    "점수 산식은 설명 가능해야 함",
+    "수집 실패 시 기존 정상 데이터 유지"
+  ]
+}
