@@ -1,0 +1,36 @@
+name: Disease Alert Watch
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "7 * * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  watch-disease-alerts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Watch disease alerts
+        run: python scripts/watch_disease_alerts.py
+
+      - name: Commit disease alerts
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add app/data/disease_alerts.json
+          if git diff --cached --quiet; then
+            echo "No disease alert changes"
+          else
+            git commit -m "Update disease alerts"
+            git push
+          fi
