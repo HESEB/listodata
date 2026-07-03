@@ -1,0 +1,45 @@
+{
+  "updated_at": "2026-07-03T14:20:00+09:00",
+  "purpose": "구제역/FMD, ASF, PED, AI, 럼피스킨 등 축산 질병 긴급 이슈 감시 설정",
+  "watch_interval": "hourly",
+  "manual_refresh": "GitHub Actions > Disease Alert Watch > Run workflow",
+  "severity_rule": {
+    "CRITICAL": "구제역/FMD, ASF, 고병원성 AI 등 공식 발생 또는 방역대책 발표",
+    "HIGH": "의심신고, 정밀검사, 이동제한, 발생지역 확대 가능성",
+    "MEDIUM": "질병 관련 주의보, 방역 강화, 업계 영향 가능성",
+    "LOW": "일반 참고성 질병/방역 뉴스"
+  },
+  "keywords": [
+    { "id": "FMD", "names": ["구제역", "FMD", "foot-and-mouth"], "species": ["BEEF", "PORK"], "severity": "CRITICAL" },
+    { "id": "ASF", "names": ["ASF", "아프리카돼지열병", "아프리카 돼지열병"], "species": ["PORK"], "severity": "CRITICAL" },
+    { "id": "PED", "names": ["PED", "돼지유행성설사", "돼지 유행성 설사"], "species": ["PORK"], "severity": "HIGH" },
+    { "id": "AI", "names": ["AI", "조류인플루엔자", "고병원성 조류인플루엔자", "avian influenza"], "species": ["POULTRY", "DUCK", "EGG"], "severity": "CRITICAL" },
+    { "id": "LSD", "names": ["럼피스킨", "럼피스킨병", "LSD", "lumpy skin"], "species": ["BEEF"], "severity": "HIGH" }
+  ],
+  "sources": [
+    {
+      "source_id": "MAFRA_FMD",
+      "name": "농림축산식품부 구제역 방역상황",
+      "url": "https://www.mafra.go.kr/FMD-AI2/2241/subview.do",
+      "priority": 1
+    },
+    {
+      "source_id": "MAFRA_AI",
+      "name": "농림축산식품부 AI 방역상황",
+      "url": "https://www.mafra.go.kr/FMD-AI2/2229/subview.do",
+      "priority": 1
+    },
+    {
+      "source_id": "KAHIS_DISEASE_STATUS",
+      "name": "KAHIS 국가가축방역통합시스템 발생현황",
+      "url": "https://home.kahis.go.kr/home/lkntscrinfo/selectLkntsOccrrncList.do",
+      "priority": 1
+    },
+    {
+      "source_id": "MAFRA_HOME",
+      "name": "농림축산식품부 보도자료/공지",
+      "url": "https://www.mafra.go.kr/sites/home/index.do",
+      "priority": 2
+    }
+  ]
+}
