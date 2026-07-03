@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HESEB Livestock Terminal</title>
+  <style>
+    html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#f5fafc;font-family:system-ui,-apple-system,Segoe UI,Noto Sans KR,sans-serif}
+    iframe{border:0;width:100%;height:100%;display:block;background:#f5fafc}
+    .loading{position:fixed;inset:0;display:grid;place-items:center;color:#182231;background:#f5fafc;z-index:10;font-size:14px}
+  </style>
+</head>
+<body>
+  <div class="loading" id="loading">HESEB Livestock Terminal 로딩 중...</div>
+  <iframe id="v330" src="./index.html?v=restore-v330" title="HESEB v3.3 dashboard"></iframe>
+  <script>
+    const frame=document.getElementById('v330');
+    const loading=document.getElementById('loading');
+    function injectV41(){
+      try{
+        const doc=frame.contentDocument;
+        if(!doc)return;
+        if(doc.getElementById('v41-integration-script'))return;
+        const s=doc.createElement('script');
+        s.id='v41-integration-script';
+        s.src='./v41-integration.js?v=integrated-410';
+        s.defer=true;
+        doc.body.appendChild(s);
+        loading.style.display='none';
+      }catch(e){
+        console.warn('v4.1 integration inject failed',e);
+        loading.textContent='기존 Dashboard를 여는 중입니다.';
+        setTimeout(()=>loading.style.display='none',1200);
+      }
+    }
+    frame.addEventListener('load',()=>{
+      injectV41();
+      setTimeout(injectV41,500);
+      setTimeout(injectV41,1500);
+    });
+  </script>
+</body>
+</html>
