@@ -1,0 +1,60 @@
+{
+  "updated_at": "2026-07-03T13:05:00+09:00",
+  "notice": "시장신호 점수는 예측모델이 아니라 공개지표를 설명 가능한 방식으로 점수화한 참고 신호입니다.",
+  "base_score": 50,
+  "score_unit": "점",
+  "rules": [
+    {
+      "id": "PRICE_MOM",
+      "title": "가격 전월 대비",
+      "description": "가격이 전월 대비 상승하면 원가 상승 압력으로 보고 점수를 더합니다. 하락하면 점수를 낮춥니다.",
+      "unit": "%",
+      "weight": "증감률 × 3.5, 최대 ±20점",
+      "positive_meaning": "가격 상승 압력",
+      "negative_meaning": "가격 하락 압력"
+    },
+    {
+      "id": "SUPPLY_YOY",
+      "title": "공급 전년 대비",
+      "description": "도축·도계량이 전년 대비 감소하면 공급 타이트 신호로 보고 점수를 더합니다. 증가하면 점수를 낮춥니다.",
+      "unit": "%",
+      "weight": "공급 감소율 × 2.2, 최대 ±20점",
+      "positive_meaning": "공급 감소 신호",
+      "negative_meaning": "공급 완화 신호"
+    },
+    {
+      "id": "DISEASE_FACTOR",
+      "title": "질병 변수",
+      "description": "방역·질병 이슈가 공급에 영향을 줄 가능성이 높을수록 점수를 더합니다.",
+      "unit": "점",
+      "weight": "25점을 기준으로 초과분 일부 반영",
+      "positive_meaning": "공급 불안 변수",
+      "negative_meaning": "영향 제한"
+    },
+    {
+      "id": "SEASONAL_FACTOR",
+      "title": "계절 수요",
+      "description": "복날, 명절, 휴가철 등 계절 수요가 강할수록 점수를 더합니다.",
+      "unit": "점",
+      "weight": "40점을 기준으로 초과분 일부 반영",
+      "positive_meaning": "수요 증가 압력",
+      "negative_meaning": "계절 영향 제한"
+    },
+    {
+      "id": "STOCK_PRESSURE",
+      "title": "재고 부담",
+      "description": "돈육처럼 하부위 재고 부담이 큰 경우 전체 강세 판단을 일부 낮춥니다.",
+      "unit": "점",
+      "weight": "돈육에 한해 감점 요소로 반영",
+      "positive_meaning": "혼조·약세 요인",
+      "negative_meaning": "재고 부담 제한"
+    }
+  ],
+  "bands": [
+    { "min": 80, "max": 100, "label": "강한 강세 신호", "meaning": "가격 상승 또는 공급 타이트 가능성이 매우 높은 구간" },
+    { "min": 65, "max": 79, "label": "강세 우세", "meaning": "가격·공급·수요 중 강세 요인이 우세한 구간" },
+    { "min": 45, "max": 64, "label": "보합·혼조", "meaning": "상승·하락 요인이 혼재되어 방향성이 약한 구간" },
+    { "min": 30, "max": 44, "label": "약세 우세", "meaning": "공급 완화 또는 가격 하락 요인이 우세한 구간" },
+    { "min": 0, "max": 29, "label": "강한 약세 신호", "meaning": "가격 하락 또는 공급 완화 가능성이 큰 구간" }
+  ]
+}
