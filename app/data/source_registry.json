@@ -1,0 +1,102 @@
+{
+  "updated_at": "2026-07-03T02:40:00+09:00",
+  "notice": "공식 데이터 자동수집을 위한 출처 등록부입니다. 각 출처는 원문 URL, 수집 방식, 현재 상태, 연결될 지표를 정의합니다.",
+  "sources": [
+    {
+      "id": "KREI_BEEF_PRICE",
+      "name": "한우 지육가",
+      "provider": "KREI OASIS",
+      "category": "PRICE",
+      "species": ["BEEF"],
+      "url": "https://oasis.krei.re.kr/basicInfo/etc/livestockPrice.do?codeStr1=024001",
+      "collection_method": "manual_or_adapter",
+      "status": "adapter_required",
+      "target_metric": "price",
+      "memo": "전국·전체 기준 한우 지육가. 향후 CSV/Excel 다운로드 또는 API 파라미터 확인 필요."
+    },
+    {
+      "id": "KREI_PORK_PRICE",
+      "name": "돼지 지육가",
+      "provider": "KREI OASIS",
+      "category": "PRICE",
+      "species": ["PORK"],
+      "url": "https://oasis.krei.re.kr/basicInfo/etc/livestockPrice.do?codeStr1=00000",
+      "collection_method": "manual_or_adapter",
+      "status": "adapter_required",
+      "target_metric": "price",
+      "memo": "제주 제외 전체·평균 기준 돼지 지육가. 향후 다운로드 파라미터 확인 필요."
+    },
+    {
+      "id": "KREI_MAMMALIA_SLAUGHTER",
+      "name": "한우·돼지 도축량",
+      "provider": "KREI OASIS",
+      "category": "SUPPLY",
+      "species": ["BEEF", "PORK"],
+      "url": "https://oasis.krei.re.kr/basicInfo/supply/slau.do?tabId=mammalia",
+      "collection_method": "manual_or_adapter",
+      "status": "adapter_required",
+      "target_metric": "supply",
+      "memo": "한우·돼지 도축량. 월별 확정/잠정 여부 확인 필요."
+    },
+    {
+      "id": "CHICKEN_PRICE_9_10",
+      "name": "닭 지육가 9~10호",
+      "provider": "대한양계협회",
+      "category": "PRICE",
+      "species": ["POULTRY"],
+      "url": "https://chicken.or.kr/ch_price/price01_2025.php",
+      "collection_method": "html_table_adapter",
+      "status": "adapter_required",
+      "target_metric": "price",
+      "memo": "닭 지육가 9~10호 기준. 연도별 URL 구조 변경 가능성 확인 필요."
+    },
+    {
+      "id": "KREI_POULTRY_SLAUGHTER",
+      "name": "닭·오리 도축량",
+      "provider": "KREI OASIS",
+      "category": "SUPPLY",
+      "species": ["POULTRY", "DUCK"],
+      "url": "https://oasis.krei.re.kr/basicInfo/supply/slau.do",
+      "collection_method": "manual_or_adapter",
+      "status": "adapter_required",
+      "target_metric": "supply",
+      "memo": "닭·오리 도계량. KREI OASIS 가금류 도축실적 기준."
+    },
+    {
+      "id": "MAFRA_AI_PRESS",
+      "name": "AI 보도자료",
+      "provider": "농림축산식품부",
+      "category": "DISEASE",
+      "species": ["POULTRY", "DUCK", "EGG"],
+      "url": "https://www.mafra.go.kr/FMD-AI2/2229/subview.do",
+      "collection_method": "news_list_adapter",
+      "status": "adapter_required",
+      "target_metric": "disease_factor",
+      "memo": "AI 발생 및 방역 관련 보도자료. 키워드 기반 영향도 산출 대상."
+    },
+    {
+      "id": "MAFRA_ASF_PRESS",
+      "name": "ASF 보도자료",
+      "provider": "농림축산식품부",
+      "category": "DISEASE",
+      "species": ["PORK"],
+      "url": "https://www.mafra.go.kr/FMD-AI2/2241/subview.do",
+      "collection_method": "news_list_adapter",
+      "status": "adapter_required",
+      "target_metric": "disease_factor",
+      "memo": "ASF 발생 및 방역 관련 보도자료. 돈육 출하 변수 영향도 산출 대상."
+    },
+    {
+      "id": "KAHIS_DISEASE_STATUS",
+      "name": "국내 질병현황",
+      "provider": "KAHIS",
+      "category": "DISEASE",
+      "species": ["BEEF", "PORK", "POULTRY", "DUCK", "EGG"],
+      "url": "https://home.kahis.go.kr/home/lkntscrinfo/selectLkntsOccrrncList.do",
+      "collection_method": "disease_status_adapter",
+      "status": "adapter_required",
+      "target_metric": "disease_factor",
+      "memo": "국내 가축질병 발생현황. 축종별 질병 변수 점수 산출 대상."
+    }
+  ]
+}
