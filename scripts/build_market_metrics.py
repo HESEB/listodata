@@ -38,6 +38,34 @@ def direction(change: Optional[float]) -> str:
     return "flat"
 
 
+def interpret(label: str, change: Optional[float], unit: str, direction_value: str) -> str:
+    if change is None:
+        return "전년 비교 기준값이 없어 추가 데이터 확보 필요"
+    if unit == "%":
+        if "공급" in label or "도축" in label or "도계" in label:
+            if change <= -3:
+                return "공급 감소 신호"
+            if change >= 3:
+                return "공급 증가 신호"
+            return "공급 보합권"
+        if change >= 3:
+            return "가격 상승 압력 우세"
+        if change <= -3:
+            return "가격 하락 압력"
+        return "가격 보합권"
+    if unit == "점":
+        if change >= 70:
+            return "영향도 높음"
+        if change >= 40:
+            return "영향도 보통"
+        return "영향도 낮음"
+    if direction_value == "up":
+        return "상승 신호"
+    if direction_value == "down":
+        return "하락 신호"
+    return "보합권"
+
+
 def get_yoy(values: List[Dict[str, Any]], current_month: str) -> Optional[Dict[str, Any]]:
     year, month = current_month.split("-")
     target = f"{int(year) - 1}-{month}"
@@ -48,29 +76,36 @@ def get_yoy(values: List[Dict[str, Any]], current_month: str) -> Optional[Dict[s
 
 
 def score_signal(species_id: str, price_mom: Optional[float], supply_yoy: Optional[float], risks: Dict[str, Any]) -> int:
-    """Simple market-signal score.
-
-    Higher score = stronger upward/tight-supply signal.
-    This is an explainable heuristic, not a prediction model.
-    """
     score = 50.0
     if price_mom is not None:
         score += max(-15, min(20, price_mom * 3.5))
     if supply_yoy is not None:
-        # supply down -> upward/tight signal; supply up -> weaker signal
         score += max(-15, min(20, -supply_yoy * 2.2))
     score += (float(risks.get("disease", 0)) - 25) * 0.10
     score += (float(risks.get("seasonal", 0)) - 40) * 0.12
     if species_id == "PORK":
-        # stock pressure dampens overall price signal but increases mixed interpretation
         score -= (float(risks.get("stock_pressure", 0)) - 30) * 0.12
     return clamp(score)
 
 
 def data_confidence(values: List[Dict[str, Any]], source_count: int = 2) -> int:
-    # simple confidence: amount of history + source count. Future version should include fetch status.
     months = len(values)
     return clamp(35 + min(months, 18) * 2.2 + source_count * 7)
+
+
+def metric(label: str, value: str, value_unit: str, change_label: str, change: Optional[float], change_unit: str, source_ref: str) -> Dict[str, Any]:
+    d = direction(change)
+    return {
+        "label": label,
+        "value": value,
+        "unit": value_unit,
+        "change_label": change_label,
+        "change": change,
+        "change_unit": change_unit,
+        "direction": d,
+        "interpretation": interpret(label, change, change_unit, d),
+        "source_ref": source_ref,
+    }
 
 
 def build_metric_block(row: Dict[str, Any]) -> Dict[str, Any]:
@@ -89,62 +124,21 @@ def build_metric_block(row: Dict[str, Any]) -> Dict[str, Any]:
     risks = row.get("risk_factors", {}) or {}
     signal = score_signal(row["id"], price_mom, supply_yoy, risks)
     conf = data_confidence(values)
+    supply_unit = "수" if row["id"] == "POULTRY" else "두"
 
     metrics = [
-        {
-            "label": row.get("price_metric", "가격"),
-            "value": f"{latest.get('price'):,}",
-            "change_label": "전월 대비",
-            "change": price_mom,
-            "direction": direction(price_mom),
-            "source_ref": row.get("price_source_ref", "PRICE_SOURCE")
-        },
-        {
-            "label": row.get("supply_metric", "공급"),
-            "value": f"{latest.get('supply'):,}",
-            "change_label": "전월 대비",
-            "change": supply_mom,
-            "direction": direction(supply_mom),
-            "source_ref": row.get("supply_source_ref", "SUPPLY_SOURCE")
-        },
-        {
-            "label": "가격 전년동월",
-            "value": "계산값",
-            "change_label": "전년 대비",
-            "change": price_yoy,
-            "direction": direction(price_yoy),
-            "source_ref": row.get("price_source_ref", "PRICE_SOURCE")
-        },
-        {
-            "label": "공급 전년동월",
-            "value": "계산값",
-            "change_label": "전년 대비",
-            "change": supply_yoy,
-            "direction": direction(supply_yoy),
-            "source_ref": row.get("supply_source_ref", "SUPPLY_SOURCE")
-        },
-        {
-            "label": "계절 수요",
-            "value": "가중치",
-            "change_label": "점수",
-            "change": float(risks.get("seasonal", 0)),
-            "direction": "up" if float(risks.get("seasonal", 0)) >= 60 else "flat",
-            "source_ref": "SEASONAL_FACTOR"
-        },
-        {
-            "label": "질병 변수",
-            "value": "영향도",
-            "change_label": "점수",
-            "change": float(risks.get("disease", 0)),
-            "direction": "mixed" if float(risks.get("disease", 0)) >= 35 else "flat",
-            "source_ref": "DISEASE_FACTOR"
-        }
+        metric(row.get("price_metric", "가격"), f"{latest.get('price'):,}", "원/kg", "전월 대비", price_mom, "%", row.get("price_source_ref", "PRICE_SOURCE")),
+        metric(row.get("supply_metric", "공급"), f"{latest.get('supply'):,}", supply_unit, "전월 대비", supply_mom, "%", row.get("supply_source_ref", "SUPPLY_SOURCE")),
+        metric("가격 전년동월", "계산값", "%", "전년 대비", price_yoy, "%", row.get("price_source_ref", "PRICE_SOURCE")),
+        metric("공급 전년동월", "계산값", "%", "전년 대비", supply_yoy, "%", row.get("supply_source_ref", "SUPPLY_SOURCE")),
+        metric("계절 수요", "가중치", "점", "점수", float(risks.get("seasonal", 0)), "점", "SEASONAL_FACTOR"),
+        metric("질병 변수", "영향도", "점", "점수", float(risks.get("disease", 0)), "점", "DISEASE_FACTOR"),
     ]
 
     summary = (
-        f"{latest['month']} 기준 {row.get('price_metric', '가격')}은 전월 대비 {price_mom}%이며, "
-        f"{row.get('supply_metric', '공급')}은 전월 대비 {supply_mom}%입니다. "
-        f"가격과 공급의 방향성을 함께 반영한 시장신호 점수는 {signal}%입니다."
+        f"{latest['month']} 기준 {row.get('price_metric', '가격')}은 {latest.get('price'):,}원/kg, 전월 대비 {price_mom}%이며, "
+        f"{row.get('supply_metric', '공급')}은 {latest.get('supply'):,}{supply_unit}, 전월 대비 {supply_mom}%입니다. "
+        f"시장신호 점수는 {signal}점, 데이터 신뢰도는 {conf}점입니다."
     )
 
     return {
@@ -152,9 +146,11 @@ def build_metric_block(row: Dict[str, Any]) -> Dict[str, Any]:
         "name": row.get("name", row["id"]),
         "basis_month": latest["month"],
         "signal_score": signal,
+        "signal_score_unit": "점",
         "data_confidence": conf,
+        "data_confidence_unit": "점",
         "metric_summary": summary,
-        "metrics": metrics
+        "metrics": metrics,
     }
 
 
@@ -164,7 +160,7 @@ def main() -> None:
     output = {
         "updated_at": datetime.now(KST).isoformat(timespec="seconds"),
         "notice": "source_snapshots 시계열 기반으로 자동 계산된 핵심지표입니다. 현재 입력 데이터는 샘플/수동 스냅샷이며, 공식 데이터 자동수집 연결 전까지 참고용으로 사용합니다.",
-        "unit_note": "가격은 원/kg 또는 출처 기준 단위, 공급은 두/수 또는 출처 기준 단위입니다.",
+        "unit_note": "가격은 원/kg, 도축두수는 두, 도계량은 수, 증감률은 %, 신호·신뢰도·영향도는 점으로 표시합니다.",
         "generated_by": "scripts/build_market_metrics.py",
         "species": species,
     }
