@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>시장신호 산식 | HESEB Livestock Terminal</title>
+  <style>
+    body{margin:0;background:#f5fafc;color:#182231;font-family:system-ui,-apple-system,Segoe UI,Noto Sans KR,sans-serif}header{position:sticky;top:0;background:rgba(245,250,252,.94);border-bottom:1px solid rgba(20,30,40,.1);backdrop-filter:blur(8px)}.wrap{max-width:1180px;margin:0 auto;padding:14px}.brand{display:flex;justify-content:space-between;gap:12px}.brand h1{margin:0;font-size:18px}.sub{font-size:12px;color:rgba(24,34,49,.68);line-height:1.45}.btn{border:1px solid rgba(20,30,40,.1);background:white;padding:8px 12px;border-radius:999px;color:#182231;text-decoration:none;font-size:13px}.hero{background:linear-gradient(160deg,rgba(241,133,174,.25),rgba(248,184,113,.18),rgba(107,178,255,.16));padding:14px;border-radius:26px;margin:14px 0}.hero-in{background:rgba(255,255,255,.82);border:1px solid rgba(20,30,40,.1);border-radius:22px;padding:16px}.headline{font-size:24px;font-weight:830;letter-spacing:-.7px}.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}.card{background:white;border:1px solid rgba(20,30,40,.1);border-radius:20px;padding:14px;box-shadow:0 10px 24px rgba(18,28,40,.07)}.card h2{margin:0;font-size:17px}.card h3{margin:0;font-size:15px}.pill{display:inline-flex;border:1px solid rgba(20,30,40,.1);border-radius:999px;background:rgba(255,255,255,.75);padding:6px 9px;font-size:12px}.rule{border-top:1px solid rgba(20,30,40,.1);padding:11px 0}.rule:first-child{border-top:0}.desc{font-size:13px;line-height:1.55;color:rgba(24,34,49,.78);margin-top:7px}.weight{font-size:12px;margin-top:7px;color:#263b72;background:linear-gradient(90deg,rgba(241,133,174,.10),rgba(107,178,255,.10));border:1px solid rgba(20,30,40,.1);border-radius:12px;padding:8px}.band{display:flex;justify-content:space-between;gap:8px;border-top:1px solid rgba(20,30,40,.1);padding:10px 0}.band:first-child{border-top:0}.score{font-weight:850}.notice{font-size:12px;color:rgba(24,34,49,.72);line-height:1.55;border:1px dashed rgba(20,30,40,.1);border-radius:18px;background:rgba(255,255,255,.62);padding:12px;margin-top:14px}.empty{padding:22px;text-align:center;color:rgba(24,34,49,.68);border:1px dashed rgba(20,30,40,.1);border-radius:18px;background:white}
+  </style>
+</head>
+<body>
+<header><div class="wrap brand"><div><h1>HESEB Livestock Terminal</h1><div class="sub">Market signal score rulebook</div></div><a class="btn" href="./terminal.html">Terminal로 돌아가기</a></div></header>
+<main class="wrap">
+  <div class="hero"><div class="hero-in"><div class="sub">Score Rulebook</div><div class="headline">시장신호 점수 산식</div><div class="sub">가격·공급·질병·계절 요인을 설명 가능한 방식으로 점수화합니다.</div></div></div>
+  <div class="grid"><section class="card"><h2>점수 구성</h2><div class="desc" id="base"></div><div id="rules"></div></section><section class="card"><h2>점수 해석 구간</h2><div id="bands"></div></section></div>
+  <div class="notice" id="notice"></div>
+</main>
+<script>
+const $=id=>document.getElementById(id),safe=x=>Array.isArray(x)?x:[],esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+async function fetchJSON(p){const r=await fetch(p,{cache:'no-store'});if(!r.ok)throw new Error(p);return r.json()}
+function ruleHTML(r){return `<div class="rule"><h3>${esc(r.title)} <span class="pill">${esc(r.unit)}</span></h3><div class="desc">${esc(r.description)}</div><div class="weight"><b>반영 방식</b><br>${esc(r.weight)}<br><br><b>상승 의미</b> ${esc(r.positive_meaning)}<br><b>하락 의미</b> ${esc(r.negative_meaning)}</div></div>`}
+function bandHTML(b){return `<div class="band"><div><b>${esc(b.label)}</b><div class="desc">${esc(b.meaning)}</div></div><div class="score">${esc(b.min)}~${esc(b.max)}점</div></div>`}
+async function init(){try{const d=await fetchJSON('./data/score_rules.json');$('base').innerHTML=`기준점수 <b>${esc(d.base_score)}${esc(d.score_unit)}</b>에서 시작해 각 요인을 가감합니다.`;$('rules').innerHTML=safe(d.rules).map(ruleHTML).join('');$('bands').innerHTML=safe(d.bands).map(bandHTML).join('');$('notice').textContent=d.notice||''}catch(e){console.error(e);$('rules').innerHTML='<div class="empty">산식 데이터를 불러오지 못했습니다.</div>'}}
+init();
+</script>
+</body>
+</html>
