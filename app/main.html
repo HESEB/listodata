@@ -16,16 +16,20 @@
   <script>
     const frame=document.getElementById('v330');
     const loading=document.getElementById('loading');
+    function appendScript(doc,id,src){
+      if(doc.getElementById(id))return;
+      const s=doc.createElement('script');
+      s.id=id;
+      s.src=src;
+      s.defer=true;
+      doc.body.appendChild(s);
+    }
     function injectV41(){
       try{
         const doc=frame.contentDocument;
         if(!doc)return;
-        if(doc.getElementById('v41-integration-script'))return;
-        const s=doc.createElement('script');
-        s.id='v41-integration-script';
-        s.src='./v41-integration.js?v=integrated-410';
-        s.defer=true;
-        doc.body.appendChild(s);
+        appendScript(doc,'v41-integration-script','./v41-integration.js?v=integrated-411');
+        appendScript(doc,'claim-evidence-script','./claim-evidence.js?v=claim-100');
         loading.style.display='none';
       }catch(e){
         console.warn('v4.1 integration inject failed',e);
