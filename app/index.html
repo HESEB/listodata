@@ -1,647 +1,236 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>축산 시황 대시보드 (MVP v2)</title>
-  <style>
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Apple SD Gothic Neo,Noto Sans KR,sans-serif;background:#f5fafc;color:#1a2330}
-    header{position:sticky;top:0;z-index:10;background:rgba(245,250,252,.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(20,30,40,.08)}
-    .top{max-width:1100px;margin:0 auto;padding:14px}
-    .brand{display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .brand h1{margin:0;font-size:16px;letter-spacing:-.2px}
-    .brand .mini{font-size:12px;opacity:.65;text-align:right}
-    nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-    .tab{border:1px solid rgba(20,30,40,.10);background:rgba(255,255,255,.75);padding:8px 10px;border-radius:999px;cursor:pointer;font-size:13px}
-    .tab.active{background:linear-gradient(90deg, rgba(241,133,174,.18), rgba(248,184,113,.16), rgba(165,115,237,.16), rgba(107,178,255,.16));border-color:rgba(20,30,40,.12)}
-    main{max-width:1100px;margin:0 auto;padding:14px}
-    .panel{display:none}
-    .panel.active{display:block}
-    .placeholder{border:1px dashed rgba(20,30,40,.12);background:rgba(255,255,255,.65);border-radius:18px;padding:18px;color:rgba(26,35,48,.75)}
-    .row{display:flex;gap:10px;flex-wrap:wrap}
-    .card{border:1px solid rgba(20,30,40,.08);background:rgba(255,255,255,.88);border-radius:18px;padding:12px;box-shadow:0 10px 22px rgba(18,28,40,.08)}
-    .card h3{margin:0 0 8px 0;font-size:14px}
-    .muted{font-size:12px;opacity:.7}
-    .pill{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid rgba(20,30,40,.08);background:rgba(255,255,255,.7);font-size:12px}
-    table{width:100%;border-collapse:separate;border-spacing:0;overflow:hidden;border-radius:14px;border:1px solid rgba(20,30,40,.08)}
-    th,td{padding:10px 10px;border-bottom:1px solid rgba(20,30,40,.06);font-size:12px;text-align:left}
-    th{background:rgba(0,0,0,.03);font-weight:600}
-    tr:last-child td{border-bottom:none}
-    .spark{width:120px;height:22px}
-    .btn{border:1px solid rgba(20,30,40,.10);background:rgba(255,255,255,.75);padding:8px 10px;border-radius:12px;cursor:pointer;font-size:12px}
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>국내산 축산 시황 Dashboard</title>
   <link rel="icon" href="./favicon.png" type="image/png" />
+  <style>
+    :root{
+      --bg:#f5fafc;
+      --card:rgba(255,255,255,.92);
+      --line:rgba(20,30,40,.09);
+      --text:#182231;
+      --sub:rgba(24,34,49,.68);
+      --shadow:0 14px 34px rgba(18,28,40,.10);
+      --r:20px;
+      --g1:#F185AE; --g2:#F8B871; --g3:#A573ED; --g4:#6BB2FF;
+      --up:#d93c61; --flat:#c18a18; --down:#2474d8; --mix:#7457d8;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Apple SD Gothic Neo,Noto Sans KR,sans-serif;background:var(--bg);color:var(--text)}
+    header{position:sticky;top:0;z-index:20;background:rgba(245,250,252,.92);backdrop-filter:blur(9px);border-bottom:1px solid var(--line)}
+    .top{max-width:1180px;margin:0 auto;padding:14px}
+    .brand{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+    .brand h1{margin:0;font-size:18px;letter-spacing:-.4px}
+    .brand .mini{font-size:12px;color:var(--sub);text-align:right;line-height:1.4}
+    nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .tab{border:1px solid var(--line);background:rgba(255,255,255,.76);padding:8px 12px;border-radius:999px;cursor:pointer;font-size:13px;color:var(--text)}
+    .tab.active{background:linear-gradient(90deg,rgba(241,133,174,.20),rgba(248,184,113,.18),rgba(165,115,237,.18),rgba(107,178,255,.18));box-shadow:0 8px 18px rgba(18,28,40,.07)}
+    main{max-width:1180px;margin:0 auto;padding:14px}
+    .panel{display:none}.panel.active{display:block}
+    .hero{background:linear-gradient(160deg,rgba(241,133,174,.25),rgba(248,184,113,.20),rgba(165,115,237,.18),rgba(107,178,255,.18));padding:14px;border-radius:26px;margin-bottom:14px}
+    .hero-inner{background:rgba(255,255,255,.78);border:1px solid var(--line);border-radius:22px;padding:16px;box-shadow:var(--shadow)}
+    .hero-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}
+    .eyebrow{font-size:12px;color:var(--sub);margin-bottom:5px}.headline{font-size:22px;line-height:1.35;font-weight:760;letter-spacing:-.6px}.updated{font-size:12px;color:var(--sub)}
+    .grid{display:grid;gap:12px}.grid.cols-5{grid-template-columns:repeat(5,1fr)}.grid.cols-3{grid-template-columns:repeat(3,1fr)}.grid.cols-2{grid-template-columns:repeat(2,1fr)}
+    @media(max-width:980px){.grid.cols-5,.grid.cols-3{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:620px){.brand{display:block}.brand .mini{text-align:left;margin-top:6px}.grid.cols-5,.grid.cols-3,.grid.cols-2{grid-template-columns:1fr}.headline{font-size:18px}}
+    .card{border:1px solid var(--line);background:var(--card);border-radius:var(--r);padding:14px;box-shadow:0 10px 24px rgba(18,28,40,.07)}
+    .card h2,.card h3{margin:0}.card h2{font-size:17px}.card h3{font-size:15px}.sub{color:var(--sub);font-size:12px;line-height:1.45}.mt{margin-top:10px}.mb{margin-bottom:10px}
+    .species-card{cursor:pointer;transition:.15s transform,.15s box-shadow}.species-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+    .species-top{display:flex;justify-content:space-between;gap:10px;align-items:center}.emoji{font-size:26px}.species-name{font-size:15px;font-weight:760}.signal{font-size:13px;font-weight:760;margin-top:8px}.summary{font-size:13px;color:rgba(24,34,49,.82);line-height:1.45;margin-top:8px}
+    .badge{display:inline-flex;align-items:center;gap:5px;padding:5px 8px;border-radius:999px;border:1px solid var(--line);font-size:11px;background:rgba(255,255,255,.7);white-space:nowrap}.badge.up{color:var(--up);background:rgba(217,60,97,.08)}.badge.flat{color:var(--flat);background:rgba(193,138,24,.09)}.badge.down{color:var(--down);background:rgba(36,116,216,.08)}.badge.mixed{color:var(--mix);background:rgba(116,87,216,.08)}
+    .facts{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.fact{font-size:11px;padding:5px 8px;border-radius:999px;background:rgba(0,0,0,.04);border:1px solid var(--line);color:var(--sub)}
+    .driver{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:10px;margin-top:10px}.driver:first-child{border-top:none;margin-top:0;padding-top:0}.stars{letter-spacing:1px;font-size:12px;white-space:nowrap}.bar{height:8px;background:rgba(20,30,40,.07);border-radius:99px;overflow:hidden;margin-top:7px}.bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3),var(--g4))}
+    .indicator{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;border-top:1px solid var(--line);padding:9px 0;font-size:13px}.indicator:first-child{border-top:none}.indicator .v{font-weight:700}.indicator .t{font-size:11px;color:var(--sub)}
+    .list{display:flex;flex-direction:column;gap:10px}.news-card{border:1px solid var(--line);background:var(--card);border-radius:18px;padding:12px}.news-meta{display:flex;gap:7px;flex-wrap:wrap;align-items:center;color:var(--sub);font-size:12px}.news-title{font-size:14px;font-weight:720;margin:7px 0 5px;line-height:1.35}.news-desc{font-size:12px;color:var(--sub);line-height:1.45}.link{font-size:12px;color:#2d5bff;text-decoration:none}.filters{display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:10px;margin:12px 0}@media(max-width:700px){.filters{grid-template-columns:1fr}}
+    .ctl{background:rgba(255,255,255,.86);border:1px solid var(--line);border-radius:14px;padding:10px 12px;display:flex;align-items:center;gap:10px}.ctl label{font-size:12px;color:var(--sub);white-space:nowrap}.ctl select,.ctl input{width:100%;border:0;background:transparent;outline:0;font-size:13px;color:var(--text)}
+    .report-box{white-space:pre-wrap;font-size:13px;line-height:1.65;background:rgba(255,255,255,.82);border:1px solid var(--line);border-radius:18px;padding:14px}.btn{border:1px solid var(--line);background:rgba(255,255,255,.78);padding:9px 12px;border-radius:12px;cursor:pointer;font-size:12px}.btn.primary{background:linear-gradient(90deg,rgba(241,133,174,.22),rgba(107,178,255,.20));font-weight:760}
+    .notice{font-size:12px;color:rgba(24,34,49,.72);line-height:1.55;border:1px dashed var(--line);border-radius:18px;background:rgba(255,255,255,.62);padding:12px;margin-top:14px}.empty{padding:22px;text-align:center;color:var(--sub);border:1px dashed var(--line);border-radius:18px;background:rgba(255,255,255,.6)}
+  </style>
 </head>
 <body>
 <header>
   <div class="top">
     <div class="brand">
-      <h1>축산 시황 대시보드 (MVP v2)</h1>
-      <div class="mini">
-        GitHub Pages /app · <span id="buildVersion"></span><br/>
-        데이터는 <b>/app/data</b> (상대경로 안정)
+      <div>
+        <h1>국내산 축산 시황 Dashboard</h1>
+        <div class="sub">공개 데이터와 공개 뉴스 기반의 참고용 시장신호</div>
       </div>
+      <div class="mini">HESEB Livestock Terminal · <span id="buildVersion">v3.0.0</span><br/>재고·매입단가 등 내부정보 미노출</div>
     </div>
     <nav>
-      <button class="tab active" data-tab="industry">업계이슈</button>
-      <button class="tab" data-tab="flow">시장흐름(인포그래픽)</button>
-      <button class="tab" data-tab="species">축종요약(표/그래프)</button>
-      <button class="tab" data-tab="settings">설정</button>
+      <button class="tab active" data-tab="dashboard">Dashboard</button>
+      <button class="tab" data-tab="beef">한우</button>
+      <button class="tab" data-tab="pork">돈육</button>
+      <button class="tab" data-tab="poultry">계육</button>
+      <button class="tab" data-tab="news">뉴스</button>
+      <button class="tab" data-tab="report">리포트</button>
     </nav>
   </div>
 </header>
 
 <main>
-  <section id="panel-industry" class="panel active">
-    <!-- ===== 업계이슈 탭 UI ===== -->
-    <style>
-      :root{
-        --hese-bg:#f5fafc;
-        --hese-card:rgba(255,255,255,.92);
-        --hese-line:rgba(20,30,40,.08);
-        --hese-text:#1a2330;
-        --hese-sub:rgba(26,35,48,.68);
-        --hese-shadow:0 10px 26px rgba(18,28,40,.10);
-        --hese-r:18px;
-        --g1:#F185AE; --g2:#F8B871; --g3:#A573ED; --g4:#6BB2FF;
-      }
-      .hese-wrap{background: linear-gradient(160deg, rgba(241,133,174,.22), rgba(248,184,113,.20), rgba(165,115,237,.18), rgba(107,178,255,.18)); padding: 14px; border-radius: 22px;}
-      .board-shell{background: var(--hese-bg); border: 1px solid var(--hese-line); border-radius: 22px; padding: 14px; box-shadow: var(--hese-shadow);}
-      .board-header{display:flex; gap:12px; align-items:flex-start; justify-content:space-between; margin-bottom: 12px;}
-      .board-title{display:flex; flex-direction:column; gap:4px;}
-      .board-title h2{margin:0; font-size: 18px; color: var(--hese-text); letter-spacing: -.2px;}
-      .board-title .sub{font-size: 12px; color: var(--hese-sub);}
-      .toggle-row{display:flex; flex-direction:column; align-items:flex-end; gap:6px; min-width: 210px;}
-      .toggle{display:flex; align-items:center; gap:10px; user-select:none; cursor:pointer; font-size:13px; color: var(--hese-text);}
-      .toggle input{width: 18px; height: 18px; accent-color: var(--g4);}
-      .toggle-note{font-size: 11px; color: var(--hese-sub); text-align:right; line-height: 1.2;}
-      .filters{display:grid; grid-template-columns: 1.1fr .9fr .9fr 1.2fr; gap:10px; margin: 12px 0;}
-      @media (max-width: 860px){ .filters{ grid-template-columns: 1fr 1fr; } .toggle-row{ min-width: unset; } }
-      @media (max-width: 520px){ .filters{ grid-template-columns: 1fr; } }
-      .ctl{background: rgba(255,255,255,.85); border: 1px solid var(--hese-line); border-radius: 14px; padding: 10px 12px; display:flex; align-items:center; gap:10px;}
-      .ctl label{font-size:12px; color: var(--hese-sub); white-space:nowrap;}
-      .ctl select, .ctl input{width:100%; border: none; outline:none; background: transparent; font-size: 13px; color: var(--hese-text);}
-      .ctl input::placeholder{ color: rgba(26,35,48,.35); }
-      .stats-row{display:flex; flex-wrap:wrap; gap:8px; margin: 10px 0 4px;}
-      .pill2{padding: 6px 10px; border-radius: 999px; border: 1px solid var(--hese-line); background: rgba(255,255,255,.75); font-size: 12px; color: var(--hese-text);}
-      .list{margin-top: 12px; display:flex; flex-direction:column; gap:10px;}
-      .card2{border: 1px solid var(--hese-line); border-radius: var(--hese-r); background: var(--hese-card); padding: 12px; box-shadow: 0 8px 18px rgba(18,28,40,.06);}
-      .meta-line{display:flex; flex-wrap:wrap; align-items:center; gap: 8px; font-size: 12px; color: var(--hese-sub);}
-      .badge{display:inline-flex; align-items:center; gap:6px; padding: 4px 8px; border-radius: 999px; font-size: 11px; border: 1px solid var(--hese-line); background: rgba(255,255,255,.75); color: var(--hese-text);}
-      .badge.sev-low{ background: rgba(107,178,255,.14); }
-      .badge.sev-mid{ background: rgba(248,184,113,.16); }
-      .badge.sev-high{ background: rgba(255,74,126,.14); }
-      .badge.type-official{ background: linear-gradient(90deg, rgba(241,133,174,.14), rgba(107,178,255,.14)); }
-      .badge.type-news{ background: linear-gradient(90deg, rgba(165,115,237,.14), rgba(248,184,113,.14)); }
-      .title2{font-size: 14px; color: var(--hese-text); line-height: 1.35; margin: 6px 0 0 0;}
-      .desc2{font-size: 13px; color: rgba(26,35,48,.82); line-height: 1.4; margin-top: 6px;}
-      .card-actions{margin-top: 10px; display:flex; justify-content:space-between; align-items:center; gap: 10px;}
-      .tag{font-size: 11px; padding: 4px 8px; border-radius: 999px; background: rgba(0,0,0,.04); border: 1px solid var(--hese-line); color: var(--hese-sub);}
-      .link{font-size: 12px; text-decoration:none; color: #2d5bff;}
-      .empty{padding: 24px 10px; text-align:center; color: var(--hese-sub); border: 1px dashed var(--hese-line); border-radius: 18px; background: rgba(255,255,255,.6);}
-    </style>
-
-    <div class="hese-wrap">
-      <div class="board-shell">
-        <div class="board-header">
-          <div class="board-title">
-            <h2>업계이슈</h2>
-            <div class="sub">공식 업데이트 + (선택) 민간 뉴스 제목·링크만 표시</div>
+  <section id="panel-dashboard" class="panel active">
+    <div class="hero">
+      <div class="hero-inner">
+        <div class="hero-head">
+          <div>
+            <div class="eyebrow">Market Signal Summary</div>
+            <div class="headline" id="marketHeadline">시장신호를 불러오는 중입니다.</div>
           </div>
-          <div class="toggle-row">
-            <label class="toggle">
-              <input id="chkShowNewsHeadlines" type="checkbox" />
-              <span>민간 뉴스(제목만) 표시</span>
-            </label>
-            <div class="toggle-note">본문 저장/요약/발췌 없음<br/>제목·링크만 제공</div>
-          </div>
+          <div class="updated" id="updatedAt">갱신 N/A</div>
         </div>
-
-        <div class="filters">
-          <div class="ctl">
-            <label>축종</label>
-            <select id="fltSpecies">
-              <option value="ALL">전체</option>
-              <option value="POULTRY">가금육</option>
-              <option value="PORK">돈육</option>
-              <option value="BEEF">우육</option>
-              <option value="DUCK">오리</option>
-              <option value="EGG">계란</option>
-            </select>
-          </div>
-          <div class="ctl">
-            <label>구분</label>
-            <select id="fltType">
-              <option value="ALL">전체</option>
-              <option value="OFFICIAL">공식</option>
-              <option value="NEWS">뉴스</option>
-            </select>
-          </div>
-          <div class="ctl">
-            <label>기간</label>
-            <select id="fltRange">
-              <option value="7">최근 7일</option>
-              <option value="30" selected>최근 30일</option>
-              <option value="45">최근 45일</option>
-              <option value="ALL">전체</option>
-            </select>
-          </div>
-          <div class="ctl">
-            <label>검색</label>
-            <input id="fltQuery" placeholder="예) ASF, AI, 수입, 삼겹, 한우, 계란" />
-          </div>
-        </div>
-
-        <div class="stats-row" id="boardStats"></div>
-        <div class="list" id="industryBoardList">
-          <div class="empty">불러오는 중...</div>
-        </div>
-
-        <div style="margin-top:10px" class="muted">
-          * 민간 뉴스는 제목·링크만 제공합니다. 자세한 내용은 각 원문에서 확인하세요.
-        </div>
+        <div class="grid cols-5 mt" id="speciesCards"></div>
       </div>
     </div>
 
-    <script>
-const BUILD_VERSION = "v2.6.0";
+    <div class="grid cols-2">
+      <div class="card">
+        <h2>시장 영향요인</h2>
+        <div class="sub mt">확정 판단이 아닌 공개 지표와 이슈를 종합한 참고 신호입니다.</div>
+        <div class="mt" id="driverList"></div>
+      </div>
+      <div class="card">
+        <h2>오늘의 뉴스 TOP</h2>
+        <div class="sub mt">공식자료와 민간뉴스는 제목·링크 중심으로 제공합니다.</div>
+        <div class="list mt" id="topNews"><div class="empty">뉴스를 불러오는 중...</div></div>
+      </div>
+    </div>
 
-
-// --- v2.4.2 HOTFIX: time helpers must be global (avoid ReferenceError) ---
-window.__KST_HELPERS__ = true;
-window.fmtUTC = window.fmtUTC || function(iso){
-  if (!iso) return "N/A";
-  return String(iso).slice(0,19).replace("T"," ");
-};
-window.fmtKST = window.fmtKST || function(iso){
-  if (!iso) return "N/A";
-  try{
-    const d = new Date(iso);
-    if (Number.isNaN(d.getTime())) return "N/A";
-    return d.toLocaleString("ko-KR", { timeZone:"Asia/Seoul", hour12:false });
-  }catch(e){
-    return window.window.fmtUTC(iso);
-  }
-};
-// legacy aliases for summary tab
-window.window.fmtUTC2 = window.window.fmtUTC2 || window.fmtUTC;
-window.window.fmtKST2 = window.window.fmtKST2 || window.fmtKST;
-// ---------------------------------------------------------------
-
-    // ===== 업계이슈 로직 =====
-    const KEY_SHOW_NEWS = "SET_SHOW_NEWS_HEADLINES";
-    const PATH_OFFICIAL = "./data/events/events_official.json";
-    const PATH_NEWS     = "./data/events/events_news.json";
-
-    const el = (id) => document.getElementById(id);
-    const safeArray = (x) => Array.isArray(x) ? x : [];
-    const getShowNews = () => localStorage.getItem(KEY_SHOW_NEWS) === "1";
-    const setShowNews = (v) => localStorage.setItem(KEY_SHOW_NEWS, v ? "1" : "0");
-
-    const ymdOf = (obj) => ((obj?.date || obj?.published_at || "") + "").slice(0,10);
-    const tsOf  = (obj) => {
-      const s = obj?.published_at || obj?.date || "";
-      const t = Date.parse(s);
-      if (Number.isFinite(t)) return t;
-      return Date.parse((s+"").slice(0,10));
-    };
-    const escapeHTML = (s="") => String(s).replace(/[&<>"']/g, m => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[m]));
-    const severityClass = (sev="MID") => (sev||"").toUpperCase()==="HIGH"?"sev-high":((sev||"").toUpperCase()==="LOW"?"sev-low":"sev-mid");
-    const speciesLabel = (code) => ({POULTRY:"가금육",PORK:"돈육",BEEF:"우육",DUCK:"오리",EGG:"계란"}[code] || code);
-
-    async function fetchJSON(path){
-      const r = await fetch(path, { cache:"no-store" });
-      if (!r.ok) throw new Error("fetch failed: " + path);
-      return r.json();
-    }
-
-    function buildOfficialLine1(it){
-      const tmpl = it.template_id || "";
-      if (tmpl === "OFFICIAL_DISEASE_UPDATE") return "질병/방역 관련 공식 업데이트가 확인되었습니다.";
-      return "공식 공지/자료 업데이트가 확인되었습니다.";
-    }
-    function buildOfficialLine2(it){
-      const sp = safeArray(it.species);
-      if (sp.length) return `영향 축종: ${sp.map(speciesLabel).join(", ")}. 자세한 내용은 출처를 확인하세요.`;
-      return "자세한 내용은 출처를 확인하세요.";
-    }
-
-    function applyFilters(items){
-      const species = el("fltSpecies").value;
-      const type = el("fltType").value;
-      const range = el("fltRange").value;
-      const q = (el("fltQuery").value || "").trim().toLowerCase();
-
-      let cutoff = null;
-      if (range !== "ALL") {
-        const days = Number(range);
-        if (Number.isFinite(days)) cutoff = Date.now() - (days * 86400000);
-      }
-
-      return items.filter(it => {
-        if (type !== "ALL") {
-          if (type === "NEWS" && it.category !== "NEWS") return false;
-          if (type === "OFFICIAL" && it.category === "NEWS") return false;
-        }
-        if (cutoff != null) {
-          const ts = tsOf(it);
-          if (Number.isFinite(ts) && ts < cutoff) return false;
-        }
-        if (species !== "ALL") {
-          const sp = safeArray(it.species);
-          if (!sp.includes(species)) return false;
-        }
-        if (q) {
-          const hay = [it.title,it.publisher,it.category,it.subcategory,...safeArray(it.tags),...safeArray(it.species)].join(" ").toLowerCase();
-          if (!hay.includes(q)) return false;
-        }
-        return true;
-      });
-    }
-
-    function renderStats(all, filtered, meta){
-      const parts = [];
-      parts.push(`<span class="pill2">표시 ${filtered.length}건</span>`);
-      parts.push(`<span class="pill2">전체 ${all.length}건</span>`);
-      const offN = all.filter(x => x.category !== "NEWS").length;
-      const newsN = all.filter(x => x.category === "NEWS").length;
-      parts.push(`<span class="pill2">공식 ${offN} · 뉴스 ${newsN}</span>`);
-      const genOffIso = meta?.official?.generated_at || "";
-      const genNewsIso = meta?.news?.generated_at || "";
-      parts.push(`<span class="pill2">공식 갱신(KST) ${escapeHTML(window.fmtKST(genOffIso))}</span>`);
-      parts.push(`<span class="pill2">공식 갱신(UTC) ${escapeHTML(window.fmtUTC(genOffIso))}</span>`);
-      if (getShowNews()){
-        parts.push(`<span class="pill2">뉴스 갱신(KST) ${escapeHTML(window.fmtKST(genNewsIso))}</span>`);
-        parts.push(`<span class="pill2">뉴스 갱신(UTC) ${escapeHTML(window.fmtUTC(genNewsIso))}</span>`);
-      }
-      // feed status (if present)
-      const sOff = meta?.official?._sources || [];
-      const sNews = meta?.news?._sources || [];
-      const okOff = sOff.filter(x=>x.ok).length, allOff = sOff.length;
-      const okNews = sNews.filter(x=>x.ok).length, allNews = sNews.length;
-      if (allOff) parts.push(`<span class="pill2">공식 소스 ${okOff}/${allOff}</span>`);
-      if (getShowNews() && allNews) parts.push(`<span class="pill2">뉴스 소스 ${okNews}/${allNews}</span>`);
-      el("boardStats").innerHTML = parts.join("");
-    }
-
-    
-    function renderIndustryError(msg){
-      const box = document.getElementById("eventsList");
-      if (!box) return;
-      box.innerHTML = `<div class="empty">데이터를 불러오지 못했습니다.<br><span style="font-size:12px;opacity:.7">${escapeHTML(String(msg||""))}</span><br><br>
-      <span style="font-size:12px;opacity:.8">확인: /app/data/events/events_official.json, events_news.json 이 404가 아닌지</span>
-      </div>`;
-    }
-
-function renderList(items){
-      const root = el("industryBoardList");
-      if (!items.length){
-        root.innerHTML = `<div class="empty">조건에 맞는 업데이트가 없습니다.</div>`;
-        return;
-      }
-      root.innerHTML = items.map(it => {
-        const isNews = it.category === "NEWS";
-        const date = escapeHTML(ymdOf(it));
-        const sev = (it.severity || "MID").toUpperCase();
-        const sevCls = severityClass(sev);
-
-        const badges = [];
-        badges.push(`<span class="badge ${isNews ? "type-news":"type-official"}">${isNews ? "NEWS":"OFFICIAL"}</span>`);
-        badges.push(`<span class="badge ${sevCls}">Severity: ${escapeHTML(sev)}</span>`);
-        const sp = safeArray(it.species).slice(0,3);
-        if (sp.length) badges.push(`<span class="badge">${escapeHTML(sp.map(speciesLabel).join(" · "))}</span>`);
-
-        let title = "";
-        let desc = "";
-        let linkText = "출처 열기";
-        let linkUrl = "";
-
-        if (isNews){
-          title = it.title || "(제목 없음)";
-          desc = `* 제목/링크만 제공 (본문 요약·발췌 없음)`;
-          linkText = "원문 보기";
-          linkUrl = it.url || "#";
-        } else {
-          title = it.title || "공식 업데이트";
-          desc = `${escapeHTML(buildOfficialLine1(it))}<br/>${escapeHTML(buildOfficialLine2(it))}`;
-          linkUrl = it.source_url || "#";
-        }
-
-        const tags = [];
-        if (isNews) {
-          for (const t of safeArray(it.tags)) tags.push(`<span class="tag">#${escapeHTML(t)}</span>`);
-          if (it.publisher) tags.push(`<span class="tag">${escapeHTML(it.publisher)}</span>`);
-        } else {
-          if (it.subcategory) tags.push(`<span class="tag">${escapeHTML(it.subcategory)}</span>`);
-        }
-
-        return `
-          <div class="card2">
-            <div class="meta-line">
-              <b style="color:var(--hese-text)">${date}</b>
-              ${badges.join("")}
-            </div>
-            <p class="title2">${escapeHTML(title)}</p>
-            <div class="desc2">${desc}</div>
-            <div class="card-actions">
-              <div class="actions-left">${tags.join("")}</div>
-              <a class="link" href="${escapeHTML(linkUrl)}" target="_blank" rel="noopener">${escapeHTML(linkText)}</a>
-            </div>
-          </div>
-        `;
-      }).join("");
-    }
-
-    async function loadEvents(){
-      let official = { generated_at:"", items:[] };
-      let news = { generated_at:"", items:[] };
-      try { official = await fetchJSON(PATH_OFFICIAL); } catch(e) {}
-      if (getShowNews()){
-        try { news = await fetchJSON(PATH_NEWS); } catch(e) {}
-      }
-      const all = [...safeArray(official.items), ...safeArray(news.items)];
-      all.sort((a,b) => (tsOf(b)||0) - (tsOf(a)||0));
-      return { all, meta:{ official, news } };
-    }
-
-    async function refreshIndustry(){
-      const listEl = el("industryBoardList");
-      try{
-        const { all, meta } = await loadEvents();
-        const filtered = applyFilters(all);
-        renderStats(all, filtered, meta);
-        renderList(filtered);
-      }catch(e){
-        console.error(e);
-        if (listEl) listEl.innerHTML = `<div class="empty">불러오기 실패: ${escapeHTML(String(e?.message||e))}</div>`;
-        el("boardStats").innerHTML = `<span class="pill2">로딩 오류</span>`;
-      }
-    }
-
-    const AUTO_POLL_MS = 5 * 60 * 1000; // 5분
-    let _pollTimer = null;
-
-    document.addEventListener("DOMContentLoaded", () => {
-      el("chkShowNewsHeadlines").checked = getShowNews();
-      el("chkShowNewsHeadlines").addEventListener("change", (ev) => {
-        setShowNews(ev.target.checked);
-        refreshIndustry();
-      });
-      ["fltSpecies","fltType","fltRange"].forEach(id => el(id).addEventListener("change", refreshIndustry));
-      el("fltQuery").addEventListener("input", debounce(refreshIndustry, 180));
-      refreshIndustry();
-      if (_pollTimer) clearInterval(_pollTimer);
-      _pollTimer = setInterval(refreshIndustry, AUTO_POLL_MS);
-    });
-
-    function debounce(fn, ms){
-      let t=null;
-      return (...args)=>{ clearTimeout(t); t=setTimeout(()=>fn(...args), ms); };
-    }
-    </script>
+    <div class="notice" id="globalNotice"></div>
   </section>
 
-  <section id="panel-flow" class="panel">
-    <div class="placeholder">
-      <b>시장흐름(인포그래픽)</b><br/>
-      다음 단계: (1) 상관 히트맵(12주/24개월/5년동월) (2) 네트워크(임계값) (3) 룰 기반 ‘영향도’ 카드
-    </div>
-  </section>
+  <section id="panel-beef" class="panel"><div id="detail-BEEF"></div></section>
+  <section id="panel-pork" class="panel"><div id="detail-PORK"></div></section>
+  <section id="panel-poultry" class="panel"><div id="detail-POULTRY"></div></section>
 
-  <section id="panel-species" class="panel">
-    <div class="row" style="margin-bottom:10px">
-      <div class="card" style="flex:1;min-width:260px">
-        <h3>축종요약</h3>
-        <div class="muted">데이터: <code>./data/aggregated/species_summary.json</code></div>
-        <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;align-items:center">
-          <span class="pill" id="sumUpdated">갱신 N/A</span>
-          <span class="pill" id="sumBasis">기준 N/A</span>
-          <button class="btn" id="btnReloadSummary">새로고침</button>
-        </div>
-      </div>
-      <div class="card" style="flex:1;min-width:260px">
-        <h3>비교 기준</h3>
-        <div class="muted">
-          - 저번주/지난달 대비는 <b>룰 템플릿</b>으로만 문장화 (예측 없음)<br/>
-          - 실제 가격/물량 데이터가 붙으면 자동으로 표/그래프가 채워집니다.
-        </div>
-      </div>
-    </div>
-
+  <section id="panel-news" class="panel">
     <div class="card">
-      <h3>요약 테이블</h3>
-      <div class="muted" style="margin-bottom:10px">스파크라인은 12주 추이를 간단히 표시합니다.</div>
-      <div style="overflow:auto">
-        <table>
-          <thead>
-            <tr>
-              <th>축종</th>
-              <th>핵심지표</th>
-              <th>현재</th>
-              <th>전주대비</th>
-              <th>전월대비</th>
-              <th>12주 추이</th>
-              <th>메모(룰 문장)</th>
-            </tr>
-          </thead>
-          <tbody id="summaryBody">
-            <tr><td colspan="7" class="muted">불러오는 중...</td></tr>
-          </tbody>
-        </table>
+      <h2>뉴스 / 공식자료</h2>
+      <div class="sub mt">기존 뉴스 기능은 유지하되, 시장신호의 근거 확인용으로 배치했습니다. 민간 뉴스는 제목·링크만 표시합니다.</div>
+      <div class="filters">
+        <div class="ctl"><label>축종</label><select id="fltSpecies"><option value="ALL">전체</option><option value="BEEF">우육/한우</option><option value="PORK">돈육</option><option value="POULTRY">가금/계육</option><option value="DUCK">오리</option><option value="EGG">계란</option></select></div>
+        <div class="ctl"><label>구분</label><select id="fltType"><option value="ALL">전체</option><option value="OFFICIAL">공식</option><option value="NEWS">뉴스</option></select></div>
+        <div class="ctl"><label>검색</label><input id="fltQuery" placeholder="예) ASF, AI, 한우, 도축, 수입" /></div>
       </div>
+      <div class="list" id="newsList"><div class="empty">뉴스를 불러오는 중...</div></div>
     </div>
-
-    <script>
-      const SUMMARY_PATH = "./data/aggregated/species_summary.json";
-
-      async function fetchJSON2(path){
-        const r = await fetch(path, { cache:"no-store" });
-        if (!r.ok) throw new Error("fetch failed: " + path);
-        return r.json();
-      }
-
-      function fmt(n, unit){
-        if (n == null || n === "") return "N/A";
-        if (typeof n === "number"){
-          const s = (Math.round(n*100)/100).toLocaleString("ko-KR");
-          return unit ? (s + " " + unit) : s;
-        }
-        return String(n);
-      }
-
-      function pct(p){
-        if (p == null || p === "") return "N/A";
-        const v = Number(p);
-        if (!Number.isFinite(v)) return "N/A";
-        const sign = v > 0 ? "+" : "";
-        return sign + (Math.round(v*1000)/10).toFixed(1) + "%";
-      }
-
-      function spLabel(code){
-        return ({POULTRY:"가금육",PORK:"돈육",BEEF:"우육",DUCK:"오리",EGG:"계란"}[code] || code);
-      }
-
-      function sparkSVG(values){
-        const w=120,h=22,p=2;
-        const arr = Array.isArray(values)?values.filter(v=>Number.isFinite(v)): [];
-        if (arr.length < 2) return `<svg class="spark" viewBox="0 0 ${w} ${h}"><path d="" fill="none" stroke="rgba(26,35,48,.35)" stroke-width="2"/></svg>`;
-        const min = Math.min(...arr), max = Math.max(...arr);
-        const dx = (w - p*2) / (arr.length - 1);
-        const scale = (v)=> {
-          if (max === min) return h/2;
-          const t = (v - min) / (max - min);
-          return (h - p) - t * (h - p*2);
-        };
-        let d = "";
-        arr.forEach((v,i)=>{
-          const x = p + dx*i;
-          const y = scale(v);
-          d += (i===0?`M ${x} ${y}`:` L ${x} ${y}`);
-        });
-        return `<svg class="spark" viewBox="0 0 ${w} ${h}">
-          <path d="${d}" fill="none" stroke="rgba(26,35,48,.45)" stroke-width="2" stroke-linecap="round"/>
-        </svg>`;
-      }
-
-      function ruleMemo(row){
-        // 룰 기반 문장(예측 금지)
-        const w = row.change_wow;
-        const m = row.change_mom;
-        const dirW = (w==null) ? "" : (w>0 ? "상승" : (w<0 ? "하락" : "보합"));
-        const dirM = (m==null) ? "" : (m>0 ? "상승" : (m<0 ? "하락" : "보합"));
-        let parts = [];
-        if (w!=null) parts.push(`전주대비 ${dirW}`);
-        if (m!=null) parts.push(`전월대비 ${dirM}`);
-        if (!parts.length) return "데이터 누적 중";
-        return parts.join(" · ") + " (정량 기준)";
-      }
-
-      
-      function renderSummaryError(msg){
-        const tbody = document.getElementById("sumBody");
-        if (!tbody) return;
-        tbody.innerHTML = `<tr><td colspan="7" style="padding:14px;opacity:.8">요약 데이터를 불러오지 못했습니다: ${escapeHTML(String(msg||""))}</td></tr>`;
-      }
-
-async function loadSummary(){
-        const body = document.getElementById("summaryBody");
-        try{
-          const j = await fetchJSON2(SUMMARY_PATH);
-
-          // --- schema compatibility (v2.4.x rows vs v2.5 items) ---
-          const iso = j.updated_at || j.generated_at || "";
-          document.getElementById("sumUpdated").textContent =
-            "갱신(KST) " + window.fmtKST2(iso) + " / (UTC) " + window.fmtUTC2(iso);
-
-          let basisTxt = "N/A";
-          if (typeof j.basis === "string") basisTxt = j.basis;
-          else if (j.basis && typeof j.basis === "object"){
-            const b = j.basis;
-            basisTxt = [b.week, b.month, b.yoy].filter(Boolean).join(" · ") || "N/A";
-          }
-          document.getElementById("sumBasis").textContent = "기준 " + basisTxt;
-
-          let rows = [];
-          if (Array.isArray(j.rows)){
-            rows = j.rows;
-          }else if (Array.isArray(j.items)){
-            rows = j.items.map(it=>({
-              species: it.species,
-              metric_label: it.metric,
-              unit: it.unit,
-              current: it.current,
-              change_wow: it.wow,
-              change_mom: it.mom,
-              spark_12w: it.series_12w,
-              _memo: it.memo
-            }));
-          }
-
-          if (!rows.length){
-            body.innerHTML = `<tr><td colspan="7" class="muted">데이터가 없습니다.</td></tr>`;
-            return;
-          }
-
-          body.innerHTML = rows.map(r=>{
-            const unit = r.unit || "";
-            return `<tr>
-              <td>${spLabel(r.species)}</td>
-              <td>${escapeHTML(r.metric_label || "")}</td>
-              <td>${fmt(r.current, unit)}</td>
-              <td>${pct(r.change_wow)}</td>
-              <td>${pct(r.change_mom)}</td>
-              <td>${sparkSVG(r.spark_12w || [])}</td>
-              <td>${escapeHTML(r._memo || ruleMemo(r) || "")}</td>
-            </tr>`;
-          }).join("");
-
-          const hint = document.getElementById("sumHint");
-          if (hint){
-            hint.textContent = j.mode ? `mode: ${j.mode}` : "";
-          }
-        }catch(e){
-          body.innerHTML = `<tr><td colspan="7" class="muted">요약 데이터를 불러오지 못했습니다: ${escapeHTML(e?.message || e)}</td></tr>`;
-        }
-      }
-
-const AUTO_POLL_SUMMARY_MS = 10 * 60 * 1000; // 10분
-      let _sumTimer = null;
-      document.addEventListener("DOMContentLoaded", ()=>{
-        document.getElementById("btnReloadSummary").addEventListener("click", loadSummary);
-        loadSummary();
-        if (_sumTimer) clearInterval(_sumTimer);
-        _sumTimer = setInterval(loadSummary, AUTO_POLL_SUMMARY_MS);
-      });
-    </script>
   </section>
 
-  <section id="panel-settings" class="panel">
+  <section id="panel-report" class="panel">
     <div class="card">
-      <h3>설정</h3>
-      <div class="muted">
-        - ‘민간 뉴스(제목만) 표시’는 <b>업계이슈 탭 상단 체크박스</b>로 제공됩니다.<br/>
-        - WebView/오프라인 앱화를 위해 모든 경로를 <b>상대경로(./data…)</b>로 고정했습니다.
-      </div>
-      <div style="margin-top:10px" class="row">
-        <div class="pill">SET_SHOW_NEWS_HEADLINES = <span id="kvNews">N/A</span></div>
-        <button class="btn" id="btnReset">설정 초기화</button>
-      </div>
+      <h2>참고용 시황 문장</h2>
+      <div class="sub mt">단정 표현을 피하고 “흐름·요인·가능성” 중심의 문장으로 생성합니다.</div>
+      <button class="btn primary mt" id="btnBuildReport">시황 문장 생성</button>
+      <div class="report-box mt" id="reportBox">버튼을 누르면 축종별 참고 문장이 생성됩니다.</div>
     </div>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", ()=>{
-        const key = "SET_SHOW_NEWS_HEADLINES";
-        const kv = document.getElementById("kvNews");
-        const show = localStorage.getItem(key);
-        kv.textContent = show == null ? "(미설정)" : show;
-
-        document.getElementById("btnReset").addEventListener("click", ()=>{
-          localStorage.removeItem(key);
-          kv.textContent = "(미설정)";
-          alert("설정 초기화 완료");
-        });
-      });
-    </script>
+    <div class="notice">본 문장은 공개 데이터와 공개 뉴스 기반의 참고용 문장입니다. 실제 시황 판단은 품목, 규격, 거래처, 브랜드, 지역, 계약조건 등에 따라 달라질 수 있습니다.</div>
   </section>
 </main>
 
 <script>
-  // simple tab switching
-  const tabs = document.querySelectorAll(".tab");
-  const panels = {
-    industry: document.getElementById("panel-industry"),
-    flow: document.getElementById("panel-flow"),
-    species: document.getElementById("panel-species"),
-    settings: document.getElementById("panel-settings")
-  };
-  tabs.forEach(btn => {
-    btn.addEventListener("click", () => {
-      tabs.forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      const t = btn.dataset.tab;
-      Object.keys(panels).forEach(k => panels[k].classList.toggle("active", k === t));
-    });
+const PATH_DASHBOARD = "./data/market_dashboard.json";
+const PATH_OFFICIAL = "./data/events/events_official.json";
+const PATH_NEWS = "./data/events/events_news.json";
+const $ = (id)=>document.getElementById(id);
+const safeArray = (x)=>Array.isArray(x)?x:[];
+const escapeHTML = (s="")=>String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+const toneClass = (t)=> t==="up"?"up":(t==="down"?"down":(t==="mixed"?"mixed":"flat"));
+const speciesLabel = (code)=>({BEEF:"한우/우육",PORK:"돈육",POULTRY:"계육/가금",DUCK:"오리",EGG:"계란"}[code]||code);
+let DASH = null;
+let NEWS_ITEMS = [];
+
+async function fetchJSON(path){ const r = await fetch(path,{cache:"no-store"}); if(!r.ok) throw new Error(path); return r.json(); }
+function fmtKST(iso){ try{return new Date(iso).toLocaleString("ko-KR",{timeZone:"Asia/Seoul",hour12:false});}catch(e){return iso||"N/A";} }
+function stars(n){ const v=Math.max(0,Math.min(5,Number(n)||0)); return "★".repeat(v)+"☆".repeat(5-v); }
+
+function renderSpeciesCards(){
+  const root = $("speciesCards");
+  root.innerHTML = safeArray(DASH.species).map(sp=>`<div class="card species-card" data-go="${sp.id}">
+    <div class="species-top"><div><div class="emoji">${escapeHTML(sp.emoji)}</div><div class="species-name">${escapeHTML(sp.name)}</div></div><span class="badge ${toneClass(sp.tone)}">${escapeHTML(sp.signal)}</span></div>
+    <div class="summary">${escapeHTML(sp.summary)}</div>
+    <div class="facts">${safeArray(sp.facts).slice(0,3).map(f=>`<span class="fact">${escapeHTML(f)}</span>`).join("")}</div>
+  </div>`).join("");
+  root.querySelectorAll("[data-go]").forEach(el=>el.addEventListener("click",()=>{
+    const map={BEEF:"beef",PORK:"pork",POULTRY:"poultry"}; if(map[el.dataset.go]) activateTab(map[el.dataset.go]);
+  }));
+}
+
+function renderDrivers(){
+  $("driverList").innerHTML = safeArray(DASH.market_overview?.drivers).map(d=>`<div class="driver">
+    <div style="flex:1"><b>${escapeHTML(d.name)}</b><div class="sub mt">${escapeHTML(d.memo)}</div><div class="bar"><i style="width:${Math.max(0,Math.min(100,(Number(d.level)||0)*20))}%"></i></div></div>
+    <div class="stars">${stars(d.level)}</div>
+  </div>`).join("");
+}
+
+function detailHTML(sp){
+  return `<div class="hero"><div class="hero-inner"><div class="hero-head"><div><div class="eyebrow">Species Detail</div><div class="headline">${escapeHTML(sp.emoji)} ${escapeHTML(sp.name)} · ${escapeHTML(sp.signal)}</div><div class="sub mt">신뢰도: ${escapeHTML(sp.confidence)} · 공개 데이터 기반 참고 신호</div></div><span class="badge ${toneClass(sp.tone)}">${escapeHTML(sp.signal)}</span></div></div></div>
+  <div class="grid cols-2">
+    <div class="card"><h2>시장 해석</h2><div class="summary mt">${escapeHTML(sp.summary)}</div><div class="facts">${safeArray(sp.facts).map(f=>`<span class="fact">${escapeHTML(f)}</span>`).join("")}</div></div>
+    <div class="card"><h2>핵심 지표</h2><div class="mt">${safeArray(sp.indicators).map(i=>`<div class="indicator"><span>${escapeHTML(i.label)}</span><span class="v">${escapeHTML(i.value)}</span><span class="t">${escapeHTML(i.trend)}</span></div>`).join("")}</div></div>
+  </div>
+  <div class="card mt"><h2>관련 뉴스</h2><div class="list mt">${newsForSpecies(sp.id,4).map(renderNewsCard).join("") || '<div class="empty">관련 뉴스가 없습니다.</div>'}</div></div>`;
+}
+
+function renderDetails(){ safeArray(DASH.species).forEach(sp=>{ const el=$("detail-"+sp.id); if(el) el.innerHTML=detailHTML(sp); }); }
+
+function ymdOf(it){ return String(it.date||it.published_at||"").slice(0,10); }
+function tsOf(it){ return Date.parse(it.published_at||it.date||"") || 0; }
+function newsForSpecies(code,limit=10){ return NEWS_ITEMS.filter(it=> code==="ALL" || safeArray(it.species).includes(code)).slice(0,limit); }
+function renderNewsCard(it){
+  const isNews = it.category === "NEWS";
+  const title = it.title || "제목 없음";
+  const url = isNews ? (it.url||"#") : (it.source_url||"#");
+  const source = isNews ? (it.publisher||"민간뉴스") : (it.source_title||"공식자료");
+  return `<div class="news-card"><div class="news-meta"><b>${escapeHTML(ymdOf(it))}</b><span class="badge ${isNews?'mixed':'flat'}">${isNews?'NEWS':'OFFICIAL'}</span><span>${escapeHTML(source)}</span></div><div class="news-title">${escapeHTML(title)}</div><div class="news-desc">${isNews?'민간 뉴스는 제목·링크만 제공합니다.':'공식자료 원문에서 상세 내용을 확인할 수 있습니다.'}</div><a class="link" href="${escapeHTML(url)}" target="_blank" rel="noopener">원문 보기</a></div>`;
+}
+function renderTopNews(){ $("topNews").innerHTML = NEWS_ITEMS.slice(0,5).map(renderNewsCard).join("") || '<div class="empty">뉴스 데이터가 없습니다.</div>'; }
+function renderNewsList(){
+  const sp=$("fltSpecies").value, type=$("fltType").value, q=($("fltQuery").value||"").trim().toLowerCase();
+  let arr=NEWS_ITEMS.filter(it=>{
+    if(type!=="ALL" && (type==="NEWS") !== (it.category==="NEWS")) return false;
+    if(sp!=="ALL" && !safeArray(it.species).includes(sp)) return false;
+    if(q){ const hay=[it.title,it.publisher,it.source_title,it.category,...safeArray(it.tags),...safeArray(it.species)].join(" ").toLowerCase(); if(!hay.includes(q)) return false; }
+    return true;
   });
+  $("newsList").innerHTML = arr.map(renderNewsCard).join("") || '<div class="empty">조건에 맞는 뉴스가 없습니다.</div>';
+}
+function buildReport(){
+  const text = safeArray(DASH.species).map(sp=>`[${sp.name}]\n${sp.report_sentence}\n근거 참고: ${safeArray(sp.facts).join(' / ')}`).join("\n\n");
+  $("reportBox").textContent = text + "\n\n※ 위 문장은 공개 데이터와 공개 뉴스 기반의 참고용 요약이며, 실제 거래가격과 계약조건은 품목·규격·브랜드·지역·거래처별로 달라질 수 있습니다.";
+}
+function activateTab(tab){
+  document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active', b.dataset.tab===tab));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active', p.id==='panel-'+tab));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+async function init(){
+  try{
+    DASH = await fetchJSON(PATH_DASHBOARD);
+    const [official, news] = await Promise.allSettled([fetchJSON(PATH_OFFICIAL), fetchJSON(PATH_NEWS)]);
+    const offItems = official.status==='fulfilled'?safeArray(official.value.items):[];
+    const newsItems = news.status==='fulfilled'?safeArray(news.value.items):[];
+    NEWS_ITEMS = [...offItems, ...newsItems].sort((a,b)=>tsOf(b)-tsOf(a));
+    $("marketHeadline").textContent = DASH.market_overview?.headline || "공개 데이터를 기반으로 시장신호를 요약합니다.";
+    $("updatedAt").textContent = "갱신 " + fmtKST(DASH.updated_at);
+    $("globalNotice").textContent = DASH.notice || "본 서비스의 시장 요약 및 해석은 공개 데이터 기반 참고 정보입니다.";
+    renderSpeciesCards(); renderDrivers(); renderTopNews(); renderDetails(); renderNewsList();
+  }catch(e){
+    console.error(e);
+    $("marketHeadline").textContent = "데이터를 불러오지 못했습니다.";
+  }
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>activateTab(btn.dataset.tab)));
+  ['fltSpecies','fltType'].forEach(id=>$(id).addEventListener('change',renderNewsList));
+  $('fltQuery').addEventListener('input',()=>setTimeout(renderNewsList,80));
+  $('btnBuildReport').addEventListener('click',buildReport);
+  init();
+});
 </script>
 </body>
 </html>
