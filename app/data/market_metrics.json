@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-07-03T12:26:36+09:00",
+  "updated_at": "2026-07-03T12:37:39+09:00",
   "notice": "source_snapshots 시계열 기반으로 자동 계산된 핵심지표입니다. 현재 입력 데이터는 샘플/수동 스냅샷이며, 공식 데이터 자동수집 연결 전까지 참고용으로 사용합니다.",
-  "unit_note": "가격은 원/kg 또는 출처 기준 단위, 공급은 두/수 또는 출처 기준 단위입니다.",
+  "unit_note": "가격은 원/kg, 도축두수는 두, 도계량은 수, 증감률은 %, 신호·신뢰도·영향도는 점으로 표시합니다.",
   "generated_by": "scripts/build_market_metrics.py",
   "species": [
     {
@@ -9,55 +9,75 @@
       "name": "한우",
       "basis_month": "2026-06",
       "signal_score": 55,
+      "signal_score_unit": "점",
       "data_confidence": 75,
-      "metric_summary": "2026-06 기준 한우 지육가은 전월 대비 1.4%이며, 한우 도축두수은 전월 대비 -2.0%입니다. 가격과 공급의 방향성을 함께 반영한 시장신호 점수는 55%입니다.",
+      "data_confidence_unit": "점",
+      "metric_summary": "2026-06 기준 한우 지육가은 22,400원/kg, 전월 대비 1.4%이며, 한우 도축두수은 63,800두, 전월 대비 -2.0%입니다. 시장신호 점수는 55점, 데이터 신뢰도는 75점입니다.",
       "metrics": [
         {
           "label": "한우 지육가",
           "value": "22,400",
+          "unit": "원/kg",
           "change_label": "전월 대비",
           "change": 1.4,
+          "change_unit": "%",
           "direction": "up",
+          "interpretation": "가격 보합권",
           "source_ref": "KREI_BEEF_PRICE"
         },
         {
           "label": "한우 도축두수",
           "value": "63,800",
+          "unit": "두",
           "change_label": "전월 대비",
           "change": -2.0,
+          "change_unit": "%",
           "direction": "down",
+          "interpretation": "공급 보합권",
           "source_ref": "KREI_MAMMALIA_SLAUGHTER"
         },
         {
           "label": "가격 전년동월",
           "value": "계산값",
+          "unit": "%",
           "change_label": "전년 대비",
           "change": null,
+          "change_unit": "%",
           "direction": "flat",
+          "interpretation": "전년 비교 기준값이 없어 추가 데이터 확보 필요",
           "source_ref": "KREI_BEEF_PRICE"
         },
         {
           "label": "공급 전년동월",
           "value": "계산값",
+          "unit": "%",
           "change_label": "전년 대비",
           "change": null,
+          "change_unit": "%",
           "direction": "flat",
+          "interpretation": "전년 비교 기준값이 없어 추가 데이터 확보 필요",
           "source_ref": "KREI_MAMMALIA_SLAUGHTER"
         },
         {
           "label": "계절 수요",
           "value": "가중치",
+          "unit": "점",
           "change_label": "점수",
           "change": 55.0,
-          "direction": "flat",
+          "change_unit": "점",
+          "direction": "up",
+          "interpretation": "영향도 보통",
           "source_ref": "SEASONAL_FACTOR"
         },
         {
           "label": "질병 변수",
           "value": "영향도",
+          "unit": "점",
           "change_label": "점수",
           "change": 10.0,
-          "direction": "flat",
+          "change_unit": "점",
+          "direction": "up",
+          "interpretation": "영향도 낮음",
           "source_ref": "DISEASE_FACTOR"
         }
       ]
@@ -67,55 +87,75 @@
       "name": "돈육",
       "basis_month": "2026-06",
       "signal_score": 48,
+      "signal_score_unit": "점",
       "data_confidence": 75,
-      "metric_summary": "2026-06 기준 돼지 지육가은 전월 대비 0.5%이며, 돼지 도축두수은 전월 대비 -0.5%입니다. 가격과 공급의 방향성을 함께 반영한 시장신호 점수는 48%입니다.",
+      "data_confidence_unit": "점",
+      "metric_summary": "2026-06 기준 돼지 지육가은 5,820원/kg, 전월 대비 0.5%이며, 돼지 도축두수은 1,452,000두, 전월 대비 -0.5%입니다. 시장신호 점수는 48점, 데이터 신뢰도는 75점입니다.",
       "metrics": [
         {
           "label": "돼지 지육가",
           "value": "5,820",
+          "unit": "원/kg",
           "change_label": "전월 대비",
           "change": 0.5,
+          "change_unit": "%",
           "direction": "up",
+          "interpretation": "가격 보합권",
           "source_ref": "KREI_PORK_PRICE"
         },
         {
           "label": "돼지 도축두수",
           "value": "1,452,000",
+          "unit": "두",
           "change_label": "전월 대비",
           "change": -0.5,
+          "change_unit": "%",
           "direction": "down",
+          "interpretation": "공급 보합권",
           "source_ref": "KREI_MAMMALIA_SLAUGHTER"
         },
         {
           "label": "가격 전년동월",
           "value": "계산값",
+          "unit": "%",
           "change_label": "전년 대비",
           "change": null,
+          "change_unit": "%",
           "direction": "flat",
+          "interpretation": "전년 비교 기준값이 없어 추가 데이터 확보 필요",
           "source_ref": "KREI_PORK_PRICE"
         },
         {
           "label": "공급 전년동월",
           "value": "계산값",
+          "unit": "%",
           "change_label": "전년 대비",
           "change": null,
+          "change_unit": "%",
           "direction": "flat",
+          "interpretation": "전년 비교 기준값이 없어 추가 데이터 확보 필요",
           "source_ref": "KREI_MAMMALIA_SLAUGHTER"
         },
         {
           "label": "계절 수요",
           "value": "가중치",
+          "unit": "점",
           "change_label": "점수",
           "change": 45.0,
-          "direction": "flat",
+          "change_unit": "점",
+          "direction": "up",
+          "interpretation": "영향도 보통",
           "source_ref": "SEASONAL_FACTOR"
         },
         {
           "label": "질병 변수",
           "value": "영향도",
+          "unit": "점",
           "change_label": "점수",
           "change": 25.0,
-          "direction": "flat",
+          "change_unit": "점",
+          "direction": "up",
+          "interpretation": "영향도 낮음",
           "source_ref": "DISEASE_FACTOR"
         }
       ]
@@ -125,55 +165,75 @@
       "name": "계육",
       "basis_month": "2026-06",
       "signal_score": 71,
+      "signal_score_unit": "점",
       "data_confidence": 75,
-      "metric_summary": "2026-06 기준 닭 지육가 9~10호은 전월 대비 4.1%이며, 육계 도계량은 전월 대비 -1.1%입니다. 가격과 공급의 방향성을 함께 반영한 시장신호 점수는 71%입니다.",
+      "data_confidence_unit": "점",
+      "metric_summary": "2026-06 기준 닭 지육가 9~10호은 4,020원/kg, 전월 대비 4.1%이며, 육계 도계량은 73,100,000수, 전월 대비 -1.1%입니다. 시장신호 점수는 71점, 데이터 신뢰도는 75점입니다.",
       "metrics": [
         {
           "label": "닭 지육가 9~10호",
           "value": "4,020",
+          "unit": "원/kg",
           "change_label": "전월 대비",
           "change": 4.1,
+          "change_unit": "%",
           "direction": "up",
+          "interpretation": "가격 상승 압력 우세",
           "source_ref": "CHICKEN_PRICE_9_10"
         },
         {
           "label": "육계 도계량",
           "value": "73,100,000",
+          "unit": "수",
           "change_label": "전월 대비",
           "change": -1.1,
+          "change_unit": "%",
           "direction": "down",
+          "interpretation": "공급 보합권",
           "source_ref": "KREI_POULTRY_SLAUGHTER"
         },
         {
           "label": "가격 전년동월",
           "value": "계산값",
+          "unit": "%",
           "change_label": "전년 대비",
           "change": null,
+          "change_unit": "%",
           "direction": "flat",
+          "interpretation": "전년 비교 기준값이 없어 추가 데이터 확보 필요",
           "source_ref": "CHICKEN_PRICE_9_10"
         },
         {
           "label": "공급 전년동월",
           "value": "계산값",
+          "unit": "%",
           "change_label": "전년 대비",
           "change": null,
+          "change_unit": "%",
           "direction": "flat",
+          "interpretation": "전년 비교 기준값이 없어 추가 데이터 확보 필요",
           "source_ref": "KREI_POULTRY_SLAUGHTER"
         },
         {
           "label": "계절 수요",
           "value": "가중치",
+          "unit": "점",
           "change_label": "점수",
           "change": 75.0,
+          "change_unit": "점",
           "direction": "up",
+          "interpretation": "영향도 높음",
           "source_ref": "SEASONAL_FACTOR"
         },
         {
           "label": "질병 변수",
           "value": "영향도",
+          "unit": "점",
           "change_label": "점수",
           "change": 45.0,
-          "direction": "mixed",
+          "change_unit": "점",
+          "direction": "up",
+          "interpretation": "영향도 보통",
           "source_ref": "DISEASE_FACTOR"
         }
       ]
