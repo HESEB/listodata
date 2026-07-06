@@ -31,13 +31,22 @@ UTC = timezone.utc
 USER_AGENT = "HESEB-Livestock-Terminal/1.0 (+https://heseb.github.io/listodata/)"
 
 SPECIES = {
-    "BEEF": {"name": "한우", "emoji": "🐂", "words": ["한우", "우육", "소고기", "쇠고기", "도축두수", "한우자조금", "beef"]},
-    "PORK": {"name": "돈육", "emoji": "🐖", "words": ["돈육", "돼지", "한돈", "돈가", "ASF", "PED", "후지", "등심", "삼겹", "pork"]},
-    "POULTRY": {"name": "계육", "emoji": "🐔", "words": ["계육", "닭", "도계", "가금", "AI", "조류인플루엔자", "육계", "chicken", "poultry"]},
+    "BEEF": {"name": "한우", "emoji": "🐂", "words": ["한우", "우육", "소고기", "쇠고기", "소 도축", "한우자조금", "beef"]},
+    "PORK": {"name": "돈육", "emoji": "🐖", "words": ["돈육", "돼지", "한돈", "돈가", "ASF", "아프리카돼지열병", "PED", "후지", "등심", "삼겹", "pork"]},
+    "POULTRY": {"name": "계육", "emoji": "🐔", "words": ["계육", "닭", "도계", "가금", "육계", "브로일러", "조류인플루엔자", "chicken", "poultry"]},
     "DUCK": {"name": "오리", "emoji": "🦆", "words": ["오리", "duck"]},
     "EGG": {"name": "계란", "emoji": "🥚", "words": ["계란", "달걀", "산란계", "egg"]},
 }
 
+QUERY_SPECIES_HINTS = {
+    "BEEF": re.compile(r"한우|우육|소고기|쇠고기|beef", re.I),
+    "PORK": re.compile(r"돈육|한돈|돼지|ASF|아프리카돼지열병|pork", re.I),
+    "POULTRY": re.compile(r"계육|닭|도계량|육계|조류인플루엔자|chicken|poultry", re.I),
+    "DUCK": re.compile(r"오리|duck", re.I),
+    "EGG": re.compile(r"계란|달걀|산란계|egg", re.I),
+}
+
+BROAD_DISEASE_QUERY = re.compile(r"구제역\s+OR\s+ASF\s+OR\s+조류인플루엔자|축산\s+방역", re.I)
 GOOGLE_NEWS = "https://news.google.com/rss/search?hl=ko&gl=KR&ceid=KR:ko&q="
 
 NEWS_QUERIES = [
@@ -58,7 +67,7 @@ OFFICIAL_QUERIES = [
 ]
 
 DOC_TYPE_PATTERNS = [
-    ("DISEASE", re.compile(r"AI|조류인플루엔자|ASF|구제역|PED|질병|방역|가축전염|살처분", re.I)),
+    ("DISEASE", re.compile(r"AI|조류인플루엔자|ASF|아프리카돼지열병|구제역|PED|질병|방역|가축전염|살처분", re.I)),
     ("NOTICE", re.compile(r"고시|공고|공지|정책|지원|할당관세|수입위생|제도|법령|개정", re.I)),
     ("PRODUCT", re.compile(r"신제품|출시|런칭|브랜드|상품|메뉴|HMR|간편식|밀키트", re.I)),
     ("INDUSTRY", re.compile(r"산업|동향|업계|기업|투자|MOU|수출|유통|소비트렌드|시장", re.I)),
@@ -152,17 +161,31 @@ def fetch_rss(query: str, category: str) -> list[Item]:
     return out
 
 
-def infer_species(title: str) -> list[str]:
-    hits = []
+def infer_species_from_title(title: str) -> list[str]:
+    hits: list[str] = []
+    t = clean_title(title)
     for code, meta in SPECIES.items():
-        if any(re.search(re.escape(w), title, re.I) for w in meta["words"]):
+        if any(re.search(re.escape(w), t, re.I) for w in meta["words"]):
             hits.append(code)
+    # ASF/PED 기사에 'AI'라는 영문 조각이 다른 단어에 섞여 계육으로 오분류되는 것을 방지
+    if "PORK" in hits and not re.search(r"조류인플루엔자|\bAI\b|가금|닭|육계|도계|오리|산란계|계란", t, re.I):
+        hits = [x for x in hits if x not in {"POULTRY", "DUCK", "EGG"}]
+    # 조류인플루엔자 기사는 계육·오리·계란으로만 분류하고 돈육 혼입 방지
+    if re.search(r"조류인플루엔자|\bAI\b|가금", t, re.I) and not re.search(r"ASF|아프리카돼지열병|돼지|한돈|돈육", t, re.I):
+        if "POULTRY" not in hits:
+            hits.append("POULTRY")
     return hits
+
+
+def infer_species_from_query(query: str) -> list[str]:
+    if BROAD_DISEASE_QUERY.search(query):
+        return []
+    return [code for code, pat in QUERY_SPECIES_HINTS.items() if pat.search(query)]
 
 
 def infer_tags(title: str) -> list[str]:
     tags = []
-    tag_words = ["가격", "시세", "도축", "도계", "수급", "공급", "수요", "질병", "방역", "ASF", "AI", "구제역", "정책", "지원", "할당관세", "신제품"]
+    tag_words = ["가격", "시세", "도축", "도계", "수급", "공급", "수요", "질병", "방역", "ASF", "AI", "조류인플루엔자", "구제역", "정책", "지원", "할당관세", "신제품"]
     for w in tag_words:
         if re.search(re.escape(w), title, re.I):
             tags.append(w)
@@ -178,8 +201,10 @@ def infer_doc_type(title: str, query: str) -> str:
 
 
 def event_item(it: Item) -> dict:
-    species = infer_species(it.title + " " + it.query)
-    tags = infer_tags(it.title + " " + it.query)
+    species = infer_species_from_title(it.title)
+    if not species:
+        species = infer_species_from_query(it.query)
+    tags = infer_tags(it.title)
     doc_type = infer_doc_type(it.title, it.query)
     base = {
         "event_id": slug(it.title + it.url, "NEWS" if it.category == "NEWS" else "OFF"),
@@ -313,7 +338,7 @@ def make_metrics(all_items: list[dict], generated: datetime) -> dict:
         })
     return {
         "updated_at": iso_kst(generated),
-        "data_policy": "GitHub Actions가 공개 RSS/검색 결과를 수집해 정적 JSON으로 갱신합니다. 제목 기반 자동분류이므로 원문 확인이 필요합니다.",
+        "data_policy": "GitHub Actions가 공개 RSS/검색 결과를 수집해 정적 JSON으로 갱신합니다. 제목 중심 자동분류이므로 원문 확인이 필요합니다.",
         "species": species_metrics,
     }
 
@@ -349,6 +374,7 @@ def main() -> int:
         "source": "GitHub Actions RSS auto updater",
         "workflow": ".github/workflows/update-market-data.yml",
         "manual_run_url": "https://github.com/HESEB/listodata/actions/workflows/update-market-data.yml",
+        "classification_policy": "species are inferred primarily from article titles; broad disease search terms are not used as species hints"
     })
     print(f"updated: news={len(news_events)} official={len(official_events)} total={len(all_events)}")
     return 0
