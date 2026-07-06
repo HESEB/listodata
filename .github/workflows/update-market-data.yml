@@ -28,6 +28,9 @@ jobs:
       - name: Refresh market data JSON
         run: python scripts/update_market_data.py
 
+      - name: Filter non-livestock false positives
+        run: python scripts/filter_collected_news.py
+
       - name: Add common OTHER fallback
         run: python scripts/postprocess_dashboard_other.py
 
