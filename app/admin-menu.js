@@ -8,6 +8,7 @@
       ['자료출처','./source.html','공식 근거 저장소'],
       ['주간보고서','./report.html','시황 보고서 초안'],
       ['업데이트 안정성','./update-stability.html','자동 업데이트 점검'],
+      ['Fallback 보호','./fallback-status.html','실패 시 데이터 복원 상태'],
       ['UX점검','./ux-check.html','최종 링크/메뉴 점검']
     ]},
     {title:'검수',desc:'분류 결과와 제외 자료 검토',items:[
@@ -68,19 +69,11 @@
     document.body.appendChild(drawer);
     document.body.appendChild(btn);
   }
-  function loadVersionCard(){
-    if(document.getElementById('admin-version-card-loader'))return;
-    const s=document.createElement('script');
-    s.id='admin-version-card-loader';
-    s.src='./admin-version-card.js?v=phase-6-3';
-    s.defer=true;
-    document.body.appendChild(s);
-  }
   function toggleDrawer(){
     const d=document.getElementById('admin-drawer');
     if(d)d.classList.toggle('active');
   }
-  function run(){addStyle();hideNoisyLinks();addHeroMenu();addDrawer();loadVersionCard();}
+  function run(){addStyle();hideNoisyLinks();addHeroMenu();addDrawer();}
   function boot(){run();setTimeout(run,700);setTimeout(run,1600);setTimeout(run,3200);setInterval(hideNoisyLinks,2500);}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
 })();
