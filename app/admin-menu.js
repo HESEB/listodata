@@ -6,6 +6,7 @@
       ['변경 로그','./change-log.html','정책 버전·파일 상태'],
       ['자료출처','./source.html','공식 근거 저장소'],
       ['주간보고서','./report.html','시황 보고서 초안'],
+      ['업데이트 안정성','./update-stability.html','자동 업데이트 점검'],
       ['UX점검','./ux-check.html','최종 링크/메뉴 점검']
     ]},
     {title:'검수',desc:'분류 결과와 제외 자료 검토',items:[
