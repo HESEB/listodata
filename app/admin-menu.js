@@ -3,6 +3,7 @@
   const ADMIN_GROUPS=[
     {title:'운영상태',desc:'수집·정제·품질 현황',items:[
       ['Admin Dashboard','./admin.html','품질·필터·자료 현황'],
+      ['Version 상태','./version-status.html','버전·빌드·데이터 갱신 상태'],
       ['변경 로그','./change-log.html','정책 버전·파일 상태'],
       ['자료출처','./source.html','공식 근거 저장소'],
       ['주간보고서','./report.html','시황 보고서 초안'],
@@ -67,11 +68,19 @@
     document.body.appendChild(drawer);
     document.body.appendChild(btn);
   }
+  function loadVersionCard(){
+    if(document.getElementById('admin-version-card-loader'))return;
+    const s=document.createElement('script');
+    s.id='admin-version-card-loader';
+    s.src='./admin-version-card.js?v=phase-6-3';
+    s.defer=true;
+    document.body.appendChild(s);
+  }
   function toggleDrawer(){
     const d=document.getElementById('admin-drawer');
     if(d)d.classList.toggle('active');
   }
-  function run(){addStyle();hideNoisyLinks();addHeroMenu();addDrawer();}
+  function run(){addStyle();hideNoisyLinks();addHeroMenu();addDrawer();loadVersionCard();}
   function boot(){run();setTimeout(run,700);setTimeout(run,1600);setTimeout(run,3200);setInterval(hideNoisyLinks,2500);}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
 })();
