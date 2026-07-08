@@ -12,7 +12,7 @@
 </head>
 <body>
   <div class="loading" id="loading">HESEB Livestock Terminal 로딩 중...</div>
-  <iframe id="v330" src="./index.html?v=restore-v330" title="HESEB v3.3 dashboard"></iframe>
+  <iframe id="v330" src="./index.html?v=decision-v441" title="HESEB v4.4 decision dashboard"></iframe>
   <script>
     const frame=document.getElementById('v330');
     const loading=document.getElementById('loading');
@@ -30,9 +30,10 @@
         if(!doc)return;
         appendScript(doc,'v41-integration-script','./v41-integration.js?v=integrated-411');
         appendScript(doc,'claim-evidence-script','./claim-evidence.js?v=claim-100');
+        appendScript(doc,'decision-dashboard-script','./decision-dashboard.js?v=phase-4-1');
         loading.style.display='none';
       }catch(e){
-        console.warn('v4.1 integration inject failed',e);
+        console.warn('dashboard integration inject failed',e);
         loading.textContent='기존 Dashboard를 여는 중입니다.';
         setTimeout(()=>loading.style.display='none',1200);
       }
