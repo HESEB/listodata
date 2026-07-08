@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Evidence Chain | HESEB</title>
+  <style>
+    :root{--bg:#f5fafc;--card:rgba(255,255,255,.94);--line:rgba(20,30,40,.09);--text:#182231;--sub:rgba(24,34,49,.68);--shadow:0 14px 34px rgba(18,28,40,.10);--g1:#F185AE;--g2:#F8B871;--g3:#A573ED;--g4:#6BB2FF;--up:#d93c61;--flat:#c18a18;--down:#2474d8;--hold:#777}
+    *{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Apple SD Gothic Neo,Noto Sans KR,sans-serif;background:var(--bg);color:var(--text)}
+    header{position:sticky;top:0;z-index:10;background:rgba(245,250,252,.93);backdrop-filter:blur(9px);border-bottom:1px solid var(--line)}.top,main{max-width:1180px;margin:0 auto;padding:14px}.brand{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.brand h1{margin:0;font-size:18px}.sub{font-size:12px;color:var(--sub);line-height:1.45}.btn{display:inline-flex;border:1px solid var(--line);background:rgba(255,255,255,.82);padding:8px 12px;border-radius:999px;text-decoration:none;color:var(--text);font-size:12px;cursor:pointer}
+    .hero{background:linear-gradient(160deg,rgba(241,133,174,.25),rgba(248,184,113,.20),rgba(165,115,237,.18),rgba(107,178,255,.18));padding:14px;border-radius:26px;margin-bottom:14px}.hero-inner{background:rgba(255,255,255,.78);border:1px solid var(--line);border-radius:22px;padding:16px;box-shadow:var(--shadow)}.eyebrow{font-size:12px;color:var(--sub);margin-bottom:5px}.headline{font-size:24px;line-height:1.35;font-weight:780;letter-spacing:-.7px}
+    .grid{display:grid;gap:12px}.cols{grid-template-columns:repeat(auto-fit,minmax(340px,1fr))}.card{border:1px solid var(--line);background:var(--card);border-radius:20px;padding:14px;box-shadow:0 10px 24px rgba(18,28,40,.07)}.card h2,.card h3{margin:0}.card h2{font-size:17px}.topline{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.badge{display:inline-flex;align-items:center;gap:5px;padding:5px 8px;border-radius:999px;border:1px solid var(--line);font-size:11px;background:rgba(255,255,255,.72);white-space:nowrap}.badge.up{color:var(--up);background:rgba(217,60,97,.08)}.badge.neutral{color:var(--flat);background:rgba(193,138,24,.09)}.badge.down{color:var(--down);background:rgba(36,116,216,.08)}.badge.hold{color:var(--hold);background:rgba(0,0,0,.05)}.score{font-size:30px;font-weight:850;letter-spacing:-1px}.small{font-size:12px;color:var(--sub);line-height:1.45}.chain{margin-top:12px;border-left:3px solid rgba(107,178,255,.38);padding-left:12px}.step{border:1px solid var(--line);border-radius:16px;padding:10px;background:rgba(255,255,255,.66);margin:8px 0}.step b{font-size:13px}.axis{border-top:1px solid var(--line);padding-top:10px;margin-top:10px}.axis-head{display:flex;justify-content:space-between;gap:10px}.examples{margin-top:8px;display:flex;flex-direction:column;gap:6px}.ex{border:1px dashed var(--line);border-radius:12px;padding:8px;background:rgba(255,255,255,.58)}.ex a{color:#2474d8;text-decoration:none}.notice{font-size:12px;color:rgba(24,34,49,.72);line-height:1.55;border:1px dashed var(--line);border-radius:18px;background:rgba(255,255,255,.62);padding:12px;margin-top:10px}.empty{padding:22px;text-align:center;color:var(--sub);border:1px dashed var(--line);border-radius:18px;background:rgba(255,255,255,.62)}
+  </style>
+</head>
+<body>
+<header><div class="top"><div class="brand"><div><h1>Evidence Chain</h1><div class="sub">뉴스/공식자료 → 근거축 → 시장영향 → 신뢰도 → 구매전략 연결 검수</div></div><div><a class="btn" href="./admin.html">Admin</a> <a class="btn" href="./score-engine.html">Score</a></div></div></div></header>
+<main>
+  <div class="hero"><div class="hero-inner"><div class="eyebrow">Phase 2-2</div><div class="headline">축종별 Evidence Chain</div><div class="sub" id="updatedAt">불러오는 중...</div></div></div>
+  <div class="grid cols" id="cards"><div class="empty">체인 데이터를 불러오는 중...</div></div>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const esc=(s='')=>String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const safeArray=x=>Array.isArray(x)?x:[];
+function cls(d){return d==='up'?'up':d==='down'?'down':d==='hold'?'hold':'neutral';}
+function renderStep(x){return `<div class="step"><b>${esc(x.step)}</b><div class="small">${esc(x.value||'')}</div><div class="small">${esc(x.meaning||'')}</div></div>`;}
+function renderExample(x){const title=esc(x.title||'');const src=esc(x.source||'');const meta=`출처레벨 ${esc(x.source_level||0)} · 품질 ${esc(x.quality_score||0)} · ${esc(x.direction_label||'')}`;const url=x.url||'';return `<div class="ex">${url?`<a href="${esc(url)}">${title}</a>`:title}<div class="small">${src} · ${meta}</div></div>`;}
+function renderAxis(x){return `<div class="axis"><div class="axis-head"><div><b>${esc(x.label)}</b><div class="small">${esc(x.causal_step||'')}</div></div><span class="badge ${cls(x.direction)}">${esc(x.score||0)} / ${esc(x.max_score||0)}</span></div><div class="small">시장영향: ${esc(x.market_impact||'')}</div><div class="small">신뢰도: ${esc(x.confidence_note||'')}</div><div class="examples">${safeArray(x.evidence_examples).map(renderExample).join('')||'<div class="small">연결 근거 없음</div>'}</div></div>`;}
+function renderCard(c){return `<section class="card"><div class="topline"><div><h2>${esc(c.name||c.id)}</h2><div class="small">신호 ${esc(c.signal_score||0)}점 · 신뢰도 ${esc(c.confidence_score||0)}점 · 커버리지 ${esc(c.coverage_rate||0)}%</div></div><span class="badge ${cls(c.direction)}">${esc(c.status||'-')}</span></div><div class="notice"><b>판단 이유</b><br>${esc(c.reason||'')}</div><div class="notice"><b>구매전략</b><br>${esc(c.purchase_action||'')}</div>${c.missing_evidence&&c.missing_evidence.length?`<div class="notice"><b>누락 근거</b><br>${esc(c.missing_evidence.join(', '))}<br>${esc(c.hold_reason||'')}</div>`:''}<div class="chain">${safeArray(c.summary_chain).map(renderStep).join('')}</div>${safeArray(c.axis_nodes).map(renderAxis).join('')}</section>`;}
+async function init(){try{const r=await fetch('./data/analysis/evidence_chains.json?ts='+Date.now(),{cache:'no-store'});const data=await r.json();$('updatedAt').textContent='갱신 '+(data.updated_at||'N/A')+' · '+(data.policy||'');$('cards').innerHTML=safeArray(data.items).map(renderCard).join('')||'<div class="empty">체인 데이터 없음</div>';}catch(e){console.error(e);$('cards').innerHTML='<div class="empty">체인 데이터를 불러오지 못했습니다. 다음 자동 업데이트 후 다시 확인하세요.</div>';}}
+init();
+</script>
+</body>
+</html>
