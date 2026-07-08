@@ -58,8 +58,11 @@ jobs:
       - name: Add common OTHER fallback
         run: python scripts/postprocess_dashboard_other.py
 
+      - name: Build admin change log
+        run: python scripts/build_change_log.py
+
       - name: Commit refreshed data
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: refresh livestock market data"
-          file_pattern: app/data/market_dashboard.json app/data/market_metrics.json app/data/events/events_news.json app/data/events/events_official.json app/data/events/event_calendar.json app/data/update_status.json app/data/raw/events_raw.json app/data/clean/events_clean.json app/data/clean/events_rejected.json app/data/analysis/evidence_scores.json app/data/analysis/evidence_chains.json app/data/analysis/cross_market_matrix.json app/data/analysis/conflict_report.json app/data/analysis/history_prediction.json app/data/analysis/market_memory.json app/data/analysis/case_comparison.json app/data/analysis/classification_review.json app/data/history/signal_history.json app/data/display/market_dashboard_phase1.json app/data/admin/quality_report.json app/data/admin/conflict_report.json app/data/admin/cross_market_matrix.json app/data/admin/history_prediction.json app/data/admin/market_memory.json app/data/admin/case_comparison.json app/data/admin/classification_review.json
+          file_pattern: app/data/market_dashboard.json app/data/market_metrics.json app/data/events/events_news.json app/data/events/events_official.json app/data/events/event_calendar.json app/data/update_status.json app/data/raw/events_raw.json app/data/clean/events_clean.json app/data/clean/events_rejected.json app/data/analysis/evidence_scores.json app/data/analysis/evidence_chains.json app/data/analysis/cross_market_matrix.json app/data/analysis/conflict_report.json app/data/analysis/history_prediction.json app/data/analysis/market_memory.json app/data/analysis/case_comparison.json app/data/analysis/classification_review.json app/data/analysis/change_log.json app/data/history/signal_history.json app/data/display/market_dashboard_phase1.json app/data/admin/quality_report.json app/data/admin/conflict_report.json app/data/admin/cross_market_matrix.json app/data/admin/history_prediction.json app/data/admin/market_memory.json app/data/admin/case_comparison.json app/data/admin/classification_review.json app/data/admin/change_log.json
