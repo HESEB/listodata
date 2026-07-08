@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UX Check | HESEB</title>
+  <style>
+    :root{--bg:#f5fafc;--card:rgba(255,255,255,.94);--line:rgba(20,30,40,.09);--text:#182231;--sub:rgba(24,34,49,.68);--shadow:0 14px 34px rgba(18,28,40,.10);--good:#168a5b;--warn:#c18a18;--blue:#2474d8}
+    *{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Apple SD Gothic Neo,Noto Sans KR,sans-serif;background:var(--bg);color:var(--text)}header{position:sticky;top:0;z-index:10;background:rgba(245,250,252,.93);backdrop-filter:blur(9px);border-bottom:1px solid var(--line)}.top,main{max-width:1180px;margin:0 auto;padding:14px}.brand{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.brand h1{margin:0;font-size:18px}.sub,.small{font-size:12px;color:var(--sub);line-height:1.45}.btn{display:inline-flex;border:1px solid var(--line);background:rgba(255,255,255,.82);padding:8px 12px;border-radius:999px;text-decoration:none;color:var(--text);font-size:12px;cursor:pointer}.hero{background:linear-gradient(160deg,rgba(241,133,174,.25),rgba(248,184,113,.20),rgba(165,115,237,.18),rgba(107,178,255,.18));padding:14px;border-radius:26px;margin-bottom:14px}.hero-inner{background:rgba(255,255,255,.78);border:1px solid var(--line);border-radius:22px;padding:16px;box-shadow:var(--shadow)}.eyebrow{font-size:12px;color:var(--sub);margin-bottom:5px}.headline{font-size:24px;line-height:1.35;font-weight:780;letter-spacing:-.7px}.grid{display:grid;gap:12px}.cols{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}.card{border:1px solid var(--line);background:var(--card);border-radius:20px;padding:14px;box-shadow:0 10px 24px rgba(18,28,40,.07)}.card h2,.card h3{margin:0}.card h2{font-size:17px}.badge{display:inline-flex;align-items:center;gap:5px;padding:5px 8px;border-radius:999px;border:1px solid var(--line);font-size:11px;background:rgba(255,255,255,.72);white-space:nowrap}.badge.good{color:var(--good);background:rgba(22,138,91,.08)}.badge.warn{color:var(--warn);background:rgba(193,138,24,.09)}.badge.blue{color:var(--blue);background:rgba(36,116,216,.08)}.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.chip{font-size:11px;padding:5px 8px;border-radius:999px;border:1px solid var(--line);background:rgba(0,0,0,.035);color:var(--sub)}.link{display:inline-flex;margin-top:10px;font-size:12px;border:1px solid var(--line);background:linear-gradient(90deg,rgba(241,133,174,.12),rgba(107,178,255,.10));border-radius:999px;padding:7px 10px;text-decoration:none;color:var(--text)}.memo{font-size:13px;color:rgba(24,34,49,.82);line-height:1.55;margin-top:8px}.section{margin-top:14px}.empty{padding:22px;text-align:center;color:var(--sub);border:1px dashed var(--line);border-radius:18px;background:rgba(255,255,255,.62)}@media(max-width:620px){.brand{display:block}}
+  </style>
+</head>
+<body>
+<header><div class="top"><div class="brand"><div><h1>UX Check</h1><div class="sub">Dashboard 최종 UX 점검 및 링크 상태</div></div><div><a class="btn" href="./main.html">Dashboard</a> <a class="btn" href="./admin.html">Admin</a></div></div></div></header>
+<main>
+  <div class="hero"><div class="hero-inner"><div class="eyebrow">Phase 4-10</div><div class="headline">Dashboard 최종 UX 점검</div><div class="sub">핵심 페이지 연결, 단독 페이지 분리, 메뉴 과밀 개선 상태를 확인합니다.</div></div></div>
+  <section class="grid cols" id="cards"></section>
+  <section class="card section"><h2>점검 요약</h2><div class="memo">Report와 Source는 Dashboard 내부 앵커가 아니라 단독 페이지로 분리되었습니다. DSS 메뉴와 Admin 메뉴는 핵심·분석·전문성·관리자 그룹으로 정리되어 있습니다.</div><div class="chips"><span class="chip">main.html</span><span class="chip">report.html</span><span class="chip">source.html</span><span class="chip">dashboard-menu.js</span><span class="chip">admin-menu.js</span><span class="chip">dashboard-ux-final.js</span></div></section>
+</main>
+<script>
+const PAGES=[
+  ['Dashboard','./main.html','축종별 시장판단 메인','핵심'],
+  ['종합판단근거','./reasoning.html','점수·근거·구매전략 통합','핵심'],
+  ['주간보고서','./report.html','단독 Report 페이지','핵심'],
+  ['자료출처','./source.html','단독 Source Center','핵심'],
+  ['Evidence Score','./score-engine.html','점수 구성 확인','분석'],
+  ['Evidence Chain','./evidence-chain.html','인과 근거 확인','분석'],
+  ['충돌검수','./conflict-report.html','상·하방 충돌 확인','분석'],
+  ['축종간영향','./cross-market.html','대체/연관 영향','분석'],
+  ['추세검수','./history-prediction.html','7/14/30일 방향성','분석'],
+  ['이벤트 캘린더','./event-calendar.html','시즌·정책 이벤트','전문성'],
+  ['시장 메모리','./market-memory.html','과거 신호 변동','전문성'],
+  ['과거 사례 비교','./case-comparison.html','유사사례 비교','전문성'],
+  ['Admin','./admin.html','관리자 메인','관리자'],
+  ['분류검수','./classification-review.html','자동분류 검수','관리자'],
+  ['규칙테스트','./rule-test.html','필터 사전 테스트','관리자'],
+  ['변경로그','./change-log.html','정책버전·파일상태','관리자']
+];
+const esc=(s='')=>String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+document.getElementById('cards').innerHTML=PAGES.map(([title,url,memo,group])=>`<article class="card"><div><span class="badge good">연결</span> <span class="badge blue">${esc(group)}</span></div><h2 style="margin-top:8px">${esc(title)}</h2><div class="memo">${esc(memo)}</div><a class="link" href="${esc(url)}">페이지 열기</a></article>`).join('');
+</script>
+</body>
+</html>
