@@ -24,6 +24,7 @@
       ['분류검수','./classification-review.html','강제포함/제외/축종변경'],
       ['규칙테스트','./rule-test.html','기사 제목 테스트'],
       ['변경로그','./change-log.html','정책버전·파일상태'],
+      ['업데이트 안정성','./update-stability.html','자동 업데이트 점검'],
       ['UX점검','./ux-check.html','최종 링크/메뉴 점검']
     ]}
   ];
