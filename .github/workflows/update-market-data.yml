@@ -31,8 +31,11 @@ jobs:
       - name: Filter non-livestock false positives
         run: python scripts/filter_collected_news.py
 
-      - name: Build Phase 1 quality layers
+      - name: Build quality and score layers
         run: python scripts/build_quality_layers.py
+
+      - name: Enhance evidence chains
+        run: python scripts/enhance_evidence_chains.py
 
       - name: Add common OTHER fallback
         run: python scripts/postprocess_dashboard_other.py
