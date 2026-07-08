@@ -23,7 +23,8 @@
       ['Admin','./admin.html','품질·필터·상태'],
       ['분류검수','./classification-review.html','강제포함/제외/축종변경'],
       ['규칙테스트','./rule-test.html','기사 제목 테스트'],
-      ['변경로그','./change-log.html','정책버전·파일상태']
+      ['변경로그','./change-log.html','정책버전·파일상태'],
+      ['UX점검','./ux-check.html','최종 링크/메뉴 점검']
     ]}
   ];
   const HIDE_IDS=[
