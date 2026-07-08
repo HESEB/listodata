@@ -12,37 +12,59 @@
 </head>
 <body>
   <div class="loading" id="loading">HESEB Livestock Terminal 로딩 중...</div>
-  <iframe id="v330" src="./index.html?v=version-engine-v620" title="HESEB Phase 6-2 dashboard version engine"></iframe>
+  <iframe id="heseb-app-frame" src="./index.html" title="HESEB Livestock Terminal"></iframe>
   <script>
-    const frame=document.getElementById('v330');
+    const frame=document.getElementById('heseb-app-frame');
     const loading=document.getElementById('loading');
+    let VERSION_INFO={version:'pending',cache_bust:String(Date.now()),display:{short_label:'pending'}};
+
+    async function loadVersionInfo(){
+      try{
+        const res=await fetch('./data/system/version.json?t='+Date.now(),{cache:'no-store'});
+        if(!res.ok)throw new Error('version '+res.status);
+        VERSION_INFO=await res.json();
+      }catch(e){
+        console.warn('version info load failed',e);
+        VERSION_INFO={version:'pending',cache_bust:String(Date.now()),display:{short_label:'pending'}};
+      }
+      const bust=encodeURIComponent(VERSION_INFO.cache_bust||VERSION_INFO.version||Date.now());
+      const desired='./index.html?v='+bust;
+      if(!frame.getAttribute('src')||frame.getAttribute('src')==='./index.html'){
+        frame.setAttribute('src',desired);
+      }
+    }
+
+    function withBust(src){
+      const bust=encodeURIComponent(VERSION_INFO.cache_bust||VERSION_INFO.version||Date.now());
+      return src+(src.includes('?')?'&':'?')+'v='+bust;
+    }
     function appendScript(doc,id,src){
       if(doc.getElementById(id))return;
       const s=doc.createElement('script');
       s.id=id;
-      s.src=src;
+      s.src=withBust(src);
       s.defer=true;
       doc.body.appendChild(s);
     }
-    function injectV41(){
+    function injectDashboardEnhancements(){
       try{
         const doc=frame.contentDocument;
         if(!doc)return;
-        appendScript(doc,'v41-integration-script','./v41-integration.js?v=integrated-411');
-        appendScript(doc,'claim-evidence-script','./claim-evidence.js?v=claim-100');
-        appendScript(doc,'decision-dashboard-script','./decision-dashboard.js?v=phase-4-1');
-        appendScript(doc,'news-evidence-script','./news-evidence.js?v=phase-4-2');
-        appendScript(doc,'source-hub-script','./source-hub.js?v=phase-4-4');
-        appendScript(doc,'weekly-report-script','./weekly-report.js?v=phase-4-5');
-        appendScript(doc,'event-calendar-link-script','./event-calendar-link.js?v=phase-5-1');
-        appendScript(doc,'market-memory-link-script','./market-memory-link.js?v=phase-5-2');
-        appendScript(doc,'case-comparison-link-script','./case-comparison-link.js?v=phase-5-3');
-        appendScript(doc,'classification-review-link-script','./classification-review-link.js?v=phase-3-3');
-        appendScript(doc,'rule-test-link-script','./rule-test-link.js?v=phase-3-4');
-        appendScript(doc,'change-log-link-script','./change-log-link.js?v=phase-3-5');
-        appendScript(doc,'dashboard-menu-script','./dashboard-menu.js?v=phase-4-10');
-        appendScript(doc,'dashboard-ux-final-script','./dashboard-ux-final.js?v=phase-4-10');
-        appendScript(doc,'version-badge-script','./version-badge.js?v=phase-6-2');
+        appendScript(doc,'v41-integration-script','./v41-integration.js');
+        appendScript(doc,'claim-evidence-script','./claim-evidence.js');
+        appendScript(doc,'decision-dashboard-script','./decision-dashboard.js');
+        appendScript(doc,'news-evidence-script','./news-evidence.js');
+        appendScript(doc,'source-hub-script','./source-hub.js');
+        appendScript(doc,'weekly-report-script','./weekly-report.js');
+        appendScript(doc,'event-calendar-link-script','./event-calendar-link.js');
+        appendScript(doc,'market-memory-link-script','./market-memory-link.js');
+        appendScript(doc,'case-comparison-link-script','./case-comparison-link.js');
+        appendScript(doc,'classification-review-link-script','./classification-review-link.js');
+        appendScript(doc,'rule-test-link-script','./rule-test-link.js');
+        appendScript(doc,'change-log-link-script','./change-log-link.js');
+        appendScript(doc,'dashboard-menu-script','./dashboard-menu.js');
+        appendScript(doc,'dashboard-ux-final-script','./dashboard-ux-final.js');
+        appendScript(doc,'version-badge-script','./version-badge.js');
         loading.style.display='none';
       }catch(e){
         console.warn('dashboard integration inject failed',e);
@@ -51,10 +73,11 @@
       }
     }
     frame.addEventListener('load',()=>{
-      injectV41();
-      setTimeout(injectV41,500);
-      setTimeout(injectV41,1500);
+      injectDashboardEnhancements();
+      setTimeout(injectDashboardEnhancements,500);
+      setTimeout(injectDashboardEnhancements,1500);
     });
+    loadVersionInfo();
   </script>
 </body>
 </html>
