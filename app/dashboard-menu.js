@@ -4,7 +4,7 @@
     {title:'핵심',desc:'매일 가장 먼저 확인',items:[
       ['Dashboard','./main.html','축종별 시장판단'],
       ['종합판단근거','./reasoning.html','점수·근거·구매전략'],
-      ['주간보고서','./main.html#report','시황 보고서 초안'],
+      ['주간보고서','./report.html','시황 보고서 초안'],
       ['자료출처','./main.html#sources','공식 근거 저장소']
     ]},
     {title:'분석',desc:'판단 근거 검증',items:[
