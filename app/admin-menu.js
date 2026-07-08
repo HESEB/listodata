@@ -4,7 +4,8 @@
     {title:'운영상태',desc:'수집·정제·품질 현황',items:[
       ['Admin Dashboard','./admin.html','품질·필터·자료 현황'],
       ['변경 로그','./change-log.html','정책 버전·파일 상태'],
-      ['자료출처','./main.html#sources','공식 근거 저장소']
+      ['자료출처','./main.html#sources','공식 근거 저장소'],
+      ['주간보고서','./report.html','시황 보고서 초안']
     ]},
     {title:'검수',desc:'분류 결과와 제외 자료 검토',items:[
       ['자동분류 검수','./classification-review.html','강제 포함·제외·축종 변경'],
