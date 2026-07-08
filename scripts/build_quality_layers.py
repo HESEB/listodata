@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Build Phase 1 data layers and quality scores for HESEB Livestock Terminal.
+"""Build data layers and Evidence Score Engine outputs for HESEB Livestock Terminal.
 
-This script does not replace the existing display JSON files. It creates a parallel
-Raw → Clean → Analysis → Display layer so the current site can keep working while
-quality/analysis engines are introduced gradually.
+Creates a parallel Raw → Clean → Analysis → Display layer while the current site
+keeps working. Phase 2-1 adds a score breakdown by evidence axis:
+price, supply, disease, policy, and news/demand.
 """
 from __future__ import annotations
 
@@ -26,23 +26,25 @@ DISPLAY = DATA / "display"
 ADMIN = DATA / "admin"
 
 SPECIES_ORDER = ["BEEF", "PORK", "POULTRY", "DUCK", "EGG", "OTHER"]
-SPECIES_LABEL = {
-    "BEEF": "한우",
-    "PORK": "돈육",
-    "POULTRY": "계육",
-    "DUCK": "오리",
-    "EGG": "계란",
-    "OTHER": "기타",
+SPECIES_LABEL = {"BEEF": "한우", "PORK": "돈육", "POULTRY": "계육", "DUCK": "오리", "EGG": "계란", "OTHER": "기타"}
+
+SCORE_AXES = {
+    "price": {"label": "가격", "max": 30, "types": {"가격"}},
+    "supply": {"label": "수급/도축", "max": 25, "types": {"수급/도축"}},
+    "disease": {"label": "질병/방역", "max": 20, "types": {"질병/방역"}},
+    "policy": {"label": "정책/고시", "max": 10, "types": {"정책/고시"}},
+    "news": {"label": "뉴스/수요", "max": 15, "types": {"수요/행사", "일반"}},
 }
+EVIDENCE_TO_AXIS = {etype: axis for axis, cfg in SCORE_AXES.items() for etype in cfg["types"]}
 
 OFFICIAL_HINTS = re.compile(r"농림축산식품부|KAHIS|축산물품질평가원|KREI|OASIS|정부|농식품부", re.I)
 PUBLIC_HINTS = re.compile(r"자조금|협회|농협|지자체|도청|시청|군청|위원회", re.I)
 COMPANY_HINTS = re.compile(r"프로모션|신제품|출시|브랜드|기업|업체|매장|쿠폰|할인", re.I)
 DISEASE_HINTS = re.compile(r"ASF|아프리카돼지열병|구제역|조류인플루엔자|고병원성|AI|방역|살처분|농장", re.I)
-PRICE_HINTS = re.compile(r"가격|시세|지육|산지|소비자가|급등|하락|상승|할인", re.I)
-SUPPLY_HINTS = re.compile(r"도축|도계|출하|수급|공급|사육|입식|산란계", re.I)
-POLICY_HINTS = re.compile(r"정책|대책|지원|고시|점검|수입|관세|가격안정|비축", re.I)
-DEMAND_HINTS = re.compile(r"수요|행사|명절|추석|설|복날|외식|소비|학교급식", re.I)
+PRICE_HINTS = re.compile(r"가격|시세|지육|산지|소비자가|급등|하락|상승|할인|인상|인하", re.I)
+SUPPLY_HINTS = re.compile(r"도축|도계|출하|수급|공급|사육|입식|산란계|물량|재고", re.I)
+POLICY_HINTS = re.compile(r"정책|대책|지원|고시|점검|수입|관세|가격안정|비축|할당관세", re.I)
+DEMAND_HINTS = re.compile(r"수요|행사|명절|추석|설|복날|외식|소비|학교급식|프로모션", re.I)
 
 
 def now_iso() -> str:
@@ -136,10 +138,10 @@ def evidence_type(title: str, tags: list[str], doc_type: str) -> str:
 
 def market_direction(title: str, evidence: str) -> tuple[str, int, str]:
     text = title or ""
-    up = re.search(r"급등|상승|강세|부족|감소|발생|확산|방역|살처분|수급난|가격\s*인상", text)
-    down = re.search(r"하락|약세|안정|할인|공급\s*확대|수입\s*증가|가격\s*인하", text)
+    up = re.search(r"급등|상승|강세|부족|감소|발생|확산|방역|살처분|수급난|가격\s*인상|긴급|이동제한", text)
+    down = re.search(r"하락|약세|안정|할인|공급\s*확대|수입\s*증가|가격\s*인하|완화", text)
     if up and not down:
-        return "up", 4 if evidence in {"질병/방역", "수급/도축", "가격"} else 3, "상방 요인"
+        return "up", 5 if evidence in {"질병/방역", "수급/도축"} else 4, "상방 요인"
     if down and not up:
         return "down", 4 if evidence in {"가격", "정책/고시"} else 3, "하방 요인"
     if evidence in {"질병/방역", "수급/도축"}:
@@ -194,6 +196,7 @@ def build_clean(raw_items: list[dict]) -> tuple[list[dict], list[dict]]:
         direction, impact, direction_label = market_direction(title, evidence)
         filtered = bool(item.get("filter_reason")) or not species
         q = quality_score(level, fresh, is_duplicate, species, filtered)
+        axis = EVIDENCE_TO_AXIS.get(evidence, "news")
         enriched = dict(item)
         enriched.update({
             "duplicate_group_id": duplicate_group_id,
@@ -203,11 +206,12 @@ def build_clean(raw_items: list[dict]) -> tuple[list[dict], list[dict]]:
             "source_level_label": level_label,
             "freshness_score": fresh,
             "evidence_type": evidence,
+            "evidence_axis": axis,
             "market_direction": direction,
             "market_direction_label": direction_label,
             "impact_score": impact,
             "quality_score": q,
-            "quality_policy": "phase1_quality_v1"
+            "quality_policy": "phase2_quality_v1"
         })
         if q < 25:
             enriched["reject_reason"] = "quality_score_low"
@@ -217,47 +221,126 @@ def build_clean(raw_items: list[dict]) -> tuple[list[dict], list[dict]]:
     return clean, rejected
 
 
+def init_species_stats() -> dict:
+    return {
+        sp: {
+            "items": 0,
+            "quality_sum": 0,
+            "up": 0,
+            "down": 0,
+            "neutral": 0,
+            "official": 0,
+            "coverage": set(),
+            "axis": {
+                axis: {"items": 0, "quality_sum": 0, "source_sum": 0, "freshness_sum": 0, "impact_sum": 0, "up": 0, "down": 0, "neutral": 0, "examples": []}
+                for axis in SCORE_AXES
+            },
+        }
+        for sp in SPECIES_ORDER
+    }
+
+
+def item_axis_contribution(item: dict) -> float:
+    # Quality, freshness, source trust, and impact are normalized into a 0~1 evidence strength.
+    quality = (item.get("quality_score", 0) or 0) / 100
+    fresh = (item.get("freshness_score", 0) or 0) / 100
+    source = min(1, (item.get("source_level", 1) or 1) / 5)
+    impact = min(1, (item.get("impact_score", 1) or 1) / 5)
+    return max(0.05, min(1, quality * 0.35 + fresh * 0.20 + source * 0.25 + impact * 0.20))
+
+
+def axis_score(axis_data: dict, axis_key: str) -> int:
+    max_score = SCORE_AXES[axis_key]["max"]
+    if axis_data["items"] <= 0:
+        return 0
+    avg_strength = axis_data["impact_sum"] / max(1, axis_data["items"])
+    volume_factor = min(1, axis_data["items"] / 4)
+    direction_balance = axis_data["up"] - axis_data["down"]
+    direction_factor = 1.0 if direction_balance > 0 else (0.45 if direction_balance < 0 else 0.70)
+    official_bonus = min(1.15, 1 + axis_data["source_sum"] / max(1, axis_data["items"]) * 0.03)
+    raw = max_score * (avg_strength * 0.65 + volume_factor * 0.35) * direction_factor * official_bonus
+    return max(0, min(max_score, round(raw)))
+
+
+def status_from_score(score: int, confidence: int, coverage_rate: int, official_count: int, evidence_count: int) -> tuple[str, str]:
+    if evidence_count == 0 or coverage_rate < 35 or confidence < 40:
+        return "hold", "판단 유보"
+    if official_count == 0 and confidence < 55:
+        return "hold", "보조자료 수준"
+    if score >= 75:
+        return "up", "상방 우세"
+    if score >= 60:
+        return "up", "상방 가능성"
+    if score <= 35:
+        return "down", "하방 가능성"
+    return "neutral", "보합/혼조"
+
+
+def reason_from_breakdown(breakdown: dict, direction_counts: dict) -> str:
+    labels = {k: SCORE_AXES[k]["label"] for k in SCORE_AXES}
+    top = sorted(breakdown.items(), key=lambda kv: kv[1], reverse=True)[:3]
+    parts = [f"{labels[k]} {v}점" for k, v in top if v > 0]
+    if not parts:
+        return "유효 근거 부족"
+    if direction_counts.get("up", 0) > direction_counts.get("down", 0):
+        tail = "상방성 자료가 우세"
+    elif direction_counts.get("down", 0) > direction_counts.get("up", 0):
+        tail = "하방성 자료가 우세"
+    else:
+        tail = "상·하방 자료가 혼재"
+    return " + ".join(parts) + f" 기반, {tail}"
+
+
 def build_analysis(clean_items: list[dict]) -> tuple[dict, dict, dict]:
-    species_stats = {sp: {"items": 0, "quality_sum": 0, "impact_sum": 0, "up": 0, "down": 0, "neutral": 0, "official": 0, "coverage": set()} for sp in SPECIES_ORDER}
+    species_stats = init_species_stats()
     for item in clean_items:
+        axis = item.get("evidence_axis") or EVIDENCE_TO_AXIS.get(item.get("evidence_type"), "news")
+        strength = item_axis_contribution(item)
         for sp in item.get("species") or []:
             if sp not in species_stats:
                 continue
             st = species_stats[sp]
+            ad = st["axis"][axis]
             st["items"] += 1
             st["quality_sum"] += item.get("quality_score", 0)
-            st["impact_sum"] += item.get("impact_score", 0)
             st[item.get("market_direction", "neutral")] += 1
             if item.get("source_level", 0) >= 5:
                 st["official"] += 1
             st["coverage"].add(item.get("evidence_type", "일반"))
+            ad["items"] += 1
+            ad["quality_sum"] += item.get("quality_score", 0)
+            ad["source_sum"] += item.get("source_level", 0)
+            ad["freshness_sum"] += item.get("freshness_score", 0)
+            ad["impact_sum"] += strength
+            ad[item.get("market_direction", "neutral")] += 1
+            if len(ad["examples"]) < 3:
+                ad["examples"].append({
+                    "title": item.get("title", ""),
+                    "direction": item.get("market_direction"),
+                    "source_level": item.get("source_level"),
+                    "quality_score": item.get("quality_score"),
+                })
 
     score_items = []
     chains = []
     for sp, st in species_stats.items():
         if st["items"] == 0:
-            signal_score = 0
             quality_avg = 0
-            direction = "hold"
             coverage_rate = 0
+            breakdown = {k: 0 for k in SCORE_AXES}
+            signal_score = 0
+            confidence = 0
+            direction = "hold"
             status = "판단 유보"
         else:
             quality_avg = round(st["quality_sum"] / st["items"])
             coverage_rate = round(min(100, len(st["coverage"]) / 5 * 100))
-            directional = st["up"] - st["down"]
-            signal_score = max(0, min(100, 50 + directional * 6 + st["impact_sum"] + (st["official"] * 4)))
-            if coverage_rate < 40 or quality_avg < 45:
-                direction = "hold"
-                status = "판단 유보"
-            elif signal_score >= 70:
-                direction = "up"
-                status = "상방"
-            elif signal_score <= 35:
-                direction = "down"
-                status = "하방"
-            else:
-                direction = "neutral"
-                status = "보합/혼조"
+            breakdown = {axis: axis_score(st["axis"][axis], axis) for axis in SCORE_AXES}
+            signal_score = max(0, min(100, sum(breakdown.values())))
+            confidence = round(min(100, quality_avg * 0.45 + coverage_rate * 0.35 + min(100, st["official"] * 15) * 0.20))
+            direction, status = status_from_score(signal_score, confidence, coverage_rate, st["official"], st["items"])
+
+        direction_counts = {"up": st["up"], "down": st["down"], "neutral": st["neutral"]}
         score_items.append({
             "id": sp,
             "name": SPECIES_LABEL.get(sp, sp),
@@ -265,12 +348,29 @@ def build_analysis(clean_items: list[dict]) -> tuple[dict, dict, dict]:
             "direction": direction,
             "status": status,
             "quality_score": quality_avg,
+            "confidence_score": confidence,
             "coverage_rate": coverage_rate,
             "evidence_count": st["items"],
             "official_count": st["official"],
-            "direction_counts": {"up": st["up"], "down": st["down"], "neutral": st["neutral"]},
+            "direction_counts": direction_counts,
             "coverage_types": sorted(st["coverage"]),
-            "score_policy": "phase1_evidence_score_draft"
+            "score_breakdown": breakdown,
+            "score_breakdown_labels": {k: SCORE_AXES[k]["label"] for k in SCORE_AXES},
+            "axis_detail": {
+                axis: {
+                    "label": SCORE_AXES[axis]["label"],
+                    "max_score": SCORE_AXES[axis]["max"],
+                    "score": breakdown[axis],
+                    "items": st["axis"][axis]["items"],
+                    "up": st["axis"][axis]["up"],
+                    "down": st["axis"][axis]["down"],
+                    "neutral": st["axis"][axis]["neutral"],
+                    "examples": st["axis"][axis]["examples"],
+                }
+                for axis in SCORE_AXES
+            },
+            "reason": reason_from_breakdown(breakdown, direction_counts),
+            "score_policy": "phase2_evidence_score_v1"
         })
         chains.append({
             "id": sp,
@@ -279,8 +379,12 @@ def build_analysis(clean_items: list[dict]) -> tuple[dict, dict, dict]:
                 {"step": "자료수집", "value": f"{st['items']}건", "meaning": "축종 관련 자료 수"},
                 {"step": "품질평가", "value": f"{quality_avg}점", "meaning": "출처·최신성·중복 여부 기반"},
                 {"step": "커버리지", "value": f"{coverage_rate}%", "meaning": "가격·수급·질병·정책·수요 근거 범위"},
-                {"step": "시장신호", "value": f"{signal_score}점", "meaning": status}
-            ]
+                {"step": "점수구성", "value": ", ".join([f"{SCORE_AXES[k]['label']} {v}" for k, v in breakdown.items()]), "meaning": "Evidence Score Breakdown"},
+                {"step": "시장신호", "value": f"{signal_score}점", "meaning": status},
+            ],
+            "score_breakdown": breakdown,
+            "confidence_score": confidence,
+            "reason": reason_from_breakdown(breakdown, direction_counts),
         })
 
     matrix = {
@@ -290,41 +394,44 @@ def build_analysis(clean_items: list[dict]) -> tuple[dict, dict, dict]:
             {"from": "POULTRY", "to": "PORK", "effect": "+", "strength": 0.3, "memo": "계육 강세 시 돈육 일부 대체수요 가능"},
             {"from": "PORK", "to": "POULTRY", "effect": "+", "strength": 0.2, "memo": "돈육 강세 시 계육 대체수요 가능"},
             {"from": "EGG", "to": "POULTRY", "effect": "risk", "strength": 0.2, "memo": "AI 이슈는 계란·계육 공통 리스크"},
-            {"from": "DUCK", "to": "POULTRY", "effect": "risk", "strength": 0.2, "memo": "가금 질병 이슈는 닭·오리 공통 리스크"}
-        ]
+            {"from": "DUCK", "to": "POULTRY", "effect": "risk", "strength": 0.2, "memo": "가금 질병 이슈는 닭·오리 공통 리스크"},
+        ],
     }
-    return {"updated_at": now_iso(), "species": score_items}, {"updated_at": now_iso(), "items": chains}, matrix
+    return {"updated_at": now_iso(), "policy": "phase2_evidence_score_v1", "score_axes": SCORE_AXES, "species": score_items}, {"updated_at": now_iso(), "policy": "phase2_evidence_chain_v1", "items": chains}, matrix
 
 
 def build_admin_log(raw_items: list[dict], clean_items: list[dict], rejected: list[dict]) -> dict:
     by_species = Counter()
     by_evidence = Counter()
+    by_axis = Counter()
     for item in clean_items:
         by_evidence[item.get("evidence_type", "일반")] += 1
+        by_axis[item.get("evidence_axis", "news")] += 1
         for sp in item.get("species") or []:
             by_species[sp] += 1
     return {
         "updated_at": now_iso(),
-        "policy": "phase1_admin_log_v1",
+        "policy": "phase2_admin_log_v1",
         "summary": {
             "raw_count": len(raw_items),
             "clean_count": len(clean_items),
             "rejected_count": len(rejected),
             "duplicate_count": sum(1 for x in clean_items if x.get("is_duplicate")),
             "official_count": sum(1 for x in clean_items if x.get("source_level", 0) >= 5),
-            "average_quality": round(sum(x.get("quality_score", 0) for x in clean_items) / max(1, len(clean_items)))
+            "average_quality": round(sum(x.get("quality_score", 0) for x in clean_items) / max(1, len(clean_items))),
         },
         "by_species": dict(by_species),
         "by_evidence_type": dict(by_evidence),
-        "recent_rejections": rejected[:20]
+        "by_evidence_axis": dict(by_axis),
+        "recent_rejections": rejected[:20],
     }
 
 
 def build_display_summary(scores: dict) -> dict:
     return {
         "updated_at": now_iso(),
-        "notice": "Phase 1 병렬 Display Layer 초안입니다. 기존 화면용 market_dashboard.json은 아직 대체하지 않습니다.",
-        "species": scores.get("species", [])
+        "notice": "Phase 2 병렬 Display Layer 초안입니다. 기존 화면용 market_dashboard.json은 아직 대체하지 않습니다.",
+        "species": scores.get("species", []),
     }
 
 
