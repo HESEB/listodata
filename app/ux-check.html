@@ -10,11 +10,12 @@
   </style>
 </head>
 <body>
-<header><div class="top"><div class="brand"><div><h1>UX Check</h1><div class="sub">Dashboard 최종 UX 점검 및 링크 상태</div></div><div><a class="btn" href="./main.html">Dashboard</a> <a class="btn" href="./admin.html">Admin</a></div></div></div></header>
+<header><div class="top"><div class="brand"><div><h1>UX Check</h1><div class="sub">Dashboard 최종 UX 점검 및 링크 상태</div></div><div><a class="btn" href="./main.html">Dashboard</a> <a class="btn" href="./admin.html">Admin</a> <a class="btn" href="./version-status.html">Version</a></div></div></div></header>
 <main>
-  <div class="hero"><div class="hero-inner"><div class="eyebrow">Phase 4-10</div><div class="headline">Dashboard 최종 UX 점검</div><div class="sub">핵심 페이지 연결, 단독 페이지 분리, 메뉴 과밀 개선 상태를 확인합니다.</div></div></div>
+  <div class="hero"><div class="hero-inner"><div class="eyebrow">Phase 6-3</div><div class="headline">Dashboard 최종 UX 점검</div><div class="sub">핵심 페이지 연결, 단독 페이지 분리, 메뉴 과밀 개선, Version Engine 표시 상태를 확인합니다.</div></div></div>
   <section class="grid cols" id="cards"></section>
-  <section class="card section"><h2>점검 요약</h2><div class="memo">Report와 Source는 Dashboard 내부 앵커가 아니라 단독 페이지로 분리되었습니다. DSS 메뉴와 Admin 메뉴는 핵심·분석·전문성·관리자 그룹으로 정리되어 있습니다.</div><div class="chips"><span class="chip">main.html</span><span class="chip">report.html</span><span class="chip">source.html</span><span class="chip">dashboard-menu.js</span><span class="chip">admin-menu.js</span><span class="chip">dashboard-ux-final.js</span></div></section>
+  <section class="card section"><h2>Version Engine 점검</h2><div class="memo" id="versionSummary">version.json을 확인하는 중...</div><div class="chips" id="versionChips"></div><a class="link" href="./version-status.html">Version 상태 열기</a></section>
+  <section class="card section"><h2>점검 요약</h2><div class="memo">Report와 Source는 Dashboard 내부 앵커가 아니라 단독 페이지로 분리되었습니다. DSS 메뉴와 Admin 메뉴는 핵심·분석·전문성·관리자 그룹으로 정리되어 있으며, Version Engine은 version.json 기준으로 메인 배지와 Admin 상태 카드에 표시됩니다.</div><div class="chips"><span class="chip">main.html</span><span class="chip">report.html</span><span class="chip">source.html</span><span class="chip">version-status.html</span><span class="chip">dashboard-menu.js</span><span class="chip">admin-menu.js</span><span class="chip">dashboard-ux-final.js</span><span class="chip">version-badge.js</span></div></section>
 </main>
 <script>
 const PAGES=[
@@ -22,6 +23,7 @@ const PAGES=[
   ['종합판단근거','./reasoning.html','점수·근거·구매전략 통합','핵심'],
   ['주간보고서','./report.html','단독 Report 페이지','핵심'],
   ['자료출처','./source.html','단독 Source Center','핵심'],
+  ['Version 상태','./version-status.html','버전·빌드·데이터 갱신 상태','핵심'],
   ['Evidence Score','./score-engine.html','점수 구성 확인','분석'],
   ['Evidence Chain','./evidence-chain.html','인과 근거 확인','분석'],
   ['충돌검수','./conflict-report.html','상·하방 충돌 확인','분석'],
@@ -33,10 +35,13 @@ const PAGES=[
   ['Admin','./admin.html','관리자 메인','관리자'],
   ['분류검수','./classification-review.html','자동분류 검수','관리자'],
   ['규칙테스트','./rule-test.html','필터 사전 테스트','관리자'],
-  ['변경로그','./change-log.html','정책버전·파일상태','관리자']
+  ['변경로그','./change-log.html','정책버전·파일상태','관리자'],
+  ['업데이트 안정성','./update-stability.html','자동 업데이트 점검','관리자']
 ];
 const esc=(s='')=>String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 document.getElementById('cards').innerHTML=PAGES.map(([title,url,memo,group])=>`<article class="card"><div><span class="badge good">연결</span> <span class="badge blue">${esc(group)}</span></div><h2 style="margin-top:8px">${esc(title)}</h2><div class="memo">${esc(memo)}</div><a class="link" href="${esc(url)}">페이지 열기</a></article>`).join('');
+async function checkVersion(){try{const r=await fetch('./data/system/version.json?ts='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error(r.status);const v=await r.json();const wf=v.workflow||{};document.getElementById('versionSummary').textContent=`${v.version||'-'} · ${v.phase||'-'} · ${v.build_time_kst||'-'} · ${wf.status||'-'}`;document.getElementById('versionChips').innerHTML=[`버전 ${v.version||'-'}`,`Data ${v.data_updated_at||'-'}`,`Commit ${wf.commit||'-'}`,`Actions ${wf.status||'-'}`].map(x=>`<span class="chip">${esc(x)}</span>`).join('');}catch(e){document.getElementById('versionSummary').textContent='version.json 확인 실패: '+String(e);}}
+checkVersion();
 </script>
 </body>
 </html>
