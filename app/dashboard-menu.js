@@ -5,7 +5,8 @@
       ['Dashboard','./main.html','축종별 시장판단'],
       ['종합판단근거','./reasoning.html','점수·근거·구매전략'],
       ['주간보고서','./report.html','시황 보고서 초안'],
-      ['자료출처','./source.html','공식 근거 저장소']
+      ['자료출처','./source.html','공식 근거 저장소'],
+      ['Version 상태','./version-status.html','버전·빌드·데이터 갱신 상태']
     ]},
     {title:'분석',desc:'판단 근거 검증',items:[
       ['Evidence Score','./score-engine.html','가격·수급·질병·정책·뉴스 점수'],
