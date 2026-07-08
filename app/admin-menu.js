@@ -10,6 +10,7 @@
       ['업데이트 안정성','./update-stability.html','자동 업데이트 점검'],
       ['Fallback 보호','./fallback-status.html','실패 시 데이터 복원 상태'],
       ['품질 경고','./quality-alerts.html','데이터 품질 경고 알림'],
+      ['소스 헬스','./source-health.html','수집 소스별 성공률/기여도'],
       ['UX점검','./ux-check.html','최종 링크/메뉴 점검']
     ]},
     {title:'검수',desc:'분류 결과와 제외 자료 검토',items:[
