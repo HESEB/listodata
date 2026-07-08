@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>History & Prediction | HESEB</title>
+  <style>
+    :root{--bg:#f5fafc;--card:rgba(255,255,255,.94);--line:rgba(20,30,40,.09);--text:#182231;--sub:rgba(24,34,49,.68);--shadow:0 14px 34px rgba(18,28,40,.10);--g1:#F185AE;--g2:#F8B871;--g3:#A573ED;--g4:#6BB2FF;--bad:#d93c61;--warn:#c18a18;--good:#168a5b;--blue:#2474d8;--hold:#777}
+    *{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Apple SD Gothic Neo,Noto Sans KR,sans-serif;background:var(--bg);color:var(--text)}
+    header{position:sticky;top:0;z-index:10;background:rgba(245,250,252,.93);backdrop-filter:blur(9px);border-bottom:1px solid var(--line)}.top,main{max-width:1180px;margin:0 auto;padding:14px}.brand{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.brand h1{margin:0;font-size:18px}.sub{font-size:12px;color:var(--sub);line-height:1.45}.btn{display:inline-flex;border:1px solid var(--line);background:rgba(255,255,255,.82);padding:8px 12px;border-radius:999px;text-decoration:none;color:var(--text);font-size:12px;cursor:pointer}
+    .hero{background:linear-gradient(160deg,rgba(241,133,174,.25),rgba(248,184,113,.20),rgba(165,115,237,.18),rgba(107,178,255,.18));padding:14px;border-radius:26px;margin-bottom:14px}.hero-inner{background:rgba(255,255,255,.78);border:1px solid var(--line);border-radius:22px;padding:16px;box-shadow:var(--shadow)}.eyebrow{font-size:12px;color:var(--sub);margin-bottom:5px}.headline{font-size:24px;line-height:1.35;font-weight:780;letter-spacing:-.7px}
+    .grid{display:grid;gap:12px}.cols{grid-template-columns:repeat(auto-fit,minmax(330px,1fr))}.card{border:1px solid var(--line);background:var(--card);border-radius:20px;padding:14px;box-shadow:0 10px 24px rgba(18,28,40,.07)}.card h2,.card h3{margin:0}.card h2{font-size:17px}.small{font-size:12px;color:var(--sub);line-height:1.45}.badge{display:inline-flex;align-items:center;gap:5px;padding:5px 8px;border-radius:999px;border:1px solid var(--line);font-size:11px;background:rgba(255,255,255,.72);white-space:nowrap}.badge.up{color:var(--bad);background:rgba(217,60,97,.08)}.badge.down{color:var(--blue);background:rgba(36,116,216,.08)}.badge.neutral{color:var(--warn);background:rgba(193,138,24,.09)}.badge.hold{color:var(--hold);background:rgba(0,0,0,.05)}.badge.mixed{color:#7457d8;background:rgba(116,87,216,.08)}.topline{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.score{font-size:30px;font-weight:850;letter-spacing:-.8px}.bar{height:8px;background:rgba(20,30,40,.07);border-radius:99px;overflow:hidden;margin-top:7px}.bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3),var(--g4))}.window{border-top:1px solid var(--line);padding-top:10px;margin-top:10px}.window-head{display:flex;justify-content:space-between;gap:10px}.notice{font-size:12px;color:rgba(24,34,49,.72);line-height:1.55;border:1px dashed var(--line);border-radius:18px;background:rgba(255,255,255,.62);padding:12px;margin-top:10px}.memory{border-top:1px solid var(--line);padding-top:8px;margin-top:8px}.empty{padding:22px;text-align:center;color:var(--sub);border:1px dashed var(--line);border-radius:18px;background:rgba(255,255,255,.62)}
+  </style>
+</head>
+<body>
+<header><div class="top"><div class="brand"><div><h1>History & Prediction</h1><div class="sub">Evidence Score 이력·7/14/30일 참고 방향성·시장 메모리 검수</div></div><div><a class="btn" href="./admin.html">Admin</a> <a class="btn" href="./cross-market.html">Cross</a> <a class="btn" href="./score-engine.html">Score</a></div></div></div></header>
+<main>
+  <div class="hero"><div class="hero-inner"><div class="eyebrow">Phase 2-5</div><div class="headline">History & Prediction Engine</div><div class="sub" id="updatedAt">불러오는 중...</div><div class="notice">가격 예측이 아니라 수집 근거 신호의 방향성 참고값입니다. 데이터가 누적될수록 7·14·30일 추세 해석력이 개선됩니다.</div></div></div>
+  <section class="grid cols" id="cards"><div class="empty">예측 데이터를 불러오는 중...</div></section>
+  <section class="card" style="margin-top:12px"><h2>시장 메모리</h2><div class="small">신호 급변 이벤트 자동 기록</div><div id="memory"><div class="empty">시장 메모리 불러오는 중...</div></div></section>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const esc=(s='')=>String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const safeArray=x=>Array.isArray(x)?x:[];
+function cls(d){return d==='up'?'up':d==='down'?'down':d==='mixed'?'mixed':d==='hold'?'hold':'neutral';}
+function predClass(label){if((label||'').includes('상방'))return 'up';if((label||'').includes('하방'))return 'down';if((label||'').includes('유보'))return 'hold';return 'neutral';}
+function bar(v){const n=Math.max(0,Math.min(100,Number(v)||0));return `<div class="bar"><i style="width:${n}%"></i></div>`;}
+function renderWindow(w){return `<div class="window"><div class="window-head"><div><b>${esc(w.window_days)}일 추세</b><div class="small">${esc(w.memo||'')}</div></div><span class="badge ${cls(w.direction)}">${esc(w.status||'-')}</span></div><div class="small">변화 ${esc(w.change||0)}점 · 평균 ${esc(w.average_signal||0)}점 · 표본 ${esc(w.sample_days||0)}일</div></div>`;}
+function renderCard(x){const latest=x.latest||{};const p=x.prediction||{};const windows=x.windows||{};return `<section class="card"><div class="topline"><div><h2>${esc(x.name||x.id)}</h2><div class="small">최신 ${esc(latest.date||'-')} · ${esc(latest.status||'-')}</div></div><span class="badge ${predClass(p.label)}">${esc(p.label||'-')}</span></div><div class="score">${esc(latest.signal_score||0)}점</div>${bar(latest.signal_score)}<div class="small">신뢰도 ${esc(latest.confidence_score||0)}점 · 커버리지 ${esc(latest.coverage_rate||0)}% · 공식 ${esc(latest.official_count||0)}건</div><div class="notice"><b>참고 방향성</b><br>${esc(p.memo||'')}<br>판단 신뢰도 ${esc(p.confidence||0)}점</div>${renderWindow(windows['7d']||{})}${renderWindow(windows['14d']||{})}${renderWindow(windows['30d']||{})}</section>`;}
+function renderMemory(items){$('memory').innerHTML=safeArray(items).length?safeArray(items).slice().reverse().slice(0,30).map(x=>`<div class="memory"><b>${esc(x.date)} · ${esc(x.name)}</b><div class="small">${esc(x.memo||'')} · ${esc(x.from_score||0)} → ${esc(x.to_score||0)}</div></div>`).join(''):'<div class="empty">아직 기록된 급변 이벤트 없음</div>';}
+async function init(){try{const [p,m]=await Promise.all([fetch('./data/analysis/history_prediction.json?ts='+Date.now(),{cache:'no-store'}).then(r=>r.json()),fetch('./data/analysis/market_memory.json?ts='+Date.now(),{cache:'no-store'}).then(r=>r.json())]);$('updatedAt').textContent='갱신 '+(p.updated_at||'N/A')+' · '+(p.policy||'');$('cards').innerHTML=safeArray(p.items).map(renderCard).join('')||'<div class="empty">예측 데이터 없음</div>';renderMemory(m.items||[]);}catch(e){console.error(e);$('cards').innerHTML='<div class="empty">예측 데이터를 불러오지 못했습니다. 다음 자동 업데이트 후 다시 확인하세요.</div>';}}
+init();
+</script>
+</body>
+</html>
