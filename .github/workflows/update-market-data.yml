@@ -37,6 +37,9 @@ jobs:
       - name: Enhance evidence chains
         run: python scripts/enhance_evidence_chains.py
 
+      - name: Detect conflicts and hold decisions
+        run: python scripts/detect_conflicts_and_holds.py
+
       - name: Add common OTHER fallback
         run: python scripts/postprocess_dashboard_other.py
 
@@ -44,4 +47,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: refresh livestock market data"
-          file_pattern: app/data/market_dashboard.json app/data/market_metrics.json app/data/events/events_news.json app/data/events/events_official.json app/data/update_status.json app/data/raw/events_raw.json app/data/clean/events_clean.json app/data/clean/events_rejected.json app/data/analysis/evidence_scores.json app/data/analysis/evidence_chains.json app/data/analysis/cross_market_matrix.json app/data/display/market_dashboard_phase1.json app/data/admin/quality_report.json
+          file_pattern: app/data/market_dashboard.json app/data/market_metrics.json app/data/events/events_news.json app/data/events/events_official.json app/data/update_status.json app/data/raw/events_raw.json app/data/clean/events_clean.json app/data/clean/events_rejected.json app/data/analysis/evidence_scores.json app/data/analysis/evidence_chains.json app/data/analysis/cross_market_matrix.json app/data/analysis/conflict_report.json app/data/display/market_dashboard_phase1.json app/data/admin/quality_report.json app/data/admin/conflict_report.json
