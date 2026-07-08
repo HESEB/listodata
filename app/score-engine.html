@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Evidence Score Engine | HESEB</title>
+  <style>
+    :root{--bg:#f5fafc;--card:rgba(255,255,255,.94);--line:rgba(20,30,40,.09);--text:#182231;--sub:rgba(24,34,49,.68);--shadow:0 14px 34px rgba(18,28,40,.10);--g1:#F185AE;--g2:#F8B871;--g3:#A573ED;--g4:#6BB2FF;--up:#d93c61;--flat:#c18a18;--down:#2474d8;--hold:#777;--good:#168a5b;--bad:#d93c61}
+    *{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Apple SD Gothic Neo,Noto Sans KR,sans-serif;background:var(--bg);color:var(--text)}
+    header{position:sticky;top:0;z-index:10;background:rgba(245,250,252,.93);backdrop-filter:blur(9px);border-bottom:1px solid var(--line)}.top,main{max-width:1180px;margin:0 auto;padding:14px}.brand{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.brand h1{margin:0;font-size:18px}.sub{font-size:12px;color:var(--sub);line-height:1.45}.btn{display:inline-flex;border:1px solid var(--line);background:rgba(255,255,255,.82);padding:8px 12px;border-radius:999px;text-decoration:none;color:var(--text);font-size:12px;cursor:pointer}
+    .hero{background:linear-gradient(160deg,rgba(241,133,174,.25),rgba(248,184,113,.20),rgba(165,115,237,.18),rgba(107,178,255,.18));padding:14px;border-radius:26px;margin-bottom:14px}.hero-inner{background:rgba(255,255,255,.78);border:1px solid var(--line);border-radius:22px;padding:16px;box-shadow:var(--shadow)}.eyebrow{font-size:12px;color:var(--sub);margin-bottom:5px}.headline{font-size:24px;line-height:1.35;font-weight:780;letter-spacing:-.7px}
+    .grid{display:grid;gap:12px}.cols{grid-template-columns:repeat(auto-fit,minmax(330px,1fr))}.card{border:1px solid var(--line);background:var(--card);border-radius:20px;padding:14px;box-shadow:0 10px 24px rgba(18,28,40,.07)}.card h2{margin:0;font-size:17px}.topline{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.badge{display:inline-flex;align-items:center;gap:5px;padding:5px 8px;border-radius:999px;border:1px solid var(--line);font-size:11px;background:rgba(255,255,255,.72);white-space:nowrap}.badge.up{color:var(--up);background:rgba(217,60,97,.08)}.badge.neutral{color:var(--flat);background:rgba(193,138,24,.09)}.badge.down{color:var(--down);background:rgba(36,116,216,.08)}.badge.hold{color:var(--hold);background:rgba(0,0,0,.05)}.score{font-size:34px;font-weight:850;letter-spacing:-1px}.bar{height:8px;background:rgba(20,30,40,.07);border-radius:99px;overflow:hidden;margin-top:7px}.bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3),var(--g4))}.axis{border-top:1px solid var(--line);padding-top:9px;margin-top:9px}.axis-head{display:flex;justify-content:space-between;gap:10px}.axis b{font-size:13px}.small{font-size:12px;color:var(--sub);line-height:1.45}.reason{font-size:13px;line-height:1.55;background:rgba(255,255,255,.68);border:1px dashed var(--line);border-radius:14px;padding:10px;margin-top:10px}.empty{padding:22px;text-align:center;color:var(--sub);border:1px dashed var(--line);border-radius:18px;background:rgba(255,255,255,.62)}
+  </style>
+</head>
+<body>
+<header><div class="top"><div class="brand"><div><h1>Evidence Score Engine</h1><div class="sub">가격·수급·질병·정책·뉴스/수요 5개 축 점수 구성 검수</div></div><div><a class="btn" href="./admin.html">Admin으로 돌아가기</a></div></div></div></header>
+<main>
+  <div class="hero"><div class="hero-inner"><div class="eyebrow">Phase 2-1</div><div class="headline">축종별 시장신호 점수 구성</div><div class="sub" id="updatedAt">불러오는 중...</div></div></div>
+  <div class="grid cols" id="cards"><div class="empty">점수 데이터를 불러오는 중...</div></div>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const esc=(s='')=>String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const safeArray=x=>Array.isArray(x)?x:[];
+function bar(v,max=100){const n=Math.max(0,Math.min(100,Number(v)||0));const pct=max===100?n:Math.round(n/max*100);return `<div class="bar"><i style="width:${pct}%"></i></div>`;}
+function cls(d){return d==='up'?'up':d==='down'?'down':d==='hold'?'hold':'neutral';}
+function renderAxis(axis){return `<div class="axis"><div class="axis-head"><div><b>${esc(axis.label)}</b><div class="small">자료 ${esc(axis.items||0)}건 · ▲${esc(axis.up||0)} ▼${esc(axis.down||0)} =${esc(axis.neutral||0)}</div></div><b>${esc(axis.score||0)} / ${esc(axis.max_score||0)}</b></div>${bar(axis.score,axis.max_score||100)}<div class="small">${safeArray(axis.examples).slice(0,1).map(x=>esc(x.title||'')).join('')}</div></div>`;}
+function renderCard(s){const details=s.axis_detail||{};const order=['price','supply','disease','policy','news'];return `<section class="card"><div class="topline"><div><h2>${esc(s.name||s.id)}</h2><div class="small">근거 ${esc(s.evidence_count||0)}건 · 공식 ${esc(s.official_count||0)}건 · 커버리지 ${esc(s.coverage_rate||0)}%</div></div><span class="badge ${cls(s.direction)}">${esc(s.status||'-')}</span></div><div class="score">${esc(s.signal_score||0)}점</div>${bar(s.signal_score)}<div class="small">신뢰도 ${esc(s.confidence_score||0)}점 · 품질 ${esc(s.quality_score||0)}점</div><div class="reason"><b>왜?</b><br>${esc(s.reason||'')}</div>${order.map(k=>details[k]?renderAxis(details[k]):'').join('')}</section>`;}
+async function init(){try{const r=await fetch('./data/analysis/evidence_scores.json?ts='+Date.now(),{cache:'no-store'});const data=await r.json();$('updatedAt').textContent='갱신 '+(data.updated_at||'N/A')+' · '+(data.policy||'');$('cards').innerHTML=safeArray(data.species).map(renderCard).join('')||'<div class="empty">점수 데이터 없음</div>';}catch(e){console.error(e);$('cards').innerHTML='<div class="empty">점수 데이터를 불러오지 못했습니다. 다음 자동 업데이트 후 다시 확인하세요.</div>';}}
+init();
+</script>
+</body>
+</html>
