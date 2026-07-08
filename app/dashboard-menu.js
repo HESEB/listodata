@@ -26,6 +26,7 @@
       ['규칙테스트','./rule-test.html','기사 제목 테스트'],
       ['변경로그','./change-log.html','정책버전·파일상태'],
       ['업데이트 안정성','./update-stability.html','자동 업데이트 점검'],
+      ['Fallback 보호','./fallback-status.html','실패 시 데이터 복원 상태'],
       ['UX점검','./ux-check.html','최종 링크/메뉴 점검']
     ]}
   ];
