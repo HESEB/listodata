@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Patch Approval | HESEB Admin</title>
+  <style>
+    :root{--bg:#f5fafc;--card:rgba(255,255,255,.94);--line:rgba(20,30,40,.09);--text:#182231;--sub:rgba(24,34,49,.68);--shadow:0 14px 34px rgba(18,28,40,.10);--good:#168a5b;--warn:#c18a18;--bad:#d93c61;--blue:#2474d8}
+    *{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Apple SD Gothic Neo,Noto Sans KR,sans-serif;background:var(--bg);color:var(--text)}header{position:sticky;top:0;z-index:10;background:rgba(245,250,252,.93);backdrop-filter:blur(9px);border-bottom:1px solid var(--line)}.top,main{max-width:1180px;margin:0 auto;padding:14px}.brand{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.brand h1{margin:0;font-size:18px}.sub,.small{font-size:12px;color:var(--sub);line-height:1.45}.btn{display:inline-flex;border:1px solid var(--line);background:rgba(255,255,255,.82);padding:8px 12px;border-radius:999px;text-decoration:none;color:var(--text);font-size:12px;cursor:pointer}.btn.primary{background:linear-gradient(90deg,rgba(241,133,174,.22),rgba(107,178,255,.20));font-weight:760}.hero{background:linear-gradient(160deg,rgba(241,133,174,.25),rgba(248,184,113,.20),rgba(165,115,237,.18),rgba(107,178,255,.18));padding:14px;border-radius:26px;margin-bottom:14px}.hero-inner{background:rgba(255,255,255,.78);border:1px solid var(--line);border-radius:22px;padding:16px;box-shadow:var(--shadow)}.eyebrow{font-size:12px;color:var(--sub);margin-bottom:5px}.headline{font-size:24px;line-height:1.35;font-weight:780;letter-spacing:-.7px}.grid{display:grid;gap:12px}.cols{grid-template-columns:repeat(auto-fit,minmax(330px,1fr))}.layout{grid-template-columns:1fr 410px}@media(max-width:980px){.layout{grid-template-columns:1fr}}.card{border:1px solid var(--line);background:var(--card);border-radius:20px;padding:14px;box-shadow:0 10px 24px rgba(18,28,40,.07)}.card h2{margin:0;font-size:17px}.badge{display:inline-flex;align-items:center;gap:5px;padding:5px 8px;border-radius:999px;border:1px solid var(--line);font-size:11px;background:rgba(255,255,255,.72);white-space:nowrap}.badge.good{color:var(--good);background:rgba(22,138,91,.08)}.badge.warn{color:var(--warn);background:rgba(193,138,24,.09)}.badge.bad{color:var(--bad);background:rgba(217,60,97,.08)}.badge.blue{color:var(--blue);background:rgba(36,116,216,.08)}.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px}.chip{font-size:11px;padding:5px 8px;border-radius:999px;border:1px solid var(--line);background:rgba(0,0,0,.035);color:var(--sub)}.memo{font-size:13px;color:rgba(24,34,49,.82);line-height:1.55;margin-top:8px}.action{font-size:12px;color:rgba(24,34,49,.74);line-height:1.5;margin-top:8px;border:1px dashed var(--line);border-radius:14px;padding:9px;background:rgba(255,255,255,.62)}textarea{width:100%;min-height:520px;border:1px solid var(--line);border-radius:16px;padding:12px;background:rgba(255,255,255,.9);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.empty{padding:22px;text-align:center;color:var(--sub);border:1px dashed var(--line);border-radius:18px;background:rgba(255,255,255,.62)}@media(max-width:620px){.brand{display:block}}
+  </style>
+</head>
+<body>
+<header><div class="top"><div class="brand"><div><h1>Patch Approval</h1><div class="sub">관리자 승인 패치 생성</div></div><div><a class="btn" href="./admin.html">Admin</a> <a class="btn" href="./classification-review.html">분류검수</a></div></div></div></header>
+<main>
+  <div class="hero"><div class="hero-inner"><div class="eyebrow">Phase 6-8</div><div class="headline">관리자 승인 패치 반영 구조</div><div class="sub">검수 후보를 선택해 approved_patches.json에 넣을 승인 패치 JSON을 생성합니다.</div></div></div>
+  <section class="grid layout">
+    <section>
+      <div class="toolbar"><button class="btn primary" onclick="addManualPatch('add_exclude_keyword')">제외어 패치</button><button class="btn" onclick="addManualPatch('add_include_keyword')">포함어 패치</button><button class="btn" onclick="addManualPatch('add_species_keyword')">축종 키워드</button><button class="btn" onclick="clearPatches()">초기화</button></div>
+      <div class="grid cols" id="cards"><div class="empty">검수 후보를 불러오는 중...</div></div>
+    </section>
+    <aside class="card"><h2>승인 패치 JSON</h2><div class="memo">아래 내용을 <b>app/data/admin/approved_patches.json</b>에 커밋하면 다음 자동 업데이트에서 반영됩니다.</div><div class="toolbar"><button class="btn primary" onclick="copyPatch()">복사</button><button class="btn" onclick="downloadPatch()">다운로드</button></div><textarea id="patchBox"></textarea></aside>
+  </section>
+</main>
+<script>
+const REVIEW='./data/admin/classification_review.json';
+const $=id=>document.getElementById(id);const safeArray=x=>Array.isArray(x)?x:[];const esc=(s='')=>String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));let PATCHES=[];
+async function fetchJSON(p){const r=await fetch(p+'?ts='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error(p);return r.json();}
+function patchDoc(){return {updated_at:new Date().toISOString(),policy:'phase6_admin_approved_patches_v1',notice:'관리자 승인 패치. approved=true인 항목만 자동 업데이트에서 반영됩니다.',patches:PATCHES};}
+function renderPatch(){ $('patchBox').value=JSON.stringify(patchDoc(),null,2); }
+function addPatch(p){PATCHES.push({...p,approved:true,created_at:new Date().toISOString()});renderPatch();}
+function clearPatches(){PATCHES=[];renderPatch();}
+function addManualPatch(action){const keyword=prompt(action==='add_species_keyword'?'추가할 축종 키워드':'추가할 키워드');if(!keyword)return;const p={id:'manual_'+Date.now(),action,keyword,reason:'manual approved'};if(action==='add_species_keyword'){p.species=prompt('축종 코드(BEEF/PORK/POULTRY/DUCK/EGG/OTHER)','BEEF')||'BEEF';}addPatch(p);}
+function copyPatch(){navigator.clipboard.writeText($('patchBox').value);}
+function downloadPatch(){const blob=new Blob([$('patchBox').value+'\n'],{type:'application/json;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='approved_patches.json';a.click();URL.revokeObjectURL(url);}
+function candidatePatches(x){const title=x.title||x.source_title||x.id||'';const out=[];out.push({label:'강제포함',patch:{id:'force_include_'+(x.id||Date.now()),action:'force_include',target:title,reason:x.reason||x.filter_reason||'admin review'}});out.push({label:'강제제외',patch:{id:'force_exclude_'+(x.id||Date.now()),action:'force_exclude',target:title,reason:x.reason||x.filter_reason||'admin review'}});if(x.suggested_species||x.species){out.push({label:'축종변경',patch:{id:'change_species_'+(x.id||Date.now()),action:'change_species',target:title,species:x.suggested_species||x.species,reason:'admin review'}});}return out;}
+function renderCard(x){const title=x.title||x.source_title||x.id||'-';const patches=candidatePatches(x);return `<article class="card"><div><span class="badge warn">검수후보</span> <span class="badge blue">${esc(x.priority||x.severity||'review')}</span></div><h2 style="margin-top:8px">${esc(title)}</h2><div class="memo">${esc(x.reason||x.filter_reason||x.memo||'검수 필요')}</div><div class="chips">${safeArray(x.species).map(s=>`<span class="chip">${esc(s)}</span>`).join('')}<span class="chip">${esc(x.suggested_action||'-')}</span></div><div class="toolbar">${patches.map((p,i)=>`<button class="btn" onclick='addPatch(${JSON.stringify(p.patch).replace(/'/g,"&#39;")})'>${esc(p.label)}</button>`).join('')}</div></article>`;}
+async function init(){try{const data=await fetchJSON(REVIEW);const rows=safeArray(data.items).slice(0,30);$('cards').innerHTML=rows.map(renderCard).join('')||'<div class="empty">검수 후보 없음</div>';}catch(e){console.error(e);$('cards').innerHTML='<div class="empty">분류검수 데이터를 불러오지 못했습니다.</div>';}renderPatch();}
+init();
+</script>
+</body>
+</html>
