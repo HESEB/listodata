@@ -1,13 +1,13 @@
 {
-  "updated_at": "2026-07-11T09:00:57Z",
+  "updated_at": "2026-07-11T10:36:09Z",
   "notice": "Phase 2 Display Layer 초안입니다. 기존 market_dashboard.json은 별도로 유지됩니다.",
   "species": [
     {
       "id": "BEEF",
       "name": "한우",
-      "signal_score": 59,
-      "direction": "neutral",
-      "status": "보합/혼조",
+      "signal_score": 62,
+      "direction": "up",
+      "status": "상방 가능성",
       "quality_score": 69,
       "confidence_score": 84,
       "coverage_rate": 100,
@@ -24,13 +24,14 @@
         "수급/도축",
         "수요/행사",
         "일반",
+        "정책/고시",
         "질병/방역"
       ],
       "score_breakdown": {
         "price": 17,
         "supply": 19,
         "disease": 17,
-        "policy": 0,
+        "policy": 3,
         "news": 6
       },
       "score_breakdown_labels": {
@@ -45,10 +46,10 @@
           "label": "가격",
           "max_score": 30,
           "score": 17,
-          "items": 14,
+          "items": 13,
           "up": 4,
           "down": 4,
-          "neutral": 6,
+          "neutral": 5,
           "examples": [
             {
               "title": "적자 면하나 했는데… 사료 가격 인상에 한우 농가 ‘막막’ - 전라일보",
@@ -131,12 +132,19 @@
         "policy": {
           "label": "정책/고시",
           "max_score": 10,
-          "score": 0,
-          "items": 0,
+          "score": 3,
+          "items": 1,
           "up": 0,
           "down": 0,
-          "neutral": 0,
-          "examples": []
+          "neutral": 1,
+          "examples": [
+            {
+              "title": "\"한돈, 나 먼저 축산법 탈출한다\"...베일 벗은 한우산업지원법 하위법령 - 돼지와사람",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 51
+            }
+          ]
         },
         "news": {
           "label": "뉴스/수요",
@@ -174,30 +182,31 @@
     {
       "id": "PORK",
       "name": "돈육",
-      "signal_score": 41,
+      "signal_score": 44,
       "direction": "neutral",
       "status": "보합/혼조",
-      "quality_score": 75,
-      "confidence_score": 75,
-      "coverage_rate": 60,
+      "quality_score": 74,
+      "confidence_score": 81,
+      "coverage_rate": 80,
       "evidence_count": 35,
       "official_count": 17,
       "direction_counts": {
-        "up": 28,
+        "up": 27,
         "down": 1,
-        "neutral": 6,
+        "neutral": 7,
         "hold": 0
       },
       "coverage_types": [
         "가격",
         "일반",
+        "정책/고시",
         "질병/방역"
       ],
       "score_breakdown": {
         "price": 16,
         "supply": 0,
         "disease": 19,
-        "policy": 0,
+        "policy": 3,
         "news": 6
       },
       "score_breakdown_labels": {
@@ -251,8 +260,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 28,
-          "up": 28,
+          "items": 27,
+          "up": 27,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -279,12 +288,19 @@
         "policy": {
           "label": "정책/고시",
           "max_score": 10,
-          "score": 0,
-          "items": 0,
+          "score": 3,
+          "items": 1,
           "up": 0,
           "down": 0,
-          "neutral": 0,
-          "examples": []
+          "neutral": 1,
+          "examples": [
+            {
+              "title": "\"한돈, 나 먼저 축산법 탈출한다\"...베일 벗은 한우산업지원법 하위법령 - 돼지와사람",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 51
+            }
+          ]
         },
         "news": {
           "label": "뉴스/수요",
@@ -305,7 +321,7 @@
               "title": "가축질병의 경제적 영향 분석 - 한국농촌경제연구원",
               "direction": "neutral",
               "source_level": 5,
-              "quality_score": 89
+              "quality_score": 82
             },
             {
               "title": "농축산물 생산 및 유통계약의 효율적 운용방안 - KREI Repository",
@@ -453,7 +469,7 @@
               "title": "가축질병의 경제적 영향 분석 - 한국농촌경제연구원",
               "direction": "neutral",
               "source_level": 5,
-              "quality_score": 89
+              "quality_score": 82
             }
           ]
         }
@@ -613,10 +629,10 @@
           "label": "가격",
           "max_score": 30,
           "score": 17,
-          "items": 15,
+          "items": 14,
           "up": 3,
           "down": 3,
-          "neutral": 9,
+          "neutral": 8,
           "examples": [
             {
               "title": "계란값 상승 논란, 공적 기준 시급 - 축산경제신문",
@@ -723,13 +739,19 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 8,
-          "items": 8,
+          "items": 9,
           "up": 0,
           "down": 0,
-          "neutral": 8,
+          "neutral": 9,
           "examples": [
             {
               "title": "[칼럼] 1만원 계란값이 남긴 경고...한돈에서 같은 실수 말아야 - 돼지와사람",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 65
+            },
+            {
+              "title": "계란 10개 값이 5000원 이상이라니?… 막막한 서민들 - 국제신문",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 65
@@ -739,12 +761,6 @@
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 65
-            },
-            {
-              "title": "[동서남북] 계란은 왜 날이 갈수록 비싸지는가 - 조선일보",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 58
             }
           ]
         }
@@ -758,13 +774,13 @@
       "signal_score": 41,
       "direction": "neutral",
       "status": "보합/혼조",
-      "quality_score": 80,
+      "quality_score": 79,
       "confidence_score": 84,
       "coverage_rate": 80,
-      "evidence_count": 35,
-      "official_count": 34,
+      "evidence_count": 36,
+      "official_count": 35,
       "direction_counts": {
-        "up": 16,
+        "up": 17,
         "down": 2,
         "neutral": 17,
         "hold": 0
@@ -827,8 +843,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 20,
-          "items": 14,
-          "up": 14,
+          "items": 15,
+          "up": 15,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -842,7 +858,7 @@
               "title": "식량정책실장, 구제역 방역 최일선 경북도 방역 추진상황 점검 - newszoom.kr",
               "direction": "up",
               "source_level": 3,
-              "quality_score": 81
+              "quality_score": 76
             },
             {
               "title": "농식품부, 경북도 구제역 방역관리 추진상황 점검 - v.daum.net",
