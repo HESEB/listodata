@@ -1,26 +1,36 @@
 {
-  "updated_at": "2026-07-12T12:10:22Z",
+  "updated_at": "2026-07-12T13:58:42Z",
   "policy": "phase6_quality_alerts_v1",
   "notice": "품질·안정성·Fallback·분류검수 리포트를 통합해 관리자 경고를 생성합니다.",
   "summary": {
-    "total_alerts": 1,
-    "critical_count": 1,
-    "warning_count": 0,
-    "info_count": 0,
-    "grade": "critical",
-    "label": "긴급",
+    "total_alerts": 2,
+    "critical_count": 0,
+    "warning_count": 1,
+    "info_count": 1,
+    "grade": "warning",
+    "label": "주의",
     "version": "v6.2.0"
   },
   "alerts": [
     {
-      "id": "QUALITY_RAW_ZERO",
-      "severity": "critical",
-      "category": "quality",
-      "title": "Raw 데이터 없음",
-      "message": "자동 수집 원본 데이터가 0건입니다.",
-      "recommended_action": "수집 스크립트와 외부 소스 응답 상태 확인",
-      "source": "quality_report",
-      "metric": 0
+      "id": "CLASS_REVIEW_QUEUE_HIGH",
+      "severity": "warning",
+      "category": "classification",
+      "title": "검수 대기 항목 증가",
+      "message": "자동분류 검수 대기 항목이 141건입니다.",
+      "recommended_action": "분류검수 페이지에서 우선순위 높은 항목부터 처리",
+      "source": "classification_review",
+      "metric": 141
+    },
+    {
+      "id": "CLASS_FORCE_ACTIONS",
+      "severity": "info",
+      "category": "classification",
+      "title": "수동 보정 후보 존재",
+      "message": "강제포함·축종변경·중복병합 후보 5건이 있습니다.",
+      "recommended_action": "패치 JSON 생성 후 사전/로직 반영 검토",
+      "source": "classification_review",
+      "metric": 5
     }
   ],
   "sources": {
