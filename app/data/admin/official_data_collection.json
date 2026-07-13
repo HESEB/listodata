@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-07-13T04:03:49Z",
+  "updated_at": "2026-07-13T07:43:09Z",
   "policy": "phase7_official_collection_status_v1",
   "summary": {
     "status": "waiting_sources",
     "configured_source_count": 4,
-    "enabled_source_count": 1,
-    "successful_source_count": 1,
+    "enabled_source_count": 2,
+    "successful_source_count": 2,
     "failed_source_count": 0,
     "raw_count": 0,
     "valid_count": 0,
@@ -13,6 +13,17 @@
     "snapshot_preserved": true
   },
   "sources": [
+    {
+      "source_id": "REAL_OFFICIAL_API_OUTPUT",
+      "provider": "KOSIS·공공데이터포털",
+      "adapter": "local_json",
+      "enabled": true,
+      "status": "empty",
+      "fetched_count": 0,
+      "valid_count": 0,
+      "rejected_count": 0,
+      "message": "수집 대상 레코드 없음"
+    },
     {
       "source_id": "ADMIN_APPROVED_MANUAL",
       "provider": "HESEB 관리자 승인",
@@ -25,7 +36,7 @@
       "message": "수집 대상 레코드 없음"
     },
     {
-      "source_id": "KOSIS_LIVESTOCK",
+      "source_id": "LEGACY_KOSIS_FULL_URL",
       "provider": "국가통계포털 KOSIS",
       "adapter": "remote_json",
       "enabled": false,
@@ -33,10 +44,10 @@
       "fetched_count": 0,
       "valid_count": 0,
       "rejected_count": 0,
-      "message": "API URL 또는 인증 조건 확정 후 활성화"
+      "message": "Phase 8의 세분화된 KOSIS 연결로 대체"
     },
     {
-      "source_id": "DATA_GO_KR_LIVESTOCK",
+      "source_id": "LEGACY_DATA_GO_KR_FULL_URL",
       "provider": "공공데이터포털",
       "adapter": "remote_json",
       "enabled": false,
@@ -44,18 +55,7 @@
       "fetched_count": 0,
       "valid_count": 0,
       "rejected_count": 0,
-      "message": "서비스키가 포함된 전체 호출 URL을 Actions Secret으로 설정한 뒤 활성화"
-    },
-    {
-      "source_id": "OFFICIAL_CSV_FEED",
-      "provider": "공식기관 CSV",
-      "adapter": "remote_csv",
-      "enabled": false,
-      "status": "disabled",
-      "fetched_count": 0,
-      "valid_count": 0,
-      "rejected_count": 0,
-      "message": "고정 CSV 다운로드 주소가 확보된 데이터부터 순차 활성화"
+      "message": "Phase 8의 실제 소스 연결로 대체"
     }
   ],
   "rejected": [],
