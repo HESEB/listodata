@@ -1,0 +1,260 @@
+{
+  "updated_at": "2026-07-13T04:03:50Z",
+  "policy": "phase6_operational_readiness_v1",
+  "summary": {
+    "total_checks": 39,
+    "pass_count": 39,
+    "fail_count": 0,
+    "readiness_score": 100,
+    "grade": "ready",
+    "label": "운영준비 완료"
+  },
+  "files": [
+    {
+      "path": "scripts/check_update_stability.py",
+      "exists": true,
+      "size_bytes": 9715,
+      "status": "ok"
+    },
+    {
+      "path": "scripts/protect_fallback_data.py",
+      "exists": true,
+      "size_bytes": 6623,
+      "status": "ok"
+    },
+    {
+      "path": "scripts/build_quality_alerts.py",
+      "exists": true,
+      "size_bytes": 9827,
+      "status": "ok"
+    },
+    {
+      "path": "scripts/build_update_history.py",
+      "exists": true,
+      "size_bytes": 3036,
+      "status": "ok"
+    },
+    {
+      "path": "scripts/build_source_health.py",
+      "exists": true,
+      "size_bytes": 9364,
+      "status": "ok"
+    },
+    {
+      "path": "scripts/build_freshness_alerts.py",
+      "exists": true,
+      "size_bytes": 8745,
+      "status": "ok"
+    },
+    {
+      "path": "scripts/apply_admin_patches.py",
+      "exists": true,
+      "size_bytes": 7773,
+      "status": "ok"
+    },
+    {
+      "path": "scripts/build_operational_readiness.py",
+      "exists": true,
+      "size_bytes": 3696,
+      "status": "ok"
+    },
+    {
+      "path": "app/update-stability.html",
+      "exists": true,
+      "size_bytes": 9184,
+      "status": "ok"
+    },
+    {
+      "path": "app/fallback-status.html",
+      "exists": true,
+      "size_bytes": 6750,
+      "status": "ok"
+    },
+    {
+      "path": "app/quality-alerts.html",
+      "exists": true,
+      "size_bytes": 7334,
+      "status": "ok"
+    },
+    {
+      "path": "app/update-history.html",
+      "exists": true,
+      "size_bytes": 2940,
+      "status": "ok"
+    },
+    {
+      "path": "app/source-health.html",
+      "exists": true,
+      "size_bytes": 7812,
+      "status": "ok"
+    },
+    {
+      "path": "app/freshness-alerts.html",
+      "exists": true,
+      "size_bytes": 7153,
+      "status": "ok"
+    },
+    {
+      "path": "app/patch-approval.html",
+      "exists": true,
+      "size_bytes": 8306,
+      "status": "ok"
+    },
+    {
+      "path": "app/actions-guide.html",
+      "exists": true,
+      "size_bytes": 7341,
+      "status": "ok"
+    },
+    {
+      "path": "app/operations-badges.js",
+      "exists": true,
+      "size_bytes": 2603,
+      "status": "ok"
+    },
+    {
+      "path": "app/data/admin/approved_patches.json",
+      "exists": true,
+      "size_bytes": 223,
+      "status": "ok"
+    },
+    {
+      "path": "app/data/admin/classification_overrides.json",
+      "exists": true,
+      "size_bytes": 296,
+      "status": "ok"
+    }
+  ],
+  "workflow_steps": [
+    {
+      "token": "protect_fallback_data.py snapshot",
+      "found": true,
+      "ordered": true,
+      "position": 560,
+      "status": "ok"
+    },
+    {
+      "token": "update_market_data.py",
+      "found": true,
+      "ordered": true,
+      "position": 662,
+      "status": "ok"
+    },
+    {
+      "token": "apply_admin_patches.py",
+      "found": true,
+      "ordered": true,
+      "position": 1103,
+      "status": "ok"
+    },
+    {
+      "token": "filter_collected_news.py",
+      "found": true,
+      "ordered": true,
+      "position": 1206,
+      "status": "ok"
+    },
+    {
+      "token": "build_quality_layers.py",
+      "found": true,
+      "ordered": true,
+      "position": 1305,
+      "status": "ok"
+    },
+    {
+      "token": "check_update_stability.py",
+      "found": true,
+      "ordered": true,
+      "position": 2276,
+      "status": "ok"
+    },
+    {
+      "token": "protect_fallback_data.py verify",
+      "found": true,
+      "ordered": true,
+      "position": 2454,
+      "status": "ok"
+    },
+    {
+      "token": "build_quality_alerts.py",
+      "found": true,
+      "ordered": true,
+      "position": 2550,
+      "status": "ok"
+    },
+    {
+      "token": "build_source_health.py",
+      "found": true,
+      "ordered": true,
+      "position": 2637,
+      "status": "ok"
+    },
+    {
+      "token": "build_freshness_alerts.py",
+      "found": true,
+      "ordered": true,
+      "position": 2726,
+      "status": "ok"
+    },
+    {
+      "token": "build_update_history.py",
+      "found": true,
+      "ordered": true,
+      "position": 2816,
+      "status": "ok"
+    },
+    {
+      "token": "build_operational_readiness.py",
+      "found": true,
+      "ordered": true,
+      "position": 2911,
+      "status": "ok"
+    }
+  ],
+  "commit_outputs": [
+    {
+      "name": "update_stability.json",
+      "in_commit_pattern": true,
+      "status": "ok"
+    },
+    {
+      "name": "fallback_status.json",
+      "in_commit_pattern": true,
+      "status": "ok"
+    },
+    {
+      "name": "quality_alerts.json",
+      "in_commit_pattern": true,
+      "status": "ok"
+    },
+    {
+      "name": "update_history.json",
+      "in_commit_pattern": true,
+      "status": "ok"
+    },
+    {
+      "name": "source_health.json",
+      "in_commit_pattern": true,
+      "status": "ok"
+    },
+    {
+      "name": "freshness_alerts.json",
+      "in_commit_pattern": true,
+      "status": "ok"
+    },
+    {
+      "name": "patch_status.json",
+      "in_commit_pattern": true,
+      "status": "ok"
+    },
+    {
+      "name": "operational_readiness.json",
+      "in_commit_pattern": true,
+      "status": "ok"
+    }
+  ],
+  "recommendations": [
+    "Phase 6 운영 안정화 구성 정상"
+  ],
+  "notice": "Phase 6-1~6-9 핵심 파일, 워크플로 순서, 자동 커밋 산출물을 점검한 최종 운영 리포트입니다."
+}
