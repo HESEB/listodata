@@ -1,0 +1,77 @@
+{
+  "updated_at": "2026-07-13",
+  "policy": "phase7_recommendation_engine_v1",
+  "notice": "Direction Engine 2.0 결과를 구매 행동으로 변환하는 규칙입니다. 내부 재고·계약 데이터가 연결되기 전에는 시장 데이터 기준 추천으로 표시합니다.",
+  "input_requirements": {
+    "decision_status": "ready",
+    "coverage_min": 60,
+    "confidence_min": 55
+  },
+  "actions": {
+    "stock_review": {"label": "비축 검토", "priority": 1},
+    "additional_contract": {"label": "추가 계약", "priority": 1},
+    "fixed_price": {"label": "고정가 협의", "priority": 2},
+    "wait": {"label": "관망", "priority": 3},
+    "inventory_reduce": {"label": "재고 소진", "priority": 1},
+    "promotion": {"label": "행사 운영", "priority": 2},
+    "substitute_review": {"label": "대체 원료 검토", "priority": 2},
+    "hold": {"label": "판단 유보", "priority": 1}
+  },
+  "direction_rules": {
+    "strong_up": {
+      "primary": "additional_contract",
+      "secondary": ["stock_review", "fixed_price", "substitute_review"],
+      "urgency": "high"
+    },
+    "up": {
+      "primary": "stock_review",
+      "secondary": ["fixed_price", "additional_contract"],
+      "urgency": "medium"
+    },
+    "flat": {
+      "primary": "wait",
+      "secondary": [],
+      "urgency": "low"
+    },
+    "down": {
+      "primary": "promotion",
+      "secondary": ["inventory_reduce", "wait"],
+      "urgency": "medium"
+    },
+    "strong_down": {
+      "primary": "inventory_reduce",
+      "secondary": ["promotion", "wait"],
+      "urgency": "high"
+    },
+    "hold": {
+      "primary": "hold",
+      "secondary": [],
+      "urgency": "none"
+    }
+  },
+  "confidence_adjustments": {
+    "high_min": 80,
+    "medium_min": 65,
+    "low_min": 55,
+    "low_confidence_action": "wait"
+  },
+  "signal_adjustments": {
+    "price_up_threshold": 20,
+    "supply_up_threshold": 20,
+    "import_stock_down_threshold": -20,
+    "conflict_action": "wait"
+  },
+  "internal_data": {
+    "inventory_status_available": false,
+    "contract_coverage_available": false,
+    "demand_plan_available": false,
+    "display_notice": "시장 데이터 기준 추천"
+  },
+  "output_contract": {
+    "primary_action": true,
+    "secondary_actions_max": 2,
+    "reason_count_max": 3,
+    "limitations_required": true,
+    "evidence_links_required": true
+  }
+}
