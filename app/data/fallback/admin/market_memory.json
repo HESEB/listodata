@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-07-13T11:31:43Z",
+  "updated_at": "2026-07-13T15:14:43Z",
   "policy": "phase5_market_memory_v2",
   "notice": "과거 신호 변동, 이벤트 캘린더, 현재 시장신호를 연결한 시장 메모리입니다. 가격 예측이 아니라 구매 판단 보조자료입니다.",
   "summary": {
-    "memory_event_count": 8,
+    "memory_event_count": 7,
     "species_with_cases": 4,
-    "calendar_linked_count": 8,
-    "similar_case_count": 0
+    "calendar_linked_count": 7,
+    "similar_case_count": 1
   },
   "species": [
     {
@@ -17,9 +17,9 @@
       "drop_count": 0,
       "avg_jump_change": 0,
       "avg_drop_change": 0,
-      "latest_signal_score": 57,
+      "latest_signal_score": 66,
       "latest_status": "판단 유보",
-      "current_confidence": 65,
+      "current_confidence": 47,
       "current_conflict": "high",
       "top_cases": [],
       "memory_note": "한우은 아직 누적 사례가 부족하여 현재 신호 중심으로 판단"
@@ -134,7 +134,7 @@
       "avg_drop_change": -8.0,
       "latest_signal_score": 42,
       "latest_status": "보합/혼조",
-      "current_confidence": 72,
+      "current_confidence": 73,
       "current_conflict": "none",
       "top_cases": [
         {
@@ -202,7 +202,7 @@
       "drop_count": 0,
       "avg_jump_change": 0,
       "avg_drop_change": 0,
-      "latest_signal_score": 14,
+      "latest_signal_score": 12,
       "latest_status": "판단 유보",
       "current_confidence": 30,
       "current_conflict": "low",
@@ -212,43 +212,16 @@
     {
       "id": "EGG",
       "name": "계란",
-      "event_count": 4,
-      "jump_count": 2,
+      "event_count": 3,
+      "jump_count": 1,
       "drop_count": 2,
-      "avg_jump_change": 13.0,
+      "avg_jump_change": 10.0,
       "avg_drop_change": -12.0,
-      "latest_signal_score": 81,
-      "latest_status": "판단 유보",
-      "current_confidence": 60,
-      "current_conflict": "high",
+      "latest_signal_score": 66,
+      "latest_status": "상방 가능성",
+      "current_confidence": 88,
+      "current_conflict": "medium",
       "top_cases": [
-        {
-          "date": "2026-07-13",
-          "species": "EGG",
-          "name": "계란",
-          "event_type": "signal_jump",
-          "change": 16,
-          "from_score": 65,
-          "to_score": 81,
-          "memo": "계란 신호 +16.0점 변동",
-          "event_type_label": "신호 급등",
-          "nearby_calendar_events": [
-            {
-              "event_id": "GOV_POLICY_CHECK_MONTHLY",
-              "title": "정부 수입·할당관세·가격안정 정책 확인",
-              "event_type": "policy_check",
-              "event_type_label": "정책 확인",
-              "date_start": "2026-07-01",
-              "date_end": "2026-12-31",
-              "impact_direction": "mixed",
-              "impact_level": 3,
-              "distance_days": 12,
-              "purchase_check": "농식품부 정책·수입 확대·가격안정 대책·할당관세 발표 여부 월 1회 확인"
-            }
-          ],
-          "purchase_implication": "계란 상방 신호가 확대된 사례로, 단기 견적 재확인 및 운영 물량 선확보 검토 필요 / 인접 이벤트: 정부 수입·할당관세·가격안정 정책 확인 / 변동폭 큼",
-          "memory_id": "EGG_2026-07-13_signal_jump_16"
-        },
         {
           "date": "2026-07-09",
           "species": "EGG",
@@ -337,7 +310,7 @@
           "memory_id": "EGG_2026-07-11_signal_drop_m9"
         }
       ],
-      "memory_note": "계란 현재 판단 유보 상태로, 과거 사례보다 최신 공식자료 보강 우선"
+      "memory_note": "계란 현재 상방 신호와 과거 급등 사례를 함께 비교 필요"
     },
     {
       "id": "OTHER",
@@ -347,7 +320,7 @@
       "drop_count": 0,
       "avg_jump_change": 8.0,
       "avg_drop_change": 0,
-      "latest_signal_score": 50,
+      "latest_signal_score": 49,
       "latest_status": "판단 유보",
       "current_confidence": 56,
       "current_conflict": "high",
@@ -386,7 +359,18 @@
       "memory_note": "기타 현재 판단 유보 상태로, 과거 사례보다 최신 공식자료 보강 우선"
     }
   ],
-  "similar_cases": [],
+  "similar_cases": [
+    {
+      "species": "EGG",
+      "name": "계란",
+      "current_status": "상방 가능성",
+      "current_signal_score": 66,
+      "case_date": "2026-07-10",
+      "case_change": 10,
+      "case_memo": "계란 신호 +10.0점 변동",
+      "purchase_implication": "계란 상방 신호가 확대된 사례로, 단기 견적 재확인 및 운영 물량 선확보 검토 필요 / 인접 이벤트: 정부 수입·할당관세·가격안정 정책 확인"
+    }
+  ],
   "items": [
     {
       "date": "2026-07-09",
@@ -642,33 +626,6 @@
       ],
       "purchase_implication": "돈육 상방 신호가 확대된 사례로, 단기 견적 재확인 및 운영 물량 선확보 검토 필요 / 인접 이벤트: 혹서기 도축·도계 감소 리스크",
       "memory_id": "PORK_2026-07-12_signal_jump_11"
-    },
-    {
-      "date": "2026-07-13",
-      "species": "EGG",
-      "name": "계란",
-      "event_type": "signal_jump",
-      "change": 16,
-      "from_score": 65,
-      "to_score": 81,
-      "memo": "계란 신호 +16.0점 변동",
-      "event_type_label": "신호 급등",
-      "nearby_calendar_events": [
-        {
-          "event_id": "GOV_POLICY_CHECK_MONTHLY",
-          "title": "정부 수입·할당관세·가격안정 정책 확인",
-          "event_type": "policy_check",
-          "event_type_label": "정책 확인",
-          "date_start": "2026-07-01",
-          "date_end": "2026-12-31",
-          "impact_direction": "mixed",
-          "impact_level": 3,
-          "distance_days": 12,
-          "purchase_check": "농식품부 정책·수입 확대·가격안정 대책·할당관세 발표 여부 월 1회 확인"
-        }
-      ],
-      "purchase_implication": "계란 상방 신호가 확대된 사례로, 단기 견적 재확인 및 운영 물량 선확보 검토 필요 / 인접 이벤트: 정부 수입·할당관세·가격안정 정책 확인 / 변동폭 큼",
-      "memory_id": "EGG_2026-07-13_signal_jump_16"
     }
   ],
   "inputs": {
