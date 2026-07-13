@@ -14,7 +14,8 @@
       ['공식데이터 수집','./official-data-collector.html','공식 데이터 소스별 수집 상태'],
       ['데이터 품질·커버리지','./official-data-quality.html','공식 데이터 품질·커버리지·신뢰도'],
       ['Direction Engine 2.0','./direction-engine-v2.html','공식 수치 기반 시장 방향성'],
-      ['Recommendation Engine','./recommendation-engine.html','시장 방향 기반 구매 행동 추천']
+      ['Recommendation Engine','./recommendation-engine.html','시장 방향 기반 구매 행동 추천'],
+      ['대표뉴스·문맥필터','./representative-news.html','대표 기사 선정과 Context Filter v2']
     ]},
     {title:'분석',desc:'판단 근거 검증',items:[
       ['Evidence Score','./score-engine.html','가격·수급·질병·정책·뉴스 점수'],
