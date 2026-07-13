@@ -4,6 +4,11 @@
 
 Official numeric data remains the primary decision source. News is filtered and
 ranked only as explanatory evidence for the DSS 2.0 dashboard.
+
+Phase 8-6 adds a hard publication-date cutoff. Articles outside the configured
+window, with missing/invalid dates, or with implausible future dates cannot be
+selected as representative news. They remain available to other history/market
+memory layers.
 """
 from __future__ import annotations
 
@@ -127,11 +132,68 @@ def context_evaluate(item: dict, policy: dict) -> dict:
     }
 
 
-def freshness_score(item: dict, window: int) -> float:
+def publication_eligibility(item: dict, policy: dict, reference_time: datetime) -> dict:
+    eligibility = policy.get("representative_eligibility", {})
+    cutoff_days = int(eligibility.get("hard_cutoff_days") or policy.get("windows_days", {}).get("decision_evidence", 30))
+    future_limit = float(eligibility.get("exclude_future_days_over", 1))
+    raw_date = item.get("published_at") or item.get("date")
+    reasons = eligibility.get("reason_codes", {})
+
+    if not raw_date:
+        return {
+            "eligible": not bool(eligibility.get("exclude_missing_published_at", True)),
+            "reason_code": "missing_date",
+            "reason": reasons.get("missing_date", "게시일 없음"),
+            "published_at": None,
+            "age_days": None,
+            "cutoff_days": cutoff_days,
+        }
+
+    published = parse_dt(raw_date)
+    if not published:
+        return {
+            "eligible": False,
+            "reason_code": "invalid_date",
+            "reason": reasons.get("invalid_date", "게시일 형식 오류"),
+            "published_at": raw_date,
+            "age_days": None,
+            "cutoff_days": cutoff_days,
+        }
+
+    age_days = (reference_time - published).total_seconds() / 86400
+    if age_days < -future_limit:
+        return {
+            "eligible": False,
+            "reason_code": "future_date",
+            "reason": reasons.get("future_date", "미래 게시일 오류"),
+            "published_at": raw_date,
+            "age_days": round(age_days, 1),
+            "cutoff_days": cutoff_days,
+        }
+    if age_days > cutoff_days:
+        return {
+            "eligible": False,
+            "reason_code": "older_than_cutoff",
+            "reason": reasons.get("older_than_cutoff", f"게시일 {cutoff_days}일 초과"),
+            "published_at": raw_date,
+            "age_days": round(age_days, 1),
+            "cutoff_days": cutoff_days,
+        }
+    return {
+        "eligible": True,
+        "reason_code": "within_cutoff",
+        "reason": f"게시일 {cutoff_days}일 이내",
+        "published_at": raw_date,
+        "age_days": round(max(0, age_days), 1),
+        "cutoff_days": cutoff_days,
+    }
+
+
+def freshness_score(item: dict, window: int, reference_time: datetime) -> float:
     dt = parse_dt(item.get("published_at") or item.get("date"))
     if not dt:
         return 0
-    age = max(0, (now() - dt).total_seconds() / 86400)
+    age = max(0, (reference_time - dt).total_seconds() / 86400)
     return round(max(0, 100 * (1 - age / max(window, 1))), 1)
 
 
@@ -156,9 +218,9 @@ def relevance_score(item: dict, species: str) -> float:
     return 100 if len(assigned) == 1 else max(55, 100 - (len(assigned) - 1) * 15)
 
 
-def representative_score(item: dict, species: str, direction: dict, policy: dict) -> dict:
+def representative_score(item: dict, species: str, direction: dict, policy: dict, reference_time: datetime) -> dict:
     weights = policy.get("representative_weights", {})
-    freshness = freshness_score(item, int(policy.get("windows_days", {}).get("decision_evidence", 30)))
+    freshness = freshness_score(item, int(policy.get("windows_days", {}).get("decision_evidence", 30)), reference_time)
     impact = min(100, max(0, float(item.get("impact_score") or 0) * 20))
     level = str(item.get("source_level") or 1)
     source = float(policy.get("source_level_scores", {}).get(level, 30))
@@ -179,6 +241,7 @@ def main() -> int:
     clean = read_json(CLEAN_PATH, {"items": []})
     items = [x for x in clean.get("items", []) if isinstance(x, dict)]
     directions = direction_map(read_json(DIRECTION_PATH, {"species": []}))
+    reference_time = now()
 
     accepted = []
     rejected = []
@@ -187,7 +250,7 @@ def main() -> int:
         (accepted if result["accepted"] else rejected).append({"item": item, "context": result})
 
     context_payload = {
-        "updated_at": iso_now(),
+        "updated_at": reference_time.replace(microsecond=0).isoformat().replace("+00:00", "Z"),
         "policy": "phase7_context_filter_v2_v1",
         "summary": {"input_count": len(items), "accepted_count": len(accepted), "rejected_count": len(rejected), "acceptance_rate": round(len(accepted) / max(len(items), 1) * 100, 1)},
         "accepted_preview": [x["context"] for x in accepted[:30]],
@@ -197,9 +260,12 @@ def main() -> int:
     result_species = []
     limit = int(policy.get("dashboard_limit_per_species", 2))
     min_score = float(policy.get("minimum_representative_score", 45))
+    cutoff_excluded_by_event: dict[str, dict] = {}
+
     for sp in SPECIES:
         candidates = []
         seen = set()
+        species_cutoff_excluded = 0
         for row in accepted:
             item = row["item"]
             if sp not in (item.get("species") or []):
@@ -208,7 +274,27 @@ def main() -> int:
             if key in seen:
                 continue
             seen.add(key)
-            rank = representative_score(item, sp, directions.get(sp, {}), policy)
+
+            eligibility = publication_eligibility(item, policy, reference_time)
+            if not eligibility["eligible"]:
+                species_cutoff_excluded += 1
+                event_key = str(item.get("event_id") or key or hashlib.sha1(str(item).encode()).hexdigest()[:12])
+                if event_key not in cutoff_excluded_by_event:
+                    cutoff_excluded_by_event[event_key] = {
+                        "event_id": item.get("event_id"),
+                        "title": item.get("title"),
+                        "publisher": item.get("publisher") or item.get("source_title"),
+                        "published_at": item.get("published_at") or item.get("date"),
+                        "species": list(item.get("species") or []),
+                        "reason_code": eligibility["reason_code"],
+                        "reason": eligibility["reason"],
+                        "age_days": eligibility["age_days"],
+                        "cutoff_days": eligibility["cutoff_days"],
+                        "destination": policy.get("representative_eligibility", {}).get("stale_destination", "market_memory"),
+                    }
+                continue
+
+            rank = representative_score(item, sp, directions.get(sp, {}), policy, reference_time)
             if rank["score"] < min_score:
                 continue
             candidates.append({
@@ -217,6 +303,7 @@ def main() -> int:
                 "publisher": item.get("publisher") or item.get("source_title"),
                 "url": item.get("url") or item.get("source_url"),
                 "published_at": item.get("published_at") or item.get("date"),
+                "age_days": eligibility["age_days"],
                 "market_direction": item.get("market_direction"),
                 "impact_score": item.get("impact_score"),
                 "quality_score": item.get("quality_score"),
@@ -227,13 +314,38 @@ def main() -> int:
                 "selection_id": hashlib.sha1(f"{sp}:{item.get('event_id')}".encode()).hexdigest()[:12],
             })
         candidates.sort(key=lambda x: (x["representative_score"], x.get("published_at") or ""), reverse=True)
-        result_species.append({"species": sp, "direction": directions.get(sp, {}).get("direction_code", "hold"), "candidate_count": len(candidates), "representatives": candidates[:limit], "more": candidates[limit:]})
+        result_species.append({
+            "species": sp,
+            "direction": directions.get(sp, {}).get("direction_code", "hold"),
+            "candidate_count": len(candidates),
+            "cutoff_excluded_count": species_cutoff_excluded,
+            "representatives": candidates[:limit],
+            "more": candidates[limit:],
+        })
+
+    cutoff_excluded = sorted(
+        cutoff_excluded_by_event.values(),
+        key=lambda x: (x.get("age_days") is None, -(x.get("age_days") or 0)),
+    )
+    cutoff_reason_counts: dict[str, int] = {}
+    for row in cutoff_excluded:
+        code = str(row.get("reason_code") or "unknown")
+        cutoff_reason_counts[code] = cutoff_reason_counts.get(code, 0) + 1
 
     representative_payload = {
-        "updated_at": iso_now(),
-        "policy": "phase7_representative_news_v1",
-        "summary": {"species_count": len(result_species), "representative_count": sum(len(x["representatives"]) for x in result_species), "accepted_context_count": len(accepted), "rejected_context_count": len(rejected)},
+        "updated_at": reference_time.replace(microsecond=0).isoformat().replace("+00:00", "Z"),
+        "policy": "phase8_representative_news_v2",
+        "summary": {
+            "species_count": len(result_species),
+            "representative_count": sum(len(x["representatives"]) for x in result_species),
+            "accepted_context_count": len(accepted),
+            "rejected_context_count": len(rejected),
+            "hard_cutoff_days": int(policy.get("representative_eligibility", {}).get("hard_cutoff_days", 30)),
+            "cutoff_excluded_count": len(cutoff_excluded),
+            "cutoff_reason_counts": cutoff_reason_counts,
+        },
         "species": result_species,
+        "cutoff_excluded": cutoff_excluded[:200],
         "notice": policy.get("notice"),
     }
     for path in [CTX_ADMIN, CTX_ANALYSIS]:
