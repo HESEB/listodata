@@ -1,0 +1,111 @@
+{
+  "updated_at": "2026-07-13",
+  "policy": "phase7_dss2_engine_spec_v1",
+  "status": "design_only",
+  "direction_engine": {
+    "weights": {
+      "price": 30,
+      "supply": 25,
+      "production": 15,
+      "breeding": 10,
+      "import_stock": 10,
+      "disease": 5,
+      "policy_demand": 5
+    },
+    "direction_bands": [
+      {"min": 60, "max": 100, "code": "strong_up", "label": "강한 상방", "symbol": "▲"},
+      {"min": 20, "max": 59, "code": "up", "label": "상방", "symbol": "▲"},
+      {"min": -19, "max": 19, "code": "flat", "label": "보합", "symbol": "="},
+      {"min": -59, "max": -20, "code": "down", "label": "하방", "symbol": "▼"},
+      {"min": -100, "max": -60, "code": "strong_down", "label": "강한 하방", "symbol": "▼"}
+    ],
+    "hold_rules": {
+      "coverage_below": 60,
+      "confidence_below": 55,
+      "missing_priority1_ratio_above": 40,
+      "conflicting_core_indicators": true
+    }
+  },
+  "confidence_engine": {
+    "weights": {
+      "official_data_ratio": 35,
+      "freshness": 25,
+      "coverage": 20,
+      "indicator_consistency": 15,
+      "news_alignment": 5
+    },
+    "dashboard_display": "stars",
+    "detail_display": "percentage_and_breakdown"
+  },
+  "coverage_engine": {
+    "bands": [
+      {"min": 90, "max": 100, "code": "very_high", "label": "매우 높음"},
+      {"min": 75, "max": 89, "code": "high", "label": "높음"},
+      {"min": 60, "max": 74, "code": "limited", "label": "제한적 판단"},
+      {"min": 0, "max": 59, "code": "hold", "label": "판단 유보"}
+    ]
+  },
+  "recommendation_engine": {
+    "actions": [
+      "비축 검토",
+      "추가 계약",
+      "고정가 협의",
+      "관망",
+      "재고 소진",
+      "행사 운영",
+      "대체 원료 검토",
+      "판단 유보"
+    ],
+    "initial_rules": [
+      {"when": ["direction in [up,strong_up]", "confidence >= 75", "inventory_status == low"], "action": "비축 검토"},
+      {"when": ["direction == strong_up", "contract_coverage == low"], "action": "추가 계약"},
+      {"when": ["direction in [up,strong_up]", "price_volatility == high"], "action": "고정가 협의"},
+      {"when": ["direction == flat", "inventory_status == normal"], "action": "관망"},
+      {"when": ["direction in [down,strong_down]", "inventory_status == high"], "action": "재고 소진"},
+      {"when": ["direction in [down,strong_down]", "demand_recovery_possible == true"], "action": "행사 운영"},
+      {"when": ["direction == strong_up", "substitute_market_direction in [flat,down,strong_down]"], "action": "대체 원료 검토"},
+      {"when": ["coverage < 60 or confidence < 55"], "action": "판단 유보"}
+    ],
+    "notice_before_internal_data_connection": "시장 데이터 기준 추천"
+  },
+  "representative_news_engine": {
+    "weights": {
+      "freshness": 30,
+      "impact": 25,
+      "source_reliability": 20,
+      "species_relevance": 15,
+      "official_data_alignment": 10
+    },
+    "dashboard_limit_per_species": 2,
+    "windows_days": {
+      "recent_news": 7,
+      "decision_evidence": 30,
+      "market_memory": 365
+    },
+    "exclude": [
+      "duplicate",
+      "ambiguous_species_context",
+      "artificial_intelligence_false_positive",
+      "duck_idiom_false_positive",
+      "simple_corporate_promotion"
+    ]
+  },
+  "dashboard_contract": {
+    "first_view_fields": [
+      "species",
+      "direction",
+      "recommendation",
+      "top_three_changes",
+      "representative_news",
+      "confidence_stars",
+      "coverage",
+      "detail_link"
+    ],
+    "hide_from_first_view": [
+      "raw_signal_score",
+      "full_evidence_breakdown",
+      "all_news",
+      "debug_metadata"
+    ]
+  }
+}
