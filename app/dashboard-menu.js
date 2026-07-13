@@ -9,6 +9,8 @@
       ['Version 상태','./version-status.html','버전·빌드·데이터 갱신 상태']
     ]},
     {title:'DSS 2.0',desc:'데이터 중심 전환',items:[
+      ['API 설정 가이드','./official-api-setup-guide.html','KOSIS·공공데이터포털 인증과 Secret 설정'],
+      ['실제 공식데이터 연결','./real-official-sources.html','KOSIS·공공데이터포털 실제 API 상태'],
       ['Phase 7 설계','./phase7-design.html','Data First 설계 기준'],
       ['공식데이터 구조','./official-data-structure.html','스키마·저장계층 검증'],
       ['공식데이터 수집','./official-data-collector.html','공식 데이터 소스별 수집 상태'],
