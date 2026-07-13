@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>실제 공식 데이터 연결 | HESEB</title>
+  <style>
+    :root{--bg:#f5fafc;--card:#fff;--line:rgba(20,30,40,.1);--text:#182231;--sub:#687386;--good:#168a5b;--warn:#b7791f;--bad:#d93c61;--blue:#2474d8}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Noto Sans KR,sans-serif}header,main{max-width:1120px;margin:auto;padding:16px}.head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.head h1{margin:0;font-size:23px}.sub{font-size:12px;color:var(--sub);line-height:1.55}.btn{display:inline-flex;padding:8px 11px;border:1px solid var(--line);border-radius:999px;background:#fff;text-decoration:none;color:var(--text);font-size:12px}.hero,.card{border:1px solid var(--line);background:var(--card);border-radius:21px;padding:15px;box-shadow:0 10px 24px rgba(18,28,40,.06)}.hero{background:linear-gradient(140deg,rgba(241,133,174,.16),rgba(107,178,255,.15));margin-bottom:13px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px}.kpi{font-size:28px;font-weight:820}.badge{display:inline-flex;padding:5px 8px;border-radius:999px;font-size:11px;border:1px solid var(--line)}.success,.ready{color:var(--good);background:rgba(22,138,91,.08)}.credential_required,.limited,.empty{color:var(--warn);background:rgba(183,121,31,.09)}.failed{color:var(--bad);background:rgba(217,60,97,.08)}.disabled{color:#777;background:rgba(0,0,0,.05)}.row{border-top:1px solid var(--line);padding:11px 0}.row:first-child{border-top:0}.title{font-size:14px;font-weight:760}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;background:rgba(0,0,0,.035);padding:8px;border-radius:10px;word-break:break-all}.notice{border:1px dashed var(--line);padding:12px;border-radius:16px;font-size:12px;color:var(--sub);line-height:1.6}@media(max-width:640px){.head{display:block}.head .links{margin-top:10px}}
+  </style>
+</head>
+<body>
+<header><div class="head"><div><h1>실제 공식 데이터 소스 연결</h1><div class="sub">Phase 8-1 · KOSIS·공공데이터포털 실제 API 연결 상태</div></div><div class="links"><a class="btn" href="./main.html">Dashboard</a> <a class="btn" href="./admin2-dashboard.html">Admin 2.0</a></div></div></header>
+<main>
+  <section class="hero"><div class="sub">현재 상태</div><div id="status" class="kpi">불러오는 중...</div><div class="sub" id="updated"></div></section>
+  <section class="grid" id="kpis"></section>
+  <section class="card" style="margin-top:12px"><h2 style="margin:0;font-size:17px">소스별 연결 상태</h2><div id="sources" style="margin-top:8px"></div></section>
+  <section class="notice" style="margin-top:12px">실제 데이터 호출 URL에는 인증키가 포함될 수 있으므로 GitHub 저장소 파일에 직접 기록하지 않습니다. GitHub Actions Secret에 전체 호출 URL을 등록한 뒤 Workflow를 실행하면 수집이 시작됩니다. 인증정보가 없을 때는 기존 Snapshot을 보존하고 <b>credential_required</b>로 표시합니다.</section>
+</main>
+<script>
+const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+async function load(){
+  try{
+    const r=await fetch('./data/admin/real_official_source_connections.json?ts='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('status '+r.status);const d=await r.json();const s=d.summary||{};
+    document.getElementById('status').innerHTML=`<span class="badge ${esc(s.status)}">${esc(s.status)}</span>`;
+    document.getElementById('updated').textContent='갱신 '+(d.updated_at||'Actions 실행 전');
+    const cards=[['성공 소스',s.success_count||0],['인증 필요',s.credential_required_count||0],['실패',s.failed_count||0],['수집 레코드',s.collected_record_count||0]];
+    document.getElementById('kpis').innerHTML=cards.map(([a,b])=>`<div class="card"><div class="sub">${a}</div><div class="kpi">${b}</div></div>`).join('');
+    const rows=Array.isArray(d.sources)?d.sources:[];
+    document.getElementById('sources').innerHTML=rows.length?rows.map(x=>`<div class="row"><div style="display:flex;justify-content:space-between;gap:10px"><div><div class="title">${esc(x.provider)} · ${esc(x.dataset)}</div><div class="sub">${esc(x.source_id)}</div></div><span class="badge ${esc(x.status)}">${esc(x.status)}</span></div><div class="sub" style="margin-top:7px">${esc(x.message||'')}</div><div class="mono" style="margin-top:7px">Secret: ${esc(x.url_env||'-')} · records: ${esc(x.record_count||0)}</div></div>`).join(''):'<div class="sub">Actions 실행 후 소스별 상태가 표시됩니다.</div>';
+  }catch(e){document.getElementById('status').textContent='상태 파일 확인 필요';document.getElementById('sources').innerHTML='<div class="sub">'+esc(e.message)+'</div>'}
+}
+load();
+</script>
+</body>
+</html>
