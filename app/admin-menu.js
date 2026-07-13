@@ -2,6 +2,7 @@
   'use strict';
   const ADMIN_GROUPS=[
     {title:'DSS 2.0',desc:'데이터 중심 전환',items:[
+      ['Admin 2.0','./admin2-dashboard.html','수집·품질·판단·추천 통합 검증'],
       ['Phase 7 설계','./phase7-design.html','Data First 설계 기준'],
       ['공식데이터 구조','./official-data-structure.html','스키마·저장계층 검증'],
       ['공식데이터 수집','./official-data-collector.html','공식 데이터 소스별 수집 상태'],
@@ -12,7 +13,7 @@
       ['Report Sentence Engine','./report-sentence-engine.html','공식 데이터 기반 보고 문장 생성']
     ]},
     {title:'운영상태',desc:'수집·정제·품질 현황',items:[
-      ['Admin Dashboard','./admin.html','품질·필터·자료 현황'],
+      ['기존 Admin','./admin.html','필터 사전·규칙 테스트'],
       ['Version 상태','./version-status.html','버전·빌드·데이터 갱신 상태'],
       ['변경 로그','./change-log.html','정책 버전·파일 상태'],
       ['자료출처','./source.html','공식 근거 저장소'],
@@ -51,7 +52,7 @@
   function hideNoisyLinks(){document.querySelectorAll('a,button').forEach(el=>{const text=(el.textContent||'').trim();if(HIDE_TEXT.includes(text)&&!el.closest('.admin-menu-wrap')&&!el.closest('.admin-drawer'))el.classList.add('admin-hidden-link');});}
   function addHeroMenu(){const hero=document.querySelector('.hero .hero-inner');if(!hero||document.getElementById('admin-menu-wrap'))return;const wrap=document.createElement('div');wrap.id='admin-menu-wrap';wrap.className='admin-menu-wrap';wrap.innerHTML=menuHTML();hero.appendChild(wrap);}
   function addDrawer(){if(document.getElementById('admin-menu-open'))return;const btn=document.createElement('button');btn.id='admin-menu-open';btn.className='admin-menu-open';btn.type='button';btn.textContent='Admin 메뉴';btn.onclick=toggleDrawer;const drawer=document.createElement('div');drawer.id='admin-drawer';drawer.className='admin-drawer';drawer.innerHTML=menuHTML();document.body.appendChild(drawer);document.body.appendChild(btn);}
-  function addOperationsBadges(){if(document.getElementById('operations-badges-script'))return;const s=document.createElement('script');s.id='operations-badges-script';s.src='./operations-badges.js?v=phase-7-7';s.defer=true;document.body.appendChild(s);}
+  function addOperationsBadges(){if(document.getElementById('operations-badges-script'))return;const s=document.createElement('script');s.id='operations-badges-script';s.src='./operations-badges.js?v=phase-7-9';s.defer=true;document.body.appendChild(s);}
   function toggleDrawer(){const d=document.getElementById('admin-drawer');if(d)d.classList.toggle('active');}
   function run(){addStyle();hideNoisyLinks();addHeroMenu();addDrawer();addOperationsBadges();}
   function boot(){run();setTimeout(run,700);setTimeout(run,1600);setTimeout(run,3200);setInterval(hideNoisyLinks,2500);}
