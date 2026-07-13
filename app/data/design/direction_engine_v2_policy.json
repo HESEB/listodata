@@ -1,0 +1,81 @@
+{
+  "updated_at": "2026-07-13",
+  "policy": "phase7_direction_engine_v2_policy_v1",
+  "notice": "공식 데이터 변화율을 가격 압력 방향으로 변환하는 기준입니다. 뉴스는 방향 점수에 직접 사용하지 않습니다.",
+  "category_weights": {
+    "price": 30,
+    "supply": 25,
+    "production": 15,
+    "breeding": 10,
+    "import_stock": 10,
+    "disease": 5,
+    "policy_demand": 5
+  },
+  "category_groups": {
+    "price": ["price"],
+    "supply": ["supply"],
+    "production": ["production"],
+    "breeding": ["breeding"],
+    "import_stock": ["import", "stock"],
+    "disease": ["disease"],
+    "policy_demand": ["policy", "demand", "trade"]
+  },
+  "pressure_sign": {
+    "price": 1,
+    "supply": -1,
+    "production": -1,
+    "breeding": -1,
+    "import": -1,
+    "stock": -1,
+    "demand": 1,
+    "disease": 1,
+    "policy": 0,
+    "trade": 0
+  },
+  "metric_overrides": {
+    "BEEF_IMPORT_PRICE": 1,
+    "PORK_IMPORT_PRICE": 1,
+    "POULTRY_AI_EVENT": 1,
+    "EGG_AI_EVENT": 1,
+    "DUCK_AI_EVENT": 1
+  },
+  "comparison_weights": {
+    "day": 0.5,
+    "week": 0.4,
+    "month": 0.3,
+    "quarter": 0.3,
+    "year": 0.2
+  },
+  "change_rate_scale": {
+    "method": "tanh",
+    "divisor": 8,
+    "description": "signal = tanh(change_rate / 8) × 100"
+  },
+  "direction_bands": [
+    {"min": 60, "max": 100, "code": "strong_up", "label": "강한 상방", "symbol": "▲"},
+    {"min": 20, "max": 59.999, "code": "up", "label": "상방", "symbol": "▲"},
+    {"min": -19.999, "max": 19.999, "code": "flat", "label": "보합", "symbol": "="},
+    {"min": -59.999, "max": -20, "code": "down", "label": "하방", "symbol": "▼"},
+    {"min": -100, "max": -60, "code": "strong_down", "label": "강한 하방", "symbol": "▼"}
+  ],
+  "hold_rules": {
+    "coverage_below": 60,
+    "confidence_below": 55,
+    "priority1_missing_ratio_above": 40,
+    "usable_indicator_ratio_below": 40,
+    "conflicting_core_categories": true
+  },
+  "confidence_weights": {
+    "official_reliability": 35,
+    "freshness": 25,
+    "coverage": 20,
+    "indicator_consistency": 15,
+    "news_alignment": 5
+  },
+  "news_alignment_default": 0,
+  "conflict_threshold": 20,
+  "display": {
+    "dashboard": ["direction_symbol", "direction_label", "confidence_stars", "hold_reasons"],
+    "detail": ["raw_score", "category_scores", "metric_signals", "confidence_breakdown"]
+  }
+}
