@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "official_metric.schema.json",
+  "title": "HESEB DSS 2.0 Official Metric",
+  "description": "Phase 7-1 공식 데이터 공통 레코드 스키마",
+  "type": "object",
+  "required": [
+    "record_id",
+    "metric_id",
+    "species",
+    "category",
+    "period",
+    "value",
+    "unit",
+    "source",
+    "quality"
+  ],
+  "properties": {
+    "record_id": {"type": "string", "minLength": 1},
+    "metric_id": {"type": "string", "minLength": 1},
+    "species": {"enum": ["BEEF", "PORK", "POULTRY", "EGG", "DUCK", "OTHER"]},
+    "category": {"enum": ["price", "supply", "production", "breeding", "import", "stock", "demand", "trade", "disease", "policy"]},
+    "period": {
+      "type": "object",
+      "required": ["date", "frequency"],
+      "properties": {
+        "date": {"type": "string"},
+        "frequency": {"enum": ["daily", "weekly", "monthly", "quarterly", "yearly", "event"]},
+        "timezone": {"type": "string", "default": "Asia/Seoul"}
+      }
+    },
+    "value": {"type": ["number", "null"]},
+    "unit": {"type": "string"},
+    "comparisons": {
+      "type": "object",
+      "properties": {
+        "day": {"$ref": "#/$defs/comparison"},
+        "week": {"$ref": "#/$defs/comparison"},
+        "month": {"$ref": "#/$defs/comparison"},
+        "quarter": {"$ref": "#/$defs/comparison"},
+        "year": {"$ref": "#/$defs/comparison"}
+      },
+      "additionalProperties": false
+    },
+    "source": {
+      "type": "object",
+      "required": ["provider", "source_level", "retrieved_at"],
+      "properties": {
+        "provider": {"type": "string"},
+        "dataset": {"type": ["string", "null"]},
+        "url": {"type": ["string", "null"]},
+        "source_level": {"type": "integer", "minimum": 1, "maximum": 5},
+        "retrieved_at": {"type": "string"},
+        "published_at": {"type": ["string", "null"]}
+      }
+    },
+    "quality": {
+      "type": "object",
+      "required": ["status", "freshness_score", "reliability_score"],
+      "properties": {
+        "status": {"enum": ["raw", "valid", "warning", "rejected", "missing"]},
+        "freshness_score": {"type": "number", "minimum": 0, "maximum": 100},
+        "reliability_score": {"type": "number", "minimum": 0, "maximum": 100},
+        "validation_errors": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "metadata": {"type": "object"}
+  },
+  "$defs": {
+    "comparison": {
+      "type": "object",
+      "required": ["base_value", "change", "change_rate"],
+      "properties": {
+        "base_value": {"type": ["number", "null"]},
+        "change": {"type": ["number", "null"]},
+        "change_rate": {"type": ["number", "null"]},
+        "base_date": {"type": ["string", "null"]}
+      }
+    }
+  }
+}
