@@ -10,6 +10,7 @@
     ]},
     {title:'DSS 2.0',desc:'데이터 중심 전환',items:[
       ['API 설정 가이드','./official-api-setup-guide.html','KOSIS·공공데이터포털 인증과 Secret 설정'],
+      ['KOSIS 통계표 매핑','./kosis-table-mapping.html','통계표·항목·분류와 DSS 지표 매핑'],
       ['실제 공식데이터 연결','./real-official-sources.html','KOSIS·공공데이터포털 실제 API 상태'],
       ['Phase 7 설계','./phase7-design.html','Data First 설계 기준'],
       ['공식데이터 구조','./official-data-structure.html','스키마·저장계층 검증'],
