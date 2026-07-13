@@ -10,7 +10,8 @@
     ]},
     {title:'DSS 2.0',desc:'데이터 중심 전환',items:[
       ['Phase 7 설계','./phase7-design.html','Data First 설계 기준'],
-      ['공식데이터 구조','./official-data-structure.html','스키마·저장계층 검증']
+      ['공식데이터 구조','./official-data-structure.html','스키마·저장계층 검증'],
+      ['공식데이터 수집','./official-data-collector.html','공식 데이터 소스별 수집 상태']
     ]},
     {title:'분석',desc:'판단 근거 검증',items:[
       ['Evidence Score','./score-engine.html','가격·수급·질병·정책·뉴스 점수'],
