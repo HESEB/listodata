@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Representative News | HESEB DSS 2.0</title>
+  <style>
+    :root{--bg:#f5fafc;--card:#fff;--line:rgba(20,30,40,.09);--text:#182231;--sub:rgba(24,34,49,.68);--good:#168a5b;--warn:#c18a18;--bad:#d93c61;--blue:#2474d8}
+    *{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Apple SD Gothic Neo,Noto Sans KR,sans-serif;background:var(--bg);color:var(--text)}header{position:sticky;top:0;z-index:10;background:rgba(245,250,252,.94);border-bottom:1px solid var(--line)}.top,main{max-width:1180px;margin:auto;padding:14px}.brand{display:flex;justify-content:space-between;gap:12px}.brand h1{font-size:18px;margin:0}.sub,.small{font-size:12px;color:var(--sub);line-height:1.5}.btn{display:inline-flex;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;text-decoration:none;color:var(--text);font-size:12px}.hero{padding:14px;border-radius:26px;background:linear-gradient(160deg,rgba(241,133,174,.22),rgba(248,184,113,.18),rgba(165,115,237,.16),rgba(107,178,255,.18));margin-bottom:14px}.hero-inner,.card{background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:20px;padding:14px;box-shadow:0 10px 24px rgba(18,28,40,.07)}.headline{font-size:24px;font-weight:800}.grid{display:grid;gap:12px}.kpis{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}.cols{grid-template-columns:repeat(auto-fit,minmax(330px,1fr))}.kpi{font-size:28px;font-weight:850}.badge,.chip{display:inline-flex;padding:5px 8px;border:1px solid var(--line);border-radius:999px;font-size:11px;background:rgba(0,0,0,.03)}.badge.good{color:var(--good)}.badge.warn{color:var(--warn)}.badge.bad{color:var(--bad)}.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.card h2{font-size:17px;margin:8px 0}.news{border-top:1px solid var(--line);padding-top:10px;margin-top:10px}.news a{color:var(--text);font-weight:760;text-decoration:none}.score{font-size:22px;font-weight:850}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.tab{border:1px solid var(--line);border-radius:999px;padding:8px 12px;background:#fff;cursor:pointer}.tab.active{font-weight:760;background:rgba(107,178,255,.13)}.panel{display:none}.panel.active{display:block}.empty{padding:22px;text-align:center;border:1px dashed var(--line);border-radius:18px;color:var(--sub)}
+  </style>
+</head>
+<body>
+<header><div class="top"><div class="brand"><div><h1>Representative News</h1><div class="sub">대표 기사·Context Filter v2</div></div><div><a class="btn" href="./main.html">Dashboard</a> <a class="btn" href="./admin.html">Admin</a></div></div></div></header>
+<main>
+  <div class="hero"><div class="hero-inner"><div class="small">Phase 7-6</div><div class="headline">대표 기사 선정과 문맥 오탐 제거</div><div class="sub" id="updated">결과를 불러오는 중...</div></div></div>
+  <section class="grid kpis" id="kpis"></section>
+  <div class="tabs"><button class="tab active" data-panel="representatives">대표 기사</button><button class="tab" data-panel="rejected">Context 제외</button></div>
+  <section class="panel active" id="panel-representatives"><div class="grid cols" id="representatives"></div></section>
+  <section class="panel" id="panel-rejected"><div class="grid cols" id="rejected"></div></section>
+</main>
+<script>
+const REP='./data/admin/representative_news.json',CTX='./data/admin/context_filter_v2.json';
+const $=id=>document.getElementById(id), arr=x=>Array.isArray(x)?x:[], esc=(s='')=>String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+async function get(p){const r=await fetch(p+'?ts='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error(p);return r.json();}
+function kpis(rep,ctx){const s=rep.summary||{},c=ctx.summary||{};const rows=[['대표 기사',s.representative_count||0],['문맥 통과',c.accepted_count||0],['문맥 제외',c.rejected_count||0],['통과율',(c.acceptance_rate||0)+'%']];$('kpis').innerHTML=rows.map(([a,b])=>`<div class="card"><div class="small">${esc(a)}</div><div class="kpi">${esc(b)}</div></div>`).join('');}
+function repCard(x){const news=arr(x.representatives);return `<article class="card"><span class="badge ${x.direction==='hold'?'warn':'good'}">${esc(x.direction||'hold')}</span><h2>${esc(x.species)}</h2><div class="small">후보 ${esc(x.candidate_count||0)}건 · 대표 ${news.length}건</div>${news.map(n=>`<div class="news"><div class="score">${esc(n.representative_score)}점</div><a href="${esc(n.url||'#')}" target="_blank" rel="noopener">${esc(n.title)}</a><div class="small">${esc(n.publisher||'-')} · ${esc(n.published_at||'-')}</div><div class="chips"><span class="chip">문맥 ${esc(n.context_score)}</span><span class="chip">영향 ${esc(n.impact_score)}</span><span class="chip">품질 ${esc(n.quality_score)}</span></div></div>`).join('')||'<div class="empty">선정된 대표 기사 없음</div>'}</article>`;}
+function rejectCard(x){return `<article class="card"><span class="badge bad">제외</span><h2>${esc(x.title||'-')}</h2><div class="small">문맥점수 ${esc(x.context_score)}</div><div>${esc(x.reason||'-')}</div><div class="chips">${arr(x.species).map(s=>`<span class="chip">${esc(s)}</span>`).join('')}</div></article>`;}
+function tabs(){document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id==='panel-'+b.dataset.panel));});}
+(async()=>{try{const [rep,ctx]=await Promise.all([get(REP),get(CTX)]);$('updated').textContent='갱신 '+(rep.updated_at||'-')+' · 대표 뉴스는 공식 데이터 판단의 보조 근거입니다.';kpis(rep,ctx);$('representatives').innerHTML=arr(rep.species).map(repCard).join('')||'<div class="empty">결과 없음</div>';$('rejected').innerHTML=arr(ctx.rejected).map(rejectCard).join('')||'<div class="empty">제외 사례 없음</div>';tabs();}catch(e){console.error(e);$('updated').textContent='다음 자동 업데이트 후 결과를 확인하세요.';$('representatives').innerHTML='<div class="empty">결과 JSON을 불러오지 못했습니다.</div>';}})();
+</script>
+</body>
+</html>
