@@ -31,7 +31,8 @@
       ['과거 사례 비교','./case-comparison.html','현재 신호 유사사례']
     ]},
     {title:'관리자',desc:'수집/분류/사전 관리',items:[
-      ['Admin','./admin.html','품질·필터·상태'],
+      ['Admin 2.0','./admin2-dashboard.html','수집·품질·판단·추천 통합 검증'],
+      ['기존 Admin','./admin.html','필터 사전·규칙 테스트'],
       ['분류검수','./classification-review.html','강제포함/제외/축종변경'],
       ['규칙테스트','./rule-test.html','기사 제목 테스트'],
       ['패치승인','./patch-approval.html','관리자 승인 패치 생성'],
