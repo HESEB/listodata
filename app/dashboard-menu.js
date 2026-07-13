@@ -25,6 +25,7 @@
       ['분류검수','./classification-review.html','강제포함/제외/축종변경'],
       ['규칙테스트','./rule-test.html','기사 제목 테스트'],
       ['패치승인','./patch-approval.html','관리자 승인 패치 생성'],
+      ['Actions 실행','./actions-guide.html','수동 업데이트 실행 가이드'],
       ['변경로그','./change-log.html','정책버전·파일상태'],
       ['업데이트 안정성','./update-stability.html','자동 업데이트 점검'],
       ['Fallback 보호','./fallback-status.html','실패 시 데이터 복원 상태'],
