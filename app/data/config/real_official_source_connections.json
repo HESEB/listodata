@@ -1,0 +1,68 @@
+{
+  "updated_at": "2026-07-13",
+  "policy": "phase8_real_official_sources_v1",
+  "notice": "실제 공식기관 API 호출 URL은 GitHub Actions Secret으로 주입합니다. 인증값이 없으면 실패가 아니라 credential_required로 기록합니다.",
+  "output_path": "app/data/official/manual/real_source_metrics.json",
+  "sources": [
+    {
+      "source_id": "KOSIS_LIVESTOCK_INVENTORY",
+      "provider": "국가통계포털 KOSIS",
+      "dataset": "가축동향조사 사육마릿수",
+      "adapter": "kosis_json",
+      "url_env": "KOSIS_LIVESTOCK_INVENTORY_API_URL",
+      "enabled": true,
+      "source_level": 5,
+      "reliability_score": 98,
+      "official_page": "https://kosis.kr/openapi/index/index.jsp",
+      "frequency": "quarterly",
+      "category": "breeding",
+      "metric_rules": [
+        {"metric_id": "BEEF_INVENTORY_COUNT", "species": "BEEF", "keywords": ["한육우", "한우", "소"]},
+        {"metric_id": "PORK_INVENTORY_COUNT", "species": "PORK", "keywords": ["돼지"]},
+        {"metric_id": "POULTRY_INVENTORY_COUNT", "species": "POULTRY", "keywords": ["육계", "닭"]},
+        {"metric_id": "EGG_LAYER_COUNT", "species": "EGG", "keywords": ["산란계"]},
+        {"metric_id": "DUCK_INVENTORY_COUNT", "species": "DUCK", "keywords": ["오리"]}
+      ]
+    },
+    {
+      "source_id": "KOSIS_LIVESTOCK_PRODUCTION",
+      "provider": "국가통계포털 KOSIS",
+      "dataset": "축산물 생산·도축 통계",
+      "adapter": "kosis_json",
+      "url_env": "KOSIS_LIVESTOCK_PRODUCTION_API_URL",
+      "enabled": true,
+      "source_level": 5,
+      "reliability_score": 98,
+      "official_page": "https://kosis.kr/openapi/index/index.jsp",
+      "frequency": "monthly",
+      "category": "production",
+      "metric_rules": [
+        {"metric_id": "BEEF_SLAUGHTER_COUNT", "species": "BEEF", "keywords": ["소", "한우", "도축"]},
+        {"metric_id": "PORK_SLAUGHTER_COUNT", "species": "PORK", "keywords": ["돼지", "도축"]},
+        {"metric_id": "POULTRY_SLAUGHTER_COUNT", "species": "POULTRY", "keywords": ["닭", "도계"]},
+        {"metric_id": "EGG_PRODUCTION_VOLUME", "species": "EGG", "keywords": ["계란", "생산"]},
+        {"metric_id": "DUCK_SLAUGHTER_COUNT", "species": "DUCK", "keywords": ["오리", "도축"]}
+      ]
+    },
+    {
+      "source_id": "DATA_GO_KR_LIVESTOCK_MARKET",
+      "provider": "공공데이터포털 제공기관",
+      "dataset": "축산 가격·경락·수입 공개 API",
+      "adapter": "data_go_json",
+      "url_env": "DATA_GO_KR_LIVESTOCK_MARKET_API_URL",
+      "enabled": true,
+      "source_level": 5,
+      "reliability_score": 98,
+      "official_page": "https://www.data.go.kr/",
+      "record_paths": ["response.body.items.item", "response.body.items", "items", "data", "records"],
+      "field_map": {
+        "metric_id": ["metric_id", "metricId", "METRIC_ID"],
+        "species": ["species", "species_code", "SPECIES"],
+        "category": ["category", "CATEGORY"],
+        "date": ["date", "baseDate", "period_date", "PRD_DE"],
+        "value": ["value", "price", "avgPrice", "metric_value", "DT"],
+        "unit": ["unit", "unitName", "UNIT_NM"]
+      }
+    }
+  ]
+}
