@@ -1,0 +1,48 @@
+{
+  "updated_at": "2026-07-13",
+  "policy": "phase8_official_api_setup_v1",
+  "notice": "인증키가 포함된 전체 API URL은 GitHub Actions Secret에만 저장합니다.",
+  "official_links": {
+    "kosis": "https://kosis.kr/openapi/index/index.jsp",
+    "data_go_kr": "https://www.data.go.kr/",
+    "github_secrets": "https://github.com/HESEB/listodata/settings/secrets/actions",
+    "github_actions": "https://github.com/HESEB/listodata/actions/workflows/update-market-data.yml"
+  },
+  "secrets": [
+    {
+      "name": "KOSIS_LIVESTOCK_INVENTORY_API_URL",
+      "provider": "KOSIS",
+      "purpose": "가축동향조사 사육마릿수",
+      "required_host_contains": ["kosis.kr"],
+      "required_query_keys": ["apiKey", "orgId", "tblId"],
+      "recommended_query_keys": ["format", "startPrdDe", "endPrdDe"],
+      "example_masked": "https://kosis.kr/openapi/...?...&apiKey=***&orgId=***&tblId=***"
+    },
+    {
+      "name": "KOSIS_LIVESTOCK_PRODUCTION_API_URL",
+      "provider": "KOSIS",
+      "purpose": "축산 생산·도축 통계",
+      "required_host_contains": ["kosis.kr"],
+      "required_query_keys": ["apiKey", "orgId", "tblId"],
+      "recommended_query_keys": ["format", "startPrdDe", "endPrdDe"],
+      "example_masked": "https://kosis.kr/openapi/...?...&apiKey=***&orgId=***&tblId=***"
+    },
+    {
+      "name": "DATA_GO_KR_LIVESTOCK_MARKET_API_URL",
+      "provider": "공공데이터포털",
+      "purpose": "축산 가격·경락·수입 API",
+      "required_host_contains": ["data.go.kr", "apis.data.go.kr"],
+      "required_query_keys_any": ["serviceKey", "ServiceKey"],
+      "recommended_query_keys": ["pageNo", "numOfRows", "_type"],
+      "example_masked": "https://apis.data.go.kr/...?...&serviceKey=***&_type=json"
+    }
+  ],
+  "steps": [
+    {"step": 1, "title": "기관 활용신청", "detail": "KOSIS OpenAPI 인증키와 공공데이터포털 활용신청을 완료합니다."},
+    {"step": 2, "title": "통계표·API 선택", "detail": "통계표 ID·기관 ID·항목·분류 또는 공공데이터 API 오퍼레이션을 확정합니다."},
+    {"step": 3, "title": "전체 URL 테스트", "detail": "브라우저나 API 테스트 도구에서 JSON 응답과 기준시점·수치·단위를 확인합니다."},
+    {"step": 4, "title": "GitHub Secret 등록", "detail": "Settings > Secrets and variables > Actions에서 전체 HTTPS URL을 등록합니다."},
+    {"step": 5, "title": "Workflow 실행", "detail": "Update market data Workflow를 수동 실행합니다."},
+    {"step": 6, "title": "수집 결과 확인", "detail": "실제 공식데이터 연결·수집 상태·Admin 2.0 화면을 확인합니다."}
+  ]
+}
