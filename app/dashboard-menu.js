@@ -30,8 +30,10 @@
       ['업데이트 안정성','./update-stability.html','자동 업데이트 점검'],
       ['Fallback 보호','./fallback-status.html','실패 시 데이터 복원 상태'],
       ['품질 경고','./quality-alerts.html','데이터 품질 경고 알림'],
+      ['업데이트 이력','./update-history.html','최근 100회 운영 상태'],
       ['소스 헬스','./source-health.html','수집 소스별 성공률/기여도'],
       ['최신성 경고','./freshness-alerts.html','데이터 최신성 점검'],
+      ['최종 운영점검','./operations-check.html','Phase 6 운영 준비도'],
       ['UX점검','./ux-check.html','최종 링크/메뉴 점검']
     ]}
   ];
@@ -48,48 +50,11 @@
     const st=document.createElement('style');st.id='dashboard-menu-style';st.textContent=css;document.head.appendChild(st);
   }
   function menuHTML(){return `<div class="dss-menu-head"><div><div class="dss-menu-title">DSS 통합 메뉴</div><div class="dss-menu-sub">자주 쓰는 메뉴를 핵심·분석·전문성·관리자로 정리했습니다.</div></div></div><div class="dss-menu-grid">${MENU_GROUPS.map(g=>`<section class="dss-menu-group"><h3>${g.title}</h3><div class="dss-menu-desc">${g.desc}</div><div class="dss-menu-links">${g.items.map(([t,u,d])=>`<a href="${u}" title="${d}">${t}</a>`).join('')}</div></section>`).join('')}</div>`;}
-  function hideOldLinks(){
-    HIDE_IDS.forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none';});
-  }
-  function addHeroMenu(){
-    const hero=document.querySelector('#panel-dashboard .hero-inner');
-    if(!hero||document.getElementById('dss-menu-wrap'))return;
-    const wrap=document.createElement('div');
-    wrap.id='dss-menu-wrap';
-    wrap.className='dss-menu-wrap';
-    wrap.innerHTML=menuHTML();
-    hero.appendChild(wrap);
-  }
-  function addNavMenu(){
-    const nav=document.querySelector('nav');
-    if(!nav||document.getElementById('dss-nav-menu'))return;
-    const a=document.createElement('button');
-    a.id='dss-nav-menu';
-    a.className='dss-nav-menu';
-    a.type='button';
-    a.textContent='DSS 메뉴';
-    a.onclick=()=>toggleDrawer();
-    nav.appendChild(a);
-  }
-  function addDrawer(){
-    if(document.getElementById('dss-menu-open'))return;
-    const btn=document.createElement('button');
-    btn.id='dss-menu-open';
-    btn.className='dss-menu-open';
-    btn.type='button';
-    btn.textContent='DSS 메뉴';
-    btn.onclick=()=>toggleDrawer();
-    const drawer=document.createElement('div');
-    drawer.id='dss-drawer';
-    drawer.className='dss-drawer';
-    drawer.innerHTML=`<h2>DSS 통합 메뉴</h2>${menuHTML()}`;
-    document.body.appendChild(drawer);
-    document.body.appendChild(btn);
-  }
-  function toggleDrawer(){
-    const d=document.getElementById('dss-drawer');
-    if(d)d.classList.toggle('active');
-  }
+  function hideOldLinks(){HIDE_IDS.forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none';});}
+  function addHeroMenu(){const hero=document.querySelector('#panel-dashboard .hero-inner');if(!hero||document.getElementById('dss-menu-wrap'))return;const wrap=document.createElement('div');wrap.id='dss-menu-wrap';wrap.className='dss-menu-wrap';wrap.innerHTML=menuHTML();hero.appendChild(wrap);}
+  function addNavMenu(){const nav=document.querySelector('nav');if(!nav||document.getElementById('dss-nav-menu'))return;const a=document.createElement('button');a.id='dss-nav-menu';a.className='dss-nav-menu';a.type='button';a.textContent='DSS 메뉴';a.onclick=()=>toggleDrawer();nav.appendChild(a);}
+  function addDrawer(){if(document.getElementById('dss-menu-open'))return;const btn=document.createElement('button');btn.id='dss-menu-open';btn.className='dss-menu-open';btn.type='button';btn.textContent='DSS 메뉴';btn.onclick=()=>toggleDrawer();const drawer=document.createElement('div');drawer.id='dss-drawer';drawer.className='dss-drawer';drawer.innerHTML=`<h2>DSS 통합 메뉴</h2>${menuHTML()}`;document.body.appendChild(drawer);document.body.appendChild(btn);}
+  function toggleDrawer(){const d=document.getElementById('dss-drawer');if(d)d.classList.toggle('active');}
   function run(){addStyle();hideOldLinks();addHeroMenu();addNavMenu();addDrawer();}
   function boot(){run();setTimeout(run,700);setTimeout(run,1600);setTimeout(run,3200);setInterval(hideOldLinks,2500);}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
