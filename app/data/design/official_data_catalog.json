@@ -1,0 +1,65 @@
+{
+  "updated_at": "2026-07-13",
+  "policy": "phase7_data_first_catalog_v1",
+  "notice": "Phase 7-0 설계 기준입니다. 실제 수집 연결은 Phase 7-1 이후 진행합니다.",
+  "species": {
+    "BEEF": {
+      "label": "한우/우육",
+      "required_metrics": [
+        {"metric_id": "BEEF_FARM_PRICE", "name": "산지가격", "category": "price", "priority": 1, "frequency": "daily", "comparisons": ["day", "month", "year"]},
+        {"metric_id": "BEEF_AUCTION_PRICE", "name": "경락가격", "category": "price", "priority": 1, "frequency": "daily", "comparisons": ["day", "month", "year"]},
+        {"metric_id": "BEEF_RETAIL_PRICE", "name": "소비자가격", "category": "price", "priority": 2, "frequency": "monthly", "comparisons": ["month", "year"]},
+        {"metric_id": "BEEF_SLAUGHTER_COUNT", "name": "도축두수", "category": "supply", "priority": 1, "frequency": "monthly", "comparisons": ["month", "year"]},
+        {"metric_id": "BEEF_INVENTORY_COUNT", "name": "사육두수", "category": "breeding", "priority": 1, "frequency": "quarterly", "comparisons": ["quarter", "year"]},
+        {"metric_id": "BEEF_IMPORT_VOLUME", "name": "수입량", "category": "import", "priority": 2, "frequency": "monthly", "comparisons": ["month", "year"]},
+        {"metric_id": "BEEF_IMPORT_PRICE", "name": "수입단가", "category": "import", "priority": 2, "frequency": "monthly", "comparisons": ["month", "year"]}
+      ]
+    },
+    "PORK": {
+      "label": "돈육",
+      "required_metrics": [
+        {"metric_id": "PORK_AUCTION_PRICE", "name": "경락가격", "category": "price", "priority": 1, "frequency": "daily", "comparisons": ["day", "month", "year"]},
+        {"metric_id": "PORK_RETAIL_PRICE", "name": "소비자가격", "category": "price", "priority": 2, "frequency": "monthly", "comparisons": ["month", "year"]},
+        {"metric_id": "PORK_SLAUGHTER_COUNT", "name": "도축두수", "category": "supply", "priority": 1, "frequency": "monthly", "comparisons": ["month", "year"]},
+        {"metric_id": "PORK_INVENTORY_COUNT", "name": "사육두수", "category": "breeding", "priority": 1, "frequency": "quarterly", "comparisons": ["quarter", "year"]},
+        {"metric_id": "PORK_STOCK_VOLUME", "name": "재고량", "category": "stock", "priority": 1, "frequency": "monthly", "comparisons": ["month", "year"]},
+        {"metric_id": "PORK_IMPORT_VOLUME", "name": "수입량", "category": "import", "priority": 1, "frequency": "monthly", "comparisons": ["month", "year"]},
+        {"metric_id": "PORK_IMPORT_PRICE", "name": "수입단가", "category": "import", "priority": 2, "frequency": "monthly", "comparisons": ["month", "year"]}
+      ]
+    },
+    "POULTRY": {
+      "label": "계육",
+      "required_metrics": [
+        {"metric_id": "POULTRY_LIVE_PRICE", "name": "생계가격", "category": "price", "priority": 1, "frequency": "daily", "comparisons": ["day", "month", "year"]},
+        {"metric_id": "POULTRY_WHOLESALE_PRICE", "name": "도매가격", "category": "price", "priority": 1, "frequency": "daily", "comparisons": ["day", "month", "year"]},
+        {"metric_id": "POULTRY_RETAIL_PRICE", "name": "소비자가격", "category": "price", "priority": 2, "frequency": "monthly", "comparisons": ["month", "year"]},
+        {"metric_id": "POULTRY_INVENTORY_COUNT", "name": "사육마릿수", "category": "breeding", "priority": 1, "frequency": "monthly", "comparisons": ["month", "year"]},
+        {"metric_id": "POULTRY_SLAUGHTER_COUNT", "name": "도계량", "category": "production", "priority": 1, "frequency": "monthly", "comparisons": ["month", "year"]},
+        {"metric_id": "POULTRY_SALES_VOLUME", "name": "판매량", "category": "demand", "priority": 2, "frequency": "monthly", "comparisons": ["month", "year"]},
+        {"metric_id": "POULTRY_TRADE_VOLUME", "name": "거래량", "category": "trade", "priority": 2, "frequency": "monthly", "comparisons": ["month", "year"]},
+        {"metric_id": "POULTRY_AI_EVENT", "name": "AI 발생·살처분", "category": "disease", "priority": 1, "frequency": "event", "comparisons": ["7d", "30d"]}
+      ]
+    },
+    "EGG": {
+      "label": "계란",
+      "required_metrics": [
+        {"metric_id": "EGG_FARM_PRICE", "name": "산지가격", "category": "price", "priority": 1, "frequency": "daily", "comparisons": ["day", "month", "year"]},
+        {"metric_id": "EGG_WHOLESALE_PRICE", "name": "도매가격", "category": "price", "priority": 1, "frequency": "daily", "comparisons": ["day", "month", "year"]},
+        {"metric_id": "EGG_RETAIL_PRICE", "name": "소비자가격", "category": "price", "priority": 2, "frequency": "monthly", "comparisons": ["month", "year"]},
+        {"metric_id": "EGG_PRODUCTION_VOLUME", "name": "생산량", "category": "production", "priority": 1, "frequency": "monthly", "comparisons": ["month", "year"]},
+        {"metric_id": "EGG_GRADING_VOLUME", "name": "선별실적", "category": "supply", "priority": 1, "frequency": "monthly", "comparisons": ["month", "year"]},
+        {"metric_id": "EGG_LAYER_COUNT", "name": "산란계 사육마릿수", "category": "breeding", "priority": 1, "frequency": "quarterly", "comparisons": ["quarter", "year"]},
+        {"metric_id": "EGG_AI_EVENT", "name": "AI 발생·살처분", "category": "disease", "priority": 1, "frequency": "event", "comparisons": ["7d", "30d"]}
+      ]
+    },
+    "DUCK": {
+      "label": "오리",
+      "required_metrics": [
+        {"metric_id": "DUCK_SLAUGHTER_COUNT", "name": "도축수수", "category": "production", "priority": 1, "frequency": "monthly", "comparisons": ["month", "year"]},
+        {"metric_id": "DUCK_INVENTORY_COUNT", "name": "사육마릿수", "category": "breeding", "priority": 1, "frequency": "monthly", "comparisons": ["month", "year"]},
+        {"metric_id": "DUCK_PRICE", "name": "산지·유통가격", "category": "price", "priority": 1, "frequency": "monthly", "comparisons": ["month", "year"]},
+        {"metric_id": "DUCK_AI_EVENT", "name": "AI 발생·살처분", "category": "disease", "priority": 1, "frequency": "event", "comparisons": ["7d", "30d"]}
+      ]
+    }
+  }
+}
