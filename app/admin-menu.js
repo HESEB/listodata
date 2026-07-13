@@ -10,10 +10,12 @@
       ['업데이트 안정성','./update-stability.html','자동 업데이트 점검'],
       ['Fallback 보호','./fallback-status.html','실패 시 데이터 복원 상태'],
       ['품질 경고','./quality-alerts.html','데이터 품질 경고 알림'],
+      ['업데이트 이력','./update-history.html','최근 100회 운영 상태'],
       ['소스 헬스','./source-health.html','수집 소스별 성공률/기여도'],
       ['최신성 경고','./freshness-alerts.html','데이터 최신성 점검'],
       ['패치승인','./patch-approval.html','관리자 승인 패치 생성'],
       ['Actions 실행','./actions-guide.html','수동 업데이트 실행 가이드'],
+      ['최종 운영점검','./operations-check.html','Phase 6 운영 준비도'],
       ['UX점검','./ux-check.html','최종 링크/메뉴 점검']
     ]},
     {title:'검수',desc:'분류 결과와 제외 자료 검토',items:[
@@ -42,43 +44,12 @@
     const st=document.createElement('style');st.id='admin-menu-style';st.textContent=css;document.head.appendChild(st);
   }
   function menuHTML(){return `<div class="admin-menu-head"><div><div class="admin-menu-title">Admin 통합 메뉴</div><div class="admin-menu-sub">관리 기능을 운영상태·검수·분석도구·전문성으로 정리했습니다.</div></div></div><div class="admin-menu-grid">${ADMIN_GROUPS.map(g=>`<section class="admin-menu-group"><h3>${g.title}</h3><div class="admin-menu-desc">${g.desc}</div><div class="admin-menu-links">${g.items.map(([t,u,d])=>`<a href="${u}" title="${d}">${t}</a>`).join('')}</div></section>`).join('')}</div>`;}
-  function hideNoisyLinks(){
-    document.querySelectorAll('a,button').forEach(el=>{
-      const text=(el.textContent||'').trim();
-      if(HIDE_TEXT.includes(text) && !el.closest('.admin-menu-wrap') && !el.closest('.admin-drawer')){
-        el.classList.add('admin-hidden-link');
-      }
-    });
-  }
-  function addHeroMenu(){
-    const hero=document.querySelector('.hero .hero-inner');
-    if(!hero||document.getElementById('admin-menu-wrap'))return;
-    const wrap=document.createElement('div');
-    wrap.id='admin-menu-wrap';
-    wrap.className='admin-menu-wrap';
-    wrap.innerHTML=menuHTML();
-    hero.appendChild(wrap);
-  }
-  function addDrawer(){
-    if(document.getElementById('admin-menu-open'))return;
-    const btn=document.createElement('button');
-    btn.id='admin-menu-open';
-    btn.className='admin-menu-open';
-    btn.type='button';
-    btn.textContent='Admin 메뉴';
-    btn.onclick=()=>toggleDrawer();
-    const drawer=document.createElement('div');
-    drawer.id='admin-drawer';
-    drawer.className='admin-drawer';
-    drawer.innerHTML=`<h2>Admin 통합 메뉴</h2>${menuHTML()}`;
-    document.body.appendChild(drawer);
-    document.body.appendChild(btn);
-  }
-  function toggleDrawer(){
-    const d=document.getElementById('admin-drawer');
-    if(d)d.classList.toggle('active');
-  }
-  function run(){addStyle();hideNoisyLinks();addHeroMenu();addDrawer();}
+  function hideNoisyLinks(){document.querySelectorAll('a,button').forEach(el=>{const text=(el.textContent||'').trim();if(HIDE_TEXT.includes(text)&&!el.closest('.admin-menu-wrap')&&!el.closest('.admin-drawer'))el.classList.add('admin-hidden-link');});}
+  function addHeroMenu(){const hero=document.querySelector('.hero .hero-inner');if(!hero||document.getElementById('admin-menu-wrap'))return;const wrap=document.createElement('div');wrap.id='admin-menu-wrap';wrap.className='admin-menu-wrap';wrap.innerHTML=menuHTML();hero.appendChild(wrap);}
+  function addDrawer(){if(document.getElementById('admin-menu-open'))return;const btn=document.createElement('button');btn.id='admin-menu-open';btn.className='admin-menu-open';btn.type='button';btn.textContent='Admin 메뉴';btn.onclick=()=>toggleDrawer();const drawer=document.createElement('div');drawer.id='admin-drawer';drawer.className='admin-drawer';drawer.innerHTML=`<h2>Admin 통합 메뉴</h2>${menuHTML()}`;document.body.appendChild(drawer);document.body.appendChild(btn);}
+  function addOperationsBadges(){if(document.getElementById('operations-badges-script'))return;const s=document.createElement('script');s.id='operations-badges-script';s.src='./operations-badges.js?v=phase-6-10';s.defer=true;document.body.appendChild(s);}
+  function toggleDrawer(){const d=document.getElementById('admin-drawer');if(d)d.classList.toggle('active');}
+  function run(){addStyle();hideNoisyLinks();addHeroMenu();addDrawer();addOperationsBadges();}
   function boot(){run();setTimeout(run,700);setTimeout(run,1600);setTimeout(run,3200);setInterval(hideNoisyLinks,2500);}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
 })();
