@@ -1,5 +1,5 @@
 {
-  "updated_at": null,
+  "updated_at": "2026-07-13T11:31:43Z",
   "policy": "phase8_kosis_url_generator_v1",
   "summary": {
     "status": "mapping_required",
@@ -8,11 +8,168 @@
     "generated_url_count": 0,
     "secret_count": 2
   },
-  "tables": [],
+  "tables": [
+    {
+      "connection_id": "KOSIS_LIVESTOCK_INVENTORY",
+      "purpose": "가축 사육마릿수",
+      "secret_name": "KOSIS_LIVESTOCK_INVENTORY_API_URL",
+      "status": "mapping_required",
+      "ready": false,
+      "errors": [
+        "org_id 미설정",
+        "tbl_id 미설정",
+        "통계표 선정 확인 미완료",
+        "지표 코드 미완료"
+      ],
+      "warnings": [],
+      "metric_count": 5,
+      "ready_metric_count": 0,
+      "item_ids": [],
+      "class_ids": [],
+      "candidate_url_template": null,
+      "masked_url": null,
+      "metrics": [
+        {
+          "metric_id": "BEEF_INVENTORY_COUNT",
+          "species": "BEEF",
+          "ready": false,
+          "errors": [
+            "ITM_ID 미설정",
+            "C1_ID 미설정"
+          ],
+          "item_id": null,
+          "class_id": null
+        },
+        {
+          "metric_id": "PORK_INVENTORY_COUNT",
+          "species": "PORK",
+          "ready": false,
+          "errors": [
+            "ITM_ID 미설정",
+            "C1_ID 미설정"
+          ],
+          "item_id": null,
+          "class_id": null
+        },
+        {
+          "metric_id": "POULTRY_INVENTORY_COUNT",
+          "species": "POULTRY",
+          "ready": false,
+          "errors": [
+            "ITM_ID 미설정",
+            "C1_ID 미설정"
+          ],
+          "item_id": null,
+          "class_id": null
+        },
+        {
+          "metric_id": "EGG_LAYER_COUNT",
+          "species": "EGG",
+          "ready": false,
+          "errors": [
+            "ITM_ID 미설정",
+            "C1_ID 미설정"
+          ],
+          "item_id": null,
+          "class_id": null
+        },
+        {
+          "metric_id": "DUCK_INVENTORY_COUNT",
+          "species": "DUCK",
+          "ready": false,
+          "errors": [
+            "ITM_ID 미설정",
+            "C1_ID 미설정"
+          ],
+          "item_id": null,
+          "class_id": null
+        }
+      ],
+      "next_action": "KOSIS 실제 코드 입력 화면에서 누락 코드를 먼저 입력"
+    },
+    {
+      "connection_id": "KOSIS_LIVESTOCK_PRODUCTION",
+      "purpose": "도축·도계·계란 생산",
+      "secret_name": "KOSIS_LIVESTOCK_PRODUCTION_API_URL",
+      "status": "mapping_required",
+      "ready": false,
+      "errors": [
+        "org_id 미설정",
+        "tbl_id 미설정",
+        "통계표 선정 확인 미완료",
+        "지표 코드 미완료"
+      ],
+      "warnings": [],
+      "metric_count": 5,
+      "ready_metric_count": 0,
+      "item_ids": [],
+      "class_ids": [],
+      "candidate_url_template": null,
+      "masked_url": null,
+      "metrics": [
+        {
+          "metric_id": "BEEF_SLAUGHTER_COUNT",
+          "species": "BEEF",
+          "ready": false,
+          "errors": [
+            "ITM_ID 미설정",
+            "C1_ID 미설정"
+          ],
+          "item_id": null,
+          "class_id": null
+        },
+        {
+          "metric_id": "PORK_SLAUGHTER_COUNT",
+          "species": "PORK",
+          "ready": false,
+          "errors": [
+            "ITM_ID 미설정",
+            "C1_ID 미설정"
+          ],
+          "item_id": null,
+          "class_id": null
+        },
+        {
+          "metric_id": "POULTRY_SLAUGHTER_COUNT",
+          "species": "POULTRY",
+          "ready": false,
+          "errors": [
+            "ITM_ID 미설정",
+            "C1_ID 미설정"
+          ],
+          "item_id": null,
+          "class_id": null
+        },
+        {
+          "metric_id": "EGG_PRODUCTION_VOLUME",
+          "species": "EGG",
+          "ready": false,
+          "errors": [
+            "ITM_ID 미설정",
+            "C1_ID 미설정"
+          ],
+          "item_id": null,
+          "class_id": null
+        },
+        {
+          "metric_id": "DUCK_SLAUGHTER_COUNT",
+          "species": "DUCK",
+          "ready": false,
+          "errors": [
+            "ITM_ID 미설정",
+            "C1_ID 미설정"
+          ],
+          "item_id": null,
+          "class_id": null
+        }
+      ],
+      "next_action": "KOSIS 실제 코드 입력 화면에서 누락 코드를 먼저 입력"
+    }
+  ],
   "security": {
     "persist_api_key": false,
     "mask_generated_url": true,
     "secret_value_is_full_url": true
   },
-  "notice": "Actions 실행 후 KOSIS URL 생성 상태가 표시됩니다."
+  "notice": "실제 코드가 입력된 매핑 템플릿으로 KOSIS API 후보 URL을 생성합니다. API 키는 저장하지 않고 {API_KEY} placeholder로 유지하며, 생성 URL은 KOSIS 테스트 화면에서 확인 후 Secret에 등록합니다."
 }
