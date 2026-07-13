@@ -1,0 +1,29 @@
+{
+  "updated_at": "2026-07-13",
+  "policy": "phase8_kosis_url_generator_v1",
+  "notice": "실제 코드가 입력된 매핑 템플릿으로 KOSIS API 후보 URL을 생성합니다. API 키는 저장하지 않고 {API_KEY} placeholder로 유지하며, 생성 URL은 KOSIS 테스트 화면에서 확인 후 Secret에 등록합니다.",
+  "endpoint": "https://kosis.kr/openapi/Param/statisticsParameterData.do",
+  "static_parameters": {
+    "method": "getList",
+    "format": "json",
+    "jsonVD": "Y"
+  },
+  "parameter_names": {
+    "api_key": "apiKey",
+    "org_id": "orgId",
+    "table_id": "tblId",
+    "period": "prdSe",
+    "start_period": "startPrdDe",
+    "end_period": "endPrdDe",
+    "item_ids": "itmId",
+    "class_level_1_ids": "objL1"
+  },
+  "joiner": ",",
+  "api_key_placeholder": "{API_KEY}",
+  "required_ready_fields": ["org_id", "tbl_id", "period", "start_prd_de", "end_prd_de"],
+  "security": {
+    "persist_api_key": false,
+    "mask_generated_url": true,
+    "secret_value_is_full_url": true
+  }
+}
