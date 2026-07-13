@@ -1,10 +1,22 @@
 {
-  "updated_at": "2026-07-13",
-  "policy": "phase7_representative_news_context_v2_v1",
+  "updated_at": "2026-07-14",
+  "policy": "phase8_representative_news_context_v2_v2",
   "windows_days": {
     "recent_news": 7,
     "decision_evidence": 30,
     "market_memory": 365
+  },
+  "representative_eligibility": {
+    "hard_cutoff_days": 30,
+    "exclude_missing_published_at": true,
+    "exclude_future_days_over": 1,
+    "stale_destination": "market_memory",
+    "reason_codes": {
+      "missing_date": "게시일 없음",
+      "older_than_cutoff": "게시일 30일 초과",
+      "invalid_date": "게시일 형식 오류",
+      "future_date": "미래 게시일 오류"
+    }
   },
   "representative_weights": {
     "freshness": 30,
@@ -30,5 +42,5 @@
     "2": 50,
     "1": 30
   },
-  "notice": "대표 뉴스는 방향을 생성하지 않고 공식 데이터 판단을 설명하는 보조 근거로만 사용합니다."
+  "notice": "대표 뉴스는 게시일 기준 최근 30일 이내 기사만 허용하며, 방향을 생성하지 않고 공식 데이터 판단을 설명하는 보조 근거로만 사용합니다. 오래된 기사는 시장 메모리 용도로만 유지합니다."
 }
