@@ -1,7 +1,7 @@
 {
   "updated_at": "2026-07-13",
-  "policy": "phase7_official_source_registry_v1",
-  "notice": "공식 데이터 수집기 1차 소스 레지스트리입니다. 가짜 수치는 사용하지 않으며, 실제 공개 URL 또는 관리자 승인 입력만 수집합니다.",
+  "policy": "phase8_official_source_registry_v2",
+  "notice": "공식 데이터 수집 레지스트리입니다. 실제 KOSIS·공공데이터포털 API 출력과 관리자 승인 입력만 수집합니다.",
   "defaults": {
     "timeout_seconds": 30,
     "source_level": 5,
@@ -9,6 +9,19 @@
     "enabled": false
   },
   "sources": [
+    {
+      "source_id": "REAL_OFFICIAL_API_OUTPUT",
+      "provider": "KOSIS·공공데이터포털",
+      "dataset": "Phase 8 실제 공식기관 API 수집 결과",
+      "adapter": "local_json",
+      "path": "app/data/official/manual/real_source_metrics.json",
+      "enabled": true,
+      "source_level": 5,
+      "reliability_score": 98,
+      "record_path": "records",
+      "status": "active",
+      "note": "collect_real_official_sources.py가 실제 기관 API를 호출해 생성한 승인 입력"
+    },
     {
       "source_id": "ADMIN_APPROVED_MANUAL",
       "provider": "HESEB 관리자 승인",
@@ -20,45 +33,33 @@
       "reliability_score": 90,
       "record_path": "records",
       "status": "active",
-      "note": "공식기관 자료를 확인한 관리자가 원문 URL과 기준일을 포함해 입력하는 안전한 초기 수집 경로"
+      "note": "공식기관 자료를 확인한 관리자가 원문 URL과 기준일을 포함해 입력하는 안전한 보조 경로"
     },
     {
-      "source_id": "KOSIS_LIVESTOCK",
+      "source_id": "LEGACY_KOSIS_FULL_URL",
       "provider": "국가통계포털 KOSIS",
-      "dataset": "축산 사육·생산 통계",
+      "dataset": "기존 단일 URL 호환 연결",
       "adapter": "remote_json",
       "url_env": "KOSIS_LIVESTOCK_API_URL",
       "enabled": false,
       "source_level": 5,
       "reliability_score": 98,
       "record_path": "",
-      "status": "pending_endpoint",
-      "note": "API URL 또는 인증 조건 확정 후 활성화"
+      "status": "legacy_disabled",
+      "note": "Phase 8의 세분화된 KOSIS 연결로 대체"
     },
     {
-      "source_id": "DATA_GO_KR_LIVESTOCK",
+      "source_id": "LEGACY_DATA_GO_KR_FULL_URL",
       "provider": "공공데이터포털",
-      "dataset": "축산 가격·도축·수입 공개 데이터",
+      "dataset": "기존 단일 URL 호환 연결",
       "adapter": "remote_json",
       "url_env": "DATA_GO_KR_LIVESTOCK_API_URL",
       "enabled": false,
       "source_level": 5,
       "reliability_score": 98,
       "record_path": "response.body.items.item",
-      "status": "pending_endpoint",
-      "note": "서비스키가 포함된 전체 호출 URL을 Actions Secret으로 설정한 뒤 활성화"
-    },
-    {
-      "source_id": "OFFICIAL_CSV_FEED",
-      "provider": "공식기관 CSV",
-      "dataset": "기관 공개 CSV 다운로드",
-      "adapter": "remote_csv",
-      "url_env": "OFFICIAL_LIVESTOCK_CSV_URL",
-      "enabled": false,
-      "source_level": 5,
-      "reliability_score": 95,
-      "status": "pending_endpoint",
-      "note": "고정 CSV 다운로드 주소가 확보된 데이터부터 순차 활성화"
+      "status": "legacy_disabled",
+      "note": "Phase 8의 실제 소스 연결로 대체"
     }
   ]
 }
