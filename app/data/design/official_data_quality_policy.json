@@ -1,0 +1,52 @@
+{
+  "updated_at": "2026-07-13",
+  "policy": "phase7_official_data_quality_policy_v1",
+  "notice": "공식 데이터의 품질·커버리지·신뢰도를 계산하는 Phase 7-3 기준입니다.",
+  "coverage": {
+    "priority_weights": {"1": 2, "2": 1},
+    "hold_below": 60,
+    "limited_below": 75,
+    "high_from": 75,
+    "very_high_from": 90
+  },
+  "freshness_threshold_days": {
+    "daily": 3,
+    "weekly": 10,
+    "monthly": 45,
+    "quarterly": 120,
+    "yearly": 400,
+    "event": 30
+  },
+  "quality_weights": {
+    "schema_validity": 30,
+    "freshness": 30,
+    "source_reliability": 25,
+    "comparison_completeness": 15
+  },
+  "reliability": {
+    "source_level_scores": {"5": 100, "4": 85, "3": 70, "2": 50, "1": 30},
+    "manual_approved_cap": 90,
+    "warning_penalty": 20,
+    "missing_value_penalty": 40
+  },
+  "confidence_gate": {
+    "coverage_below": 60,
+    "quality_below": 55,
+    "priority1_missing_ratio_above": 40,
+    "action": "hold"
+  },
+  "bands": {
+    "quality": [
+      {"min": 85, "code": "excellent", "label": "매우 양호"},
+      {"min": 70, "code": "good", "label": "양호"},
+      {"min": 55, "code": "limited", "label": "제한적"},
+      {"min": 0, "code": "risk", "label": "위험"}
+    ],
+    "coverage": [
+      {"min": 90, "code": "very_high", "label": "매우 높음"},
+      {"min": 75, "code": "high", "label": "높음"},
+      {"min": 60, "code": "limited", "label": "제한적 판단"},
+      {"min": 0, "code": "hold", "label": "판단 유보"}
+    ]
+  }
+}
