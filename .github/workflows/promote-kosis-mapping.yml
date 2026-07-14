@@ -1,0 +1,35 @@
+name: Promote KOSIS operational mapping
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: promote-kosis-mapping
+  cancel-in-progress: false
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Rebuild approved mapping from current approvals
+        run: python scripts/build_kosis_approved_mapping.py
+
+      - name: Validate and promote operational mapping
+        run: python scripts/promote_kosis_operational_mapping.py
+
+      - name: Commit promotion status and operational mapping
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: validate and promote KOSIS operational mapping"
+          file_pattern: app/data/config/kosis_table_mapping_approved.json app/data/config/kosis_table_mapping_operational.json app/data/admin/kosis_mapping_generation.json app/data/analysis/kosis_mapping_generation.json app/data/admin/kosis_mapping_promotion_status.json app/data/analysis/kosis_mapping_promotion_status.json
