@@ -1,0 +1,24 @@
+{
+  "updated_at": "2026-07-14",
+  "policy": "phase8_original_news_publisher_exceptions_v1",
+  "notice": "공개 원문 접근과 비표준 게시일 메타태그 보정만 허용합니다. 로그인·유료벽·봇 차단 우회 규칙은 등록하지 않습니다.",
+  "defaults": {
+    "enabled": true,
+    "retry_with_browser_user_agent": true,
+    "retry_on_http_status": [403, 406, 429],
+    "retry_canonical": true,
+    "timeout_seconds": 12,
+    "extra_meta_fields": [],
+    "extra_json_ld_fields": [],
+    "extra_time_attributes": []
+  },
+  "publishers": [
+    {
+      "id": "google_news_redirect",
+      "domains": ["news.google.com"],
+      "enabled": true,
+      "retry_canonical": false,
+      "note": "Google News 중간 링크는 최종 이동 URL 결과를 사용하며 canonical 재시도는 하지 않습니다."
+    }
+  ]
+}
