@@ -1,28 +1,71 @@
 {
-  "updated_at": "2026-07-13T23:15:34Z",
+  "updated_at": "2026-07-14T00:09:49Z",
   "policy": "phase5_market_memory_v2",
   "notice": "과거 신호 변동, 이벤트 캘린더, 현재 시장신호를 연결한 시장 메모리입니다. 가격 예측이 아니라 구매 판단 보조자료입니다.",
   "summary": {
-    "memory_event_count": 8,
-    "species_with_cases": 4,
-    "calendar_linked_count": 8,
+    "memory_event_count": 10,
+    "species_with_cases": 5,
+    "calendar_linked_count": 10,
     "similar_case_count": 0
   },
   "species": [
     {
       "id": "BEEF",
       "name": "한우",
-      "event_count": 0,
+      "event_count": 1,
       "jump_count": 0,
-      "drop_count": 0,
+      "drop_count": 1,
       "avg_jump_change": 0,
-      "avg_drop_change": 0,
-      "latest_signal_score": 63,
+      "avg_drop_change": -9.0,
+      "latest_signal_score": 54,
       "latest_status": "판단 유보",
-      "current_confidence": 66,
+      "current_confidence": 65,
       "current_conflict": "high",
-      "top_cases": [],
-      "memory_note": "한우은 아직 누적 사례가 부족하여 현재 신호 중심으로 판단"
+      "top_cases": [
+        {
+          "date": "2026-07-14",
+          "species": "BEEF",
+          "name": "한우",
+          "event_type": "signal_drop",
+          "event_type_label": "신호 하락",
+          "change": -9,
+          "from_score": 63,
+          "to_score": 54,
+          "confidence_score": 65,
+          "conflict_severity": "high",
+          "memo": "한우 신호 -9.0점 변동",
+          "source": "signal_history",
+          "nearby_calendar_events": [
+            {
+              "event_id": "HANWOO_SUPPORT_PROGRAM",
+              "title": "한우자조금·정부 지원사업 확인",
+              "event_type": "policy_support",
+              "event_type_label": "정책/지원",
+              "date_start": "2026-07-01",
+              "date_end": "2026-12-31",
+              "impact_direction": "down",
+              "impact_level": 4,
+              "distance_days": 13,
+              "purchase_check": "원료육 차액지원·홍보비 지원·협약 조건·증빙 요건 확인"
+            },
+            {
+              "event_id": "GOV_POLICY_CHECK_MONTHLY",
+              "title": "정부 수입·할당관세·가격안정 정책 확인",
+              "event_type": "policy_check",
+              "event_type_label": "정책 확인",
+              "date_start": "2026-07-01",
+              "date_end": "2026-12-31",
+              "impact_direction": "mixed",
+              "impact_level": 3,
+              "distance_days": 13,
+              "purchase_check": "농식품부 정책·수입 확대·가격안정 대책·할당관세 발표 여부 월 1회 확인"
+            }
+          ],
+          "purchase_implication": "한우 하방 신호가 확대된 사례로, 추가 비축보다 필요 물량 중심 운영 검토 필요 / 인접 이벤트: 한우자조금·정부 지원사업 확인",
+          "memory_id": "BEEF_2026-07-14_signal_drop_m9"
+        }
+      ],
+      "memory_note": "한우 현재 판단 유보 상태로, 과거 사례보다 최신 공식자료 보강 우선"
     },
     {
       "id": "PORK",
@@ -32,9 +75,9 @@
       "drop_count": 1,
       "avg_jump_change": 11.0,
       "avg_drop_change": -11.0,
-      "latest_signal_score": 55,
+      "latest_signal_score": 52,
       "latest_status": "보합/혼조",
-      "current_confidence": 87,
+      "current_confidence": 80,
       "current_conflict": "none",
       "top_cases": [
         {
@@ -132,9 +175,9 @@
       "drop_count": 1,
       "avg_jump_change": 0,
       "avg_drop_change": -8.0,
-      "latest_signal_score": 42,
+      "latest_signal_score": 43,
       "latest_status": "보합/혼조",
-      "current_confidence": 72,
+      "current_confidence": 73,
       "current_conflict": "none",
       "top_cases": [
         {
@@ -202,7 +245,7 @@
       "drop_count": 0,
       "avg_jump_change": 0,
       "avg_drop_change": 0,
-      "latest_signal_score": 12,
+      "latest_signal_score": 10,
       "latest_status": "판단 유보",
       "current_confidence": 30,
       "current_conflict": "low",
@@ -212,12 +255,12 @@
     {
       "id": "EGG",
       "name": "계란",
-      "event_count": 4,
+      "event_count": 5,
       "jump_count": 2,
-      "drop_count": 2,
+      "drop_count": 3,
       "avg_jump_change": 12.5,
-      "avg_drop_change": -12.0,
-      "latest_signal_score": 80,
+      "avg_drop_change": -10.7,
+      "latest_signal_score": 72,
       "latest_status": "판단 유보",
       "current_confidence": 61,
       "current_conflict": "high",
@@ -335,6 +378,36 @@
           ],
           "purchase_implication": "계란 하방 신호가 확대된 사례로, 추가 비축보다 필요 물량 중심 운영 검토 필요 / 인접 이벤트: 정부 수입·할당관세·가격안정 정책 확인",
           "memory_id": "EGG_2026-07-11_signal_drop_m9"
+        },
+        {
+          "date": "2026-07-14",
+          "species": "EGG",
+          "name": "계란",
+          "event_type": "signal_drop",
+          "event_type_label": "신호 하락",
+          "change": -8,
+          "from_score": 80,
+          "to_score": 72,
+          "confidence_score": 61,
+          "conflict_severity": "high",
+          "memo": "계란 신호 -8.0점 변동",
+          "source": "signal_history",
+          "nearby_calendar_events": [
+            {
+              "event_id": "GOV_POLICY_CHECK_MONTHLY",
+              "title": "정부 수입·할당관세·가격안정 정책 확인",
+              "event_type": "policy_check",
+              "event_type_label": "정책 확인",
+              "date_start": "2026-07-01",
+              "date_end": "2026-12-31",
+              "impact_direction": "mixed",
+              "impact_level": 3,
+              "distance_days": 13,
+              "purchase_check": "농식품부 정책·수입 확대·가격안정 대책·할당관세 발표 여부 월 1회 확인"
+            }
+          ],
+          "purchase_implication": "계란 하방 신호가 확대된 사례로, 추가 비축보다 필요 물량 중심 운영 검토 필요 / 인접 이벤트: 정부 수입·할당관세·가격안정 정책 확인",
+          "memory_id": "EGG_2026-07-14_signal_drop_m8"
         }
       ],
       "memory_note": "계란 현재 판단 유보 상태로, 과거 사례보다 최신 공식자료 보강 우선"
@@ -347,9 +420,9 @@
       "drop_count": 0,
       "avg_jump_change": 8.0,
       "avg_drop_change": 0,
-      "latest_signal_score": 42,
+      "latest_signal_score": 45,
       "latest_status": "판단 유보",
-      "current_confidence": 48,
+      "current_confidence": 66,
       "current_conflict": "high",
       "top_cases": [
         {
@@ -669,6 +742,78 @@
       ],
       "purchase_implication": "계란 상방 신호가 확대된 사례로, 단기 견적 재확인 및 운영 물량 선확보 검토 필요 / 인접 이벤트: 정부 수입·할당관세·가격안정 정책 확인 / 변동폭 큼",
       "memory_id": "EGG_2026-07-13_signal_jump_15"
+    },
+    {
+      "date": "2026-07-14",
+      "species": "BEEF",
+      "name": "한우",
+      "event_type": "signal_drop",
+      "event_type_label": "신호 하락",
+      "change": -9,
+      "from_score": 63,
+      "to_score": 54,
+      "confidence_score": 65,
+      "conflict_severity": "high",
+      "memo": "한우 신호 -9.0점 변동",
+      "source": "signal_history",
+      "nearby_calendar_events": [
+        {
+          "event_id": "HANWOO_SUPPORT_PROGRAM",
+          "title": "한우자조금·정부 지원사업 확인",
+          "event_type": "policy_support",
+          "event_type_label": "정책/지원",
+          "date_start": "2026-07-01",
+          "date_end": "2026-12-31",
+          "impact_direction": "down",
+          "impact_level": 4,
+          "distance_days": 13,
+          "purchase_check": "원료육 차액지원·홍보비 지원·협약 조건·증빙 요건 확인"
+        },
+        {
+          "event_id": "GOV_POLICY_CHECK_MONTHLY",
+          "title": "정부 수입·할당관세·가격안정 정책 확인",
+          "event_type": "policy_check",
+          "event_type_label": "정책 확인",
+          "date_start": "2026-07-01",
+          "date_end": "2026-12-31",
+          "impact_direction": "mixed",
+          "impact_level": 3,
+          "distance_days": 13,
+          "purchase_check": "농식품부 정책·수입 확대·가격안정 대책·할당관세 발표 여부 월 1회 확인"
+        }
+      ],
+      "purchase_implication": "한우 하방 신호가 확대된 사례로, 추가 비축보다 필요 물량 중심 운영 검토 필요 / 인접 이벤트: 한우자조금·정부 지원사업 확인",
+      "memory_id": "BEEF_2026-07-14_signal_drop_m9"
+    },
+    {
+      "date": "2026-07-14",
+      "species": "EGG",
+      "name": "계란",
+      "event_type": "signal_drop",
+      "event_type_label": "신호 하락",
+      "change": -8,
+      "from_score": 80,
+      "to_score": 72,
+      "confidence_score": 61,
+      "conflict_severity": "high",
+      "memo": "계란 신호 -8.0점 변동",
+      "source": "signal_history",
+      "nearby_calendar_events": [
+        {
+          "event_id": "GOV_POLICY_CHECK_MONTHLY",
+          "title": "정부 수입·할당관세·가격안정 정책 확인",
+          "event_type": "policy_check",
+          "event_type_label": "정책 확인",
+          "date_start": "2026-07-01",
+          "date_end": "2026-12-31",
+          "impact_direction": "mixed",
+          "impact_level": 3,
+          "distance_days": 13,
+          "purchase_check": "농식품부 정책·수입 확대·가격안정 대책·할당관세 발표 여부 월 1회 확인"
+        }
+      ],
+      "purchase_implication": "계란 하방 신호가 확대된 사례로, 추가 비축보다 필요 물량 중심 운영 검토 필요 / 인접 이벤트: 정부 수입·할당관세·가격안정 정책 확인",
+      "memory_id": "EGG_2026-07-14_signal_drop_m8"
     }
   ],
   "inputs": {

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-13T22:13:08Z",
+  "updated_at": "2026-07-13T23:15:34Z",
   "policy": "phase2_evidence_score_v3_sanitized",
   "score_axes": {
     "price": {
@@ -43,18 +43,18 @@
     {
       "id": "BEEF",
       "name": "한우",
-      "signal_score": 60,
+      "signal_score": 63,
       "direction": "hold",
       "status": "판단 유보",
-      "quality_score": 67,
-      "confidence_score": 65,
+      "quality_score": 68,
+      "confidence_score": 66,
       "coverage_rate": 100,
-      "evidence_count": 30,
+      "evidence_count": 31,
       "official_count": 6,
       "direction_counts": {
         "up": 10,
         "down": 4,
-        "neutral": 16,
+        "neutral": 17,
         "hold": 0
       },
       "coverage_types": [
@@ -62,13 +62,14 @@
         "수급/도축",
         "수요/행사",
         "일반",
+        "정책/고시",
         "질병/방역"
       ],
       "score_breakdown": {
         "price": 17,
         "supply": 20,
         "disease": 17,
-        "policy": 0,
+        "policy": 3,
         "news": 6
       },
       "score_breakdown_labels": {
@@ -169,12 +170,19 @@
         "policy": {
           "label": "정책/고시",
           "max_score": 10,
-          "score": 0,
-          "items": 0,
+          "score": 3,
+          "items": 1,
           "up": 0,
           "down": 0,
-          "neutral": 0,
-          "examples": []
+          "neutral": 1,
+          "examples": [
+            {
+              "title": "\"한돈, 나 먼저 축산법 탈출한다\"...베일 벗은 한우산업지원법 하위법령 - 돼지와사람",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 51
+            }
+          ]
         },
         "news": {
           "label": "뉴스/수요",
@@ -214,7 +222,7 @@
         "axes": [
           "가격"
         ],
-        "memo": "판단 유보 권장 · 충돌축: 가격 / 누락근거: 정책/고시 / 유보사유: 상·하방 근거 강충돌"
+        "memo": "판단 유보 권장 · 충돌축: 가격 / 유보사유: 상·하방 근거 강충돌"
       },
       "hold_decision": {
         "should_hold": [
@@ -319,37 +327,38 @@
         ],
         "recommended_status": "판단 유보",
         "recommended_direction": "hold",
-        "adjusted_confidence": 65
+        "adjusted_confidence": 66
       }
     },
     {
       "id": "PORK",
       "name": "돈육",
-      "signal_score": 52,
+      "signal_score": 55,
       "direction": "neutral",
       "status": "보합/혼조",
       "quality_score": 72,
-      "confidence_score": 80,
-      "coverage_rate": 80,
-      "evidence_count": 33,
+      "confidence_score": 87,
+      "coverage_rate": 100,
+      "evidence_count": 34,
       "official_count": 15,
       "direction_counts": {
         "up": 26,
         "down": 1,
-        "neutral": 6,
+        "neutral": 7,
         "hold": 0
       },
       "coverage_types": [
         "가격",
         "수급/도축",
         "일반",
+        "정책/고시",
         "질병/방역"
       ],
       "score_breakdown": {
         "price": 15,
         "supply": 12,
         "disease": 19,
-        "policy": 0,
+        "policy": 3,
         "news": 6
       },
       "score_breakdown_labels": {
@@ -438,12 +447,19 @@
         "policy": {
           "label": "정책/고시",
           "max_score": 10,
-          "score": 0,
-          "items": 0,
+          "score": 3,
+          "items": 1,
           "up": 0,
           "down": 0,
-          "neutral": 0,
-          "examples": []
+          "neutral": 1,
+          "examples": [
+            {
+              "title": "\"한돈, 나 먼저 축산법 탈출한다\"...베일 벗은 한우산업지원법 하위법령 - 돼지와사람",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 51
+            }
+          ]
         },
         "news": {
           "label": "뉴스/수요",
@@ -481,14 +497,14 @@
         "has_conflict": false,
         "severity": "none",
         "axes": [],
-        "memo": "주의 필요 · 누락근거: 정책/고시"
+        "memo": "충돌 또는 판단 유보 요인 없음"
       },
       "hold_decision": {
         "should_hold": false,
         "reasons": [],
         "recommended_status": "보합/혼조",
         "recommended_direction": "neutral",
-        "adjusted_confidence": 80
+        "adjusted_confidence": 87
       }
     },
     {
@@ -500,10 +516,10 @@
       "quality_score": 70,
       "confidence_score": 72,
       "coverage_rate": 60,
-      "evidence_count": 23,
+      "evidence_count": 22,
       "official_count": 14,
       "direction_counts": {
-        "up": 17,
+        "up": 16,
         "down": 1,
         "neutral": 5,
         "hold": 0
@@ -571,8 +587,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 18,
-          "items": 14,
-          "up": 14,
+          "items": 13,
+          "up": 13,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -589,10 +605,10 @@
               "quality_score": 51
             },
             {
-              "title": "충청남도, 논산 오리농장 AI 항원 검출...긴급 방역 - 뉴스타운",
+              "title": "알림소식 > 보도자료 > 6월 1일자로 고병원성 조류인플루엔자(AI) 평시 방역체계로 전환하여 상시 방역활동 추진 - 농림축산식품부",
               "direction": "up",
-              "source_level": 3,
-              "quality_score": 51
+              "source_level": 5,
+              "quality_score": 75
             }
           ]
         },
@@ -655,16 +671,16 @@
     {
       "id": "DUCK",
       "name": "오리",
-      "signal_score": 14,
+      "signal_score": 12,
       "direction": "hold",
       "status": "판단 유보",
       "quality_score": 51,
       "confidence_score": 30,
       "coverage_rate": 20,
-      "evidence_count": 3,
+      "evidence_count": 2,
       "official_count": 0,
       "direction_counts": {
-        "up": 3,
+        "up": 2,
         "down": 0,
         "neutral": 0,
         "hold": 0
@@ -675,7 +691,7 @@
       "score_breakdown": {
         "price": 0,
         "supply": 0,
-        "disease": 14,
+        "disease": 12,
         "policy": 0,
         "news": 0
       },
@@ -710,9 +726,9 @@
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
-          "score": 14,
-          "items": 3,
-          "up": 3,
+          "score": 12,
+          "items": 2,
+          "up": 2,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -724,12 +740,6 @@
             },
             {
               "title": "논산 오리농장서 AI 항원 검출…2만6천마리 살처분 예정 - 연합뉴스",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 51
-            },
-            {
-              "title": "충청남도, 논산 오리농장 AI 항원 검출...긴급 방역 - 뉴스타운",
               "direction": "up",
               "source_level": 3,
               "quality_score": 51
@@ -757,7 +767,7 @@
           "examples": []
         }
       },
-      "reason": "질병/방역 14점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 12점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
