@@ -21,6 +21,7 @@
       ['Direction Engine 2.0','./direction-engine-v2.html','공식 수치 기반 시장 방향성'],
       ['Recommendation Engine','./recommendation-engine.html','시장 방향 기반 구매 행동 추천'],
       ['대표뉴스·문맥필터','./representative-news.html','대표 기사 선정과 Context Filter v2'],
+      ['원문 게시일 수집','./original-news-date-enrichment.html','JSON-LD·OpenGraph 게시일 수집 상태'],
       ['대표뉴스 날짜검수','./representative-news-date-review.html','게시일 자동 추정·원문 검증·관리자 승인'],
       ['Report Sentence Engine','./report-sentence-engine.html','공식 데이터 기반 보고 문장 생성'],
       ['DSS 2.0 최종검증','./dss2-final-validation.html','Phase 7 전체 구조·실데이터 준비도 검증']
