@@ -60,6 +60,9 @@ jobs:
       - name: Filter non-livestock false positives
         run: python scripts/filter_collected_news.py
 
+      - name: Enrich original article publication dates
+        run: python scripts/enrich_original_news_dates.py
+
       - name: Build quality and score layers
         run: python scripts/build_quality_layers.py
 
@@ -131,6 +134,9 @@ jobs:
 
       - name: Build representative news date estimates
         run: python scripts/build_news_date_estimates.py
+
+      - name: Merge original-page date metadata into review
+        run: python scripts/merge_original_date_estimates.py
 
       - name: Build Report Sentence Engine
         run: python scripts/build_report_sentences.py
