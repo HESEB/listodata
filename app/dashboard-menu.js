@@ -9,6 +9,8 @@
       ['Version 상태','./version-status.html','버전·빌드·데이터 갱신 상태']
     ]},
     {title:'DSS 2.0',desc:'데이터 중심 전환',items:[
+      ['Phase 9 최종검증','./phase9-readiness.html','KOSIS 운영 전환 최종 체크리스트'],
+      ['KOSIS 단독키 검증','./kosis-single-key-runtime-validation.html','기존 URL Secret 제거 후 단독키 수집·자동 롤백'],
       ['KOSIS 수집 검증','./kosis-operational-collection-validation.html','운영 매핑 수집 결과·기존 Secret 폐기 준비도'],
       ['KOSIS 실행 매핑','./kosis-runtime-mapping.html','운영 매핑의 URL 생성·공식수집 실제 적용 상태'],
       ['KOSIS 운영 승격','./kosis-mapping-promotion.html','승인 매핑 검증·운영 매핑 승격'],
