@@ -31,6 +31,14 @@ jobs:
       - name: Refresh market data JSON
         run: python scripts/update_market_data.py
 
+      - name: Collect KOSIS statistics-list candidates
+        env:
+          KOSIS_API_KEY: ${{ secrets.KOSIS_API_KEY }}
+        run: python scripts/collect_kosis_catalog_candidates.py
+
+      - name: Build KOSIS code research status
+        run: python scripts/research_kosis_table_codes.py
+
       - name: Validate KOSIS table mappings
         run: python scripts/validate_kosis_table_mapping.py
 
