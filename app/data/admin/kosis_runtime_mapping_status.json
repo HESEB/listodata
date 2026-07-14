@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-15",
+  "updated_at": "2026-07-14T23:14:22Z",
   "policy": "phase9_kosis_runtime_mapping_v1",
   "summary": {
     "status": "fallback",
@@ -16,10 +16,35 @@
     "promotion_status": "not_promoted",
     "fallback_used": true
   },
-  "sources": [],
+  "sources": [
+    {
+      "source_id": "KOSIS_LIVESTOCK_INVENTORY",
+      "provider": "국가통계포털 KOSIS",
+      "dataset": "가축동향조사 사육마릿수",
+      "status": "credential_required",
+      "record_count": 0,
+      "url_env": "KOSIS_LIVESTOCK_INVENTORY_API_URL",
+      "official_page": "https://kosis.kr/openapi/index/index.jsp",
+      "mapping_source": "template_fallback",
+      "endpoint_mode": "legacy_secret_url",
+      "message": "GitHub Actions Secret KOSIS_LIVESTOCK_INVENTORY_API_URL 설정 필요"
+    },
+    {
+      "source_id": "KOSIS_LIVESTOCK_PRODUCTION",
+      "provider": "국가통계포털 KOSIS",
+      "dataset": "축산물 생산·도축 통계",
+      "status": "credential_required",
+      "record_count": 0,
+      "url_env": "KOSIS_LIVESTOCK_PRODUCTION_API_URL",
+      "official_page": "https://kosis.kr/openapi/index/index.jsp",
+      "mapping_source": "template_fallback",
+      "endpoint_mode": "legacy_secret_url",
+      "message": "GitHub Actions Secret KOSIS_LIVESTOCK_PRODUCTION_API_URL 설정 필요"
+    }
+  ],
   "security": {
     "api_key_exposed": false,
     "generated_url_exposed": false
   },
-  "notice": "운영 매핑 승격 전에는 기존 Secret URL 경로를 사용하는 fallback 상태가 정상입니다."
+  "notice": "운영 매핑 승격 전에는 fallback이 정상입니다."
 }

@@ -1,12 +1,21 @@
 {
-  "updated_at": "2026-07-14T22:16:58Z",
-  "policy": "phase8_kosis_url_generator_v1",
+  "updated_at": "2026-07-14T23:14:22Z",
+  "policy": "phase9_kosis_url_generator_runtime_v1",
   "summary": {
     "status": "mapping_required",
     "table_count": 2,
     "ready_table_count": 0,
     "generated_url_count": 0,
-    "secret_count": 2
+    "secret_count": 2,
+    "mapping_source": "template_fallback",
+    "operational_mapping_active": false,
+    "fallback_used": true
+  },
+  "runtime_mapping": {
+    "mapping_source": "template_fallback",
+    "mapping_path": "app/data/config/kosis_table_mapping_template.json",
+    "promotion_status": "not_promoted",
+    "fallback_used": true
   },
   "tables": [
     {
@@ -85,7 +94,7 @@
           "class_id": null
         }
       ],
-      "next_action": "KOSIS 실제 코드 입력 화면에서 누락 코드를 먼저 입력"
+      "next_action": "운영 승격 또는 코드 승인을 먼저 완료"
     },
     {
       "connection_id": "KOSIS_LIVESTOCK_PRODUCTION",
@@ -163,7 +172,7 @@
           "class_id": null
         }
       ],
-      "next_action": "KOSIS 실제 코드 입력 화면에서 누락 코드를 먼저 입력"
+      "next_action": "운영 승격 또는 코드 승인을 먼저 완료"
     }
   ],
   "security": {
@@ -171,5 +180,5 @@
     "mask_generated_url": true,
     "secret_value_is_full_url": true
   },
-  "notice": "실제 코드가 입력된 매핑 템플릿으로 KOSIS API 후보 URL을 생성합니다. API 키는 저장하지 않고 {API_KEY} placeholder로 유지하며, 생성 URL은 KOSIS 테스트 화면에서 확인 후 Secret에 등록합니다."
+  "notice": "승격된 운영 매핑을 우선 사용하며, 미승격 상태에서는 기존 템플릿을 안전하게 유지합니다."
 }

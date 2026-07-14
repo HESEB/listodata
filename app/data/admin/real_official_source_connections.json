@@ -1,14 +1,24 @@
 {
-  "updated_at": "2026-07-14T22:16:58Z",
-  "policy": "phase8_real_official_sources_v1",
+  "updated_at": "2026-07-14T23:14:22Z",
+  "policy": "phase9_real_official_sources_runtime_v1",
   "summary": {
     "status": "credential_required",
     "source_count": 3,
     "success_count": 0,
     "credential_required_count": 3,
+    "mapping_required_count": 0,
     "failed_count": 0,
     "collected_record_count": 0,
-    "previous_data_preserved": false
+    "previous_data_preserved": false,
+    "operational_mapping_active": false,
+    "runtime_url_count": 0,
+    "fallback_used": true
+  },
+  "runtime_mapping": {
+    "mapping_source": "template_fallback",
+    "mapping_path": "app/data/config/kosis_table_mapping_template.json",
+    "promotion_status": "not_promoted",
+    "fallback_used": true
   },
   "sources": [
     {
@@ -19,6 +29,8 @@
       "record_count": 0,
       "url_env": "KOSIS_LIVESTOCK_INVENTORY_API_URL",
       "official_page": "https://kosis.kr/openapi/index/index.jsp",
+      "mapping_source": "template_fallback",
+      "endpoint_mode": "legacy_secret_url",
       "message": "GitHub Actions Secret KOSIS_LIVESTOCK_INVENTORY_API_URL 설정 필요"
     },
     {
@@ -29,6 +41,8 @@
       "record_count": 0,
       "url_env": "KOSIS_LIVESTOCK_PRODUCTION_API_URL",
       "official_page": "https://kosis.kr/openapi/index/index.jsp",
+      "mapping_source": "template_fallback",
+      "endpoint_mode": "legacy_secret_url",
       "message": "GitHub Actions Secret KOSIS_LIVESTOCK_PRODUCTION_API_URL 설정 필요"
     },
     {
@@ -39,9 +53,15 @@
       "record_count": 0,
       "url_env": "DATA_GO_KR_LIVESTOCK_MARKET_API_URL",
       "official_page": "https://www.data.go.kr/",
+      "mapping_source": "source_config",
+      "endpoint_mode": "legacy_secret_url",
       "message": "GitHub Actions Secret DATA_GO_KR_LIVESTOCK_MARKET_API_URL 설정 필요"
     }
   ],
   "output": "app/data/official/manual/real_source_metrics.json",
-  "notice": "실제 공식기관 API 호출 URL은 GitHub Actions Secret으로 주입합니다. 인증값이 없으면 실패가 아니라 credential_required로 기록합니다."
+  "security": {
+    "api_key_exposed": false,
+    "runtime_urls_persisted": false
+  },
+  "notice": "승격된 운영 매핑은 KOSIS_API_KEY와 결합해 실행 중에만 URL을 생성합니다. 미승격 상태에서는 기존 Secret URL을 사용합니다."
 }

@@ -1,7 +1,287 @@
 {
-  "updated_at": "2026-07-15",
+  "updated_at": "2026-07-14T23:14:22Z",
   "policy": "phase9_kosis_approved_mapping_v1",
-  "notice": "관리자 승인 전 초기 상태입니다. 원본 매핑 템플릿은 변경하지 않습니다.",
+  "notice": "관리자 승인과 현재 공식 상세 API 근거가 일치한 코드만 생성했습니다. 원본 템플릿은 변경하지 않았습니다.",
+  "instructions": {
+    "required_table_fields": [
+      "org_id",
+      "tbl_id",
+      "period",
+      "start_prd_de",
+      "end_prd_de"
+    ],
+    "required_mapping_fields": [
+      "metric_id",
+      "species",
+      "item_selector",
+      "classification_selectors",
+      "unit_expectation"
+    ],
+    "placeholder_values": [
+      "REPLACE_ORG_ID",
+      "REPLACE_TABLE_ID",
+      "REPLACE_ITEM_ID",
+      "REPLACE_CLASS_ID",
+      "REPLACE_UNIT"
+    ]
+  },
+  "tables": [
+    {
+      "connection_id": "KOSIS_LIVESTOCK_INVENTORY",
+      "secret_name": "KOSIS_LIVESTOCK_INVENTORY_API_URL",
+      "purpose": "가축 사육마릿수",
+      "org_id": "REPLACE_ORG_ID",
+      "tbl_id": "REPLACE_TABLE_ID",
+      "period": "Q",
+      "start_prd_de": "2024Q1",
+      "end_prd_de": "2026Q4",
+      "selected": false,
+      "selection_note": "승인 지표 없음 또는 한 연결에 서로 다른 통계표가 혼재하여 분리 필요",
+      "metric_mappings": [
+        {
+          "metric_id": "BEEF_INVENTORY_COUNT",
+          "species": "BEEF",
+          "item_selector": {
+            "ITM_ID": "REPLACE_ITEM_ID",
+            "ITM_NM_contains": [
+              "한육우",
+              "한우"
+            ]
+          },
+          "classification_selectors": {
+            "C1_ID": "REPLACE_CLASS_ID",
+            "C1_NM_contains": [
+              "한우",
+              "한육우"
+            ]
+          },
+          "unit_expectation": [
+            "마리",
+            "두"
+          ],
+          "enabled": true
+        },
+        {
+          "metric_id": "PORK_INVENTORY_COUNT",
+          "species": "PORK",
+          "item_selector": {
+            "ITM_ID": "REPLACE_ITEM_ID",
+            "ITM_NM_contains": [
+              "돼지"
+            ]
+          },
+          "classification_selectors": {
+            "C1_ID": "REPLACE_CLASS_ID",
+            "C1_NM_contains": [
+              "돼지"
+            ]
+          },
+          "unit_expectation": [
+            "마리",
+            "두"
+          ],
+          "enabled": true
+        },
+        {
+          "metric_id": "POULTRY_INVENTORY_COUNT",
+          "species": "POULTRY",
+          "item_selector": {
+            "ITM_ID": "REPLACE_ITEM_ID",
+            "ITM_NM_contains": [
+              "육계",
+              "닭"
+            ]
+          },
+          "classification_selectors": {
+            "C1_ID": "REPLACE_CLASS_ID",
+            "C1_NM_contains": [
+              "육계",
+              "닭"
+            ]
+          },
+          "unit_expectation": [
+            "마리",
+            "천마리"
+          ],
+          "enabled": true
+        },
+        {
+          "metric_id": "EGG_LAYER_COUNT",
+          "species": "EGG",
+          "item_selector": {
+            "ITM_ID": "REPLACE_ITEM_ID",
+            "ITM_NM_contains": [
+              "산란계"
+            ]
+          },
+          "classification_selectors": {
+            "C1_ID": "REPLACE_CLASS_ID",
+            "C1_NM_contains": [
+              "산란계"
+            ]
+          },
+          "unit_expectation": [
+            "마리",
+            "천마리"
+          ],
+          "enabled": true
+        },
+        {
+          "metric_id": "DUCK_INVENTORY_COUNT",
+          "species": "DUCK",
+          "item_selector": {
+            "ITM_ID": "REPLACE_ITEM_ID",
+            "ITM_NM_contains": [
+              "오리"
+            ]
+          },
+          "classification_selectors": {
+            "C1_ID": "REPLACE_CLASS_ID",
+            "C1_NM_contains": [
+              "오리"
+            ]
+          },
+          "unit_expectation": [
+            "마리",
+            "천마리"
+          ],
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "connection_id": "KOSIS_LIVESTOCK_PRODUCTION",
+      "secret_name": "KOSIS_LIVESTOCK_PRODUCTION_API_URL",
+      "purpose": "도축·도계·계란 생산",
+      "org_id": "REPLACE_ORG_ID",
+      "tbl_id": "REPLACE_TABLE_ID",
+      "period": "M",
+      "start_prd_de": "202401",
+      "end_prd_de": "202612",
+      "selected": false,
+      "selection_note": "승인 지표 없음 또는 한 연결에 서로 다른 통계표가 혼재하여 분리 필요",
+      "metric_mappings": [
+        {
+          "metric_id": "BEEF_SLAUGHTER_COUNT",
+          "species": "BEEF",
+          "item_selector": {
+            "ITM_ID": "REPLACE_ITEM_ID",
+            "ITM_NM_contains": [
+              "소",
+              "한우",
+              "도축"
+            ]
+          },
+          "classification_selectors": {
+            "C1_ID": "REPLACE_CLASS_ID",
+            "C1_NM_contains": [
+              "소",
+              "한우"
+            ]
+          },
+          "unit_expectation": [
+            "두",
+            "마리"
+          ],
+          "enabled": true
+        },
+        {
+          "metric_id": "PORK_SLAUGHTER_COUNT",
+          "species": "PORK",
+          "item_selector": {
+            "ITM_ID": "REPLACE_ITEM_ID",
+            "ITM_NM_contains": [
+              "돼지",
+              "도축"
+            ]
+          },
+          "classification_selectors": {
+            "C1_ID": "REPLACE_CLASS_ID",
+            "C1_NM_contains": [
+              "돼지"
+            ]
+          },
+          "unit_expectation": [
+            "두",
+            "마리"
+          ],
+          "enabled": true
+        },
+        {
+          "metric_id": "POULTRY_SLAUGHTER_COUNT",
+          "species": "POULTRY",
+          "item_selector": {
+            "ITM_ID": "REPLACE_ITEM_ID",
+            "ITM_NM_contains": [
+              "도계",
+              "닭"
+            ]
+          },
+          "classification_selectors": {
+            "C1_ID": "REPLACE_CLASS_ID",
+            "C1_NM_contains": [
+              "닭",
+              "육계"
+            ]
+          },
+          "unit_expectation": [
+            "수",
+            "마리",
+            "천수"
+          ],
+          "enabled": true
+        },
+        {
+          "metric_id": "EGG_PRODUCTION_VOLUME",
+          "species": "EGG",
+          "item_selector": {
+            "ITM_ID": "REPLACE_ITEM_ID",
+            "ITM_NM_contains": [
+              "계란",
+              "생산"
+            ]
+          },
+          "classification_selectors": {
+            "C1_ID": "REPLACE_CLASS_ID",
+            "C1_NM_contains": [
+              "계란"
+            ]
+          },
+          "unit_expectation": [
+            "개",
+            "천개",
+            "톤"
+          ],
+          "enabled": true
+        },
+        {
+          "metric_id": "DUCK_SLAUGHTER_COUNT",
+          "species": "DUCK",
+          "item_selector": {
+            "ITM_ID": "REPLACE_ITEM_ID",
+            "ITM_NM_contains": [
+              "오리",
+              "도축"
+            ]
+          },
+          "classification_selectors": {
+            "C1_ID": "REPLACE_CLASS_ID",
+            "C1_NM_contains": [
+              "오리"
+            ]
+          },
+          "unit_expectation": [
+            "수",
+            "마리",
+            "천수"
+          ],
+          "enabled": true
+        }
+      ]
+    }
+  ],
+  "source_template": "app/data/config/kosis_table_mapping_template.json",
+  "approval_registry": "app/data/admin/kosis_detail_approvals.json",
   "generation_summary": {
     "status": "approval_required",
     "approval_count": 0,
@@ -11,6 +291,5 @@
     "unresolved_metric_count": 10,
     "ready_table_count": 0,
     "auto_applied_to_source_template": false
-  },
-  "tables": []
+  }
 }
