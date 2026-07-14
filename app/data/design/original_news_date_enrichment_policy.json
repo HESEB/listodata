@@ -1,0 +1,23 @@
+{
+  "updated_at": "2026-07-14",
+  "policy": "phase8_original_news_date_enrichment_v1",
+  "enabled": true,
+  "max_articles_per_run": 40,
+  "request_timeout_seconds": 12,
+  "max_response_bytes": 1200000,
+  "retry_canonical_once": true,
+  "accepted_content_types": ["text/html", "application/xhtml+xml"],
+  "date_sources": [
+    {"source": "json_ld", "fields": ["datePublished", "dateCreated", "uploadDate"], "confidence": 100},
+    {"source": "open_graph", "fields": ["article:published_time", "og:published_time"], "confidence": 98},
+    {"source": "meta", "fields": ["datePublished", "pubdate", "publishdate", "publish-date", "parsely-pub-date", "sailthru.date", "date"], "confidence": 92},
+    {"source": "time_tag", "fields": ["datetime"], "confidence": 85}
+  ],
+  "safety": {
+    "allowed_schemes": ["http", "https"],
+    "blocked_hosts": ["localhost", "127.0.0.1", "0.0.0.0", "::1"],
+    "do_not_fail_workflow_on_article_error": true,
+    "do_not_auto_overwrite_published_at": true
+  },
+  "notice": "원문 JSON-LD·OpenGraph·meta·time 태그에서 게시일 후보를 수집합니다. 원래 published_at은 자동 덮어쓰지 않으며 관리자 검수 근거로만 사용합니다."
+}
