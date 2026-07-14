@@ -1,0 +1,30 @@
+{
+  "updated_at": "2026-07-14",
+  "policy": "phase9_kosis_detail_api_v1",
+  "secret_name": "KOSIS_API_KEY",
+  "parameter_endpoint": "https://kosis.kr/openapi/statisticsParameterData.do",
+  "common_query": {
+    "method": "getList",
+    "format": "json",
+    "jsonVD": "Y"
+  },
+  "candidate_limit_per_run": 20,
+  "request_timeout_seconds": 15,
+  "max_response_bytes": 4000000,
+  "minimum_metric_keyword_score": 1,
+  "parameter_aliases": {
+    "item_id": ["ITM_ID", "itmId", "itm_id"],
+    "item_name": ["ITM_NM", "itmNm", "itm_nm"],
+    "classification_id": ["C1_ID", "c1Id", "c1_id", "OBJ_ID", "objId"],
+    "classification_name": ["C1_NM", "c1Nm", "c1_nm", "OBJ_NM", "objNm"],
+    "unit": ["UNIT_NM", "unitNm", "unit", "UNIT"]
+  },
+  "security": {
+    "never_write_api_key": true,
+    "mask_query_in_status": true,
+    "fail_soft_without_secret": true,
+    "manual_approval_required": true,
+    "auto_apply_to_mapping_template": false
+  },
+  "notice": "통계목록 후보의 공식 상세 응답에서 항목·분류·단위 코드를 수집합니다. 응답 구조가 다르거나 근거가 부족한 후보는 검증 필요 상태로 유지하며 기존 매핑 템플릿을 자동 변경하지 않습니다."
+}
