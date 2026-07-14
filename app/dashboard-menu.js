@@ -9,6 +9,7 @@
       ['Version 상태','./version-status.html','버전·빌드·데이터 갱신 상태']
     ]},
     {title:'DSS 2.0',desc:'데이터 중심 전환',items:[
+      ['KOSIS 상세후보 승인','./kosis-detail-approval.html','공식 상세 후보 승인·매핑 생성'],
       ['KOSIS 상세코드 조사','./kosis-detail-research.html','통계표 후보의 ITM_ID·C1_ID·단위 자동조사'],
       ['KOSIS 목록 자동조사','./kosis-catalog-research.html','인증키 기반 공식 통계목록 후보 자동수집'],
       ['KOSIS 코드 조사','./kosis-code-research.html','실제 기관·통계표·항목·분류 코드 조사'],
