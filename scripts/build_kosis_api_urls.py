@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Build KOSIS API candidate URLs from the approved mapping template.
+"""Build KOSIS API URL templates from the active mapping.
 
-Security rules:
-- Never read or persist a real API key.
-- Emit {API_KEY} placeholders only.
-- Refuse to mark a URL ready while table or mapping placeholders remain.
+A promoted operational mapping is preferred. Until promotion, the legacy template
+remains the safe fallback. Real API keys are never read or persisted here.
 """
 from __future__ import annotations
 
@@ -15,9 +13,10 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import urlencode
 
+from kosis_mapping_runtime import resolve_mapping
+
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "app" / "data"
-MAPPING_PATH = DATA / "config" / "kosis_table_mapping_template.json"
 POLICY_PATH = DATA / "config" / "kosis_url_generator_policy.json"
 ADMIN_OUT = DATA / "admin" / "kosis_api_url_generation.json"
 ANALYSIS_OUT = DATA / "analysis" / "kosis_api_url_generation.json"
@@ -63,7 +62,7 @@ def masked_url(url: str, placeholder: str) -> str:
 
 
 def build_table(table: dict, mapping_doc: dict, policy: dict) -> dict:
-    placeholders = list((mapping_doc.get("instructions") or {}).get("placeholder_values") or [])
+    placeholders = list((mapping_doc.get("instructions") or {}).get("placeholder_values") or ["REPLACE_"])
     params = policy.get("parameter_names") or {}
     errors: list[str] = []
     warnings: list[str] = []
@@ -85,9 +84,9 @@ def build_table(table: dict, mapping_doc: dict, policy: dict) -> dict:
         metric_errors: list[str] = []
         item_id = str((mapping.get("item_selector") or {}).get("ITM_ID") or "").strip()
         class_id = str((mapping.get("classification_selectors") or {}).get("C1_ID") or "").strip()
-        if has_placeholder(item_id, placeholders):
+        if has_placeholder(item_id, placeholders) or "REPLACE_" in item_id:
             metric_errors.append("ITM_ID 미설정")
-        if has_placeholder(class_id, placeholders):
+        if has_placeholder(class_id, placeholders) or "REPLACE_" in class_id:
             metric_errors.append("C1_ID 미설정")
         if not mapping.get("metric_id"):
             metric_errors.append("metric_id 누락")
@@ -99,8 +98,8 @@ def build_table(table: dict, mapping_doc: dict, policy: dict) -> dict:
             "species": mapping.get("species"),
             "ready": not metric_errors,
             "errors": metric_errors,
-            "item_id": item_id if not has_placeholder(item_id, placeholders) else None,
-            "class_id": class_id if not has_placeholder(class_id, placeholders) else None,
+            "item_id": item_id if not metric_errors else None,
+            "class_id": class_id if not metric_errors else None,
         })
 
     if not enabled_mappings:
@@ -112,7 +111,6 @@ def build_table(table: dict, mapping_doc: dict, policy: dict) -> dict:
     class_ids = unique(class_ids)
     joiner = str(policy.get("joiner") or ",")
     api_key_placeholder = str(policy.get("api_key_placeholder") or "{API_KEY}")
-
     query = dict(policy.get("static_parameters") or {})
     query.update({
         params.get("api_key", "apiKey"): api_key_placeholder,
@@ -126,11 +124,11 @@ def build_table(table: dict, mapping_doc: dict, policy: dict) -> dict:
     })
 
     ready = not errors
-    candidate_url = f"{policy.get('endpoint')}?{urlencode(query, safe='{},') }" if ready else None
+    candidate_url = f"{policy.get('endpoint')}?{urlencode(query, safe='{},')}" if ready else None
     if ready and len(item_ids) != len(enabled_mappings):
-        warnings.append("여러 지표가 동일 ITM_ID를 공유합니다. KOSIS 응답을 브라우저에서 확인하세요.")
+        warnings.append("여러 지표가 동일 ITM_ID를 공유합니다. KOSIS 응답을 확인하세요.")
     if ready and len(class_ids) != len(enabled_mappings):
-        warnings.append("여러 지표가 동일 C1_ID를 공유합니다. KOSIS 응답을 브라우저에서 확인하세요.")
+        warnings.append("여러 지표가 동일 C1_ID를 공유합니다. KOSIS 응답을 확인하세요.")
 
     return {
         "connection_id": table.get("connection_id"),
@@ -147,29 +145,33 @@ def build_table(table: dict, mapping_doc: dict, policy: dict) -> dict:
         "candidate_url_template": candidate_url,
         "masked_url": masked_url(candidate_url, api_key_placeholder) if candidate_url else None,
         "metrics": metric_results,
-        "next_action": "{API_KEY}를 실제 키로 바꿔 브라우저에서 응답 확인 후 전체 URL을 Secret에 등록" if ready else "KOSIS 실제 코드 입력 화면에서 누락 코드를 먼저 입력",
+        "next_action": "KOSIS_API_KEY로 런타임 호출 가능" if ready else "운영 승격 또는 코드 승인을 먼저 완료",
     }
 
 
 def main() -> int:
-    mapping_doc = read_json(MAPPING_PATH, {"tables": []})
+    mapping_doc, runtime = resolve_mapping()
     policy = read_json(POLICY_PATH, {})
     rows = [build_table(table, mapping_doc, policy) for table in mapping_doc.get("tables", []) or []]
     ready_count = sum(1 for row in rows if row["ready"])
     status = "ready" if rows and ready_count == len(rows) else ("partial" if ready_count else "mapping_required")
     payload = {
         "updated_at": now_iso(),
-        "policy": "phase8_kosis_url_generator_v1",
+        "policy": "phase9_kosis_url_generator_runtime_v1",
         "summary": {
             "status": status,
             "table_count": len(rows),
             "ready_table_count": ready_count,
             "generated_url_count": ready_count,
             "secret_count": len([x for x in rows if x.get("secret_name")]),
+            "mapping_source": runtime["mapping_source"],
+            "operational_mapping_active": runtime["mapping_source"] == "operational",
+            "fallback_used": runtime["fallback_used"],
         },
+        "runtime_mapping": runtime,
         "tables": rows,
         "security": policy.get("security") or {},
-        "notice": policy.get("notice"),
+        "notice": "승격된 운영 매핑을 우선 사용하며, 미승격 상태에서는 기존 템플릿을 안전하게 유지합니다.",
     }
     write_json(ADMIN_OUT, payload)
     write_json(ANALYSIS_OUT, payload)
