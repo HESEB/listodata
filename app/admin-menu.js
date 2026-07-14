@@ -3,6 +3,8 @@
   const ADMIN_GROUPS=[
     {title:'DSS 2.0',desc:'데이터 중심 전환',items:[
       ['Admin 2.0','./admin2-dashboard.html','수집·품질·판단·추천 통합 검증'],
+      ['KOSIS 실행 매핑','./kosis-runtime-mapping.html','운영 매핑의 URL 생성·공식수집 실제 적용 상태'],
+      ['KOSIS 운영 승격','./kosis-mapping-promotion.html','승인 매핑 검증·운영 매핑 승격'],
       ['KOSIS 상세후보 승인','./kosis-detail-approval.html','공식 상세 후보 승인·매핑 생성'],
       ['KOSIS 상세코드 조사','./kosis-detail-research.html','통계표 후보의 ITM_ID·C1_ID·단위 자동조사'],
       ['KOSIS 목록 자동조사','./kosis-catalog-research.html','인증키 기반 공식 통계목록 후보 자동수집'],
@@ -44,6 +46,7 @@
     ]},
     {title:'검수',desc:'분류 결과와 제외 자료 검토',items:[
       ['자동분류 검수','./classification-review.html','강제 포함·제외·축종 변경'],
+      ['KOSIS 실행 매핑','./kosis-runtime-mapping.html','운영 승격본 실제 수집 적용 여부'],
       ['KOSIS 상세후보 승인','./kosis-detail-approval.html','공식 코드 승인·보류·거절'],
       ['KOSIS 상세코드 후보','./kosis-detail-research.html','항목·분류·단위 후보 검수'],
       ['KOSIS 목록 후보','./kosis-catalog-research.html','통계표 후보와 API 오류 검수'],
@@ -70,7 +73,7 @@
   function hideNoisyLinks(){document.querySelectorAll('a,button').forEach(el=>{const text=(el.textContent||'').trim();if(HIDE_TEXT.includes(text)&&!el.closest('.admin-menu-wrap')&&!el.closest('.admin-drawer'))el.classList.add('admin-hidden-link');});}
   function addHeroMenu(){const hero=document.querySelector('.hero .hero-inner');if(!hero||document.getElementById('admin-menu-wrap'))return;const wrap=document.createElement('div');wrap.id='admin-menu-wrap';wrap.className='admin-menu-wrap';wrap.innerHTML=menuHTML();hero.appendChild(wrap);}
   function addDrawer(){if(document.getElementById('admin-menu-open'))return;const btn=document.createElement('button');btn.id='admin-menu-open';btn.className='admin-menu-open';btn.type='button';btn.textContent='Admin 메뉴';btn.onclick=toggleDrawer;const drawer=document.createElement('div');drawer.id='admin-drawer';drawer.className='admin-drawer';drawer.innerHTML=menuHTML();document.body.appendChild(drawer);document.body.appendChild(btn);}
-  function addOperationsBadges(){if(document.getElementById('operations-badges-script'))return;const s=document.createElement('script');s.id='operations-badges-script';s.src='./operations-badges.js?v=phase-9-4';s.defer=true;document.body.appendChild(s);}
+  function addOperationsBadges(){if(document.getElementById('operations-badges-script'))return;const s=document.createElement('script');s.id='operations-badges-script';s.src='./operations-badges.js?v=phase-9-6';s.defer=true;document.body.appendChild(s);}
   function toggleDrawer(){const d=document.getElementById('admin-drawer');if(d)d.classList.toggle('active');}
   function run(){addStyle();hideNoisyLinks();addHeroMenu();addDrawer();addOperationsBadges();}
   function boot(){run();setTimeout(run,700);setTimeout(run,1600);setTimeout(run,3200);setInterval(hideNoisyLinks,2500);}
