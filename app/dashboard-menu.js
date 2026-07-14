@@ -9,6 +9,8 @@
       ['Version 상태','./version-status.html','버전·빌드·데이터 갱신 상태']
     ]},
     {title:'DSS 2.0',desc:'데이터 중심 전환',items:[
+      ['KOSIS 실행 매핑','./kosis-runtime-mapping.html','운영 매핑의 URL 생성·공식수집 실제 적용 상태'],
+      ['KOSIS 운영 승격','./kosis-mapping-promotion.html','승인 매핑 검증·운영 매핑 승격'],
       ['KOSIS 상세후보 승인','./kosis-detail-approval.html','공식 상세 후보 승인·매핑 생성'],
       ['KOSIS 상세코드 조사','./kosis-detail-research.html','통계표 후보의 ITM_ID·C1_ID·단위 자동조사'],
       ['KOSIS 목록 자동조사','./kosis-catalog-research.html','인증키 기반 공식 통계목록 후보 자동수집'],
