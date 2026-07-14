@@ -36,6 +36,11 @@ jobs:
           KOSIS_API_KEY: ${{ secrets.KOSIS_API_KEY }}
         run: python scripts/collect_kosis_catalog_candidates.py
 
+      - name: Collect KOSIS item and classification candidates
+        env:
+          KOSIS_API_KEY: ${{ secrets.KOSIS_API_KEY }}
+        run: python scripts/collect_kosis_detail_codes.py
+
       - name: Build KOSIS code research status
         run: python scripts/research_kosis_table_codes.py
 
