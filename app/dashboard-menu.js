@@ -9,6 +9,8 @@
       ['Version 상태','./version-status.html','버전·빌드·데이터 갱신 상태']
     ]},
     {title:'DSS 2.0',desc:'데이터 중심 전환',items:[
+      ['KOSIS 목록 자동조사','./kosis-catalog-research.html','인증키 기반 공식 통계목록 후보 자동수집'],
+      ['KOSIS 코드 조사','./kosis-code-research.html','실제 기관·통계표·항목·분류 코드 조사'],
       ['Phase 8 최종검증','./phase8-readiness.html','실제 공식데이터·대표뉴스 실운영 준비도'],
       ['API 설정 가이드','./official-api-setup-guide.html','KOSIS·공공데이터포털 인증과 Secret 설정'],
       ['KOSIS 실제 코드 입력','./kosis-code-entry.html','통계표·항목·분류 코드 입력 지원'],
