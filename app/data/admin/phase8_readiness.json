@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-14T00:00:00Z",
+  "updated_at": "2026-07-14T06:28:17Z",
   "policy": "phase8_final_readiness_v1",
   "summary": {
     "overall_status": "limited",
@@ -12,18 +12,91 @@
     "api_total_count": 3,
     "mapping_ready_count": 0,
     "mapping_total_count": 10,
-    "representative_count": 0,
+    "representative_count": 7,
     "date_review_pending_count": 0,
-    "original_page_processed_count": 0,
+    "original_page_processed_count": 40,
     "original_page_enriched_count": 0
   },
-  "checks": [],
-  "workflow": {"status": "pass", "missing_steps": []},
+  "checks": [
+    {
+      "phase": "8-1",
+      "name": "실제 공식데이터 연결",
+      "path": "scripts/collect_real_official_sources.py",
+      "status": "pass",
+      "message": "구현 파일 확인"
+    },
+    {
+      "phase": "8-2",
+      "name": "API 설정 검증",
+      "path": "scripts/validate_official_api_setup.py",
+      "status": "pass",
+      "message": "구현 파일 확인"
+    },
+    {
+      "phase": "8-3",
+      "name": "KOSIS 매핑 검증",
+      "path": "scripts/validate_kosis_table_mapping.py",
+      "status": "pass",
+      "message": "구현 파일 확인"
+    },
+    {
+      "phase": "8-4",
+      "name": "KOSIS 코드 입력 화면",
+      "path": "app/kosis-code-entry.html",
+      "status": "pass",
+      "message": "구현 파일 확인"
+    },
+    {
+      "phase": "8-5",
+      "name": "KOSIS URL 생성",
+      "path": "scripts/build_kosis_api_urls.py",
+      "status": "pass",
+      "message": "구현 파일 확인"
+    },
+    {
+      "phase": "8-6",
+      "name": "대표뉴스 30일 제한",
+      "path": "scripts/build_representative_news.py",
+      "status": "pass",
+      "message": "구현 파일 확인"
+    },
+    {
+      "phase": "8-7",
+      "name": "대표뉴스 날짜 검수",
+      "path": "app/representative-news-date-review.html",
+      "status": "pass",
+      "message": "구현 파일 확인"
+    },
+    {
+      "phase": "8-8",
+      "name": "날짜 자동 추정",
+      "path": "scripts/build_news_date_estimates.py",
+      "status": "pass",
+      "message": "구현 파일 확인"
+    },
+    {
+      "phase": "8-9",
+      "name": "원문 게시일 보강",
+      "path": "scripts/enrich_original_news_dates.py",
+      "status": "pass",
+      "message": "구현 파일 확인"
+    },
+    {
+      "phase": "8-10",
+      "name": "언론사별 예외 처리",
+      "path": "app/data/config/original_news_publisher_exceptions.json",
+      "status": "pass",
+      "message": "구현 파일 확인"
+    }
+  ],
+  "workflow": {
+    "status": "pass",
+    "missing_steps": []
+  },
   "blockers": [
     "KOSIS 실제 지표 매핑 0/10",
     "Actions Secret 준비 0/3",
-    "실제 공식 API 응답 성공 미확인",
-    "원문 게시일 수집 실운영 표본 없음"
+    "실제 공식 API 응답 성공 미확인"
   ],
   "next_actions": [
     "KOSIS 통계표·항목·분류 실제 코드 입력",
@@ -31,5 +104,5 @@
     "Update market data 수동 실행",
     "실제 API 응답·원문 게시일 성공률 재확인"
   ],
-  "notice": "초기 상태입니다. 다음 Actions 실행 후 자동 검증 결과로 갱신됩니다."
+  "notice": "구조 완료와 실제 데이터 운영 가능 여부를 분리합니다. Secret·통계표 코드가 없으면 LIMITED가 정상입니다."
 }

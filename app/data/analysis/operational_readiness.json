@@ -1,13 +1,13 @@
 {
-  "updated_at": "2026-07-14T00:09:50Z",
+  "updated_at": "2026-07-14T06:28:17Z",
   "policy": "phase6_operational_readiness_v1",
   "summary": {
     "total_checks": 39,
-    "pass_count": 39,
-    "fail_count": 0,
-    "readiness_score": 100,
-    "grade": "ready",
-    "label": "운영준비 완료"
+    "pass_count": 31,
+    "fail_count": 8,
+    "readiness_score": 79,
+    "grade": "risk",
+    "label": "운영 위험"
   },
   "files": [
     {
@@ -144,117 +144,124 @@
       "token": "apply_admin_patches.py",
       "found": true,
       "ordered": true,
-      "position": 1868,
+      "position": 2350,
       "status": "ok"
     },
     {
       "token": "filter_collected_news.py",
       "found": true,
       "ordered": true,
-      "position": 1971,
+      "position": 2453,
       "status": "ok"
     },
     {
       "token": "build_quality_layers.py",
       "found": true,
       "ordered": true,
-      "position": 2070,
+      "position": 2667,
       "status": "ok"
     },
     {
       "token": "check_update_stability.py",
       "found": true,
       "ordered": true,
-      "position": 3041,
+      "position": 3638,
       "status": "ok"
     },
     {
       "token": "protect_fallback_data.py verify",
       "found": true,
       "ordered": true,
-      "position": 3219,
+      "position": 3816,
       "status": "ok"
     },
     {
       "token": "build_quality_alerts.py",
       "found": true,
       "ordered": true,
-      "position": 3315,
+      "position": 3912,
       "status": "ok"
     },
     {
       "token": "build_source_health.py",
       "found": true,
       "ordered": true,
-      "position": 3402,
+      "position": 3999,
       "status": "ok"
     },
     {
       "token": "build_freshness_alerts.py",
       "found": true,
       "ordered": true,
-      "position": 3491,
+      "position": 4088,
       "status": "ok"
     },
     {
       "token": "build_update_history.py",
       "found": true,
       "ordered": true,
-      "position": 3581,
+      "position": 4178,
       "status": "ok"
     },
     {
       "token": "build_operational_readiness.py",
       "found": true,
       "ordered": true,
-      "position": 3676,
+      "position": 4273,
       "status": "ok"
     }
   ],
   "commit_outputs": [
     {
       "name": "update_stability.json",
-      "in_commit_pattern": true,
-      "status": "ok"
+      "in_commit_pattern": false,
+      "status": "fail"
     },
     {
       "name": "fallback_status.json",
-      "in_commit_pattern": true,
-      "status": "ok"
+      "in_commit_pattern": false,
+      "status": "fail"
     },
     {
       "name": "quality_alerts.json",
-      "in_commit_pattern": true,
-      "status": "ok"
+      "in_commit_pattern": false,
+      "status": "fail"
     },
     {
       "name": "update_history.json",
-      "in_commit_pattern": true,
-      "status": "ok"
+      "in_commit_pattern": false,
+      "status": "fail"
     },
     {
       "name": "source_health.json",
-      "in_commit_pattern": true,
-      "status": "ok"
+      "in_commit_pattern": false,
+      "status": "fail"
     },
     {
       "name": "freshness_alerts.json",
-      "in_commit_pattern": true,
-      "status": "ok"
+      "in_commit_pattern": false,
+      "status": "fail"
     },
     {
       "name": "patch_status.json",
-      "in_commit_pattern": true,
-      "status": "ok"
+      "in_commit_pattern": false,
+      "status": "fail"
     },
     {
       "name": "operational_readiness.json",
-      "in_commit_pattern": true,
-      "status": "ok"
+      "in_commit_pattern": false,
+      "status": "fail"
     }
   ],
   "recommendations": [
-    "Phase 6 운영 안정화 구성 정상"
+    "update_stability.json commit pattern 추가",
+    "fallback_status.json commit pattern 추가",
+    "quality_alerts.json commit pattern 추가",
+    "update_history.json commit pattern 추가",
+    "source_health.json commit pattern 추가",
+    "freshness_alerts.json commit pattern 추가",
+    "patch_status.json commit pattern 추가",
+    "operational_readiness.json commit pattern 추가"
   ],
   "notice": "Phase 6-1~6-9 핵심 파일, 워크플로 순서, 자동 커밋 산출물을 점검한 최종 운영 리포트입니다."
 }

@@ -1,14 +1,47 @@
 {
-  "updated_at": null,
-  "policy": "phase8_original_news_date_enrichment_v1",
+  "updated_at": "2026-07-14T06:28:16Z",
+  "policy": "phase8_original_news_date_enrichment_v2",
   "summary": {
-    "processed_count": 0,
+    "processed_count": 40,
+    "access_success_count": 40,
     "enriched_count": 0,
     "failed_count": 0,
     "skipped_count": 0,
+    "access_success_rate": 100.0,
+    "date_found_rate": 0.0,
+    "date_found_rate_given_access": 0.0,
+    "publisher_count": 1,
+    "healthy_publisher_count": 0,
+    "warning_publisher_count": 0,
+    "critical_publisher_count": 1,
     "source_counts": {},
+    "failure_category_counts": {
+      "metadata_not_found": 40
+    },
+    "exception_applied_count": 1,
     "auto_applied_count": 0
   },
+  "publishers": [
+    {
+      "publisher_key": "news.google.com",
+      "publisher": "아시아타임즈",
+      "domain": "news.google.com",
+      "attempted_count": 40,
+      "access_success_count": 40,
+      "date_found_count": 0,
+      "metadata_not_found_count": 40,
+      "failed_count": 0,
+      "failure_categories": {},
+      "exception_ids": [
+        "google_news_redirect"
+      ],
+      "access_success_rate": 100.0,
+      "date_found_rate": 0.0,
+      "date_found_rate_given_access": 0.0,
+      "health_status": "critical"
+    }
+  ],
   "failures": [],
-  "notice": "Actions 실행 전 초기 상태입니다. 원문 게시일 후보는 자동 확정하지 않습니다."
+  "exceptions_path": "app/data/config/original_news_publisher_exceptions.json",
+  "notice": "원문 JSON-LD·OpenGraph·meta·time 태그에서 게시일 후보를 수집하고 언론사별 접근 성공률·게시일 발견률·실패 원인을 집계합니다. 원래 published_at은 자동 덮어쓰지 않으며 관리자 검수 근거로만 사용합니다."
 }
