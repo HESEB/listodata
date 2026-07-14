@@ -1,0 +1,40 @@
+{
+  "updated_at": "2026-07-14",
+  "policy": "phase8_news_date_estimation_v1",
+  "notice": "자동 추정일은 대표뉴스 게시일로 자동 확정하지 않습니다. 관리자 검수 보조 근거로만 사용합니다.",
+  "review_reason_codes": ["missing_date", "invalid_date", "future_date"],
+  "candidate_sources": [
+    {
+      "source": "metadata",
+      "fields": ["published_time", "publishedDate", "article_published_time", "datePublished", "created_at", "createdAt", "pubDate", "publication_date"],
+      "confidence": 95,
+      "label": "기사 메타데이터"
+    },
+    {
+      "source": "url_path",
+      "patterns": ["YYYY/MM/DD", "YYYY-MM-DD", "YYYYMMDD"],
+      "confidence": 82,
+      "label": "원문 URL 날짜"
+    },
+    {
+      "source": "text",
+      "fields": ["title", "summary", "description"],
+      "confidence": 68,
+      "label": "제목·요약 날짜 표현"
+    },
+    {
+      "source": "collection_time",
+      "fields": ["collected_at", "retrieved_at", "first_seen_at", "created_at"],
+      "confidence": 35,
+      "label": "수집·최초 발견 시각"
+    }
+  ],
+  "confidence_levels": {
+    "high": 85,
+    "medium": 65,
+    "low": 0
+  },
+  "auto_apply": false,
+  "future_tolerance_days": 1,
+  "maximum_candidate_age_days": 3650
+}
