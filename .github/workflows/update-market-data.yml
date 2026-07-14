@@ -60,6 +60,9 @@ jobs:
           DATA_GO_KR_LIVESTOCK_MARKET_API_URL: ${{ secrets.DATA_GO_KR_LIVESTOCK_MARKET_API_URL }}
         run: python scripts/validate_official_api_setup.py
 
+      - name: Snapshot KOSIS official data before runtime collection
+        run: python scripts/snapshot_kosis_official_data.py
+
       - name: Collect real official source data
         env:
           KOSIS_API_KEY: ${{ secrets.KOSIS_API_KEY }}
@@ -70,6 +73,13 @@ jobs:
 
       - name: Validate KOSIS operational collection and legacy phaseout
         run: python scripts/validate_kosis_operational_collection.py
+
+      - name: Validate KOSIS API key only runtime and auto rollback
+        env:
+          KOSIS_API_KEY: ${{ secrets.KOSIS_API_KEY }}
+          KOSIS_LIVESTOCK_INVENTORY_API_URL: ${{ secrets.KOSIS_LIVESTOCK_INVENTORY_API_URL }}
+          KOSIS_LIVESTOCK_PRODUCTION_API_URL: ${{ secrets.KOSIS_LIVESTOCK_PRODUCTION_API_URL }}
+        run: python scripts/validate_kosis_single_key_runtime.py
 
       - name: Collect official metrics
         run: python scripts/collect_official_metrics.py
