@@ -9,6 +9,7 @@
       ['Version 상태','./version-status.html','버전·빌드·데이터 갱신 상태']
     ]},
     {title:'DSS 2.0',desc:'데이터 중심 전환',items:[
+      ['Phase 8 최종검증','./phase8-readiness.html','실제 공식데이터·대표뉴스 실운영 준비도'],
       ['API 설정 가이드','./official-api-setup-guide.html','KOSIS·공공데이터포털 인증과 Secret 설정'],
       ['KOSIS 실제 코드 입력','./kosis-code-entry.html','통계표·항목·분류 코드 입력 지원'],
       ['KOSIS URL 생성','./kosis-url-generator.html','실제 코드 기반 Secret 등록용 API URL 생성'],
