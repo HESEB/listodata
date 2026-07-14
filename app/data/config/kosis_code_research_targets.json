@@ -1,0 +1,29 @@
+{
+  "updated_at": "2026-07-14",
+  "policy": "phase9_kosis_code_research_v1",
+  "official_reference": "https://kosis.kr/openapi/index/index.jsp",
+  "notice": "KOSIS 공식 통계목록·통계자료 API에서 확인된 코드만 approved로 전환합니다. 검색 결과나 추정값은 템플릿에 자동 반영하지 않습니다.",
+  "targets": [
+    {
+      "research_id": "LIVESTOCK_INVENTORY",
+      "keywords": ["가축동향조사", "사육 마릿수", "한육우", "돼지", "육계", "산란계", "오리"],
+      "period_expected": "Q",
+      "metrics": ["BEEF_INVENTORY_COUNT", "PORK_INVENTORY_COUNT", "POULTRY_INVENTORY_COUNT", "EGG_LAYER_COUNT", "DUCK_INVENTORY_COUNT"],
+      "status": "research_required",
+      "candidate_tables": []
+    },
+    {
+      "research_id": "LIVESTOCK_PRODUCTION",
+      "keywords": ["도축두수", "도계량", "계란 생산량", "오리 도축수수"],
+      "period_expected": "M",
+      "metrics": ["BEEF_SLAUGHTER_COUNT", "PORK_SLAUGHTER_COUNT", "POULTRY_SLAUGHTER_COUNT", "EGG_PRODUCTION_VOLUME", "DUCK_SLAUGHTER_COUNT"],
+      "status": "research_required",
+      "candidate_tables": []
+    }
+  ],
+  "approval_rules": {
+    "required_evidence": ["org_id", "tbl_id", "table_name", "period", "item_codes", "classification_codes", "official_response_checked_at"],
+    "auto_apply_to_mapping_template": false,
+    "manual_approval_required": true
+  }
+}
