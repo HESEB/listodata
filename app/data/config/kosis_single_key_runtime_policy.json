@@ -1,0 +1,33 @@
+{
+  "updated_at": "2026-07-15",
+  "policy": "phase9_kosis_single_key_runtime_v1",
+  "mode": "single_key_validation",
+  "required_secret": "KOSIS_API_KEY",
+  "legacy_secret_names": [
+    "KOSIS_LIVESTOCK_INVENTORY_API_URL",
+    "KOSIS_LIVESTOCK_PRODUCTION_API_URL"
+  ],
+  "thresholds": {
+    "minimum_successful_kosis_sources": 2,
+    "maximum_failed_kosis_sources": 0,
+    "minimum_collected_records": 2,
+    "minimum_operational_code_match_rate_percent": 95,
+    "minimum_metric_coverage_percent": 80,
+    "minimum_consecutive_successful_runs": 3,
+    "rollback_after_consecutive_failed_runs": 1,
+    "recovery_after_consecutive_successful_probes": 2,
+    "history_limit": 30
+  },
+  "rollback": {
+    "restore_previous_official_records": true,
+    "preserve_operational_mapping": true,
+    "never_restore_legacy_secret_values": true,
+    "continue_probe_on_next_run": true
+  },
+  "security": {
+    "never_store_api_key": true,
+    "never_store_generated_url": true,
+    "never_auto_modify_repository_secrets": true
+  },
+  "notice": "기존 KOSIS 전체 URL Secret 제거 후 KOSIS_API_KEY 단독 경로를 검증합니다. 실패·부분 성공·품질 기준 미달 시 수집 직전 공식데이터를 자동 복원하며 운영 매핑과 인증키는 변경하지 않습니다."
+}
