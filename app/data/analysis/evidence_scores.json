@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-14T16:40:21Z",
+  "updated_at": "2026-07-14T18:18:30Z",
   "policy": "phase2_evidence_score_v3_sanitized",
   "score_axes": {
     "price": {
@@ -44,17 +44,17 @@
       "id": "BEEF",
       "name": "한우",
       "signal_score": 53,
-      "direction": "neutral",
-      "status": "보합/혼조",
+      "direction": "hold",
+      "status": "판단 유보",
       "quality_score": 68,
-      "confidence_score": 81,
+      "confidence_score": 63,
       "coverage_rate": 100,
-      "evidence_count": 29,
+      "evidence_count": 31,
       "official_count": 5,
       "direction_counts": {
-        "up": 9,
+        "up": 10,
         "down": 5,
-        "neutral": 15,
+        "neutral": 16,
         "hold": 0
       },
       "coverage_types": [
@@ -83,10 +83,10 @@
           "label": "가격",
           "max_score": 30,
           "score": 11,
-          "items": 10,
-          "up": 2,
+          "items": 12,
+          "up": 3,
           "down": 4,
-          "neutral": 4,
+          "neutral": 5,
           "examples": [
             {
               "title": "한우 송아지 가격 600만 원 뚫나… 번식률 저하로 '품귀 현상' 심화 - 팜인사이트",
@@ -204,18 +204,116 @@
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": true,
-        "severity": "medium",
+        "severity": "high",
         "axes": [
           "가격"
         ],
-        "memo": "주의 필요 · 충돌축: 가격 / 누락근거: 정책/고시"
+        "memo": "판단 유보 권장 · 충돌축: 가격 / 누락근거: 정책/고시 / 유보사유: 상·하방 근거 강충돌"
       },
       "hold_decision": {
-        "should_hold": false,
-        "reasons": [],
-        "recommended_status": "보합/혼조",
-        "recommended_direction": "neutral",
-        "adjusted_confidence": 71
+        "should_hold": [
+          {
+            "axis": "price",
+            "label": "가격",
+            "items": 12,
+            "has_conflict": true,
+            "severity": "high",
+            "dominant_direction": "down",
+            "weighted_direction": {
+              "up": 11.25,
+              "down": 14.4,
+              "neutral": 15.28
+            },
+            "conflict_ratio": 0.78,
+            "examples": {
+              "up": [
+                {
+                  "title": "적자 면하나 했는데… 사료 가격 인상에 한우 농가 ‘막막’ - 전라일보",
+                  "source": "전라일보",
+                  "direction": "up",
+                  "quality_score": 71,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBqcS1Jd0tMSkFVMlVkSERjblJzcHBaZmNCZGQtZGpqY1V1eFlORDVPRTYwakVKT3ZHMGt6eUlra1hRelhLVmtBbjNBVlU5WW0zOF9jRkJZcU1WZHZ0S0VUTzR6aWtnX19KN3lxcNIBcEFVX3lxTE1fWHFQdW5DQl80VUVQbWtESHZkZTdIelgwRENYajlHNVIwMW1SOG50a3hJdmpVbDRIbkZCS1JpTHJMNFpfeEJaQjVUMUdISTc4MmdQXzRtWUN4eWJZZHd0V0xJOW1kaU9aS0JvbEhVQ3Q?oc=5"
+                },
+                {
+                  "title": "“가격 인상 철회…한우농가와 고통분담·위기 극복을” - 축산신문",
+                  "source": "축산신문",
+                  "direction": "up",
+                  "quality_score": 58,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBlNEp5WHQ2WWpLZUNjbHRHS2JpcTREanVvQWotNURJRUFLcFZFRFpIbWZUa3RPSGxxT2Rrb2JYclRaMXNfTGdPelNISEFxdUJjLVEzZGJhOG9XeHlnLUtUbHQ5VXdWckY4?oc=5"
+                },
+                {
+                  "title": "한우 농가 4년째 순손실…가격 상승에 적자폭 개선 - 연합뉴스",
+                  "source": "연합뉴스",
+                  "direction": "up",
+                  "quality_score": 51,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBBcFhrZm0yM0VEdWQta2tRVkdHa2ZSbGJGWlltd3JwbHlfcldrMEFfem5ZTWZQZkF6SHhhYm82VFlxSU04UjdTdVVRdG9jODdPY3pQNUFCOXY2c2PSAWBBVV95cUxOYkRBTVp5OFNxN1hCSlpEOVV6UlB3Y1NFMVpHb3F0OThPbW9ZU2ZHblhTeDhFRWhZSHctSE5oUUR0VFlYOTM4Umk5ejBIUF9naGZGU0gwaERPd0VLdFg4Rm0?oc=5"
+                }
+              ],
+              "down": [
+                {
+                  "title": "전국 한우 할인행사 ‘한눈에’…최대 50% 세일 - 축산신문",
+                  "source": "축산신문",
+                  "direction": "down",
+                  "quality_score": 59,
+                  "source_level": 2,
+                  "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5RR09SVzFIWGJJQjJyektqM3dJNFdWMHVzZ2wyNnFBQTNhSjVBcVY5ZWdyX2RHY05wcDZEZW5VWWJYcHAzYWhrY2YwQ0MxenJTVVFyWWtkdm4yS0MwNnRYc19IV190VlVp?oc=5"
+                },
+                {
+                  "title": "“최대 50% 저렴”…7월 한우고기 할인행사 정보 한눈에 - 농민신문",
+                  "source": "농민신문",
+                  "direction": "down",
+                  "quality_score": 53,
+                  "source_level": 2,
+                  "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE85TmUtRXJqNHRjcHpWQ1cwdW9jT0hqcFN5dkVhdG1HVEN2M0hKLWlKQlRNejcxYXdBSUpwZmpzTHo4M180TnF5UVFDZ0xvNnd3MUdodHFHcW9YQQ?oc=5"
+                },
+                {
+                  "title": "한우자조금, 7월 전국 온·오프라인 한우 할인판매 행사 안내 - 축산정보뉴스",
+                  "source": "축산정보뉴스",
+                  "direction": "down",
+                  "quality_score": 77,
+                  "source_level": 4,
+                  "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBfUXNaUW53WVFvcEZPOUQ4VkxtOGxnR3luUXlHWC1pMmhSZUZ2U2xQMFBoZEJEeEx5ODZ3MUZWaTZzemdxWi1yMEpKSlBkS1FUcFFEY3V1T0laN2FZNmo4?oc=5"
+                }
+              ],
+              "neutral": [
+                {
+                  "title": "한우 송아지 가격 600만 원 뚫나… 번식률 저하로 '품귀 현상' 심화 - 팜인사이트",
+                  "source": "팜인사이트",
+                  "direction": "neutral",
+                  "quality_score": 81,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE0tc1d6d1ZrUzIzSGRfaF9UX3haUE5uUWVtcFFPQmtWTWRUZTNOT0I3OGl4NGpYZFl2bEdjeVlmRlpBcFdPWmduUGNrN2FrU0t0X0hOdVVURldsalVpcVNTT0UxZ2x4RnZrc2pkNHNB?oc=5"
+                },
+                {
+                  "title": "“삼복·여름휴가 코앞인데” 축산물 가격 ‘껑충’…한우 등심 18%↑ - v.daum.net",
+                  "source": "v.daum.net",
+                  "direction": "neutral",
+                  "quality_score": 71,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1FMG0waDY1dDZlVzNxdk90MGNZMTZ2N0dMamhYYlJleTRQaEVXbnJNcDVJTGxRb1hYcHpoLTZGV3JWQU5WeXd1ZHlkc0tOZWM?oc=5"
+                },
+                {
+                  "title": "“삼복·여름휴가 코앞인데” 축산물 가격 ‘껑충’…한우 등심 18%↑ - 대구일보",
+                  "source": "대구일보",
+                  "direction": "neutral",
+                  "quality_score": 46,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFAwQjNHR2dZS3lKeVdzSEVXMTF5TDNjZlk3cGpfcldPSy1tQXVDT1Q1b1V2U2NocC14NGotdGhtak9Kb2UxajVwekpXLXpRNFB3UFo1ZkdhZDE3UFJpRjRZQXlQNXRRa2kw?oc=5"
+                }
+              ]
+            },
+            "memo": "가격 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
+          }
+        ],
+        "reasons": [
+          "상·하방 근거 강충돌"
+        ],
+        "recommended_status": "판단 유보",
+        "recommended_direction": "hold",
+        "adjusted_confidence": 63
       }
     },
     {
@@ -324,7 +422,7 @@
               "quality_score": 81
             },
             {
-              "title": "경남도, 아프리카돼지열병 전(全) 주기 방역관리 강화 - 누리일보",
+              "title": "경남도, 아프리카돼지열병 전(全) 주기 방역관리 강화 - 시사일보",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
@@ -671,14 +769,14 @@
     {
       "id": "EGG",
       "name": "계란",
-      "signal_score": 63,
+      "signal_score": 65,
       "direction": "up",
       "status": "상방 가능성",
-      "quality_score": 72,
-      "confidence_score": 85,
+      "quality_score": 74,
+      "confidence_score": 88,
       "coverage_rate": 100,
       "evidence_count": 35,
-      "official_count": 6,
+      "official_count": 7,
       "direction_counts": {
         "up": 12,
         "down": 7,
@@ -696,7 +794,7 @@
         "price": 12,
         "supply": 23,
         "disease": 16,
-        "policy": 4,
+        "policy": 6,
         "news": 8
       },
       "score_breakdown_labels": {
@@ -711,10 +809,10 @@
           "label": "가격",
           "max_score": 30,
           "score": 12,
-          "items": 14,
+          "items": 13,
           "up": 2,
           "down": 5,
-          "neutral": 7,
+          "neutral": 6,
           "examples": [
             {
               "title": "계란 값 고공행진, ‘브라질산’ 신선란 국내 첫 수입···가격은? - 소셜타임스",
@@ -797,12 +895,18 @@
         "policy": {
           "label": "정책/고시",
           "max_score": 10,
-          "score": 4,
-          "items": 2,
+          "score": 6,
+          "items": 3,
           "up": 0,
           "down": 0,
-          "neutral": 2,
+          "neutral": 3,
           "examples": [
+            {
+              "title": "수입 계란 한 판 4980원…정부, 신선란 2억개 추가 수입 - 글로벌이코노믹",
+              "direction": "neutral",
+              "source_level": 5,
+              "quality_score": 100
+            },
             {
               "title": "계란 한 판 8000원 시대…코스피는 올리고 계란값은 내린다! - 대한민국 정책브리핑",
               "direction": "neutral",
@@ -827,6 +931,12 @@
           "neutral": 7,
           "examples": [
             {
+              "title": "계란 한 판 4000원대로 ‘뚝’…‘금값’ 계란값 드디어 내린다 - 서울경제",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 81
+            },
+            {
               "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - 더스쿠프",
               "direction": "neutral",
               "source_level": 3,
@@ -837,12 +947,6 @@
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 65
-            },
-            {
-              "title": "계란 10개 값이 5000원 이상이라니?… 막막한 서민들 - 국제신문",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 58
             }
           ]
         }
@@ -862,24 +966,24 @@
         "reasons": [],
         "recommended_status": "상방 가능성",
         "recommended_direction": "up",
-        "adjusted_confidence": 75
+        "adjusted_confidence": 78
       }
     },
     {
       "id": "OTHER",
       "name": "기타",
-      "signal_score": 52,
+      "signal_score": 42,
       "direction": "hold",
       "status": "판단 유보",
-      "quality_score": 79,
-      "confidence_score": 66,
+      "quality_score": 80,
+      "confidence_score": 48,
       "coverage_rate": 80,
-      "evidence_count": 34,
-      "official_count": 33,
+      "evidence_count": 33,
+      "official_count": 32,
       "direction_counts": {
-        "up": 15,
+        "up": 13,
         "down": 2,
-        "neutral": 17,
+        "neutral": 18,
         "hold": 0
       },
       "coverage_types": [
@@ -890,7 +994,7 @@
       ],
       "score_breakdown": {
         "price": 0,
-        "supply": 23,
+        "supply": 13,
         "disease": 20,
         "policy": 0,
         "news": 9
@@ -916,9 +1020,9 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 23,
-          "items": 4,
-          "up": 3,
+          "score": 13,
+          "items": 2,
+          "up": 1,
           "down": 1,
           "neutral": 0,
           "examples": [
@@ -931,12 +1035,6 @@
             {
               "title": "중동전쟁 상황하에서 정부는 축산물 수급 및 가격 안정에 최선을 다하겠습니다. - 대한민국 정책브리핑",
               "direction": "down",
-              "source_level": 5,
-              "quality_score": 75
-            },
-            {
-              "title": "농림축산식품부, 중동전쟁으로 인한 농산물 가격 영향 미미,가격이 상승한 축산물은 수입 및 할인지원 확대, 비료 수급동향 점검, 선제적 리스크 대응 추진 - 정필",
-              "direction": "up",
               "source_level": 5,
               "quality_score": 75
             }
@@ -985,10 +1083,10 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 9,
-          "items": 19,
+          "items": 20,
           "up": 1,
           "down": 1,
-          "neutral": 17,
+          "neutral": 18,
           "examples": [
             {
               "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
@@ -1011,88 +1109,25 @@
           ]
         }
       },
-      "reason": "수급/도축 23점 + 질병/방역 20점 + 뉴스/수요 9점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 20점 + 수급/도축 13점 + 뉴스/수요 9점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": true,
         "severity": "high",
         "axes": [
+          "수급/도축",
           "뉴스/수요"
         ],
-        "memo": "판단 유보 권장 · 충돌축: 뉴스/수요 / 누락근거: 가격, 정책/고시 / 유보사유: 상·하방 근거 강충돌"
+        "memo": "판단 유보 권장 · 충돌축: 수급/도축, 뉴스/수요 / 누락근거: 가격, 정책/고시 / 유보사유: 상·하방 근거 강충돌"
       },
       "hold_decision": {
-        "should_hold": [
-          {
-            "axis": "news",
-            "label": "뉴스/수요",
-            "items": 19,
-            "has_conflict": true,
-            "severity": "high",
-            "dominant_direction": "up",
-            "weighted_direction": {
-              "up": 4.55,
-              "down": 4.1,
-              "neutral": 63.63
-            },
-            "conflict_ratio": 0.9,
-            "examples": {
-              "up": [
-                {
-                  "title": "인천 동물생산업장 개 브루셀라병 검출에 따른 확산 방지조치 시행 - 농림축산식품부",
-                  "source": "농림축산식품부",
-                  "direction": "up",
-                  "quality_score": 75,
-                  "source_level": 5,
-                  "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1tbTd1YUhmdXg5cUM3WTBDdkV2RlVYQ1JUemVPSUx3WGdLaXpDVjdPcktndmtobEpQc01BTnctMkpJdlA2c3p4VzdHMmJ0bmhRMTBCdm5GSDlKSGJGbUp1NDA5cVBIajg?oc=5"
-                }
-              ],
-              "down": [
-                {
-                  "title": "양돈 농가 소독설비 설치 부담 완화 제도화 - 농림축산식품부",
-                  "source": "농림축산식품부",
-                  "direction": "down",
-                  "quality_score": 75,
-                  "source_level": 5,
-                  "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE01Z2lweHdUU29QaGZ0bEFGZ2Q2bGJscmQ3NW5ielZvdW9nNS1hb2tlSXZpVEhfUi04WHAzUXFUWXdmVDM3M05GRnIxb0VVX0Y5Y0drNXBnenhWVWNkSWd5N0JwS0xBdmM?oc=5"
-                }
-              ],
-              "neutral": [
-                {
-                  "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
-                  "source": "농업인신문",
-                  "direction": "neutral",
-                  "quality_score": 95,
-                  "source_level": 5,
-                  "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9LREJ2QWpsLU4xVnVxdWRCamFCcjZnZUMtNVAybHFXQWpaOW44Q2hMaUJDY3lYUU9vN0NIYWtlb1MzVnBxRXI3OTJzdng3dWEyZEdudngwVmsyUTBiQUpXVmJzZlRXelc4WkY5emhn?oc=5"
-                },
-                {
-                  "title": "“소비자 중심 축산유통체계 강화”... 축산물품질평가원, 소비자단체와 첫 간담회 - 한국영농신문",
-                  "source": "한국영농신문",
-                  "direction": "neutral",
-                  "quality_score": 95,
-                  "source_level": 5,
-                  "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5jN24zbzZqMERTdXRfdy01ZXlfLURBNVNiZ2xzdGwwd3VyRjRHX2NtUkk1emo2NGpfc3NBMnJwQlhaZTg4NVl3OGEtLXdISDByZ0Q5UndmLW1kcTE2SHlnTlBIbF9jSXhZUG9nTdIBbkFVX3lxTE1VZ0dzYVFXWnNsS3lhdHNVN3dIWGpSa0tLd1JjNlgwaTF1X2JvSWQtZ3U4UGRnU3hzVjNFOUdtTE9VX0pZMUdwNDB0UXY0OVdmTzJvTEl6MHBETlpIQTd0Q1puWmZfek1TdE51VHhB?oc=5"
-                },
-                {
-                  "title": "농림축산식품부 - - 농림축산식품부",
-                  "source": "농림축산식품부",
-                  "direction": "neutral",
-                  "quality_score": 100,
-                  "source_level": 5,
-                  "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBwbE9uQVJuenNWMm1vWF8xNnY1WjZQYTJlelZCcXFyZXhoMVlCblAyUnZPLTRybW1hVVgxSGxTcEVHVVM4ZHhYc0wwOGxjaW1DSlNvbkpndWQ1UWNXZHdFQjllQldtbXZNN1hfM1BvbGtZNzRyUjVXTlo2c0pYYW8?oc=5"
-                }
-              ]
-            },
-            "memo": "뉴스/수요 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
-          }
-        ],
+        "should_hold": true,
         "reasons": [
           "상·하방 근거 강충돌"
         ],
         "recommended_status": "판단 유보",
         "recommended_direction": "hold",
-        "adjusted_confidence": 66
+        "adjusted_confidence": 48
       }
     }
   ],
