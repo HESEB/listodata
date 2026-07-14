@@ -1,0 +1,27 @@
+{
+  "updated_at": "2026-07-14",
+  "policy": "phase9_kosis_catalog_api_v1",
+  "secret_name": "KOSIS_API_KEY",
+  "endpoint": "https://kosis.kr/openapi/statisticsList.do",
+  "common_query": {
+    "method": "getList",
+    "format": "json",
+    "jsonVD": "Y"
+  },
+  "root_requests": [
+    {"vwCd": "MT_ZTITLE", "parentListId": "A"},
+    {"vwCd": "MT_ZTITLE", "parentListId": "F"},
+    {"vwCd": "MT_ZTITLE", "parentListId": "K"}
+  ],
+  "max_depth": 5,
+  "max_requests_per_run": 80,
+  "request_timeout_seconds": 15,
+  "candidate_limit_per_target": 30,
+  "minimum_keyword_score": 1,
+  "security": {
+    "never_write_api_key": true,
+    "mask_query_in_status": true,
+    "fail_soft_without_secret": true
+  },
+  "notice": "KOSIS_API_KEY Secret이 등록되면 공식 통계목록 API를 순회해 Phase 9-1 조사 대상과 일치하는 통계표 후보를 생성합니다. 후보는 자동 승인·자동 매핑하지 않습니다."
+}
