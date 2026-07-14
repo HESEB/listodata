@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KOSIS 단독키 검증·자동 롤백 | HESEB</title>
+<style>
+:root{--bg:#f5fafc;--card:#fff;--line:rgba(20,30,40,.1);--text:#182231;--sub:rgba(24,34,49,.68);--good:#168a5b;--warn:#c18a18;--bad:#d93c61}*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Noto Sans KR,sans-serif;background:var(--bg);color:var(--text)}header{border-bottom:1px solid var(--line);background:rgba(245,250,252,.95);position:sticky;top:0}.top,main{max-width:1120px;margin:auto;padding:14px}.brand{display:flex;justify-content:space-between;gap:12px}.brand h1{margin:0;font-size:19px}.sub{font-size:12px;color:var(--sub);line-height:1.55}.btn{display:inline-flex;padding:8px 11px;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:var(--text);background:#fff;font-size:12px}.hero{padding:14px;border-radius:25px;background:linear-gradient(150deg,rgba(241,133,174,.2),rgba(107,178,255,.18));margin-bottom:14px}.hero>div,.card{background:rgba(255,255,255,.93);border:1px solid var(--line);border-radius:20px;padding:15px;box-shadow:0 10px 24px rgba(18,28,40,.07)}.headline{font-size:24px;font-weight:820}.grid{display:grid;gap:12px}.kpis{grid-template-columns:repeat(6,1fr)}@media(max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}.brand{display:block}}.kpi{font-size:25px;font-weight:820}.row{border-top:1px solid var(--line);padding-top:10px;margin-top:10px}.good{color:var(--good)}.warn{color:var(--warn)}.bad{color:var(--bad)}.empty{padding:20px;text-align:center;color:var(--sub);border:1px dashed var(--line);border-radius:16px}.pill{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:5px 8px;font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="top"><div class="brand"><div><h1>KOSIS_API_KEY 단독 수집 검증·자동 롤백</h1><div class="sub">기존 전체 URL Secret 제거 이후의 운영 안전성 확인</div></div><div><a class="btn" href="./kosis-operational-collection-validation.html">단계적 폐기</a> <a class="btn" href="./kosis-runtime-mapping.html">실행 매핑</a> <a class="btn" href="./admin2-dashboard.html">Admin 2.0</a></div></div></div></header>
+<main>
+<div class="hero"><div><div class="sub">Phase 9-8</div><div class="headline">단독키 경로가 실패하면 직전 공식데이터로 자동 복원합니다.</div><div class="sub" id="updated">상태를 불러오는 중...</div></div></div>
+<section class="grid kpis" id="kpis"></section>
+<section class="card" style="margin-top:12px"><h2 style="margin:0;font-size:17px">현재 실행 검증</h2><div id="checks" style="margin-top:10px"><div class="empty">불러오는 중...</div></div></section>
+<section class="card" style="margin-top:12px"><h2 style="margin:0;font-size:17px">롤백 원칙</h2><div class="sub" style="margin-top:8px">실패·부분 성공·운영 코드 일치율 또는 지표 커버리지 기준 미달 시 이번 실행에서 갱신된 공식데이터만 수집 직전 상태로 복원합니다. 운영 매핑, KOSIS_API_KEY, Repository Secret은 변경하지 않으며 다음 실행에서 다시 검증합니다.</div></section>
+<section class="card" style="margin-top:12px"><h2 style="margin:0;font-size:17px">최근 이력</h2><div id="history" style="margin-top:10px"><div class="empty">불러오는 중...</div></div></section>
+</main>
+<script>
+const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const label=x=>x===true?'통과':x===false?'실패':String(x??'-');
+(async()=>{try{const r=await fetch('./data/admin/kosis_single_key_runtime_validation.json?ts='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error(r.status);const d=await r.json(),s=d.summary||{},c=d.current_run||{};$('updated').textContent=`갱신 ${d.updated_at||'Actions 실행 전'} · 상태 ${s.status||'-'} · 롤백 ${s.rollback_state||'-'}`;$('kpis').innerHTML=[['단독키 모드',s.single_key_mode?'ON':'OFF'],['현재 실행',s.run_passed?'PASS':'WAIT'],['자동 롤백',s.rollback_applied?'적용':'없음'],['연속 성공',`${s.consecutive_successful_runs||0}/${s.required_successful_runs||3}`],['복구 프로브',s.recovery_successful_probes_required||2],['운영 매핑','보존']].map(([a,b])=>`<div class="card"><div class="sub">${esc(a)}</div><div class="kpi">${esc(b)}</div></div>`).join('');const checks=c.checks||{};$('checks').innerHTML=Object.keys(checks).length?Object.entries(checks).map(([k,v])=>`<div class="row"><b>${esc(k)}</b> <span class="pill ${v?'good':'bad'}">${label(v)}</span></div>`).join(''):'<div class="empty">다음 Actions 실행 후 검증 결과가 생성됩니다.</div>';const h=Array.isArray(d.history)?d.history:[];$('history').innerHTML=h.length?h.slice(0,20).map(x=>`<div class="row"><b>${esc(x.checked_at||'-')}</b> <span class="pill ${x.passed?'good':'bad'}">${x.passed?'PASS':'FAIL'}</span><div class="sub">레코드 ${esc(x.record_count||0)} · 코드일치 ${esc(x.operational_code_match_rate_percent||0)}% · 커버리지 ${esc(x.metric_coverage_percent||0)}% · 롤백 ${x.rollback_applied?'적용':'없음'}</div></div>`).join(''):'<div class="empty">검증 이력 없음</div>';}catch(e){$('updated').textContent='다음 Actions 실행 후 확인하세요.';$('checks').innerHTML='<div class="empty">상태 파일을 불러오지 못했습니다.</div>';}})();
+</script>
+</body>
+</html>
