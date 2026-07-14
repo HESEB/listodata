@@ -68,6 +68,9 @@ jobs:
           DATA_GO_KR_LIVESTOCK_MARKET_API_URL: ${{ secrets.DATA_GO_KR_LIVESTOCK_MARKET_API_URL }}
         run: python scripts/collect_real_official_sources.py
 
+      - name: Validate KOSIS operational collection and legacy phaseout
+        run: python scripts/validate_kosis_operational_collection.py
+
       - name: Collect official metrics
         run: python scripts/collect_official_metrics.py
 
