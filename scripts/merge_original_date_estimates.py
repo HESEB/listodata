@@ -39,9 +39,10 @@ def main() -> int:
             if key:
                 index[key] = item
 
-    merged_total = 0
+    reported_total = 0
     for path in REVIEW_PATHS:
         review = read_json(path, {"queue": [], "summary": {}})
+        path_total = 0
         for row in review.get("queue", []) or []:
             if not isinstance(row, dict):
                 continue
@@ -86,12 +87,13 @@ def main() -> int:
                 estimation["original_page_checked"] = True
                 estimation["original_page_status"] = metadata.get("status")
                 estimation["original_final_url"] = metadata.get("final_url")
-                merged_total += added
+                path_total += added
         summary = review.setdefault("summary", {})
-        summary["original_metadata_candidate_count"] = merged_total
+        summary["original_metadata_candidate_count"] = path_total
         review["original_metadata_notice"] = "JSON-LD·OpenGraph·meta·time 태그 후보는 자동 확정하지 않으며 관리자 승인이 필요합니다."
         write_json(path, review)
-    print(json.dumps({"merged_candidate_count": merged_total}, ensure_ascii=False))
+        reported_total = max(reported_total, path_total)
+    print(json.dumps({"merged_candidate_count": reported_total}, ensure_ascii=False))
     return 0
 
 
