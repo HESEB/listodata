@@ -16,6 +16,7 @@
       ['Direction Engine 2.0','./direction-engine-v2.html','공식 수치 기반 시장 방향성'],
       ['Recommendation Engine','./recommendation-engine.html','시장 방향 기반 구매 행동 추천'],
       ['대표뉴스·문맥필터','./representative-news.html','대표 기사 선정과 Context Filter v2'],
+      ['원문 게시일 수집','./original-news-date-enrichment.html','JSON-LD·OpenGraph 게시일 수집 상태'],
       ['대표뉴스 날짜검수','./representative-news-date-review.html','게시일 자동 추정·원문 검증·관리자 승인'],
       ['Report Sentence Engine','./report-sentence-engine.html','공식 데이터 기반 보고 문장 생성']
     ]},
@@ -39,6 +40,7 @@
     {title:'검수',desc:'분류 결과와 제외 자료 검토',items:[
       ['자동분류 검수','./classification-review.html','강제 포함·제외·축종 변경'],
       ['대표뉴스 날짜검수','./representative-news-date-review.html','자동 추정일과 원문 근거 검수'],
+      ['원문 게시일 수집','./original-news-date-enrichment.html','원문 접근·메타데이터 수집 상태'],
       ['규칙 테스트','./rule-test.html','기사 제목 테스트'],
       ['Rejected 확인','./classification-review.html?status=rejected','제외 자료 우선 검토']
     ]},
@@ -60,7 +62,7 @@
   function hideNoisyLinks(){document.querySelectorAll('a,button').forEach(el=>{const text=(el.textContent||'').trim();if(HIDE_TEXT.includes(text)&&!el.closest('.admin-menu-wrap')&&!el.closest('.admin-drawer'))el.classList.add('admin-hidden-link');});}
   function addHeroMenu(){const hero=document.querySelector('.hero .hero-inner');if(!hero||document.getElementById('admin-menu-wrap'))return;const wrap=document.createElement('div');wrap.id='admin-menu-wrap';wrap.className='admin-menu-wrap';wrap.innerHTML=menuHTML();hero.appendChild(wrap);}
   function addDrawer(){if(document.getElementById('admin-menu-open'))return;const btn=document.createElement('button');btn.id='admin-menu-open';btn.className='admin-menu-open';btn.type='button';btn.textContent='Admin 메뉴';btn.onclick=toggleDrawer;const drawer=document.createElement('div');drawer.id='admin-drawer';drawer.className='admin-drawer';drawer.innerHTML=menuHTML();document.body.appendChild(drawer);document.body.appendChild(btn);}
-  function addOperationsBadges(){if(document.getElementById('operations-badges-script'))return;const s=document.createElement('script');s.id='operations-badges-script';s.src='./operations-badges.js?v=phase-8-8';s.defer=true;document.body.appendChild(s);}
+  function addOperationsBadges(){if(document.getElementById('operations-badges-script'))return;const s=document.createElement('script');s.id='operations-badges-script';s.src='./operations-badges.js?v=phase-8-9';s.defer=true;document.body.appendChild(s);}
   function toggleDrawer(){const d=document.getElementById('admin-drawer');if(d)d.classList.toggle('active');}
   function run(){addStyle();hideNoisyLinks();addHeroMenu();addDrawer();addOperationsBadges();}
   function boot(){run();setTimeout(run,700);setTimeout(run,1600);setTimeout(run,3200);setInterval(hideNoisyLinks,2500);}
