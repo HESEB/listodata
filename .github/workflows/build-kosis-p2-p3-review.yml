@@ -1,0 +1,40 @@
+name: Build KOSIS P2 P3 review tracker
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'app/data/admin/kosis_candidate_quality.json'
+      - 'app/data/admin/kosis_detail_approvals.json'
+      - 'app/data/admin/kosis_approval_precheck.json'
+      - 'app/data/config/kosis_code_research_targets.json'
+      - 'app/data/config/kosis_p2_p3_review_policy.json'
+      - 'scripts/build_kosis_p2_p3_review.py'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-kosis-p2-p3-review
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Build P2 P3 review tracker
+        run: python scripts/build_kosis_p2_p3_review.py
+
+      - name: Commit review tracker
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'chore: update KOSIS P2 P3 review tracker'
+          file_pattern: app/data/admin/kosis_p2_p3_review.json app/data/analysis/kosis_p2_p3_review.json
