@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-15",
+  "updated_at": "2026-07-15T00:07:45Z",
   "policy": "phase9_final_readiness_v1",
   "summary": {
     "status": "setup_required",
@@ -11,7 +11,64 @@
     "operational_mapping_promoted": false,
     "single_key_ready": false
   },
-  "checks": [],
+  "checks": [
+    {
+      "id": "phase9_1_3_research",
+      "label": "통계목록·상세코드 자동조사",
+      "required": true,
+      "passed": false,
+      "status": "credential_required",
+      "next_action": "KOSIS_API_KEY 등록 후 Update market data 실행"
+    },
+    {
+      "id": "phase9_4_approved_mapping",
+      "label": "상세후보 승인·승인 매핑 생성",
+      "required": true,
+      "passed": false,
+      "status": "approval_required",
+      "next_action": "10개 지표 상세후보를 검수·승인"
+    },
+    {
+      "id": "phase9_5_promotion",
+      "label": "운영 매핑 검증·승격",
+      "required": true,
+      "passed": false,
+      "status": "approval_required",
+      "next_action": "운영 승격 승인 후 Promote KOSIS operational mapping 실행"
+    },
+    {
+      "id": "phase9_6_runtime",
+      "label": "운영 매핑 런타임 수집 연결",
+      "required": true,
+      "passed": false,
+      "status": "fallback",
+      "next_action": "KOSIS_API_KEY로 운영 런타임 수집 성공 확인"
+    },
+    {
+      "id": "phase9_7_phaseout",
+      "label": "기존 전체 URL Secret 단계적 폐기",
+      "required": false,
+      "passed": false,
+      "status": "legacy_active",
+      "next_action": "연속 성공 3회 후 관리자 폐기 승인"
+    },
+    {
+      "id": "phase9_8_single_key",
+      "label": "KOSIS_API_KEY 단독 수집·자동 롤백",
+      "required": true,
+      "passed": false,
+      "status": "operational_setup_required",
+      "next_action": "기존 URL Secret 제거 후 단독키 성공 3회 확인"
+    },
+    {
+      "id": "rollback_guard",
+      "label": "실패 시 이전 공식데이터 복원 보호",
+      "required": true,
+      "passed": true,
+      "status": "inactive",
+      "next_action": "자동 롤백 상태와 복구 프로브 확인"
+    }
+  ],
   "transition_order": [
     "KOSIS_API_KEY 등록",
     "통계표·항목·분류 후보 자동조사",
@@ -26,5 +83,5 @@
     "secret_values_exposed": false,
     "operational_mapping_auto_deleted": false
   },
-  "notice": "Actions 실행 전 초기 상태입니다. 구조 파일 존재와 실제 운영 성공을 분리 판정합니다."
+  "notice": "구조 파일 존재와 실제 운영 성공을 분리 판정합니다. Actions 실행 전에는 setup_required 또는 limited가 정상입니다."
 }
