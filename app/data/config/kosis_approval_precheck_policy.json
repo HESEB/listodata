@@ -1,0 +1,24 @@
+{
+  "updated_at": "2026-07-15",
+  "policy": "phase10_kosis_approval_precheck_v1",
+  "allowed_decisions": ["approve", "hold", "reject"],
+  "required_approval_fields": ["metric_id", "research_id", "org_id", "tbl_id", "ITM_ID", "C1_ID", "decision"],
+  "approve_required_fields": ["reviewer", "approved_at", "official_response_checked_at"],
+  "rules": {
+    "reject_unknown_fields": false,
+    "reject_duplicate_candidate_key": true,
+    "reject_conflicting_decisions": true,
+    "reject_multiple_approved_candidates_per_metric": true,
+    "require_current_official_candidate_match_for_approve": true,
+    "require_complete_evidence_for_approve": true,
+    "require_policy_match": true,
+    "allow_empty_approvals": true
+  },
+  "candidate_key_fields": ["metric_id", "org_id", "tbl_id", "ITM_ID", "C1_ID"],
+  "source_approval_policy": "phase9_kosis_detail_approval_v1",
+  "status_output": {
+    "admin": "app/data/admin/kosis_approval_precheck.json",
+    "analysis": "app/data/analysis/kosis_approval_precheck.json"
+  },
+  "notice": "승인 JSON은 검증 통과 전 승인 매핑 생성 또는 운영 승격의 근거로 사용하지 않습니다. 검증기는 승인 파일·원본 매핑·운영 매핑을 수정하지 않습니다."
+}
