@@ -33,8 +33,11 @@ jobs:
           KOSIS_API_KEY: ${{ secrets.KOSIS_API_KEY }}
         run: python scripts/diagnose_kosis_first_run.py
 
-      - name: Commit diagnostic status
+      - name: Score and prioritize KOSIS candidates
+        run: python scripts/score_kosis_candidates.py
+
+      - name: Commit diagnostic and candidate quality status
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore: update KOSIS first-run diagnostic"
-          file_pattern: app/data/admin/kosis_first_run_diagnostic.json app/data/analysis/kosis_first_run_diagnostic.json
+          commit_message: "chore: update KOSIS first-run diagnosis and candidate quality"
+          file_pattern: app/data/admin/kosis_first_run_diagnostic.json app/data/analysis/kosis_first_run_diagnostic.json app/data/admin/kosis_candidate_quality.json app/data/analysis/kosis_candidate_quality.json
