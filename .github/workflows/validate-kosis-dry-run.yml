@@ -1,0 +1,39 @@
+name: Validate KOSIS dry run
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'app/data/config/kosis_table_mapping_approved.json'
+      - 'app/data/config/kosis_dry_run_policy.json'
+      - 'scripts/validate_kosis_dry_run.py'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: validate-kosis-dry-run
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate approved mapping with KOSIS dry run
+        env:
+          KOSIS_API_KEY: ${{ secrets.KOSIS_API_KEY }}
+        run: python scripts/validate_kosis_dry_run.py
+
+      - name: Commit dry run status
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'chore: update KOSIS dry run status'
+          file_pattern: app/data/admin/kosis_dry_run.json app/data/analysis/kosis_dry_run.json
