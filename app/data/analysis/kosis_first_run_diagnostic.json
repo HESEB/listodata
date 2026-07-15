@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-07-15",
+  "updated_at": "2026-07-15T03:40:08Z",
   "policy": "phase10_kosis_first_run_diagnostic_v1",
   "summary": {
     "status": "secret_required",
     "secret_configured": false,
-    "error_class": null,
+    "error_class": "unknown_api_error",
     "catalog_request_count": 0,
     "catalog_row_count": 0,
     "table_candidate_count": 0,
@@ -12,13 +12,54 @@
     "detail_row_count": 0,
     "metric_candidate_count": 0,
     "approved_candidate_count": 0,
-    "phase9_research_status": "credential_required",
+    "phase9_research_status": "research_required",
     "api_key_exposed": false
   },
-  "checks": {},
-  "errors": [],
-  "next_action": "Repository Actions Secret에 KOSIS_API_KEY를 등록한 뒤 Update market data를 실행하세요.",
-  "troubleshooting": [],
+  "checks": {
+    "secret_detected": false,
+    "catalog_request_executed": false,
+    "catalog_response_received": false,
+    "table_candidate_found": false,
+    "detail_request_executed": false,
+    "detail_response_received": false,
+    "metric_candidate_found": false,
+    "secret_value_exposed": false
+  },
+  "errors": [
+    "GitHub Actions Secret KOSIS_API_KEY 미등록",
+    "GitHub Actions Secret KOSIS_API_KEY 미등록"
+  ],
+  "next_action": "Repository Actions Secret에 KOSIS_API_KEY를 등록하세요.",
+  "troubleshooting": [
+    {
+      "code": "secret_required",
+      "action": "KOSIS_API_KEY 이름과 값 등록 여부 확인"
+    },
+    {
+      "code": "workflow_run_required",
+      "action": "Update market data 수동 실행"
+    },
+    {
+      "code": "authentication_failed",
+      "action": "키 재발급·공백 제거·Secret 재저장"
+    },
+    {
+      "code": "network_or_endpoint_error",
+      "action": "Actions 로그와 endpoint·호출 제한 확인"
+    },
+    {
+      "code": "catalog_empty",
+      "action": "목록 API 응답 필드와 검색 키워드 검토"
+    },
+    {
+      "code": "detail_empty",
+      "action": "상세 API 응답의 ITM_ID·C1_ID 별칭 검토"
+    },
+    {
+      "code": "candidate_review_required",
+      "action": "관리자 상세후보 검수·승인"
+    }
+  ],
   "source_status": {
     "preflight": "secret_registration_required",
     "catalog": "credential_required",
@@ -30,5 +71,5 @@
     "never_display_api_key": true,
     "never_store_request_url_with_key": true
   },
-  "notice": "Actions 첫 실행 전 초기 상태입니다."
+  "notice": "첫 실행 진단은 Secret 값이 아니라 존재 여부와 생성된 상태 JSON만 판정합니다. 후보가 없다고 임의 코드를 생성하지 않습니다."
 }
