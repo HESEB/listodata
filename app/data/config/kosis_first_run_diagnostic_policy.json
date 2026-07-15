@@ -1,0 +1,36 @@
+{
+  "updated_at": "2026-07-15",
+  "policy": "phase10_kosis_first_run_diagnostic_v1",
+  "secret_name": "KOSIS_API_KEY",
+  "expected_workflow": ".github/workflows/update-market-data.yml",
+  "status_order": [
+    "secret_required",
+    "workflow_run_required",
+    "authentication_failed",
+    "network_or_endpoint_error",
+    "catalog_empty",
+    "detail_empty",
+    "candidate_review_required",
+    "first_run_success"
+  ],
+  "error_classes": {
+    "authentication_failed": ["401", "403", "unauthorized", "forbidden", "invalid api", "인증", "apikey"],
+    "rate_limited": ["429", "rate limit", "too many requests", "호출 제한"],
+    "network_or_endpoint_error": ["timeout", "urlerror", "connection", "dns", "ssl", "404", "500", "502", "503"],
+    "invalid_response": ["jsondecodeerror", "response_too_large", "non-json", "응답 구조"]
+  },
+  "success_rules": {
+    "minimum_catalog_requests": 1,
+    "minimum_catalog_rows": 1,
+    "minimum_table_candidates": 1,
+    "minimum_detail_requests": 1,
+    "minimum_detail_rows": 1,
+    "minimum_metric_candidates": 1
+  },
+  "security": {
+    "never_store_api_key": true,
+    "never_display_api_key": true,
+    "never_store_request_url_with_key": true
+  },
+  "notice": "첫 실행 진단은 Secret 값이 아니라 존재 여부와 생성된 상태 JSON만 판정합니다. 후보가 없다고 임의 코드를 생성하지 않습니다."
+}
