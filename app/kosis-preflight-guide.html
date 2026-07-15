@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>KOSIS 등록 전 실행 가이드 | HESEB</title>
+  <style>
+    :root{--bg:#f5fafc;--card:#fff;--line:rgba(20,30,40,.10);--text:#182231;--sub:rgba(24,34,49,.68);--good:#168a5b;--warn:#c18a18;--bad:#d93c61;--blue:#2474d8}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Apple SD Gothic Neo,Noto Sans KR,sans-serif}header{position:sticky;top:0;z-index:10;background:rgba(245,250,252,.94);backdrop-filter:blur(9px);border-bottom:1px solid var(--line)}.top,main{max-width:1180px;margin:0 auto;padding:14px}.brand{display:flex;justify-content:space-between;gap:12px}.brand h1{margin:0;font-size:18px}.sub{font-size:12px;color:var(--sub);line-height:1.55}.links{display:flex;gap:7px;flex-wrap:wrap}.btn{display:inline-flex;border:1px solid var(--line);background:#fff;padding:8px 12px;border-radius:999px;text-decoration:none;color:var(--text);font-size:12px}.btn.primary{background:linear-gradient(90deg,rgba(241,133,174,.20),rgba(107,178,255,.20));font-weight:760}.hero{background:linear-gradient(150deg,rgba(241,133,174,.22),rgba(248,184,113,.18),rgba(107,178,255,.18));padding:14px;border-radius:26px;margin-bottom:14px}.hero>div{background:rgba(255,255,255,.82);border:1px solid var(--line);border-radius:22px;padding:16px}.headline{font-size:24px;font-weight:820}.grid{display:grid;gap:12px}.cols{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:14px;box-shadow:0 10px 24px rgba(18,28,40,.06)}.card h2{font-size:17px;margin:0}.mt{margin-top:10px}.kpi{font-size:27px;font-weight:820}.badge{display:inline-flex;padding:5px 8px;border:1px solid var(--line);border-radius:999px;font-size:11px}.good{color:var(--good);background:rgba(22,138,91,.08)}.warn{color:var(--warn);background:rgba(193,138,24,.09)}.bad{color:var(--bad);background:rgba(217,60,97,.08)}.blue{color:var(--blue);background:rgba(36,116,216,.08)}.step,.row{border-top:1px solid var(--line);padding-top:10px;margin-top:10px}.step:first-child,.row:first-child{border-top:0;padding-top:0;margin-top:0}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;background:rgba(36,116,216,.05);border:1px solid var(--line);padding:10px;border-radius:13px;overflow-wrap:anywhere}.notice{border:1px dashed var(--line);border-radius:18px;background:rgba(255,255,255,.62);padding:12px;font-size:12px;color:var(--sub);line-height:1.55}@media(max-width:680px){.brand{display:block}.brand .links{margin-top:8px}.headline{font-size:20px}}
+  </style>
+</head>
+<body>
+<header><div class="top"><div class="brand"><div><h1>KOSIS_API_KEY 등록 전 실행 가이드</h1><div class="sub">Phase 10-1 · 등록 위치·실행 순서·현재 준비 상태를 한 화면에서 확인</div></div><div class="links"><a class="btn" href="./phase9-readiness.html">Phase 9 최종검증</a><a class="btn" href="./main.html">Dashboard</a></div></div></div></header>
+<main>
+  <section class="hero"><div><div class="headline">인증키는 한 번만 안전하게 등록하고, 이후 자동조사부터 시작합니다.</div><div class="sub mt">전체 KOSIS URL이 아니라 발급받은 인증키 원문만 <b>KOSIS_API_KEY</b> Secret으로 등록합니다.</div></div></section>
+  <section class="grid cols" id="summary"><div class="card">상태를 불러오는 중...</div></section>
+  <section class="grid cols mt">
+    <div class="card"><h2>사용자 실행 순서</h2><div id="steps" class="mt"></div></div>
+    <div class="card"><h2>등록값</h2><div class="mono mt">Name: KOSIS_API_KEY<br>Secret: KOSIS에서 발급받은 인증키 원문</div><div class="links mt"><a id="secretLink" class="btn primary" target="_blank">Secret 등록</a><a id="workflowLink" class="btn" target="_blank">Workflow 실행</a><a id="kosisLink" class="btn" target="_blank">KOSIS 공유서비스</a></div><div class="notice mt">인증키는 화면·JSON·로그에 표시하지 않습니다. 등록 여부만 Actions 실행 환경에서 판정합니다.</div></div>
+  </section>
+  <section class="grid cols mt">
+    <div class="card"><h2>저장소 준비 점검</h2><div id="files" class="mt"></div></div>
+    <div class="card"><h2>다음 작업</h2><div id="next" class="sub mt"></div><div class="links mt"><a class="btn" href="./kosis-catalog-research.html">목록 자동조사</a><a class="btn" href="./kosis-detail-research.html">상세코드 조사</a><a class="btn" href="./kosis-detail-approval.html">후보 승인</a></div></div>
+  </section>
+</main>
+<script>
+const $=id=>document.getElementById(id);const esc=(s='')=>String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+async function getJSON(p){const r=await fetch(p+'?ts='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error(p);return r.json()}
+function badge(s){const m={research_started:['good','조사 시작'],workflow_run_required:['warn','Workflow 실행 필요'],secret_registration_required:['warn','Secret 등록 필요'],execution_review_required:['warn','실행 결과 검토'],repository_fix_required:['bad','저장소 복구 필요']};const x=m[s]||['blue',s||'pending'];return `<span class="badge ${x[0]}">${esc(x[1])}</span>`}
+Promise.all([getJSON('./data/config/kosis_preflight_guide.json'),getJSON('./data/admin/kosis_preflight_status.json')]).then(([g,s])=>{const q=s.summary||{};$('summary').innerHTML=`<div class="card"><div class="sub">현재 단계</div><div class="kpi">${badge(q.status)}</div></div><div class="card"><div class="sub">Secret 감지</div><div class="kpi">${q.secret_configured?'YES':'NO'}</div></div><div class="card"><div class="sub">저장소 준비</div><div class="kpi">${q.present_file_count||0}/${q.required_file_count||0}</div></div><div class="card"><div class="sub">Phase 9</div><div class="kpi">${esc(q.phase9_status||'-')}</div></div>`;$('steps').innerHTML=(g.steps||[]).map(x=>`<div class="step"><b>${x.step}. ${esc(x.title)}</b><div class="sub mt">${esc(x.detail)}</div></div>`).join('');$('files').innerHTML=(s.file_checks||[]).length?(s.file_checks||[]).map(x=>`<div class="row"><span>${esc(x.path)}</span><span class="badge ${x.exists?'good':'bad'}">${x.exists?'있음':'누락'}</span></div>`).join(''):'<div class="sub">첫 Workflow 실행 후 세부 파일 점검 결과가 표시됩니다.</div>';$('next').textContent=s.next_action||'';const l=g.links||{};$('secretLink').href=l.secret_settings||'#';$('workflowLink').href=l.workflow||'#';$('kosisLink').href=l.kosis||'#'}).catch(e=>{$('summary').innerHTML='<div class="card">가이드 데이터를 불러오지 못했습니다.</div>'});
+</script>
+</body></html>
