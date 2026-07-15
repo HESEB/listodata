@@ -1,0 +1,40 @@
+name: Diagnose KOSIS first run
+
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["Update market data"]
+    types: [completed]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: diagnose-kosis-first-run
+  cancel-in-progress: true
+
+jobs:
+  diagnose:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Diagnose KOSIS first run
+        env:
+          KOSIS_API_KEY: ${{ secrets.KOSIS_API_KEY }}
+        run: python scripts/diagnose_kosis_first_run.py
+
+      - name: Commit diagnostic status
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update KOSIS first-run diagnostic"
+          file_pattern: app/data/admin/kosis_first_run_diagnostic.json app/data/analysis/kosis_first_run_diagnostic.json
