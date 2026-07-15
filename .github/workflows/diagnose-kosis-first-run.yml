@@ -36,8 +36,11 @@ jobs:
       - name: Score and prioritize KOSIS candidates
         run: python scripts/score_kosis_candidates.py
 
-      - name: Commit diagnostic and candidate quality status
+      - name: Build KOSIS P1 batch review queue
+        run: python scripts/build_kosis_p1_batch_review.py
+
+      - name: Commit diagnostic and candidate review status
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore: update KOSIS first-run diagnosis and candidate quality"
-          file_pattern: app/data/admin/kosis_first_run_diagnostic.json app/data/analysis/kosis_first_run_diagnostic.json app/data/admin/kosis_candidate_quality.json app/data/analysis/kosis_candidate_quality.json
+          commit_message: "chore: update KOSIS diagnosis and P1 review queue"
+          file_pattern: app/data/admin/kosis_first_run_diagnostic.json app/data/analysis/kosis_first_run_diagnostic.json app/data/admin/kosis_candidate_quality.json app/data/analysis/kosis_candidate_quality.json app/data/admin/kosis_p1_batch_review.json app/data/analysis/kosis_p1_batch_review.json
