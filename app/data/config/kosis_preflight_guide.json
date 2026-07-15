@@ -1,0 +1,33 @@
+{
+  "updated_at": "2026-07-15",
+  "policy": "phase10_kosis_preflight_v1",
+  "secret_name": "KOSIS_API_KEY",
+  "steps": [
+    {"step": 1, "title": "KOSIS 공유서비스 인증키 준비", "detail": "KOSIS 공유서비스에서 발급받은 인증키 원문을 준비합니다. 전체 API URL이 아니라 인증키만 등록합니다."},
+    {"step": 2, "title": "GitHub Actions Secret 등록", "detail": "Repository Settings → Secrets and variables → Actions → New repository secret에서 Name을 KOSIS_API_KEY로 등록합니다."},
+    {"step": 3, "title": "Update market data 수동 실행", "detail": "Actions에서 Update market data Workflow를 선택하고 Run workflow를 실행합니다."},
+    {"step": 4, "title": "통계목록·상세코드 후보 확인", "detail": "KOSIS 목록 자동조사와 상세코드 조사 화면에서 후보·오류·공식 응답 확인시각을 검토합니다."},
+    {"step": 5, "title": "10개 지표 승인과 운영 승격", "detail": "상세후보 승인 → 승인 매핑 생성 → 운영 매핑 승격 순서로 진행합니다."},
+    {"step": 6, "title": "단독키 운영 검증", "detail": "운영 수집 성공 표본을 확보한 뒤 기존 전체 URL Secret 폐기와 KOSIS_API_KEY 단독 수집 검증을 진행합니다."}
+  ],
+  "required_repository_files": [
+    ".github/workflows/update-market-data.yml",
+    "scripts/collect_kosis_catalog_candidates.py",
+    "scripts/collect_kosis_detail_codes.py",
+    "scripts/build_kosis_approved_mapping.py",
+    "scripts/kosis_mapping_runtime.py",
+    "scripts/validate_kosis_single_key_runtime.py",
+    "app/data/config/kosis_table_mapping_operational.json"
+  ],
+  "links": {
+    "secret_settings": "https://github.com/HESEB/listodata/settings/secrets/actions",
+    "workflow": "https://github.com/HESEB/listodata/actions/workflows/update-market-data.yml",
+    "kosis": "https://kosis.kr/openapi/index/index.jsp"
+  },
+  "security": {
+    "never_store_api_key": true,
+    "never_display_api_key": true,
+    "register_key_only_not_full_url": true
+  },
+  "notice": "이 화면은 Secret 실제 값을 읽거나 표시하지 않습니다. Actions 실행 시 환경변수 존재 여부와 저장소 준비 상태만 판정합니다."
+}
