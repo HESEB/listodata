@@ -9,6 +9,7 @@
       ['Version 상태','./version-status.html','버전·빌드·데이터 갱신 상태']
     ]},
     {title:'DSS 2.0',desc:'데이터 중심 전환',items:[
+      ['KOSIS 후보 품질점수','./kosis-candidate-quality.html','첫 실행 후보 점수·우선 검수 대상'],
       ['KOSIS 첫 실행 진단','./kosis-first-run-diagnostic.html','인증키 등록 후 첫 Actions 결과·오류 해결'],
       ['Phase 9 최종검증','./phase9-readiness.html','KOSIS 운영 전환 최종 체크리스트'],
       ['KOSIS 단독키 검증','./kosis-single-key-runtime-validation.html','기존 URL Secret 제거 후 단독키 수집·자동 롤백'],
