@@ -1,0 +1,35 @@
+{
+  "updated_at": "2026-07-15",
+  "policy": "phase10_kosis_candidate_quality_v1",
+  "score_range": [0, 100],
+  "weights": {
+    "complete_official_evidence": 25,
+    "org_and_table_codes": 15,
+    "item_and_classification_codes": 20,
+    "official_response_checked_at": 10,
+    "unit_present": 8,
+    "target_keyword_match": 10,
+    "expected_period_match": 7,
+    "unique_metric_candidate": 5
+  },
+  "penalties": {
+    "incomplete_evidence": 25,
+    "missing_required_code": 30,
+    "period_mismatch": 12,
+    "duplicate_metric_candidate": 10,
+    "missing_unit": 8
+  },
+  "priority_thresholds": {
+    "P1": 80,
+    "P2": 65,
+    "P3": 45,
+    "HOLD": 0
+  },
+  "review_rules": {
+    "maximum_priority_rows": 30,
+    "one_recommended_candidate_per_metric": true,
+    "manual_approval_required": true,
+    "auto_apply_to_mapping": false
+  },
+  "notice": "품질점수는 검수 순서를 정하기 위한 보조지표입니다. 높은 점수도 자동 승인하지 않으며 KOSIS 공식 화면과 응답 근거를 관리자가 확인해야 합니다."
+}
