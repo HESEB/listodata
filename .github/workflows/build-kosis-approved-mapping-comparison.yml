@@ -1,0 +1,62 @@
+name: Build KOSIS approved mapping comparison
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'app/data/admin/kosis_detail_approvals.json'
+      - 'app/data/admin/kosis_approval_precheck.json'
+      - 'app/data/analysis/kosis_detail_research.json'
+      - 'app/data/config/kosis_table_mapping_template.json'
+      - 'scripts/build_kosis_approved_mapping.py'
+      - 'scripts/compare_kosis_approved_mapping.py'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-kosis-approved-mapping-comparison
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Read approval precheck
+        id: gate
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          path=Path('app/data/admin/kosis_approval_precheck.json')
+          doc=json.loads(path.read_text(encoding='utf-8')) if path.exists() else {'summary':{}}
+          allowed=bool((doc.get('summary') or {}).get('mapping_generation_allowed'))
+          with open(os.environ['GITHUB_OUTPUT'],'a',encoding='utf-8') as f:
+              f.write('allowed=' + ('true' if allowed else 'false') + '\n')
+          print({'mapping_generation_allowed': allowed})
+          PY
+
+      - name: Preserve previous approved mapping
+        if: steps.gate.outputs.allowed == 'true'
+        run: python scripts/preserve_previous_kosis_approved_mapping.py
+
+      - name: Generate approved mapping
+        if: steps.gate.outputs.allowed == 'true'
+        run: python scripts/build_kosis_approved_mapping.py
+
+      - name: Compare approved mapping
+        run: python scripts/compare_kosis_approved_mapping.py
+
+      - name: Commit approved mapping and comparison
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'chore: update KOSIS approved mapping comparison'
+          file_pattern: app/data/config/kosis_table_mapping_approved.json app/data/admin/kosis_table_mapping_approved_previous.json app/data/admin/kosis_mapping_generation.json app/data/analysis/kosis_mapping_generation.json app/data/admin/kosis_approved_mapping_comparison.json app/data/analysis/kosis_approved_mapping_comparison.json
