@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-16T20:14:09Z",
+  "updated_at": "2026-07-16T21:19:38Z",
   "policy": "phase2_evidence_score_v3_sanitized",
   "score_axes": {
     "price": {
@@ -43,18 +43,18 @@
     {
       "id": "BEEF",
       "name": "한우",
-      "signal_score": 61,
-      "direction": "up",
-      "status": "상방 가능성",
+      "signal_score": 67,
+      "direction": "hold",
+      "status": "판단 유보",
       "quality_score": 74,
-      "confidence_score": 80,
+      "confidence_score": 62,
       "coverage_rate": 100,
       "evidence_count": 31,
       "official_count": 4,
       "direction_counts": {
         "up": 7,
-        "down": 3,
-        "neutral": 21,
+        "down": 2,
+        "neutral": 22,
         "hold": 0
       },
       "coverage_types": [
@@ -66,7 +66,7 @@
         "질병/방역"
       ],
       "score_breakdown": {
-        "price": 11,
+        "price": 17,
         "supply": 22,
         "disease": 15,
         "policy": 4,
@@ -83,10 +83,10 @@
         "price": {
           "label": "가격",
           "max_score": 30,
-          "score": 11,
-          "items": 6,
+          "score": 17,
+          "items": 5,
           "up": 1,
-          "down": 2,
+          "down": 1,
           "neutral": 3,
           "examples": [
             {
@@ -182,10 +182,10 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 9,
-          "items": 17,
+          "items": 18,
           "up": 0,
           "down": 0,
-          "neutral": 17,
+          "neutral": 18,
           "examples": [
             {
               "title": "“한우산업, 생산·유통·개량 아우르는 체질 개선 필요” - 한국농어민신문",
@@ -208,22 +208,88 @@
           ]
         }
       },
-      "reason": "수급/도축 22점 + 질병/방역 15점 + 가격 11점 기반, 상방성 자료가 우세",
+      "reason": "수급/도축 22점 + 가격 17점 + 질병/방역 15점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": true,
-        "severity": "medium",
+        "severity": "high",
         "axes": [
           "가격"
         ],
-        "memo": "주의 필요 · 충돌축: 가격"
+        "memo": "판단 유보 권장 · 충돌축: 가격 / 유보사유: 상·하방 근거 강충돌"
       },
       "hold_decision": {
-        "should_hold": false,
-        "reasons": [],
-        "recommended_status": "상방 가능성",
-        "recommended_direction": "up",
-        "adjusted_confidence": 70
+        "should_hold": [
+          {
+            "axis": "price",
+            "label": "가격",
+            "items": 5,
+            "has_conflict": true,
+            "severity": "high",
+            "dominant_direction": "down",
+            "weighted_direction": {
+              "up": 3.71,
+              "down": 4.17,
+              "neutral": 9.07
+            },
+            "conflict_ratio": 0.89,
+            "examples": {
+              "up": [
+                {
+                  "title": "“가격 인상 철회…한우농가와 고통분담·위기 극복을” - 축산신문",
+                  "source": "축산신문",
+                  "direction": "up",
+                  "quality_score": 58,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBlNEp5WHQ2WWpLZUNjbHRHS2JpcTREanVvQWotNURJRUFLcFZFRFpIbWZUa3RPSGxxT2Rrb2JYclRaMXNfTGdPelNISEFxdUJjLVEzZGJhOG9XeHlnLUtUbHQ5VXdWckY4?oc=5"
+                }
+              ],
+              "down": [
+                {
+                  "title": "옥천군, 복숭아 포도 복숭아 한우 등에 ‘농축산물 가격안정기금’ 투입 - 중도일보",
+                  "source": "중도일보",
+                  "direction": "down",
+                  "quality_score": 81,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9IRUdkVkVtelBidnFNNjRLc2o4R01rS1VqY1d5WXZWRE1nYjdORGsyZmUwN0hwMERQUmktaHk3ejRheGNkaWJhY1ppX3U1ekxBeW1qUnQ3RnNjN2k5T0s2akpEenpOS2tnTTdXdw?oc=5"
+                }
+              ],
+              "neutral": [
+                {
+                  "title": "한우 송아지 가격 600만 원 뚫나… 번식률 저하로 '품귀 현상' 심화 - 팜인사이트",
+                  "source": "팜인사이트",
+                  "direction": "neutral",
+                  "quality_score": 76,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE0tc1d6d1ZrUzIzSGRfaF9UX3haUE5uUWVtcFFPQmtWTWRUZTNOT0I3OGl4NGpYZFl2bEdjeVlmRlpBcFdPWmduUGNrN2FrU0t0X0hOdVVURldsalVpcVNTT0UxZ2x4RnZrc2pkNHNB?oc=5"
+                },
+                {
+                  "title": "“삼복·여름휴가 코앞인데” 축산물 가격 ‘껑충’…한우 등심 18%↑ - v.daum.net",
+                  "source": "v.daum.net",
+                  "direction": "neutral",
+                  "quality_score": 65,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1FMG0waDY1dDZlVzNxdk90MGNZMTZ2N0dMamhYYlJleTRQaEVXbnJNcDVJTGxRb1hYcHpoLTZGV3JWQU5WeXd1ZHlkc0tOZWM?oc=5"
+                },
+                {
+                  "title": "한우, 가격 부담에도 ‘가치 소비' 굳건 - 축산신문",
+                  "source": "축산신문",
+                  "direction": "neutral",
+                  "quality_score": 65,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9lUFhFUjUxUmp4czVKZ2tEVWVPTFBxVy0xQnNZM1dCaWlmaXcwd09jdU9FXzdaOG56SWIwTmZaZmxNNS1ob3B1SlRwY3dic0NMM2lPVVdvSEhQbFdIa1pHV0gxODlKdXpa?oc=5"
+                }
+              ]
+            },
+            "memo": "가격 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
+          }
+        ],
+        "reasons": [
+          "상·하방 근거 강충돌"
+        ],
+        "recommended_status": "판단 유보",
+        "recommended_direction": "hold",
+        "adjusted_confidence": 62
       }
     },
     {
@@ -235,10 +301,10 @@
       "quality_score": 74,
       "confidence_score": 74,
       "coverage_rate": 60,
-      "evidence_count": 40,
-      "official_count": 15,
+      "evidence_count": 41,
+      "official_count": 16,
       "direction_counts": {
-        "up": 34,
+        "up": 35,
         "down": 0,
         "neutral": 6,
         "hold": 0
@@ -300,8 +366,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 34,
-          "up": 34,
+          "items": 35,
+          "up": 35,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -387,15 +453,15 @@
       "signal_score": 46,
       "direction": "neutral",
       "status": "보합/혼조",
-      "quality_score": 71,
-      "confidence_score": 73,
+      "quality_score": 73,
+      "confidence_score": 74,
       "coverage_rate": 60,
-      "evidence_count": 20,
+      "evidence_count": 18,
       "official_count": 12,
       "direction_counts": {
-        "up": 15,
+        "up": 14,
         "down": 0,
-        "neutral": 5,
+        "neutral": 4,
         "hold": 0
       },
       "coverage_types": [
@@ -461,8 +527,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 12,
-          "up": 12,
+          "items": 11,
+          "up": 11,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -473,13 +539,13 @@
               "quality_score": 81
             },
             {
-              "title": "고병원성 AI 탓…산란계·오리 사육마릿수 감소 - 농민신문",
+              "title": "알림소식 > 보도자료 > 6월 1일자로 고병원성 조류인플루엔자(AI) 평시 방역체계로 전환하여 상시 방역활동 추진 - 농림축산식품부",
               "direction": "up",
-              "source_level": 3,
-              "quality_score": 51
+              "source_level": 5,
+              "quality_score": 75
             },
             {
-              "title": "알림소식 > 보도자료 > 6월 1일자로 고병원성 조류인플루엔자(AI) 평시 방역체계로 전환하여 상시 방역활동 추진 - 농림축산식품부",
+              "title": "고병원성 조류인플루엔자 특별방역대책기간 4월 15일로 마무리, 위험지역 중심으로 방역조치는 지속 유지 - 농림축산식품부",
               "direction": "up",
               "source_level": 5,
               "quality_score": 75
@@ -500,10 +566,10 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 9,
-          "items": 5,
+          "items": 4,
           "up": 0,
           "down": 0,
-          "neutral": 5,
+          "neutral": 4,
           "examples": [
             {
               "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - 더스쿠프",
@@ -518,10 +584,10 @@
               "quality_score": 63
             },
             {
-              "title": "베트남 양계농가, 올들어 계육·계란값 폭락에 ‘울상’…”생산비도 못 건져” - 인사이드비나",
+              "title": "가축질병의 경제적 영향 분석 - 한국농촌경제연구원",
               "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 51
+              "source_level": 5,
+              "quality_score": 82
             }
           ]
         }
@@ -539,33 +605,31 @@
         "reasons": [],
         "recommended_status": "보합/혼조",
         "recommended_direction": "neutral",
-        "adjusted_confidence": 73
+        "adjusted_confidence": 74
       }
     },
     {
       "id": "DUCK",
       "name": "오리",
-      "signal_score": 10,
+      "signal_score": 0,
       "direction": "hold",
       "status": "판단 유보",
-      "quality_score": 51,
-      "confidence_score": 30,
-      "coverage_rate": 20,
-      "evidence_count": 1,
+      "quality_score": 0,
+      "confidence_score": 0,
+      "coverage_rate": 0,
+      "evidence_count": 0,
       "official_count": 0,
       "direction_counts": {
-        "up": 1,
+        "up": 0,
         "down": 0,
         "neutral": 0,
         "hold": 0
       },
-      "coverage_types": [
-        "질병/방역"
-      ],
+      "coverage_types": [],
       "score_breakdown": {
         "price": 0,
         "supply": 0,
-        "disease": 10,
+        "disease": 0,
         "policy": 0,
         "news": 0
       },
@@ -600,19 +664,12 @@
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
-          "score": 10,
-          "items": 1,
-          "up": 1,
+          "score": 0,
+          "items": 0,
+          "up": 0,
           "down": 0,
           "neutral": 0,
-          "examples": [
-            {
-              "title": "고병원성 AI 탓…산란계·오리 사육마릿수 감소 - 농민신문",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 51
-            }
-          ]
+          "examples": []
         },
         "policy": {
           "label": "정책/고시",
@@ -635,17 +692,18 @@
           "examples": []
         }
       },
-      "reason": "질병/방역 10점 기반, 상방성 자료가 우세",
+      "reason": "유효 근거 부족",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
         "severity": "low",
         "axes": [],
-        "memo": "판단 유보 권장 · 누락근거: 가격, 수급/도축, 정책/고시, 뉴스/수요 / 유보사유: 커버리지 부족, 신뢰도 부족, 공식자료 부족, 주요 근거축 다수 누락"
+        "memo": "판단 유보 권장 · 누락근거: 가격, 수급/도축, 질병/방역, 정책/고시, 뉴스/수요 / 유보사유: 근거자료 없음, 커버리지 부족, 신뢰도 부족, 공식자료 부족, 주요 근거축 다수 누락"
       },
       "hold_decision": {
         "should_hold": true,
         "reasons": [
+          "근거자료 없음",
           "커버리지 부족",
           "신뢰도 부족",
           "공식자료 부족",
@@ -653,24 +711,24 @@
         ],
         "recommended_status": "판단 유보",
         "recommended_direction": "hold",
-        "adjusted_confidence": 30
+        "adjusted_confidence": 0
       }
     },
     {
       "id": "EGG",
       "name": "계란",
-      "signal_score": 63,
+      "signal_score": 62,
       "direction": "up",
       "status": "상방 가능성",
-      "quality_score": 74,
-      "confidence_score": 83,
+      "quality_score": 75,
+      "confidence_score": 84,
       "coverage_rate": 100,
-      "evidence_count": 36,
+      "evidence_count": 34,
       "official_count": 5,
       "direction_counts": {
-        "up": 13,
+        "up": 12,
         "down": 6,
-        "neutral": 17,
+        "neutral": 16,
         "hold": 0
       },
       "coverage_types": [
@@ -683,7 +741,7 @@
       "score_breakdown": {
         "price": 12,
         "supply": 23,
-        "disease": 16,
+        "disease": 15,
         "policy": 4,
         "news": 8
       },
@@ -756,9 +814,9 @@
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
-          "score": 16,
-          "items": 3,
-          "up": 3,
+          "score": 15,
+          "items": 2,
+          "up": 2,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -767,12 +825,6 @@
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
-            },
-            {
-              "title": "고병원성 AI 탓…산란계·오리 사육마릿수 감소 - 농민신문",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 51
             },
             {
               "title": "경기 포천 산란계 농장 고병원성 조류인플루엔자 발생에 따라 방역관리 강화 - 농림축산식품부",
@@ -809,10 +861,10 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 8,
-          "items": 5,
+          "items": 4,
           "up": 0,
           "down": 0,
-          "neutral": 5,
+          "neutral": 4,
           "examples": [
             {
               "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - 더스쿠프",
@@ -835,7 +887,7 @@
           ]
         }
       },
-      "reason": "수급/도축 23점 + 질병/방역 16점 + 가격 12점 기반, 상방성 자료가 우세",
+      "reason": "수급/도축 23점 + 질병/방역 15점 + 가격 12점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": true,
@@ -850,7 +902,7 @@
         "reasons": [],
         "recommended_status": "상방 가능성",
         "recommended_direction": "up",
-        "adjusted_confidence": 73
+        "adjusted_confidence": 74
       }
     },
     {
@@ -862,12 +914,12 @@
       "quality_score": 80,
       "confidence_score": 66,
       "coverage_rate": 80,
-      "evidence_count": 33,
-      "official_count": 33,
+      "evidence_count": 34,
+      "official_count": 34,
       "direction_counts": {
         "up": 13,
         "down": 1,
-        "neutral": 19,
+        "neutral": 20,
         "hold": 0
       },
       "coverage_types": [
@@ -967,10 +1019,10 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 9,
-          "items": 21,
+          "items": 22,
           "up": 1,
           "down": 1,
-          "neutral": 19,
+          "neutral": 20,
           "examples": [
             {
               "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
@@ -1008,14 +1060,14 @@
           {
             "axis": "news",
             "label": "뉴스/수요",
-            "items": 21,
+            "items": 22,
             "has_conflict": true,
             "severity": "high",
             "dominant_direction": "up",
             "weighted_direction": {
               "up": 4.55,
               "down": 4.1,
-              "neutral": 70.71
+              "neutral": 74.36
             },
             "conflict_ratio": 0.9,
             "examples": {
