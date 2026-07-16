@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-07-16T14:26:23Z",
+  "updated_at": "2026-07-16T16:44:24Z",
   "policy": "phase5_market_memory_v2",
   "notice": "과거 신호 변동, 이벤트 캘린더, 현재 시장신호를 연결한 시장 메모리입니다. 가격 예측이 아니라 구매 판단 보조자료입니다.",
   "summary": {
     "memory_event_count": 13,
-    "species_with_cases": 6,
+    "species_with_cases": 5,
     "calendar_linked_count": 13,
     "similar_case_count": 2
   },
@@ -12,15 +12,15 @@
     {
       "id": "BEEF",
       "name": "한우",
-      "event_count": 1,
-      "jump_count": 0,
+      "event_count": 2,
+      "jump_count": 1,
       "drop_count": 1,
-      "avg_jump_change": 0,
+      "avg_jump_change": 9.0,
       "avg_drop_change": -10.0,
-      "latest_signal_score": 58,
-      "latest_status": "보합/혼조",
-      "current_confidence": 77,
-      "current_conflict": "medium",
+      "latest_signal_score": 68,
+      "latest_status": "판단 유보",
+      "current_confidence": 63,
+      "current_conflict": "high",
       "top_cases": [
         {
           "date": "2026-07-14",
@@ -63,9 +63,51 @@
           ],
           "purchase_implication": "한우 하방 신호가 확대된 사례로, 추가 비축보다 필요 물량 중심 운영 검토 필요 / 인접 이벤트: 한우자조금·정부 지원사업 확인",
           "memory_id": "BEEF_2026-07-14_signal_drop_m10"
+        },
+        {
+          "date": "2026-07-16",
+          "species": "BEEF",
+          "name": "한우",
+          "event_type": "signal_jump",
+          "event_type_label": "신호 급등",
+          "change": 9,
+          "from_score": 59,
+          "to_score": 68,
+          "confidence_score": 63,
+          "conflict_severity": "high",
+          "memo": "한우 신호 +9.0점 변동",
+          "source": "signal_history",
+          "nearby_calendar_events": [
+            {
+              "event_id": "HANWOO_SUPPORT_PROGRAM",
+              "title": "한우자조금·정부 지원사업 확인",
+              "event_type": "policy_support",
+              "event_type_label": "정책/지원",
+              "date_start": "2026-07-01",
+              "date_end": "2026-12-31",
+              "impact_direction": "down",
+              "impact_level": 4,
+              "distance_days": 15,
+              "purchase_check": "원료육 차액지원·홍보비 지원·협약 조건·증빙 요건 확인"
+            },
+            {
+              "event_id": "GOV_POLICY_CHECK_MONTHLY",
+              "title": "정부 수입·할당관세·가격안정 정책 확인",
+              "event_type": "policy_check",
+              "event_type_label": "정책 확인",
+              "date_start": "2026-07-01",
+              "date_end": "2026-12-31",
+              "impact_direction": "mixed",
+              "impact_level": 3,
+              "distance_days": 15,
+              "purchase_check": "농식품부 정책·수입 확대·가격안정 대책·할당관세 발표 여부 월 1회 확인"
+            }
+          ],
+          "purchase_implication": "한우 상방 신호가 확대된 사례로, 단기 견적 재확인 및 운영 물량 선확보 검토 필요 / 인접 이벤트: 한우자조금·정부 지원사업 확인",
+          "memory_id": "BEEF_2026-07-16_signal_jump_9"
         }
       ],
-      "memory_note": "한우은 과거 변동 사례를 보조 참고자료로 활용"
+      "memory_note": "한우 현재 판단 유보 상태로, 과거 사례보다 최신 공식자료 보강 우선"
     },
     {
       "id": "PORK",
@@ -279,72 +321,17 @@
     {
       "id": "DUCK",
       "name": "오리",
-      "event_count": 1,
+      "event_count": 0,
       "jump_count": 0,
-      "drop_count": 1,
+      "drop_count": 0,
       "avg_jump_change": 0,
-      "avg_drop_change": -10.0,
-      "latest_signal_score": 0,
+      "avg_drop_change": 0,
+      "latest_signal_score": 10,
       "latest_status": "판단 유보",
-      "current_confidence": 0,
+      "current_confidence": 30,
       "current_conflict": "low",
-      "top_cases": [
-        {
-          "date": "2026-07-16",
-          "species": "DUCK",
-          "name": "오리",
-          "event_type": "signal_drop",
-          "event_type_label": "신호 하락",
-          "change": -10,
-          "from_score": 10,
-          "to_score": 0,
-          "confidence_score": 0,
-          "conflict_severity": "low",
-          "memo": "오리 신호 -10.0점 변동",
-          "source": "signal_history",
-          "nearby_calendar_events": [
-            {
-              "event_id": "SUMMER_BOKNAL_2026",
-              "title": "복날 수요 구간",
-              "event_type": "seasonal_demand",
-              "event_type_label": "시즌 수요",
-              "date_start": "2026-07-15",
-              "date_end": "2026-08-14",
-              "impact_direction": "up",
-              "impact_level": 5,
-              "distance_days": 1,
-              "purchase_check": "닭가슴살·안심·조각정육·오리 행사 물량 사전 확보 및 협력사 공급 가능량 확인"
-            },
-            {
-              "event_id": "SUMMER_HEAT_2026",
-              "title": "혹서기 도축·도계 감소 리스크",
-              "event_type": "supply_risk",
-              "event_type_label": "공급 리스크",
-              "date_start": "2026-07-01",
-              "date_end": "2026-08-31",
-              "impact_direction": "up",
-              "impact_level": 4,
-              "distance_days": 15,
-              "purchase_check": "혹서기 증체 지연·도축/도계량 감소 여부 확인 후 하절기 운영 물량 분할 확보"
-            },
-            {
-              "event_id": "GOV_POLICY_CHECK_MONTHLY",
-              "title": "정부 수입·할당관세·가격안정 정책 확인",
-              "event_type": "policy_check",
-              "event_type_label": "정책 확인",
-              "date_start": "2026-07-01",
-              "date_end": "2026-12-31",
-              "impact_direction": "mixed",
-              "impact_level": 3,
-              "distance_days": 15,
-              "purchase_check": "농식품부 정책·수입 확대·가격안정 대책·할당관세 발표 여부 월 1회 확인"
-            }
-          ],
-          "purchase_implication": "오리 하방 신호가 확대된 사례로, 추가 비축보다 필요 물량 중심 운영 검토 필요 / 인접 이벤트: 복날 수요 구간",
-          "memory_id": "DUCK_2026-07-16_signal_drop_m10"
-        }
-      ],
-      "memory_note": "오리 현재 판단 유보 상태로, 과거 사례보다 최신 공식자료 보강 우선"
+      "top_cases": [],
+      "memory_note": "오리은 아직 누적 사례가 부족하여 현재 신호 중심으로 판단"
     },
     {
       "id": "EGG",
@@ -356,7 +343,7 @@
       "avg_drop_change": -13.7,
       "latest_signal_score": 65,
       "latest_status": "상방 가능성",
-      "current_confidence": 87,
+      "current_confidence": 86,
       "current_conflict": "medium",
       "top_cases": [
         {
@@ -1025,41 +1012,29 @@
     },
     {
       "date": "2026-07-16",
-      "species": "DUCK",
-      "name": "오리",
-      "event_type": "signal_drop",
-      "event_type_label": "신호 하락",
-      "change": -10,
-      "from_score": 10,
-      "to_score": 0,
-      "confidence_score": 0,
-      "conflict_severity": "low",
-      "memo": "오리 신호 -10.0점 변동",
+      "species": "BEEF",
+      "name": "한우",
+      "event_type": "signal_jump",
+      "event_type_label": "신호 급등",
+      "change": 9,
+      "from_score": 59,
+      "to_score": 68,
+      "confidence_score": 63,
+      "conflict_severity": "high",
+      "memo": "한우 신호 +9.0점 변동",
       "source": "signal_history",
       "nearby_calendar_events": [
         {
-          "event_id": "SUMMER_BOKNAL_2026",
-          "title": "복날 수요 구간",
-          "event_type": "seasonal_demand",
-          "event_type_label": "시즌 수요",
-          "date_start": "2026-07-15",
-          "date_end": "2026-08-14",
-          "impact_direction": "up",
-          "impact_level": 5,
-          "distance_days": 1,
-          "purchase_check": "닭가슴살·안심·조각정육·오리 행사 물량 사전 확보 및 협력사 공급 가능량 확인"
-        },
-        {
-          "event_id": "SUMMER_HEAT_2026",
-          "title": "혹서기 도축·도계 감소 리스크",
-          "event_type": "supply_risk",
-          "event_type_label": "공급 리스크",
+          "event_id": "HANWOO_SUPPORT_PROGRAM",
+          "title": "한우자조금·정부 지원사업 확인",
+          "event_type": "policy_support",
+          "event_type_label": "정책/지원",
           "date_start": "2026-07-01",
-          "date_end": "2026-08-31",
-          "impact_direction": "up",
+          "date_end": "2026-12-31",
+          "impact_direction": "down",
           "impact_level": 4,
           "distance_days": 15,
-          "purchase_check": "혹서기 증체 지연·도축/도계량 감소 여부 확인 후 하절기 운영 물량 분할 확보"
+          "purchase_check": "원료육 차액지원·홍보비 지원·협약 조건·증빙 요건 확인"
         },
         {
           "event_id": "GOV_POLICY_CHECK_MONTHLY",
@@ -1074,8 +1049,8 @@
           "purchase_check": "농식품부 정책·수입 확대·가격안정 대책·할당관세 발표 여부 월 1회 확인"
         }
       ],
-      "purchase_implication": "오리 하방 신호가 확대된 사례로, 추가 비축보다 필요 물량 중심 운영 검토 필요 / 인접 이벤트: 복날 수요 구간",
-      "memory_id": "DUCK_2026-07-16_signal_drop_m10"
+      "purchase_implication": "한우 상방 신호가 확대된 사례로, 단기 견적 재확인 및 운영 물량 선확보 검토 필요 / 인접 이벤트: 한우자조금·정부 지원사업 확인",
+      "memory_id": "BEEF_2026-07-16_signal_jump_9"
     }
   ],
   "inputs": {
