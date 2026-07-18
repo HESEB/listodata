@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-18T12:07:37Z",
+  "updated_at": "2026-07-18T13:52:53Z",
   "policy": "phase2_evidence_score_v3_sanitized",
   "score_axes": {
     "price": {
@@ -938,17 +938,17 @@
     {
       "id": "OTHER",
       "name": "기타",
-      "signal_score": 51,
-      "direction": "neutral",
-      "status": "보합/혼조",
+      "signal_score": 47,
+      "direction": "hold",
+      "status": "판단 유보",
       "quality_score": 79,
-      "confidence_score": 84,
+      "confidence_score": 66,
       "coverage_rate": 80,
       "evidence_count": 32,
       "official_count": 32,
       "direction_counts": {
-        "up": 12,
-        "down": 0,
+        "up": 11,
+        "down": 1,
         "neutral": 20,
         "hold": 0
       },
@@ -963,7 +963,7 @@
         "supply": 18,
         "disease": 20,
         "policy": 0,
-        "news": 13
+        "news": 9
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -1010,8 +1010,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 20,
-          "items": 9,
-          "up": 9,
+          "items": 8,
+          "up": 8,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -1048,10 +1048,10 @@
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 13,
-          "items": 21,
+          "score": 9,
+          "items": 22,
           "up": 1,
-          "down": 0,
+          "down": 1,
           "neutral": 20,
           "examples": [
             {
@@ -1075,20 +1075,88 @@
           ]
         }
       },
-      "reason": "질병/방역 20점 + 수급/도축 18점 + 뉴스/수요 13점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 20점 + 수급/도축 18점 + 뉴스/수요 9점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
-        "has_conflict": false,
-        "severity": "none",
-        "axes": [],
-        "memo": "주의 필요 · 누락근거: 가격, 정책/고시"
+        "has_conflict": true,
+        "severity": "high",
+        "axes": [
+          "뉴스/수요"
+        ],
+        "memo": "판단 유보 권장 · 충돌축: 뉴스/수요 / 누락근거: 가격, 정책/고시 / 유보사유: 상·하방 근거 강충돌"
       },
       "hold_decision": {
-        "should_hold": false,
-        "reasons": [],
-        "recommended_status": "보합/혼조",
-        "recommended_direction": "neutral",
-        "adjusted_confidence": 84
+        "should_hold": [
+          {
+            "axis": "news",
+            "label": "뉴스/수요",
+            "items": 22,
+            "has_conflict": true,
+            "severity": "high",
+            "dominant_direction": "up",
+            "weighted_direction": {
+              "up": 4.55,
+              "down": 4.1,
+              "neutral": 74.5
+            },
+            "conflict_ratio": 0.9,
+            "examples": {
+              "up": [
+                {
+                  "title": "인천 동물생산업장 개 브루셀라병 검출에 따른 확산 방지조치 시행 - 농림축산식품부",
+                  "source": "농림축산식품부",
+                  "direction": "up",
+                  "quality_score": 75,
+                  "source_level": 5,
+                  "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1tbTd1YUhmdXg5cUM3WTBDdkV2RlVYQ1JUemVPSUx3WGdLaXpDVjdPcktndmtobEpQc01BTnctMkpJdlA2c3p4VzdHMmJ0bmhRMTBCdm5GSDlKSGJGbUp1NDA5cVBIajg?oc=5"
+                }
+              ],
+              "down": [
+                {
+                  "title": "양돈 농가 소독설비 설치 부담 완화 제도화 - 농림축산식품부",
+                  "source": "농림축산식품부",
+                  "direction": "down",
+                  "quality_score": 75,
+                  "source_level": 5,
+                  "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE01Z2lweHdUU29QaGZ0bEFGZ2Q2bGJscmQ3NW5ielZvdW9nNS1hb2tlSXZpVEhfUi04WHAzUXFUWXdmVDM3M05GRnIxb0VVX0Y5Y0drNXBnenhWVWNkSWd5N0JwS0xBdmM?oc=5"
+                }
+              ],
+              "neutral": [
+                {
+                  "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
+                  "source": "농업인신문",
+                  "direction": "neutral",
+                  "quality_score": 89,
+                  "source_level": 5,
+                  "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9LREJ2QWpsLU4xVnVxdWRCamFCcjZnZUMtNVAybHFXQWpaOW44Q2hMaUJDY3lYUU9vN0NIYWtlb1MzVnBxRXI3OTJzdng3dWEyZEdudngwVmsyUTBiQUpXVmJzZlRXelc4WkY5emhn?oc=5"
+                },
+                {
+                  "title": "K2WebWizard - 농림축산식품부",
+                  "source": "농림축산식품부",
+                  "direction": "neutral",
+                  "quality_score": 95,
+                  "source_level": 5,
+                  "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5KR2o0SkNPS3M2Slp4RElZcTBnOXUwRF9iTnRlTHVQX0lKcUxpM0tyZjg1NFhBdWtQb1UwMWJxdVByalR4UENncE5tRklNVmNMUk9pUnFLdEVWWVh1d1ktb2dHQ3o5T1YzSUFj?oc=5"
+                },
+                {
+                  "title": "농림축산식품부 - - 농림축산식품부",
+                  "source": "농림축산식품부",
+                  "direction": "neutral",
+                  "quality_score": 95,
+                  "source_level": 5,
+                  "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBwbE9uQVJuenNWMm1vWF8xNnY1WjZQYTJlelZCcXFyZXhoMVlCblAyUnZPLTRybW1hVVgxSGxTcEVHVVM4ZHhYc0wwOGxjaW1DSlNvbkpndWQ1UWNXZHdFQjllQldtbXZNN1hfM1BvbGtZNzRyUjVXTlo2c0pYYW8?oc=5"
+                }
+              ]
+            },
+            "memo": "뉴스/수요 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
+          }
+        ],
+        "reasons": [
+          "상·하방 근거 강충돌"
+        ],
+        "recommended_status": "판단 유보",
+        "recommended_direction": "hold",
+        "adjusted_confidence": 66
       }
     }
   ],
