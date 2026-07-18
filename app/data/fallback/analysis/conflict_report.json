@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-07-18T15:17:24Z",
+  "updated_at": "2026-07-18T16:13:53Z",
   "policy": "phase2_conflict_hold_v1",
   "notice": "상방·하방 근거 충돌, 근거 누락, 신뢰도 부족에 따른 판단 유보 검수 리포트입니다.",
   "summary": {
     "species_count": 6,
-    "conflict_species_count": 1,
-    "hold_recommended_count": 2,
-    "high_conflict_count": 1
+    "conflict_species_count": 2,
+    "hold_recommended_count": 3,
+    "high_conflict_count": 2
   },
   "species": [
     {
@@ -171,20 +171,89 @@
     {
       "id": "OTHER",
       "name": "기타",
-      "has_conflict": false,
-      "conflict_severity": "none",
-      "conflict_axes": [],
+      "has_conflict": true,
+      "conflict_severity": "high",
+      "conflict_axes": [
+        "수급/도축",
+        "뉴스/수요"
+      ],
       "missing_evidence": [
         "가격",
         "정책/고시"
       ],
-      "hold_reasons": [],
+      "hold_reasons": [
+        "상·하방 근거 강충돌"
+      ],
       "original_confidence": 84,
-      "adjusted_confidence": 84,
-      "should_hold": false,
-      "recommended_status": "보합/혼조",
-      "recommended_direction": "neutral",
-      "memo": "주의 필요 · 누락근거: 가격, 정책/고시"
+      "adjusted_confidence": 56,
+      "should_hold": [
+        {
+          "axis": "news",
+          "label": "뉴스/수요",
+          "items": 22,
+          "has_conflict": true,
+          "severity": "high",
+          "dominant_direction": "up",
+          "weighted_direction": {
+            "up": 4.55,
+            "down": 4.1,
+            "neutral": 74.5
+          },
+          "conflict_ratio": 0.9,
+          "examples": {
+            "up": [
+              {
+                "title": "인천 동물생산업장 개 브루셀라병 검출에 따른 확산 방지조치 시행 - 농림축산식품부",
+                "source": "농림축산식품부",
+                "direction": "up",
+                "quality_score": 75,
+                "source_level": 5,
+                "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1tbTd1YUhmdXg5cUM3WTBDdkV2RlVYQ1JUemVPSUx3WGdLaXpDVjdPcktndmtobEpQc01BTnctMkpJdlA2c3p4VzdHMmJ0bmhRMTBCdm5GSDlKSGJGbUp1NDA5cVBIajg?oc=5"
+              }
+            ],
+            "down": [
+              {
+                "title": "양돈 농가 소독설비 설치 부담 완화 제도화 - 농림축산식품부",
+                "source": "농림축산식품부",
+                "direction": "down",
+                "quality_score": 75,
+                "source_level": 5,
+                "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE01Z2lweHdUU29QaGZ0bEFGZ2Q2bGJscmQ3NW5ielZvdW9nNS1hb2tlSXZpVEhfUi04WHAzUXFUWXdmVDM3M05GRnIxb0VVX0Y5Y0drNXBnenhWVWNkSWd5N0JwS0xBdmM?oc=5"
+              }
+            ],
+            "neutral": [
+              {
+                "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
+                "source": "농업인신문",
+                "direction": "neutral",
+                "quality_score": 89,
+                "source_level": 5,
+                "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9LREJ2QWpsLU4xVnVxdWRCamFCcjZnZUMtNVAybHFXQWpaOW44Q2hMaUJDY3lYUU9vN0NIYWtlb1MzVnBxRXI3OTJzdng3dWEyZEdudngwVmsyUTBiQUpXVmJzZlRXelc4WkY5emhn?oc=5"
+              },
+              {
+                "title": "K2WebWizard - 농림축산식품부",
+                "source": "농림축산식품부",
+                "direction": "neutral",
+                "quality_score": 95,
+                "source_level": 5,
+                "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5KR2o0SkNPS3M2Slp4RElZcTBnOXUwRF9iTnRlTHVQX0lKcUxpM0tyZjg1NFhBdWtQb1UwMWJxdVByalR4UENncE5tRklNVmNMUk9pUnFLdEVWWVh1d1ktb2dHQ3o5T1YzSUFj?oc=5"
+              },
+              {
+                "title": "농림축산식품부 - - 농림축산식품부",
+                "source": "농림축산식품부",
+                "direction": "neutral",
+                "quality_score": 95,
+                "source_level": 5,
+                "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBwbE9uQVJuenNWMm1vWF8xNnY1WjZQYTJlelZCcXFyZXhoMVlCblAyUnZPLTRybW1hVVgxSGxTcEVHVVM4ZHhYc0wwOGxjaW1DSlNvbkpndWQ1UWNXZHdFQjllQldtbXZNN1hfM1BvbGtZNzRyUjVXTlo2c0pYYW8?oc=5"
+              }
+            ]
+          },
+          "memo": "뉴스/수요 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
+        }
+      ],
+      "recommended_status": "판단 유보",
+      "recommended_direction": "hold",
+      "memo": "판단 유보 권장 · 충돌축: 수급/도축, 뉴스/수요 / 누락근거: 가격, 정책/고시 / 유보사유: 상·하방 근거 강충돌"
     }
   ],
   "axis_reports": {
@@ -738,14 +807,14 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 6,
+        "items": 5,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "down",
         "weighted_direction": {
           "up": 0.0,
           "down": 4.1,
-          "neutral": 16.34
+          "neutral": 13.18
         },
         "conflict_ratio": 0.0,
         "examples": {
@@ -770,20 +839,20 @@
               "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9zLWJuZkd6RHh0X19CTWtzbUNOVWJ1QmR6VWNHZGJ2Z3h2bVNGWU1wOVpPZ01YMHpwMDNZc2lfWDdvUFJuYXAxUE1uRGlva28tMmNLcVhVQ3JiR0xzM1g5R1BtbEQxNmZ6dkk2RWF3?oc=5"
             },
             {
-              "title": "\"한국계육협회, 인터넷 홈페이지 오픈\" - 농수축산신문",
-              "source": "농수축산신문",
-              "direction": "neutral",
-              "quality_score": 63,
-              "source_level": 4,
-              "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1kS3ZXVWdpbWNjY1k0Q1Q3UkVLYnNxMnE3VmFjRDAzejQ0bkdyOUVxeVQxbG1DdjNrSEg3WU1EQWU3akFLOXE0TGxpX1U2R3VVLV9DXzFkaTJKVHVjQnZLZWZzb1ZQc0dKWHc?oc=5"
-            },
-            {
               "title": "베트남 양계농가, 올들어 계육·계란값 폭락에 ‘울상’…”생산비도 못 건져” - 인사이드비나",
               "source": "인사이드비나",
               "direction": "neutral",
               "quality_score": 51,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1SMGVLTE4wXzkzYXpSZUpSNDcyemRwams2RDBheXNyUW9YM1psSjJyLVNVX2lacnhWOE92MTNMdnByb085MVRXLXhlLVliblZSY3NKeGh1YlZOS1o0Z3MydVNBOVVkLWdhOVVjSw?oc=5"
+            },
+            {
+              "title": "가축질병의 경제적 영향 분석 - 한국농촌경제연구원",
+              "source": "한국농촌경제연구원",
+              "direction": "neutral",
+              "quality_score": 82,
+              "source_level": 5,
+              "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBIY0JsQWpudW5sa19pSnpwMWFJUXJpYnFDVlBvU1huSG9mSUFfZ0lOUUFYcnVXLXZGYmJLZlVLM0lTQnNPb1lIeE5GZUtiMTV2dENfMHlhM3dPQ0xzR1ZOMGZiR0JEX2Zlb3ZhUExMamJ1Vmx5TTBhbjFB?oc=5"
             }
           ]
         },
@@ -1211,16 +1280,16 @@
       {
         "axis": "supply",
         "label": "수급/도축",
-        "items": 2,
-        "has_conflict": false,
-        "severity": "none",
+        "items": 3,
+        "has_conflict": true,
+        "severity": "medium",
         "dominant_direction": "up",
         "weighted_direction": {
           "up": 9.1,
-          "down": 0.0,
+          "down": 4.1,
           "neutral": 0.0
         },
-        "conflict_ratio": 0.0,
+        "conflict_ratio": 0.45,
         "examples": {
           "up": [
             {
@@ -1240,10 +1309,19 @@
               "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9EbkJjOE5wTXFYX2l3QU5VYjE0cmVBNFVIMGVlVUtna1NDdVF6V0taNWRJNnJFWldKVVp5b1RkUmNsd3dGRDBEUTJiNE4tRmMzYjVZZERZOTZOOGlTbWFqYjE0SkZiQQ?oc=5"
             }
           ],
-          "down": [],
+          "down": [
+            {
+              "title": "중동전쟁 상황하에서 정부는 축산물 수급 및 가격 안정에 최선을 다하겠습니다. - 대한민국 정책브리핑",
+              "source": "대한민국 정책브리핑",
+              "direction": "down",
+              "quality_score": 75,
+              "source_level": 5,
+              "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5tTGU3eHYtMWJ2aXdrRVV5azUtNzBSZ1dZNmUzcHRLRW1KR1JkTzRvNUxCUHJzeTA0ekVtWG9KX0podEdFbWRWMnhFbVo4ZWpsd2pKMmljbFZtakNLcnQ0WXVWYXltcVkzYVlHbWFsOA?oc=5"
+            }
+          ],
           "neutral": []
         },
-        "memo": "수급/도축 축은 상방 근거 우세"
+        "memo": "수급/도축 축에서 상방·하방 근거가 동시에 감지되어 medium 충돌로 분류"
       },
       {
         "axis": "disease",
@@ -1313,16 +1391,16 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 20,
-        "has_conflict": false,
-        "severity": "none",
+        "items": 22,
+        "has_conflict": true,
+        "severity": "high",
         "dominant_direction": "up",
         "weighted_direction": {
           "up": 4.55,
-          "down": 0.0,
-          "neutral": 70.85
+          "down": 4.1,
+          "neutral": 74.5
         },
-        "conflict_ratio": 0.0,
+        "conflict_ratio": 0.9,
         "examples": {
           "up": [
             {
@@ -1334,7 +1412,16 @@
               "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1tbTd1YUhmdXg5cUM3WTBDdkV2RlVYQ1JUemVPSUx3WGdLaXpDVjdPcktndmtobEpQc01BTnctMkpJdlA2c3p4VzdHMmJ0bmhRMTBCdm5GSDlKSGJGbUp1NDA5cVBIajg?oc=5"
             }
           ],
-          "down": [],
+          "down": [
+            {
+              "title": "양돈 농가 소독설비 설치 부담 완화 제도화 - 농림축산식품부",
+              "source": "농림축산식품부",
+              "direction": "down",
+              "quality_score": 75,
+              "source_level": 5,
+              "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE01Z2lweHdUU29QaGZ0bEFGZ2Q2bGJscmQ3NW5ielZvdW9nNS1hb2tlSXZpVEhfUi04WHAzUXFUWXdmVDM3M05GRnIxb0VVX0Y5Y0drNXBnenhWVWNkSWd5N0JwS0xBdmM?oc=5"
+            }
+          ],
           "neutral": [
             {
               "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
@@ -1362,7 +1449,7 @@
             }
           ]
         },
-        "memo": "뉴스/수요 축은 상방 근거 우세"
+        "memo": "뉴스/수요 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
       }
     ]
   }
