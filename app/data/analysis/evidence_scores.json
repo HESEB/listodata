@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-19T19:35:43Z",
+  "updated_at": "2026-07-19T21:10:11Z",
   "policy": "phase2_evidence_score_v3_sanitized",
   "score_axes": {
     "price": {
@@ -49,12 +49,12 @@
       "quality_score": 72,
       "confidence_score": 64,
       "coverage_rate": 100,
-      "evidence_count": 29,
+      "evidence_count": 28,
       "official_count": 5,
       "direction_counts": {
         "up": 7,
         "down": 2,
-        "neutral": 20,
+        "neutral": 19,
         "hold": 0
       },
       "coverage_types": [
@@ -182,10 +182,10 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 6,
-          "items": 16,
+          "items": 15,
           "up": 0,
           "down": 1,
-          "neutral": 15,
+          "neutral": 14,
           "examples": [
             {
               "title": "강원축산경진대회 한우 품평회 개최…양구 이정재 농가 최고가 낙찰 - 신아일보",
@@ -295,16 +295,16 @@
     {
       "id": "PORK",
       "name": "돈육",
-      "signal_score": 36,
+      "signal_score": 37,
       "direction": "neutral",
       "status": "보합/혼조",
       "quality_score": 73,
       "confidence_score": 74,
       "coverage_rate": 60,
-      "evidence_count": 37,
+      "evidence_count": 36,
       "official_count": 16,
       "direction_counts": {
-        "up": 31,
+        "up": 30,
         "down": 1,
         "neutral": 5,
         "hold": 0
@@ -317,7 +317,7 @@
       "score_breakdown": {
         "price": 12,
         "supply": 0,
-        "disease": 18,
+        "disease": 19,
         "policy": 0,
         "news": 6
       },
@@ -365,9 +365,9 @@
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
-          "score": 18,
-          "items": 31,
-          "up": 31,
+          "score": 19,
+          "items": 30,
+          "up": 30,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -431,7 +431,7 @@
           ]
         }
       },
-      "reason": "질병/방역 18점 + 가격 12점 + 뉴스/수요 6점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 가격 12점 + 뉴스/수요 6점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
@@ -933,17 +933,17 @@
     {
       "id": "OTHER",
       "name": "기타",
-      "signal_score": 44,
+      "signal_score": 46,
       "direction": "neutral",
       "status": "보합/혼조",
       "quality_score": 79,
       "confidence_score": 84,
       "coverage_rate": 80,
-      "evidence_count": 29,
-      "official_count": 29,
+      "evidence_count": 30,
+      "official_count": 30,
       "direction_counts": {
         "up": 10,
-        "down": 1,
+        "down": 2,
         "neutral": 18,
         "hold": 0
       },
@@ -955,7 +955,7 @@
       ],
       "score_breakdown": {
         "price": 0,
-        "supply": 18,
+        "supply": 20,
         "disease": 20,
         "policy": 0,
         "news": 6
@@ -981,15 +981,21 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 18,
-          "items": 2,
+          "score": 20,
+          "items": 3,
           "up": 2,
-          "down": 0,
+          "down": 1,
           "neutral": 0,
           "examples": [
             {
               "title": "농림축산식품부, 5월 수급 동향 점검…과일 출하 감소에도 공급 차질 없을 전망 - 국제일보",
               "direction": "up",
+              "source_level": 5,
+              "quality_score": 75
+            },
+            {
+              "title": "중동전쟁 상황하에서 정부는 축산물 수급 및 가격 안정에 최선을 다하겠습니다. - 대한민국 정책브리핑",
+              "direction": "down",
               "source_level": 5,
               "quality_score": 75
             },
@@ -1070,20 +1076,22 @@
           ]
         }
       },
-      "reason": "질병/방역 20점 + 수급/도축 18점 + 뉴스/수요 6점 기반, 상방성 자료가 우세",
+      "reason": "수급/도축 20점 + 질병/방역 20점 + 뉴스/수요 6점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
-        "has_conflict": false,
-        "severity": "none",
-        "axes": [],
-        "memo": "주의 필요 · 누락근거: 가격, 정책/고시"
+        "has_conflict": true,
+        "severity": "medium",
+        "axes": [
+          "수급/도축"
+        ],
+        "memo": "주의 필요 · 충돌축: 수급/도축 / 누락근거: 가격, 정책/고시"
       },
       "hold_decision": {
         "should_hold": false,
         "reasons": [],
         "recommended_status": "보합/혼조",
         "recommended_direction": "neutral",
-        "adjusted_confidence": 84
+        "adjusted_confidence": 74
       }
     }
   ],
