@@ -1,0 +1,45 @@
+name: Validate Phase 10 final readiness
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'app/data/admin/kosis_preflight_status.json'
+      - 'app/data/admin/kosis_first_run_diagnostic.json'
+      - 'app/data/admin/kosis_p2_p3_review.json'
+      - 'app/data/admin/kosis_approval_precheck.json'
+      - 'app/data/admin/kosis_approved_mapping_comparison.json'
+      - 'app/data/admin/kosis_dry_run.json'
+      - 'app/data/admin/kosis_mapping_promotion_status.json'
+      - 'app/data/admin/kosis_runtime_mapping_status.json'
+      - 'app/data/admin/kosis_first_collection_anomalies.json'
+      - 'app/data/config/phase10_final_validation_policy.json'
+      - 'scripts/validate_phase10_final.py'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: validate-phase10-final
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate Phase 10 final readiness
+        run: python scripts/validate_phase10_final.py
+
+      - name: Commit Phase 10 final status
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'chore: update Phase 10 final validation'
+          file_pattern: app/data/admin/phase10_final_validation.json app/data/analysis/phase10_final_validation.json
