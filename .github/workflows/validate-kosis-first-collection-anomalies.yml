@@ -1,0 +1,39 @@
+name: Validate KOSIS first collection anomalies
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'app/data/official/manual/real_source_metrics.json'
+      - 'app/data/config/kosis_table_mapping_operational.json'
+      - 'app/data/config/kosis_table_mapping_approved.json'
+      - 'app/data/config/kosis_first_collection_anomaly_policy.json'
+      - 'scripts/validate_kosis_first_collection_anomalies.py'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: validate-kosis-first-collection-anomalies
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate first collection anomalies
+        run: python scripts/validate_kosis_first_collection_anomalies.py
+
+      - name: Commit anomaly status
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'chore: update KOSIS first collection anomaly status'
+          file_pattern: app/data/admin/kosis_first_collection_anomalies.json app/data/analysis/kosis_first_collection_anomalies.json
