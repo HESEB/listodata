@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-07-20T11:16:11Z",
+  "updated_at": "2026-07-20T13:19:38Z",
   "policy": "phase2_conflict_hold_v1",
   "notice": "상방·하방 근거 충돌, 근거 누락, 신뢰도 부족에 따른 판단 유보 검수 리포트입니다.",
   "summary": {
     "species_count": 6,
     "conflict_species_count": 4,
-    "hold_recommended_count": 4,
-    "high_conflict_count": 3
+    "hold_recommended_count": 3,
+    "high_conflict_count": 2
   },
   "species": [
     {
@@ -27,14 +27,14 @@
         {
           "axis": "price",
           "label": "가격",
-          "items": 6,
+          "items": 7,
           "has_conflict": true,
           "severity": "high",
           "dominant_direction": "down",
           "weighted_direction": {
             "up": 3.71,
             "down": 3.97,
-            "neutral": 12.04
+            "neutral": 15.2
           },
           "conflict_ratio": 0.93,
           "examples": {
@@ -248,61 +248,20 @@
       "id": "OTHER",
       "name": "기타",
       "has_conflict": true,
-      "conflict_severity": "high",
+      "conflict_severity": "medium",
       "conflict_axes": [
         "수급/도축"
       ],
       "missing_evidence": [
         "가격"
       ],
-      "hold_reasons": [
-        "상·하방 근거 강충돌"
-      ],
+      "hold_reasons": [],
       "original_confidence": 90,
-      "adjusted_confidence": 72,
-      "should_hold": [
-        {
-          "axis": "supply",
-          "label": "수급/도축",
-          "items": 2,
-          "has_conflict": true,
-          "severity": "high",
-          "dominant_direction": "neutral",
-          "weighted_direction": {
-            "up": 4.1,
-            "down": 4.1,
-            "neutral": 0.0
-          },
-          "conflict_ratio": 1.0,
-          "examples": {
-            "up": [
-              {
-                "title": "농식품부는 가축전염병 확산 차단과 축산물 수급 안정을 위해 총력 대응 - 농림축산식품부",
-                "source": "농림축산식품부",
-                "direction": "up",
-                "quality_score": 75,
-                "source_level": 5,
-                "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9EbkJjOE5wTXFYX2l3QU5VYjE0cmVBNFVIMGVlVUtna1NDdVF6V0taNWRJNnJFWldKVVp5b1RkUmNsd3dGRDBEUTJiNE4tRmMzYjVZZERZOTZOOGlTbWFqYjE0SkZiQQ?oc=5"
-              }
-            ],
-            "down": [
-              {
-                "title": "중동전쟁 상황하에서 정부는 축산물 수급 및 가격 안정에 최선을 다하겠습니다. - 대한민국 정책브리핑",
-                "source": "대한민국 정책브리핑",
-                "direction": "down",
-                "quality_score": 75,
-                "source_level": 5,
-                "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5tTGU3eHYtMWJ2aXdrRVV5azUtNzBSZ1dZNmUzcHRLRW1KR1JkTzRvNUxCUHJzeTA0ekVtWG9KX0podEdFbWRWMnhFbVo4ZWpsd2pKMmljbFZtakNLcnQ0WXVWYXltcVkzYVlHbWFsOA?oc=5"
-              }
-            ],
-            "neutral": []
-          },
-          "memo": "수급/도축 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
-        }
-      ],
-      "recommended_status": "판단 유보",
-      "recommended_direction": "hold",
-      "memo": "판단 유보 권장 · 충돌축: 수급/도축 / 누락근거: 가격 / 유보사유: 상·하방 근거 강충돌"
+      "adjusted_confidence": 80,
+      "should_hold": false,
+      "recommended_status": "보합/혼조",
+      "recommended_direction": "neutral",
+      "memo": "주의 필요 · 충돌축: 수급/도축 / 누락근거: 가격"
     }
   ],
   "axis_reports": {
@@ -310,14 +269,14 @@
       {
         "axis": "price",
         "label": "가격",
-        "items": 6,
+        "items": 7,
         "has_conflict": true,
         "severity": "high",
         "dominant_direction": "down",
         "weighted_direction": {
           "up": 3.71,
           "down": 3.97,
-          "neutral": 12.04
+          "neutral": 15.2
         },
         "conflict_ratio": 0.93,
         "examples": {
@@ -492,14 +451,14 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 14,
+        "items": 13,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "down",
         "weighted_direction": {
           "up": 0.0,
           "down": 4.1,
-          "neutral": 41.69
+          "neutral": 38.62
         },
         "conflict_ratio": 0.0,
         "examples": {
@@ -962,12 +921,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 4,
+        "items": 3,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 14.28,
+          "up": 11.16,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -1355,18 +1314,26 @@
       {
         "axis": "supply",
         "label": "수급/도축",
-        "items": 2,
+        "items": 3,
         "has_conflict": true,
-        "severity": "high",
-        "dominant_direction": "neutral",
+        "severity": "medium",
+        "dominant_direction": "up",
         "weighted_direction": {
-          "up": 4.1,
+          "up": 9.1,
           "down": 4.1,
           "neutral": 0.0
         },
-        "conflict_ratio": 1.0,
+        "conflict_ratio": 0.45,
         "examples": {
           "up": [
+            {
+              "title": "농림축산식품부, 5월 수급 동향 점검…과일 출하 감소에도 공급 차질 없을 전망 - 국제일보",
+              "source": "국제일보",
+              "direction": "up",
+              "quality_score": 75,
+              "source_level": 5,
+              "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5qM1pmSk1JWlJIUHNJdUlhME1mZm9vZkU1WndQVlk2LUZCVEZmelM1NmV6YkZnRThzb21iVnA3M3BXM3hKZmdMcVhFTmZLNE5XMmFLalVMY1ZTN2tpaU9SLXRuNXg?oc=5"
+            },
             {
               "title": "농식품부는 가축전염병 확산 차단과 축산물 수급 안정을 위해 총력 대응 - 농림축산식품부",
               "source": "농림축산식품부",
@@ -1388,17 +1355,17 @@
           ],
           "neutral": []
         },
-        "memo": "수급/도축 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
+        "memo": "수급/도축 축에서 상방·하방 근거가 동시에 감지되어 medium 충돌로 분류"
       },
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 8,
+        "items": 7,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 38.82,
+          "up": 34.04,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -1422,12 +1389,12 @@
               "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1nY2hhcFlVNk5LNG9JcVpSQ3l3YWF0WjBmLUFWRXUzaE9CM0k0N201NldXZDE4b3YwbHUxaFE3ak5IdjV0NTZVczJtWnpaQjR4cHdCeVZfUnEzVm8?oc=5"
             },
             {
-              "title": "농식품부, 경북 예천 구제역 6건 추가 확인에 방역 점검 - v.daum.net",
-              "source": "v.daum.net",
+              "title": "구제역 SAT1형 백신, 접경지역 접종 완료 - 농림축산식품부",
+              "source": "농림축산식품부",
               "direction": "up",
-              "quality_score": 64,
+              "quality_score": 89,
               "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE4zenNBdmVSTnJIVVVHT044TldhN0ZLckk3RzZnRFYyUk9Qc21uY2VHeEpyUGtVN2VjSmpoOE1lZTJHVkhubWFlVlpHNU1scDQ?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9KcUlJSnFGb21pd3JJcXNtVXpyQjR1dkpSWERLVGRvOXBreHdVMlpIRDZmb2tuNVF3bkdUeHEydjVaTWZCSnVSenRDZmY5akNyb2ZFNWxXWkFBQ21aWGdPTVlpZzRBQQ?oc=5"
             }
           ],
           "down": [],
@@ -1467,14 +1434,14 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 20,
+        "items": 19,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "down",
         "weighted_direction": {
           "up": 0.0,
           "down": 4.1,
-          "neutral": 70.61
+          "neutral": 66.96
         },
         "conflict_ratio": 0.0,
         "examples": {
