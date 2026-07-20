@@ -1,0 +1,16 @@
+{
+  "updated_at": "2026-07-20",
+  "policy": "phase10_kosis_first_collection_anomaly_v1",
+  "checks": ["value_present", "non_negative", "unit_expected", "period_format", "duplicate_free", "change_rate"],
+  "thresholds": {
+    "warning_change_rate_pct": 30,
+    "critical_change_rate_pct": 60
+  },
+  "rules": {
+    "use_operational_mapping_first": true,
+    "fallback_to_approved_mapping": true,
+    "do_not_modify_collected_data": true,
+    "manual_review_required_for_critical": true
+  },
+  "notice": "첫 운영 수집 결과의 값·단위·기간·중복·급변을 검수합니다. 원본 수집값은 자동 수정하지 않습니다."
+}
