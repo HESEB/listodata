@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-23T12:04:47Z",
+  "updated_at": "2026-07-23T14:36:02Z",
   "policy": "phase2_conflict_hold_v1",
   "notice": "상방·하방 근거 충돌, 근거 누락, 신뢰도 부족에 따른 판단 유보 검수 리포트입니다.",
   "summary": {
@@ -48,16 +48,15 @@
       "conflict_severity": "none",
       "conflict_axes": [],
       "missing_evidence": [
-        "가격",
         "정책/고시"
       ],
       "hold_reasons": [],
-      "original_confidence": 73,
-      "adjusted_confidence": 73,
+      "original_confidence": 80,
+      "adjusted_confidence": 80,
       "should_hold": false,
       "recommended_status": "보합/혼조",
       "recommended_direction": "neutral",
-      "memo": "주의 필요 · 누락근거: 가격, 정책/고시"
+      "memo": "주의 필요 · 누락근거: 정책/고시"
     },
     {
       "id": "DUCK",
@@ -96,9 +95,80 @@
       "hold_reasons": [
         "상·하방 근거 강충돌"
       ],
-      "original_confidence": 90,
-      "adjusted_confidence": 54,
-      "should_hold": true,
+      "original_confidence": 89,
+      "adjusted_confidence": 61,
+      "should_hold": [
+        {
+          "axis": "supply",
+          "label": "수급/도축",
+          "items": 7,
+          "has_conflict": true,
+          "severity": "high",
+          "dominant_direction": "down",
+          "weighted_direction": {
+            "up": 11.74,
+            "down": 14.6,
+            "neutral": 0.0
+          },
+          "conflict_ratio": 0.8,
+          "examples": {
+            "up": [
+              {
+                "title": "[심층] 계란값 왜 올랐나…2027년 산란계 사육밀도 전환 쟁점 - 비건뉴스",
+                "source": "비건뉴스",
+                "direction": "up",
+                "quality_score": 76,
+                "source_level": 3,
+                "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE12RlN2VlBfNmdMS3ZHOFlqWGQzanpqa3BsdGF6cGgyaHY2SkZOUEhyOUprZDc3UVhONGVCa19Pd1BXQ2xOOTVCWUl4LVVMcnc3bjJtaFYtRUtBNTBGQU5QbE5mOVRTUQ?oc=5"
+              },
+              {
+                "title": "[사설]계란 수급불안, 언제까지 땜질 대책만 번복할 것인가 - 농수축산신문",
+                "source": "농수축산신문",
+                "direction": "up",
+                "quality_score": 76,
+                "source_level": 3,
+                "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFA5SWZKSEwtajNmVF9DVlJHeTR5eGk4UlVCNFJkVEJlU0VEQUtSaU03dHFPMEk1NUh1b1pucXctQ1lJMHVMTlN4MG5Sa3BmSm1PSWNvQ0E0aTFGRHgwQzNqSi1zZXF0OXdIeXUweQ?oc=5"
+              },
+              {
+                "title": "박수진 축산물품질평가원장, 계란 수급 상황 점검 - 농업인신문",
+                "source": "농업인신문",
+                "direction": "up",
+                "quality_score": 95,
+                "source_level": 5,
+                "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBva2pZdjBVcUlZV3dqZXlmS195TVRrQ3lOMDZBVTgyUmw0YlBUWGNtQm5oR3RzWWpHV1ExWTU2RzVxdEFkS09yOEdmTGRibGZWaTUtWU1FbmRxN3dac2Y1ZDlvQXhkemZYNU95UnZn?oc=5"
+              }
+            ],
+            "down": [
+              {
+                "title": "“계란값만 한 달에 10만원 더 들어요”…수급 불안정에 소상공인 한숨 - 동아일보",
+                "source": "동아일보",
+                "direction": "down",
+                "quality_score": 76,
+                "source_level": 3,
+                "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE00VWYyYXRHak14WlktUWVEUFlZcUlrVjRXNlMwZEJTOGtldnZNbkduWFRKeW9RZlhkVE9ZalJhVEFDLWpUSDVqaG85X3FzczE3WmgydHFSd2xuODFJRjB4MUZqRl90WktnWm0tVUhiTTNOVHZiZ0HSAWZBVV95cUxOTlg4bENfdXZoNEJRdXNSRkpYa2tEd2tiQl9ZWEZrWERnRTBjc2FyVUlNalBMWElSSXB5b1VvbXR4ZGpQUVZiRzdBa0tuS1hCZU1nS2VuMHlBeXJreXAwVDZWNjJkVWc?oc=5"
+              },
+              {
+                "title": "[Issue+] 불안정한 계란 수급, 무엇이 문제인가 - 농수축산신문",
+                "source": "농수축산신문",
+                "direction": "down",
+                "quality_score": 76,
+                "source_level": 3,
+                "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1uMGxKS29JTHdOR1M0VWY4WktnUGtTMnZSWWppM3lzQjBfaEROTDM4YUJ2Vnh0a2M3YU5jSkk5dGk5UWNYdzhfT1RabzFwZms1MWMwTjBhc3VPSWNlTDhzTDVERFdpMnpGNEhqaw?oc=5"
+              },
+              {
+                "title": "계란 수급 및 가격안정에 최선을 다하겠습니다. - 대한민국 정책브리핑",
+                "source": "대한민국 정책브리핑",
+                "direction": "down",
+                "quality_score": 58,
+                "source_level": 3,
+                "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1SSmFScERncDJ2VXBRN213RVN5VTNpdmYzblNoMFBnTWpVbHFSMkZIazBVUm42Qm42Tzh4M2otT0kyQk0yLVdMeEZieUFMamJza042X21MWHNsTmowYURnQnRhMllFcDNhYkFUQi1YVQ?oc=5"
+              }
+            ],
+            "neutral": []
+          },
+          "memo": "수급/도축 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
+        }
+      ],
       "recommended_status": "판단 유보",
       "recommended_direction": "hold",
       "memo": "판단 유보 권장 · 충돌축: 가격, 수급/도축 / 유보사유: 상·하방 근거 강충돌"
@@ -127,26 +197,18 @@
       {
         "axis": "price",
         "label": "가격",
-        "items": 6,
+        "items": 5,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 7.28,
+          "up": 3.57,
           "down": 0.0,
           "neutral": 11.73
         },
         "conflict_ratio": 0.0,
         "examples": {
           "up": [
-            {
-              "title": "“가격 인상 철회…한우농가와 고통분담·위기 극복을” - 축산신문",
-              "source": "축산신문",
-              "direction": "up",
-              "quality_score": 58,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBlNEp5WHQ2WWpLZUNjbHRHS2JpcTREanVvQWotNURJRUFLcFZFRFpIbWZUa3RPSGxxT2Rrb2JYclRaMXNfTGdPelNISEFxdUJjLVEzZGJhOG9XeHlnLUtUbHQ5VXdWckY4?oc=5"
-            },
             {
               "title": "한우 농가 4년째 순손실…가격 상승에 적자폭 개선 - 연합뉴스",
               "source": "연합뉴스",
@@ -307,7 +369,7 @@
         "weighted_direction": {
           "up": 0.0,
           "down": 4.1,
-          "neutral": 42.32
+          "neutral": 41.83
         },
         "conflict_ratio": 0.0,
         "examples": {
@@ -332,20 +394,20 @@
               "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5ZNjR2b2tJQWFSWlV4N2tDQzZIRDN2WThsbVZlM0I4dVNENnQ3TW5OYzBOWjg4OUFOOGdUQ21yQ2g0SkI2V3JsQzROc1NRWDdpY1pMckc1clY3c2lhakctR0NnTWNfNXptSGc?oc=5"
             },
             {
-              "title": "[기고-장성대 전국한우협회 대경지회장]'사룟값 폭등 사태, 농협 사업구조 전면 개편으로 풀어야' - 매일신문",
-              "source": "매일신문",
-              "direction": "neutral",
-              "quality_score": 93,
-              "source_level": 4,
-              "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFA2WmNTd0tmRXdJalpjMlZQR1JpTnNqV29mMjFSRzBwakZmTVZId3Z5XzVpQ2NCM294RnJ6TzBSTGxBS0dsMEdkcXh6NkRWQ05oUzc2UXViN0tIWTZNMUwxVFhB?oc=5"
-            },
-            {
               "title": "박정주 홍성군수, 홍성한우 글로벌 K-한우 만들기 ‘시동’ - 충청게릴라뉴스",
               "source": "충청게릴라뉴스",
               "direction": "neutral",
               "quality_score": 81,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5vSVpPS2RPODhBNU9EUGNjaGRWNC1melBYZlJvSUg1Tm5PZkRZS1N5Wm9DNEstLS1RcWM3U1JXd1lzekpkTFJEcDN2UVFHYzBZb3ZndV84Y29yT2hRY0p1YjUyYXR2QQ?oc=5"
+            },
+            {
+              "title": "홍성한우, 홍콩 프리미엄 소고기 시장 공략 - 네이트",
+              "source": "네이트",
+              "direction": "neutral",
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE4telgzOXZSLW95LTRWdmpaeHpMMmlDQVFsLU9Ub3lmS0I4WDl1SUdVWDlxZFo0UXU2V05lUkFJaXFwaU1MeTktMG8xNVZxeXdLVnQ0?oc=5"
             }
           ]
         },
@@ -413,12 +475,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 27,
+        "items": 28,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 126.96,
+          "up": 130.26,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -543,20 +605,29 @@
       {
         "axis": "price",
         "label": "가격",
-        "items": 0,
+        "items": 1,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "neutral",
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 0.0
+          "neutral": 3.27
         },
         "conflict_ratio": 0,
         "examples": {
           "up": [],
           "down": [],
-          "neutral": []
+          "neutral": [
+            {
+              "title": "인도네시아에서 무료 급식 프로그램이 닭고기와 계란 가격 회복에 도움을 주고 있습니다. - Vietnam.vn",
+              "source": "Vietnam.vn",
+              "direction": "neutral",
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQSWpLeXByaEN1TmZQcmdfTjJDcnpjQzRIN3J5VXgyMDhTSWRXNkNpSWlMdXVnd1RMN0hJbmtJNzdfQ01aanBhcnFRSkJZWEV0S21Bak5LTGhlWlBpYmxWaWdXaVdvVjl1dFpwcnpFcE91bWxxQ1dVX21aUVowLUpiUXhCc1RHMUtuYmpCbXVJTExjcmJMU2tsMlFRcw?oc=5"
+            }
+          ]
         },
         "memo": "가격 축은 중립 또는 보조 근거 중심"
       },
@@ -832,16 +903,16 @@
       {
         "axis": "price",
         "label": "가격",
-        "items": 15,
+        "items": 16,
         "has_conflict": true,
-        "severity": "high",
+        "severity": "medium",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 24.6,
-          "down": 17.8,
-          "neutral": 16.05
+          "up": 24.46,
+          "down": 13.95,
+          "neutral": 21.89
         },
-        "conflict_ratio": 0.72,
+        "conflict_ratio": 0.57,
         "examples": {
           "up": [
             {
@@ -887,15 +958,23 @@
               "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE8wY0I1WE02QzhuUE40V0RDZlNOWHBKUjZiWC10OTllRmxyalJhYXVFaFR4V2ZOeWRtWUh5Y3NtVXNXMDJKRG4xbVp2Z1FWZkU?oc=5"
             },
             {
-              "title": "계란 한 판 4000원대로 내린다…이마트, 수입 신선란 16일부터 가격 인하 - 조선비즈 - Chosunbiz",
-              "source": "Chosunbiz",
+              "title": "계란 가격 안정, 시장 자율성 보장해야 - 농수축산신문",
+              "source": "농수축산신문",
               "direction": "down",
               "quality_score": 65,
               "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPMmo1UWxnbzVuQ2haVzNhT0Mzdmx6TC16X2d5bjFGUFYtbGhGZG94TGhXRHBQc1lJSkltVDIxcWVUUkNUemNmSER1c1VlX3NjeTBDSm4tXzI0WVBMSnFaZDhjRHFhLU53eVdSWmtXT0c5SFQ2SkhUU244LWVndEFnYUltakFWQdIBmgFBVV95cUxQTXY2MHRyTHhmUFkwb2RXN0FXWFkyNGw0aExUN2I1VEZCN2RCYnVUUjE4QmNRVzdTOGxvR0NfWmZyOVhiYzhsWlAwUEJXRlJJQ0xSS3pVY29FczBhbzRUQlByLVVhdDFYYWpyNXFGR1FUSXpIcE1la2hvS09kaUVPemlQMXRqVlo5LVZnSWUwQmViUlZjSWlPNXJ3?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE40d092aF9oQUZkZnM5OTd4THU4c1RBWmhQQkFTT2JzTHY1blRRS3NGeVNRYXRYUG1oZU4teENicm5HTHZUOXJyZndyX1FqS2NTQ3hBMTFNWk5JUkk1MWR5dWRrU0M4c20zWGtISg?oc=5"
             }
           ],
           "neutral": [
+            {
+              "title": "인도네시아에서 무료 급식 프로그램이 닭고기와 계란 가격 회복에 도움을 주고 있습니다. - Vietnam.vn",
+              "source": "Vietnam.vn",
+              "direction": "neutral",
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQSWpLeXByaEN1TmZQcmdfTjJDcnpjQzRIN3J5VXgyMDhTSWRXNkNpSWlMdXVnd1RMN0hJbmtJNzdfQ01aanBhcnFRSkJZWEV0S21Bak5LTGhlWlBpYmxWaWdXaVdvVjl1dFpwcnpFcE91bWxxQ1dVX21aUVowLUpiUXhCc1RHMUtuYmpCbXVJTExjcmJMU2tsMlFRcw?oc=5"
+            },
             {
               "title": "소비자단체협, 올해 2분기 계란 가격 15.8% 상승... 두부-샴푸는 하락 - 전북금강일보",
               "source": "전북금강일보",
@@ -911,18 +990,10 @@
               "quality_score": 81,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5nVlgwbE5FVVR0dXhkUkg5Xzg4U3RNVk9XTDdjUUtOYjZSSHhlZnBjNEtXZkI2aXNoajlsSDE0bDRRNUNneDNZS05Gb2lJdmpXV2lHcERJRWVlQnNoV3owUklPOU9nckcyY19DUXRkQWx3Nkk?oc=5"
-            },
-            {
-              "title": "하루에 한 번은 꼭 먹는데…“가격 미쳤다” 계란 가장 많이 먹는 中 난리 난 이유가 - 서울경제",
-              "source": "서울경제",
-              "direction": "neutral",
-              "quality_score": 81,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBUSmJjRmhVeFFFT0R5cmhJVzNwcU9xTm00NGtVR0hRam0tY3hxeTZLbE51T0pQQVgxWGc4NnQ1SzdqQXE2bnFhSlBucm1abnZYQUHSAVNBVV95cUxNU2FlZzluTFc0ODRrZXZibHgzcHZSZ1l1dHk2YV93LV9hSEVKUDRCV2dqU1JwZExoTFo4VUJNdW12TDd4M282S3g0Q2wzQUVPdG9NOA?oc=5"
             }
           ]
         },
-        "memo": "가격 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
+        "memo": "가격 축에서 상방·하방 근거가 동시에 감지되어 medium 충돌로 분류"
       },
       {
         "axis": "supply",
@@ -1071,14 +1142,14 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 10,
+        "items": 9,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "neutral",
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 31.8
+          "neutral": 28.13
         },
         "conflict_ratio": 0,
         "examples": {
@@ -1105,7 +1176,7 @@
               "title": "\"치킨보다 비싼 계란?\"…중국 덮친 '로켓 달걀' 물가 충격 - 뉴시스",
               "source": "뉴시스",
               "direction": "neutral",
-              "quality_score": 81,
+              "quality_score": 76,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9Cc0x0a2NZUlRQcV9rTjdQX3plbXVWakV1UTNlTTF2Y2ZmZjFtZjRoQnFXbDhXRmp0b2taamhVMTFiZWpIRE5hTS1hNWl1ajFSbndqQkZraUZjVzZlTi1oOdIBeEFVX3lxTE8xaEQzMGxZZmxQejVYeGF2ckhaNEk3Zl9mazN6SXQtRUdJbUJlYjY5MzZSRkIyY3NoekJPdUpad1BPZ3g3QklydTBPaDRXcVg1Y0JaZ1Q2czBJY2ZUYlVFWVFJWG9SYzZYLWxvNFhhazJJMkRCMlJoUw?oc=5"
             }
