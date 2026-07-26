@@ -1,36 +1,36 @@
 {
-  "updated_at": "2026-07-26T09:26:40Z",
+  "updated_at": "2026-07-26T11:38:53Z",
   "notice": "Phase 2 Display Layer 초안입니다. 기존 market_dashboard.json은 별도로 유지됩니다.",
   "species": [
     {
       "id": "BEEF",
       "name": "한우",
-      "signal_score": 69,
+      "signal_score": 60,
       "direction": "up",
       "status": "상방 가능성",
-      "quality_score": 68,
-      "confidence_score": 78,
+      "quality_score": 70,
+      "confidence_score": 84,
       "coverage_rate": 100,
-      "evidence_count": 28,
-      "official_count": 4,
+      "evidence_count": 29,
+      "official_count": 6,
       "direction_counts": {
-        "up": 11,
-        "down": 1,
-        "neutral": 16,
+        "up": 10,
+        "down": 2,
+        "neutral": 17,
         "hold": 0
       },
       "coverage_types": [
         "가격",
         "수급/도축",
-        "수요/행사",
         "일반",
+        "정책/고시",
         "질병/방역"
       ],
       "score_breakdown": {
-        "price": 25,
-        "supply": 20,
+        "price": 12,
+        "supply": 21,
         "disease": 18,
-        "policy": 0,
+        "policy": 3,
         "news": 6
       },
       "score_breakdown_labels": {
@@ -44,10 +44,10 @@
         "price": {
           "label": "가격",
           "max_score": 30,
-          "score": 25,
+          "score": 12,
           "items": 7,
-          "up": 1,
-          "down": 0,
+          "up": 0,
+          "down": 1,
           "neutral": 6,
           "examples": [
             {
@@ -73,7 +73,7 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 20,
+          "score": 21,
           "items": 6,
           "up": 6,
           "down": 0,
@@ -86,13 +86,13 @@
               "quality_score": 71
             },
             {
-              "title": "한우값 회복, 선제 수급관리 시급 - 축산경제신문",
+              "title": "6월 한우 도매가 1년 전보다 22% 뛰어… 누적 출하 감소 여파 - 전업농신문",
               "direction": "up",
               "source_level": 3,
-              "quality_score": 65
+              "quality_score": 71
             },
             {
-              "title": "사육마릿수 감소 효과···한우 가격 상승세 - 한국농어민신문",
+              "title": "한우값 회복, 선제 수급관리 시급 - 축산경제신문",
               "direction": "up",
               "source_level": 3,
               "quality_score": 65
@@ -131,12 +131,19 @@
         "policy": {
           "label": "정책/고시",
           "max_score": 10,
-          "score": 0,
-          "items": 0,
+          "score": 3,
+          "items": 1,
           "up": 0,
           "down": 0,
-          "neutral": 0,
-          "examples": []
+          "neutral": 1,
+          "examples": [
+            {
+              "title": "\"한돈, 나 먼저 축산법 탈출한다\"...베일 벗은 한우산업지원법 하위법령 - 돼지와사람",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 51
+            }
+          ]
         },
         "news": {
           "label": "뉴스/수요",
@@ -168,38 +175,39 @@
           ]
         }
       },
-      "reason": "가격 25점 + 수급/도축 20점 + 질병/방역 18점 기반, 상방성 자료가 우세",
+      "reason": "수급/도축 21점 + 질병/방역 18점 + 가격 12점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
       "id": "PORK",
       "name": "돈육",
-      "signal_score": 49,
+      "signal_score": 53,
       "direction": "neutral",
       "status": "보합/혼조",
       "quality_score": 70,
-      "confidence_score": 80,
-      "coverage_rate": 80,
-      "evidence_count": 34,
-      "official_count": 16,
+      "confidence_score": 86,
+      "coverage_rate": 100,
+      "evidence_count": 36,
+      "official_count": 17,
       "direction_counts": {
         "up": 28,
         "down": 1,
-        "neutral": 5,
+        "neutral": 7,
         "hold": 0
       },
       "coverage_types": [
         "가격",
         "수급/도축",
         "일반",
+        "정책/고시",
         "질병/방역"
       ],
       "score_breakdown": {
         "price": 15,
         "supply": 11,
         "disease": 18,
-        "policy": 0,
-        "news": 5
+        "policy": 3,
+        "news": 6
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -287,21 +295,28 @@
         "policy": {
           "label": "정책/고시",
           "max_score": 10,
-          "score": 0,
-          "items": 0,
+          "score": 3,
+          "items": 1,
           "up": 0,
           "down": 0,
-          "neutral": 0,
-          "examples": []
+          "neutral": 1,
+          "examples": [
+            {
+              "title": "\"한돈, 나 먼저 축산법 탈출한다\"...베일 벗은 한우산업지원법 하위법령 - 돼지와사람",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 51
+            }
+          ]
         },
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 5,
-          "items": 3,
+          "score": 6,
+          "items": 4,
           "up": 0,
           "down": 1,
-          "neutral": 2,
+          "neutral": 3,
           "examples": [
             {
               "title": "[칼럼] 1만원 계란값이 남긴 경고...한돈에서 같은 실수 말아야 - 돼지와사람",
@@ -316,8 +331,8 @@
               "quality_score": 82
             },
             {
-              "title": "축산농가의 소득안정 방안 - KREI Repository",
-              "direction": "down",
+              "title": "농축산물 생산 및 유통계약의 효율적 운용방안 - KREI Repository",
+              "direction": "neutral",
               "source_level": 5,
               "quality_score": 75
             }
@@ -330,18 +345,18 @@
     {
       "id": "POULTRY",
       "name": "계육",
-      "signal_score": 50,
+      "signal_score": 49,
       "direction": "neutral",
       "status": "보합/혼조",
-      "quality_score": 71,
+      "quality_score": 70,
       "confidence_score": 80,
       "coverage_rate": 80,
-      "evidence_count": 18,
-      "official_count": 12,
+      "evidence_count": 20,
+      "official_count": 13,
       "direction_counts": {
-        "up": 13,
+        "up": 14,
         "down": 1,
-        "neutral": 4,
+        "neutral": 5,
         "hold": 0
       },
       "coverage_types": [
@@ -353,7 +368,7 @@
       "score_breakdown": {
         "price": 12,
         "supply": 13,
-        "disease": 19,
+        "disease": 18,
         "policy": 0,
         "news": 6
       },
@@ -408,9 +423,9 @@
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
-          "score": 19,
-          "items": 11,
-          "up": 11,
+          "score": 18,
+          "items": 12,
+          "up": 12,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -421,13 +436,13 @@
               "quality_score": 71
             },
             {
-              "title": "고병원성 조류인플루엔자 특별방역대책기간 4월 15일로 마무리, 위험지역 중심으로 방역조치는 지속 유지 - 농림축산식품부",
+              "title": "고병원성 AI 탓…산란계·오리 사육마릿수 감소 - 농민신문",
               "direction": "up",
-              "source_level": 5,
-              "quality_score": 75
+              "source_level": 3,
+              "quality_score": 51
             },
             {
-              "title": "고병원성 조류인플루엔자 발생농장에서 다수 방역 미흡사항 확인, 엄정 조치 및 관리 강화 - 농림축산식품부",
+              "title": "고병원성 조류인플루엔자 특별방역대책기간 4월 15일로 마무리, 위험지역 중심으로 방역조치는 지속 유지 - 농림축산식품부",
               "direction": "up",
               "source_level": 5,
               "quality_score": 75
@@ -448,10 +463,10 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 6,
-          "items": 4,
+          "items": 5,
           "up": 0,
           "down": 1,
-          "neutral": 3,
+          "neutral": 4,
           "examples": [
             {
               "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - 더스쿠프",
@@ -474,22 +489,22 @@
           ]
         }
       },
-      "reason": "질병/방역 19점 + 수급/도축 13점 + 가격 12점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 18점 + 수급/도축 13점 + 가격 12점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
       "id": "DUCK",
       "name": "오리",
-      "signal_score": 11,
+      "signal_score": 12,
       "direction": "hold",
       "status": "판단 유보",
-      "quality_score": 71,
-      "confidence_score": 39,
+      "quality_score": 61,
+      "confidence_score": 34,
       "coverage_rate": 20,
-      "evidence_count": 1,
+      "evidence_count": 2,
       "official_count": 0,
       "direction_counts": {
-        "up": 1,
+        "up": 2,
         "down": 0,
         "neutral": 0,
         "hold": 0
@@ -500,7 +515,7 @@
       "score_breakdown": {
         "price": 0,
         "supply": 0,
-        "disease": 11,
+        "disease": 12,
         "policy": 0,
         "news": 0
       },
@@ -535,9 +550,9 @@
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
-          "score": 11,
-          "items": 1,
-          "up": 1,
+          "score": 12,
+          "items": 2,
+          "up": 2,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -546,6 +561,12 @@
               "direction": "up",
               "source_level": 3,
               "quality_score": 71
+            },
+            {
+              "title": "고병원성 AI 탓…산란계·오리 사육마릿수 감소 - 농민신문",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 51
             }
           ]
         },
@@ -570,23 +591,23 @@
           "examples": []
         }
       },
-      "reason": "질병/방역 11점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 12점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
       "id": "EGG",
       "name": "계란",
-      "signal_score": 68,
+      "signal_score": 70,
       "direction": "up",
       "status": "상방 가능성",
-      "quality_score": 74,
-      "confidence_score": 88,
+      "quality_score": 75,
+      "confidence_score": 89,
       "coverage_rate": 100,
-      "evidence_count": 35,
-      "official_count": 12,
+      "evidence_count": 36,
+      "official_count": 13,
       "direction_counts": {
         "up": 11,
-        "down": 7,
+        "down": 8,
         "neutral": 17,
         "hold": 0
       },
@@ -600,7 +621,7 @@
       "score_breakdown": {
         "price": 27,
         "supply": 10,
-        "disease": 16,
+        "disease": 18,
         "policy": 7,
         "news": 8
       },
@@ -616,8 +637,8 @@
           "label": "가격",
           "max_score": 30,
           "score": 27,
-          "items": 15,
-          "up": 5,
+          "items": 14,
+          "up": 4,
           "down": 3,
           "neutral": 7,
           "examples": [
@@ -645,11 +666,17 @@
           "label": "수급/도축",
           "max_score": 25,
           "score": 10,
-          "items": 7,
+          "items": 8,
           "up": 3,
-          "down": 4,
+          "down": 5,
           "neutral": 0,
           "examples": [
+            {
+              "title": "정부, 계란·고등어 공급 확대 총력…수입선 다변화로 밥상물가 잡는다(종합) - 매일신문",
+              "direction": "down",
+              "source_level": 5,
+              "quality_score": 100
+            },
             {
               "title": "계란 수급 숨통 트일까…8월부터 생산 증가 전망 - 머니투데이 - 머니투데이",
               "direction": "up",
@@ -661,24 +688,24 @@
               "direction": "down",
               "source_level": 3,
               "quality_score": 76
-            },
-            {
-              "title": "\"계란값만 한 달에 10만원 더 들어요\"…수급 불안정에 소상공인 한숨 - v.daum.net",
-              "direction": "down",
-              "source_level": 3,
-              "quality_score": 71
             }
           ]
         },
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
-          "score": 16,
-          "items": 3,
-          "up": 3,
+          "score": 18,
+          "items": 4,
+          "up": 4,
           "down": 0,
           "neutral": 0,
           "examples": [
+            {
+              "title": "고병원성 AI 탓…산란계·오리 사육마릿수 감소 - 농민신문",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 51
+            },
             {
               "title": "「산란계 농장 고병원성 조류인플루엔자 방역 기준 유형부여에 관한 고시」 개정안 행정예고 - 농림축산식품부",
               "direction": "up",
@@ -687,12 +714,6 @@
             },
             {
               "title": "알림소식 > 보도자료 > 경기 김포 산란계 농장에 대한 예찰 검사에서 H5형 조류인플루엔자 항원 확인 - 농림축산식품부",
-              "direction": "up",
-              "source_level": 5,
-              "quality_score": 75
-            },
-            {
-              "title": "충남 아산 산란계 농장 고병원성 조류인플루엔자 확진 - 농림축산식품부",
               "direction": "up",
               "source_level": 5,
               "quality_score": 75
@@ -758,27 +779,28 @@
           ]
         }
       },
-      "reason": "가격 27점 + 질병/방역 16점 + 수급/도축 10점 기반, 상방성 자료가 우세",
+      "reason": "가격 27점 + 질병/방역 18점 + 수급/도축 10점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
       "id": "OTHER",
       "name": "기타",
-      "signal_score": 29,
-      "direction": "down",
-      "status": "하방 가능성",
-      "quality_score": 76,
-      "confidence_score": 82,
-      "coverage_rate": 80,
-      "evidence_count": 27,
+      "signal_score": 40,
+      "direction": "neutral",
+      "status": "보합/혼조",
+      "quality_score": 75,
+      "confidence_score": 89,
+      "coverage_rate": 100,
+      "evidence_count": 28,
       "official_count": 27,
       "direction_counts": {
-        "up": 5,
+        "up": 6,
         "down": 1,
         "neutral": 21,
         "hold": 0
       },
       "coverage_types": [
+        "수급/도축",
         "수요/행사",
         "일반",
         "정책/고시",
@@ -786,7 +808,7 @@
       ],
       "score_breakdown": {
         "price": 0,
-        "supply": 0,
+        "supply": 11,
         "disease": 19,
         "policy": 4,
         "news": 6
@@ -812,12 +834,19 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 0,
-          "items": 0,
-          "up": 0,
+          "score": 11,
+          "items": 1,
+          "up": 1,
           "down": 0,
           "neutral": 0,
-          "examples": []
+          "examples": [
+            {
+              "title": "가축전염병·국제정세 '이중고' 축산물 수급 불안 현실화 - 농축유통신문",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 51
+            }
+          ]
         },
         "disease": {
           "label": "질병/방역",
@@ -895,7 +924,7 @@
           ]
         }
       },
-      "reason": "질병/방역 19점 + 뉴스/수요 6점 + 정책/고시 4점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 수급/도축 11점 + 뉴스/수요 6점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     }
   ]
