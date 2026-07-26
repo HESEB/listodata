@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-26T11:38:54Z",
+  "updated_at": "2026-07-26T14:02:02Z",
   "policy": "phase2_evidence_chain_v2",
   "notice": "뉴스/공식자료 → 근거축 → 시장영향 → 신뢰도 → 구매전략으로 연결한 Evidence Chain입니다.",
   "items": [
@@ -88,7 +88,7 @@
           "label": "수급/도축",
           "score": 21,
           "max_score": 25,
-          "items": 6,
+          "items": 7,
           "direction": "up",
           "market_impact": "공급 축소 또는 출하 제한 가능성",
           "causal_step": "도축·도계·출하 흐름 → 공급 가능량 변화 → 가격 방향성",
@@ -197,7 +197,7 @@
           "label": "뉴스/수요",
           "score": 6,
           "max_score": 15,
-          "items": 11,
+          "items": 10,
           "direction": "down",
           "market_impact": "소비 둔화 또는 할인·완화 신호",
           "causal_step": "뉴스·수요 이벤트 → 소비/행사/시장심리 → 보조 판단",
@@ -313,12 +313,12 @@
         {
           "axis": "supply",
           "label": "수급/도축",
-          "items": 6,
+          "items": 7,
           "has_conflict": false,
           "severity": "none",
           "dominant_direction": "up",
           "weighted_direction": {
-            "up": 23.82,
+            "up": 27.84,
             "down": 0.0,
             "neutral": 0.0
           },
@@ -432,14 +432,14 @@
         {
           "axis": "news",
           "label": "뉴스/수요",
-          "items": 11,
+          "items": 10,
           "has_conflict": false,
           "severity": "none",
           "dominant_direction": "down",
           "weighted_direction": {
             "up": 0.0,
             "down": 4.1,
-            "neutral": 32.12
+            "neutral": 29.05
           },
           "conflict_ratio": 0.0,
           "examples": {
@@ -490,14 +490,14 @@
       "name": "돈육",
       "status": "보합/혼조",
       "direction": "neutral",
-      "signal_score": 53,
-      "confidence_score": 86,
-      "coverage_rate": 100,
-      "reason": "질병/방역 18점 + 가격 15점 + 수급/도축 11점 기반, 상방성 자료가 우세",
+      "signal_score": 42,
+      "confidence_score": 80,
+      "coverage_rate": 80,
+      "reason": "질병/방역 18점 + 가격 15점 + 뉴스/수요 6점 기반, 상방성 자료가 우세",
       "summary_chain": [
         {
           "step": "1. 자료 수집",
-          "value": "36건",
+          "value": "33건",
           "meaning": "축종 관련 정제자료 수"
         },
         {
@@ -508,11 +508,11 @@
         {
           "step": "3. 시장 영향",
           "value": "상·하방 근거 혼재",
-          "meaning": "질병/방역 18점 + 가격 15점 + 수급/도축 11점 기반, 상방성 자료가 우세"
+          "meaning": "질병/방역 18점 + 가격 15점 + 뉴스/수요 6점 기반, 상방성 자료가 우세"
         },
         {
           "step": "4. 신뢰도",
-          "value": "86점 / 커버리지 100%",
+          "value": "80점 / 커버리지 80%",
           "meaning": "출처·최신성·공식자료·근거범위 종합"
         },
         {
@@ -568,32 +568,21 @@
         {
           "axis": "supply",
           "label": "수급/도축",
-          "score": 11,
+          "score": 0,
           "max_score": 25,
-          "items": 1,
-          "direction": "up",
-          "market_impact": "공급 축소 또는 출하 제한 가능성",
+          "items": 0,
+          "direction": "neutral",
+          "market_impact": "수급 방향 추가 확인 필요",
           "causal_step": "도축·도계·출하 흐름 → 공급 가능량 변화 → 가격 방향성",
-          "evidence_examples": [
-            {
-              "title": "2026년 상반기 세계 주요 국가의 돼지고기 수급 동향 및 전망 / 정종현 대표 - 축산정보뉴스",
-              "published_at": "2026-05-21T07:00:00Z",
-              "source": "축산정보뉴스",
-              "source_level": 3,
-              "quality_score": 51,
-              "direction": "up",
-              "direction_label": "상방 가능성",
-              "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9zWjRPY0tCZ0ZRdVdpUWQ2RUFHU0xuM3ZmYWp1VkptVGNQTm44NnAweEEzZVRRd1ktS2RlN1UtdmdkMkRvWDgwZ2poZ3REUlBnM0JvTmxXdHNqdjFQeXo4?oc=5"
-            }
-          ],
-          "confidence_note": "근거 일부 연결"
+          "evidence_examples": [],
+          "confidence_note": "직접 연결 근거 부족"
         },
         {
           "axis": "disease",
           "label": "질병/방역",
           "score": 18,
           "max_score": 20,
-          "items": 27,
+          "items": 25,
           "direction": "up",
           "market_impact": "방역·이동제한·살처분에 따른 공급 리스크",
           "causal_step": "질병·방역 이슈 → 이동제한/살처분/심리 리스크 → 공급 변동성",
@@ -698,8 +687,10 @@
           "confidence_note": "근거 일부 연결"
         }
       ],
-      "missing_evidence": [],
-      "hold_reason": "주요 근거축 연결",
+      "missing_evidence": [
+        "수급/도축"
+      ],
+      "hold_reason": "일부 근거축 부족: 수급/도축",
       "purchase_action": "부위별 수요와 냉동재고 확인 후 분할 매입",
       "chain_policy": "phase2_evidence_chain_v2",
       "conflict": {
@@ -708,14 +699,16 @@
         "has_conflict": false,
         "conflict_severity": "none",
         "conflict_axes": [],
-        "missing_evidence": [],
+        "missing_evidence": [
+          "수급/도축"
+        ],
         "hold_reasons": [],
-        "original_confidence": 86,
-        "adjusted_confidence": 86,
+        "original_confidence": 80,
+        "adjusted_confidence": 80,
         "should_hold": false,
         "recommended_status": "보합/혼조",
         "recommended_direction": "neutral",
-        "memo": "충돌 또는 판단 유보 요인 없음"
+        "memo": "주의 필요 · 누락근거: 수급/도축"
       },
       "axis_conflicts": [
         {
@@ -766,41 +759,32 @@
         {
           "axis": "supply",
           "label": "수급/도축",
-          "items": 1,
+          "items": 0,
           "has_conflict": false,
           "severity": "none",
-          "dominant_direction": "up",
+          "dominant_direction": "neutral",
           "weighted_direction": {
-            "up": 3.12,
+            "up": 0.0,
             "down": 0.0,
             "neutral": 0.0
           },
-          "conflict_ratio": 0.0,
+          "conflict_ratio": 0,
           "examples": {
-            "up": [
-              {
-                "title": "2026년 상반기 세계 주요 국가의 돼지고기 수급 동향 및 전망 / 정종현 대표 - 축산정보뉴스",
-                "source": "축산정보뉴스",
-                "direction": "up",
-                "quality_score": 51,
-                "source_level": 3,
-                "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9zWjRPY0tCZ0ZRdVdpUWQ2RUFHU0xuM3ZmYWp1VkptVGNQTm44NnAweEEzZVRRd1ktS2RlN1UtdmdkMkRvWDgwZ2poZ3REUlBnM0JvTmxXdHNqdjFQeXo4?oc=5"
-              }
-            ],
+            "up": [],
             "down": [],
             "neutral": []
           },
-          "memo": "수급/도축 축은 상방 근거 우세"
+          "memo": "수급/도축 축은 중립 또는 보조 근거 중심"
         },
         {
           "axis": "disease",
           "label": "질병/방역",
-          "items": 27,
+          "items": 25,
           "has_conflict": false,
           "severity": "none",
           "dominant_direction": "up",
           "weighted_direction": {
-            "up": 124.13,
+            "up": 114.13,
             "down": 0.0,
             "neutral": 0.0
           },
@@ -928,13 +912,13 @@
       "status": "보합/혼조",
       "direction": "neutral",
       "signal_score": 49,
-      "confidence_score": 80,
+      "confidence_score": 79,
       "coverage_rate": 80,
       "reason": "질병/방역 18점 + 수급/도축 13점 + 가격 12점 기반, 상방성 자료가 우세",
       "summary_chain": [
         {
           "step": "1. 자료 수집",
-          "value": "20건",
+          "value": "21건",
           "meaning": "축종 관련 정제자료 수"
         },
         {
@@ -949,7 +933,7 @@
         },
         {
           "step": "4. 신뢰도",
-          "value": "80점 / 커버리지 80%",
+          "value": "79점 / 커버리지 80%",
           "meaning": "출처·최신성·공식자료·근거범위 종합"
         },
         {
@@ -1020,7 +1004,7 @@
           "label": "질병/방역",
           "score": 18,
           "max_score": 20,
-          "items": 12,
+          "items": 13,
           "direction": "up",
           "market_impact": "방역·이동제한·살처분에 따른 공급 리스크",
           "causal_step": "질병·방역 이슈 → 이동제한/살처분/심리 리스크 → 공급 변동성",
@@ -1130,8 +1114,8 @@
           "정책/고시"
         ],
         "hold_reasons": [],
-        "original_confidence": 80,
-        "adjusted_confidence": 80,
+        "original_confidence": 79,
+        "adjusted_confidence": 79,
         "should_hold": false,
         "recommended_status": "보합/혼조",
         "recommended_direction": "neutral",
@@ -1207,12 +1191,12 @@
         {
           "axis": "disease",
           "label": "질병/방역",
-          "items": 12,
+          "items": 13,
           "has_conflict": false,
           "severity": "none",
           "dominant_direction": "up",
           "weighted_direction": {
-            "up": 54.84,
+            "up": 58.86,
             "down": 0.0,
             "neutral": 0.0
           },
@@ -1236,12 +1220,12 @@
                 "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5RekxzbTNyM2hUakRkSWFhZjFBc2R4eDBuLTFJeHliZm8zVE5GYm50TmpRZFptdjlhNmh3UGl3ZEdSQzhQdzlIMFFNR0Fwd3ZxVHJYYUZQQzdVUQ?oc=5"
               },
               {
-                "title": "고병원성 조류인플루엔자 특별방역대책기간 4월 15일로 마무리, 위험지역 중심으로 방역조치는 지속 유지 - 농림축산식품부",
-                "source": "농림축산식품부",
+                "title": "논산 오리농장서 AI 항원 검출…2만6천마리 살처분 예정 - 연합뉴스",
+                "source": "연합뉴스",
                 "direction": "up",
-                "quality_score": 75,
-                "source_level": 5,
-                "url": "https://news.google.com/rss/articles/CBMi2ANBVV95cUxQMnB0dHpqTURWbWluUV82SGVwOGRodnV3Vm1ReGw2TXI0STk5MVNnRU1RcEZuMG4wR2NmQU02dDh4dWFRUE4xRVp3dUZxYTNQNXM4NVljYUpLdmRZOXdodHY5U2xLN3lMalFPMlhxWmVRVjNjczZKY1NOZDNQOHFMcmtSRDRYR0dtdks3T2t6emtYSm9TRnlka09nNUZTcTFudmpGb2FiMUZBUDFKQUxuMm9lU0w4eW9XTE83ckRfdFlOSnBQNGtPSFp3ZkdyRU1TMlZBUFl6TElGd0xCTW1uZThKTk5BU3Z0M3huNDl6VGk4M0MwMkJkVkRRemdMZ3hLeWVjM2RkWGJRaVhMNDZMRzM3RER2bHIxb0NqSVFTSzdNYnlDNEYwT0VERkJIWVB6UndubjFmS3Q5UUhZclZxZE9oQjNGM2d1dkF0UUVUdzFZREFxbHpmdm9hbWIwbEFBbVpxTEZHNDV3VWkxRUxWS1lKQ2F6UmFjdVdsbmRmc29YeEgyV215OEpfdGdXLXJ3LTQtaG9LY1YwZ3g1SGlHWEVDeFJFQl91N3k0NzVqVWlTVTZPU2xjMDNOZDgxVzg3VnMzMnlBQkMwTnFhaG00SkZLX19MSWJt?oc=5"
+                "quality_score": 51,
+                "source_level": 3,
+                "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9hdk1UTXZvcDROc21OSU1NR1J3YWZ3MUpXT2NRaHExU1ZUbTd6ZFNyQjEwdzhNNmYyQ0lkYXpmZ1hRRDd2Y0g3SnlrRm5lYjlPMlZuaEtNckZyUVnSAWBBVV95cUxNNV9HczZBOU1RaTRXc0ExYWxrcG9pRGJLMGg1WVplYTNfbHVQRllSWTkzQUEyRWV6ekNNdHIwT3RzUFAtLVY1Y1lDc0tJQXptS3pXTmZHTWJybFc0TllzUFk?oc=5"
               }
             ],
             "down": [],
@@ -1330,14 +1314,14 @@
       "name": "오리",
       "status": "판단 유보",
       "direction": "hold",
-      "signal_score": 12,
-      "confidence_score": 34,
+      "signal_score": 14,
+      "confidence_score": 33,
       "coverage_rate": 20,
-      "reason": "질병/방역 12점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 14점 기반, 상방성 자료가 우세",
       "summary_chain": [
         {
           "step": "1. 자료 수집",
-          "value": "2건",
+          "value": "3건",
           "meaning": "축종 관련 정제자료 수"
         },
         {
@@ -1348,11 +1332,11 @@
         {
           "step": "3. 시장 영향",
           "value": "판단 유보",
-          "meaning": "질병/방역 12점 기반, 상방성 자료가 우세"
+          "meaning": "질병/방역 14점 기반, 상방성 자료가 우세"
         },
         {
           "step": "4. 신뢰도",
-          "value": "34점 / 커버리지 20%",
+          "value": "33점 / 커버리지 20%",
           "meaning": "출처·최신성·공식자료·근거범위 종합"
         },
         {
@@ -1389,9 +1373,9 @@
         {
           "axis": "disease",
           "label": "질병/방역",
-          "score": 12,
+          "score": 14,
           "max_score": 20,
-          "items": 2,
+          "items": 3,
           "direction": "up",
           "market_impact": "방역·이동제한·살처분에 따른 공급 리스크",
           "causal_step": "질병·방역 이슈 → 이동제한/살처분/심리 리스크 → 공급 변동성",
@@ -1415,9 +1399,19 @@
               "direction": "up",
               "direction_label": "상방 요인",
               "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5RekxzbTNyM2hUakRkSWFhZjFBc2R4eDBuLTFJeHliZm8zVE5GYm50TmpRZFptdjlhNmh3UGl3ZEdSQzhQdzlIMFFNR0Fwd3ZxVHJYYUZQQzdVUQ?oc=5"
+            },
+            {
+              "title": "논산 오리농장서 AI 항원 검출…2만6천마리 살처분 예정 - 연합뉴스",
+              "published_at": "2026-04-09T07:00:00Z",
+              "source": "연합뉴스",
+              "source_level": 3,
+              "quality_score": 51,
+              "direction": "up",
+              "direction_label": "상방 요인",
+              "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9hdk1UTXZvcDROc21OSU1NR1J3YWZ3MUpXT2NRaHExU1ZUbTd6ZFNyQjEwdzhNNmYyQ0lkYXpmZ1hRRDd2Y0g3SnlrRm5lYjlPMlZuaEtNckZyUVnSAWBBVV95cUxNNV9HczZBOU1RaTRXc0ExYWxrcG9pRGJLMGg1WVplYTNfbHVQRllSWTkzQUEyRWV6ekNNdHIwT3RzUFAtLVY1Y1lDc0tJQXptS3pXTmZHTWJybFc0TllzUFk?oc=5"
             }
           ],
-          "confidence_note": "근거 일부 연결"
+          "confidence_note": "근거 연결 강함"
         },
         {
           "axis": "policy",
@@ -1471,8 +1465,8 @@
           "공식자료 부족",
           "주요 근거축 다수 누락"
         ],
-        "original_confidence": 34,
-        "adjusted_confidence": 34,
+        "original_confidence": 33,
+        "adjusted_confidence": 33,
         "should_hold": true,
         "recommended_status": "판단 유보",
         "recommended_direction": "hold",
@@ -1522,12 +1516,12 @@
         {
           "axis": "disease",
           "label": "질병/방역",
-          "items": 2,
+          "items": 3,
           "has_conflict": false,
           "severity": "none",
           "dominant_direction": "up",
           "weighted_direction": {
-            "up": 7.54,
+            "up": 11.56,
             "down": 0.0,
             "neutral": 0.0
           },
@@ -1549,6 +1543,14 @@
                 "quality_score": 51,
                 "source_level": 3,
                 "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5RekxzbTNyM2hUakRkSWFhZjFBc2R4eDBuLTFJeHliZm8zVE5GYm50TmpRZFptdjlhNmh3UGl3ZEdSQzhQdzlIMFFNR0Fwd3ZxVHJYYUZQQzdVUQ?oc=5"
+              },
+              {
+                "title": "논산 오리농장서 AI 항원 검출…2만6천마리 살처분 예정 - 연합뉴스",
+                "source": "연합뉴스",
+                "direction": "up",
+                "quality_score": 51,
+                "source_level": 3,
+                "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9hdk1UTXZvcDROc21OSU1NR1J3YWZ3MUpXT2NRaHExU1ZUbTd6ZFNyQjEwdzhNNmYyQ0lkYXpmZ1hRRDd2Y0g3SnlrRm5lYjlPMlZuaEtNckZyUVnSAWBBVV95cUxNNV9HczZBOU1RaTRXc0ExYWxrcG9pRGJLMGg1WVplYTNfbHVQRllSWTkzQUEyRWV6ekNNdHIwT3RzUFAtLVY1Y1lDc0tJQXptS3pXTmZHTWJybFc0TllzUFk?oc=5"
               }
             ],
             "down": [],
@@ -1709,14 +1711,14 @@
               "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBva2pZdjBVcUlZV3dqZXlmS195TVRrQ3lOMDZBVTgyUmw0YlBUWGNtQm5oR3RzWWpHV1ExWTU2RzVxdEFkS09yOEdmTGRibGZWaTUtWU1FbmRxN3dac2Y1ZDlvQXhkemZYNU95UnZn?oc=5"
             },
             {
-              "title": "농림축산식품부, 계란 등 축산물 공급 확대 및 할인지원 강화, 여름철 수급 불안 선제 대응 - 행정신문",
+              "title": "농림축산식품부, 계란 등 축산물 공급 확대 및 할인지원 강화, 여름철 수급 불안 선제 대응 - 시사일보",
               "published_at": "2026-05-18T07:00:00Z",
-              "source": "행정신문",
+              "source": "시사일보",
               "source_level": 5,
               "quality_score": 75,
               "direction": "down",
               "direction_label": "하방 요인",
-              "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9HMWNaUDNzTWR0NWpSbkUyY0c0Mlh6bWxuT0RMQWMzWGFYUzg4TWRZTjhvYTJpVXRrUnlJSzVLQXZNM3dnTXFxaF9UOG9PWjZjWExzTU5aMnNHc3Jab2x1dmxDRGluel9yMHRRdA?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE94bW9adFl3clFrbXZJWDJkcmRMVW0yV3I1ckRWSDNFMGJ4TGxhcG8xQ1pmQzh2bERxcWJEejY4OERfTlEtX0hwcmVTd2k?oc=5"
             }
           ],
           "confidence_note": "근거 일부 연결"
@@ -2279,10 +2281,10 @@
       "name": "기타",
       "status": "보합/혼조",
       "direction": "neutral",
-      "signal_score": 40,
+      "signal_score": 41,
       "confidence_score": 89,
       "coverage_rate": 100,
-      "reason": "질병/방역 19점 + 수급/도축 11점 + 뉴스/수요 6점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 20점 + 수급/도축 11점 + 뉴스/수요 6점 기반, 상방성 자료가 우세",
       "summary_chain": [
         {
           "step": "1. 자료 수집",
@@ -2297,7 +2299,7 @@
         {
           "step": "3. 시장 영향",
           "value": "상·하방 근거 혼재",
-          "meaning": "질병/방역 19점 + 수급/도축 11점 + 뉴스/수요 6점 기반, 상방성 자료가 우세"
+          "meaning": "질병/방역 20점 + 수급/도축 11점 + 뉴스/수요 6점 기반, 상방성 자료가 우세"
         },
         {
           "step": "4. 신뢰도",
@@ -2349,13 +2351,23 @@
         {
           "axis": "disease",
           "label": "질병/방역",
-          "score": 19,
+          "score": 20,
           "max_score": 20,
-          "items": 5,
+          "items": 6,
           "direction": "up",
           "market_impact": "방역·이동제한·살처분에 따른 공급 리스크",
           "causal_step": "질병·방역 이슈 → 이동제한/살처분/심리 리스크 → 공급 변동성",
           "evidence_examples": [
+            {
+              "title": "알림소식 > 보도자료 > 경북 예천 구제역 방역조치 차질 없이 추진 중 - 농림축산식품부",
+              "published_at": "2026-07-21T02:00:00Z",
+              "source": "농림축산식품부",
+              "source_level": 5,
+              "quality_score": 95,
+              "direction": "up",
+              "direction_label": "상방 요인",
+              "url": "https://news.google.com/rss/articles/CBMi2ANBVV95cUxQWWNwclozLTk4ZzF2dTUzTHJrNnIzUlNvWEhqRGZJUnV2VktaX3FLbUtOa1pVNkxwY1FQeTA1WFBMLWFnZlZiWTVJYWNUOTZhOWJydXYxbFRXb01LdE03RzBCZnlyeVQtVUFCTWR5YXR1czVoNGxoT3hId19ROW5ibDh1RzNYLXZzc1NqLXJGSjJUT3dzOWRJTUF1UWlnM3RBbE5QYkhya3VPTzlOQXpkdzU2MHdQeWpLVWhmdFAzbUE4NDV3ZmtJSkpuQ1ZPdExTWkpWT0k3d3Z0Q1lDRlZaWmh3NjVmVFViY1Z0VnI2NXhFdGEzbHVoWHJFLVRZTmo2QXNjWmwwSVByTk9qNWVJeUlWNWJnT3hGWHFONlhQWjhubkxVcHA0cUZzek1iWGRJam1vdFFJWGZXR0I2SnR3WkxOSTJYWGVJdXpnS0Nqbjcza25CSXBEVVd2OEVuQ0tHeUJidlJSenhfb2xWcnhST2VIV3l4OFA5QWJPSExBWUtVWE55YWcta01oRnluRzJiWXJJckVSSjVZeTkzQktCaG1ab1hWR0VIR2dEenY4dzFmZS16cGxUYldpYjByRW5OZEJ0MlJoZ19LN2puM28ydndpeGhHTkkt?oc=5"
+            },
             {
               "title": "농식품부, 경북 예천 구제역 6건 추가 확인에 방역 점검 - 연합뉴스",
               "published_at": "2026-07-09T07:00:00Z",
@@ -2375,16 +2387,6 @@
               "direction": "up",
               "direction_label": "상방 요인",
               "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5vTmJHTUw3SjZHVmVfNldrczZPeUE1Y0pNaXZqaVV0b2ptdVhNeTR2dnZYM193V3BUWDhZUkkyc04yS3dXaXdxWm41aHVkNkJPeVo4SklXUEJGc2l0RE5aa2xWS0MwWDFnekF2Y0dOWnhrRHBJbjJ0Q01TYw?oc=5"
-            },
-            {
-              "title": "「결핵병 및 브루셀라병 방역실시요령」 일부개정고시안 행정예고 - 농림축산식품부",
-              "published_at": "2025-07-28T07:00:00Z",
-              "source": "농림축산식품부",
-              "source_level": 5,
-              "quality_score": 75,
-              "direction": "up",
-              "direction_label": "상방 요인",
-              "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5XREZIdUNHd3Z6Rlg1bmprTzNUeVZ1aFZfM01sODhZbGNCMmdVcnUySTJTMHAxNm1Bb2dVZEJfaUdKQi1rUVBaeHg0aTRIUEFPZmlYc1ZrY2tVakFrWkF3dW5RdzFuUjU4cG5yYVRVbm9lbFlmeXc?oc=5"
             }
           ],
           "confidence_note": "근거 연결 강함"
@@ -2417,7 +2419,7 @@
           "label": "뉴스/수요",
           "score": 6,
           "max_score": 15,
-          "items": 21,
+          "items": 20,
           "direction": "down",
           "market_impact": "소비 둔화 또는 할인·완화 신호",
           "causal_step": "뉴스·수요 이벤트 → 소비/행사/시장심리 → 보조 판단",
@@ -2532,12 +2534,12 @@
         {
           "axis": "disease",
           "label": "질병/방역",
-          "items": 5,
+          "items": 6,
           "has_conflict": false,
           "severity": "none",
           "dominant_direction": "up",
           "weighted_direction": {
-            "up": 24.24,
+            "up": 29.64,
             "down": 0.0,
             "neutral": 0.0
           },
@@ -2553,20 +2555,20 @@
                 "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1nY2hhcFlVNk5LNG9JcVpSQ3l3YWF0WjBmLUFWRXUzaE9CM0k0N201NldXZDE4b3YwbHUxaFE3ak5IdjV0NTZVczJtWnpaQjR4cHdCeVZfUnEzVm_SAWBBVV95cUxPNlBrY1RZRm9veE14SW9WOW1fNi1qcy1VZXB3ZmhpbE0tZFNicjJ2NVdKMnRhc1ZlRVR2S3MzTE8yNGhoYnRuWjVFTGV3Z1dLX0lveDZuS1QycHZrZFlqQXQ?oc=5"
               },
               {
+                "title": "알림소식 > 보도자료 > 경북 예천 구제역 방역조치 차질 없이 추진 중 - 농림축산식품부",
+                "source": "농림축산식품부",
+                "direction": "up",
+                "quality_score": 95,
+                "source_level": 5,
+                "url": "https://news.google.com/rss/articles/CBMi2ANBVV95cUxQWWNwclozLTk4ZzF2dTUzTHJrNnIzUlNvWEhqRGZJUnV2VktaX3FLbUtOa1pVNkxwY1FQeTA1WFBMLWFnZlZiWTVJYWNUOTZhOWJydXYxbFRXb01LdE03RzBCZnlyeVQtVUFCTWR5YXR1czVoNGxoT3hId19ROW5ibDh1RzNYLXZzc1NqLXJGSjJUT3dzOWRJTUF1UWlnM3RBbE5QYkhya3VPTzlOQXpkdzU2MHdQeWpLVWhmdFAzbUE4NDV3ZmtJSkpuQ1ZPdExTWkpWT0k3d3Z0Q1lDRlZaWmh3NjVmVFViY1Z0VnI2NXhFdGEzbHVoWHJFLVRZTmo2QXNjWmwwSVByTk9qNWVJeUlWNWJnT3hGWHFONlhQWjhubkxVcHA0cUZzek1iWGRJam1vdFFJWGZXR0I2SnR3WkxOSTJYWGVJdXpnS0Nqbjcza25CSXBEVVd2OEVuQ0tHeUJidlJSenhfb2xWcnhST2VIV3l4OFA5QWJPSExBWUtVWE55YWcta01oRnluRzJiWXJJckVSSjVZeTkzQktCaG1ab1hWR0VIR2dEenY4dzFmZS16cGxUYldpYjByRW5OZEJ0MlJoZ19LN2puM28ydndpeGhHTkkt?oc=5"
+              },
+              {
                 "title": "언론보도 대응자료 > 설명자료 > 농식품부는 가축방역관 확보를 위한 다양한 대책을 적극 추진하고 있습니다. - 농림축산식품부",
                 "source": "농림축산식품부",
                 "direction": "up",
                 "quality_score": 75,
                 "source_level": 5,
                 "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5vTmJHTUw3SjZHVmVfNldrczZPeUE1Y0pNaXZqaVV0b2ptdVhNeTR2dnZYM193V3BUWDhZUkkyc04yS3dXaXdxWm41aHVkNkJPeVo4SklXUEJGc2l0RE5aa2xWS0MwWDFnekF2Y0dOWnhrRHBJbjJ0Q01TYw?oc=5"
-              },
-              {
-                "title": "「결핵병 및 브루셀라병 방역실시요령」 일부개정고시안 행정예고 - 농림축산식품부",
-                "source": "농림축산식품부",
-                "direction": "up",
-                "quality_score": 75,
-                "source_level": 5,
-                "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5XREZIdUNHd3Z6Rlg1bmprTzNUeVZ1aFZfM01sODhZbGNCMmdVcnUySTJTMHAxNm1Bb2dVZEJfaUdKQi1rUVBaeHg0aTRIUEFPZmlYc1ZrY2tVakFrWkF3dW5RdzFuUjU4cG5yYVRVbm9lbFlmeXc?oc=5"
               }
             ],
             "down": [],
@@ -2606,14 +2608,14 @@
         {
           "axis": "news",
           "label": "뉴스/수요",
-          "items": 21,
+          "items": 20,
           "has_conflict": false,
           "severity": "none",
           "dominant_direction": "down",
           "weighted_direction": {
             "up": 0.0,
             "down": 4.1,
-            "neutral": 73.42
+            "neutral": 69.77
           },
           "conflict_ratio": 0.0,
           "examples": {
