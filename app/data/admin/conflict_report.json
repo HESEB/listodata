@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-27T15:17:33Z",
+  "updated_at": "2026-07-27T17:13:19Z",
   "policy": "phase2_conflict_hold_v1",
   "notice": "상방·하방 근거 충돌, 근거 누락, 신뢰도 부족에 따른 판단 유보 검수 리포트입니다.",
   "summary": {
@@ -17,8 +17,8 @@
       "conflict_axes": [],
       "missing_evidence": [],
       "hold_reasons": [],
-      "original_confidence": 86,
-      "adjusted_confidence": 86,
+      "original_confidence": 87,
+      "adjusted_confidence": 87,
       "should_hold": false,
       "recommended_status": "상방 가능성",
       "recommended_direction": "up",
@@ -95,16 +95,18 @@
         "가격",
         "수급/도축"
       ],
-      "missing_evidence": [],
+      "missing_evidence": [
+        "질병/방역"
+      ],
       "hold_reasons": [
         "복수 근거축 충돌"
       ],
-      "original_confidence": 89,
-      "adjusted_confidence": 69,
+      "original_confidence": 82,
+      "adjusted_confidence": 62,
       "should_hold": false,
-      "recommended_status": "상방 우세",
+      "recommended_status": "상방 가능성",
       "recommended_direction": "up",
-      "memo": "주의 필요 · 충돌축: 가격, 수급/도축 / 유보사유: 복수 근거축 충돌"
+      "memo": "주의 필요 · 충돌축: 가격, 수급/도축 / 누락근거: 질병/방역 / 유보사유: 복수 근거축 충돌"
     },
     {
       "id": "OTHER",
@@ -116,7 +118,7 @@
       ],
       "missing_evidence": [
         "가격",
-        "수급/도축"
+        "정책/고시"
       ],
       "hold_reasons": [
         "상·하방 근거 강충돌"
@@ -190,7 +192,7 @@
       ],
       "recommended_status": "판단 유보",
       "recommended_direction": "hold",
-      "memo": "판단 유보 권장 · 충돌축: 뉴스/수요 / 누락근거: 가격, 수급/도축 / 유보사유: 상·하방 근거 강충돌"
+      "memo": "판단 유보 권장 · 충돌축: 뉴스/수요 / 누락근거: 가격, 정책/고시 / 유보사유: 상·하방 근거 강충돌"
     }
   ],
   "axis_reports": {
@@ -297,12 +299,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 5,
+        "items": 6,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 20.36,
+          "up": 24.46,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -371,14 +373,14 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 12,
+        "items": 13,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "down",
         "weighted_direction": {
           "up": 0.0,
           "down": 4.1,
-          "neutral": 34.98
+          "neutral": 37.93
         },
         "conflict_ratio": 0.0,
         "examples": {
@@ -501,12 +503,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 28,
+        "items": 33,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 127.81,
+          "up": 151.35,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -671,12 +673,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 7,
+        "items": 6,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 33.2,
+          "up": 28.2,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -1051,43 +1053,34 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 1,
-        "has_conflict": false,
-        "severity": "none",
-        "dominant_direction": "up",
-        "weighted_direction": {
-          "up": 4.1,
-          "down": 0.0,
-          "neutral": 0.0
-        },
-        "conflict_ratio": 0.0,
-        "examples": {
-          "up": [
-            {
-              "title": "충남 아산 산란계 농장 고병원성 조류인플루엔자 확진 - 농림축산식품부",
-              "source": "농림축산식품부",
-              "direction": "up",
-              "quality_score": 75,
-              "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9nX2F4cHhBUDg2dXdYclZ0TEhhU19wX0JCQkh3aDdDTnBlX3JJeHA0c1BVYkpxSDI4SThyS2diUWhoQk5pVzVreVIxWEN0d3JrLVpmZXNFdkJJZElJNFl5TGg5ZVYzNGM?oc=5"
-            }
-          ],
-          "down": [],
-          "neutral": []
-        },
-        "memo": "질병/방역 축은 상방 근거 우세"
-      },
-      {
-        "axis": "policy",
-        "label": "정책/고시",
-        "items": 4,
+        "items": 0,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "neutral",
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 14.9
+          "neutral": 0.0
+        },
+        "conflict_ratio": 0,
+        "examples": {
+          "up": [],
+          "down": [],
+          "neutral": []
+        },
+        "memo": "질병/방역 축은 중립 또는 보조 근거 중심"
+      },
+      {
+        "axis": "policy",
+        "label": "정책/고시",
+        "items": 3,
+        "has_conflict": false,
+        "severity": "none",
+        "dominant_direction": "neutral",
+        "weighted_direction": {
+          "up": 0.0,
+          "down": 0.0,
+          "neutral": 12.09
         },
         "conflict_ratio": 0,
         "examples": {
@@ -1111,12 +1104,12 @@
               "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBBS2NJQTdFLUlFZWRlbFFOYmhPREhvbTdjUmw1WnlvY0t4YXhTNVdpOGZxVVpEZDBfYjBybmlCb2V2ZmlwelRvWW9ILWcwMHF1ZS1SdTNoWjRmQW9yTzNMZ0d3?oc=5"
             },
             {
-              "title": "계란 한 판 8000원 시대…코스피는 올리고 계란값은 내린다! - 대한민국 정책브리핑",
-              "source": "대한민국 정책브리핑",
+              "title": "계란 10구 5300원 돌파, 한달 새 17% 올라…정부 2억3천개 수입한다 - 한겨레",
+              "source": "한겨레",
               "direction": "neutral",
-              "quality_score": 58,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1rUDZxcDc1VElpSlhWV0o4amFYUUhTYmRVZ01iZFlxTVBUYVdGTDVzdG5nX1ZfbFJuN2l2RzQzNjE4cmJIVTUzMWJjd0VWMnp0cUVTVWJZQ2FuMW9VYnlmWWF4N1NuMGdvdUE?oc=5"
+              "quality_score": 82,
+              "source_level": 5,
+              "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9JTV8tVHN2UG5mSENjYXZhQklXQUVIeFlDMFE1azdycUhUekxOZGlVQmVveHgwSEVNZWt2T2kwUUQ1ZUhiQURLbjNGaXlVUlBEZ1gtVzU4VGJXa2ZoazE4di1FWnByMXd2T2xXLWx0Nnl4dw?oc=5"
             }
           ]
         },
@@ -1125,14 +1118,14 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 9,
+        "items": 10,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "neutral",
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 26.66
+          "neutral": 29.93
         },
         "conflict_ratio": 0,
         "examples": {
@@ -1148,20 +1141,20 @@
               "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9jMVZqcHh3dU0zOXRURjFXa2F5ajhYSFk0djRHejRwZlV1QWliMGlIclY5c2hEb2hmeUNkc2MtLXlwb2VDU3hlSVJPdVRTcEpueFBSMndR?oc=5"
             },
             {
+              "title": "\"계란 한 판 5천원대→1만원 육박\"…빵집도 김밥집도 문 닫을 판 - 네이트",
+              "source": "네이트",
+              "direction": "neutral",
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE05U3ZCbExjYXZkdkRGaWNubURfMnJtUmU1OWhUMXV0T2VrRTdLZmZlNXBZZ0RtVWJld3d6Tzc2ZnplRjNmZmJjRkZJcm5WYkFZNWRV?oc=5"
+            },
+            {
               "title": "\"계란값만 월 100만원씩 더 들어요\"…식당·빵집 소상공인 한숨 - 머니투데이 - 머니투데이",
               "source": "머니투데이",
               "direction": "neutral",
               "quality_score": 81,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5KYVp5TUZIR1hnaEpsaHY1My1JRkFGd05pVnpPRDNoVEwzeUJEbTRvQmFKcjdac1hhUXppOEM2Y3ppYVdlcC1iNkRYcE1aTHA5Ti1DYV9wTnBOd3p1RG9oNFp5NkxGcHR4YjlTVmN5LUfSAXBBVV95cUxOSmFaeU1GSEdYZ2hKbGh2NTMtSUZBRndOaVZ6T0QzaFRMM3lCRG00b0JhSnI3WnNYYVF6aThDNmN6aWFXZXAtYjZEWHBNWkxwOU4tQ2FfcE5wTnd6dURvaDRaeTZMRnB0eGI5U1ZjeS1H?oc=5"
-            },
-            {
-              "title": "계란·닭값 최고 수준…양산 식탁물가 부담 여전 - 양산신문",
-              "source": "양산신문",
-              "direction": "neutral",
-              "quality_score": 81,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFAtN3owN1FwY0tROXZPc0M2bjFKcFI0TjZGUTFidElETXFCb2pkUE12VEluWkFlV2VnTW1Ec19ZT3pBVklVZGc4UmVWLTlpeXdPS3o1SmZrS2RDLUxYRmU0N1VNaW1lLTNoY2g2dmQ4Zw?oc=5"
             }
           ]
         },
@@ -1192,32 +1185,41 @@
       {
         "axis": "supply",
         "label": "수급/도축",
-        "items": 0,
-        "has_conflict": false,
-        "severity": "none",
-        "dominant_direction": "neutral",
-        "weighted_direction": {
-          "up": 0.0,
-          "down": 0.0,
-          "neutral": 0.0
-        },
-        "conflict_ratio": 0,
-        "examples": {
-          "up": [],
-          "down": [],
-          "neutral": []
-        },
-        "memo": "수급/도축 축은 중립 또는 보조 근거 중심"
-      },
-      {
-        "axis": "disease",
-        "label": "질병/방역",
-        "items": 9,
+        "items": 1,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 39.5,
+          "up": 5.0,
+          "down": 0.0,
+          "neutral": 0.0
+        },
+        "conflict_ratio": 0.0,
+        "examples": {
+          "up": [
+            {
+              "title": "농림축산식품부, 5월 수급 동향 점검…과일 출하 감소에도 공급 차질 없을 전망 - 국제일보",
+              "source": "국제일보",
+              "direction": "up",
+              "quality_score": 75,
+              "source_level": 5,
+              "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5qM1pmSk1JWlJIUHNJdUlhME1mZm9vZkU1WndQVlk2LUZCVEZmelM1NmV6YkZnRThzb21iVnA3M3BXM3hKZmdMcVhFTmZLNE5XMmFLalVMY1ZTN2tpaU9SLXRuNXg?oc=5"
+            }
+          ],
+          "down": [],
+          "neutral": []
+        },
+        "memo": "수급/도축 축은 상방 근거 우세"
+      },
+      {
+        "axis": "disease",
+        "label": "질병/방역",
+        "items": 10,
+        "has_conflict": false,
+        "severity": "none",
+        "dominant_direction": "up",
+        "weighted_direction": {
+          "up": 44.5,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -1257,29 +1259,20 @@
       {
         "axis": "policy",
         "label": "정책/고시",
-        "items": 1,
+        "items": 0,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "neutral",
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 3.65
+          "neutral": 0.0
         },
         "conflict_ratio": 0,
         "examples": {
           "up": [],
           "down": [],
-          "neutral": [
-            {
-              "title": "알림소식 > 보도자료 > 4월 럼피스킨 백신접종 시작으로 재발 방지 대책 본격 추진 - 농림축산식품부",
-              "source": "농림축산식품부",
-              "direction": "neutral",
-              "quality_score": 75,
-              "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMi2ANBVV95cUxNS09rbzJvM0VnN2FHRVZpMUc2NGV6aGJqWjg3VzlXSXRKckpRbm1WcWZ4Z3RSNndsVFJ1NWJ1NWEtUzhZWWNSUVdSSXVqUVNYU3dwWERSV254LVhIRDlBNmZPTzdfRDdCQ3dDbEloNnNrSDFONW95NkMxZHpyb295Q0lWVjdCV0hMTjdUS010cW11ZjNhZnNVaXg2bldJdDdaejBLM2gyY3hLcEg4Yk5td1VxZEdtUGwxaVlWbGFvV0tIOENTbEx2dVJJVkZKV3luamZrSThRVnpuY2s5ZGk5LVZ3OUdaLWg1am01Uk80elBqRC1HVzNaRElmMFd3V1lvbERJdEtDYTUtUFh0SUNOYlhFQkZ1U3M4bWtPVV9STFAwNTVDbTV1dXdpTHpNLTkzSVBfc25DeTk1aUpHZXVlWHBnZTJtOVR5QVYtNUhQMEs3Q3NMWHcxcnhUZUJNcjBxMy1MYUg4ZW0tVDlTWUZBV3E4ckYxazNmbVBtekdlSVVudHVNN0R5NXJCOUs4WGt3Smc4b1EwdE9zTGxXTWpIdDI2TVA0R01PT3NNd0FxdGZ3X3hpYkxxanM0MG1wZHQ1aGotaFpPSk80V2pZb0VLNXkwakZ6cGl5?oc=5"
-            }
-          ]
+          "neutral": []
         },
         "memo": "정책/고시 축은 중립 또는 보조 근거 중심"
       },
