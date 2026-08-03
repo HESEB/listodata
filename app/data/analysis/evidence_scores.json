@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-03T03:58:57Z",
+  "updated_at": "2026-08-03T07:50:38Z",
   "policy": "phase2_evidence_score_v3_sanitized",
   "score_axes": {
     "price": {
@@ -43,18 +43,18 @@
     {
       "id": "BEEF",
       "name": "한우",
-      "signal_score": 59,
-      "direction": "neutral",
-      "status": "보합/혼조",
+      "signal_score": 65,
+      "direction": "hold",
+      "status": "판단 유보",
       "quality_score": 77,
-      "confidence_score": 85,
+      "confidence_score": 67,
       "coverage_rate": 100,
       "evidence_count": 33,
       "official_count": 5,
       "direction_counts": {
-        "up": 6,
+        "up": 7,
         "down": 2,
-        "neutral": 25,
+        "neutral": 24,
         "hold": 0
       },
       "coverage_types": [
@@ -65,7 +65,7 @@
         "질병/방역"
       ],
       "score_breakdown": {
-        "price": 11,
+        "price": 17,
         "supply": 19,
         "disease": 17,
         "policy": 6,
@@ -82,12 +82,18 @@
         "price": {
           "label": "가격",
           "max_score": 30,
-          "score": 11,
+          "score": 17,
           "items": 5,
-          "up": 0,
+          "up": 1,
           "down": 1,
-          "neutral": 4,
+          "neutral": 3,
           "examples": [
+            {
+              "title": "한우와 수입육 가격 분석...\"동반 상승\" 속 좁혀지는 가격 격차 - 더바이어",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 81
+            },
             {
               "title": "한우 광고하고 삼겹살 할인 행사하는 돈…누가 내나 봤더니 - 동아일보",
               "direction": "down",
@@ -99,12 +105,6 @@
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 71
-            },
-            {
-              "title": "‘명절도 아닌데’ 한우 등심가격 16% 올라…미국산도 두자릿수↑ - 세계일보",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 65
             }
           ]
         },
@@ -147,13 +147,13 @@
           "neutral": 0,
           "examples": [
             {
-              "title": "축산농장 위생안전관리 강화 방안 - repository.krei.re.kr",
+              "title": "축산농장 위생안전관리 강화 방안 - KREI Repository",
               "direction": "up",
               "source_level": 5,
               "quality_score": 75
             },
             {
-              "title": "P144 축산방역체계개선방안-0624(OK).hwp - repository.krei.re.kr",
+              "title": "P144 축산방역체계개선방안-0624(OK).hwp - KREI Repository",
               "direction": "up",
               "source_level": 5,
               "quality_score": 75
@@ -225,26 +225,94 @@
           ]
         }
       },
-      "reason": "수급/도축 19점 + 질병/방역 17점 + 가격 11점 기반, 상방성 자료가 우세",
+      "reason": "수급/도축 19점 + 가격 17점 + 질병/방역 17점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
-        "has_conflict": false,
-        "severity": "none",
-        "axes": [],
-        "memo": "충돌 또는 판단 유보 요인 없음"
+        "has_conflict": true,
+        "severity": "high",
+        "axes": [
+          "가격"
+        ],
+        "memo": "판단 유보 권장 · 충돌축: 가격 / 유보사유: 상·하방 근거 강충돌"
       },
       "hold_decision": {
-        "should_hold": false,
-        "reasons": [],
-        "recommended_status": "보합/혼조",
-        "recommended_direction": "neutral",
-        "adjusted_confidence": 85
+        "should_hold": [
+          {
+            "axis": "price",
+            "label": "가격",
+            "items": 5,
+            "has_conflict": true,
+            "severity": "high",
+            "dominant_direction": "up",
+            "weighted_direction": {
+              "up": 4.17,
+              "down": 3.58,
+              "neutral": 8.83
+            },
+            "conflict_ratio": 0.86,
+            "examples": {
+              "up": [
+                {
+                  "title": "한우와 수입육 가격 분석...\"동반 상승\" 속 좁혀지는 가격 격차 - 더바이어",
+                  "source": "더바이어",
+                  "direction": "up",
+                  "quality_score": 81,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE44ZG1yWnBpRTBnWHNfcDl2WGhIeGVtbGdlZTIxbk1yYlZDNXZ0Z0p5cXRPaGxBclk4azhhTDdlbGpqTzBJUVp6MTdqQVdGLVJWU0M0YW4zTzQxUDM0ajhNQTB6YnZ6b0trWk5Z?oc=5"
+                }
+              ],
+              "down": [
+                {
+                  "title": "한우 광고하고 삼겹살 할인 행사하는 돈…누가 내나 봤더니 - 동아일보",
+                  "source": "동아일보",
+                  "direction": "down",
+                  "quality_score": 64,
+                  "source_level": 2,
+                  "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5COHlnZ1hhaGdnTzdpSV95UGVWdmVrb1BxRG9ad094SnJUcm04NGFoYkxBZXB3Q0ZreFlBeDhRRjFORWlRYWx1cko3SlBWbWszcXgwbG5WZ3piWDZwVy1aZzRzOHUtQVhlWmRKUjhMU3lVanFmQ0HSAWZBVV95cUxNWThTOWZUenBqdno5VXNpSG1YV0R3VF9lczNaM0pqZDM3TUhHUTNGYXUzT1BnOXI2VDljNENwcnFoQ24zU3h5QVYtOHg2aUVHUkRkVHZhSEhtWG9Kb0oydVpJRExxUHc?oc=5"
+                }
+              ],
+              "neutral": [
+                {
+                  "title": "폭염에 농축산물 가격 '희비'…배·한우 오르고 수박 내렸다 - 뉴스핌",
+                  "source": "뉴스핌",
+                  "direction": "neutral",
+                  "quality_score": 71,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1GZlZfYzR4SWtEb0JETnBocVBNN1FPMDY1NmxLeUFmd3VaS1pXVTJiVVdUeXpIbkJRWkdRNVBKUzZ5MVlYNzFyQXlzN2VnZUtaV21zWTlRd0NXb1pf?oc=5"
+                },
+                {
+                  "title": "한우 경매·가격 어떻게 형성될까? - 한국농촌경제신문",
+                  "source": "한국농촌경제신문",
+                  "direction": "neutral",
+                  "quality_score": 65,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1XUzlUNWJtelA0d3cxU0JpRFFMamRtSkVycUFqdXEwaGpBS0JRZHZIbktNdms1SFhZVEVMMF9pWVhlZ0FiREpoRThYcjJ0ZlNjWGROSFdvVS10YU1zVGhkaQ?oc=5"
+                },
+                {
+                  "title": "한우 송아지 가격 600만 원 뚫나… 번식률 저하로 '품귀 현상' 심화 - 팜인사이트",
+                  "source": "팜인사이트",
+                  "direction": "neutral",
+                  "quality_score": 58,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE0tc1d6d1ZrUzIzSGRfaF9UX3haUE5uUWVtcFFPQmtWTWRUZTNOT0I3OGl4NGpYZFl2bEdjeVlmRlpBcFdPWmduUGNrN2FrU0t0X0hOdVVURldsalVpcVNTT0UxZ2x4RnZrc2pkNHNB?oc=5"
+                }
+              ]
+            },
+            "memo": "가격 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
+          }
+        ],
+        "reasons": [
+          "상·하방 근거 강충돌"
+        ],
+        "recommended_status": "판단 유보",
+        "recommended_direction": "hold",
+        "adjusted_confidence": 67
       }
     },
     {
       "id": "PORK",
       "name": "돈육",
-      "signal_score": 43,
+      "signal_score": 42,
       "direction": "neutral",
       "status": "보합/혼조",
       "quality_score": 68,
@@ -253,9 +321,9 @@
       "evidence_count": 38,
       "official_count": 14,
       "direction_counts": {
-        "up": 33,
+        "up": 34,
         "down": 2,
-        "neutral": 3,
+        "neutral": 2,
         "hold": 0
       },
       "coverage_types": [
@@ -265,7 +333,7 @@
         "질병/방역"
       ],
       "score_breakdown": {
-        "price": 9,
+        "price": 8,
         "supply": 11,
         "disease": 18,
         "policy": 0,
@@ -282,23 +350,17 @@
         "price": {
           "label": "가격",
           "max_score": 30,
-          "score": 9,
-          "items": 3,
+          "score": 8,
+          "items": 2,
           "up": 0,
           "down": 1,
-          "neutral": 2,
+          "neutral": 1,
           "examples": [
             {
               "title": "한우 광고하고 삼겹살 할인 행사하는 돈…누가 내나 봤더니 - 동아일보",
               "direction": "down",
               "source_level": 2,
               "quality_score": 64
-            },
-            {
-              "title": "‘명절도 아닌데’ 한우 등심가격 16% 올라…미국산도 두자릿수↑ - 세계일보",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 65
             },
             {
               "title": "[전광판] '26년 7월 평균 도매가격 6,236원(전월대비 -1.7%, 전년동월대비 -2.0%) - 돼지와사람",
@@ -329,25 +391,25 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 18,
-          "items": 32,
-          "up": 32,
+          "items": 33,
+          "up": 33,
           "down": 0,
           "neutral": 0,
           "examples": [
             {
-              "title": "드론 띄워 ASF 막는다… 경산시, 양돈농가 선제 방역 - 한돈뉴스",
+              "title": "ASF 경계감 커지자 방역·축산 관련주 강세… 체시스 셀레믹스 윙입푸드 한일사료 주목을 - pinpointnews.co.kr",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 81
+            },
+            {
+              "title": "드론 띄워 ASF 막는다… 경산시, 양돈농가 선제 방역 - pignpork.com",
               "direction": "up",
               "source_level": 3,
               "quality_score": 76
             },
             {
-              "title": "경산시, 양돈농장 드론 소독…ASF 유입 막는다 - 데일리한국",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 71
-            },
-            {
-              "title": "'ASF 선제 대응'···경산시, 드론 활용 공중방역 확대 - 프라임경제",
+              "title": "경산시, 양돈농장 드론 소독…ASF 유입 막는다 - daily.hankooki.com",
               "direction": "up",
               "source_level": 3,
               "quality_score": 71
@@ -374,13 +436,13 @@
           "neutral": 1,
           "examples": [
             {
-              "title": "가축질병의 경제적 영향 분석 - krei.re.kr",
+              "title": "가축질병의 경제적 영향 분석 - 한국농촌경제연구원",
               "direction": "neutral",
               "source_level": 5,
               "quality_score": 75
             },
             {
-              "title": "축산농가의 소득안정 방안 - repository.krei.re.kr",
+              "title": "축산농가의 소득안정 방안 - KREI Repository",
               "direction": "down",
               "source_level": 5,
               "quality_score": 75
@@ -388,7 +450,7 @@
           ]
         }
       },
-      "reason": "질병/방역 18점 + 수급/도축 11점 + 가격 9점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 18점 + 수급/도축 11점 + 가격 8점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
@@ -407,18 +469,18 @@
     {
       "id": "POULTRY",
       "name": "계육",
-      "signal_score": 37,
+      "signal_score": 38,
       "direction": "neutral",
       "status": "보합/혼조",
-      "quality_score": 69,
+      "quality_score": 70,
       "confidence_score": 72,
       "coverage_rate": 60,
-      "evidence_count": 18,
+      "evidence_count": 17,
       "official_count": 13,
       "direction_counts": {
         "up": 13,
         "down": 1,
-        "neutral": 4,
+        "neutral": 3,
         "hold": 0
       },
       "coverage_types": [
@@ -431,7 +493,7 @@
         "supply": 13,
         "disease": 19,
         "policy": 0,
-        "news": 5
+        "news": 6
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -516,11 +578,11 @@
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 5,
-          "items": 5,
+          "score": 6,
+          "items": 4,
           "up": 0,
           "down": 1,
-          "neutral": 4,
+          "neutral": 3,
           "examples": [
             {
               "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - 더스쿠프",
@@ -535,15 +597,15 @@
               "quality_score": 63
             },
             {
-              "title": "베트남 양계농가, 올들어 계육·계란값 폭락에 ‘울상’…”생산비도 못 건져” - 인사이드비나",
+              "title": "가축질병의 경제적 영향 분석 - 한국농촌경제연구원",
               "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 51
+              "source_level": 5,
+              "quality_score": 75
             }
           ]
         }
       },
-      "reason": "질병/방역 19점 + 수급/도축 13점 + 뉴스/수요 5점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 수급/도축 13점 + 뉴스/수요 6점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
@@ -668,16 +730,16 @@
     {
       "id": "EGG",
       "name": "계란",
-      "signal_score": 67,
+      "signal_score": 68,
       "direction": "up",
       "status": "상방 가능성",
-      "quality_score": 87,
-      "confidence_score": 87,
+      "quality_score": 88,
+      "confidence_score": 88,
       "coverage_rate": 80,
-      "evidence_count": 32,
-      "official_count": 20,
+      "evidence_count": 31,
+      "official_count": 19,
       "direction_counts": {
-        "up": 28,
+        "up": 27,
         "down": 1,
         "neutral": 3,
         "hold": 0
@@ -693,7 +755,7 @@
         "supply": 25,
         "disease": 12,
         "policy": 0,
-        "news": 11
+        "news": 12
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -719,7 +781,7 @@
               "quality_score": 71
             },
             {
-              "title": "계란 산지가격 고시 중단…“시장만 더 혼란” - 축산신문",
+              "title": "계란 산지가격 고시 중단…“시장만 더 혼란” - chuksannews.co.kr",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 58
@@ -730,8 +792,8 @@
           "label": "수급/도축",
           "max_score": 25,
           "score": 25,
-          "items": 26,
-          "up": 25,
+          "items": 25,
+          "up": 24,
           "down": 1,
           "neutral": 0,
           "examples": [
@@ -785,14 +847,20 @@
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 11,
+          "score": 12,
           "items": 3,
           "up": 1,
           "down": 0,
           "neutral": 2,
           "examples": [
             {
-              "title": "정부 계란시장 이해 부족이 혼란 키워 - 축산신문",
+              "title": "[뉴스줌인] \"계란이 이래서 비쌌던 거였어?\" - 데일리팝",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 81
+            },
+            {
+              "title": "정부 계란시장 이해 부족이 혼란 키워 - chuksannews.co.kr",
               "direction": "up",
               "source_level": 5,
               "quality_score": 100
@@ -802,12 +870,6 @@
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 58
-            },
-            {
-              "title": "베트남 양계농가, 올들어 계육·계란값 폭락에 ‘울상’…”생산비도 못 건져” - 인사이드비나",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 51
             }
           ]
         }
@@ -825,7 +887,7 @@
         "reasons": [],
         "recommended_status": "상방 가능성",
         "recommended_direction": "up",
-        "adjusted_confidence": 87
+        "adjusted_confidence": 88
       }
     },
     {
