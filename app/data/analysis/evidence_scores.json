@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-03T23:29:03Z",
+  "updated_at": "2026-08-04T03:42:22Z",
   "policy": "phase2_evidence_score_v3_sanitized",
   "score_axes": {
     "price": {
@@ -43,18 +43,18 @@
     {
       "id": "BEEF",
       "name": "한우",
-      "signal_score": 67,
+      "signal_score": 68,
       "direction": "hold",
       "status": "판단 유보",
       "quality_score": 75,
-      "confidence_score": 66,
+      "confidence_score": 45,
       "coverage_rate": 100,
-      "evidence_count": 34,
-      "official_count": 5,
+      "evidence_count": 32,
+      "official_count": 4,
       "direction_counts": {
         "up": 8,
         "down": 2,
-        "neutral": 24,
+        "neutral": 22,
         "hold": 0
       },
       "coverage_types": [
@@ -67,9 +67,9 @@
       "score_breakdown": {
         "price": 17,
         "supply": 21,
-        "disease": 17,
+        "disease": 15,
         "policy": 6,
-        "news": 6
+        "news": 9
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -89,7 +89,7 @@
           "neutral": 4,
           "examples": [
             {
-              "title": "한우와 수입육 가격 분석...\"동반 상승\" 속 좁혀지는 가격 격차 - 더바이어",
+              "title": "한우와 수입육 가격 분석...\"동반 상승\" 속 좁혀지는 가격 격차 - withbuyer.com",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
@@ -140,9 +140,9 @@
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
-          "score": 17,
-          "items": 3,
-          "up": 3,
+          "score": 15,
+          "items": 2,
+          "up": 2,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -157,12 +157,6 @@
               "direction": "up",
               "source_level": 5,
               "quality_score": 75
-            },
-            {
-              "title": "알림소식 > 보도자료 > 충북 청주시 한우 농장 구제역 발생 - 농림축산식품부",
-              "direction": "up",
-              "source_level": 5,
-              "quality_score": 75
             }
           ]
         },
@@ -170,17 +164,11 @@
           "label": "정책/고시",
           "max_score": 10,
           "score": 6,
-          "items": 6,
+          "items": 5,
           "up": 0,
           "down": 0,
-          "neutral": 6,
+          "neutral": 5,
           "examples": [
-            {
-              "title": "쇠고기 수입 30% 늘면 한우값 53만원↓…‘2.5조 농업피해’ 손봐야 [룰라의 경협청구서] - 이투데이",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 81
-            },
             {
               "title": "한우협회 “브라질산 쇠고기 수입 추진 중단…실효성 있는 보호대책 마련해야” - 인더스트리뉴스",
               "direction": "neutral",
@@ -191,19 +179,31 @@
               "title": "브라질산 소고기 수입되나…한·메르코수르 무역협정 우려 높아져 - 농수축산신문",
               "direction": "neutral",
               "source_level": 3,
-              "quality_score": 76
+              "quality_score": 71
+            },
+            {
+              "title": "한우협회 \"브라질산 쇠고기 수입 땐 한우산업 타격 불가피\" - 매일일보",
+              "direction": "neutral",
+              "source_level": 4,
+              "quality_score": 83
             }
           ]
         },
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 6,
+          "score": 9,
           "items": 15,
-          "up": 0,
+          "up": 1,
           "down": 1,
-          "neutral": 14,
+          "neutral": 13,
           "examples": [
+            {
+              "title": "수박·토마토값 내렸지만 계란·한우 강세…8월 폭염 변수 - 네이트",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 81
+            },
             {
               "title": "한우협회 \"브라질 쇠고기 이어 메르코수르 추가 개방 우려\" - 남도일보",
               "direction": "neutral",
@@ -215,113 +215,44 @@
               "direction": "neutral",
               "source_level": 4,
               "quality_score": 93
-            },
-            {
-              "title": "“내 별명 살찐 여우” 정호영, 한우 쓰고도 재료비 확 낮춘 전략 감탄(스레파) - 뉴스엔",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 81
             }
           ]
         }
       },
-      "reason": "수급/도축 21점 + 가격 17점 + 질병/방역 17점 기반, 상방성 자료가 우세",
+      "reason": "수급/도축 21점 + 가격 17점 + 질병/방역 15점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": true,
         "severity": "high",
         "axes": [
-          "가격"
+          "가격",
+          "뉴스/수요"
         ],
-        "memo": "판단 유보 권장 · 충돌축: 가격 / 유보사유: 상·하방 근거 강충돌"
+        "memo": "판단 유보 권장 · 충돌축: 가격, 뉴스/수요 / 유보사유: 상·하방 근거 강충돌"
       },
       "hold_decision": {
-        "should_hold": [
-          {
-            "axis": "price",
-            "label": "가격",
-            "items": 6,
-            "has_conflict": true,
-            "severity": "high",
-            "dominant_direction": "up",
-            "weighted_direction": {
-              "up": 4.17,
-              "down": 3.58,
-              "neutral": 11.52
-            },
-            "conflict_ratio": 0.86,
-            "examples": {
-              "up": [
-                {
-                  "title": "한우와 수입육 가격 분석...\"동반 상승\" 속 좁혀지는 가격 격차 - 더바이어",
-                  "source": "더바이어",
-                  "direction": "up",
-                  "quality_score": 81,
-                  "source_level": 3,
-                  "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE44ZG1yWnBpRTBnWHNfcDl2WGhIeGVtbGdlZTIxbk1yYlZDNXZ0Z0p5cXRPaGxBclk4azhhTDdlbGpqTzBJUVp6MTdqQVdGLVJWU0M0YW4zTzQxUDM0ajhNQTB6YnZ6b0trWk5Z?oc=5"
-                }
-              ],
-              "down": [
-                {
-                  "title": "한우 광고하고 삼겹살 할인 행사하는 돈…누가 내나 봤더니 - 동아일보",
-                  "source": "동아일보",
-                  "direction": "down",
-                  "quality_score": 64,
-                  "source_level": 2,
-                  "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5COHlnZ1hhaGdnTzdpSV95UGVWdmVrb1BxRG9ad094SnJUcm04NGFoYkxBZXB3Q0ZreFlBeDhRRjFORWlRYWx1cko3SlBWbWszcXgwbG5WZ3piWDZwVy1aZzRzOHUtQVhlWmRKUjhMU3lVanFmQ0HSAWZBVV95cUxNWThTOWZUenBqdno5VXNpSG1YV0R3VF9lczNaM0pqZDM3TUhHUTNGYXUzT1BnOXI2VDljNENwcnFoQ24zU3h5QVYtOHg2aUVHUkRkVHZhSEhtWG9Kb0oydVpJRExxUHc?oc=5"
-                }
-              ],
-              "neutral": [
-                {
-                  "title": "‘명절도 아닌데’ 한우 등심가격 16% 올라…미국산도 두자릿수↑ - v.daum.net",
-                  "source": "v.daum.net",
-                  "direction": "neutral",
-                  "quality_score": 65,
-                  "source_level": 3,
-                  "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE5LVm41dzIyd1JteVR2cG5JLWRmZ2ZTRHVEWDd0eG1IUXgwalpTa1R4LTNkRFA2UFRSTThnYUE5TXVsanZUN2k2dDNiOA?oc=5"
-                },
-                {
-                  "title": "한우 경매·가격 어떻게 형성될까? - 한국농촌경제신문",
-                  "source": "한국농촌경제신문",
-                  "direction": "neutral",
-                  "quality_score": 65,
-                  "source_level": 3,
-                  "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1XUzlUNWJtelA0d3cxU0JpRFFMamRtSkVycUFqdXEwaGpBS0JRZHZIbktNdms1SFhZVEVMMF9pWVhlZ0FiREpoRThYcjJ0ZlNjWGROSFdvVS10YU1zVGhkaQ?oc=5"
-                },
-                {
-                  "title": "한우 송아지 가격 600만 원 뚫나… 번식률 저하로 '품귀 현상' 심화 - 팜인사이트",
-                  "source": "팜인사이트",
-                  "direction": "neutral",
-                  "quality_score": 58,
-                  "source_level": 3,
-                  "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE0tc1d6d1ZrUzIzSGRfaF9UX3haUE5uUWVtcFFPQmtWTWRUZTNOT0I3OGl4NGpYZFl2bEdjeVlmRlpBcFdPWmduUGNrN2FrU0t0X0hOdVVURldsalVpcVNTT0UxZ2x4RnZrc2pkNHNB?oc=5"
-                }
-              ]
-            },
-            "memo": "가격 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
-          }
-        ],
+        "should_hold": true,
         "reasons": [
           "상·하방 근거 강충돌"
         ],
         "recommended_status": "판단 유보",
         "recommended_direction": "hold",
-        "adjusted_confidence": 66
+        "adjusted_confidence": 45
       }
     },
     {
       "id": "PORK",
       "name": "돈육",
-      "signal_score": 52,
+      "signal_score": 50,
       "direction": "neutral",
       "status": "보합/혼조",
       "quality_score": 70,
       "confidence_score": 80,
       "coverage_rate": 80,
-      "evidence_count": 36,
-      "official_count": 16,
+      "evidence_count": 40,
+      "official_count": 17,
       "direction_counts": {
-        "up": 31,
+        "up": 35,
         "down": 2,
         "neutral": 3,
         "hold": 0
@@ -334,7 +265,7 @@
       ],
       "score_breakdown": {
         "price": 9,
-        "supply": 20,
+        "supply": 18,
         "disease": 18,
         "policy": 0,
         "news": 5
@@ -369,7 +300,7 @@
               "quality_score": 65
             },
             {
-              "title": "[전광판] '26년 7월 평균 도매가격 6,236원(전월대비 -1.7%, 전년동월대비 -2.0%) - 돼지와사람",
+              "title": "[전광판] '26년 7월 평균 도매가격 6,236원(전월대비 -1.7%, 전년동월대비 -2.0%) - pigpeople.net",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 58
@@ -379,9 +310,9 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 20,
-          "items": 1,
-          "up": 1,
+          "score": 18,
+          "items": 2,
+          "up": 2,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -390,6 +321,12 @@
               "direction": "up",
               "source_level": 5,
               "quality_score": 100
+            },
+            {
+              "title": "2026년 상반기 세계 주요 국가의 돼지고기 수급 동향 및 전망 / 정종현 대표 - 축산정보뉴스",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 51
             }
           ]
         },
@@ -397,8 +334,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 18,
-          "items": 30,
-          "up": 30,
+          "items": 33,
+          "up": 33,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -456,7 +393,7 @@
           ]
         }
       },
-      "reason": "수급/도축 20점 + 질병/방역 18점 + 가격 9점 기반, 상방성 자료가 우세",
+      "reason": "수급/도축 18점 + 질병/방역 18점 + 가격 9점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
@@ -475,18 +412,18 @@
     {
       "id": "POULTRY",
       "name": "계육",
-      "signal_score": 37,
+      "signal_score": 38,
       "direction": "neutral",
       "status": "보합/혼조",
-      "quality_score": 71,
-      "confidence_score": 73,
+      "quality_score": 70,
+      "confidence_score": 72,
       "coverage_rate": 60,
-      "evidence_count": 16,
+      "evidence_count": 17,
       "official_count": 13,
       "direction_counts": {
         "up": 13,
         "down": 1,
-        "neutral": 2,
+        "neutral": 3,
         "hold": 0
       },
       "coverage_types": [
@@ -499,7 +436,7 @@
         "supply": 13,
         "disease": 19,
         "policy": 0,
-        "news": 5
+        "news": 6
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -529,13 +466,13 @@
           "neutral": 0,
           "examples": [
             {
-              "title": "굽네치킨, 가격 동결하고 순살 치킨 중량 조정…계육 수급 불안 여파 - 에너지경제신문",
+              "title": "계육 공급 불안 직격탄…굽네치킨, 중량 800→700ｇ - 매일일보",
               "direction": "up",
               "source_level": 3,
               "quality_score": 51
             },
             {
-              "title": "계육 공급 불안 직격탄…굽네치킨, 중량 800→700ｇ - 매일일보",
+              "title": "굽네치킨, 가격 동결하고 순살 치킨 중량 조정…계육 수급 불안 여파 - 에너지경제신문",
               "direction": "up",
               "source_level": 3,
               "quality_score": 51
@@ -584,11 +521,11 @@
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 5,
-          "items": 3,
+          "score": 6,
+          "items": 4,
           "up": 0,
           "down": 1,
-          "neutral": 2,
+          "neutral": 3,
           "examples": [
             {
               "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - 더스쿠프",
@@ -597,21 +534,21 @@
               "quality_score": 58
             },
             {
-              "title": "가축질병의 경제적 영향 분석 - 한국농촌경제연구원",
+              "title": "\"한국계육협회, 인터넷 홈페이지 오픈\" - 농수축산신문",
               "direction": "neutral",
-              "source_level": 5,
-              "quality_score": 75
+              "source_level": 4,
+              "quality_score": 63
             },
             {
-              "title": "축산농가의 소득안정 방안 - KREI Repository",
-              "direction": "down",
+              "title": "가축질병의 경제적 영향 분석 - 한국농촌경제연구원",
+              "direction": "neutral",
               "source_level": 5,
               "quality_score": 75
             }
           ]
         }
       },
-      "reason": "질병/방역 19점 + 수급/도축 13점 + 뉴스/수요 5점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 수급/도축 13점 + 뉴스/수요 6점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
@@ -624,7 +561,7 @@
         "reasons": [],
         "recommended_status": "보합/혼조",
         "recommended_direction": "neutral",
-        "adjusted_confidence": 73
+        "adjusted_confidence": 72
       }
     },
     {
@@ -736,18 +673,18 @@
     {
       "id": "EGG",
       "name": "계란",
-      "signal_score": 73,
+      "signal_score": 70,
       "direction": "up",
       "status": "상방 가능성",
-      "quality_score": 87,
-      "confidence_score": 87,
+      "quality_score": 85,
+      "confidence_score": 86,
       "coverage_rate": 80,
-      "evidence_count": 31,
-      "official_count": 21,
+      "evidence_count": 32,
+      "official_count": 20,
       "direction_counts": {
-        "up": 27,
-        "down": 1,
-        "neutral": 3,
+        "up": 26,
+        "down": 2,
+        "neutral": 4,
         "hold": 0
       },
       "coverage_types": [
@@ -759,9 +696,9 @@
       "score_breakdown": {
         "price": 20,
         "supply": 25,
-        "disease": 17,
+        "disease": 12,
         "policy": 0,
-        "news": 11
+        "news": 13
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -804,9 +741,9 @@
           "label": "수급/도축",
           "max_score": 25,
           "score": 25,
-          "items": 23,
+          "items": 24,
           "up": 22,
-          "down": 1,
+          "down": 2,
           "neutral": 0,
           "examples": [
             {
@@ -832,24 +769,12 @@
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
-          "score": 17,
-          "items": 3,
-          "up": 3,
+          "score": 12,
+          "items": 1,
+          "up": 1,
           "down": 0,
           "neutral": 0,
           "examples": [
-            {
-              "title": "[뉴스줌인] \"계란이 이래서 비쌌던 거였어?\" - dailypop.kr",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 81
-            },
-            {
-              "title": "정부, 대한산란계협회 설립허가 취소…“가격 경쟁 제한” - dailypop.kr",
-              "direction": "up",
-              "source_level": 5,
-              "quality_score": 100
-            },
             {
               "title": "알림소식 > 보도자료 > 경기 김포 산란계 농장에 대한 예찰 검사에서 H5형 조류인플루엔자 항원 확인 - 농림축산식품부",
               "direction": "up",
@@ -871,17 +796,23 @@
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 11,
-          "items": 2,
-          "up": 1,
+          "score": 13,
+          "items": 4,
+          "up": 2,
           "down": 0,
-          "neutral": 1,
+          "neutral": 2,
           "examples": [
+            {
+              "title": "수박·토마토값 내렸지만 계란·한우 강세…8월 폭염 변수 - 네이트",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 81
+            },
             {
               "title": "정부 계란시장 이해 부족이 혼란 키워 - 축산신문",
               "direction": "up",
               "source_level": 5,
-              "quality_score": 100
+              "quality_score": 95
             },
             {
               "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - 더스쿠프",
@@ -892,7 +823,7 @@
           ]
         }
       },
-      "reason": "수급/도축 25점 + 가격 20점 + 질병/방역 17점 기반, 상방성 자료가 우세",
+      "reason": "수급/도축 25점 + 가격 20점 + 뉴스/수요 13점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
@@ -905,17 +836,17 @@
         "reasons": [],
         "recommended_status": "상방 가능성",
         "recommended_direction": "up",
-        "adjusted_confidence": 87
+        "adjusted_confidence": 86
       }
     },
     {
       "id": "OTHER",
       "name": "기타",
-      "signal_score": 35,
-      "direction": "down",
-      "status": "하방 가능성",
-      "quality_score": 76,
-      "confidence_score": 82,
+      "signal_score": 32,
+      "direction": "hold",
+      "status": "판단 유보",
+      "quality_score": 77,
+      "confidence_score": 65,
       "coverage_rate": 80,
       "evidence_count": 33,
       "official_count": 30,
@@ -934,9 +865,9 @@
       "score_breakdown": {
         "price": 0,
         "supply": 0,
-        "disease": 18,
+        "disease": 19,
         "policy": 4,
-        "news": 13
+        "news": 9
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -969,9 +900,9 @@
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
-          "score": 18,
-          "items": 8,
-          "up": 8,
+          "score": 19,
+          "items": 9,
+          "up": 9,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -1015,9 +946,9 @@
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 13,
-          "items": 24,
-          "up": 2,
+          "score": 9,
+          "items": 23,
+          "up": 1,
           "down": 1,
           "neutral": 21,
           "examples": [
@@ -1042,22 +973,88 @@
           ]
         }
       },
-      "reason": "질병/방역 18점 + 뉴스/수요 13점 + 정책/고시 4점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 뉴스/수요 9점 + 정책/고시 4점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": true,
-        "severity": "medium",
+        "severity": "high",
         "axes": [
           "뉴스/수요"
         ],
-        "memo": "주의 필요 · 충돌축: 뉴스/수요 / 누락근거: 가격, 수급/도축"
+        "memo": "판단 유보 권장 · 충돌축: 뉴스/수요 / 누락근거: 가격, 수급/도축 / 유보사유: 상·하방 근거 강충돌"
       },
       "hold_decision": {
-        "should_hold": false,
-        "reasons": [],
-        "recommended_status": "하방 가능성",
-        "recommended_direction": "down",
-        "adjusted_confidence": 72
+        "should_hold": [
+          {
+            "axis": "news",
+            "label": "뉴스/수요",
+            "items": 23,
+            "has_conflict": true,
+            "severity": "high",
+            "dominant_direction": "up",
+            "weighted_direction": {
+              "up": 4.55,
+              "down": 4.1,
+              "neutral": 77.73
+            },
+            "conflict_ratio": 0.9,
+            "examples": {
+              "up": [
+                {
+                  "title": "알림소식 > 보도자료 > 겨울철 가축전염병 비상대응 체계로 전환,추가 발생 선제적 차단 총력 - 농림축산식품부",
+                  "source": "농림축산식품부",
+                  "direction": "up",
+                  "quality_score": 75,
+                  "source_level": 5,
+                  "url": "https://news.google.com/rss/articles/CBMi9gNBVV95cUxOelo0OWlvVHRPbVlDa0h3dFRaUkZNLU5YRll3Wll5VzdOLXFmXzd4NV94emFJdDVVeG1pRE16b1d5N1ZlbzRvQzFfelRYLS1kcnEyMnBsX3E1ZGp4djhUcnVGaHlhX056RTMxUFRnU2wxblc2OVhHZ01mYnFxUzNVSWREZkQ1NFIxVzRISGU4Y3g0WG50Y1QtQlVGVzdEUnVDeDNwa3lmNnN2Nzg0b0xIbGFUMm12ZktyS1ZlOEljTFVjUGMzMEhWM1NMQkpEMFR1b2w2bTlOYmdSS3g2dHRFdGZVWWFjMmVpbmFXQkV1WDlwaUNpaEdtcmZmY3M3UXpkRHR4SExxSHJPNUxIZlhUVkJ4aTN1TmxEd2EtT1JhR21IeFVzSUJxR2tjNGJ5Yk92ZlF6UDlZZ2U3Q1BMNW10d0tiQm9wX3dCS0dYTEZyaExCTFBDdjU0QnlsNGdoaUNEcFJsNE4yRC0tZEI4YS1mR0Z2cEdsREdhclpRMUJpVkh5OW1uYU1GaG9ablpiUlF2TVYyVGNwenBycnZwWk51VmdFc3NnQXlNZk9FUzFzZ3U2V0R0R1JrNXBmU21MVEg5bG90WmdpSkQ0QTBNZzNYYmFjb25SZTgzQWpaZzQ4a191c1ZZbldXVEcwM0VxeUpsSFlrdk1R?oc=5"
+                }
+              ],
+              "down": [
+                {
+                  "title": "양돈 농가 소독설비 설치 부담 완화 제도화 - 농림축산식품부",
+                  "source": "농림축산식품부",
+                  "direction": "down",
+                  "quality_score": 75,
+                  "source_level": 5,
+                  "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE01Z2lweHdUU29QaGZ0bEFGZ2Q2bGJscmQ3NW5ielZvdW9nNS1hb2tlSXZpVEhfUi04WHAzUXFUWXdmVDM3M05GRnIxb0VVX0Y5Y0drNXBnenhWVWNkSWd5N0JwS0xBdmM?oc=5"
+                }
+              ],
+              "neutral": [
+                {
+                  "title": "축산물품질평가원, ‘축산유통정보 다봄’ 기능 개선 논의 - 축산정보뉴스",
+                  "source": "축산정보뉴스",
+                  "direction": "neutral",
+                  "quality_score": 95,
+                  "source_level": 5,
+                  "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5ORUxicHVQU2RPMkU2ZjgzYnM0XzNyaXE2ZV9GV2VtZUx1b2xSejFGRkNLaFdRS19EXzVlRHRLamU5eFNiTUIxMzZiNktlVnVOQnN3YUxFeTdHUnA4RGR3?oc=5"
+                },
+                {
+                  "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
+                  "source": "농업인신문",
+                  "direction": "neutral",
+                  "quality_score": 82,
+                  "source_level": 5,
+                  "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9LREJ2QWpsLU4xVnVxdWRCamFCcjZnZUMtNVAybHFXQWpaOW44Q2hMaUJDY3lYUU9vN0NIYWtlb1MzVnBxRXI3OTJzdng3dWEyZEdudngwVmsyUTBiQUpXVmJzZlRXelc4WkY5emhn?oc=5"
+                },
+                {
+                  "title": "문서뷰어 - 농림축산식품부",
+                  "source": "농림축산식품부",
+                  "direction": "neutral",
+                  "quality_score": 95,
+                  "source_level": 5,
+                  "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOSmdhRjhmbDFBWlphSGFteWxGWXRSRHFRWkRObmhldEtTWDN5ZHhQWDZtNTg3S3R6QXV5X09xUkFDTUkxX1ZRLXEzdERHWlhVTmU3bnVzLTVkWDQ1Wm15Ri1uZl9ZZFZDWUZQWlNuSXdSbzJJbXdfU2VHWWlmR3JjQThhenJwZXJ3dHR6cjd2dXhiTUUzWVlxZnlOWkJUaHYxYjFXSmFFQk1vT0ZsYWd6VmdIM2twUQ?oc=5"
+                }
+              ]
+            },
+            "memo": "뉴스/수요 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
+          }
+        ],
+        "reasons": [
+          "상·하방 근거 강충돌"
+        ],
+        "recommended_status": "판단 유보",
+        "recommended_direction": "hold",
+        "adjusted_confidence": 65
       }
     }
   ],
