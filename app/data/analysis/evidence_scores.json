@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-06T06:48:52Z",
+  "updated_at": "2026-08-06T10:01:45Z",
   "policy": "phase2_evidence_score_v3_sanitized",
   "score_axes": {
     "price": {
@@ -46,13 +46,13 @@
       "signal_score": 63,
       "direction": "hold",
       "status": "판단 유보",
-      "quality_score": 75,
-      "confidence_score": 53,
+      "quality_score": 74,
+      "confidence_score": 62,
       "coverage_rate": 100,
-      "evidence_count": 32,
+      "evidence_count": 31,
       "official_count": 4,
       "direction_counts": {
-        "up": 12,
+        "up": 11,
         "down": 3,
         "neutral": 17,
         "hold": 0
@@ -83,20 +83,14 @@
           "label": "가격",
           "max_score": 30,
           "score": 11,
-          "items": 6,
-          "up": 1,
+          "items": 5,
+          "up": 0,
           "down": 2,
           "neutral": 3,
           "examples": [
             {
               "title": "“한우값 1마리당 53만원 이상 하락”…‘남미산 쇠고기 수입’ 현실화 우려 4년 전 나왔다 - 농민신문",
               "direction": "down",
-              "source_level": 3,
-              "quality_score": 81
-            },
-            {
-              "title": "한우와 수입육 가격 분석...\"동반 상승\" 속 좁혀지는 가격 격차 - 더바이어",
-              "direction": "up",
               "source_level": 3,
               "quality_score": 76
             },
@@ -105,6 +99,12 @@
               "direction": "down",
               "source_level": 2,
               "quality_score": 59
+            },
+            {
+              "title": "‘명절도 아닌데’ 한우 등심가격 16% 올라…미국산도 두자릿수↑ - v.daum.net",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 65
             }
           ]
         },
@@ -164,10 +164,10 @@
           "label": "정책/고시",
           "max_score": 10,
           "score": 6,
-          "items": 3,
+          "items": 4,
           "up": 0,
           "down": 0,
-          "neutral": 3,
+          "neutral": 4,
           "examples": [
             {
               "title": "한우협회 “브라질산 쇠고기 수입 추진 중단…실효성 있는 보호대책 마련해야” - 인더스트리뉴스",
@@ -193,10 +193,10 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 9,
-          "items": 13,
+          "items": 12,
           "up": 1,
           "down": 1,
-          "neutral": 11,
+          "neutral": 10,
           "examples": [
             {
               "title": "이천 대월면에 한우 직판형 정육식당 '옥구촌' 개장 - 산경일보",
@@ -225,19 +225,82 @@
         "has_conflict": true,
         "severity": "high",
         "axes": [
-          "가격",
           "뉴스/수요"
         ],
-        "memo": "판단 유보 권장 · 충돌축: 가격, 뉴스/수요 / 유보사유: 상·하방 근거 강충돌"
+        "memo": "판단 유보 권장 · 충돌축: 뉴스/수요 / 유보사유: 상·하방 근거 강충돌"
       },
       "hold_decision": {
-        "should_hold": true,
+        "should_hold": [
+          {
+            "axis": "news",
+            "label": "뉴스/수요",
+            "items": 12,
+            "has_conflict": true,
+            "severity": "high",
+            "dominant_direction": "up",
+            "weighted_direction": {
+              "up": 4.17,
+              "down": 4.1,
+              "neutral": 33.26
+            },
+            "conflict_ratio": 0.98,
+            "examples": {
+              "up": [
+                {
+                  "title": "한우농가, 1년 새 약 3천700호 감소 - 축산신문",
+                  "source": "축산신문",
+                  "direction": "up",
+                  "quality_score": 81,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9BTFI2WGNTdFFIMVNOaWFZYWRJdjVpM1F0SXo3NWZKSXk0eFBZTkZBR1BxXzlRVjc2QTFDWlQyMVQ4VHVuY2RsMW8zblg3dlBwTm9JblJJZlZPMTBzQlFZQTlvWkdCUEdf?oc=5"
+                }
+              ],
+              "down": [
+                {
+                  "title": "축산농가의 소득안정 방안 - KREI Repository",
+                  "source": "KREI Repository",
+                  "direction": "down",
+                  "quality_score": 75,
+                  "source_level": 5,
+                  "url": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxQUGhmcHVYcy10ckNxMW9XdTljNjA0SWhzNW1VMGUxeHdyLTl0cmZTU0JBWUFHSWZqOUlOLXd0bC1vR3k4SjJoSjMzdXFndkd2V2t2U25oWWM2aFBweFBnODhxWnl6VjJ6bkZnUVZub2hHNDd1WHgwSkhTR1pHeTlqRnBuT2dxUm1JczZMODIxelU0cG5WUjBHMkM0ZThIYk9OQzdJYmh5TmNNZ2owX2NOeFozTEFDN2hBSkRFSG9BTkJDRjJvQWpfNk55NV9KN0ppcV9GbFdwWnR1blRSZXU4a1lSaXdqZDE3SnNBWnJ5QU9PVVV3Y1hpZEhR?oc=5"
+                }
+              ],
+              "neutral": [
+                {
+                  "title": "이천 대월면에 한우 직판형 정육식당 '옥구촌' 개장 - 산경일보",
+                  "source": "산경일보",
+                  "direction": "neutral",
+                  "quality_score": 81,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFAtR2FoNzlBZjJTcEtRYnpQRXBpeF9lYjlNQjBkS3dQVUM3cU1vRkhHRVhXU0JYc01Na2lhU3Z0MXN5R0lYS3pCdm1sWGtCYXY4eV9Ec1RBMlo4NXBUZ2hVYWNaOTRkYWJCVm1oUFNNZXA?oc=5"
+                },
+                {
+                  "title": "대구·경북 한우능력평가대회 첫 개최…최고 한우 2723만원 낙찰 - 푸드투데이",
+                  "source": "푸드투데이",
+                  "direction": "neutral",
+                  "quality_score": 81,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE51T1lFTXptRnl1Z1RvSGRvSVhObnJsVUdMUTBzUF9PNDBKc1o0SnRoVXkwVU5qSWRtQzNxSWk2MTZEeGNQcUhkbF91YWZPdGdpOEx4NzhIRmg0bUJ5WUV5bUxNdGl2Zw?oc=5"
+                },
+                {
+                  "title": "브라질 쇠고기도 들어오나…한우업계 “일방적 시장개방” 반발 - 농민신문",
+                  "source": "농민신문",
+                  "direction": "neutral",
+                  "quality_score": 71,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1NYXMtNEFQSGF5MDk5Vkt1WW9DeE1wNDhZNXd1WEdLZnRyOGt1Zk9NNGVrUm9HbWc0QXdUYW43ODJBVm1IVmNxNWVLV3czRXI0MHl3Y2RzYXluUQ?oc=5"
+                }
+              ]
+            },
+            "memo": "뉴스/수요 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
+          }
+        ],
         "reasons": [
           "상·하방 근거 강충돌"
         ],
         "recommended_status": "판단 유보",
         "recommended_direction": "hold",
-        "adjusted_confidence": 53
+        "adjusted_confidence": 62
       }
     },
     {
@@ -246,13 +309,13 @@
       "signal_score": 44,
       "direction": "neutral",
       "status": "보합/혼조",
-      "quality_score": 69,
+      "quality_score": 68,
       "confidence_score": 79,
       "coverage_rate": 80,
-      "evidence_count": 35,
-      "official_count": 15,
+      "evidence_count": 33,
+      "official_count": 13,
       "direction_counts": {
-        "up": 30,
+        "up": 28,
         "down": 2,
         "neutral": 3,
         "hold": 0
@@ -291,7 +354,7 @@
               "title": "[전광판] '26년 32주차 돼지 평균 도매가격 6,352원(전주 대비 3.4%, 전년 대비 -4.2%) - 돼지와사람",
               "direction": "neutral",
               "source_level": 3,
-              "quality_score": 81
+              "quality_score": 76
             },
             {
               "title": "한우 광고하고 삼겹살 할인 행사하는 돈…누가 내나 봤더니 - 동아일보",
@@ -317,7 +380,7 @@
           "neutral": 0,
           "examples": [
             {
-              "title": "2026년 상반기 세계 주요 국가의 돼지고기 수급 동향 및 전망 / 정종현 대표 - 축산정보뉴스",
+              "title": "2026년 상반기 세계 주요 국가의 돼지고기 수급 동향 및 전망 / 정종현 대표 - liveinfo.kr",
               "direction": "up",
               "source_level": 3,
               "quality_score": 51
@@ -328,13 +391,13 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 18,
-          "items": 29,
-          "up": 29,
+          "items": 27,
+          "up": 27,
           "down": 0,
           "neutral": 0,
           "examples": [
             {
-              "title": "ASF 방역대책추진현황 260805 18시기준 - gnews.gg.go.kr",
+              "title": "ASF 방역대책추진현황 260805 18시기준 - 경기도뉴스포털",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
@@ -409,13 +472,13 @@
       "signal_score": 42,
       "direction": "neutral",
       "status": "보합/혼조",
-      "quality_score": 70,
-      "confidence_score": 72,
+      "quality_score": 71,
+      "confidence_score": 73,
       "coverage_rate": 60,
-      "evidence_count": 15,
-      "official_count": 10,
+      "evidence_count": 16,
+      "official_count": 11,
       "direction_counts": {
-        "up": 10,
+        "up": 11,
         "down": 2,
         "neutral": 3,
         "hold": 0
@@ -483,11 +546,17 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 8,
-          "up": 8,
+          "items": 9,
+          "up": 9,
           "down": 0,
           "neutral": 0,
           "examples": [
+            {
+              "title": "알림소식 > 보도자료 > 6월 1일자로 고병원성 조류인플루엔자(AI) 평시 방역체계로 전환하여 상시 방역활동 추진 - 농림축산식품부",
+              "direction": "up",
+              "source_level": 5,
+              "quality_score": 75
+            },
             {
               "title": "알림소식 > 보도자료 > 고병원성 조류인플루엔자 발생농장에서 다수 방역 미흡사항 확인, 엄정 조치 및 관리 강화 - 농림축산식품부",
               "direction": "up",
@@ -496,12 +565,6 @@
             },
             {
               "title": "광주광역시 소규모 기타 가금(기러기) 농장에 대한 예찰 과정에서 H5형 조류인플루엔자 항원 확인 - 농림축산식품부",
-              "direction": "up",
-              "source_level": 5,
-              "quality_score": 75
-            },
-            {
-              "title": "알림소식 > 보도자료 > 농식품부, 포유류 조류인플루엔자(AI) 발생 대비 선제적 가상방역훈련(CPX) 실시 - 농림축산식품부",
               "direction": "up",
               "source_level": 5,
               "quality_score": 75
@@ -563,7 +626,7 @@
         "reasons": [],
         "recommended_status": "보합/혼조",
         "recommended_direction": "neutral",
-        "adjusted_confidence": 62
+        "adjusted_confidence": 63
       }
     },
     {
@@ -678,8 +741,8 @@
       "signal_score": 74,
       "direction": "up",
       "status": "상방 가능성",
-      "quality_score": 82,
-      "confidence_score": 92,
+      "quality_score": 81,
+      "confidence_score": 91,
       "coverage_rate": 100,
       "evidence_count": 30,
       "official_count": 13,
@@ -750,6 +813,12 @@
           "neutral": 0,
           "examples": [
             {
+              "title": "농식품부, 산란계협회 비영리법인 설립허가 취소 - 농축유통신문",
+              "direction": "up",
+              "source_level": 5,
+              "quality_score": 100
+            },
+            {
               "title": "[계란 난맥상]②동물복지 vs 가격안정…산란계 사육면적 확대 '규제의 역설' - 아시아경제",
               "direction": "down",
               "source_level": 3,
@@ -760,12 +829,6 @@
               "direction": "down",
               "source_level": 3,
               "quality_score": 81
-            },
-            {
-              "title": "대한산란계협회, 비영리법인 설립허가 취소됐다…“계란 가격 경쟁 제한·공익 훼손” - 한국영농신문",
-              "direction": "up",
-              "source_level": 4,
-              "quality_score": 83
             }
           ]
         },
@@ -839,28 +902,27 @@
         "reasons": [],
         "recommended_status": "상방 가능성",
         "recommended_direction": "up",
-        "adjusted_confidence": 92
+        "adjusted_confidence": 91
       }
     },
     {
       "id": "OTHER",
       "name": "기타",
-      "signal_score": 47,
+      "signal_score": 31,
       "direction": "hold",
       "status": "판단 유보",
       "quality_score": 76,
-      "confidence_score": 71,
-      "coverage_rate": 100,
-      "evidence_count": 34,
-      "official_count": 32,
+      "confidence_score": 64,
+      "coverage_rate": 80,
+      "evidence_count": 32,
+      "official_count": 29,
       "direction_counts": {
         "up": 10,
         "down": 1,
-        "neutral": 23,
+        "neutral": 21,
         "hold": 0
       },
       "coverage_types": [
-        "수급/도축",
         "수요/행사",
         "일반",
         "정책/고시",
@@ -868,7 +930,7 @@
       ],
       "score_breakdown": {
         "price": 0,
-        "supply": 16,
+        "supply": 0,
         "disease": 18,
         "policy": 4,
         "news": 9
@@ -894,26 +956,19 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 16,
-          "items": 1,
-          "up": 1,
+          "score": 0,
+          "items": 0,
+          "up": 0,
           "down": 0,
           "neutral": 0,
-          "examples": [
-            {
-              "title": "농림축산식품부, 5월 수급 동향 점검…과일 출하 감소에도 공급 차질 없을 전망 - 국제일보",
-              "direction": "up",
-              "source_level": 5,
-              "quality_score": 75
-            }
-          ]
+          "examples": []
         },
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
           "score": 18,
-          "items": 8,
-          "up": 8,
+          "items": 9,
+          "up": 9,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -924,16 +979,16 @@
               "quality_score": 65
             },
             {
-              "title": "자주 쓰는 메뉴 AI가 알아서 배치…‘축산유통정보 다봄’ 고도화 - 데일리안",
+              "title": "자주 쓰는 메뉴 AI가 알아서 배치…'축산유통정보 다봄' 고도화 - news.nate.com",
               "direction": "up",
               "source_level": 3,
               "quality_score": 65
             },
             {
-              "title": "농식품부, 경북 예천 구제역 6건 추가 확인에 방역 점검 - 연합뉴스",
+              "title": "자주 쓰는 메뉴 AI가 알아서 배치…‘축산유통정보 다봄’ 고도화 - 데일리안",
               "direction": "up",
-              "source_level": 5,
-              "quality_score": 82
+              "source_level": 3,
+              "quality_score": 65
             }
           ]
         },
@@ -958,17 +1013,11 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 9,
-          "items": 24,
+          "items": 22,
           "up": 1,
           "down": 1,
-          "neutral": 22,
+          "neutral": 20,
           "examples": [
-            {
-              "title": "축산물품질평가원, ‘축산유통정보 다봄’ 기능 개선 논의 - 축산정보뉴스",
-              "direction": "neutral",
-              "source_level": 5,
-              "quality_score": 89
-            },
             {
               "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
               "direction": "neutral",
@@ -980,11 +1029,17 @@
               "direction": "neutral",
               "source_level": 5,
               "quality_score": 95
+            },
+            {
+              "title": "농림축산식품부 - - 농림축산식품부",
+              "direction": "neutral",
+              "source_level": 5,
+              "quality_score": 82
             }
           ]
         }
       },
-      "reason": "질병/방역 18점 + 수급/도축 16점 + 뉴스/수요 9점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 18점 + 뉴스/수요 9점 + 정책/고시 4점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": true,
@@ -992,21 +1047,21 @@
         "axes": [
           "뉴스/수요"
         ],
-        "memo": "판단 유보 권장 · 충돌축: 뉴스/수요 / 누락근거: 가격 / 유보사유: 상·하방 근거 강충돌"
+        "memo": "판단 유보 권장 · 충돌축: 뉴스/수요 / 누락근거: 가격, 수급/도축 / 유보사유: 상·하방 근거 강충돌"
       },
       "hold_decision": {
         "should_hold": [
           {
             "axis": "news",
             "label": "뉴스/수요",
-            "items": 24,
+            "items": 22,
             "has_conflict": true,
             "severity": "high",
             "dominant_direction": "up",
             "weighted_direction": {
               "up": 4.55,
               "down": 4.1,
-              "neutral": 81.26
+              "neutral": 73.68
             },
             "conflict_ratio": 0.9,
             "examples": {
@@ -1032,14 +1087,6 @@
               ],
               "neutral": [
                 {
-                  "title": "축산물품질평가원, ‘축산유통정보 다봄’ 기능 개선 논의 - 축산정보뉴스",
-                  "source": "축산정보뉴스",
-                  "direction": "neutral",
-                  "quality_score": 89,
-                  "source_level": 5,
-                  "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5ORUxicHVQU2RPMkU2ZjgzYnM0XzNyaXE2ZV9GV2VtZUx1b2xSejFGRkNLaFdRS19EXzVlRHRLamU5eFNiTUIxMzZiNktlVnVOQnN3YUxFeTdHUnA4RGR3?oc=5"
-                },
-                {
                   "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
                   "source": "농업인신문",
                   "direction": "neutral",
@@ -1054,6 +1101,14 @@
                   "quality_score": 95,
                   "source_level": 5,
                   "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOSmdhRjhmbDFBWlphSGFteWxGWXRSRHFRWkRObmhldEtTWDN5ZHhQWDZtNTg3S3R6QXV5X09xUkFDTUkxX1ZRLXEzdERHWlhVTmU3bnVzLTVkWDQ1Wm15Ri1uZl9ZZFZDWUZQWlNuSXdSbzJJbXdfU2VHWWlmR3JjQThhenJwZXJ3dHR6cjd2dXhiTUUzWVlxZnlOWkJUaHYxYjFXSmFFQk1vT0ZsYWd6VmdIM2twUQ?oc=5"
+                },
+                {
+                  "title": "농림축산식품부 - - 농림축산식품부",
+                  "source": "농림축산식품부",
+                  "direction": "neutral",
+                  "quality_score": 82,
+                  "source_level": 5,
+                  "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBwbE9uQVJuenNWMm1vWF8xNnY1WjZQYTJlelZCcXFyZXhoMVlCblAyUnZPLTRybW1hVVgxSGxTcEVHVVM4ZHhYc0wwOGxjaW1DSlNvbkpndWQ1UWNXZHdFQjllQldtbXZNN1hfM1BvbGtZNzRyUjVXTlo2c0pYYW8?oc=5"
                 }
               ]
             },
@@ -1065,7 +1120,7 @@
         ],
         "recommended_status": "판단 유보",
         "recommended_direction": "hold",
-        "adjusted_confidence": 71
+        "adjusted_confidence": 64
       }
     }
   ],
