@@ -1,20 +1,20 @@
 {
-  "updated_at": "2026-08-07T13:42:13Z",
+  "updated_at": "2026-08-07T15:11:58Z",
   "notice": "Phase 2 Display Layer 초안입니다. 기존 market_dashboard.json은 별도로 유지됩니다.",
   "species": [
     {
       "id": "BEEF",
       "name": "한우",
-      "signal_score": 46,
-      "direction": "neutral",
-      "status": "보합/혼조",
+      "signal_score": 63,
+      "direction": "up",
+      "status": "상방 가능성",
       "quality_score": 74,
-      "confidence_score": 74,
+      "confidence_score": 83,
       "coverage_rate": 100,
-      "evidence_count": 30,
-      "official_count": 2,
+      "evidence_count": 33,
+      "official_count": 5,
       "direction_counts": {
-        "up": 11,
+        "up": 14,
         "down": 3,
         "neutral": 16,
         "hold": 0
@@ -24,12 +24,13 @@
         "수급/도축",
         "수요/행사",
         "일반",
-        "정책/고시"
+        "정책/고시",
+        "질병/방역"
       ],
       "score_breakdown": {
         "price": 11,
         "supply": 22,
-        "disease": 0,
+        "disease": 17,
         "policy": 4,
         "news": 9
       },
@@ -45,10 +46,10 @@
           "label": "가격",
           "max_score": 30,
           "score": 11,
-          "items": 4,
+          "items": 5,
           "up": 0,
           "down": 2,
-          "neutral": 2,
+          "neutral": 3,
           "examples": [
             {
               "title": "“한우값 1마리당 53만원 이상 하락”…‘남미산 쇠고기 수입’ 현실화 우려 4년 전 나왔다 - 농민신문",
@@ -63,7 +64,7 @@
               "quality_score": 59
             },
             {
-              "title": "한우 경매·가격 어떻게 형성될까? - 한국농촌경제신문",
+              "title": "‘명절도 아닌데’ 한우 등심가격 16% 올라…미국산도 두자릿수↑ - v.daum.net",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 65
@@ -102,12 +103,31 @@
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
-          "score": 0,
-          "items": 0,
-          "up": 0,
+          "score": 17,
+          "items": 3,
+          "up": 3,
           "down": 0,
           "neutral": 0,
-          "examples": []
+          "examples": [
+            {
+              "title": "알림소식 > 보도자료 > 전북 순창 한우농장 럼피스킨 발생 - 농림축산식품부",
+              "direction": "up",
+              "source_level": 5,
+              "quality_score": 82
+            },
+            {
+              "title": "축산농장 위생안전관리 강화 방안 - KREI Repository",
+              "direction": "up",
+              "source_level": 5,
+              "quality_score": 75
+            },
+            {
+              "title": "P144 축산방역체계개선방안-0624(OK).hwp - KREI Repository",
+              "direction": "up",
+              "source_level": 5,
+              "quality_score": 75
+            }
+          ]
         },
         "policy": {
           "label": "정책/고시",
@@ -130,10 +150,10 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 9,
-          "items": 15,
+          "items": 14,
           "up": 1,
           "down": 1,
-          "neutral": 13,
+          "neutral": 12,
           "examples": [
             {
               "title": "제주 한우, 싱가포르 수출길 확대 - 농축유통신문",
@@ -156,24 +176,24 @@
           ]
         }
       },
-      "reason": "수급/도축 22점 + 가격 11점 + 뉴스/수요 9점 기반, 상방성 자료가 우세",
+      "reason": "수급/도축 22점 + 질병/방역 17점 + 가격 11점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
       "id": "PORK",
       "name": "돈육",
-      "signal_score": 43,
+      "signal_score": 44,
       "direction": "neutral",
       "status": "보합/혼조",
       "quality_score": 67,
       "confidence_score": 78,
       "coverage_rate": 80,
-      "evidence_count": 32,
-      "official_count": 12,
+      "evidence_count": 37,
+      "official_count": 15,
       "direction_counts": {
-        "up": 27,
+        "up": 31,
         "down": 2,
-        "neutral": 3,
+        "neutral": 4,
         "hold": 0
       },
       "coverage_types": [
@@ -183,7 +203,7 @@
         "질병/방역"
       ],
       "score_breakdown": {
-        "price": 9,
+        "price": 10,
         "supply": 11,
         "disease": 18,
         "policy": 0,
@@ -200,11 +220,11 @@
         "price": {
           "label": "가격",
           "max_score": 30,
-          "score": 9,
-          "items": 2,
+          "score": 10,
+          "items": 3,
           "up": 0,
           "down": 1,
-          "neutral": 1,
+          "neutral": 2,
           "examples": [
             {
               "title": "[전광판] '26년 32주차 돼지 평균 도매가격 6,352원(전주 대비 3.4%, 전년 대비 -4.2%) - 돼지와사람",
@@ -217,6 +237,12 @@
               "direction": "down",
               "source_level": 2,
               "quality_score": 59
+            },
+            {
+              "title": "‘명절도 아닌데’ 한우 등심가격 16% 올라…미국산도 두자릿수↑ - v.daum.net",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 65
             }
           ]
         },
@@ -241,13 +267,13 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 18,
-          "items": 26,
-          "up": 26,
+          "items": 30,
+          "up": 30,
           "down": 0,
           "neutral": 0,
           "examples": [
             {
-              "title": "ASF 방역대책추진현황 260805 18시기준 - 경기도뉴스포털",
+              "title": "ASF 방역대책추진현황 260805 18시기준 - gnews.gg.go.kr",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
@@ -306,24 +332,24 @@
           ]
         }
       },
-      "reason": "질병/방역 18점 + 수급/도축 11점 + 가격 9점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 18점 + 수급/도축 11점 + 가격 10점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
       "id": "POULTRY",
       "name": "계육",
-      "signal_score": 42,
+      "signal_score": 41,
       "direction": "neutral",
       "status": "보합/혼조",
-      "quality_score": 70,
-      "confidence_score": 72,
+      "quality_score": 71,
+      "confidence_score": 73,
       "coverage_rate": 60,
-      "evidence_count": 15,
-      "official_count": 10,
+      "evidence_count": 16,
+      "official_count": 12,
       "direction_counts": {
-        "up": 10,
+        "up": 12,
         "down": 2,
-        "neutral": 3,
+        "neutral": 2,
         "hold": 0
       },
       "coverage_types": [
@@ -336,7 +362,7 @@
         "supply": 17,
         "disease": 19,
         "policy": 0,
-        "news": 6
+        "news": 5
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -372,7 +398,7 @@
               "quality_score": 76
             },
             {
-              "title": "굽네치킨, 가격 동결하고 순살 치킨 중량 조정…계육 수급 불안 여파 - ekn.kr",
+              "title": "굽네치킨, 가격 동결하고 순살 치킨 중량 조정…계육 수급 불안 여파 - 에너지경제신문",
               "direction": "up",
               "source_level": 3,
               "quality_score": 51
@@ -389,25 +415,25 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 8,
-          "up": 8,
+          "items": 10,
+          "up": 10,
           "down": 0,
           "neutral": 0,
           "examples": [
             {
-              "title": "알림소식 > 보도자료 > 6월 1일자로 고병원성 조류인플루엔자(AI) 평시 방역체계로 전환하여 상시 방역활동 추진 - mafra.go.kr",
+              "title": "알림소식 > 보도자료 > 6월 1일자로 고병원성 조류인플루엔자(AI) 평시 방역체계로 전환하여 상시 방역활동 추진 - 농림축산식품부",
               "direction": "up",
               "source_level": 5,
               "quality_score": 75
             },
             {
-              "title": "알림소식 > 보도자료 > 고병원성 조류인플루엔자 발생농장에서 다수 방역 미흡사항 확인, 엄정 조치 및 관리 강화 - mafra.go.kr",
+              "title": "알림소식 > 보도자료 > 고병원성 조류인플루엔자 발생농장에서 다수 방역 미흡사항 확인, 엄정 조치 및 관리 강화 - 농림축산식품부",
               "direction": "up",
               "source_level": 5,
               "quality_score": 75
             },
             {
-              "title": "광주광역시 소규모 기타 가금(기러기) 농장에 대한 예찰 과정에서 H5형 조류인플루엔자 항원 확인 - mafra.go.kr",
+              "title": "광주광역시 소규모 기타 가금(기러기) 농장에 대한 예찰 과정에서 H5형 조류인플루엔자 항원 확인 - 농림축산식품부",
               "direction": "up",
               "source_level": 5,
               "quality_score": 75
@@ -427,11 +453,11 @@
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 6,
-          "items": 4,
+          "score": 5,
+          "items": 3,
           "up": 0,
           "down": 1,
-          "neutral": 3,
+          "neutral": 2,
           "examples": [
             {
               "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - 더스쿠프",
@@ -440,21 +466,21 @@
               "quality_score": 58
             },
             {
-              "title": "\"한국계육협회, 인터넷 홈페이지 오픈\" - 농수축산신문",
-              "direction": "neutral",
-              "source_level": 4,
-              "quality_score": 63
-            },
-            {
               "title": "가축질병의 경제적 영향 분석 - 한국농촌경제연구원",
               "direction": "neutral",
+              "source_level": 5,
+              "quality_score": 75
+            },
+            {
+              "title": "축산농가의 소득안정 방안 - KREI Repository",
+              "direction": "down",
               "source_level": 5,
               "quality_score": 75
             }
           ]
         }
       },
-      "reason": "질병/방역 19점 + 수급/도축 17점 + 뉴스/수요 6점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 수급/도축 17점 + 뉴스/수요 5점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
@@ -651,7 +677,7 @@
           "neutral": 0,
           "examples": [
             {
-              "title": "알림소식 > 보도자료 > 경기 김포 산란계 농장에 대한 예찰 검사에서 H5형 조류인플루엔자 항원 확인 - mafra.go.kr",
+              "title": "알림소식 > 보도자료 > 경기 김포 산란계 농장에 대한 예찰 검사에서 H5형 조류인플루엔자 항원 확인 - 농림축산식품부",
               "direction": "up",
               "source_level": 5,
               "quality_score": 75
@@ -691,7 +717,7 @@
           "neutral": 4,
           "examples": [
             {
-              "title": "[영상] 이젠 남아돈다고? 없어서 비싸다던 계란값 비밀 - kmib.co.kr",
+              "title": "[영상] 이젠 남아돈다고? 없어서 비싸다던 계란값 비밀 - 국민일보",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 76
@@ -717,30 +743,32 @@
     {
       "id": "OTHER",
       "name": "기타",
-      "signal_score": 27,
-      "direction": "down",
-      "status": "하방 가능성",
+      "signal_score": 48,
+      "direction": "neutral",
+      "status": "보합/혼조",
       "quality_score": 76,
-      "confidence_score": 75,
-      "coverage_rate": 60,
-      "evidence_count": 12,
-      "official_count": 10,
+      "confidence_score": 89,
+      "coverage_rate": 100,
+      "evidence_count": 30,
+      "official_count": 28,
       "direction_counts": {
-        "up": 4,
-        "down": 0,
-        "neutral": 8,
+        "up": 9,
+        "down": 1,
+        "neutral": 20,
         "hold": 0
       },
       "coverage_types": [
+        "수급/도축",
         "수요/행사",
         "일반",
+        "정책/고시",
         "질병/방역"
       ],
       "score_breakdown": {
         "price": 0,
-        "supply": 0,
-        "disease": 18,
-        "policy": 0,
+        "supply": 16,
+        "disease": 19,
+        "policy": 4,
         "news": 9
       },
       "score_breakdown_labels": {
@@ -764,19 +792,26 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 0,
-          "items": 0,
-          "up": 0,
+          "score": 16,
+          "items": 1,
+          "up": 1,
           "down": 0,
           "neutral": 0,
-          "examples": []
+          "examples": [
+            {
+              "title": "농림축산식품부, 5월 수급 동향 점검…과일 출하 감소에도 공급 차질 없을 전망 - 국제일보",
+              "direction": "up",
+              "source_level": 5,
+              "quality_score": 75
+            }
+          ]
         },
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
-          "score": 18,
-          "items": 4,
-          "up": 4,
+          "score": 19,
+          "items": 7,
+          "up": 7,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -793,7 +828,7 @@
               "quality_score": 65
             },
             {
-              "title": "식량정책실장, 구제역 방역 최일선 경북도 방역 추진상황 점검 - mafra.go.kr",
+              "title": "식량정책실장, 구제역 방역 최일선 경북도 방역 추진상황 점검 - 농림축산식품부",
               "direction": "up",
               "source_level": 5,
               "quality_score": 82
@@ -803,21 +838,28 @@
         "policy": {
           "label": "정책/고시",
           "max_score": 10,
-          "score": 0,
-          "items": 0,
+          "score": 4,
+          "items": 1,
           "up": 0,
           "down": 0,
-          "neutral": 0,
-          "examples": []
+          "neutral": 1,
+          "examples": [
+            {
+              "title": "알림소식 > 보도자료 > 4월 럼피스킨 백신접종 시작으로 재발 방지 대책 본격 추진 - 농림축산식품부",
+              "direction": "neutral",
+              "source_level": 5,
+              "quality_score": 75
+            }
+          ]
         },
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 9,
-          "items": 8,
-          "up": 0,
-          "down": 0,
-          "neutral": 8,
+          "items": 21,
+          "up": 1,
+          "down": 1,
+          "neutral": 19,
           "examples": [
             {
               "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
@@ -826,21 +868,21 @@
               "quality_score": 82
             },
             {
-              "title": "농림축산식품부 - - mafra.go.kr",
+              "title": "문서뷰어 - 농림축산식품부",
+              "direction": "neutral",
+              "source_level": 5,
+              "quality_score": 89
+            },
+            {
+              "title": "농림축산식품부 - - 농림축산식품부",
               "direction": "neutral",
               "source_level": 5,
               "quality_score": 82
-            },
-            {
-              "title": "농림축산식품부 설명 - mafra.go.kr",
-              "direction": "neutral",
-              "source_level": 5,
-              "quality_score": 75
             }
           ]
         }
       },
-      "reason": "질병/방역 18점 + 뉴스/수요 9점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 수급/도축 16점 + 뉴스/수요 9점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     }
   ]
