@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-07T20:03:13Z",
+  "updated_at": "2026-08-07T21:02:37Z",
   "policy": "phase2_cross_market_matrix_v1",
   "notice": "축종 간 대체수요·가금 질병·공통 변수 전이 가능성을 Evidence Score와 Conflict 결과로 가중한 검수용 매트릭스입니다.",
   "items": [
@@ -105,17 +105,17 @@
       "kind": "avian_risk",
       "effect": "판단유보 전이",
       "severity": "hold",
-      "strength": 0.0,
+      "strength": 0.012,
       "base_strength": 0.35,
       "source_direction": "hold",
       "source_status": "판단 유보",
-      "source_signal_score": 0,
-      "source_confidence": 0,
+      "source_signal_score": 14,
+      "source_confidence": 43,
       "target_status": "판단 유보",
       "shared_axes": [
         "질병/방역"
       ],
-      "conflict_note": "판단 유보 권장 · 누락근거: 가격, 수급/도축, 질병/방역, 정책/고시, 뉴스/수요 / 유보사유: 근거자료 없음, 커버리지 부족, 신뢰도 부족, 공식자료 부족, 주요 근거축 다수 누락",
+      "conflict_note": "판단 유보 권장 · 누락근거: 가격, 수급/도축, 정책/고시, 뉴스/수요 / 유보사유: 커버리지 부족, 공식자료 부족, 주요 근거축 다수 누락",
       "memo": "오리 판단 유보 신호가 계육에 전이 가능 / 오리·계육은 가금 질병 리스크를 공유 / 공통 근거축: 질병/방역"
     },
     {
@@ -126,7 +126,7 @@
       "kind": "avian_risk",
       "effect": "판단유보 전이",
       "severity": "hold",
-      "strength": 0.03,
+      "strength": 0.033,
       "base_strength": 0.3,
       "source_direction": "hold",
       "source_status": "판단 유보",
@@ -468,8 +468,8 @@
       "name": "계육",
       "incoming_count": 4,
       "outgoing_count": 3,
-      "incoming_strength": 0.37,
-      "outgoing_strength": 0.093,
+      "incoming_strength": 0.382,
+      "outgoing_strength": 0.096,
       "top_incoming": [
         {
           "from": "EGG",
@@ -544,6 +544,27 @@
         {
           "from": "POULTRY",
           "from_name": "계육",
+          "to": "DUCK",
+          "to_name": "오리",
+          "kind": "avian_risk",
+          "effect": "판단유보 전이",
+          "severity": "hold",
+          "strength": 0.033,
+          "base_strength": 0.3,
+          "source_direction": "hold",
+          "source_status": "판단 유보",
+          "source_signal_score": 36,
+          "source_confidence": 55,
+          "target_status": "판단 유보",
+          "shared_axes": [
+            "질병/방역"
+          ],
+          "conflict_note": "판단 유보 권장 · 충돌축: 수급/도축 / 누락근거: 가격, 정책/고시 / 유보사유: 상·하방 근거 강충돌",
+          "memo": "계육 판단 유보 신호가 오리에 전이 가능 / 계육·오리는 AI 방역 이슈의 전이 가능성 존재 / 공통 근거축: 질병/방역 / 단, 원천 축종에 충돌 근거 존재"
+        },
+        {
+          "from": "POULTRY",
+          "from_name": "계육",
           "to": "EGG",
           "to_name": "계란",
           "kind": "avian_risk",
@@ -586,27 +607,6 @@
           ],
           "conflict_note": "판단 유보 권장 · 충돌축: 수급/도축 / 누락근거: 가격, 정책/고시 / 유보사유: 상·하방 근거 강충돌",
           "memo": "계육 판단 유보 신호가 돈육에 전이 가능 / 계육 강세 시 돈육 일부 대체수요 가능 / 공통 근거축: 수급/도축, 질병/방역, 뉴스/수요 / 단, 원천 축종에 충돌 근거 존재"
-        },
-        {
-          "from": "POULTRY",
-          "from_name": "계육",
-          "to": "DUCK",
-          "to_name": "오리",
-          "kind": "avian_risk",
-          "effect": "판단유보 전이",
-          "severity": "hold",
-          "strength": 0.03,
-          "base_strength": 0.3,
-          "source_direction": "hold",
-          "source_status": "판단 유보",
-          "source_signal_score": 36,
-          "source_confidence": 55,
-          "target_status": "판단 유보",
-          "shared_axes": [
-            "질병/방역"
-          ],
-          "conflict_note": "판단 유보 권장 · 충돌축: 수급/도축 / 누락근거: 가격, 정책/고시 / 유보사유: 상·하방 근거 강충돌",
-          "memo": "계육 판단 유보 신호가 오리에 전이 가능 / 계육·오리는 AI 방역 이슈의 전이 가능성 존재 / 공통 근거축: 질병/방역 / 단, 원천 축종에 충돌 근거 존재"
         }
       ]
     },
@@ -615,8 +615,8 @@
       "name": "오리",
       "incoming_count": 1,
       "outgoing_count": 1,
-      "incoming_strength": 0.03,
-      "outgoing_strength": 0.0,
+      "incoming_strength": 0.033,
+      "outgoing_strength": 0.012,
       "top_incoming": [
         {
           "from": "POULTRY",
@@ -626,7 +626,7 @@
           "kind": "avian_risk",
           "effect": "판단유보 전이",
           "severity": "hold",
-          "strength": 0.03,
+          "strength": 0.033,
           "base_strength": 0.3,
           "source_direction": "hold",
           "source_status": "판단 유보",
@@ -649,17 +649,17 @@
           "kind": "avian_risk",
           "effect": "판단유보 전이",
           "severity": "hold",
-          "strength": 0.0,
+          "strength": 0.012,
           "base_strength": 0.35,
           "source_direction": "hold",
           "source_status": "판단 유보",
-          "source_signal_score": 0,
-          "source_confidence": 0,
+          "source_signal_score": 14,
+          "source_confidence": 43,
           "target_status": "판단 유보",
           "shared_axes": [
             "질병/방역"
           ],
-          "conflict_note": "판단 유보 권장 · 누락근거: 가격, 수급/도축, 질병/방역, 정책/고시, 뉴스/수요 / 유보사유: 근거자료 없음, 커버리지 부족, 신뢰도 부족, 공식자료 부족, 주요 근거축 다수 누락",
+          "conflict_note": "판단 유보 권장 · 누락근거: 가격, 수급/도축, 정책/고시, 뉴스/수요 / 유보사유: 커버리지 부족, 공식자료 부족, 주요 근거축 다수 누락",
           "memo": "오리 판단 유보 신호가 계육에 전이 가능 / 오리·계육은 가금 질병 리스크를 공유 / 공통 근거축: 질병/방역"
         }
       ]
