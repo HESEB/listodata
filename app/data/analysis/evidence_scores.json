@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-08T16:55:21Z",
+  "updated_at": "2026-08-08T17:48:35Z",
   "policy": "phase2_evidence_score_v3_sanitized",
   "score_axes": {
     "price": {
@@ -43,16 +43,16 @@
     {
       "id": "BEEF",
       "name": "한우",
-      "signal_score": 64,
-      "direction": "up",
-      "status": "상방 가능성",
-      "quality_score": 73,
-      "confidence_score": 77,
+      "signal_score": 60,
+      "direction": "hold",
+      "status": "판단 유보",
+      "quality_score": 72,
+      "confidence_score": 58,
       "coverage_rate": 100,
-      "evidence_count": 30,
+      "evidence_count": 29,
       "official_count": 3,
       "direction_counts": {
-        "up": 9,
+        "up": 8,
         "down": 3,
         "neutral": 18,
         "hold": 0
@@ -70,7 +70,7 @@
         "supply": 22,
         "disease": 14,
         "policy": 4,
-        "news": 13
+        "news": 9
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -175,18 +175,12 @@
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 13,
-          "items": 18,
-          "up": 2,
+          "score": 9,
+          "items": 17,
+          "up": 1,
           "down": 1,
           "neutral": 15,
           "examples": [
-            {
-              "title": "송아지값 강세에 번식 심리 ‘꿈틀’... 생산 기반 회복은 여전히 기대 못해 - 축산신문",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 81
-            },
             {
               "title": "고성군, ‘고성한우 우수 유전자 기부제’ 첫 시행 - 미디어팜",
               "direction": "neutral",
@@ -194,7 +188,13 @@
               "quality_score": 81
             },
             {
-              "title": "고성군, '고성한우 우수 유전자 기부제' 첫 시행 - news.nate.com",
+              "title": "고성군, '고성한우 우수 유전자 기부제' 첫 시행 - 네이트",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 81
+            },
+            {
+              "title": "제주 한우, 싱가포르 수출길 확대 - 농축유통신문",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 81
@@ -202,22 +202,88 @@
           ]
         }
       },
-      "reason": "수급/도축 22점 + 질병/방역 14점 + 뉴스/수요 13점 기반, 상방성 자료가 우세",
+      "reason": "수급/도축 22점 + 질병/방역 14점 + 가격 11점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": true,
-        "severity": "medium",
+        "severity": "high",
         "axes": [
           "뉴스/수요"
         ],
-        "memo": "주의 필요 · 충돌축: 뉴스/수요"
+        "memo": "판단 유보 권장 · 충돌축: 뉴스/수요 / 유보사유: 상·하방 근거 강충돌"
       },
       "hold_decision": {
-        "should_hold": false,
-        "reasons": [],
-        "recommended_status": "상방 가능성",
-        "recommended_direction": "up",
-        "adjusted_confidence": 67
+        "should_hold": [
+          {
+            "axis": "news",
+            "label": "뉴스/수요",
+            "items": 17,
+            "has_conflict": true,
+            "severity": "high",
+            "dominant_direction": "down",
+            "weighted_direction": {
+              "up": 4.07,
+              "down": 4.1,
+              "neutral": 47.88
+            },
+            "conflict_ratio": 0.99,
+            "examples": {
+              "up": [
+                {
+                  "title": "한우농가, 1년 새 약 3천700호 감소 - chuksannews.co.kr",
+                  "source": "chuksannews.co.kr",
+                  "direction": "up",
+                  "quality_score": 76,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9BTFI2WGNTdFFIMVNOaWFZYWRJdjVpM1F0SXo3NWZKSXk0eFBZTkZBR1BxXzlRVjc2QTFDWlQyMVQ4VHVuY2RsMW8zblg3dlBwTm9JblJJZlZPMTBzQlFZQTlvWkdCUEdf?oc=5"
+                }
+              ],
+              "down": [
+                {
+                  "title": "축산농가의 소득안정 방안 - KREI Repository",
+                  "source": "KREI Repository",
+                  "direction": "down",
+                  "quality_score": 75,
+                  "source_level": 5,
+                  "url": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxQUGhmcHVYcy10ckNxMW9XdTljNjA0SWhzNW1VMGUxeHdyLTl0cmZTU0JBWUFHSWZqOUlOLXd0bC1vR3k4SjJoSjMzdXFndkd2V2t2U25oWWM2aFBweFBnODhxWnl6VjJ6bkZnUVZub2hHNDd1WHgwSkhTR1pHeTlqRnBuT2dxUm1JczZMODIxelU0cG5WUjBHMkM0ZThIYk9OQzdJYmh5TmNNZ2owX2NOeFozTEFDN2hBSkRFSG9BTkJDRjJvQWpfNk55NV9KN0ppcV9GbFdwWnR1blRSZXU4a1lSaXdqZDE3SnNBWnJ5QU9PVVV3Y1hpZEhR?oc=5"
+                }
+              ],
+              "neutral": [
+                {
+                  "title": "고성군, ‘고성한우 우수 유전자 기부제’ 첫 시행 - 미디어팜",
+                  "source": "미디어팜",
+                  "direction": "neutral",
+                  "quality_score": 81,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5ITEhBSkxvMEV1bmEzSWFZUXkyd3BDXzMycmdfdTFLWUgyUXppNHBjX1B0LWtXN1JwRDFvdWFGeFkxWEtJMUFWVy1pTGc0clVoVGFZLW0zTlJCWFJMQVVINmZUVllGWE1S?oc=5"
+                },
+                {
+                  "title": "고성군, '고성한우 우수 유전자 기부제' 첫 시행 - 네이트",
+                  "source": "네이트",
+                  "direction": "neutral",
+                  "quality_score": 81,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBkX0U5R0lJZFIxVkw0TGNFOFdqNlUyOTEyT3pFNDRBbWMzVEZOT1pEMHp3RkxISjZsVk4tZEwtWXZoclNmT1pjMGtxMlgxUGl0M3RB?oc=5"
+                },
+                {
+                  "title": "제주 한우, 싱가포르 수출길 확대 - 농축유통신문",
+                  "source": "농축유통신문",
+                  "direction": "neutral",
+                  "quality_score": 81,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE00ZTFwNVlVb1hoZm1nRllVWk5vemsxNGhLU21QQ09NS2pDX0lLU2s2b0ZwZ01SZGx6RGRWTzVGSTZyTlpTS2lyU3J0VElPNEpJcGNURlU2OWxvY291ZnlvSW1SR1UtQVVr?oc=5"
+                }
+              ]
+            },
+            "memo": "뉴스/수요 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
+          }
+        ],
+        "reasons": [
+          "상·하방 근거 강충돌"
+        ],
+        "recommended_status": "판단 유보",
+        "recommended_direction": "hold",
+        "adjusted_confidence": 58
       }
     },
     {
@@ -314,7 +380,7 @@
               "quality_score": 76
             },
             {
-              "title": "ASF 방역대 대폭 축소 현실화 - 축산신문",
+              "title": "ASF 방역대 대폭 축소 현실화 - chuksannews.co.kr",
               "direction": "up",
               "source_level": 3,
               "quality_score": 76
@@ -508,7 +574,7 @@
           "neutral": 2,
           "examples": [
             {
-              "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - thescoop.co.kr",
+              "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - 더스쿠프",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 58
@@ -662,24 +728,23 @@
     {
       "id": "EGG",
       "name": "계란",
-      "signal_score": 73,
+      "signal_score": 72,
       "direction": "up",
       "status": "상방 가능성",
-      "quality_score": 77,
-      "confidence_score": 90,
-      "coverage_rate": 100,
+      "quality_score": 78,
+      "confidence_score": 83,
+      "coverage_rate": 80,
       "evidence_count": 31,
-      "official_count": 14,
+      "official_count": 15,
       "direction_counts": {
         "up": 20,
-        "down": 3,
-        "neutral": 8,
+        "down": 4,
+        "neutral": 7,
         "hold": 0
       },
       "coverage_types": [
         "가격",
         "수급/도축",
-        "수요/행사",
         "일반",
         "질병/방역"
       ],
@@ -688,7 +753,7 @@
         "supply": 24,
         "disease": 12,
         "policy": 0,
-        "news": 12
+        "news": 11
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -702,9 +767,9 @@
           "label": "가격",
           "max_score": 30,
           "score": 25,
-          "items": 7,
+          "items": 8,
           "up": 2,
-          "down": 0,
+          "down": 1,
           "neutral": 5,
           "examples": [
             {
@@ -786,29 +851,29 @@
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 12,
-          "items": 4,
+          "score": 11,
+          "items": 3,
           "up": 1,
           "down": 0,
-          "neutral": 3,
+          "neutral": 2,
           "examples": [
             {
-              "title": "정부 계란시장 이해 부족이 혼란 키워 - 축산신문",
+              "title": "정부 계란시장 이해 부족이 혼란 키워 - chuksannews.co.kr",
               "direction": "up",
               "source_level": 5,
               "quality_score": 89
             },
             {
-              "title": "“사료값 아끼려 다 죽였는데”…세계 1위 계란 소비국, 밥상 물가 폭등 - v.daum.net",
+              "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - 더스쿠프",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 58
             },
             {
-              "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - thescoop.co.kr",
+              "title": "[칼럼] 1만원 계란값이 남긴 경고...한돈에서 같은 실수 말아야 - 돼지와사람",
               "direction": "neutral",
               "source_level": 3,
-              "quality_score": 58
+              "quality_score": 51
             }
           ]
         }
@@ -816,17 +881,19 @@
       "reason": "가격 25점 + 수급/도축 24점 + 질병/방역 12점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
-        "has_conflict": false,
-        "severity": "none",
-        "axes": [],
-        "memo": "주의 필요 · 누락근거: 정책/고시"
+        "has_conflict": true,
+        "severity": "medium",
+        "axes": [
+          "가격"
+        ],
+        "memo": "주의 필요 · 충돌축: 가격 / 누락근거: 정책/고시"
       },
       "hold_decision": {
         "should_hold": false,
         "reasons": [],
         "recommended_status": "상방 가능성",
         "recommended_direction": "up",
-        "adjusted_confidence": 90
+        "adjusted_confidence": 73
       }
     },
     {
@@ -943,7 +1010,7 @@
           "neutral": 20,
           "examples": [
             {
-              "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
+              "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - nongupin.co.kr",
               "direction": "neutral",
               "source_level": 5,
               "quality_score": 82
