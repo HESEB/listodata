@@ -1,21 +1,21 @@
 {
-  "updated_at": "2026-08-08T16:55:21Z",
+  "updated_at": "2026-08-08T17:48:35Z",
   "policy": "phase2_evidence_chain_v2",
   "notice": "뉴스/공식자료 → 근거축 → 시장영향 → 신뢰도 → 구매전략으로 연결한 Evidence Chain입니다.",
   "items": [
     {
       "id": "BEEF",
       "name": "한우",
-      "status": "상방 가능성",
-      "direction": "up",
-      "signal_score": 64,
-      "confidence_score": 77,
+      "status": "판단 유보",
+      "direction": "hold",
+      "signal_score": 60,
+      "confidence_score": 76,
       "coverage_rate": 100,
-      "reason": "수급/도축 22점 + 질병/방역 14점 + 뉴스/수요 13점 기반, 상방성 자료가 우세",
+      "reason": "수급/도축 22점 + 질병/방역 14점 + 가격 11점 기반, 상방성 자료가 우세",
       "summary_chain": [
         {
           "step": "1. 자료 수집",
-          "value": "30건",
+          "value": "29건",
           "meaning": "축종 관련 정제자료 수"
         },
         {
@@ -26,11 +26,11 @@
         {
           "step": "3. 시장 영향",
           "value": "상방성 근거 우세",
-          "meaning": "수급/도축 22점 + 질병/방역 14점 + 뉴스/수요 13점 기반, 상방성 자료가 우세"
+          "meaning": "수급/도축 22점 + 질병/방역 14점 + 가격 11점 기반, 상방성 자료가 우세"
         },
         {
           "step": "4. 신뢰도",
-          "value": "77점 / 커버리지 100%",
+          "value": "76점 / 커버리지 100%",
           "meaning": "출처·최신성·공식자료·근거범위 종합"
         },
         {
@@ -175,11 +175,11 @@
         {
           "axis": "news",
           "label": "뉴스/수요",
-          "score": 13,
+          "score": 9,
           "max_score": 15,
-          "items": 18,
-          "direction": "up",
-          "market_impact": "수요 증가 또는 이슈성 상방 신호",
+          "items": 17,
+          "direction": "neutral",
+          "market_impact": "뉴스 보조 신호",
           "causal_step": "뉴스·수요 이벤트 → 소비/행사/시장심리 → 보조 판단",
           "evidence_examples": [
             {
@@ -213,29 +213,95 @@
               "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5lSHdjNWJtb2NSS2E5akVOYzJvYTVUS1hFUWJvTzZIeXlxenFSUjRZcE1Za0pyOVNZRHNjN0d5eTMyOGluUElFUG4zTmtFb20xTGtrNm5oU3pjR0pYdVdqRg?oc=5"
             }
           ],
-          "confidence_note": "근거 연결 강함"
+          "confidence_note": "근거 일부 연결"
         }
       ],
       "missing_evidence": [],
-      "hold_reason": "주요 근거축 연결",
+      "hold_reason": "판단 유보 권장 · 충돌축: 뉴스/수요 / 유보사유: 상·하방 근거 강충돌",
       "purchase_action": "정육류 비축 또는 고정가 협의 검토",
       "chain_policy": "phase2_evidence_chain_v2",
       "conflict": {
         "id": "BEEF",
         "name": "한우",
         "has_conflict": true,
-        "conflict_severity": "medium",
+        "conflict_severity": "high",
         "conflict_axes": [
           "뉴스/수요"
         ],
         "missing_evidence": [],
-        "hold_reasons": [],
-        "original_confidence": 77,
-        "adjusted_confidence": 67,
-        "should_hold": false,
-        "recommended_status": "상방 가능성",
-        "recommended_direction": "up",
-        "memo": "주의 필요 · 충돌축: 뉴스/수요"
+        "hold_reasons": [
+          "상·하방 근거 강충돌"
+        ],
+        "original_confidence": 76,
+        "adjusted_confidence": 58,
+        "should_hold": [
+          {
+            "axis": "news",
+            "label": "뉴스/수요",
+            "items": 17,
+            "has_conflict": true,
+            "severity": "high",
+            "dominant_direction": "down",
+            "weighted_direction": {
+              "up": 4.07,
+              "down": 4.1,
+              "neutral": 47.88
+            },
+            "conflict_ratio": 0.99,
+            "examples": {
+              "up": [
+                {
+                  "title": "한우농가, 1년 새 약 3천700호 감소 - chuksannews.co.kr",
+                  "source": "chuksannews.co.kr",
+                  "direction": "up",
+                  "quality_score": 76,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9BTFI2WGNTdFFIMVNOaWFZYWRJdjVpM1F0SXo3NWZKSXk0eFBZTkZBR1BxXzlRVjc2QTFDWlQyMVQ4VHVuY2RsMW8zblg3dlBwTm9JblJJZlZPMTBzQlFZQTlvWkdCUEdf?oc=5"
+                }
+              ],
+              "down": [
+                {
+                  "title": "축산농가의 소득안정 방안 - KREI Repository",
+                  "source": "KREI Repository",
+                  "direction": "down",
+                  "quality_score": 75,
+                  "source_level": 5,
+                  "url": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxQUGhmcHVYcy10ckNxMW9XdTljNjA0SWhzNW1VMGUxeHdyLTl0cmZTU0JBWUFHSWZqOUlOLXd0bC1vR3k4SjJoSjMzdXFndkd2V2t2U25oWWM2aFBweFBnODhxWnl6VjJ6bkZnUVZub2hHNDd1WHgwSkhTR1pHeTlqRnBuT2dxUm1JczZMODIxelU0cG5WUjBHMkM0ZThIYk9OQzdJYmh5TmNNZ2owX2NOeFozTEFDN2hBSkRFSG9BTkJDRjJvQWpfNk55NV9KN0ppcV9GbFdwWnR1blRSZXU4a1lSaXdqZDE3SnNBWnJ5QU9PVVV3Y1hpZEhR?oc=5"
+                }
+              ],
+              "neutral": [
+                {
+                  "title": "고성군, ‘고성한우 우수 유전자 기부제’ 첫 시행 - 미디어팜",
+                  "source": "미디어팜",
+                  "direction": "neutral",
+                  "quality_score": 81,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5ITEhBSkxvMEV1bmEzSWFZUXkyd3BDXzMycmdfdTFLWUgyUXppNHBjX1B0LWtXN1JwRDFvdWFGeFkxWEtJMUFWVy1pTGc0clVoVGFZLW0zTlJCWFJMQVVINmZUVllGWE1S?oc=5"
+                },
+                {
+                  "title": "고성군, '고성한우 우수 유전자 기부제' 첫 시행 - 네이트",
+                  "source": "네이트",
+                  "direction": "neutral",
+                  "quality_score": 81,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBkX0U5R0lJZFIxVkw0TGNFOFdqNlUyOTEyT3pFNDRBbWMzVEZOT1pEMHp3RkxISjZsVk4tZEwtWXZoclNmT1pjMGtxMlgxUGl0M3RB?oc=5"
+                },
+                {
+                  "title": "제주 한우, 싱가포르 수출길 확대 - 농축유통신문",
+                  "source": "농축유통신문",
+                  "direction": "neutral",
+                  "quality_score": 81,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE00ZTFwNVlVb1hoZm1nRllVWk5vemsxNGhLU21QQ09NS2pDX0lLU2s2b0ZwZ01SZGx6RGRWTzVGSTZyTlpTS2lyU3J0VElPNEpJcGNURlU2OWxvY291ZnlvSW1SR1UtQVVr?oc=5"
+                }
+              ]
+            },
+            "memo": "뉴스/수요 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
+          }
+        ],
+        "recommended_status": "판단 유보",
+        "recommended_direction": "hold",
+        "memo": "판단 유보 권장 · 충돌축: 뉴스/수요 / 유보사유: 상·하방 근거 강충돌"
       },
       "axis_conflicts": [
         {
@@ -398,29 +464,21 @@
         {
           "axis": "news",
           "label": "뉴스/수요",
-          "items": 18,
+          "items": 17,
           "has_conflict": true,
-          "severity": "medium",
-          "dominant_direction": "up",
+          "severity": "high",
+          "dominant_direction": "down",
           "weighted_direction": {
-            "up": 8.24,
+            "up": 4.07,
             "down": 4.1,
             "neutral": 47.88
           },
-          "conflict_ratio": 0.5,
+          "conflict_ratio": 0.99,
           "examples": {
             "up": [
               {
-                "title": "송아지값 강세에 번식 심리 ‘꿈틀’... 생산 기반 회복은 여전히 기대 못해 - 축산신문",
-                "source": "축산신문",
-                "direction": "up",
-                "quality_score": 81,
-                "source_level": 3,
-                "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFA4ZldIMV9rS3FCV3NyNk1taFFkTHNVblFyWWZCWHM1TnNZSURQUG9USVFSMkZwZ0lEaGlPUnAwbERINjY4SGtEQndrdDZBZVhucmJReXFyb2x1dzZRZ1JvcEw2Q1l5SExy?oc=5"
-              },
-              {
-                "title": "한우농가, 1년 새 약 3천700호 감소 - 축산신문",
-                "source": "축산신문",
+                "title": "한우농가, 1년 새 약 3천700호 감소 - chuksannews.co.kr",
+                "source": "chuksannews.co.kr",
                 "direction": "up",
                 "quality_score": 76,
                 "source_level": 3,
@@ -447,8 +505,8 @@
                 "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5ITEhBSkxvMEV1bmEzSWFZUXkyd3BDXzMycmdfdTFLWUgyUXppNHBjX1B0LWtXN1JwRDFvdWFGeFkxWEtJMUFWVy1pTGc0clVoVGFZLW0zTlJCWFJMQVVINmZUVllGWE1S?oc=5"
               },
               {
-                "title": "고성군, '고성한우 우수 유전자 기부제' 첫 시행 - news.nate.com",
-                "source": "news.nate.com",
+                "title": "고성군, '고성한우 우수 유전자 기부제' 첫 시행 - 네이트",
+                "source": "네이트",
                 "direction": "neutral",
                 "quality_score": 81,
                 "source_level": 3,
@@ -464,7 +522,7 @@
               }
             ]
           },
-          "memo": "뉴스/수요 축에서 상방·하방 근거가 동시에 감지되어 medium 충돌로 분류"
+          "memo": "뉴스/수요 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
         }
       ]
     },
@@ -775,8 +833,8 @@
                 "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNWU93TVdkSlFsT1hjYjE4SVZqNmtCMTZCcFNMWG15b08wbnhVY3kwbERUZzd0dUVnMVZ5ckRwWUt4ampfM085SnZvVDhPUkx3R201eWt3Ym9zSHRsODk3T1prTWxmQmtsV28tUXU3eWtGamlaQVRncVQxM1Ntd0RmOWtTNWY?oc=5"
               },
               {
-                "title": "ASF 방역대 대폭 축소 현실화 - 축산신문",
-                "source": "축산신문",
+                "title": "ASF 방역대 대폭 축소 현실화 - chuksannews.co.kr",
+                "source": "chuksannews.co.kr",
                 "direction": "up",
                 "quality_score": 76,
                 "source_level": 3,
@@ -1042,9 +1100,9 @@
               "url": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxQUGhmcHVYcy10ckNxMW9XdTljNjA0SWhzNW1VMGUxeHdyLTl0cmZTU0JBWUFHSWZqOUlOLXd0bC1vR3k4SjJoSjMzdXFndkd2V2t2U25oWWM2aFBweFBnODhxWnl6VjJ6bkZnUVZub2hHNDd1WHgwSkhTR1pHeTlqRnBuT2dxUm1JczZMODIxelU0cG5WUjBHMkM0ZThIYk9OQzdJYmh5TmNNZ2owX2NOeFozTEFDN2hBSkRFSG9BTkJDRjJvQWpfNk55NV9KN0ppcV9GbFdwWnR1blRSZXU4a1lSaXdqZDE3SnNBWnJ5QU9PVVV3Y1hpZEhR?oc=5"
             },
             {
-              "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - thescoop.co.kr",
+              "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - 더스쿠프",
               "published_at": "2026-07-13T07:00:00Z",
-              "source": "thescoop.co.kr",
+              "source": "더스쿠프",
               "source_level": 3,
               "quality_score": 58,
               "direction": "neutral",
@@ -1241,8 +1299,8 @@
             ],
             "neutral": [
               {
-                "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - thescoop.co.kr",
-                "source": "thescoop.co.kr",
+                "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - 더스쿠프",
+                "source": "더스쿠프",
                 "direction": "neutral",
                 "quality_score": 58,
                 "source_level": 3,
@@ -1521,9 +1579,9 @@
       "name": "계란",
       "status": "상방 가능성",
       "direction": "up",
-      "signal_score": 73,
-      "confidence_score": 90,
-      "coverage_rate": 100,
+      "signal_score": 72,
+      "confidence_score": 83,
+      "coverage_rate": 80,
       "reason": "가격 25점 + 수급/도축 24점 + 질병/방역 12점 기반, 상방성 자료가 우세",
       "summary_chain": [
         {
@@ -1543,7 +1601,7 @@
         },
         {
           "step": "4. 신뢰도",
-          "value": "90점 / 커버리지 100%",
+          "value": "83점 / 커버리지 80%",
           "meaning": "출처·최신성·공식자료·근거범위 종합"
         },
         {
@@ -1558,11 +1616,21 @@
           "label": "가격",
           "score": 25,
           "max_score": 30,
-          "items": 7,
+          "items": 8,
           "direction": "up",
           "market_impact": "가격 상승 압력",
           "causal_step": "가격·시세 변화 → 원가 부담 변화 → 매입 타이밍 판단",
           "evidence_examples": [
+            {
+              "title": "정부, 계란 2.3억개 수입해 ‘가격 안정’…유류세 인하 9월 말까지 - 한겨레",
+              "published_at": "2026-07-24T07:00:00Z",
+              "source": "한겨레",
+              "source_level": 5,
+              "quality_score": 82,
+              "direction": "down",
+              "direction_label": "하방 요인",
+              "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBaRWNxSkw0Y2ZMUWgyYVpGMGFXUXo2UkVYYnRyS0RyUVdLcWpxSldvV2p0QUtlR2xoY1psUEpHLXpEcWt0dEVJaDVBbm03MUVPVFRyeHVLZVpEUHF4TTFUXzEtNm10R1g1Z0drMC1uZ2E5Zw?oc=5"
+            },
             {
               "title": "계란 산지가, 조정 기준 잃었다 - 축산경제신문",
               "published_at": "2026-08-07T04:01:22Z",
@@ -1582,16 +1650,6 @@
               "direction": "neutral",
               "direction_label": "중립/보조",
               "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBiWnZBbjZsbEFLRk1HNlY0Qm5HQTY4bVNmVUUwWFl5X01OQXpheHBjNm9LQllxdDFXd1hfMG5fLVEtVEYzV0xMNVdUb0d6RlhEZlFwZ2pyY1VtejdhMy1DOQ?oc=5"
-            },
-            {
-              "title": "\"내년 설까지는 가격 계속 오를 것\" 한 판에 1만원 '금란'의 공습[계란 난맥상]① - 아시아경제",
-              "published_at": "2026-08-05T00:58:01Z",
-              "source": "아시아경제",
-              "source_level": 3,
-              "quality_score": 76,
-              "direction": "neutral",
-              "direction_label": "중립/보조",
-              "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFAyRFJydXVyOU5Ja2plQUVtLTE3Y3pYWmVxcXhvUk1QT19EOFNhQXI4ZlNPS0l6MDA5UHlzQWRvTnljZmVJYXpyYlBOTjk4UUtFbElhR2JKVW9ydWd5TzZpSA?oc=5"
             }
           ],
           "confidence_note": "근거 연결 강함"
@@ -1677,17 +1735,17 @@
         {
           "axis": "news",
           "label": "뉴스/수요",
-          "score": 12,
+          "score": 11,
           "max_score": 15,
-          "items": 4,
+          "items": 3,
           "direction": "up",
           "market_impact": "수요 증가 또는 이슈성 상방 신호",
           "causal_step": "뉴스·수요 이벤트 → 소비/행사/시장심리 → 보조 판단",
           "evidence_examples": [
             {
-              "title": "정부 계란시장 이해 부족이 혼란 키워 - 축산신문",
+              "title": "정부 계란시장 이해 부족이 혼란 키워 - chuksannews.co.kr",
               "published_at": "2026-07-31T00:52:32Z",
-              "source": "축산신문",
+              "source": "chuksannews.co.kr",
               "source_level": 5,
               "quality_score": 89,
               "direction": "up",
@@ -1695,24 +1753,24 @@
               "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE8zUlpOZXR2bFVMalZVaWRJblFFZGx0OWtwcnNzRmtQQWZZQnkzQmR6NDVsWWNPOGNiTGdKR1hxMjM3MTN2VGRvcFlqa2JOcndMS0JwTmJVMWtmbU42QS12eHZvLTE5S3FW?oc=5"
             },
             {
-              "title": "“사료값 아끼려 다 죽였는데”…세계 1위 계란 소비국, 밥상 물가 폭등 - v.daum.net",
-              "published_at": "2026-07-21T07:00:00Z",
-              "source": "v.daum.net",
-              "source_level": 3,
-              "quality_score": 58,
-              "direction": "neutral",
-              "direction_label": "중립/보조",
-              "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9tZlFEa01mNjN1TXBaV2ZBUlpDUmhqb3E4XzZ4NzhMYU90dWZUSS1CODFGUlRkZ2FkUW02WThtMzJ2SF9JVFFIZUZqUVJBYlk?oc=5"
-            },
-            {
-              "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - thescoop.co.kr",
+              "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - 더스쿠프",
               "published_at": "2026-07-13T07:00:00Z",
-              "source": "thescoop.co.kr",
+              "source": "더스쿠프",
               "source_level": 3,
               "quality_score": 58,
               "direction": "neutral",
               "direction_label": "중립/보조",
               "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9zLWJuZkd6RHh0X19CTWtzbUNOVWJ1QmR6VWNHZGJ2Z3h2bVNGWU1wOVpPZ01YMHpwMDNZc2lfWDdvUFJuYXAxUE1uRGlva28tMmNLcVhVQ3JiR0xzM1g5R1BtbEQxNmZ6dkk2RWF3?oc=5"
+            },
+            {
+              "title": "[칼럼] 1만원 계란값이 남긴 경고...한돈에서 같은 실수 말아야 - 돼지와사람",
+              "published_at": "2026-06-30T07:00:00Z",
+              "source": "돼지와사람",
+              "source_level": 3,
+              "quality_score": 51,
+              "direction": "neutral",
+              "direction_label": "중립/보조",
+              "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9LWXNiUVBKTFhJWXBmeHotZWxMNERHT0ZhOXFTYzFpWVB3N2duWGdGMGJwUXBabW9qS3h1czFqTTV3ME9nWllvV29OUXp3UWxLaURoZFVuOXcyZHNHT014SWFR?oc=5"
             }
           ],
           "confidence_note": "근거 연결 강함"
@@ -1727,34 +1785,36 @@
       "conflict": {
         "id": "EGG",
         "name": "계란",
-        "has_conflict": false,
-        "conflict_severity": "none",
-        "conflict_axes": [],
+        "has_conflict": true,
+        "conflict_severity": "medium",
+        "conflict_axes": [
+          "가격"
+        ],
         "missing_evidence": [
           "정책/고시"
         ],
         "hold_reasons": [],
-        "original_confidence": 90,
-        "adjusted_confidence": 90,
+        "original_confidence": 83,
+        "adjusted_confidence": 73,
         "should_hold": false,
         "recommended_status": "상방 가능성",
         "recommended_direction": "up",
-        "memo": "주의 필요 · 누락근거: 정책/고시"
+        "memo": "주의 필요 · 충돌축: 가격 / 누락근거: 정책/고시"
       },
       "axis_conflicts": [
         {
           "axis": "price",
           "label": "가격",
-          "items": 7,
-          "has_conflict": false,
-          "severity": "none",
+          "items": 8,
+          "has_conflict": true,
+          "severity": "medium",
           "dominant_direction": "up",
           "weighted_direction": {
             "up": 7.42,
-            "down": 0.0,
+            "down": 4.69,
             "neutral": 15.59
           },
-          "conflict_ratio": 0.0,
+          "conflict_ratio": 0.63,
           "examples": {
             "up": [
               {
@@ -1774,7 +1834,16 @@
                 "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9CWVVTYjhMQWFpOC14UEhmaV9lelMxZ3NaOTlkc0hnOTY0Y1ZLTVZ3TmNfSG1LLXFrVjBPQ0d0Q3FSbmdleW9TWUdweWxsSlFKODQ4MUV0aFl4UkU?oc=5"
               }
             ],
-            "down": [],
+            "down": [
+              {
+                "title": "정부, 계란 2.3억개 수입해 ‘가격 안정’…유류세 인하 9월 말까지 - 한겨레",
+                "source": "한겨레",
+                "direction": "down",
+                "quality_score": 82,
+                "source_level": 5,
+                "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBaRWNxSkw0Y2ZMUWgyYVpGMGFXUXo2UkVYYnRyS0RyUVdLcWpxSldvV2p0QUtlR2xoY1psUEpHLXpEcWt0dEVJaDVBbm03MUVPVFRyeHVLZVpEUHF4TTFUXzEtNm10R1g1Z0drMC1uZ2E5Zw?oc=5"
+              }
+            ],
             "neutral": [
               {
                 "title": "계란 산지가, 조정 기준 잃었다 - 축산경제신문",
@@ -1802,7 +1871,7 @@
               }
             ]
           },
-          "memo": "가격 축은 상방 근거 우세"
+          "memo": "가격 축에서 상방·하방 근거가 동시에 감지되어 medium 충돌로 분류"
         },
         {
           "axis": "supply",
@@ -1926,21 +1995,21 @@
         {
           "axis": "news",
           "label": "뉴스/수요",
-          "items": 4,
+          "items": 3,
           "has_conflict": false,
           "severity": "none",
           "dominant_direction": "up",
           "weighted_direction": {
             "up": 4.83,
             "down": 0.0,
-            "neutral": 8.29
+            "neutral": 5.48
           },
           "conflict_ratio": 0.0,
           "examples": {
             "up": [
               {
-                "title": "정부 계란시장 이해 부족이 혼란 키워 - 축산신문",
-                "source": "축산신문",
+                "title": "정부 계란시장 이해 부족이 혼란 키워 - chuksannews.co.kr",
+                "source": "chuksannews.co.kr",
                 "direction": "up",
                 "quality_score": 89,
                 "source_level": 5,
@@ -1950,16 +2019,8 @@
             "down": [],
             "neutral": [
               {
-                "title": "“사료값 아끼려 다 죽였는데”…세계 1위 계란 소비국, 밥상 물가 폭등 - v.daum.net",
-                "source": "v.daum.net",
-                "direction": "neutral",
-                "quality_score": 58,
-                "source_level": 3,
-                "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9tZlFEa01mNjN1TXBaV2ZBUlpDUmhqb3E4XzZ4NzhMYU90dWZUSS1CODFGUlRkZ2FkUW02WThtMzJ2SF9JVFFIZUZqUVJBYlk?oc=5"
-              },
-              {
-                "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - thescoop.co.kr",
-                "source": "thescoop.co.kr",
+                "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - 더스쿠프",
+                "source": "더스쿠프",
                 "direction": "neutral",
                 "quality_score": 58,
                 "source_level": 3,
@@ -2117,9 +2178,9 @@
           "causal_step": "뉴스·수요 이벤트 → 소비/행사/시장심리 → 보조 판단",
           "evidence_examples": [
             {
-              "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
+              "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - nongupin.co.kr",
               "published_at": "2026-07-09T07:00:00Z",
-              "source": "농업인신문",
+              "source": "nongupin.co.kr",
               "source_level": 5,
               "quality_score": 82,
               "direction": "neutral",
@@ -2336,8 +2397,8 @@
             ],
             "neutral": [
               {
-                "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
-                "source": "농업인신문",
+                "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - nongupin.co.kr",
+                "source": "nongupin.co.kr",
                 "direction": "neutral",
                 "quality_score": 82,
                 "source_level": 5,
