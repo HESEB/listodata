@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-08T20:51:01Z",
+  "updated_at": "2026-08-08T21:49:01Z",
   "notice": "Phase 2 Display Layer 초안입니다. 기존 market_dashboard.json은 별도로 유지됩니다.",
   "species": [
     {
@@ -170,16 +170,16 @@
     {
       "id": "PORK",
       "name": "돈육",
-      "signal_score": 41,
+      "signal_score": 42,
       "direction": "neutral",
       "status": "보합/혼조",
-      "quality_score": 65,
-      "confidence_score": 77,
+      "quality_score": 66,
+      "confidence_score": 78,
       "coverage_rate": 80,
-      "evidence_count": 36,
+      "evidence_count": 35,
       "official_count": 14,
       "direction_counts": {
-        "up": 31,
+        "up": 30,
         "down": 2,
         "neutral": 3,
         "hold": 0
@@ -193,7 +193,7 @@
       "score_breakdown": {
         "price": 8,
         "supply": 11,
-        "disease": 17,
+        "disease": 18,
         "policy": 0,
         "news": 5
       },
@@ -248,9 +248,9 @@
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
-          "score": 17,
-          "items": 30,
-          "up": 30,
+          "score": 18,
+          "items": 29,
+          "up": 29,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -314,7 +314,7 @@
           ]
         }
       },
-      "reason": "질병/방역 17점 + 수급/도축 11점 + 가격 8점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 18점 + 수급/도축 11점 + 가격 8점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
@@ -442,7 +442,7 @@
           "neutral": 2,
           "examples": [
             {
-              "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - 더스쿠프",
+              "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - thescoop.co.kr",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 58
@@ -700,7 +700,7 @@
               "quality_score": 89
             },
             {
-              "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - 더스쿠프",
+              "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - thescoop.co.kr",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 58
@@ -720,28 +720,29 @@
     {
       "id": "OTHER",
       "name": "기타",
-      "signal_score": 31,
-      "direction": "down",
-      "status": "하방 가능성",
+      "signal_score": 47,
+      "direction": "neutral",
+      "status": "보합/혼조",
       "quality_score": 75,
-      "confidence_score": 75,
-      "coverage_rate": 60,
-      "evidence_count": 29,
-      "official_count": 28,
+      "confidence_score": 82,
+      "coverage_rate": 80,
+      "evidence_count": 30,
+      "official_count": 29,
       "direction_counts": {
-        "up": 7,
+        "up": 8,
         "down": 1,
         "neutral": 21,
         "hold": 0
       },
       "coverage_types": [
+        "수급/도축",
         "수요/행사",
         "일반",
         "질병/방역"
       ],
       "score_breakdown": {
         "price": 0,
-        "supply": 0,
+        "supply": 16,
         "disease": 18,
         "policy": 0,
         "news": 13
@@ -767,12 +768,19 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 0,
-          "items": 0,
-          "up": 0,
+          "score": 16,
+          "items": 1,
+          "up": 1,
           "down": 0,
           "neutral": 0,
-          "examples": []
+          "examples": [
+            {
+              "title": "농림축산식품부, 5월 수급 동향 점검…과일 출하 감소에도 공급 차질 없을 전망 - 국제일보",
+              "direction": "up",
+              "source_level": 5,
+              "quality_score": 75
+            }
+          ]
         },
         "disease": {
           "label": "질병/방역",
@@ -843,7 +851,7 @@
           ]
         }
       },
-      "reason": "질병/방역 18점 + 뉴스/수요 13점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 18점 + 수급/도축 16점 + 뉴스/수요 13점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     }
   ]
