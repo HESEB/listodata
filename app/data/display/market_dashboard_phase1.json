@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-08-11T15:18:02Z",
+  "updated_at": "2026-08-11T16:13:49Z",
   "notice": "Phase 2 Display Layer 초안입니다. 기존 market_dashboard.json은 별도로 유지됩니다.",
   "species": [
     {
       "id": "BEEF",
       "name": "한우",
-      "signal_score": 61,
+      "signal_score": 60,
       "direction": "up",
       "status": "상방 가능성",
       "quality_score": 68,
@@ -32,7 +32,7 @@
         "supply": 21,
         "disease": 13,
         "policy": 4,
-        "news": 13
+        "news": 12
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -137,7 +137,7 @@
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 13,
+          "score": 12,
           "items": 17,
           "up": 2,
           "down": 0,
@@ -164,38 +164,37 @@
           ]
         }
       },
-      "reason": "수급/도축 21점 + 질병/방역 13점 + 뉴스/수요 13점 기반, 상방성 자료가 우세",
+      "reason": "수급/도축 21점 + 질병/방역 13점 + 뉴스/수요 12점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
       "id": "PORK",
       "name": "돈육",
-      "signal_score": 44,
-      "direction": "neutral",
-      "status": "보합/혼조",
+      "signal_score": 34,
+      "direction": "down",
+      "status": "하방 가능성",
       "quality_score": 66,
-      "confidence_score": 78,
-      "coverage_rate": 80,
+      "confidence_score": 71,
+      "coverage_rate": 60,
       "evidence_count": 32,
       "official_count": 13,
       "direction_counts": {
-        "up": 27,
+        "up": 26,
         "down": 1,
-        "neutral": 4,
+        "neutral": 5,
         "hold": 0
       },
       "coverage_types": [
         "가격",
-        "수급/도축",
         "일반",
         "질병/방역"
       ],
       "score_breakdown": {
         "price": 9,
-        "supply": 11,
+        "supply": 0,
         "disease": 18,
         "policy": 0,
-        "news": 6
+        "news": 7
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -215,7 +214,7 @@
           "neutral": 2,
           "examples": [
             {
-              "title": "[전광판] '26년 32주차 돼지 평균 도매가격 6,332원(전주 대비 3.1%, 전년 대비 -4.5%) - pigpeople.net",
+              "title": "[전광판] '26년 32주차 돼지 평균 도매가격 6,332원(전주 대비 3.1%, 전년 대비 -4.5%) - 돼지와사람",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 71
@@ -237,19 +236,12 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 11,
-          "items": 1,
-          "up": 1,
+          "score": 0,
+          "items": 0,
+          "up": 0,
           "down": 0,
           "neutral": 0,
-          "examples": [
-            {
-              "title": "2026년 상반기 세계 주요 국가의 돼지고기 수급 동향 및 전망 / 정종현 대표 - 축산정보뉴스",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 51
-            }
-          ]
+          "examples": []
         },
         "disease": {
           "label": "질병/방역",
@@ -273,7 +265,7 @@
               "quality_score": 100
             },
             {
-              "title": "ASF 방역대책추진현황 260805 18시기준 - 경기도뉴스포털",
+              "title": "ASF 방역대책추진현황 260805 18시기준 - gnews.gg.go.kr",
               "direction": "up",
               "source_level": 3,
               "quality_score": 71
@@ -293,14 +285,20 @@
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 6,
-          "items": 2,
+          "score": 7,
+          "items": 3,
           "up": 0,
           "down": 0,
-          "neutral": 2,
+          "neutral": 3,
           "examples": [
             {
-              "title": "[칼럼] 1만원 계란값이 남긴 경고...한돈에서 같은 실수 말아야 - pigpeople.net",
+              "title": "\"과지방 삼겹살 개선 위해 돼지고기 등급판정 기준 강화 계획\" - 돼지와사람",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 51
+            },
+            {
+              "title": "[칼럼] 1만원 계란값이 남긴 경고...한돈에서 같은 실수 말아야 - 돼지와사람",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 51
@@ -314,7 +312,7 @@
           ]
         }
       },
-      "reason": "질병/방역 18점 + 수급/도축 11점 + 가격 9점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 18점 + 가격 9점 + 뉴스/수요 7점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
