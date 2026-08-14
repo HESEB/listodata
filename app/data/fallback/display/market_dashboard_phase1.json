@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-14T11:59:26Z",
+  "updated_at": "2026-08-14T13:47:39Z",
   "notice": "Phase 2 Display Layer 초안입니다. 기존 market_dashboard.json은 별도로 유지됩니다.",
   "species": [
     {
@@ -14,9 +14,9 @@
       "evidence_count": 31,
       "official_count": 1,
       "direction_counts": {
-        "up": 5,
+        "up": 6,
         "down": 1,
-        "neutral": 25,
+        "neutral": 24,
         "hold": 0
       },
       "coverage_types": [
@@ -46,10 +46,10 @@
           "label": "가격",
           "max_score": 30,
           "score": 11,
-          "items": 5,
+          "items": 4,
           "up": 0,
           "down": 1,
-          "neutral": 4,
+          "neutral": 3,
           "examples": [
             {
               "title": "국산 축산물 가격 고공행진…소고기·닭고기 수입 급증 - 스페셜경제",
@@ -64,10 +64,10 @@
               "quality_score": 81
             },
             {
-              "title": "치솟는 송아지 가격이 보내는 ‘번식 기반’ 붕괴 경고 - 농업인신문",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 81
+              "title": "한우가 이 가격이 말이 되나… 홈플러스가 작정하고 준비한 '역대급 할인' - 위키트리",
+              "direction": "down",
+              "source_level": 2,
+              "quality_score": 64
             }
           ]
         },
@@ -144,8 +144,8 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 13,
-          "items": 20,
-          "up": 1,
+          "items": 21,
+          "up": 2,
           "down": 0,
           "neutral": 19,
           "examples": [
@@ -176,32 +176,30 @@
     {
       "id": "PORK",
       "name": "돈육",
-      "signal_score": 43,
-      "direction": "neutral",
-      "status": "보합/혼조",
-      "quality_score": 66,
-      "confidence_score": 78,
-      "coverage_rate": 80,
-      "evidence_count": 33,
-      "official_count": 14,
+      "signal_score": 28,
+      "direction": "down",
+      "status": "하방 가능성",
+      "quality_score": 68,
+      "confidence_score": 65,
+      "coverage_rate": 40,
+      "evidence_count": 29,
+      "official_count": 15,
       "direction_counts": {
-        "up": 31,
+        "up": 28,
         "down": 0,
-        "neutral": 2,
+        "neutral": 1,
         "hold": 0
       },
       "coverage_types": [
         "가격",
-        "수급/도축",
-        "일반",
         "질병/방역"
       ],
       "score_breakdown": {
         "price": 10,
-        "supply": 11,
+        "supply": 0,
         "disease": 18,
         "policy": 0,
-        "news": 4
+        "news": 0
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -231,31 +229,24 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 11,
-          "items": 1,
-          "up": 1,
+          "score": 0,
+          "items": 0,
+          "up": 0,
           "down": 0,
           "neutral": 0,
-          "examples": [
-            {
-              "title": "2026년 상반기 세계 주요 국가의 돼지고기 수급 동향 및 전망 / 정종현 대표 - 축산정보뉴스",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 51
-            }
-          ]
+          "examples": []
         },
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
           "score": 18,
-          "items": 30,
-          "up": 30,
+          "items": 28,
+          "up": 28,
           "down": 0,
           "neutral": 0,
           "examples": [
             {
-              "title": "ASF 방역대책추진현황 260812 18시기준 - 경기도뉴스포털",
+              "title": "ASF 방역대책추진현황 260812 18시기준 - gnews.gg.go.kr",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
@@ -267,7 +258,7 @@
               "quality_score": 76
             },
             {
-              "title": "농식품부, \"ASF 살처분 보상금 신속 지급할 것\" - pignpork.com",
+              "title": "농식품부, \"ASF 살처분 보상금 신속 지급할 것\" - 한돈뉴스",
               "direction": "up",
               "source_level": 5,
               "quality_score": 95
@@ -287,54 +278,45 @@
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 4,
-          "items": 1,
+          "score": 0,
+          "items": 0,
           "up": 0,
           "down": 0,
-          "neutral": 1,
-          "examples": [
-            {
-              "title": "[칼럼] 1만원 계란값이 남긴 경고...한돈에서 같은 실수 말아야 - 돼지와사람",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 51
-            }
-          ]
+          "neutral": 0,
+          "examples": []
         }
       },
-      "reason": "질병/방역 18점 + 수급/도축 11점 + 가격 10점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 18점 + 가격 10점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
       "id": "POULTRY",
       "name": "계육",
-      "signal_score": 51,
+      "signal_score": 36,
       "direction": "neutral",
       "status": "보합/혼조",
-      "quality_score": 72,
-      "confidence_score": 87,
-      "coverage_rate": 100,
-      "evidence_count": 13,
+      "quality_score": 76,
+      "confidence_score": 75,
+      "coverage_rate": 60,
+      "evidence_count": 12,
       "official_count": 7,
       "direction_counts": {
         "up": 10,
         "down": 0,
-        "neutral": 3,
+        "neutral": 2,
         "hold": 0
       },
       "coverage_types": [
         "가격",
-        "수급/도축",
-        "일반",
         "정책/고시",
         "질병/방역"
       ],
       "score_breakdown": {
         "price": 13,
-        "supply": 11,
+        "supply": 0,
         "disease": 19,
         "policy": 4,
-        "news": 4
+        "news": 0
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -364,26 +346,19 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 11,
-          "items": 1,
-          "up": 1,
+          "score": 0,
+          "items": 0,
+          "up": 0,
           "down": 0,
           "neutral": 0,
-          "examples": [
-            {
-              "title": "굽네치킨, 가격 동결하고 순살 치킨 중량 조정…계육 수급 불안 여파 - 에너지경제신문",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 51
-            }
-          ]
+          "examples": []
         },
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 9,
-          "up": 9,
+          "items": 10,
+          "up": 10,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -400,10 +375,10 @@
               "quality_score": 71
             },
             {
-              "title": "알림소식 > 보도자료 > 6월 1일자로 고병원성 조류인플루엔자(AI) 평시 방역체계로 전환하여 상시 방역활동 추진 - 농림축산식품부",
+              "title": "“2년 전 AI 살처분 닭․오리 60%는 정상이었다” 경향신문 - 서울Pn",
               "direction": "up",
-              "source_level": 5,
-              "quality_score": 75
+              "source_level": 3,
+              "quality_score": 71
             }
           ]
         },
@@ -427,37 +402,30 @@
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 4,
-          "items": 1,
+          "score": 0,
+          "items": 0,
           "up": 0,
           "down": 0,
-          "neutral": 1,
-          "examples": [
-            {
-              "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - 더스쿠프",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 51
-            }
-          ]
+          "neutral": 0,
+          "examples": []
         }
       },
-      "reason": "질병/방역 19점 + 가격 13점 + 수급/도축 11점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 가격 13점 + 정책/고시 4점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
       "id": "DUCK",
       "name": "오리",
-      "signal_score": 14,
+      "signal_score": 16,
       "direction": "hold",
       "status": "판단 유보",
-      "quality_score": 73,
-      "confidence_score": 43,
+      "quality_score": 72,
+      "confidence_score": 42,
       "coverage_rate": 20,
-      "evidence_count": 2,
+      "evidence_count": 3,
       "official_count": 1,
       "direction_counts": {
-        "up": 2,
+        "up": 3,
         "down": 0,
         "neutral": 0,
         "hold": 0
@@ -468,7 +436,7 @@
       "score_breakdown": {
         "price": 0,
         "supply": 0,
-        "disease": 14,
+        "disease": 16,
         "policy": 0,
         "news": 0
       },
@@ -503,14 +471,20 @@
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
-          "score": 14,
-          "items": 2,
-          "up": 2,
+          "score": 16,
+          "items": 3,
+          "up": 3,
           "down": 0,
           "neutral": 0,
           "examples": [
             {
               "title": "전남 장흥 육용오리 농가 정밀검사 결과 고병원성 AI(H5N6형) 확진 - 서울Pn",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 71
+            },
+            {
+              "title": "“2년 전 AI 살처분 닭․오리 60%는 정상이었다” 경향신문 - 서울Pn",
               "direction": "up",
               "source_level": 3,
               "quality_score": 71
@@ -544,24 +518,24 @@
           "examples": []
         }
       },
-      "reason": "질병/방역 14점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 16점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
       "id": "EGG",
       "name": "계란",
-      "signal_score": 71,
+      "signal_score": 66,
       "direction": "up",
       "status": "상방 가능성",
-      "quality_score": 72,
-      "confidence_score": 80,
+      "quality_score": 77,
+      "confidence_score": 83,
       "coverage_rate": 80,
       "evidence_count": 31,
-      "official_count": 8,
+      "official_count": 10,
       "direction_counts": {
-        "up": 11,
-        "down": 2,
-        "neutral": 18,
+        "up": 13,
+        "down": 1,
+        "neutral": 17,
         "hold": 0
       },
       "coverage_types": [
@@ -571,11 +545,11 @@
         "질병/방역"
       ],
       "score_breakdown": {
-        "price": 25,
-        "supply": 22,
+        "price": 18,
+        "supply": 23,
         "disease": 12,
         "policy": 0,
-        "news": 12
+        "news": 13
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -588,11 +562,11 @@
         "price": {
           "label": "가격",
           "max_score": 30,
-          "score": 25,
-          "items": 15,
-          "up": 2,
-          "down": 0,
-          "neutral": 13,
+          "score": 18,
+          "items": 16,
+          "up": 1,
+          "down": 1,
+          "neutral": 14,
           "examples": [
             {
               "title": "[기자시각] 계란 가격정보, 없앨 게 아니라 다시 설계하라 - 축산경제신문",
@@ -617,10 +591,10 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 22,
+          "score": 23,
           "items": 9,
-          "up": 7,
-          "down": 2,
+          "up": 9,
+          "down": 0,
           "neutral": 0,
           "examples": [
             {
@@ -673,11 +647,11 @@
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 12,
-          "items": 6,
-          "up": 1,
+          "score": 13,
+          "items": 5,
+          "up": 2,
           "down": 0,
-          "neutral": 5,
+          "neutral": 3,
           "examples": [
             {
               "title": "계란시장 ‘거래 기준’ 복원 필요 - 축산경제신문",
@@ -686,21 +660,21 @@
               "quality_score": 81
             },
             {
-              "title": "계란값 누가 정하나..깜깜이 거래 막을 법적 장치 부족 유통 혼란 - 일간경기",
-              "direction": "up",
+              "title": "[혼삶 체험기] 미국산 계란 vs 국내산 계란, '계란값'이 얼마나 차이가 날까 - 데일리팝",
+              "direction": "neutral",
               "source_level": 3,
-              "quality_score": 71
+              "quality_score": 76
             },
             {
-              "title": "[계란 난맥상]④日은 '에그 쇼크', 美 담합 의혹…글로벌 덮친 '금란' - 아시아경제",
-              "direction": "neutral",
+              "title": "계란값 누가 정하나..깜깜이 거래 막을 법적 장치 부족 유통 혼란 - 일간경기",
+              "direction": "up",
               "source_level": 3,
               "quality_score": 71
             }
           ]
         }
       },
-      "reason": "가격 25점 + 수급/도축 22점 + 질병/방역 12점 기반, 상방성 자료가 우세",
+      "reason": "수급/도축 23점 + 가격 18점 + 뉴스/수요 13점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
@@ -712,12 +686,12 @@
       "quality_score": 74,
       "confidence_score": 81,
       "coverage_rate": 80,
-      "evidence_count": 33,
-      "official_count": 32,
+      "evidence_count": 31,
+      "official_count": 30,
       "direction_counts": {
-        "up": 11,
+        "up": 10,
         "down": 0,
-        "neutral": 22,
+        "neutral": 21,
         "hold": 0
       },
       "coverage_types": [
@@ -765,8 +739,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 9,
-          "up": 9,
+          "items": 8,
+          "up": 8,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -811,10 +785,10 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 13,
-          "items": 23,
+          "items": 22,
           "up": 2,
           "down": 0,
-          "neutral": 21,
+          "neutral": 20,
           "examples": [
             {
               "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
