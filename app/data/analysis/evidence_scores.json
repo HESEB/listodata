@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-15T19:38:07Z",
+  "updated_at": "2026-08-15T20:42:03Z",
   "policy": "phase2_evidence_score_v3_sanitized",
   "score_axes": {
     "price": {
@@ -43,7 +43,7 @@
     {
       "id": "BEEF",
       "name": "한우",
-      "signal_score": 61,
+      "signal_score": 65,
       "direction": "up",
       "status": "상방 가능성",
       "quality_score": 78,
@@ -52,9 +52,9 @@
       "evidence_count": 31,
       "official_count": 1,
       "direction_counts": {
-        "up": 6,
+        "up": 7,
         "down": 2,
-        "neutral": 23,
+        "neutral": 22,
         "hold": 0
       },
       "coverage_types": [
@@ -70,7 +70,7 @@
         "supply": 19,
         "disease": 18,
         "policy": 4,
-        "news": 9
+        "news": 13
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -84,17 +84,11 @@
           "label": "가격",
           "max_score": 30,
           "score": 11,
-          "items": 6,
+          "items": 5,
           "up": 0,
           "down": 2,
-          "neutral": 4,
+          "neutral": 3,
           "examples": [
-            {
-              "title": "국산 축산물 가격 고공행진…소고기·닭고기 수입 급증 - 스페셜경제",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 81
-            },
             {
               "title": "한우 가격 저렴한 정육식당 '알뜰한우판매점' 280곳 발표 - v.daum.net",
               "direction": "neutral",
@@ -103,6 +97,12 @@
             },
             {
               "title": "오늘 홈플러스 가볼까…한우 ‘반값’·삼겹살 40% 할인, 67개점 문 열었다 - 키즈맘",
+              "direction": "down",
+              "source_level": 2,
+              "quality_score": 64
+            },
+            {
+              "title": "한우가 이 가격이 말이 되나… 홈플러스가 작정하고 준비한 '역대급 할인' - 위키트리",
               "direction": "down",
               "source_level": 2,
               "quality_score": 64
@@ -187,9 +187,9 @@
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 9,
-          "items": 18,
-          "up": 0,
+          "score": 13,
+          "items": 19,
+          "up": 1,
           "down": 0,
           "neutral": 18,
           "examples": [
@@ -214,7 +214,7 @@
           ]
         }
       },
-      "reason": "수급/도축 19점 + 질병/방역 18점 + 가격 11점 기반, 상방성 자료가 우세",
+      "reason": "수급/도축 19점 + 질병/방역 18점 + 뉴스/수요 13점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
@@ -390,28 +390,27 @@
     {
       "id": "POULTRY",
       "name": "계육",
-      "signal_score": 47,
-      "direction": "neutral",
-      "status": "보합/혼조",
-      "quality_score": 73,
-      "confidence_score": 81,
-      "coverage_rate": 80,
-      "evidence_count": 14,
+      "signal_score": 34,
+      "direction": "down",
+      "status": "하방 가능성",
+      "quality_score": 72,
+      "confidence_score": 73,
+      "coverage_rate": 60,
+      "evidence_count": 13,
       "official_count": 9,
       "direction_counts": {
         "up": 12,
         "down": 0,
-        "neutral": 2,
+        "neutral": 1,
         "hold": 0
       },
       "coverage_types": [
-        "가격",
         "수급/도축",
         "일반",
         "질병/방역"
       ],
       "score_breakdown": {
-        "price": 13,
+        "price": 0,
         "supply": 11,
         "disease": 19,
         "policy": 0,
@@ -428,19 +427,12 @@
         "price": {
           "label": "가격",
           "max_score": 30,
-          "score": 13,
-          "items": 1,
+          "score": 0,
+          "items": 0,
           "up": 0,
           "down": 0,
-          "neutral": 1,
-          "examples": [
-            {
-              "title": "국산 축산물 가격 고공행진…소고기·닭고기 수입 급증 - 스페셜경제",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 81
-            }
-          ]
+          "neutral": 0,
+          "examples": []
         },
         "supply": {
           "label": "수급/도축",
@@ -469,7 +461,7 @@
           "neutral": 0,
           "examples": [
             {
-              "title": "“2년 전 AI 살처분 닭․오리 60%는 정상이었다” 경향신문 - 서울Pn",
+              "title": "“2년 전 AI 살처분 닭․오리 60%는 정상이었다” 경향신문 - go.seoul.co.kr",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
@@ -508,7 +500,7 @@
           "neutral": 1,
           "examples": [
             {
-              "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - 더스쿠프",
+              "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - thescoop.co.kr",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 51
@@ -516,20 +508,20 @@
           ]
         }
       },
-      "reason": "질병/방역 19점 + 가격 13점 + 수급/도축 11점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 수급/도축 11점 + 뉴스/수요 4점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
         "severity": "none",
         "axes": [],
-        "memo": "주의 필요 · 누락근거: 정책/고시"
+        "memo": "주의 필요 · 누락근거: 가격, 정책/고시"
       },
       "hold_decision": {
         "should_hold": false,
         "reasons": [],
-        "recommended_status": "보합/혼조",
-        "recommended_direction": "neutral",
-        "adjusted_confidence": 81
+        "recommended_status": "하방 가능성",
+        "recommended_direction": "down",
+        "adjusted_confidence": 73
       }
     },
     {
@@ -597,7 +589,7 @@
           "neutral": 0,
           "examples": [
             {
-              "title": "“2년 전 AI 살처분 닭․오리 60%는 정상이었다” 경향신문 - 서울Pn",
+              "title": "“2년 전 AI 살처분 닭․오리 60%는 정상이었다” 경향신문 - go.seoul.co.kr",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
@@ -837,12 +829,12 @@
       "quality_score": 75,
       "confidence_score": 89,
       "coverage_rate": 100,
-      "evidence_count": 30,
-      "official_count": 29,
+      "evidence_count": 31,
+      "official_count": 30,
       "direction_counts": {
         "up": 10,
         "down": 1,
-        "neutral": 19,
+        "neutral": 20,
         "hold": 0
       },
       "coverage_types": [
@@ -944,10 +936,10 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 13,
-          "items": 21,
+          "items": 22,
           "up": 2,
           "down": 1,
-          "neutral": 18,
+          "neutral": 19,
           "examples": [
             {
               "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
@@ -962,7 +954,7 @@
               "quality_score": 75
             },
             {
-              "title": "농림축산식품부 - - 농림축산식품부",
+              "title": "축산물품질평가원 축산물 소비 트렌드 인사이트 ’ 5 월호 발간 - 축산물품질평가원",
               "direction": "neutral",
               "source_level": 5,
               "quality_score": 75

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-15T19:38:08Z",
+  "updated_at": "2026-08-15T20:42:03Z",
   "policy": "phase2_evidence_chain_v2",
   "notice": "뉴스/공식자료 → 근거축 → 시장영향 → 신뢰도 → 구매전략으로 연결한 Evidence Chain입니다.",
   "items": [
@@ -8,10 +8,10 @@
       "name": "한우",
       "status": "상방 가능성",
       "direction": "up",
-      "signal_score": 61,
+      "signal_score": 65,
       "confidence_score": 73,
       "coverage_rate": 100,
-      "reason": "수급/도축 19점 + 질병/방역 18점 + 가격 11점 기반, 상방성 자료가 우세",
+      "reason": "수급/도축 19점 + 질병/방역 18점 + 뉴스/수요 13점 기반, 상방성 자료가 우세",
       "summary_chain": [
         {
           "step": "1. 자료 수집",
@@ -26,7 +26,7 @@
         {
           "step": "3. 시장 영향",
           "value": "상방성 근거 우세",
-          "meaning": "수급/도축 19점 + 질병/방역 18점 + 가격 11점 기반, 상방성 자료가 우세"
+          "meaning": "수급/도축 19점 + 질병/방역 18점 + 뉴스/수요 13점 기반, 상방성 자료가 우세"
         },
         {
           "step": "4. 신뢰도",
@@ -45,21 +45,11 @@
           "label": "가격",
           "score": 11,
           "max_score": 30,
-          "items": 6,
+          "items": 5,
           "direction": "down",
           "market_impact": "가격 하락 또는 안정 요인",
           "causal_step": "가격·시세 변화 → 원가 부담 변화 → 매입 타이밍 판단",
           "evidence_examples": [
-            {
-              "title": "국산 축산물 가격 고공행진…소고기·닭고기 수입 급증 - 스페셜경제",
-              "published_at": "2026-08-14T05:27:50Z",
-              "source": "스페셜경제",
-              "source_level": 3,
-              "quality_score": 81,
-              "direction": "neutral",
-              "direction_label": "중립/보조",
-              "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBnZVBSM2V5NDM1VHNSWkpWcFZyTmNtX0s0NjRFRUc5OHpSQmUtX1JWdkZnVnZoOE12bGlZQm1EeE01NWcxZDZGcGktclNMZzluX040VUg5cmpHVWZHb2t2SlNMbzRXMkdHbmNtNA?oc=5"
-            },
             {
               "title": "한우 가격 저렴한 정육식당 '알뜰한우판매점' 280곳 발표 - v.daum.net",
               "published_at": "2026-08-14T02:54:01Z",
@@ -79,6 +69,16 @@
               "direction": "neutral",
               "direction_label": "중립/보조",
               "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE5LVm41dzIyd1JteVR2cG5JLWRmZ2ZTRHVEWDd0eG1IUXgwalpTa1R4LTNkRFA2UFRSTThnYUE5TXVsanZUN2k2dDNiOA?oc=5"
+            },
+            {
+              "title": "한우 경매·가격 어떻게 형성될까? - 한국농촌경제신문",
+              "published_at": "2026-07-24T04:05:01Z",
+              "source": "한국농촌경제신문",
+              "source_level": 3,
+              "quality_score": 58,
+              "direction": "neutral",
+              "direction_label": "중립/보조",
+              "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1XUzlUNWJtelA0d3cxU0JpRFFMamRtSkVycUFqdXEwaGpBS0JRZHZIbktNdms1SFhZVEVMMF9pWVhlZ0FiREpoRThYcjJ0ZlNjWGROSFdvVS10YU1zVGhkaQ?oc=5"
             }
           ],
           "confidence_note": "보조 근거 수준"
@@ -195,11 +195,11 @@
         {
           "axis": "news",
           "label": "뉴스/수요",
-          "score": 9,
+          "score": 13,
           "max_score": 15,
-          "items": 18,
-          "direction": "neutral",
-          "market_impact": "뉴스 보조 신호",
+          "items": 19,
+          "direction": "up",
+          "market_impact": "수요 증가 또는 이슈성 상방 신호",
           "causal_step": "뉴스·수요 이벤트 → 소비/행사/시장심리 → 보조 판단",
           "evidence_examples": [
             {
@@ -233,7 +233,7 @@
               "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBtVDB0VkZpaXN4bVdqUTU1S2U3X3dZd0VISGdzMU5uellfVDNjX3Rid3JBa0Vrd05fdUpFbXhZNjVFVi1Mcjc3eV9MU1QyVjZWZjFJZElhZE1Pb05SVkxVOGFaVkRJTnlua0F4UQ?oc=5"
             }
           ],
-          "confidence_note": "근거 일부 연결"
+          "confidence_note": "근거 연결 강함"
         }
       ],
       "missing_evidence": [],
@@ -259,14 +259,14 @@
         {
           "axis": "price",
           "label": "가격",
-          "items": 6,
+          "items": 5,
           "has_conflict": false,
           "severity": "none",
           "dominant_direction": "down",
           "weighted_direction": {
             "up": 0.0,
             "down": 7.16,
-            "neutral": 12.16
+            "neutral": 8.89
           },
           "conflict_ratio": 0.0,
           "examples": {
@@ -291,14 +291,6 @@
             ],
             "neutral": [
               {
-                "title": "국산 축산물 가격 고공행진…소고기·닭고기 수입 급증 - 스페셜경제",
-                "source": "스페셜경제",
-                "direction": "neutral",
-                "quality_score": 81,
-                "source_level": 3,
-                "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBnZVBSM2V5NDM1VHNSWkpWcFZyTmNtX0s0NjRFRUc5OHpSQmUtX1JWdkZnVnZoOE12bGlZQm1EeE01NWcxZDZGcGktclNMZzluX040VUg5cmpHVWZHb2t2SlNMbzRXMkdHbmNtNA?oc=5"
-              },
-              {
                 "title": "한우 가격 저렴한 정육식당 '알뜰한우판매점' 280곳 발표 - v.daum.net",
                 "source": "v.daum.net",
                 "direction": "neutral",
@@ -313,6 +305,14 @@
                 "quality_score": 58,
                 "source_level": 3,
                 "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE5LVm41dzIyd1JteVR2cG5JLWRmZ2ZTRHVEWDd0eG1IUXgwalpTa1R4LTNkRFA2UFRSTThnYUE5TXVsanZUN2k2dDNiOA?oc=5"
+              },
+              {
+                "title": "한우 경매·가격 어떻게 형성될까? - 한국농촌경제신문",
+                "source": "한국농촌경제신문",
+                "direction": "neutral",
+                "quality_score": 58,
+                "source_level": 3,
+                "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1XUzlUNWJtelA0d3cxU0JpRFFMamRtSkVycUFqdXEwaGpBS0JRZHZIbktNdms1SFhZVEVMMF9pWVhlZ0FiREpoRThYcjJ0ZlNjWGROSFdvVS10YU1zVGhkaQ?oc=5"
               }
             ]
           },
@@ -440,18 +440,27 @@
         {
           "axis": "news",
           "label": "뉴스/수요",
-          "items": 18,
+          "items": 19,
           "has_conflict": false,
           "severity": "none",
-          "dominant_direction": "neutral",
+          "dominant_direction": "up",
           "weighted_direction": {
-            "up": 0.0,
+            "up": 3.85,
             "down": 0.0,
-            "neutral": 60.29
+            "neutral": 60.19
           },
-          "conflict_ratio": 0,
+          "conflict_ratio": 0.0,
           "examples": {
-            "up": [],
+            "up": [
+              {
+                "title": "한우농가, 1년 새 약 3천700호 감소 - 축산신문",
+                "source": "축산신문",
+                "direction": "up",
+                "quality_score": 65,
+                "source_level": 3,
+                "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9BTFI2WGNTdFFIMVNOaWFZYWRJdjVpM1F0SXo3NWZKSXk0eFBZTkZBR1BxXzlRVjc2QTFDWlQyMVQ4VHVuY2RsMW8zblg3dlBwTm9JblJJZlZPMTBzQlFZQTlvWkdCUEdf?oc=5"
+              }
+            ],
             "down": [],
             "neutral": [
               {
@@ -480,7 +489,7 @@
               }
             ]
           },
-          "memo": "뉴스/수요 축은 중립 또는 보조 근거 중심"
+          "memo": "뉴스/수요 축은 상방 근거 우세"
         }
       ]
     },
@@ -864,16 +873,16 @@
     {
       "id": "POULTRY",
       "name": "계육",
-      "status": "보합/혼조",
-      "direction": "neutral",
-      "signal_score": 47,
-      "confidence_score": 81,
-      "coverage_rate": 80,
-      "reason": "질병/방역 19점 + 가격 13점 + 수급/도축 11점 기반, 상방성 자료가 우세",
+      "status": "하방 가능성",
+      "direction": "down",
+      "signal_score": 34,
+      "confidence_score": 73,
+      "coverage_rate": 60,
+      "reason": "질병/방역 19점 + 수급/도축 11점 + 뉴스/수요 4점 기반, 상방성 자료가 우세",
       "summary_chain": [
         {
           "step": "1. 자료 수집",
-          "value": "14건",
+          "value": "13건",
           "meaning": "축종 관련 정제자료 수"
         },
         {
@@ -883,17 +892,17 @@
         },
         {
           "step": "3. 시장 영향",
-          "value": "상·하방 근거 혼재",
-          "meaning": "질병/방역 19점 + 가격 13점 + 수급/도축 11점 기반, 상방성 자료가 우세"
+          "value": "하방성 근거 우세",
+          "meaning": "질병/방역 19점 + 수급/도축 11점 + 뉴스/수요 4점 기반, 상방성 자료가 우세"
         },
         {
           "step": "4. 신뢰도",
-          "value": "81점 / 커버리지 80%",
+          "value": "73점 / 커버리지 60%",
           "meaning": "출처·최신성·공식자료·근거범위 종합"
         },
         {
           "step": "5. 구매전략",
-          "value": "성수기 수요와 도계량을 보며 분할 확보",
+          "value": "고정계약 물량 중심 운영 및 추가매입 보류",
           "meaning": "현 데이터 기준 참고 액션"
         }
       ],
@@ -901,25 +910,14 @@
         {
           "axis": "price",
           "label": "가격",
-          "score": 13,
+          "score": 0,
           "max_score": 30,
-          "items": 1,
+          "items": 0,
           "direction": "neutral",
           "market_impact": "가격 보조 신호",
           "causal_step": "가격·시세 변화 → 원가 부담 변화 → 매입 타이밍 판단",
-          "evidence_examples": [
-            {
-              "title": "국산 축산물 가격 고공행진…소고기·닭고기 수입 급증 - 스페셜경제",
-              "published_at": "2026-08-14T05:27:50Z",
-              "source": "스페셜경제",
-              "source_level": 3,
-              "quality_score": 81,
-              "direction": "neutral",
-              "direction_label": "중립/보조",
-              "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBnZVBSM2V5NDM1VHNSWkpWcFZyTmNtX0s0NjRFRUc5OHpSQmUtX1JWdkZnVnZoOE12bGlZQm1EeE01NWcxZDZGcGktclNMZzluX040VUg5cmpHVWZHb2t2SlNMbzRXMkdHbmNtNA?oc=5"
-            }
-          ],
-          "confidence_note": "근거 일부 연결"
+          "evidence_examples": [],
+          "confidence_note": "직접 연결 근거 부족"
         },
         {
           "axis": "supply",
@@ -1010,9 +1008,9 @@
           "causal_step": "뉴스·수요 이벤트 → 소비/행사/시장심리 → 보조 판단",
           "evidence_examples": [
             {
-              "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - 더스쿠프",
+              "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - thescoop.co.kr",
               "published_at": "2026-07-13T07:00:00Z",
-              "source": "더스쿠프",
+              "source": "thescoop.co.kr",
               "source_level": 3,
               "quality_score": 51,
               "direction": "neutral",
@@ -1024,10 +1022,11 @@
         }
       ],
       "missing_evidence": [
+        "가격",
         "정책/고시"
       ],
-      "hold_reason": "일부 근거축 부족: 정책/고시",
-      "purchase_action": "성수기 수요와 도계량을 보며 분할 확보",
+      "hold_reason": "일부 근거축 부족: 가격, 정책/고시",
+      "purchase_action": "고정계약 물량 중심 운영 및 추가매입 보류",
       "chain_policy": "phase2_evidence_chain_v2",
       "conflict": {
         "id": "POULTRY",
@@ -1036,43 +1035,35 @@
         "conflict_severity": "none",
         "conflict_axes": [],
         "missing_evidence": [
+          "가격",
           "정책/고시"
         ],
         "hold_reasons": [],
-        "original_confidence": 81,
-        "adjusted_confidence": 81,
+        "original_confidence": 73,
+        "adjusted_confidence": 73,
         "should_hold": false,
-        "recommended_status": "보합/혼조",
-        "recommended_direction": "neutral",
-        "memo": "주의 필요 · 누락근거: 정책/고시"
+        "recommended_status": "하방 가능성",
+        "recommended_direction": "down",
+        "memo": "주의 필요 · 누락근거: 가격, 정책/고시"
       },
       "axis_conflicts": [
         {
           "axis": "price",
           "label": "가격",
-          "items": 1,
+          "items": 0,
           "has_conflict": false,
           "severity": "none",
           "dominant_direction": "neutral",
           "weighted_direction": {
             "up": 0.0,
             "down": 0.0,
-            "neutral": 3.27
+            "neutral": 0.0
           },
           "conflict_ratio": 0,
           "examples": {
             "up": [],
             "down": [],
-            "neutral": [
-              {
-                "title": "국산 축산물 가격 고공행진…소고기·닭고기 수입 급증 - 스페셜경제",
-                "source": "스페셜경제",
-                "direction": "neutral",
-                "quality_score": 81,
-                "source_level": 3,
-                "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBnZVBSM2V5NDM1VHNSWkpWcFZyTmNtX0s0NjRFRUc5OHpSQmUtX1JWdkZnVnZoOE12bGlZQm1EeE01NWcxZDZGcGktclNMZzluX040VUg5cmpHVWZHb2t2SlNMbzRXMkdHbmNtNA?oc=5"
-              }
-            ]
+            "neutral": []
           },
           "memo": "가격 축은 중립 또는 보조 근거 중심"
         },
@@ -1121,8 +1112,8 @@
           "examples": {
             "up": [
               {
-                "title": "“2년 전 AI 살처분 닭․오리 60%는 정상이었다” 경향신문 - 서울Pn",
-                "source": "서울Pn",
+                "title": "“2년 전 AI 살처분 닭․오리 60%는 정상이었다” 경향신문 - go.seoul.co.kr",
+                "source": "go.seoul.co.kr",
                 "direction": "up",
                 "quality_score": 81,
                 "source_level": 3,
@@ -1188,8 +1179,8 @@
             "down": [],
             "neutral": [
               {
-                "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - 더스쿠프",
-                "source": "더스쿠프",
+                "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - thescoop.co.kr",
+                "source": "thescoop.co.kr",
                 "direction": "neutral",
                 "quality_score": 51,
                 "source_level": 3,
@@ -1273,9 +1264,9 @@
           "causal_step": "질병·방역 이슈 → 이동제한/살처분/심리 리스크 → 공급 변동성",
           "evidence_examples": [
             {
-              "title": "“2년 전 AI 살처분 닭․오리 60%는 정상이었다” 경향신문 - 서울Pn",
+              "title": "“2년 전 AI 살처분 닭․오리 60%는 정상이었다” 경향신문 - go.seoul.co.kr",
               "published_at": "2026-08-14T13:23:19Z",
-              "source": "서울Pn",
+              "source": "go.seoul.co.kr",
               "source_level": 3,
               "quality_score": 81,
               "direction": "up",
@@ -1400,8 +1391,8 @@
           "examples": {
             "up": [
               {
-                "title": "“2년 전 AI 살처분 닭․오리 60%는 정상이었다” 경향신문 - 서울Pn",
-                "source": "서울Pn",
+                "title": "“2년 전 AI 살처분 닭․오리 60%는 정상이었다” 경향신문 - go.seoul.co.kr",
+                "source": "go.seoul.co.kr",
                 "direction": "up",
                 "quality_score": 81,
                 "source_level": 3,
@@ -1947,7 +1938,7 @@
       "summary_chain": [
         {
           "step": "1. 자료 수집",
-          "value": "30건",
+          "value": "31건",
           "meaning": "축종 관련 정제자료 수"
         },
         {
@@ -2078,7 +2069,7 @@
           "label": "뉴스/수요",
           "score": 13,
           "max_score": 15,
-          "items": 21,
+          "items": 22,
           "direction": "up",
           "market_impact": "수요 증가 또는 이슈성 상방 신호",
           "causal_step": "뉴스·수요 이벤트 → 소비/행사/시장심리 → 보조 판단",
@@ -2104,14 +2095,14 @@
               "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNNjlWT3U4TEdQbzRSdzZNbUdHRDNJeV9PVnhUbUtzbUVHMHJlcFRra29HTG52NUpPNy0wWWJ3S1pnY1VzYkdIanp1Z2Q0UUMya2NXNmVsODZjeVpmZmtoM05KU1pOMTF3RXBFOVFneTFaYnhZRGVyR2dnYXVqX0ZKZktEajJWdWFqcFBmLW1BbHRYVDhERlg4LUloUjhwcDNjRFh6WlZpVU43dw?oc=5"
             },
             {
-              "title": "농림축산식품부 - - 농림축산식품부",
-              "published_at": "2026-03-26T07:00:00Z",
-              "source": "농림축산식품부",
+              "title": "축산물품질평가원 축산물 소비 트렌드 인사이트 ’ 5 월호 발간 - 축산물품질평가원",
+              "published_at": "2026-05-27T07:00:00Z",
+              "source": "축산물품질평가원",
               "source_level": 5,
               "quality_score": 75,
               "direction": "neutral",
               "direction_label": "중립/보조",
-              "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1jeXl3alQyb3lFNEdYLU01UDVwbXRCUHVjQnhTZlBoZENQRHo3RlB6SUpKejVuYkR3eFlfNDhIYURYMG5fN213b1J4Nk1HRFQwei04VDBfM2UyR1FxallDQWR0bVd6RjlQWUx4aDc3Z0tVWWUwY1pGdmdYR0N4dWs?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPZjlZX2VGWmlqOUlNelNBUGR4Yk42SExLYmVlSlZHTEJyY1l3ZXdLMHExRVowX2lfX3NBbkVfYXVkZzBXbkFMT21VSnRsQV9OZ2FjcTY4MzZsYTJHYWszMmE1TGpVSXZhT3pEN18tUVNPbzhDUk1PcGgzYm14blF4SjJIVV9oTENzRHBRNUtR?oc=5"
             }
           ],
           "confidence_note": "근거 연결 강함"
@@ -2269,14 +2260,14 @@
         {
           "axis": "news",
           "label": "뉴스/수요",
-          "items": 21,
+          "items": 22,
           "has_conflict": true,
           "severity": "medium",
           "dominant_direction": "up",
           "weighted_direction": {
             "up": 9.1,
             "down": 4.1,
-            "neutral": 65.7
+            "neutral": 69.35
           },
           "conflict_ratio": 0.45,
           "examples": {
@@ -2326,12 +2317,12 @@
                 "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNNjlWT3U4TEdQbzRSdzZNbUdHRDNJeV9PVnhUbUtzbUVHMHJlcFRra29HTG52NUpPNy0wWWJ3S1pnY1VzYkdIanp1Z2Q0UUMya2NXNmVsODZjeVpmZmtoM05KU1pOMTF3RXBFOVFneTFaYnhZRGVyR2dnYXVqX0ZKZktEajJWdWFqcFBmLW1BbHRYVDhERlg4LUloUjhwcDNjRFh6WlZpVU43dw?oc=5"
               },
               {
-                "title": "농림축산식품부 - - 농림축산식품부",
-                "source": "농림축산식품부",
+                "title": "축산물품질평가원 축산물 소비 트렌드 인사이트 ’ 5 월호 발간 - 축산물품질평가원",
+                "source": "축산물품질평가원",
                 "direction": "neutral",
                 "quality_score": 75,
                 "source_level": 5,
-                "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1jeXl3alQyb3lFNEdYLU01UDVwbXRCUHVjQnhTZlBoZENQRHo3RlB6SUpKejVuYkR3eFlfNDhIYURYMG5fN213b1J4Nk1HRFQwei04VDBfM2UyR1FxallDQWR0bVd6RjlQWUx4aDc3Z0tVWWUwY1pGdmdYR0N4dWs?oc=5"
+                "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPZjlZX2VGWmlqOUlNelNBUGR4Yk42SExLYmVlSlZHTEJyY1l3ZXdLMHExRVowX2lfX3NBbkVfYXVkZzBXbkFMT21VSnRsQV9OZ2FjcTY4MzZsYTJHYWszMmE1TGpVSXZhT3pEN18tUVNPbzhDUk1PcGgzYm14blF4SjJIVV9oTENzRHBRNUtR?oc=5"
               }
             ]
           },
