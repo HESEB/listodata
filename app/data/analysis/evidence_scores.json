@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-15T04:49:43Z",
+  "updated_at": "2026-08-15T05:44:16Z",
   "policy": "phase2_evidence_score_v3_sanitized",
   "score_axes": {
     "price": {
@@ -245,10 +245,10 @@
       "quality_score": 66,
       "confidence_score": 78,
       "coverage_rate": 80,
-      "evidence_count": 31,
-      "official_count": 13,
+      "evidence_count": 32,
+      "official_count": 14,
       "direction_counts": {
-        "up": 28,
+        "up": 29,
         "down": 1,
         "neutral": 2,
         "hold": 0
@@ -318,8 +318,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 18,
-          "items": 27,
-          "up": 27,
+          "items": 28,
+          "up": 28,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -396,10 +396,10 @@
       "quality_score": 73,
       "confidence_score": 88,
       "coverage_rate": 100,
-      "evidence_count": 13,
-      "official_count": 7,
+      "evidence_count": 14,
+      "official_count": 8,
       "direction_counts": {
-        "up": 10,
+        "up": 11,
         "down": 0,
         "neutral": 3,
         "hold": 0
@@ -464,8 +464,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 9,
-          "up": 9,
+          "items": 10,
+          "up": 10,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -661,16 +661,16 @@
     {
       "id": "EGG",
       "name": "계란",
-      "signal_score": 68,
+      "signal_score": 70,
       "direction": "up",
       "status": "상방 가능성",
-      "quality_score": 71,
+      "quality_score": 72,
       "confidence_score": 80,
       "coverage_rate": 80,
-      "evidence_count": 30,
-      "official_count": 8,
+      "evidence_count": 32,
+      "official_count": 10,
       "direction_counts": {
-        "up": 11,
+        "up": 13,
         "down": 2,
         "neutral": 17,
         "hold": 0
@@ -684,7 +684,7 @@
       "score_breakdown": {
         "price": 25,
         "supply": 23,
-        "disease": 12,
+        "disease": 14,
         "policy": 0,
         "news": 8
       },
@@ -729,8 +729,8 @@
           "label": "수급/도축",
           "max_score": 25,
           "score": 23,
-          "items": 10,
-          "up": 8,
+          "items": 11,
+          "up": 9,
           "down": 2,
           "neutral": 0,
           "examples": [
@@ -757,12 +757,18 @@
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
-          "score": 12,
-          "items": 1,
-          "up": 1,
+          "score": 14,
+          "items": 2,
+          "up": 2,
           "down": 0,
           "neutral": 0,
           "examples": [
+            {
+              "title": "알림소식 > 보도자료 > 경기 김포 산란계 농장에 대한 예찰 검사에서 H5형 조류인플루엔자 항원 확인 - 농림축산식품부",
+              "direction": "up",
+              "source_level": 5,
+              "quality_score": 75
+            },
             {
               "title": "충남 아산 산란계 농장 고병원성 조류인플루엔자 확진 - 농림축산식품부",
               "direction": "up",
@@ -811,7 +817,7 @@
           ]
         }
       },
-      "reason": "가격 25점 + 수급/도축 23점 + 질병/방역 12점 기반, 상방성 자료가 우세",
+      "reason": "가격 25점 + 수급/도축 23점 + 질병/방역 14점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
@@ -836,11 +842,11 @@
       "quality_score": 75,
       "confidence_score": 89,
       "coverage_rate": 100,
-      "evidence_count": 33,
-      "official_count": 32,
+      "evidence_count": 32,
+      "official_count": 31,
       "direction_counts": {
-        "up": 12,
-        "down": 0,
+        "up": 10,
+        "down": 1,
         "neutral": 21,
         "hold": 0
       },
@@ -897,8 +903,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 9,
-          "up": 9,
+          "items": 7,
+          "up": 7,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -943,9 +949,9 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 13,
-          "items": 22,
+          "items": 23,
           "up": 2,
-          "down": 0,
+          "down": 1,
           "neutral": 20,
           "examples": [
             {
@@ -972,17 +978,19 @@
       "reason": "질병/방역 19점 + 수급/도축 16점 + 뉴스/수요 13점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
-        "has_conflict": false,
-        "severity": "none",
-        "axes": [],
-        "memo": "주의 필요 · 누락근거: 가격"
+        "has_conflict": true,
+        "severity": "medium",
+        "axes": [
+          "뉴스/수요"
+        ],
+        "memo": "주의 필요 · 충돌축: 뉴스/수요 / 누락근거: 가격"
       },
       "hold_decision": {
         "should_hold": false,
         "reasons": [],
         "recommended_status": "보합/혼조",
         "recommended_direction": "neutral",
-        "adjusted_confidence": 89
+        "adjusted_confidence": 79
       }
     }
   ],
