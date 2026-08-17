@@ -1,17 +1,17 @@
 {
-  "updated_at": "2026-08-17T13:55:30Z",
+  "updated_at": "2026-08-17T14:47:37Z",
   "policy": "phase2_evidence_chain_v2",
   "notice": "뉴스/공식자료 → 근거축 → 시장영향 → 신뢰도 → 구매전략으로 연결한 Evidence Chain입니다.",
   "items": [
     {
       "id": "BEEF",
       "name": "한우",
-      "status": "보합/혼조",
-      "direction": "neutral",
-      "signal_score": 59,
+      "status": "상방 가능성",
+      "direction": "up",
+      "signal_score": 62,
       "confidence_score": 72,
       "coverage_rate": 100,
-      "reason": "수급/도축 17점 + 질병/방역 13점 + 뉴스/수요 13점 기반, 상방성 자료가 우세",
+      "reason": "수급/도축 17점 + 가격 14점 + 질병/방역 13점 기반, 상방성 자료가 우세",
       "summary_chain": [
         {
           "step": "1. 자료 수집",
@@ -25,8 +25,8 @@
         },
         {
           "step": "3. 시장 영향",
-          "value": "상·하방 근거 혼재",
-          "meaning": "수급/도축 17점 + 질병/방역 13점 + 뉴스/수요 13점 기반, 상방성 자료가 우세"
+          "value": "상방성 근거 우세",
+          "meaning": "수급/도축 17점 + 가격 14점 + 질병/방역 13점 기반, 상방성 자료가 우세"
         },
         {
           "step": "4. 신뢰도",
@@ -35,7 +35,7 @@
         },
         {
           "step": "5. 구매전략",
-          "value": "시세 확인 후 행사·명절 물량 중심 선별 매입",
+          "value": "정육류 비축 또는 고정가 협의 검토",
           "meaning": "현 데이터 기준 참고 액션"
         }
       ],
@@ -43,11 +43,11 @@
         {
           "axis": "price",
           "label": "가격",
-          "score": 11,
+          "score": 14,
           "max_score": 30,
-          "items": 4,
-          "direction": "down",
-          "market_impact": "가격 하락 또는 안정 요인",
+          "items": 3,
+          "direction": "neutral",
+          "market_impact": "가격 보조 신호",
           "causal_step": "가격·시세 변화 → 원가 부담 변화 → 매입 타이밍 판단",
           "evidence_examples": [
             {
@@ -81,7 +81,7 @@
               "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1XUzlUNWJtelA0d3cxU0JpRFFMamRtSkVycUFqdXEwaGpBS0JRZHZIbktNdms1SFhZVEVMMF9pWVhlZ0FiREpoRThYcjJ0ZlNjWGROSFdvVS10YU1zVGhkaQ?oc=5"
             }
           ],
-          "confidence_note": "보조 근거 수준"
+          "confidence_note": "근거 일부 연결"
         },
         {
           "axis": "supply",
@@ -177,7 +177,7 @@
           "label": "뉴스/수요",
           "score": 13,
           "max_score": 15,
-          "items": 20,
+          "items": 21,
           "direction": "up",
           "market_impact": "수요 증가 또는 이슈성 상방 신호",
           "causal_step": "뉴스·수요 이벤트 → 소비/행사/시장심리 → 보조 판단",
@@ -218,7 +218,7 @@
       ],
       "missing_evidence": [],
       "hold_reason": "주요 근거축 연결",
-      "purchase_action": "시세 확인 후 행사·명절 물량 중심 선별 매입",
+      "purchase_action": "정육류 비축 또는 고정가 협의 검토",
       "chain_policy": "phase2_evidence_chain_v2",
       "conflict": {
         "id": "BEEF",
@@ -231,36 +231,27 @@
         "original_confidence": 72,
         "adjusted_confidence": 72,
         "should_hold": false,
-        "recommended_status": "보합/혼조",
-        "recommended_direction": "neutral",
+        "recommended_status": "상방 가능성",
+        "recommended_direction": "up",
         "memo": "충돌 또는 판단 유보 요인 없음"
       },
       "axis_conflicts": [
         {
           "axis": "price",
           "label": "가격",
-          "items": 4,
+          "items": 3,
           "has_conflict": false,
           "severity": "none",
-          "dominant_direction": "down",
+          "dominant_direction": "neutral",
           "weighted_direction": {
             "up": 0.0,
-            "down": 3.48,
+            "down": 0.0,
             "neutral": 8.79
           },
-          "conflict_ratio": 0.0,
+          "conflict_ratio": 0,
           "examples": {
             "up": [],
-            "down": [
-              {
-                "title": "한우가 이 가격이 말이 되나… 홈플러스가 작정하고 준비한 '역대급 할인' - 위키트리",
-                "source": "위키트리",
-                "direction": "down",
-                "quality_score": 59,
-                "source_level": 2,
-                "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9qc3o5bjl4VEsyb0JsMDZyZF84QjRzZHRvOW9GY1ZtbVJzMmtMbC1TaWpYb0JYR19RWkZVYUQzOHpUMENicHJoRHVmemVURzBPdkRyWm9B?oc=5"
-              }
-            ],
+            "down": [],
             "neutral": [
               {
                 "title": "한우 가격 저렴한 정육식당 '알뜰한우판매점' 280곳 발표 - v.daum.net",
@@ -288,7 +279,7 @@
               }
             ]
           },
-          "memo": "가격 축은 하방 근거 우세"
+          "memo": "가격 축은 중립 또는 보조 근거 중심"
         },
         {
           "axis": "supply",
@@ -396,14 +387,14 @@
         {
           "axis": "news",
           "label": "뉴스/수요",
-          "items": 20,
+          "items": 21,
           "has_conflict": false,
           "severity": "none",
           "dominant_direction": "up",
           "weighted_direction": {
             "up": 3.85,
             "down": 0.0,
-            "neutral": 62.85
+            "neutral": 66.12
           },
           "conflict_ratio": 0.0,
           "examples": {
@@ -420,6 +411,14 @@
             "down": [],
             "neutral": [
               {
+                "title": "한우 직거래로 유통비용 낮춘다 - 대한급식신문",
+                "source": "대한급식신문",
+                "direction": "neutral",
+                "quality_score": 81,
+                "source_level": 3,
+                "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1jZHJrTzloai1aUHNHQ1B5QVFBcVlLRnBHRm0yMUlSM2NiTFdWN0toZl9TNTNYWFFNay1QaFRXNjdoX2N0cE9FcThjNXFWakN2UDdlUmtIM1NtRmstMTd1QkI1ZS1uYlYz?oc=5"
+              },
+              {
                 "title": "\"한우·굴비도 편의점에서\"…이마트24, 추석 선물상품 판매 - 머니투데이 - 머니투데이",
                 "source": "머니투데이",
                 "direction": "neutral",
@@ -434,14 +433,6 @@
                 "quality_score": 93,
                 "source_level": 4,
                 "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBvcFo3aGJ2bjRZZkV5VS1zZjQ3MFF1Tm1BMld1WGQxencxV1hWZlp1SnRBRk5mcGVwbWplbnQzNy1vQlMzSWtNWC1PYW5aRFhtWGhyOVlfUVlaZ0NYWnp6dg?oc=5"
-              },
-              {
-                "title": "전국한우협회, 알뜰한우판매점 발표… 전국 280곳 선정 - 중도일보",
-                "source": "중도일보",
-                "direction": "neutral",
-                "quality_score": 93,
-                "source_level": 4,
-                "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9aazBkLXljdnEyV1JWdXFENENMSk9RU1c4R2I5X0Z2dGRnUmtjcTBKNXpJTjVVN2RCSjU0cldLb1V5bTBGbFdPUE01Q0t4cDFobTBGaGJjS21HanhKTzhCenlaS0Q?oc=5"
               }
             ]
           },
@@ -461,7 +452,7 @@
       "summary_chain": [
         {
           "step": "1. 자료 수집",
-          "value": "33건",
+          "value": "34건",
           "meaning": "축종 관련 정제자료 수"
         },
         {
@@ -530,9 +521,9 @@
           "causal_step": "도축·도계·출하 흐름 → 공급 가능량 변화 → 가격 방향성",
           "evidence_examples": [
             {
-              "title": "2026년 상반기 세계 주요 국가의 돼지고기 수급 동향 및 전망 / 정종현 대표 - 축산정보뉴스",
+              "title": "2026년 상반기 세계 주요 국가의 돼지고기 수급 동향 및 전망 / 정종현 대표 - liveinfo.kr",
               "published_at": "2026-05-21T07:00:00Z",
-              "source": "축산정보뉴스",
+              "source": "liveinfo.kr",
               "source_level": 3,
               "quality_score": 51,
               "direction": "up",
@@ -547,7 +538,7 @@
           "label": "질병/방역",
           "score": 18,
           "max_score": 20,
-          "items": 29,
+          "items": 30,
           "direction": "up",
           "market_impact": "방역·이동제한·살처분에 따른 공급 리스크",
           "causal_step": "질병·방역 이슈 → 이동제한/살처분/심리 리스크 → 공급 변동성",
@@ -698,8 +689,8 @@
           "examples": {
             "up": [
               {
-                "title": "2026년 상반기 세계 주요 국가의 돼지고기 수급 동향 및 전망 / 정종현 대표 - 축산정보뉴스",
-                "source": "축산정보뉴스",
+                "title": "2026년 상반기 세계 주요 국가의 돼지고기 수급 동향 및 전망 / 정종현 대표 - liveinfo.kr",
+                "source": "liveinfo.kr",
                 "direction": "up",
                 "quality_score": 51,
                 "source_level": 3,
@@ -714,12 +705,12 @@
         {
           "axis": "disease",
           "label": "질병/방역",
-          "items": 29,
+          "items": 30,
           "has_conflict": false,
           "severity": "none",
           "dominant_direction": "up",
           "weighted_direction": {
-            "up": 130.32,
+            "up": 134.34,
             "down": 0.0,
             "neutral": 0.0
           },
@@ -732,7 +723,7 @@
                 "direction": "up",
                 "quality_score": 81,
                 "source_level": 3,
-                "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5OSHBnb2xsYjl0SUhhaGliOWw0aUtWRzVrLUh4LWUxTWxtdmdLUS1aSXllclh6NHdsQ1NSYWdpM09CSmR6WnZFMmdIYm5sa1hveEI1eU1fSlJqcXh6N1FSVXllWFhFdzBKV0dKQ1o0cw?oc=5"
+                "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5sYV9feV9mVmd4MkNTWmdTZHNDVDh5T2JMV0dZbGtYVnRjX2M2dFk5eWtQOURnY0I2Nmd4U1Z1Qk12VVhKSTZKWEtaYkNCM1hzb1BJZjdzbXl1X2RIYV9kNW1waEx2X3V4MmZES1lWN2s?oc=5"
               },
               {
                 "title": "AI·ASF·구제역 선제 차단…경기도, 가축방역 전국 ‘최우수’ - 베타뉴스",
@@ -1409,13 +1400,13 @@
       "status": "상방 우세",
       "direction": "up",
       "signal_score": 76,
-      "confidence_score": 89,
+      "confidence_score": 87,
       "coverage_rate": 100,
       "reason": "가격 27점 + 수급/도축 24점 + 질병/방역 16점 기반, 상방성 자료가 우세",
       "summary_chain": [
         {
           "step": "1. 자료 수집",
-          "value": "34건",
+          "value": "33건",
           "meaning": "축종 관련 정제자료 수"
         },
         {
@@ -1430,7 +1421,7 @@
         },
         {
           "step": "4. 신뢰도",
-          "value": "89점 / 커버리지 100%",
+          "value": "87점 / 커버리지 100%",
           "meaning": "출처·최신성·공식자료·근거범위 종합"
         },
         {
@@ -1445,7 +1436,7 @@
           "label": "가격",
           "score": 27,
           "max_score": 30,
-          "items": 16,
+          "items": 15,
           "direction": "up",
           "market_impact": "가격 상승 압력",
           "causal_step": "가격·시세 변화 → 원가 부담 변화 → 매입 타이밍 판단",
@@ -1488,7 +1479,7 @@
           "label": "수급/도축",
           "score": 24,
           "max_score": 25,
-          "items": 6,
+          "items": 5,
           "direction": "up",
           "market_impact": "공급 축소 또는 출하 제한 가능성",
           "causal_step": "도축·도계·출하 흐름 → 공급 가능량 변화 → 가격 방향성",
@@ -1586,7 +1577,7 @@
           "label": "뉴스/수요",
           "score": 9,
           "max_score": 15,
-          "items": 9,
+          "items": 10,
           "direction": "neutral",
           "market_impact": "뉴스 보조 신호",
           "causal_step": "뉴스·수요 이벤트 → 소비/행사/시장심리 → 보조 판단",
@@ -1634,32 +1625,30 @@
       "conflict": {
         "id": "EGG",
         "name": "계란",
-        "has_conflict": true,
-        "conflict_severity": "medium",
-        "conflict_axes": [
-          "수급/도축"
-        ],
+        "has_conflict": false,
+        "conflict_severity": "none",
+        "conflict_axes": [],
         "missing_evidence": [
           "정책/고시"
         ],
         "hold_reasons": [],
-        "original_confidence": 89,
-        "adjusted_confidence": 79,
+        "original_confidence": 87,
+        "adjusted_confidence": 87,
         "should_hold": false,
         "recommended_status": "상방 우세",
         "recommended_direction": "up",
-        "memo": "주의 필요 · 충돌축: 수급/도축 / 누락근거: 정책/고시"
+        "memo": "주의 필요 · 누락근거: 정책/고시"
       },
       "axis_conflicts": [
         {
           "axis": "price",
           "label": "가격",
-          "items": 16,
+          "items": 15,
           "has_conflict": false,
           "severity": "none",
           "dominant_direction": "up",
           "weighted_direction": {
-            "up": 45.41,
+            "up": 41.24,
             "down": 0.0,
             "neutral": 15.15
           },
@@ -1724,16 +1713,16 @@
         {
           "axis": "supply",
           "label": "수급/도축",
-          "items": 6,
-          "has_conflict": true,
-          "severity": "medium",
+          "items": 5,
+          "has_conflict": false,
+          "severity": "none",
           "dominant_direction": "up",
           "weighted_direction": {
             "up": 18.12,
-            "down": 7.22,
+            "down": 3.12,
             "neutral": 0.0
           },
-          "conflict_ratio": 0.4,
+          "conflict_ratio": 0.17,
           "examples": {
             "up": [
               {
@@ -1769,19 +1758,11 @@
                 "quality_score": 51,
                 "source_level": 3,
                 "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1SSmFScERncDJ2VXBRN213RVN5VTNpdmYzblNoMFBnTWpVbHFSMkZIazBVUm42Qm42Tzh4M2otT0kyQk0yLVdMeEZieUFMamJza042X21MWHNsTmowYURnQnRhMllFcDNhYkFUQi1YVQ?oc=5"
-              },
-              {
-                "title": "농림축산식품부, 계란 등 축산물 공급 확대 및 할인지원 강화, 여름철 수급 불안 선제 대응 - 시사일보",
-                "source": "시사일보",
-                "direction": "down",
-                "quality_score": 75,
-                "source_level": 5,
-                "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE94bW9adFl3clFrbXZJWDJkcmRMVW0yV3I1ckRWSDNFMGJ4TGxhcG8xQ1pmQzh2bERxcWJEejY4OERfTlEtX0hwcmVTd2k?oc=5"
               }
             ],
             "neutral": []
           },
-          "memo": "수급/도축 축에서 상방·하방 근거가 동시에 감지되어 medium 충돌로 분류"
+          "memo": "수급/도축 축은 상방 근거 우세"
         },
         {
           "axis": "disease",
@@ -1851,14 +1832,14 @@
         {
           "axis": "news",
           "label": "뉴스/수요",
-          "items": 9,
+          "items": 10,
           "has_conflict": false,
           "severity": "none",
           "dominant_direction": "neutral",
           "weighted_direction": {
             "up": 0.0,
             "down": 0.0,
-            "neutral": 28.13
+            "neutral": 30.8
           },
           "conflict_ratio": 0,
           "examples": {
@@ -1978,9 +1959,9 @@
           "causal_step": "질병·방역 이슈 → 이동제한/살처분/심리 리스크 → 공급 변동성",
           "evidence_examples": [
             {
-              "title": "경기도, 전국 가축방역 평가 ‘최우수’…농식품부장관상 수상 - 데일리엔뉴스",
+              "title": "경기도, 전국 가축방역 평가 ‘최우수’…농식품부장관상 수상 - dailyn.net",
               "published_at": "2026-08-16T22:31:03Z",
-              "source": "데일리엔뉴스",
+              "source": "dailyn.net",
               "source_level": 5,
               "quality_score": 100,
               "direction": "up",
@@ -2168,8 +2149,8 @@
           "examples": {
             "up": [
               {
-                "title": "경기도, 전국 가축방역 평가 ‘최우수’…농식품부장관상 수상 - 데일리엔뉴스",
-                "source": "데일리엔뉴스",
+                "title": "경기도, 전국 가축방역 평가 ‘최우수’…농식품부장관상 수상 - dailyn.net",
+                "source": "dailyn.net",
                 "direction": "up",
                 "quality_score": 100,
                 "source_level": 5,
