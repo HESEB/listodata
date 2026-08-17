@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-08-17T13:55:31Z",
+  "updated_at": "2026-08-17T14:47:37Z",
   "policy": "phase2_conflict_hold_v1",
   "notice": "상방·하방 근거 충돌, 근거 누락, 신뢰도 부족에 따른 판단 유보 검수 리포트입니다.",
   "summary": {
     "species_count": 6,
-    "conflict_species_count": 2,
+    "conflict_species_count": 1,
     "hold_recommended_count": 1,
     "high_conflict_count": 0
   },
@@ -20,8 +20,8 @@
       "original_confidence": 72,
       "adjusted_confidence": 72,
       "should_hold": false,
-      "recommended_status": "보합/혼조",
-      "recommended_direction": "neutral",
+      "recommended_status": "상방 가능성",
+      "recommended_direction": "up",
       "memo": "충돌 또는 판단 유보 요인 없음"
     },
     {
@@ -88,21 +88,19 @@
     {
       "id": "EGG",
       "name": "계란",
-      "has_conflict": true,
-      "conflict_severity": "medium",
-      "conflict_axes": [
-        "수급/도축"
-      ],
+      "has_conflict": false,
+      "conflict_severity": "none",
+      "conflict_axes": [],
       "missing_evidence": [
         "정책/고시"
       ],
       "hold_reasons": [],
-      "original_confidence": 89,
-      "adjusted_confidence": 79,
+      "original_confidence": 87,
+      "adjusted_confidence": 87,
       "should_hold": false,
       "recommended_status": "상방 우세",
       "recommended_direction": "up",
-      "memo": "주의 필요 · 충돌축: 수급/도축 / 누락근거: 정책/고시"
+      "memo": "주의 필요 · 누락근거: 정책/고시"
     },
     {
       "id": "OTHER",
@@ -129,28 +127,19 @@
       {
         "axis": "price",
         "label": "가격",
-        "items": 4,
+        "items": 3,
         "has_conflict": false,
         "severity": "none",
-        "dominant_direction": "down",
+        "dominant_direction": "neutral",
         "weighted_direction": {
           "up": 0.0,
-          "down": 3.48,
+          "down": 0.0,
           "neutral": 8.79
         },
-        "conflict_ratio": 0.0,
+        "conflict_ratio": 0,
         "examples": {
           "up": [],
-          "down": [
-            {
-              "title": "한우가 이 가격이 말이 되나… 홈플러스가 작정하고 준비한 '역대급 할인' - 위키트리",
-              "source": "위키트리",
-              "direction": "down",
-              "quality_score": 59,
-              "source_level": 2,
-              "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9qc3o5bjl4VEsyb0JsMDZyZF84QjRzZHRvOW9GY1ZtbVJzMmtMbC1TaWpYb0JYR19RWkZVYUQzOHpUMENicHJoRHVmemVURzBPdkRyWm9B?oc=5"
-            }
-          ],
+          "down": [],
           "neutral": [
             {
               "title": "한우 가격 저렴한 정육식당 '알뜰한우판매점' 280곳 발표 - v.daum.net",
@@ -178,7 +167,7 @@
             }
           ]
         },
-        "memo": "가격 축은 하방 근거 우세"
+        "memo": "가격 축은 중립 또는 보조 근거 중심"
       },
       {
         "axis": "supply",
@@ -286,14 +275,14 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 20,
+        "items": 21,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
           "up": 3.85,
           "down": 0.0,
-          "neutral": 62.85
+          "neutral": 66.12
         },
         "conflict_ratio": 0.0,
         "examples": {
@@ -310,6 +299,14 @@
           "down": [],
           "neutral": [
             {
+              "title": "한우 직거래로 유통비용 낮춘다 - 대한급식신문",
+              "source": "대한급식신문",
+              "direction": "neutral",
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1jZHJrTzloai1aUHNHQ1B5QVFBcVlLRnBHRm0yMUlSM2NiTFdWN0toZl9TNTNYWFFNay1QaFRXNjdoX2N0cE9FcThjNXFWakN2UDdlUmtIM1NtRmstMTd1QkI1ZS1uYlYz?oc=5"
+            },
+            {
               "title": "\"한우·굴비도 편의점에서\"…이마트24, 추석 선물상품 판매 - 머니투데이 - 머니투데이",
               "source": "머니투데이",
               "direction": "neutral",
@@ -324,14 +321,6 @@
               "quality_score": 93,
               "source_level": 4,
               "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBvcFo3aGJ2bjRZZkV5VS1zZjQ3MFF1Tm1BMld1WGQxencxV1hWZlp1SnRBRk5mcGVwbWplbnQzNy1vQlMzSWtNWC1PYW5aRFhtWGhyOVlfUVlaZ0NYWnp6dg?oc=5"
-            },
-            {
-              "title": "전국한우협회, 알뜰한우판매점 발표… 전국 280곳 선정 - 중도일보",
-              "source": "중도일보",
-              "direction": "neutral",
-              "quality_score": 93,
-              "source_level": 4,
-              "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9aazBkLXljdnEyV1JWdXFENENMSk9RU1c4R2I5X0Z2dGRnUmtjcTBKNXpJTjVVN2RCSjU0cldLb1V5bTBGbFdPUE01Q0t4cDFobTBGaGJjS21HanhKTzhCenlaS0Q?oc=5"
             }
           ]
         },
@@ -392,8 +381,8 @@
         "examples": {
           "up": [
             {
-              "title": "2026년 상반기 세계 주요 국가의 돼지고기 수급 동향 및 전망 / 정종현 대표 - 축산정보뉴스",
-              "source": "축산정보뉴스",
+              "title": "2026년 상반기 세계 주요 국가의 돼지고기 수급 동향 및 전망 / 정종현 대표 - liveinfo.kr",
+              "source": "liveinfo.kr",
               "direction": "up",
               "quality_score": 51,
               "source_level": 3,
@@ -408,12 +397,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 29,
+        "items": 30,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 130.32,
+          "up": 134.34,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -426,7 +415,7 @@
               "direction": "up",
               "quality_score": 81,
               "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5OSHBnb2xsYjl0SUhhaGliOWw0aUtWRzVrLUh4LWUxTWxtdmdLUS1aSXllclh6NHdsQ1NSYWdpM09CSmR6WnZFMmdIYm5sa1hveEI1eU1fSlJqcXh6N1FSVXllWFhFdzBKV0dKQ1o0cw?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5sYV9feV9mVmd4MkNTWmdTZHNDVDh5T2JMV0dZbGtYVnRjX2M2dFk5eWtQOURnY0I2Nmd4U1Z1Qk12VVhKSTZKWEtaYkNCM1hzb1BJZjdzbXl1X2RIYV9kNW1waEx2X3V4MmZES1lWN2s?oc=5"
             },
             {
               "title": "AI·ASF·구제역 선제 차단…경기도, 가축방역 전국 ‘최우수’ - 베타뉴스",
@@ -768,12 +757,12 @@
       {
         "axis": "price",
         "label": "가격",
-        "items": 16,
+        "items": 15,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 45.41,
+          "up": 41.24,
           "down": 0.0,
           "neutral": 15.15
         },
@@ -838,16 +827,16 @@
       {
         "axis": "supply",
         "label": "수급/도축",
-        "items": 6,
-        "has_conflict": true,
-        "severity": "medium",
+        "items": 5,
+        "has_conflict": false,
+        "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
           "up": 18.12,
-          "down": 7.22,
+          "down": 3.12,
           "neutral": 0.0
         },
-        "conflict_ratio": 0.4,
+        "conflict_ratio": 0.17,
         "examples": {
           "up": [
             {
@@ -883,19 +872,11 @@
               "quality_score": 51,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1SSmFScERncDJ2VXBRN213RVN5VTNpdmYzblNoMFBnTWpVbHFSMkZIazBVUm42Qm42Tzh4M2otT0kyQk0yLVdMeEZieUFMamJza042X21MWHNsTmowYURnQnRhMllFcDNhYkFUQi1YVQ?oc=5"
-            },
-            {
-              "title": "농림축산식품부, 계란 등 축산물 공급 확대 및 할인지원 강화, 여름철 수급 불안 선제 대응 - 시사일보",
-              "source": "시사일보",
-              "direction": "down",
-              "quality_score": 75,
-              "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE94bW9adFl3clFrbXZJWDJkcmRMVW0yV3I1ckRWSDNFMGJ4TGxhcG8xQ1pmQzh2bERxcWJEejY4OERfTlEtX0hwcmVTd2k?oc=5"
             }
           ],
           "neutral": []
         },
-        "memo": "수급/도축 축에서 상방·하방 근거가 동시에 감지되어 medium 충돌로 분류"
+        "memo": "수급/도축 축은 상방 근거 우세"
       },
       {
         "axis": "disease",
@@ -965,14 +946,14 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 9,
+        "items": 10,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "neutral",
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 28.13
+          "neutral": 30.8
         },
         "conflict_ratio": 0,
         "examples": {
@@ -1074,8 +1055,8 @@
         "examples": {
           "up": [
             {
-              "title": "경기도, 전국 가축방역 평가 ‘최우수’…농식품부장관상 수상 - 데일리엔뉴스",
-              "source": "데일리엔뉴스",
+              "title": "경기도, 전국 가축방역 평가 ‘최우수’…농식품부장관상 수상 - dailyn.net",
+              "source": "dailyn.net",
               "direction": "up",
               "quality_score": 100,
               "source_level": 5,
