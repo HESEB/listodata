@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-18T20:42:57Z",
+  "updated_at": "2026-08-18T21:41:27Z",
   "policy": "phase2_conflict_hold_v1",
   "notice": "상방·하방 근거 충돌, 근거 누락, 신뢰도 부족에 따른 판단 유보 검수 리포트입니다.",
   "summary": {
@@ -31,37 +31,33 @@
       "conflict_severity": "none",
       "conflict_axes": [],
       "missing_evidence": [
-        "수급/도축",
         "정책/고시"
       ],
       "hold_reasons": [],
-      "original_confidence": 80,
-      "adjusted_confidence": 80,
+      "original_confidence": 86,
+      "adjusted_confidence": 86,
       "should_hold": false,
-      "recommended_status": "하방 가능성",
-      "recommended_direction": "down",
-      "memo": "주의 필요 · 누락근거: 수급/도축, 정책/고시"
+      "recommended_status": "보합/혼조",
+      "recommended_direction": "neutral",
+      "memo": "주의 필요 · 누락근거: 정책/고시"
     },
     {
       "id": "POULTRY",
       "name": "계육",
       "has_conflict": false,
-      "conflict_severity": "low",
+      "conflict_severity": "none",
       "conflict_axes": [],
       "missing_evidence": [
         "가격",
-        "수급/도축",
         "정책/고시"
       ],
-      "hold_reasons": [
-        "주요 근거축 다수 누락"
-      ],
-      "original_confidence": 66,
-      "adjusted_confidence": 66,
+      "hold_reasons": [],
+      "original_confidence": 72,
+      "adjusted_confidence": 72,
       "should_hold": false,
-      "recommended_status": "하방 가능성",
-      "recommended_direction": "down",
-      "memo": "주의 필요 · 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 주요 근거축 다수 누락"
+      "recommended_status": "보합/혼조",
+      "recommended_direction": "neutral",
+      "memo": "주의 필요 · 누락근거: 가격, 정책/고시"
     },
     {
       "id": "DUCK",
@@ -117,18 +113,15 @@
       ],
       "missing_evidence": [
         "가격",
-        "수급/도축",
         "정책/고시"
       ],
-      "hold_reasons": [
-        "주요 근거축 다수 누락"
-      ],
-      "original_confidence": 75,
-      "adjusted_confidence": 65,
+      "hold_reasons": [],
+      "original_confidence": 82,
+      "adjusted_confidence": 72,
       "should_hold": false,
-      "recommended_status": "하방 가능성",
-      "recommended_direction": "down",
-      "memo": "주의 필요 · 충돌축: 뉴스/수요 / 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 주요 근거축 다수 누락"
+      "recommended_status": "보합/혼조",
+      "recommended_direction": "neutral",
+      "memo": "주의 필요 · 충돌축: 뉴스/수요 / 누락근거: 가격, 정책/고시"
     }
   ],
   "axis_reports": {
@@ -381,8 +374,8 @@
           ],
           "neutral": [
             {
-              "title": "[전광판] '26년 33주차 돼지 평균 도매가격 6,332원(전주 대비 0.2%, 전년 대비 -4.6%) - 돼지와사람",
-              "source": "돼지와사람",
+              "title": "[전광판] '26년 33주차 돼지 평균 도매가격 6,332원(전주 대비 0.2%, 전년 대비 -4.6%) - pigpeople.net",
+              "source": "pigpeople.net",
               "direction": "neutral",
               "quality_score": 65,
               "source_level": 3,
@@ -395,32 +388,41 @@
       {
         "axis": "supply",
         "label": "수급/도축",
-        "items": 0,
-        "has_conflict": false,
-        "severity": "none",
-        "dominant_direction": "neutral",
-        "weighted_direction": {
-          "up": 0.0,
-          "down": 0.0,
-          "neutral": 0.0
-        },
-        "conflict_ratio": 0,
-        "examples": {
-          "up": [],
-          "down": [],
-          "neutral": []
-        },
-        "memo": "수급/도축 축은 중립 또는 보조 근거 중심"
-      },
-      {
-        "axis": "disease",
-        "label": "질병/방역",
-        "items": 24,
+        "items": 1,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 111.08,
+          "up": 3.12,
+          "down": 0.0,
+          "neutral": 0.0
+        },
+        "conflict_ratio": 0.0,
+        "examples": {
+          "up": [
+            {
+              "title": "2026년 상반기 세계 주요 국가의 돼지고기 수급 동향 및 전망 / 정종현 대표 - 축산정보뉴스",
+              "source": "축산정보뉴스",
+              "direction": "up",
+              "quality_score": 51,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9zWjRPY0tCZ0ZRdVdpUWQ2RUFHU0xuM3ZmYWp1VkptVGNQTm44NnAweEEzZVRRd1ktS2RlN1UtdmdkMkRvWDgwZ2poZ3REUlBnM0JvTmxXdHNqdjFQeXo4?oc=5"
+            }
+          ],
+          "down": [],
+          "neutral": []
+        },
+        "memo": "수급/도축 축은 상방 근거 우세"
+      },
+      {
+        "axis": "disease",
+        "label": "질병/방역",
+        "items": 26,
+        "has_conflict": false,
+        "severity": "none",
+        "dominant_direction": "up",
+        "weighted_direction": {
+          "up": 118.22,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -503,8 +505,8 @@
               "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1VejNpem44eGx3Yk0wUXk2U1ozbkVrV3JQa1NXVzdPeDlDOXo0d2ZPb1lBa2ZZVUtMb2hvQkpRX2NkeUg0XzB3NVZ2enBmUnpNX05lSzdic3cwZw?oc=5"
             },
             {
-              "title": "[칼럼] 1만원 계란값이 남긴 경고...한돈에서 같은 실수 말아야 - 돼지와사람",
-              "source": "돼지와사람",
+              "title": "[칼럼] 1만원 계란값이 남긴 경고...한돈에서 같은 실수 말아야 - pigpeople.net",
+              "source": "pigpeople.net",
               "direction": "neutral",
               "quality_score": 51,
               "source_level": 3,
@@ -539,22 +541,39 @@
       {
         "axis": "supply",
         "label": "수급/도축",
-        "items": 0,
+        "items": 2,
         "has_conflict": false,
         "severity": "none",
-        "dominant_direction": "neutral",
+        "dominant_direction": "up",
         "weighted_direction": {
-          "up": 0.0,
+          "up": 6.24,
           "down": 0.0,
           "neutral": 0.0
         },
-        "conflict_ratio": 0,
+        "conflict_ratio": 0.0,
         "examples": {
-          "up": [],
+          "up": [
+            {
+              "title": "굽네치킨, 가격 동결하고 순살 치킨 중량 조정…계육 수급 불안 여파 - 에너지경제신문",
+              "source": "에너지경제신문",
+              "direction": "up",
+              "quality_score": 51,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1pVlZEbkI4LXN4ci16NjFBZE8zWk1lWXJobHRVUC1uejE0dVBYcnFONFhMbE5NTVNUMWtiZVNrMTVvYU1YODM4Z1d1b0lmZC1ueUFWZHZEaVl6TnM?oc=5"
+            },
+            {
+              "title": "계육 공급 불안 직격탄…굽네치킨, 중량 800→700ｇ - 매일일보",
+              "source": "매일일보",
+              "direction": "up",
+              "quality_score": 51,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1kOEFIcmdSeFdCeDZpczVqQUt0UklPeGtEeXZPMHNxUmhuRElfWXc3U3RxemR3OERhMHBadHhFa2hIaFRFaWtYSGlTbFZKRlVnRXVma2FQbVpCSWh4dE43NnhxcUo?oc=5"
+            }
+          ],
           "down": [],
           "neutral": []
         },
-        "memo": "수급/도축 축은 중립 또는 보조 근거 중심"
+        "memo": "수급/도축 축은 상방 근거 우세"
       },
       {
         "axis": "disease",
@@ -762,7 +781,7 @@
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 32.4,
+          "up": 31.9,
           "down": 4.17,
           "neutral": 17.78
         },
@@ -1022,22 +1041,31 @@
       {
         "axis": "supply",
         "label": "수급/도축",
-        "items": 0,
+        "items": 1,
         "has_conflict": false,
         "severity": "none",
-        "dominant_direction": "neutral",
+        "dominant_direction": "up",
         "weighted_direction": {
-          "up": 0.0,
+          "up": 5.0,
           "down": 0.0,
           "neutral": 0.0
         },
-        "conflict_ratio": 0,
+        "conflict_ratio": 0.0,
         "examples": {
-          "up": [],
+          "up": [
+            {
+              "title": "농림축산식품부, 5월 수급 동향 점검…과일 출하 감소에도 공급 차질 없을 전망 - 국제일보",
+              "source": "국제일보",
+              "direction": "up",
+              "quality_score": 75,
+              "source_level": 5,
+              "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5qM1pmSk1JWlJIUHNJdUlhME1mZm9vZkU1WndQVlk2LUZCVEZmelM1NmV6YkZnRThzb21iVnA3M3BXM3hKZmdMcVhFTmZLNE5XMmFLalVMY1ZTN2tpaU9SLXRuNXg?oc=5"
+            }
+          ],
           "down": [],
           "neutral": []
         },
-        "memo": "수급/도축 축은 중립 또는 보조 근거 중심"
+        "memo": "수급/도축 축은 상방 근거 우세"
       },
       {
         "axis": "disease",
