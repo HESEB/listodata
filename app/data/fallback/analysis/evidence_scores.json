@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-18T08:55:27Z",
+  "updated_at": "2026-08-18T09:51:30Z",
   "policy": "phase2_evidence_score_v3_sanitized",
   "score_axes": {
     "price": {
@@ -313,7 +313,7 @@
           "neutral": 0,
           "examples": [
             {
-              "title": "경기도 AI·ASF 선제 방역 통했다 - v.daum.net",
+              "title": "경기도 AI·ASF 선제 방역 통했다 - 인천일보",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
@@ -385,16 +385,16 @@
     {
       "id": "POULTRY",
       "name": "계육",
-      "signal_score": 36,
-      "direction": "neutral",
-      "status": "보합/혼조",
-      "quality_score": 69,
-      "confidence_score": 72,
+      "signal_score": 34,
+      "direction": "down",
+      "status": "하방 가능성",
+      "quality_score": 71,
+      "confidence_score": 73,
       "coverage_rate": 60,
-      "evidence_count": 13,
+      "evidence_count": 12,
       "official_count": 9,
       "direction_counts": {
-        "up": 12,
+        "up": 11,
         "down": 0,
         "neutral": 1,
         "hold": 0
@@ -406,7 +406,7 @@
       ],
       "score_breakdown": {
         "price": 0,
-        "supply": 13,
+        "supply": 11,
         "disease": 19,
         "policy": 0,
         "news": 4
@@ -432,20 +432,14 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 13,
-          "items": 2,
-          "up": 2,
+          "score": 11,
+          "items": 1,
+          "up": 1,
           "down": 0,
           "neutral": 0,
           "examples": [
             {
               "title": "굽네치킨, 가격 동결하고 순살 치킨 중량 조정…계육 수급 불안 여파 - 에너지경제신문",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 51
-            },
-            {
-              "title": "계육 공급 불안 직격탄…굽네치킨, 중량 800→700ｇ - m-i.kr",
               "direction": "up",
               "source_level": 3,
               "quality_score": 51
@@ -509,7 +503,7 @@
           ]
         }
       },
-      "reason": "질병/방역 19점 + 수급/도축 13점 + 뉴스/수요 4점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 수급/도축 11점 + 뉴스/수요 4점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
@@ -520,9 +514,9 @@
       "hold_decision": {
         "should_hold": false,
         "reasons": [],
-        "recommended_status": "보합/혼조",
-        "recommended_direction": "neutral",
-        "adjusted_confidence": 72
+        "recommended_status": "하방 가능성",
+        "recommended_direction": "down",
+        "adjusted_confidence": 73
       }
     },
     {
@@ -634,18 +628,18 @@
     {
       "id": "EGG",
       "name": "계란",
-      "signal_score": 75,
+      "signal_score": 78,
       "direction": "up",
       "status": "상방 우세",
-      "quality_score": 75,
-      "confidence_score": 89,
+      "quality_score": 73,
+      "confidence_score": 88,
       "coverage_rate": 100,
       "evidence_count": 34,
-      "official_count": 10,
+      "official_count": 8,
       "direction_counts": {
-        "up": 18,
-        "down": 0,
-        "neutral": 16,
+        "up": 16,
+        "down": 1,
+        "neutral": 17,
         "hold": 0
       },
       "coverage_types": [
@@ -653,13 +647,14 @@
         "수급/도축",
         "수요/행사",
         "일반",
+        "정책/고시",
         "질병/방역"
       ],
       "score_breakdown": {
         "price": 26,
         "supply": 24,
         "disease": 16,
-        "policy": 0,
+        "policy": 3,
         "news": 9
       },
       "score_breakdown_labels": {
@@ -703,9 +698,9 @@
           "label": "수급/도축",
           "max_score": 25,
           "score": 24,
-          "items": 8,
-          "up": 8,
-          "down": 0,
+          "items": 7,
+          "up": 6,
+          "down": 1,
           "neutral": 0,
           "examples": [
             {
@@ -760,12 +755,19 @@
         "policy": {
           "label": "정책/고시",
           "max_score": 10,
-          "score": 0,
-          "items": 0,
+          "score": 3,
+          "items": 1,
           "up": 0,
           "down": 0,
-          "neutral": 0,
-          "examples": []
+          "neutral": 1,
+          "examples": [
+            {
+              "title": "계란 한 판 8000원 시대…코스피는 올리고 계란값은 내린다! - 정책브리핑",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 51
+            }
+          ]
         },
         "news": {
           "label": "뉴스/수요",
@@ -803,34 +805,35 @@
         "has_conflict": false,
         "severity": "none",
         "axes": [],
-        "memo": "주의 필요 · 누락근거: 정책/고시"
+        "memo": "충돌 또는 판단 유보 요인 없음"
       },
       "hold_decision": {
         "should_hold": false,
         "reasons": [],
         "recommended_status": "상방 우세",
         "recommended_direction": "up",
-        "adjusted_confidence": 89
+        "adjusted_confidence": 88
       }
     },
     {
       "id": "OTHER",
       "name": "기타",
-      "signal_score": 36,
+      "signal_score": 52,
       "direction": "neutral",
       "status": "보합/혼조",
       "quality_score": 76,
-      "confidence_score": 82,
-      "coverage_rate": 80,
-      "evidence_count": 25,
-      "official_count": 24,
+      "confidence_score": 89,
+      "coverage_rate": 100,
+      "evidence_count": 28,
+      "official_count": 27,
       "direction_counts": {
-        "up": 9,
+        "up": 10,
         "down": 1,
-        "neutral": 15,
+        "neutral": 17,
         "hold": 0
       },
       "coverage_types": [
+        "수급/도축",
         "수요/행사",
         "일반",
         "정책/고시",
@@ -838,7 +841,7 @@
       ],
       "score_breakdown": {
         "price": 0,
-        "supply": 0,
+        "supply": 16,
         "disease": 19,
         "policy": 4,
         "news": 13
@@ -864,12 +867,19 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 0,
-          "items": 0,
-          "up": 0,
+          "score": 16,
+          "items": 1,
+          "up": 1,
           "down": 0,
           "neutral": 0,
-          "examples": []
+          "examples": [
+            {
+              "title": "농림축산식품부, 5월 수급 동향 점검…과일 출하 감소에도 공급 차질 없을 전망 - 국제일보",
+              "direction": "up",
+              "source_level": 5,
+              "quality_score": 75
+            }
+          ]
         },
         "disease": {
           "label": "질병/방역",
@@ -921,10 +931,10 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 13,
-          "items": 17,
+          "items": 19,
           "up": 2,
           "down": 1,
-          "neutral": 14,
+          "neutral": 16,
           "examples": [
             {
               "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
@@ -947,7 +957,7 @@
           ]
         }
       },
-      "reason": "질병/방역 19점 + 뉴스/수요 13점 + 정책/고시 4점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 수급/도축 16점 + 뉴스/수요 13점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": true,
@@ -955,14 +965,14 @@
         "axes": [
           "뉴스/수요"
         ],
-        "memo": "주의 필요 · 충돌축: 뉴스/수요 / 누락근거: 가격, 수급/도축"
+        "memo": "주의 필요 · 충돌축: 뉴스/수요 / 누락근거: 가격"
       },
       "hold_decision": {
         "should_hold": false,
         "reasons": [],
         "recommended_status": "보합/혼조",
         "recommended_direction": "neutral",
-        "adjusted_confidence": 72
+        "adjusted_confidence": 79
       }
     }
   ],
