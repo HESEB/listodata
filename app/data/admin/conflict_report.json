@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-18T11:43:56Z",
+  "updated_at": "2026-08-18T13:11:27Z",
   "policy": "phase2_conflict_hold_v1",
   "notice": "상방·하방 근거 충돌, 근거 누락, 신뢰도 부족에 따른 판단 유보 검수 리포트입니다.",
   "summary": {
@@ -31,33 +31,37 @@
       "conflict_severity": "none",
       "conflict_axes": [],
       "missing_evidence": [
+        "수급/도축",
         "정책/고시"
       ],
       "hold_reasons": [],
-      "original_confidence": 85,
-      "adjusted_confidence": 85,
+      "original_confidence": 79,
+      "adjusted_confidence": 79,
       "should_hold": false,
-      "recommended_status": "보합/혼조",
-      "recommended_direction": "neutral",
-      "memo": "주의 필요 · 누락근거: 정책/고시"
+      "recommended_status": "하방 가능성",
+      "recommended_direction": "down",
+      "memo": "주의 필요 · 누락근거: 수급/도축, 정책/고시"
     },
     {
       "id": "POULTRY",
       "name": "계육",
       "has_conflict": false,
-      "conflict_severity": "none",
+      "conflict_severity": "low",
       "conflict_axes": [],
       "missing_evidence": [
         "가격",
+        "수급/도축",
         "정책/고시"
       ],
-      "hold_reasons": [],
-      "original_confidence": 73,
-      "adjusted_confidence": 73,
+      "hold_reasons": [
+        "주요 근거축 다수 누락"
+      ],
+      "original_confidence": 66,
+      "adjusted_confidence": 66,
       "should_hold": false,
       "recommended_status": "하방 가능성",
       "recommended_direction": "down",
-      "memo": "주의 필요 · 누락근거: 가격, 정책/고시"
+      "memo": "주의 필요 · 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 주요 근거축 다수 누락"
     },
     {
       "id": "DUCK",
@@ -110,15 +114,16 @@
         "뉴스/수요"
       ],
       "missing_evidence": [
-        "가격"
+        "가격",
+        "수급/도축"
       ],
       "hold_reasons": [],
-      "original_confidence": 89,
-      "adjusted_confidence": 79,
+      "original_confidence": 82,
+      "adjusted_confidence": 72,
       "should_hold": false,
       "recommended_status": "보합/혼조",
       "recommended_direction": "neutral",
-      "memo": "주의 필요 · 충돌축: 뉴스/수요 / 누락근거: 가격"
+      "memo": "주의 필요 · 충돌축: 뉴스/수요 / 누락근거: 가격, 수급/도축"
     }
   ],
   "axis_reports": {
@@ -384,41 +389,32 @@
       {
         "axis": "supply",
         "label": "수급/도축",
-        "items": 1,
+        "items": 0,
         "has_conflict": false,
         "severity": "none",
-        "dominant_direction": "up",
+        "dominant_direction": "neutral",
         "weighted_direction": {
-          "up": 3.12,
+          "up": 0.0,
           "down": 0.0,
           "neutral": 0.0
         },
-        "conflict_ratio": 0.0,
+        "conflict_ratio": 0,
         "examples": {
-          "up": [
-            {
-              "title": "2026년 상반기 세계 주요 국가의 돼지고기 수급 동향 및 전망 / 정종현 대표 - 축산정보뉴스",
-              "source": "축산정보뉴스",
-              "direction": "up",
-              "quality_score": 51,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9zWjRPY0tCZ0ZRdVdpUWQ2RUFHU0xuM3ZmYWp1VkptVGNQTm44NnAweEEzZVRRd1ktS2RlN1UtdmdkMkRvWDgwZ2poZ3REUlBnM0JvTmxXdHNqdjFQeXo4?oc=5"
-            }
-          ],
+          "up": [],
           "down": [],
           "neutral": []
         },
-        "memo": "수급/도축 축은 상방 근거 우세"
+        "memo": "수급/도축 축은 중립 또는 보조 근거 중심"
       },
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 26,
+        "items": 24,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 116.74,
+          "up": 109.6,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -426,8 +422,8 @@
         "examples": {
           "up": [
             {
-              "title": "경기도 AI·ASF 선제 방역 통했다 - incheonilbo.com",
-              "source": "incheonilbo.com",
+              "title": "경기도 AI·ASF 선제 방역 통했다 - 인천일보",
+              "source": "인천일보",
               "direction": "up",
               "quality_score": 81,
               "source_level": 3,
@@ -537,31 +533,22 @@
       {
         "axis": "supply",
         "label": "수급/도축",
-        "items": 1,
+        "items": 0,
         "has_conflict": false,
         "severity": "none",
-        "dominant_direction": "up",
+        "dominant_direction": "neutral",
         "weighted_direction": {
-          "up": 3.12,
+          "up": 0.0,
           "down": 0.0,
           "neutral": 0.0
         },
-        "conflict_ratio": 0.0,
+        "conflict_ratio": 0,
         "examples": {
-          "up": [
-            {
-              "title": "굽네치킨, 가격 동결하고 순살 치킨 중량 조정…계육 수급 불안 여파 - 에너지경제신문",
-              "source": "에너지경제신문",
-              "direction": "up",
-              "quality_score": 51,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1pVlZEbkI4LXN4ci16NjFBZE8zWk1lWXJobHRVUC1uejE0dVBYcnFONFhMbE5NTVNUMWtiZVNrMTVvYU1YODM4Z1d1b0lmZC1ueUFWZHZEaVl6TnM?oc=5"
-            }
-          ],
+          "up": [],
           "down": [],
           "neutral": []
         },
-        "memo": "수급/도축 축은 상방 근거 우세"
+        "memo": "수급/도축 축은 중립 또는 보조 근거 중심"
       },
       {
         "axis": "disease",
@@ -812,8 +799,8 @@
               "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1zOTg2MFlYdzZnZjc3MEhYUGdhNVlnTkExcUlIVlJzWXB0ZEliMU9TR3BRUVBGb1VxeFNtMms3LWw2TnFtNEVwenFFbEptQ1BxU0xOd2paakM5UzF3d0VkVVptV3loaVM2LVh0RQ?oc=5"
             },
             {
-              "title": "[기자시각] 계란 가격정보, 없앨 게 아니라 다시 설계하라 - chukkyung.co.kr",
-              "source": "chukkyung.co.kr",
+              "title": "[기자시각] 계란 가격정보, 없앨 게 아니라 다시 설계하라 - 축산경제신문",
+              "source": "축산경제신문",
               "direction": "neutral",
               "quality_score": 71,
               "source_level": 3,
@@ -855,8 +842,8 @@
               "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFB4bUphUDdRem5LRV9aSEpyM09WVU16dUZvYnZOcXZYN2ZHanNnZG1URHRRc3lhVWxkZXZTTTlFZUVwaTFya0h2SzRydktDa25MSE54UFJjUVJEMmpicTJiRVU3MnJVRS1rdHJmTHdBUVfSAXBBVV95cUxQeG1KYVA3UXpuS0VfWkhKcjNPVlVNenVGb2J2TnF2WDdmR2pzZ2RtVER0UXN5YVVsZGV2U005RWVFcGkxcmtIdks0cnZLQ2tuTEhOeFBSY1FSRDJqYnEyYkVVNzJyVUUta3RyZkx3QVFX?oc=5"
             },
             {
-              "title": "농식품부, 산란계협회 설립인가 취소 논란 확산 - 농업인신문",
-              "source": "농업인신문",
+              "title": "농식품부, 산란계협회 설립인가 취소 논란 확산 - nongupin.co.kr",
+              "source": "nongupin.co.kr",
               "direction": "up",
               "quality_score": 95,
               "source_level": 5,
@@ -1029,31 +1016,22 @@
       {
         "axis": "supply",
         "label": "수급/도축",
-        "items": 1,
+        "items": 0,
         "has_conflict": false,
         "severity": "none",
-        "dominant_direction": "up",
+        "dominant_direction": "neutral",
         "weighted_direction": {
-          "up": 5.0,
+          "up": 0.0,
           "down": 0.0,
           "neutral": 0.0
         },
-        "conflict_ratio": 0.0,
+        "conflict_ratio": 0,
         "examples": {
-          "up": [
-            {
-              "title": "농림축산식품부, 5월 수급 동향 점검…과일 출하 감소에도 공급 차질 없을 전망 - kookjeilbo.com",
-              "source": "kookjeilbo.com",
-              "direction": "up",
-              "quality_score": 75,
-              "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5qM1pmSk1JWlJIUHNJdUlhME1mZm9vZkU1WndQVlk2LUZCVEZmelM1NmV6YkZnRThzb21iVnA3M3BXM3hKZmdMcVhFTmZLNE5XMmFLalVMY1ZTN2tpaU9SLXRuNXg?oc=5"
-            }
-          ],
+          "up": [],
           "down": [],
           "neutral": []
         },
-        "memo": "수급/도축 축은 상방 근거 우세"
+        "memo": "수급/도축 축은 중립 또는 보조 근거 중심"
       },
       {
         "axis": "disease",
@@ -1071,16 +1049,16 @@
         "examples": {
           "up": [
             {
-              "title": "경기도, 전국 가축방역 평가 ‘최우수’…농식품부장관상 수상 - dailyn.net",
-              "source": "dailyn.net",
+              "title": "경기도, 전국 가축방역 평가 ‘최우수’…농식품부장관상 수상 - 데일리엔뉴스",
+              "source": "데일리엔뉴스",
               "direction": "up",
               "quality_score": 100,
               "source_level": 5,
               "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE8zVU5WMXlzQVVwYTEwajJYWS1wYnN3Qm5JMDNlcnVONjhJSXpDMkZGYW5JMnh4WHRwX19pdnE5N2Q4Z2xaTkJIb2gwMVd4WWJNYTRhODg3a3dwZw?oc=5"
             },
             {
-              "title": "축평원, '축산유통정보 다봄' AI기반 서비스 고도화 추진 - 뉴시스",
-              "source": "뉴시스",
+              "title": "축평원, '축산유통정보 다봄' AI기반 서비스 고도화 추진 - newsis.com",
+              "source": "newsis.com",
               "direction": "up",
               "quality_score": 58,
               "source_level": 3,
@@ -1132,14 +1110,14 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 21,
+        "items": 20,
         "has_conflict": true,
         "severity": "medium",
         "dominant_direction": "up",
         "weighted_direction": {
           "up": 9.1,
           "down": 4.1,
-          "neutral": 65.7
+          "neutral": 62.05
         },
         "conflict_ratio": 0.45,
         "examples": {
@@ -1173,8 +1151,8 @@
           ],
           "neutral": [
             {
-              "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
-              "source": "농업인신문",
+              "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - nongupin.co.kr",
+              "source": "nongupin.co.kr",
               "direction": "neutral",
               "quality_score": 75,
               "source_level": 5,
