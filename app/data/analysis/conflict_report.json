@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-18T03:11:23Z",
+  "updated_at": "2026-08-18T04:01:42Z",
   "policy": "phase2_conflict_hold_v1",
   "notice": "상방·하방 근거 충돌, 근거 누락, 신뢰도 부족에 따른 판단 유보 검수 리포트입니다.",
   "summary": {
@@ -20,8 +20,8 @@
       "original_confidence": 72,
       "adjusted_confidence": 72,
       "should_hold": false,
-      "recommended_status": "보합/혼조",
-      "recommended_direction": "neutral",
+      "recommended_status": "상방 가능성",
+      "recommended_direction": "up",
       "memo": "충돌 또는 판단 유보 요인 없음"
     },
     {
@@ -46,19 +46,22 @@
       "id": "POULTRY",
       "name": "계육",
       "has_conflict": false,
-      "conflict_severity": "none",
+      "conflict_severity": "low",
       "conflict_axes": [],
       "missing_evidence": [
         "가격",
-        "수급/도축"
+        "수급/도축",
+        "정책/고시"
       ],
-      "hold_reasons": [],
-      "original_confidence": 73,
-      "adjusted_confidence": 73,
+      "hold_reasons": [
+        "주요 근거축 다수 누락"
+      ],
+      "original_confidence": 66,
+      "adjusted_confidence": 66,
       "should_hold": false,
       "recommended_status": "하방 가능성",
       "recommended_direction": "down",
-      "memo": "주의 필요 · 누락근거: 가격, 수급/도축"
+      "memo": "주의 필요 · 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 주요 근거축 다수 누락"
     },
     {
       "id": "DUCK",
@@ -128,13 +131,13 @@
       {
         "axis": "price",
         "label": "가격",
-        "items": 2,
+        "items": 3,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "down",
         "weighted_direction": {
           "up": 0.0,
-          "down": 3.68,
+          "down": 6.86,
           "neutral": 3.07
         },
         "conflict_ratio": 0.0,
@@ -142,22 +145,30 @@
           "up": [],
           "down": [
             {
+              "title": "킴스클럽, 농할 할인 온라인몰로 확대…한우·고구마 최대46% 인하 - v.daum.net",
+              "source": "v.daum.net",
+              "direction": "down",
+              "quality_score": 69,
+              "source_level": 2,
+              "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5qbDA5ZjQxRFlINjlldDJhd19VSXdQR29RWmdGdXZSbmU5SzhjMDRjSFQtWWF3amxZSXprdks3U19iV1dFTjFGWjNEVUdpUFk?oc=5"
+            },
+            {
               "title": "킴스클럽, 농할 할인 온라인몰로 확대…한우·고구마 최대46% 인하 - 연합뉴스",
               "source": "연합뉴스",
               "direction": "down",
-              "quality_score": 69,
+              "quality_score": 44,
               "source_level": 2,
               "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE0yWWdFbzFmQm1CVVdSb3JrSG1OZ21qSXhPZFprRHpQTW8welZMOEw4dWR3U3VsYWkzcnE0MUo3RHVJYkM2RkhJWWhCbksyYTZCcnc0bnNCVkFCWkJHc3luQ9IBYEFVX3lxTE0yWWdFbzFmQm1CVVdSb3JrSG1OZ21qSXhPZFprRHpQTW8welZMOEw4dWR3U3VsYWkzcnE0MUo3RHVJYkM2RkhJWWhCbksyYTZCcnc0bnNCVkFCWkJHc3luQw?oc=5"
             }
           ],
           "neutral": [
             {
-              "title": "한우 가격 저렴한 정육식당 '알뜰한우판매점' 280곳 발표 - v.daum.net",
-              "source": "v.daum.net",
+              "title": "한우 가격 저렴한 정육식당 '알뜰한우판매점' 280곳 발표 - 노컷뉴스",
+              "source": "노컷뉴스",
               "direction": "neutral",
               "quality_score": 71,
               "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE82WlVNUlBzQ2RnUE9DaTJZcFBjZHdjLUk4c0RGSlhXdGVKdnhnQUxLMk9tZDZ6SU15all4cFZxRUxmS2V4MHc?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBEMC01TVJQUUZhOFhGbXRSbGw1NXdHZHpoeUtBNEhEb19oRXY5Vnl1angzaTNjaUI4T05fRlFhR2FVX2dlQlA1akNyWDJlQlY4alE?oc=5"
             }
           ]
         },
@@ -187,8 +198,8 @@
               "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE84cFdPQ09GeGdWWExTX3R5YTdldEpISmMyc25CUi1iWWIyM1VoYjcxOVd4WlFVSVc1YkpKM3BWWUVsQ3RPNXpWamYwU1RpTGkzWmpwU25MQUMtVUNlaXdJUDhabW1Md3pQTG5CMWd3?oc=5"
             },
             {
-              "title": "[위기감 높아지는 한우] 사육 다시 느는데 수입산 공세 예고···2028년 악재 겹친다 - 한국농어민신문",
-              "source": "한국농어민신문",
+              "title": "[위기감 높아지는 한우] 사육 다시 느는데 수입산 공세 예고···2028년 악재 겹친다 - agrinet.co.kr",
+              "source": "agrinet.co.kr",
               "direction": "up",
               "quality_score": 76,
               "source_level": 3,
@@ -240,28 +251,20 @@
       {
         "axis": "policy",
         "label": "정책/고시",
-        "items": 2,
+        "items": 1,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "neutral",
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 6.14
+          "neutral": 3.07
         },
         "conflict_ratio": 0,
         "examples": {
           "up": [],
           "down": [],
           "neutral": [
-            {
-              "title": "국산 축산물값 뛰자 수입 급증…소고기 22%·닭고기 146%↑ - 뉴시스",
-              "source": "뉴시스",
-              "direction": "neutral",
-              "quality_score": 71,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1WblhabXpjN0laUjJ0ZjdrSkJPSzFSNzYzSm5CZi1kQUNJd0hPZGYzM3hGeDVQdTNNV3hRZXZvYXlXNUZQVTV0LURkaExRdGdxVU5sQUhsZkxCZ2RLZ2JSX9IBeEFVX3lxTE5YbFBDMVkxQ2ZvVXNsMHpoeFZ5SjVRV3ltaEhMemEybUVnczFqRXhseG9oa1UzV2I0MldZUHhUUDJfbEJpYURnaXI3RUlFVDc2Z2NpUXkzVndoNVNhMDhvSExNTmZyRjBqcXREaHQ2RHBET2FKNk9TTA?oc=5"
-            },
             {
               "title": "한우 단기비육 정책 가속도…현장은 ‘온도차’ - 축산신문",
               "source": "축산신문",
@@ -284,7 +287,7 @@
         "weighted_direction": {
           "up": 3.85,
           "down": 0.0,
-          "neutral": 62.45
+          "neutral": 62.15
         },
         "conflict_ratio": 0.0,
         "examples": {
@@ -563,29 +566,20 @@
       {
         "axis": "policy",
         "label": "정책/고시",
-        "items": 1,
+        "items": 0,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "neutral",
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 3.07
+          "neutral": 0.0
         },
         "conflict_ratio": 0,
         "examples": {
           "up": [],
           "down": [],
-          "neutral": [
-            {
-              "title": "국산 축산물값 뛰자 수입 급증…소고기 22%·닭고기 146%↑ - 뉴시스",
-              "source": "뉴시스",
-              "direction": "neutral",
-              "quality_score": 71,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1WblhabXpjN0laUjJ0ZjdrSkJPSzFSNzYzSm5CZi1kQUNJd0hPZGYzM3hGeDVQdTNNV3hRZXZvYXlXNUZQVTV0LURkaExRdGdxVU5sQUhsZkxCZ2RLZ2JSX9IBeEFVX3lxTE5YbFBDMVkxQ2ZvVXNsMHpoeFZ5SjVRV3ltaEhMemEybUVnczFqRXhseG9oa1UzV2I0MldZUHhUUDJfbEJpYURnaXI3RUlFVDc2Z2NpUXkzVndoNVNhMDhvSExNTmZyRjBqcXREaHQ2RHBET2FKNk9TTA?oc=5"
-            }
-          ]
+          "neutral": []
         },
         "memo": "정책/고시 축은 중립 또는 보조 근거 중심"
       },
@@ -725,14 +719,14 @@
       {
         "axis": "price",
         "label": "가격",
-        "items": 14,
+        "items": 13,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
           "up": 31.9,
           "down": 0.0,
-          "neutral": 18.1
+          "neutral": 15.33
         },
         "conflict_ratio": 0.0,
         "examples": {
@@ -765,8 +759,8 @@
           "down": [],
           "neutral": [
             {
-              "title": "“공정계란가격법 발의···유통시장 투명성 높이고, 합리적 거래 도모” - 한국농어민신문",
-              "source": "한국농어민신문",
+              "title": "“공정계란가격법 발의···유통시장 투명성 높이고, 합리적 거래 도모” - agrinet.co.kr",
+              "source": "agrinet.co.kr",
               "direction": "neutral",
               "quality_score": 76,
               "source_level": 3,
@@ -776,7 +770,7 @@
               "title": "[기자시각] 계란 가격정보, 없앨 게 아니라 다시 설계하라 - 축산경제신문",
               "source": "축산경제신문",
               "direction": "neutral",
-              "quality_score": 76,
+              "quality_score": 71,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE82MFhUS2txMG1XdFZMN1lOSkFoUTJBTGVSdEpHRzl1TXR6Mjg2SGNhYmpWNjY3bGJiY1pPWTlKSFNzOXJReWdzUXFwQXZaSUZtNWF2eDlWY2xYWVJJTUJ6ZFlpbk40bllIbFlHR3hR0gFyQVVfeXFMUFFHS0hhNWUwZGRyaUZrQWlJV3pqN3dQVUYzZEM5RVRnejVVelpiUldXNS1sT19KdzBWTXhnV0Y1M0VjZHdrR3RGc21KR1puZldxdGJ3a2g1end6MzhsS2hrNGEtSDhDa2w0YW1HdHJPcjFn?oc=5"
             },

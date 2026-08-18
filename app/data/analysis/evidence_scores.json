@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-18T03:11:23Z",
+  "updated_at": "2026-08-18T04:01:42Z",
   "policy": "phase2_evidence_score_v3_sanitized",
   "score_axes": {
     "price": {
@@ -43,18 +43,18 @@
     {
       "id": "BEEF",
       "name": "한우",
-      "signal_score": 59,
-      "direction": "neutral",
-      "status": "보합/혼조",
-      "quality_score": 76,
+      "signal_score": 60,
+      "direction": "up",
+      "status": "상방 가능성",
+      "quality_score": 75,
       "confidence_score": 72,
       "coverage_rate": 100,
       "evidence_count": 28,
       "official_count": 1,
       "direction_counts": {
         "up": 5,
-        "down": 1,
-        "neutral": 22,
+        "down": 2,
+        "neutral": 21,
         "hold": 0
       },
       "coverage_types": [
@@ -66,7 +66,7 @@
         "질병/방역"
       ],
       "score_breakdown": {
-        "price": 9,
+        "price": 10,
         "supply": 20,
         "disease": 13,
         "policy": 4,
@@ -83,20 +83,26 @@
         "price": {
           "label": "가격",
           "max_score": 30,
-          "score": 9,
-          "items": 2,
+          "score": 10,
+          "items": 3,
           "up": 0,
-          "down": 1,
+          "down": 2,
           "neutral": 1,
           "examples": [
             {
-              "title": "킴스클럽, 농할 할인 온라인몰로 확대…한우·고구마 최대46% 인하 - 연합뉴스",
+              "title": "킴스클럽, 농할 할인 온라인몰로 확대…한우·고구마 최대46% 인하 - v.daum.net",
               "direction": "down",
               "source_level": 2,
               "quality_score": 69
             },
             {
-              "title": "한우 가격 저렴한 정육식당 '알뜰한우판매점' 280곳 발표 - v.daum.net",
+              "title": "킴스클럽, 농할 할인 온라인몰로 확대…한우·고구마 최대46% 인하 - 연합뉴스",
+              "direction": "down",
+              "source_level": 2,
+              "quality_score": 44
+            },
+            {
+              "title": "한우 가격 저렴한 정육식당 '알뜰한우판매점' 280곳 발표 - 노컷뉴스",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 71
@@ -119,7 +125,7 @@
               "quality_score": 81
             },
             {
-              "title": "[위기감 높아지는 한우] 사육 다시 느는데 수입산 공세 예고···2028년 악재 겹친다 - 한국농어민신문",
+              "title": "[위기감 높아지는 한우] 사육 다시 느는데 수입산 공세 예고···2028년 악재 겹친다 - agrinet.co.kr",
               "direction": "up",
               "source_level": 3,
               "quality_score": 76
@@ -153,17 +159,11 @@
           "label": "정책/고시",
           "max_score": 10,
           "score": 4,
-          "items": 2,
+          "items": 1,
           "up": 0,
           "down": 0,
-          "neutral": 2,
+          "neutral": 1,
           "examples": [
-            {
-              "title": "국산 축산물값 뛰자 수입 급증…소고기 22%·닭고기 146%↑ - 뉴시스",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 71
-            },
             {
               "title": "한우 단기비육 정책 가속도…현장은 ‘온도차’ - 축산신문",
               "direction": "neutral",
@@ -213,8 +213,8 @@
       "hold_decision": {
         "should_hold": false,
         "reasons": [],
-        "recommended_status": "보합/혼조",
-        "recommended_direction": "neutral",
+        "recommended_status": "상방 가능성",
+        "recommended_direction": "up",
         "adjusted_confidence": 72
       }
     },
@@ -358,30 +358,29 @@
     {
       "id": "POULTRY",
       "name": "계육",
-      "signal_score": 27,
+      "signal_score": 23,
       "direction": "down",
       "status": "하방 가능성",
       "quality_score": 72,
-      "confidence_score": 73,
-      "coverage_rate": 60,
-      "evidence_count": 12,
+      "confidence_score": 66,
+      "coverage_rate": 40,
+      "evidence_count": 11,
       "official_count": 9,
       "direction_counts": {
         "up": 10,
         "down": 0,
-        "neutral": 2,
+        "neutral": 1,
         "hold": 0
       },
       "coverage_types": [
         "일반",
-        "정책/고시",
         "질병/방역"
       ],
       "score_breakdown": {
         "price": 0,
         "supply": 0,
         "disease": 19,
-        "policy": 4,
+        "policy": 0,
         "news": 4
       },
       "score_breakdown_labels": {
@@ -444,19 +443,12 @@
         "policy": {
           "label": "정책/고시",
           "max_score": 10,
-          "score": 4,
-          "items": 1,
+          "score": 0,
+          "items": 0,
           "up": 0,
           "down": 0,
-          "neutral": 1,
-          "examples": [
-            {
-              "title": "국산 축산물값 뛰자 수입 급증…소고기 22%·닭고기 146%↑ - 뉴시스",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 71
-            }
-          ]
+          "neutral": 0,
+          "examples": []
         },
         "news": {
           "label": "뉴스/수요",
@@ -476,20 +468,22 @@
           ]
         }
       },
-      "reason": "질병/방역 19점 + 정책/고시 4점 + 뉴스/수요 4점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 뉴스/수요 4점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
-        "severity": "none",
+        "severity": "low",
         "axes": [],
-        "memo": "주의 필요 · 누락근거: 가격, 수급/도축"
+        "memo": "주의 필요 · 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 주요 근거축 다수 누락"
       },
       "hold_decision": {
         "should_hold": false,
-        "reasons": [],
+        "reasons": [
+          "주요 근거축 다수 누락"
+        ],
         "recommended_status": "하방 가능성",
         "recommended_direction": "down",
-        "adjusted_confidence": 73
+        "adjusted_confidence": 66
       }
     },
     {
@@ -604,15 +598,15 @@
       "signal_score": 78,
       "direction": "up",
       "status": "상방 우세",
-      "quality_score": 73,
+      "quality_score": 74,
       "confidence_score": 88,
       "coverage_rate": 100,
-      "evidence_count": 34,
+      "evidence_count": 33,
       "official_count": 8,
       "direction_counts": {
         "up": 17,
         "down": 1,
-        "neutral": 16,
+        "neutral": 15,
         "hold": 0
       },
       "coverage_types": [
@@ -642,10 +636,10 @@
           "label": "가격",
           "max_score": 30,
           "score": 26,
-          "items": 14,
+          "items": 13,
           "up": 8,
           "down": 0,
-          "neutral": 6,
+          "neutral": 5,
           "examples": [
             {
               "title": "쌀·계란·김 물가 상승에 김밥 가격도 올라 - 네이트",
