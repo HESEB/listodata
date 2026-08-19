@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-19T08:57:15Z",
+  "updated_at": "2026-08-19T09:52:00Z",
   "policy": "phase2_evidence_score_v3_sanitized",
   "score_axes": {
     "price": {
@@ -49,12 +49,12 @@
       "quality_score": 74,
       "confidence_score": 71,
       "coverage_rate": 100,
-      "evidence_count": 27,
+      "evidence_count": 28,
       "official_count": 1,
       "direction_counts": {
         "up": 7,
         "down": 3,
-        "neutral": 17,
+        "neutral": 18,
         "hold": 0
       },
       "coverage_types": [
@@ -188,11 +188,17 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 13,
-          "items": 15,
+          "items": 16,
           "up": 2,
           "down": 0,
-          "neutral": 13,
+          "neutral": 14,
           "examples": [
+            {
+              "title": "한우협회 “한·메르코수르 FTA 절대 반대” - 한국농어민신문",
+              "direction": "neutral",
+              "source_level": 4,
+              "quality_score": 93
+            },
             {
               "title": "관광객 몰린 횡성, 횡성축협 한우프라자 역대 최고 인파…‘횡성관광 500만 시대’ 청신호 - 농수축산신문",
               "direction": "neutral",
@@ -202,12 +208,6 @@
             {
               "title": "축평원, 한우 직거래 우수모델 확산…유통비용 절감 나선다 - 축산신문",
               "direction": "up",
-              "source_level": 3,
-              "quality_score": 81
-            },
-            {
-              "title": "거제둔덕포도&한우축제, 9월 5~6일 - 거제통영오늘신문",
-              "direction": "neutral",
               "source_level": 3,
               "quality_score": 81
             }
@@ -233,14 +233,14 @@
     {
       "id": "PORK",
       "name": "돈육",
-      "signal_score": 42,
-      "direction": "neutral",
-      "status": "보합/혼조",
-      "quality_score": 69,
-      "confidence_score": 79,
-      "coverage_rate": 80,
+      "signal_score": 31,
+      "direction": "down",
+      "status": "하방 가능성",
+      "quality_score": 70,
+      "confidence_score": 72,
+      "coverage_rate": 60,
       "evidence_count": 27,
-      "official_count": 12,
+      "official_count": 14,
       "direction_counts": {
         "up": 24,
         "down": 1,
@@ -249,13 +249,12 @@
       },
       "coverage_types": [
         "가격",
-        "수급/도축",
         "일반",
         "질병/방역"
       ],
       "score_breakdown": {
         "price": 9,
-        "supply": 11,
+        "supply": 0,
         "disease": 18,
         "policy": 0,
         "news": 4
@@ -294,26 +293,19 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 11,
-          "items": 1,
-          "up": 1,
+          "score": 0,
+          "items": 0,
+          "up": 0,
           "down": 0,
           "neutral": 0,
-          "examples": [
-            {
-              "title": "데이터로 보는 2026년 상반기 한돈시장 수급 동향 및 전망 / 박민희 본부장 - 축산정보뉴스",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 51
-            }
-          ]
+          "examples": []
         },
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
           "score": 18,
-          "items": 23,
-          "up": 23,
+          "items": 24,
+          "up": 24,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -324,10 +316,10 @@
               "quality_score": 81
             },
             {
-              "title": "경기도 AI·ASF 선제 방역 통했다 - 인천일보",
+              "title": "AI·ASF 발생부터 막은 경기도, 농식품부 가축방역 특별평가 1위 달성 - v.daum.net",
               "direction": "up",
-              "source_level": 3,
-              "quality_score": 76
+              "source_level": 5,
+              "quality_score": 100
             },
             {
               "title": "AI·ASF·구제역 선제 차단…경기도, 가축방역 전국 ‘최우수’ - 베타뉴스",
@@ -365,20 +357,20 @@
           ]
         }
       },
-      "reason": "질병/방역 18점 + 수급/도축 11점 + 가격 9점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 18점 + 가격 9점 + 뉴스/수요 4점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
         "severity": "none",
         "axes": [],
-        "memo": "주의 필요 · 누락근거: 정책/고시"
+        "memo": "주의 필요 · 누락근거: 수급/도축, 정책/고시"
       },
       "hold_decision": {
         "should_hold": false,
         "reasons": [],
-        "recommended_status": "보합/혼조",
-        "recommended_direction": "neutral",
-        "adjusted_confidence": 79
+        "recommended_status": "하방 가능성",
+        "recommended_direction": "down",
+        "adjusted_confidence": 72
       }
     },
     {
@@ -447,7 +439,7 @@
           "neutral": 0,
           "examples": [
             {
-              "title": "세종시, 가축방역 평가 4년 연속 특·광역시 1위…AI 확산 차단 성과 - 보도자료 | 기사 - 더팩트",
+              "title": "세종시, 가축방역 평가 4년 연속 특·광역시 1위…AI 확산 차단 성과 - 보도자료 | 기사 - news.tf.co.kr",
               "direction": "up",
               "source_level": 3,
               "quality_score": 71
@@ -624,15 +616,15 @@
       "signal_score": 75,
       "direction": "up",
       "status": "상방 우세",
-      "quality_score": 72,
+      "quality_score": 71,
       "confidence_score": 87,
       "coverage_rate": 100,
       "evidence_count": 31,
       "official_count": 8,
       "direction_counts": {
         "up": 16,
-        "down": 2,
-        "neutral": 13,
+        "down": 1,
+        "neutral": 14,
         "hold": 0
       },
       "coverage_types": [
@@ -643,8 +635,8 @@
         "질병/방역"
       ],
       "score_breakdown": {
-        "price": 26,
-        "supply": 23,
+        "price": 25,
+        "supply": 24,
         "disease": 15,
         "policy": 3,
         "news": 8
@@ -660,11 +652,11 @@
         "price": {
           "label": "가격",
           "max_score": 30,
-          "score": 26,
-          "items": 12,
+          "score": 25,
+          "items": 14,
           "up": 6,
           "down": 1,
-          "neutral": 5,
+          "neutral": 7,
           "examples": [
             {
               "title": "계란 가격은 하락하는데 돼지고기 가격은 왜 계속 높은 걸까요? - Vietnam.vn",
@@ -689,10 +681,10 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 23,
-          "items": 9,
+          "score": 24,
+          "items": 8,
           "up": 8,
-          "down": 1,
+          "down": 0,
           "neutral": 0,
           "examples": [
             {
@@ -759,19 +751,13 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 8,
-          "items": 7,
+          "items": 6,
           "up": 0,
           "down": 0,
-          "neutral": 7,
+          "neutral": 6,
           "examples": [
             {
-              "title": "쌀·계란 다 올랐다…‘서민 한 끼’ 김밥도 4000원 눈앞 - v.daum.net",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 76
-            },
-            {
-              "title": "쌀·계란값 오르자…김밥 한 줄 4000원 시대 코앞 - 한국경제",
+              "title": "쌀·계란값 오르자…김밥 한 줄 4000원 시대 코앞 - hankyung.com",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 76
@@ -781,11 +767,17 @@
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 76
+            },
+            {
+              "title": "계란시장 ‘거래 기준’ 복원 필요 - 축산경제신문",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 71
             }
           ]
         }
       },
-      "reason": "가격 26점 + 수급/도축 23점 + 질병/방역 15점 기반, 상방성 자료가 우세",
+      "reason": "가격 25점 + 수급/도축 24점 + 질병/방역 15점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
@@ -907,7 +899,7 @@
           "neutral": 16,
           "examples": [
             {
-              "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - nongupin.co.kr",
+              "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
               "direction": "neutral",
               "source_level": 5,
               "quality_score": 75
