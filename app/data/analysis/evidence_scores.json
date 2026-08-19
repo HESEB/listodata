@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-19T20:48:03Z",
+  "updated_at": "2026-08-19T21:43:36Z",
   "policy": "phase2_evidence_score_v3_sanitized",
   "score_axes": {
     "price": {
@@ -386,12 +386,12 @@
     {
       "id": "POULTRY",
       "name": "계육",
-      "signal_score": 23,
+      "signal_score": 34,
       "direction": "down",
       "status": "하방 가능성",
-      "quality_score": 72,
-      "confidence_score": 66,
-      "coverage_rate": 40,
+      "quality_score": 71,
+      "confidence_score": 73,
+      "coverage_rate": 60,
       "evidence_count": 11,
       "official_count": 9,
       "direction_counts": {
@@ -401,12 +401,13 @@
         "hold": 0
       },
       "coverage_types": [
+        "수급/도축",
         "일반",
         "질병/방역"
       ],
       "score_breakdown": {
         "price": 0,
-        "supply": 0,
+        "supply": 11,
         "disease": 19,
         "policy": 0,
         "news": 4
@@ -432,28 +433,29 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 0,
-          "items": 0,
-          "up": 0,
+          "score": 11,
+          "items": 1,
+          "up": 1,
           "down": 0,
           "neutral": 0,
-          "examples": []
+          "examples": [
+            {
+              "title": "굽네치킨, 가격 동결하고 순살 치킨 중량 조정…계육 수급 불안 여파 - 에너지경제신문",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 51
+            }
+          ]
         },
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 10,
-          "up": 10,
+          "items": 9,
+          "up": 9,
           "down": 0,
           "neutral": 0,
           "examples": [
-            {
-              "title": "세종시, 가축방역 평가 4년 연속 특·광역시 1위…AI 확산 차단 성과 - 보도자료 | 기사 - news.tf.co.kr",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 71
-            },
             {
               "title": "알림소식 > 보도자료 > 6월 1일자로 고병원성 조류인플루엔자(AI) 평시 방역체계로 전환하여 상시 방역활동 추진 - 농림축산식품부",
               "direction": "up",
@@ -462,6 +464,12 @@
             },
             {
               "title": "알림소식 > 보도자료 > 고병원성 조류인플루엔자 발생농장에서 다수 방역 미흡사항 확인, 엄정 조치 및 관리 강화 - 농림축산식품부",
+              "direction": "up",
+              "source_level": 5,
+              "quality_score": 75
+            },
+            {
+              "title": "광주광역시 소규모 기타 가금(기러기) 농장에 대한 예찰 과정에서 H5형 조류인플루엔자 항원 확인 - 농림축산식품부",
               "direction": "up",
               "source_level": 5,
               "quality_score": 75
@@ -496,22 +504,20 @@
           ]
         }
       },
-      "reason": "질병/방역 19점 + 뉴스/수요 4점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 수급/도축 11점 + 뉴스/수요 4점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
-        "severity": "low",
+        "severity": "none",
         "axes": [],
-        "memo": "주의 필요 · 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 주요 근거축 다수 누락"
+        "memo": "주의 필요 · 누락근거: 가격, 정책/고시"
       },
       "hold_decision": {
         "should_hold": false,
-        "reasons": [
-          "주요 근거축 다수 누락"
-        ],
+        "reasons": [],
         "recommended_status": "하방 가능성",
         "recommended_direction": "down",
-        "adjusted_confidence": 66
+        "adjusted_confidence": 73
       }
     },
     {
@@ -630,11 +636,11 @@
       "confidence_score": 86,
       "coverage_rate": 100,
       "evidence_count": 32,
-      "official_count": 7,
+      "official_count": 8,
       "direction_counts": {
-        "up": 15,
+        "up": 16,
         "down": 2,
-        "neutral": 15,
+        "neutral": 14,
         "hold": 0
       },
       "coverage_types": [
@@ -678,7 +684,7 @@
               "title": "쌀·계란·김 물가 상승에 김밥 가격도 올라 - 연합뉴스",
               "direction": "up",
               "source_level": 3,
-              "quality_score": 81
+              "quality_score": 76
             },
             {
               "title": "쌀·계란·김 물가 상승에 김밥 가격도 올라 - 연합뉴스TV",
@@ -692,8 +698,8 @@
           "label": "수급/도축",
           "max_score": 25,
           "score": 23,
-          "items": 8,
-          "up": 7,
+          "items": 9,
+          "up": 8,
           "down": 1,
           "neutral": 0,
           "examples": [
@@ -761,10 +767,10 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 8,
-          "items": 7,
+          "items": 6,
           "up": 0,
           "down": 0,
-          "neutral": 7,
+          "neutral": 6,
           "examples": [
             {
               "title": "쌀·계란 다 올랐다…‘서민 한 끼’ 김밥도 4000원 눈앞 - v.daum.net",
@@ -773,7 +779,7 @@
               "quality_score": 76
             },
             {
-              "title": "쌀·계란값 오르자…김밥 한 줄 4000원 시대 코앞 - hankyung.com",
+              "title": "쌀·계란값 오르자…김밥 한 줄 4000원 시대 코앞 - 한국경제",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 76

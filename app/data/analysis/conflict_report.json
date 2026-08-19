@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-19T20:48:03Z",
+  "updated_at": "2026-08-19T21:43:36Z",
   "policy": "phase2_conflict_hold_v1",
   "notice": "상방·하방 근거 충돌, 근거 누락, 신뢰도 부족에 따른 판단 유보 검수 리포트입니다.",
   "summary": {
@@ -47,22 +47,19 @@
       "id": "POULTRY",
       "name": "계육",
       "has_conflict": false,
-      "conflict_severity": "low",
+      "conflict_severity": "none",
       "conflict_axes": [],
       "missing_evidence": [
         "가격",
-        "수급/도축",
         "정책/고시"
       ],
-      "hold_reasons": [
-        "주요 근거축 다수 누락"
-      ],
-      "original_confidence": 66,
-      "adjusted_confidence": 66,
+      "hold_reasons": [],
+      "original_confidence": 73,
+      "adjusted_confidence": 73,
       "should_hold": false,
       "recommended_status": "하방 가능성",
       "recommended_direction": "down",
-      "memo": "주의 필요 · 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 주요 근거축 다수 누락"
+      "memo": "주의 필요 · 누락근거: 가격, 정책/고시"
     },
     {
       "id": "DUCK",
@@ -565,32 +562,12 @@
       {
         "axis": "supply",
         "label": "수급/도축",
-        "items": 0,
-        "has_conflict": false,
-        "severity": "none",
-        "dominant_direction": "neutral",
-        "weighted_direction": {
-          "up": 0.0,
-          "down": 0.0,
-          "neutral": 0.0
-        },
-        "conflict_ratio": 0,
-        "examples": {
-          "up": [],
-          "down": [],
-          "neutral": []
-        },
-        "memo": "수급/도축 축은 중립 또는 보조 근거 중심"
-      },
-      {
-        "axis": "disease",
-        "label": "질병/방역",
-        "items": 10,
+        "items": 1,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 47.62,
+          "up": 3.12,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -598,13 +575,34 @@
         "examples": {
           "up": [
             {
-              "title": "세종시, 가축방역 평가 4년 연속 특·광역시 1위…AI 확산 차단 성과 - 보도자료 | 기사 - news.tf.co.kr",
-              "source": "news.tf.co.kr",
+              "title": "굽네치킨, 가격 동결하고 순살 치킨 중량 조정…계육 수급 불안 여파 - 에너지경제신문",
+              "source": "에너지경제신문",
               "direction": "up",
-              "quality_score": 71,
+              "quality_score": 51,
               "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9VS1JTdnJwM2x0bzBxZ0pkaW1Sekk3V0JYRXNidXU0NDhkcks3aFBrZHhQNHVKcVplRkhxRnc5MmpoSU5LQ0N6WnBDSVpfbHpfa1Nzb295Sm1pOWZPZ1E4?oc=5"
-            },
+              "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1pVlZEbkI4LXN4ci16NjFBZE8zWk1lWXJobHRVUC1uejE0dVBYcnFONFhMbE5NTVNUMWtiZVNrMTVvYU1YODM4Z1d1b0lmZC1ueUFWZHZEaVl6TnM?oc=5"
+            }
+          ],
+          "down": [],
+          "neutral": []
+        },
+        "memo": "수급/도축 축은 상방 근거 우세"
+      },
+      {
+        "axis": "disease",
+        "label": "질병/방역",
+        "items": 9,
+        "has_conflict": false,
+        "severity": "none",
+        "dominant_direction": "up",
+        "weighted_direction": {
+          "up": 43.2,
+          "down": 0.0,
+          "neutral": 0.0
+        },
+        "conflict_ratio": 0.0,
+        "examples": {
+          "up": [
             {
               "title": "알림소식 > 보도자료 > 6월 1일자로 고병원성 조류인플루엔자(AI) 평시 방역체계로 전환하여 상시 방역활동 추진 - 농림축산식품부",
               "source": "농림축산식품부",
@@ -620,6 +618,14 @@
               "quality_score": 75,
               "source_level": 5,
               "url": "https://news.google.com/rss/articles/CBMi2ANBVV95cUxOUUZZUFVtbW82b3BPZW1xMTNyTVUxdUJ2dVN5SnZhVWR1UmNxNXRRdWhqRUl5MnpnY1ItTFZPak1TWDJaNFBmYTkwOGtvOFEwMHNGMElGNkNqSWQ4clVxVmNXN1VndFRRaFAtSVpGWDNRcTZOWC1ualhxZXhIUTBLVTNSLUN2dUlSbVJUVlA5YWRoQVNDaVZvZ3doN3dwZm1hQWp3MGpnRVhUQVVuOVRkUXhwb0ZHNjh4QmRkWFlPbllJYnhmQ3kzVTNCQTRMTXM3TUhrZ0V2RzZrS200cmlhcFo5NnhpOTYyWmdhNEVlYlJKN0UxNFp4UTZJTWlRek1Jc0d1RUVBXy0xcG52a05KTXppYzJpU28ta0NMUlBGb1dDS0Fna2R2b09Fa0hCRTU2U0JOU1ZLQ1U5UjZhSU9KRllXSDlWVWRSVHFvNHJRRHBHODBtOGM4LUR0dXJ0WFZwazlIVFpyYmNsZkZyamZTcHBNWEtSOHZfR0hDZkdodGhsTmhJODJhYnlSTGxMR2NtRHlGZEdWYjVTYzQ2ZUR3UEg4NVRBQjJVY3I3VDVIWkxqdTF2VV8zSXV0SnFIVk0wOU9kdVdvRnl1N01RVllkejVwVGVtM2Vj?oc=5"
+            },
+            {
+              "title": "광주광역시 소규모 기타 가금(기러기) 농장에 대한 예찰 과정에서 H5형 조류인플루엔자 항원 확인 - 농림축산식품부",
+              "source": "농림축산식품부",
+              "direction": "up",
+              "quality_score": 75,
+              "source_level": 5,
+              "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFA2MXFqQWRYRlJyV3hpa25iWDVlejgwT1hrQ0NDcmpRNHhMMlR0amtYOUlwVHRJeGU2U0Qtc3lnRlV1bHZzTnBnaE1sQUcwUXdxS29pLWo3Qm54aHYtV0NQZWNGM2RUMmxDRHlyWVN5c2pESkFjNkRtdTU2OA?oc=5"
             }
           ],
           "down": [],
@@ -788,7 +794,7 @@
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 23.66,
+          "up": 23.56,
           "down": 4.17,
           "neutral": 20.33
         },
@@ -799,7 +805,7 @@
               "title": "쌀·계란·김 물가 상승에 김밥 가격도 올라 - 연합뉴스",
               "source": "연합뉴스",
               "direction": "up",
-              "quality_score": 81,
+              "quality_score": 76,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5sRlpvUjNwS1p5M3Bac183WWxidl9xWjNBcG0wSFlobHRUNFdiLVBlVmtYbXdFS2ktaGg5TnN0Q3NTQlZxZG1tamRpUEREODEwZmUwUWZDaFN3dVYtc3ZQbdIBYEFVX3lxTE5sRlpvUjNwS1p5M3Bac183WWxidl9xWjNBcG0wSFlobHRUNFdiLVBlVmtYbXdFS2ktaGg5TnN0Q3NTQlZxZG1tamRpUEREODEwZmUwUWZDaFN3dVYtc3ZQbQ?oc=5"
             },
@@ -862,16 +868,16 @@
       {
         "axis": "supply",
         "label": "수급/도축",
-        "items": 8,
+        "items": 9,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 29.33,
+          "up": 33.83,
           "down": 3.12,
           "neutral": 0.0
         },
-        "conflict_ratio": 0.11,
+        "conflict_ratio": 0.09,
         "examples": {
           "up": [
             {
@@ -982,14 +988,14 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 7,
+        "items": 6,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "neutral",
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 20.87
+          "neutral": 17.92
         },
         "conflict_ratio": 0,
         "examples": {
@@ -1005,8 +1011,8 @@
               "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5WRTd6bDc5Y3ZLWGRZOUJTZEZpWHhxSUJaUnoyVnk3a2NXc2FQeWpINnRRMDhUSzcxcmN5SEc5UnhvZENNRk5BRHhFeThSUVk?oc=5"
             },
             {
-              "title": "쌀·계란값 오르자…김밥 한 줄 4000원 시대 코앞 - hankyung.com",
-              "source": "hankyung.com",
+              "title": "쌀·계란값 오르자…김밥 한 줄 4000원 시대 코앞 - 한국경제",
+              "source": "한국경제",
               "direction": "neutral",
               "quality_score": 76,
               "source_level": 3,
