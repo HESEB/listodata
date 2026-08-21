@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-21T20:43:17Z",
+  "updated_at": "2026-08-21T21:42:37Z",
   "policy": "phase2_evidence_score_v3_sanitized",
   "score_axes": {
     "price": {
@@ -225,10 +225,10 @@
     {
       "id": "PORK",
       "name": "돈육",
-      "signal_score": 44,
+      "signal_score": 42,
       "direction": "neutral",
       "status": "보합/혼조",
-      "quality_score": 69,
+      "quality_score": 68,
       "confidence_score": 79,
       "coverage_rate": 80,
       "evidence_count": 31,
@@ -242,7 +242,7 @@
       "coverage_types": [
         "가격",
         "수급/도축",
-        "수요/행사",
+        "일반",
         "질병/방역"
       ],
       "score_breakdown": {
@@ -250,7 +250,7 @@
         "supply": 11,
         "disease": 18,
         "policy": 0,
-        "news": 6
+        "news": 4
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -342,17 +342,17 @@
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 6,
+          "score": 4,
           "items": 1,
           "up": 0,
           "down": 0,
           "neutral": 1,
           "examples": [
             {
-              "title": "대구경북, 폭염에 계란·돼지고기 껑충, 배추·무는 뚝…올 추석 차례상 부담 줄 듯 - v.daum.net",
+              "title": "[칼럼] 1만원 계란값이 남긴 경고...한돈에서 같은 실수 말아야 - 돼지와사람",
               "direction": "neutral",
               "source_level": 3,
-              "quality_score": 76
+              "quality_score": 51
             }
           ]
         }
@@ -376,27 +376,28 @@
     {
       "id": "POULTRY",
       "name": "계육",
-      "signal_score": 23,
+      "signal_score": 34,
       "direction": "down",
       "status": "하방 가능성",
-      "quality_score": 73,
-      "confidence_score": 67,
-      "coverage_rate": 40,
-      "evidence_count": 10,
+      "quality_score": 71,
+      "confidence_score": 73,
+      "coverage_rate": 60,
+      "evidence_count": 11,
       "official_count": 9,
       "direction_counts": {
-        "up": 9,
+        "up": 10,
         "down": 0,
         "neutral": 1,
         "hold": 0
       },
       "coverage_types": [
+        "수급/도축",
         "일반",
         "질병/방역"
       ],
       "score_breakdown": {
         "price": 0,
-        "supply": 0,
+        "supply": 11,
         "disease": 19,
         "policy": 0,
         "news": 4
@@ -422,12 +423,19 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 0,
-          "items": 0,
-          "up": 0,
+          "score": 11,
+          "items": 1,
+          "up": 1,
           "down": 0,
           "neutral": 0,
-          "examples": []
+          "examples": [
+            {
+              "title": "굽네치킨, 가격 동결하고 순살 치킨 중량 조정…계육 수급 불안 여파 - 에너지경제신문",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 51
+            }
+          ]
         },
         "disease": {
           "label": "질병/방역",
@@ -486,22 +494,20 @@
           ]
         }
       },
-      "reason": "질병/방역 19점 + 뉴스/수요 4점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 수급/도축 11점 + 뉴스/수요 4점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
-        "severity": "low",
+        "severity": "none",
         "axes": [],
-        "memo": "주의 필요 · 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 주요 근거축 다수 누락"
+        "memo": "주의 필요 · 누락근거: 가격, 정책/고시"
       },
       "hold_decision": {
         "should_hold": false,
-        "reasons": [
-          "주요 근거축 다수 누락"
-        ],
+        "reasons": [],
         "recommended_status": "하방 가능성",
         "recommended_direction": "down",
-        "adjusted_confidence": 67
+        "adjusted_confidence": 73
       }
     },
     {
@@ -613,32 +619,32 @@
     {
       "id": "EGG",
       "name": "계란",
-      "signal_score": 71,
+      "signal_score": 72,
       "direction": "up",
       "status": "상방 가능성",
-      "quality_score": 70,
-      "confidence_score": 86,
+      "quality_score": 66,
+      "confidence_score": 85,
       "coverage_rate": 100,
       "evidence_count": 32,
-      "official_count": 8,
+      "official_count": 7,
       "direction_counts": {
-        "up": 17,
-        "down": 1,
+        "up": 16,
+        "down": 2,
         "neutral": 14,
         "hold": 0
       },
       "coverage_types": [
         "가격",
         "수급/도축",
-        "수요/행사",
         "일반",
+        "정책/고시",
         "질병/방역"
       ],
       "score_breakdown": {
-        "price": 25,
-        "supply": 23,
+        "price": 24,
+        "supply": 22,
         "disease": 15,
-        "policy": 0,
+        "policy": 3,
         "news": 8
       },
       "score_breakdown_labels": {
@@ -652,11 +658,11 @@
         "price": {
           "label": "가격",
           "max_score": 30,
-          "score": 25,
-          "items": 13,
+          "score": 24,
+          "items": 14,
           "up": 5,
           "down": 1,
-          "neutral": 7,
+          "neutral": 8,
           "examples": [
             {
               "title": "계란 가격은 하락하는데 돼지고기 가격은 왜 계속 높은 걸까요? - Vietnam.vn",
@@ -668,23 +674,23 @@
               "title": "쌀·계란·김 물가 상승에 김밥 가격도 올라 - 연합뉴스",
               "direction": "up",
               "source_level": 3,
-              "quality_score": 76
+              "quality_score": 71
             },
             {
               "title": "쌀·계란·김 물가 상승에 김밥 가격도 올라 - 연합뉴스TV",
               "direction": "up",
               "source_level": 3,
-              "quality_score": 51
+              "quality_score": 46
             }
           ]
         },
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 23,
+          "score": 22,
           "items": 10,
-          "up": 10,
-          "down": 0,
+          "up": 9,
+          "down": 1,
           "neutral": 0,
           "examples": [
             {
@@ -733,57 +739,64 @@
         "policy": {
           "label": "정책/고시",
           "max_score": 10,
-          "score": 0,
-          "items": 0,
+          "score": 3,
+          "items": 1,
           "up": 0,
           "down": 0,
-          "neutral": 0,
-          "examples": []
+          "neutral": 1,
+          "examples": [
+            {
+              "title": "계란 한 판 8000원 시대…코스피는 올리고 계란값은 내린다! - 대한민국 정책브리핑",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 51
+            }
+          ]
         },
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 8,
-          "items": 7,
+          "items": 5,
           "up": 0,
           "down": 0,
-          "neutral": 7,
+          "neutral": 5,
           "examples": [
             {
-              "title": "대구경북, 폭염에 계란·돼지고기 껑충, 배추·무는 뚝…올 추석 차례상 부담 줄 듯 - v.daum.net",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 76
-            },
-            {
-              "title": "쌀·계란값 오르자…김밥 한 줄 4000원 시대 코앞 - 한국경제",
+              "title": "계란시장 ‘거래 기준’ 복원 필요 - 축산경제신문",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 71
             },
             {
-              "title": "김밥 한 줄 4000원 시대…쌀·계란값 뛰자 외식비도 ‘껑충’ - v.daum.net",
+              "title": "[계란 난맥상]④日은 '에그 쇼크', 美 담합 의혹…글로벌 덮친 '금란' - v.daum.net",
               "direction": "neutral",
               "source_level": 3,
-              "quality_score": 71
+              "quality_score": 65
+            },
+            {
+              "title": "[영상] 이젠 남아돈다고? 없어서 비싸다던 계란값 비밀 - v.daum.net",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 58
             }
           ]
         }
       },
-      "reason": "가격 25점 + 수급/도축 23점 + 질병/방역 15점 기반, 상방성 자료가 우세",
+      "reason": "가격 24점 + 수급/도축 22점 + 질병/방역 15점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
         "severity": "none",
         "axes": [],
-        "memo": "주의 필요 · 누락근거: 정책/고시"
+        "memo": "충돌 또는 판단 유보 요인 없음"
       },
       "hold_decision": {
         "should_hold": false,
         "reasons": [],
         "recommended_status": "상방 가능성",
         "recommended_direction": "up",
-        "adjusted_confidence": 86
+        "adjusted_confidence": 85
       }
     },
     {
