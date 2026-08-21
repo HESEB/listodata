@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-21T21:42:37Z",
+  "updated_at": "2026-08-21T22:44:33Z",
   "policy": "phase2_conflict_hold_v1",
   "notice": "상방·하방 근거 충돌, 근거 누락, 신뢰도 부족에 따른 판단 유보 검수 리포트입니다.",
   "summary": {
@@ -47,19 +47,22 @@
       "id": "POULTRY",
       "name": "계육",
       "has_conflict": false,
-      "conflict_severity": "none",
+      "conflict_severity": "low",
       "conflict_axes": [],
       "missing_evidence": [
         "가격",
+        "수급/도축",
         "정책/고시"
       ],
-      "hold_reasons": [],
-      "original_confidence": 73,
-      "adjusted_confidence": 73,
+      "hold_reasons": [
+        "주요 근거축 다수 누락"
+      ],
+      "original_confidence": 67,
+      "adjusted_confidence": 67,
       "should_hold": false,
       "recommended_status": "하방 가능성",
       "recommended_direction": "down",
-      "memo": "주의 필요 · 누락근거: 가격, 정책/고시"
+      "memo": "주의 필요 · 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 주요 근거축 다수 누락"
     },
     {
       "id": "DUCK",
@@ -126,14 +129,14 @@
         {
           "axis": "news",
           "label": "뉴스/수요",
-          "items": 21,
+          "items": 20,
           "has_conflict": true,
           "severity": "high",
           "dominant_direction": "up",
           "weighted_direction": {
             "up": 4.55,
             "down": 4.1,
-            "neutral": 69.35
+            "neutral": 65.7
           },
           "conflict_ratio": 0.9,
           "examples": {
@@ -370,14 +373,14 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 14,
+        "items": 15,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
           "up": 7.78,
           "down": 0.0,
-          "neutral": 38.45
+          "neutral": 41.52
         },
         "conflict_ratio": 0.0,
         "examples": {
@@ -501,12 +504,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 27,
+        "items": 26,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 123.82,
+          "up": 119.66,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -617,31 +620,22 @@
       {
         "axis": "supply",
         "label": "수급/도축",
-        "items": 1,
+        "items": 0,
         "has_conflict": false,
         "severity": "none",
-        "dominant_direction": "up",
+        "dominant_direction": "neutral",
         "weighted_direction": {
-          "up": 3.12,
+          "up": 0.0,
           "down": 0.0,
           "neutral": 0.0
         },
-        "conflict_ratio": 0.0,
+        "conflict_ratio": 0,
         "examples": {
-          "up": [
-            {
-              "title": "굽네치킨, 가격 동결하고 순살 치킨 중량 조정…계육 수급 불안 여파 - 에너지경제신문",
-              "source": "에너지경제신문",
-              "direction": "up",
-              "quality_score": 51,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1pVlZEbkI4LXN4ci16NjFBZE8zWk1lWXJobHRVUC1uejE0dVBYcnFONFhMbE5NTVNUMWtiZVNrMTVvYU1YODM4Z1d1b0lmZC1ueUFWZHZEaVl6TnM?oc=5"
-            }
-          ],
+          "up": [],
           "down": [],
           "neutral": []
         },
-        "memo": "수급/도축 축은 상방 근거 우세"
+        "memo": "수급/도축 축은 중립 또는 보조 근거 중심"
       },
       {
         "axis": "disease",
@@ -1130,12 +1124,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 7,
+        "items": 8,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 32.76,
+          "up": 37.76,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -1159,12 +1153,12 @@
               "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1aYlNSSi16S19Sby1QTjlWNnktcmRPMzBiOFlGcWx3dE5OcTlSYW1xdTFrUzNfN2FuRWgxTzVKUlVGdVhhWEVka050TWlNbUY0RFlCUWJMeGZOOWt3NkszatIBeEFVX3lxTE5yOFFFbHZtUjBHSmlGYWw3REEwcXNDT2NQbWE1S09nV3dHT0YwZko5R09OY09zWTJlWmVtVVFYeUM1akpRcGQ4eV93VjRBWkdsUHlhLWIweWttMDRqSm1jalB0RnEzUmVGUW5uWmhoRjJJck5ZS3JlVQ?oc=5"
             },
             {
-              "title": "보도자료 > 럼피스킨병 제2종 가축전염병으로 하향, 가축폐기물처리업 신설 등 방역관리 효율성 강화 - 농림축산식품부",
-              "source": "농림축산식품부",
+              "title": "농식품부, 경북 예천 구제역 6건 추가 확인에 방역 점검 - 연합뉴스",
+              "source": "연합뉴스",
               "direction": "up",
               "quality_score": 75,
               "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMi2ANBVV95cUxQYVVkTk1fZjRjeWRIdHJEbTJES28wUU5XZzJBUElCUW9sNkFhd1ZyZmRvNHdvMGJuanhEcEczODNMVVF3SGZaUmZwcEJUTFdyYjdrYUVRV0R1SmlvX0l6aldDTEtBeWs0cUJMa0xwdWhuX3BEOUpIWFVrVHVwM29XQ2w3N3RGVG9veFREWTB2UFBja0I3SWRodFpoNEIzc2RmY3BYMGZ1eTlySy1Na0ZRd00wVkVjX0pHSlZTV0tNU0R6SGRyczN2VmtVb1hiQ2w4ZldFSVE0V0xBZzl0ZHhadTRoZnhRY041TkQ3dUNJckNaZExuNlNtdTVMUU1JSUd1c2FCVDNWN3M1WkNGVFVhSzdiMXQ3TUNiTWptVTBsY1lTazVtbU0wTFBpU3JYdHlCTFRneG0yYVNJdFZEME8xZTg0RUdkV1JBVm1ZeGs4YTd0TzBJRXkyRU1QZC1wSkx6Y0xzeFNXcGlIdW91a05DeUVhWVZsRi1qVkVLTVBSWkZYa1RFak9oQkdPbjVEcWVCWF9hNXoyNlJEekpVZkFHelNPZThlQl9xN2JfUmpXWktPZmVVSmpLemQ5NThPN0YyV2pQWi1kdU8xZFlzeVpNRWRSaTc4QlU3?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1nY2hhcFlVNk5LNG9JcVpSQ3l3YWF0WjBmLUFWRXUzaE9CM0k0N201NldXZDE4b3YwbHUxaFE3ak5IdjV0NTZVczJtWnpaQjR4cHdCeVZfUnEzVm_SAWBBVV95cUxPNlBrY1RZRm9veE14SW9WOW1fNi1qcy1VZXB3ZmhpbE0tZFNicjJ2NVdKMnRhc1ZlRVR2S3MzTE8yNGhoYnRuWjVFTGV3Z1dLX0lveDZuS1QycHZrZFlqQXQ?oc=5"
             }
           ],
           "down": [],
@@ -1195,14 +1189,14 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 21,
+        "items": 20,
         "has_conflict": true,
         "severity": "high",
         "dominant_direction": "up",
         "weighted_direction": {
           "up": 4.55,
           "down": 4.1,
-          "neutral": 69.35
+          "neutral": 65.7
         },
         "conflict_ratio": 0.9,
         "examples": {
