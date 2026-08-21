@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-08-21T08:00:23Z",
+  "updated_at": "2026-08-21T09:01:01Z",
   "policy": "phase2_conflict_hold_v1",
   "notice": "상방·하방 근거 충돌, 근거 누락, 신뢰도 부족에 따른 판단 유보 검수 리포트입니다.",
   "summary": {
     "species_count": 6,
     "conflict_species_count": 1,
-    "hold_recommended_count": 1,
-    "high_conflict_count": 0
+    "hold_recommended_count": 2,
+    "high_conflict_count": 1
   },
   "species": [
     {
@@ -108,7 +108,7 @@
       "id": "OTHER",
       "name": "기타",
       "has_conflict": true,
-      "conflict_severity": "medium",
+      "conflict_severity": "high",
       "conflict_axes": [
         "뉴스/수요"
       ],
@@ -118,14 +118,79 @@
         "정책/고시"
       ],
       "hold_reasons": [
+        "상·하방 근거 강충돌",
         "주요 근거축 다수 누락"
       ],
       "original_confidence": 75,
-      "adjusted_confidence": 65,
-      "should_hold": false,
-      "recommended_status": "하방 가능성",
-      "recommended_direction": "down",
-      "memo": "주의 필요 · 충돌축: 뉴스/수요 / 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 주요 근거축 다수 누락"
+      "adjusted_confidence": 57,
+      "should_hold": [
+        {
+          "axis": "news",
+          "label": "뉴스/수요",
+          "items": 21,
+          "has_conflict": true,
+          "severity": "high",
+          "dominant_direction": "up",
+          "weighted_direction": {
+            "up": 4.55,
+            "down": 4.1,
+            "neutral": 69.35
+          },
+          "conflict_ratio": 0.9,
+          "examples": {
+            "up": [
+              {
+                "title": "인천 동물생산업장 개 브루셀라병 검출에 따른 확산 방지조치 시행 - 농림축산식품부",
+                "source": "농림축산식품부",
+                "direction": "up",
+                "quality_score": 75,
+                "source_level": 5,
+                "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1tbTd1YUhmdXg5cUM3WTBDdkV2RlVYQ1JUemVPSUx3WGdLaXpDVjdPcktndmtobEpQc01BTnctMkpJdlA2c3p4VzdHMmJ0bmhRMTBCdm5GSDlKSGJGbUp1NDA5cVBIajg?oc=5"
+              }
+            ],
+            "down": [
+              {
+                "title": "양돈 농가 소독설비 설치 부담 완화 제도화 - 농림축산식품부",
+                "source": "농림축산식품부",
+                "direction": "down",
+                "quality_score": 75,
+                "source_level": 5,
+                "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE01Z2lweHdUU29QaGZ0bEFGZ2Q2bGJscmQ3NW5ielZvdW9nNS1hb2tlSXZpVEhfUi04WHAzUXFUWXdmVDM3M05GRnIxb0VVX0Y5Y0drNXBnenhWVWNkSWd5N0JwS0xBdmM?oc=5"
+              }
+            ],
+            "neutral": [
+              {
+                "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
+                "source": "농업인신문",
+                "direction": "neutral",
+                "quality_score": 75,
+                "source_level": 5,
+                "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9LREJ2QWpsLU4xVnVxdWRCamFCcjZnZUMtNVAybHFXQWpaOW44Q2hMaUJDY3lYUU9vN0NIYWtlb1MzVnBxRXI3OTJzdng3dWEyZEdudngwVmsyUTBiQUpXVmJzZlRXelc4WkY5emhn?oc=5"
+              },
+              {
+                "title": "농림축산식품부 - - 농림축산식품부",
+                "source": "농림축산식품부",
+                "direction": "neutral",
+                "quality_score": 75,
+                "source_level": 5,
+                "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1jeXl3alQyb3lFNEdYLU01UDVwbXRCUHVjQnhTZlBoZENQRHo3RlB6SUpKejVuYkR3eFlfNDhIYURYMG5fN213b1J4Nk1HRFQwei04VDBfM2UyR1FxallDQWR0bVd6RjlQWUx4aDc3Z0tVWWUwY1pGdmdYR0N4dWs?oc=5"
+              },
+              {
+                "title": "K2WebWizard - 농림축산식품부",
+                "source": "농림축산식품부",
+                "direction": "neutral",
+                "quality_score": 75,
+                "source_level": 5,
+                "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFA2eTlKZVZQaGVUNjVoUFZTLXdjWlUtTGkxSE5TREdYS2JXd21Hd0p6VWtVSkp5RnJ4Y09MRm5jLXFVSDhwUnVsdHg3ZG5sT2NzbTg3cVdicUZfRW91VVlIczBZNWlHNWQ3cE9Z?oc=5"
+              }
+            ]
+          },
+          "memo": "뉴스/수요 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
+        }
+      ],
+      "recommended_status": "판단 유보",
+      "recommended_direction": "hold",
+      "memo": "판단 유보 권장 · 충돌축: 뉴스/수요 / 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 상·하방 근거 강충돌, 주요 근거축 다수 누락"
     }
   ],
   "axis_reports": {
@@ -322,7 +387,7 @@
         "weighted_direction": {
           "up": 7.78,
           "down": 0.0,
-          "neutral": 39.04
+          "neutral": 38.94
         },
         "conflict_ratio": 0.0,
         "examples": {
@@ -347,20 +412,20 @@
           "down": [],
           "neutral": [
             {
+              "title": "영광군, ‘축산 맞춤형 종합컨설팅’으로 한우농가 애로기술 해결 - 호남타임즈",
+              "source": "호남타임즈",
+              "direction": "neutral",
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5HY2pKbEVrZFZBV09OVXc2VjktbEhodXpmNHFpVDhnOW1BZ0VVNjFidmVCYzFFV2wtaS04MHB5LVJVWjB1TjhIcWxwTWhZSFQxd2M5V2oxUmhrWDFTdGlhRkFpZmhIM3hFUi10aA?oc=5"
+            },
+            {
               "title": "영광군, 한우농가 생산성 향상 종합컨설팅 실시 - 보도자료 | 기사 - 더팩트",
               "source": "더팩트",
               "direction": "neutral",
               "quality_score": 81,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE00NXFtc0hrVXdDNWp6M1lFdURjVE1sVXFDb3Z4OV9ndnQyTVc1dWJMZ2lVYU45ODZadkVsYUdwQ3JOX1JYMU1kUkdlN21CMmZxM1B4YXBoYndUeWJlTHNr?oc=5"
-            },
-            {
-              "title": "k채널/영광군,‘축산 맞춤형 종합컨설팅’으로 한우농가 애로기술 해결! - K채널",
-              "source": "K채널",
-              "direction": "neutral",
-              "quality_score": 81,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBNWjBGa1Eyd1VmeWlZOG5SY2hiT0VyQUJaQ2QxRllfbzd2Nzh1ck42TkFPWGhZNnJFSl9jbjdBSVgtSmxQc1QwQVRwdHo5bmVoN2ZkNjFIaE1JN3pjWHZPcHp1a2hucWl3YXc?oc=5"
             },
             {
               "title": "“세포 배양해서 만든 의성 한우”…한국 바이오푸드의 혁신 - realfoods.co.kr",
@@ -451,7 +516,7 @@
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 114.16,
+          "up": 114.06,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -793,7 +858,7 @@
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 23.36,
+          "up": 23.26,
           "down": 4.07,
           "neutral": 20.21
         },
@@ -820,7 +885,7 @@
               "title": "쌀·계란값 상승에 김밥값도 ‘껑충’…서울 평균 4000원 육박 - v.daum.net",
               "source": "v.daum.net",
               "direction": "up",
-              "quality_score": 76,
+              "quality_score": 71,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9ZdV9Ic0JfYW4ycTU0RVh2OFpJdzcxMzc5cC1wT1JYbHhwdHdHY2tzUmhRWUxfT2d6dG9JNXV2dzdaZWZtRGtqWC1aZHBZQTQ?oc=5"
             }
@@ -1139,26 +1204,18 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 23,
+        "items": 21,
         "has_conflict": true,
-        "severity": "medium",
+        "severity": "high",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 9.1,
+          "up": 4.55,
           "down": 4.1,
-          "neutral": 73.0
+          "neutral": 69.35
         },
-        "conflict_ratio": 0.45,
+        "conflict_ratio": 0.9,
         "examples": {
           "up": [
-            {
-              "title": "알림소식 > 보도자료 > 겨울철 가축전염병 비상대응 체계로 전환,추가 발생 선제적 차단 총력 - 농림축산식품부",
-              "source": "농림축산식품부",
-              "direction": "up",
-              "quality_score": 75,
-              "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMi9gNBVV95cUxOelo0OWlvVHRPbVlDa0h3dFRaUkZNLU5YRll3Wll5VzdOLXFmXzd4NV94emFJdDVVeG1pRE16b1d5N1ZlbzRvQzFfelRYLS1kcnEyMnBsX3E1ZGp4djhUcnVGaHlhX056RTMxUFRnU2wxblc2OVhHZ01mYnFxUzNVSWREZkQ1NFIxVzRISGU4Y3g0WG50Y1QtQlVGVzdEUnVDeDNwa3lmNnN2Nzg0b0xIbGFUMm12ZktyS1ZlOEljTFVjUGMzMEhWM1NMQkpEMFR1b2w2bTlOYmdSS3g2dHRFdGZVWWFjMmVpbmFXQkV1WDlwaUNpaEdtcmZmY3M3UXpkRHR4SExxSHJPNUxIZlhUVkJ4aTN1TmxEd2EtT1JhR21IeFVzSUJxR2tjNGJ5Yk92ZlF6UDlZZ2U3Q1BMNW10d0tiQm9wX3dCS0dYTEZyaExCTFBDdjU0QnlsNGdoaUNEcFJsNE4yRC0tZEI4YS1mR0Z2cEdsREdhclpRMUJpVkh5OW1uYU1GaG9ablpiUlF2TVYyVGNwenBycnZwWk51VmdFc3NnQXlNZk9FUzFzZ3U2V0R0R1JrNXBmU21MVEg5bG90WmdpSkQ0QTBNZzNYYmFjb25SZTgzQWpaZzQ4a191c1ZZbldXVEcwM0VxeUpsSFlrdk1R?oc=5"
-            },
             {
               "title": "인천 동물생산업장 개 브루셀라병 검출에 따른 확산 방지조치 시행 - 농림축산식품부",
               "source": "농림축산식품부",
@@ -1205,7 +1262,7 @@
             }
           ]
         },
-        "memo": "뉴스/수요 축에서 상방·하방 근거가 동시에 감지되어 medium 충돌로 분류"
+        "memo": "뉴스/수요 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
       }
     ]
   }
