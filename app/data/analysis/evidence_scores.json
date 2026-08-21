@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-21T08:00:22Z",
+  "updated_at": "2026-08-21T09:01:01Z",
   "policy": "phase2_evidence_score_v3_sanitized",
   "score_axes": {
     "price": {
@@ -194,13 +194,13 @@
           "neutral": 12,
           "examples": [
             {
-              "title": "영광군, 한우농가 생산성 향상 종합컨설팅 실시 - 보도자료 | 기사 - 더팩트",
+              "title": "영광군, ‘축산 맞춤형 종합컨설팅’으로 한우농가 애로기술 해결 - 호남타임즈",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 81
             },
             {
-              "title": "k채널/영광군,‘축산 맞춤형 종합컨설팅’으로 한우농가 애로기술 해결! - K채널",
+              "title": "영광군, 한우농가 생산성 향상 종합컨설팅 실시 - 보도자료 | 기사 - 더팩트",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 81
@@ -236,7 +236,7 @@
       "signal_score": 44,
       "direction": "neutral",
       "status": "보합/혼조",
-      "quality_score": 69,
+      "quality_score": 68,
       "confidence_score": 86,
       "coverage_rate": 100,
       "evidence_count": 30,
@@ -812,18 +812,18 @@
     {
       "id": "OTHER",
       "name": "기타",
-      "signal_score": 32,
-      "direction": "down",
-      "status": "하방 가능성",
+      "signal_score": 28,
+      "direction": "hold",
+      "status": "판단 유보",
       "quality_score": 75,
-      "confidence_score": 75,
+      "confidence_score": 57,
       "coverage_rate": 60,
-      "evidence_count": 30,
-      "official_count": 29,
+      "evidence_count": 28,
+      "official_count": 27,
       "direction_counts": {
-        "up": 9,
+        "up": 8,
         "down": 1,
-        "neutral": 20,
+        "neutral": 19,
         "hold": 0
       },
       "coverage_types": [
@@ -836,7 +836,7 @@
         "supply": 0,
         "disease": 19,
         "policy": 0,
-        "news": 13
+        "news": 9
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -908,11 +908,11 @@
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 13,
-          "items": 23,
-          "up": 2,
+          "score": 9,
+          "items": 21,
+          "up": 1,
           "down": 1,
-          "neutral": 20,
+          "neutral": 19,
           "examples": [
             {
               "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
@@ -935,24 +935,89 @@
           ]
         }
       },
-      "reason": "질병/방역 19점 + 뉴스/수요 13점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 뉴스/수요 9점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": true,
-        "severity": "medium",
+        "severity": "high",
         "axes": [
           "뉴스/수요"
         ],
-        "memo": "주의 필요 · 충돌축: 뉴스/수요 / 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 주요 근거축 다수 누락"
+        "memo": "판단 유보 권장 · 충돌축: 뉴스/수요 / 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 상·하방 근거 강충돌, 주요 근거축 다수 누락"
       },
       "hold_decision": {
-        "should_hold": false,
+        "should_hold": [
+          {
+            "axis": "news",
+            "label": "뉴스/수요",
+            "items": 21,
+            "has_conflict": true,
+            "severity": "high",
+            "dominant_direction": "up",
+            "weighted_direction": {
+              "up": 4.55,
+              "down": 4.1,
+              "neutral": 69.35
+            },
+            "conflict_ratio": 0.9,
+            "examples": {
+              "up": [
+                {
+                  "title": "인천 동물생산업장 개 브루셀라병 검출에 따른 확산 방지조치 시행 - 농림축산식품부",
+                  "source": "농림축산식품부",
+                  "direction": "up",
+                  "quality_score": 75,
+                  "source_level": 5,
+                  "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1tbTd1YUhmdXg5cUM3WTBDdkV2RlVYQ1JUemVPSUx3WGdLaXpDVjdPcktndmtobEpQc01BTnctMkpJdlA2c3p4VzdHMmJ0bmhRMTBCdm5GSDlKSGJGbUp1NDA5cVBIajg?oc=5"
+                }
+              ],
+              "down": [
+                {
+                  "title": "양돈 농가 소독설비 설치 부담 완화 제도화 - 농림축산식품부",
+                  "source": "농림축산식품부",
+                  "direction": "down",
+                  "quality_score": 75,
+                  "source_level": 5,
+                  "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE01Z2lweHdUU29QaGZ0bEFGZ2Q2bGJscmQ3NW5ielZvdW9nNS1hb2tlSXZpVEhfUi04WHAzUXFUWXdmVDM3M05GRnIxb0VVX0Y5Y0drNXBnenhWVWNkSWd5N0JwS0xBdmM?oc=5"
+                }
+              ],
+              "neutral": [
+                {
+                  "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
+                  "source": "농업인신문",
+                  "direction": "neutral",
+                  "quality_score": 75,
+                  "source_level": 5,
+                  "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9LREJ2QWpsLU4xVnVxdWRCamFCcjZnZUMtNVAybHFXQWpaOW44Q2hMaUJDY3lYUU9vN0NIYWtlb1MzVnBxRXI3OTJzdng3dWEyZEdudngwVmsyUTBiQUpXVmJzZlRXelc4WkY5emhn?oc=5"
+                },
+                {
+                  "title": "농림축산식품부 - - 농림축산식품부",
+                  "source": "농림축산식품부",
+                  "direction": "neutral",
+                  "quality_score": 75,
+                  "source_level": 5,
+                  "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1jeXl3alQyb3lFNEdYLU01UDVwbXRCUHVjQnhTZlBoZENQRHo3RlB6SUpKejVuYkR3eFlfNDhIYURYMG5fN213b1J4Nk1HRFQwei04VDBfM2UyR1FxallDQWR0bVd6RjlQWUx4aDc3Z0tVWWUwY1pGdmdYR0N4dWs?oc=5"
+                },
+                {
+                  "title": "K2WebWizard - 농림축산식품부",
+                  "source": "농림축산식품부",
+                  "direction": "neutral",
+                  "quality_score": 75,
+                  "source_level": 5,
+                  "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFA2eTlKZVZQaGVUNjVoUFZTLXdjWlUtTGkxSE5TREdYS2JXd21Hd0p6VWtVSkp5RnJ4Y09MRm5jLXFVSDhwUnVsdHg3ZG5sT2NzbTg3cVdicUZfRW91VVlIczBZNWlHNWQ3cE9Z?oc=5"
+                }
+              ]
+            },
+            "memo": "뉴스/수요 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
+          }
+        ],
         "reasons": [
+          "상·하방 근거 강충돌",
           "주요 근거축 다수 누락"
         ],
-        "recommended_status": "하방 가능성",
-        "recommended_direction": "down",
-        "adjusted_confidence": 65
+        "recommended_status": "판단 유보",
+        "recommended_direction": "hold",
+        "adjusted_confidence": 57
       }
     }
   ],
