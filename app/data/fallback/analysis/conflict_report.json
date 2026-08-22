@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-08-22T09:45:35Z",
+  "updated_at": "2026-08-22T10:43:23Z",
   "policy": "phase2_conflict_hold_v1",
   "notice": "상방·하방 근거 충돌, 근거 누락, 신뢰도 부족에 따른 판단 유보 검수 리포트입니다.",
   "summary": {
     "species_count": 6,
-    "conflict_species_count": 0,
-    "hold_recommended_count": 1,
-    "high_conflict_count": 0
+    "conflict_species_count": 1,
+    "hold_recommended_count": 2,
+    "high_conflict_count": 1
   },
   "species": [
     {
@@ -109,23 +109,90 @@
     {
       "id": "OTHER",
       "name": "기타",
-      "has_conflict": false,
-      "conflict_severity": "low",
-      "conflict_axes": [],
+      "has_conflict": true,
+      "conflict_severity": "high",
+      "conflict_axes": [
+        "뉴스/수요"
+      ],
       "missing_evidence": [
         "가격",
         "수급/도축",
         "정책/고시"
       ],
       "hold_reasons": [
+        "상·하방 근거 강충돌",
         "주요 근거축 다수 누락"
       ],
       "original_confidence": 75,
-      "adjusted_confidence": 75,
-      "should_hold": false,
-      "recommended_status": "하방 가능성",
-      "recommended_direction": "down",
-      "memo": "주의 필요 · 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 주요 근거축 다수 누락"
+      "adjusted_confidence": 57,
+      "should_hold": [
+        {
+          "axis": "news",
+          "label": "뉴스/수요",
+          "items": 22,
+          "has_conflict": true,
+          "severity": "high",
+          "dominant_direction": "up",
+          "weighted_direction": {
+            "up": 4.55,
+            "down": 4.1,
+            "neutral": 73.0
+          },
+          "conflict_ratio": 0.9,
+          "examples": {
+            "up": [
+              {
+                "title": "인천 동물생산업장 개 브루셀라병 검출에 따른 확산 방지조치 시행 - 농림축산식품부",
+                "source": "농림축산식품부",
+                "direction": "up",
+                "quality_score": 75,
+                "source_level": 5,
+                "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1tbTd1YUhmdXg5cUM3WTBDdkV2RlVYQ1JUemVPSUx3WGdLaXpDVjdPcktndmtobEpQc01BTnctMkpJdlA2c3p4VzdHMmJ0bmhRMTBCdm5GSDlKSGJGbUp1NDA5cVBIajg?oc=5"
+              }
+            ],
+            "down": [
+              {
+                "title": "양돈 농가 소독설비 설치 부담 완화 제도화 - 농림축산식품부",
+                "source": "농림축산식품부",
+                "direction": "down",
+                "quality_score": 75,
+                "source_level": 5,
+                "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE01Z2lweHdUU29QaGZ0bEFGZ2Q2bGJscmQ3NW5ielZvdW9nNS1hb2tlSXZpVEhfUi04WHAzUXFUWXdmVDM3M05GRnIxb0VVX0Y5Y0drNXBnenhWVWNkSWd5N0JwS0xBdmM?oc=5"
+              }
+            ],
+            "neutral": [
+              {
+                "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
+                "source": "농업인신문",
+                "direction": "neutral",
+                "quality_score": 75,
+                "source_level": 5,
+                "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9LREJ2QWpsLU4xVnVxdWRCamFCcjZnZUMtNVAybHFXQWpaOW44Q2hMaUJDY3lYUU9vN0NIYWtlb1MzVnBxRXI3OTJzdng3dWEyZEdudngwVmsyUTBiQUpXVmJzZlRXelc4WkY5emhn?oc=5"
+              },
+              {
+                "title": "법령안 - 농림축산식품부",
+                "source": "농림축산식품부",
+                "direction": "neutral",
+                "quality_score": 75,
+                "source_level": 5,
+                "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNNjlWT3U4TEdQbzRSdzZNbUdHRDNJeV9PVnhUbUtzbUVHMHJlcFRra29HTG52NUpPNy0wWWJ3S1pnY1VzYkdIanp1Z2Q0UUMya2NXNmVsODZjeVpmZmtoM05KU1pOMTF3RXBFOVFneTFaYnhZRGVyR2dnYXVqX0ZKZktEajJWdWFqcFBmLW1BbHRYVDhERlg4LUloUjhwcDNjRFh6WlZpVU43dw?oc=5"
+              },
+              {
+                "title": "농림축산식품부 - - 농림축산식품부",
+                "source": "농림축산식품부",
+                "direction": "neutral",
+                "quality_score": 75,
+                "source_level": 5,
+                "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1jeXl3alQyb3lFNEdYLU01UDVwbXRCUHVjQnhTZlBoZENQRHo3RlB6SUpKejVuYkR3eFlfNDhIYURYMG5fN213b1J4Nk1HRFQwei04VDBfM2UyR1FxallDQWR0bVd6RjlQWUx4aDc3Z0tVWWUwY1pGdmdYR0N4dWs?oc=5"
+              }
+            ]
+          },
+          "memo": "뉴스/수요 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
+        }
+      ],
+      "recommended_status": "판단 유보",
+      "recommended_direction": "hold",
+      "memo": "판단 유보 권장 · 충돌축: 뉴스/수요 / 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 상·하방 근거 강충돌, 주요 근거축 다수 누락"
     }
   ],
   "axis_reports": {
@@ -594,24 +661,24 @@
         "examples": {
           "up": [
             {
-              "title": "알림소식 > 보도자료 > 6월 1일자로 고병원성 조류인플루엔자(AI) 평시 방역체계로 전환하여 상시 방역활동 추진 - mafra.go.kr",
-              "source": "mafra.go.kr",
+              "title": "알림소식 > 보도자료 > 6월 1일자로 고병원성 조류인플루엔자(AI) 평시 방역체계로 전환하여 상시 방역활동 추진 - 농림축산식품부",
+              "source": "농림축산식품부",
               "direction": "up",
               "quality_score": 75,
               "source_level": 5,
               "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQekF6emV1b3Zrdnd1ODVMdmhYcWEwWVBremo2Y2h2bE5xUnl2dVdJelMxYmgtZXNycXRfY0NTYjhWSVN5b0tyTUx1Vzk4dk0tRml5R1BHQ0dlNkdrckZaOU1IOHU0LU9DMEF0UFJCLVNaRHJmaHM3QkxLMTNGZ05WUTRidTZzbXpkVk1zY3Y5cXp4d3JueS05MTFyandLSW16YlVhTjUtVEgxX21DZlJ2aGh3RDVRR0czeHZXTFAyR3Z4RkdkVVNqcQ?oc=5"
             },
             {
-              "title": "알림소식 > 보도자료 > 고병원성 조류인플루엔자 발생농장에서 다수 방역 미흡사항 확인, 엄정 조치 및 관리 강화 - mafra.go.kr",
-              "source": "mafra.go.kr",
+              "title": "알림소식 > 보도자료 > 고병원성 조류인플루엔자 발생농장에서 다수 방역 미흡사항 확인, 엄정 조치 및 관리 강화 - 농림축산식품부",
+              "source": "농림축산식품부",
               "direction": "up",
               "quality_score": 75,
               "source_level": 5,
               "url": "https://news.google.com/rss/articles/CBMi2ANBVV95cUxOUUZZUFVtbW82b3BPZW1xMTNyTVUxdUJ2dVN5SnZhVWR1UmNxNXRRdWhqRUl5MnpnY1ItTFZPak1TWDJaNFBmYTkwOGtvOFEwMHNGMElGNkNqSWQ4clVxVmNXN1VndFRRaFAtSVpGWDNRcTZOWC1ualhxZXhIUTBLVTNSLUN2dUlSbVJUVlA5YWRoQVNDaVZvZ3doN3dwZm1hQWp3MGpnRVhUQVVuOVRkUXhwb0ZHNjh4QmRkWFlPbllJYnhmQ3kzVTNCQTRMTXM3TUhrZ0V2RzZrS200cmlhcFo5NnhpOTYyWmdhNEVlYlJKN0UxNFp4UTZJTWlRek1Jc0d1RUVBXy0xcG52a05KTXppYzJpU28ta0NMUlBGb1dDS0Fna2R2b09Fa0hCRTU2U0JOU1ZLQ1U5UjZhSU9KRllXSDlWVWRSVHFvNHJRRHBHODBtOGM4LUR0dXJ0WFZwazlIVFpyYmNsZkZyamZTcHBNWEtSOHZfR0hDZkdodGhsTmhJODJhYnlSTGxMR2NtRHlGZEdWYjVTYzQ2ZUR3UEg4NVRBQjJVY3I3VDVIWkxqdTF2VV8zSXV0SnFIVk0wOU9kdVdvRnl1N01RVllkejVwVGVtM2Vj?oc=5"
             },
             {
-              "title": "광주광역시 소규모 기타 가금(기러기) 농장에 대한 예찰 과정에서 H5형 조류인플루엔자 항원 확인 - mafra.go.kr",
-              "source": "mafra.go.kr",
+              "title": "광주광역시 소규모 기타 가금(기러기) 농장에 대한 예찰 과정에서 H5형 조류인플루엔자 항원 확인 - 농림축산식품부",
+              "source": "농림축산식품부",
               "direction": "up",
               "quality_score": 75,
               "source_level": 5,
@@ -933,16 +1000,16 @@
         "examples": {
           "up": [
             {
-              "title": "「산란계 농장 고병원성 조류인플루엔자 방역 기준 유형부여에 관한 고시」 개정안 행정예고 - mafra.go.kr",
-              "source": "mafra.go.kr",
+              "title": "「산란계 농장 고병원성 조류인플루엔자 방역 기준 유형부여에 관한 고시」 개정안 행정예고 - 농림축산식품부",
+              "source": "농림축산식품부",
               "direction": "up",
               "quality_score": 75,
               "source_level": 5,
               "url": "https://news.google.com/rss/articles/CBMi2ANBVV95cUxPVVlKb1BSRTNZUXU5NlVQMXdfLWxaczVoX1FHUW91ekFwQm5EMDRPREFpWkV4M2ZVOUV0THRFTWFGcTJtLUpxZUxQZFk0QWt6T25UVUs0MkxjM1cyU3dfRmd4RnhGOFF3QWMyNEpvU3FGaDFVc0pMSVNsb2pQUXZETU9taHJ6ODMyWWVIZWVLQldSRFRZS09IdWRwVTI1VHZNeEducG5YRkhTZjcycGozYlpVYzVxWmRpQTZQMS1GdUhIc1ozUFk2Z3NSTFI1ek1ZczlFblk4RUMzM1FUZ2xFaVQ1ZlYtNEgzd2ducHhxRjRMU05MR255WEJtUi1IZWJZeXYzNUVzUWNUX0tBQkt5YXUxSFl5NUk1M0Fmb01tbk1EQ3R5OEhLNWRBOHc1UTlqXzBSX0tITlBMbDFERm5FaTMxN2xjMEt1dktTYU5JUVNLRkpTOFN4N3hjUzdCRjJzZURlQVlwYzZtOEZUTHdvNTdndHB0NFNNeHcxMmVNQ25IUFN5d2F1cVo3bHUyb3lYMnJuLUktSW5LR25PdElpVXlmTU1WcXdYMWtobmMzdzk1a2RyVEUta3BkTWUxbFJrRXZRYlZYMFVpYkJUNXFjTUZWNGpERHRy?oc=5"
             },
             {
-              "title": "알림소식 > 보도자료 > 경기 김포 산란계 농장에 대한 예찰 검사에서 H5형 조류인플루엔자 항원 확인 - mafra.go.kr",
-              "source": "mafra.go.kr",
+              "title": "알림소식 > 보도자료 > 경기 김포 산란계 농장에 대한 예찰 검사에서 H5형 조류인플루엔자 항원 확인 - 농림축산식품부",
+              "source": "농림축산식품부",
               "direction": "up",
               "quality_score": 75,
               "source_level": 5,
@@ -1073,12 +1140,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 4,
+        "items": 7,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 18.66,
+          "up": 32.76,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -1138,19 +1205,37 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 8,
-        "has_conflict": false,
-        "severity": "none",
-        "dominant_direction": "neutral",
+        "items": 22,
+        "has_conflict": true,
+        "severity": "high",
+        "dominant_direction": "up",
         "weighted_direction": {
-          "up": 0.0,
-          "down": 0.0,
-          "neutral": 29.2
+          "up": 4.55,
+          "down": 4.1,
+          "neutral": 73.0
         },
-        "conflict_ratio": 0,
+        "conflict_ratio": 0.9,
         "examples": {
-          "up": [],
-          "down": [],
+          "up": [
+            {
+              "title": "인천 동물생산업장 개 브루셀라병 검출에 따른 확산 방지조치 시행 - 농림축산식품부",
+              "source": "농림축산식품부",
+              "direction": "up",
+              "quality_score": 75,
+              "source_level": 5,
+              "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1tbTd1YUhmdXg5cUM3WTBDdkV2RlVYQ1JUemVPSUx3WGdLaXpDVjdPcktndmtobEpQc01BTnctMkpJdlA2c3p4VzdHMmJ0bmhRMTBCdm5GSDlKSGJGbUp1NDA5cVBIajg?oc=5"
+            }
+          ],
+          "down": [
+            {
+              "title": "양돈 농가 소독설비 설치 부담 완화 제도화 - 농림축산식품부",
+              "source": "농림축산식품부",
+              "direction": "down",
+              "quality_score": 75,
+              "source_level": 5,
+              "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE01Z2lweHdUU29QaGZ0bEFGZ2Q2bGJscmQ3NW5ielZvdW9nNS1hb2tlSXZpVEhfUi04WHAzUXFUWXdmVDM3M05GRnIxb0VVX0Y5Y0drNXBnenhWVWNkSWd5N0JwS0xBdmM?oc=5"
+            }
+          ],
           "neutral": [
             {
               "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
@@ -1161,24 +1246,24 @@
               "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9LREJ2QWpsLU4xVnVxdWRCamFCcjZnZUMtNVAybHFXQWpaOW44Q2hMaUJDY3lYUU9vN0NIYWtlb1MzVnBxRXI3OTJzdng3dWEyZEdudngwVmsyUTBiQUpXVmJzZlRXelc4WkY5emhn?oc=5"
             },
             {
-              "title": "농림축산식품부 - - mafra.go.kr",
-              "source": "mafra.go.kr",
+              "title": "법령안 - 농림축산식품부",
+              "source": "농림축산식품부",
+              "direction": "neutral",
+              "quality_score": 75,
+              "source_level": 5,
+              "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNNjlWT3U4TEdQbzRSdzZNbUdHRDNJeV9PVnhUbUtzbUVHMHJlcFRra29HTG52NUpPNy0wWWJ3S1pnY1VzYkdIanp1Z2Q0UUMya2NXNmVsODZjeVpmZmtoM05KU1pOMTF3RXBFOVFneTFaYnhZRGVyR2dnYXVqX0ZKZktEajJWdWFqcFBmLW1BbHRYVDhERlg4LUloUjhwcDNjRFh6WlZpVU43dw?oc=5"
+            },
+            {
+              "title": "농림축산식품부 - - 농림축산식품부",
+              "source": "농림축산식품부",
               "direction": "neutral",
               "quality_score": 75,
               "source_level": 5,
               "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1jeXl3alQyb3lFNEdYLU01UDVwbXRCUHVjQnhTZlBoZENQRHo3RlB6SUpKejVuYkR3eFlfNDhIYURYMG5fN213b1J4Nk1HRFQwei04VDBfM2UyR1FxallDQWR0bVd6RjlQWUx4aDc3Z0tVWWUwY1pGdmdYR0N4dWs?oc=5"
-            },
-            {
-              "title": "데이터 상세보기 - 농림축산식품 공공데이터 포털",
-              "source": "농림축산식품 공공데이터 포털",
-              "direction": "neutral",
-              "quality_score": 75,
-              "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNMnNpVUdTdU1jc2dFS0MwOC1HSlpITGFBa2ZSOHJUXzd4U2xYS0NMTDB0eTd4SWhVQU9acmFNeGp4OFhXcEdJRnhNQXRiWUVJYkFzZmtiUmtwcXltc25pX0t0YVRMd2lKcmFqZnZOTTRXelFjSFluazRsemFQd3JqZHFFenhRZ0tIdlJMQ1h0N1c0cTRNVFd5cjY1cFNIM0xfMzllMQ?oc=5"
             }
           ]
         },
-        "memo": "뉴스/수요 축은 중립 또는 보조 근거 중심"
+        "memo": "뉴스/수요 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
       }
     ]
   }
