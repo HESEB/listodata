@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-23T04:05:21Z",
+  "updated_at": "2026-08-23T04:54:16Z",
   "notice": "Phase 2 Display Layer 초안입니다. 기존 market_dashboard.json은 별도로 유지됩니다.",
   "species": [
     {
@@ -174,31 +174,32 @@
     {
       "id": "PORK",
       "name": "돈육",
-      "signal_score": 37,
+      "signal_score": 43,
       "direction": "neutral",
       "status": "보합/혼조",
       "quality_score": 66,
-      "confidence_score": 71,
-      "coverage_rate": 60,
+      "confidence_score": 78,
+      "coverage_rate": 80,
       "evidence_count": 29,
-      "official_count": 11,
+      "official_count": 10,
       "direction_counts": {
-        "up": 27,
+        "up": 26,
         "down": 1,
-        "neutral": 1,
+        "neutral": 2,
         "hold": 0
       },
       "coverage_types": [
         "가격",
         "수급/도축",
+        "일반",
         "질병/방역"
       ],
       "score_breakdown": {
         "price": 8,
-        "supply": 11,
+        "supply": 13,
         "disease": 18,
         "policy": 0,
-        "news": 0
+        "news": 4
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -234,14 +235,20 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 11,
-          "items": 1,
-          "up": 1,
+          "score": 13,
+          "items": 2,
+          "up": 2,
           "down": 0,
           "neutral": 0,
           "examples": [
             {
               "title": "데이터로 보는 2026년 상반기 한돈시장 수급 동향 및 전망 / 박민희 본부장 - 축산정보뉴스",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 51
+            },
+            {
+              "title": "2026년 상반기 세계 주요 국가의 돼지고기 수급 동향 및 전망 / 정종현 대표 - 축산정보뉴스",
               "direction": "up",
               "source_level": 3,
               "quality_score": 51
@@ -252,8 +259,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 18,
-          "items": 26,
-          "up": 26,
+          "items": 24,
+          "up": 24,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -290,15 +297,22 @@
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 0,
-          "items": 0,
+          "score": 4,
+          "items": 1,
           "up": 0,
           "down": 0,
-          "neutral": 0,
-          "examples": []
+          "neutral": 1,
+          "examples": [
+            {
+              "title": "[칼럼] 1만원 계란값이 남긴 경고...한돈에서 같은 실수 말아야 - 돼지와사람",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 51
+            }
+          ]
         }
       },
-      "reason": "질병/방역 18점 + 수급/도축 11점 + 가격 8점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 18점 + 수급/도축 13점 + 가격 8점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
@@ -515,31 +529,32 @@
     {
       "id": "EGG",
       "name": "계란",
-      "signal_score": 68,
+      "signal_score": 69,
       "direction": "up",
       "status": "상방 가능성",
-      "quality_score": 68,
-      "confidence_score": 79,
-      "coverage_rate": 80,
+      "quality_score": 63,
+      "confidence_score": 78,
+      "coverage_rate": 100,
       "evidence_count": 32,
-      "official_count": 9,
+      "official_count": 5,
       "direction_counts": {
-        "up": 17,
-        "down": 1,
-        "neutral": 14,
+        "up": 14,
+        "down": 3,
+        "neutral": 15,
         "hold": 0
       },
       "coverage_types": [
         "가격",
         "수급/도축",
         "일반",
+        "정책/고시",
         "질병/방역"
       ],
       "score_breakdown": {
         "price": 24,
-        "supply": 23,
+        "supply": 21,
         "disease": 13,
-        "policy": 0,
+        "policy": 3,
         "news": 8
       },
       "score_breakdown_labels": {
@@ -572,7 +587,7 @@
               "quality_score": 71
             },
             {
-              "title": "\"한 줄 4천원 육박\"…쌀·계란값 상승에 김밥 가격도 부담 - RadioKorea",
+              "title": "\"한 줄 4천원 육박\"…쌀·계란값 상승에 김밥 가격도 부담 - 연합뉴스",
               "direction": "up",
               "source_level": 3,
               "quality_score": 71
@@ -582,10 +597,10 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 23,
-          "items": 12,
-          "up": 12,
-          "down": 0,
+          "score": 21,
+          "items": 11,
+          "up": 9,
+          "down": 2,
           "neutral": 0,
           "examples": [
             {
@@ -628,12 +643,19 @@
         "policy": {
           "label": "정책/고시",
           "max_score": 10,
-          "score": 0,
-          "items": 0,
+          "score": 3,
+          "items": 1,
           "up": 0,
           "down": 0,
-          "neutral": 0,
-          "examples": []
+          "neutral": 1,
+          "examples": [
+            {
+              "title": "계란 한 판 8000원 시대…코스피는 올리고 계란값은 내린다! - 대한민국 정책브리핑",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 51
+            }
+          ]
         },
         "news": {
           "label": "뉴스/수요",
@@ -645,27 +667,27 @@
           "neutral": 5,
           "examples": [
             {
-              "title": "김밥 한 줄 평균 4000원?… 무섭게 오르는 쌀·계란값 - 조선일보",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 71
-            },
-            {
               "title": "계란시장 ‘거래 기준’ 복원 필요 - 축산경제신문",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 65
             },
             {
-              "title": "[계란 난맥상]④日은 '에그 쇼크', 美 담합 의혹…글로벌 덮친 '금란' - v.daum.net",
+              "title": "[영상] 이젠 남아돈다고? 없어서 비싸다던 계란값 비밀 - v.daum.net",
               "direction": "neutral",
               "source_level": 3,
-              "quality_score": 65
+              "quality_score": 58
+            },
+            {
+              "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - 더스쿠프",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 51
             }
           ]
         }
       },
-      "reason": "가격 24점 + 수급/도축 23점 + 질병/방역 13점 기반, 상방성 자료가 우세",
+      "reason": "가격 24점 + 수급/도축 21점 + 질병/방역 13점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
