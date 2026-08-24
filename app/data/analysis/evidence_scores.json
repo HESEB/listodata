@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-24T17:49:21Z",
+  "updated_at": "2026-08-24T19:03:02Z",
   "policy": "phase2_evidence_score_v3_sanitized",
   "score_axes": {
     "price": {
@@ -215,33 +215,31 @@
     {
       "id": "PORK",
       "name": "돈육",
-      "signal_score": 48,
-      "direction": "neutral",
-      "status": "보합/혼조",
+      "signal_score": 24,
+      "direction": "down",
+      "status": "하방 가능성",
       "quality_score": 67,
-      "confidence_score": 85,
-      "coverage_rate": 100,
-      "evidence_count": 37,
+      "confidence_score": 71,
+      "coverage_rate": 60,
+      "evidence_count": 34,
       "official_count": 14,
       "direction_counts": {
-        "up": 33,
+        "up": 32,
         "down": 0,
-        "neutral": 4,
+        "neutral": 2,
         "hold": 0
       },
       "coverage_types": [
-        "가격",
-        "수급/도축",
         "수요/행사",
         "일반",
         "질병/방역"
       ],
       "score_breakdown": {
-        "price": 9,
-        "supply": 13,
+        "price": 0,
+        "supply": 0,
         "disease": 18,
         "policy": 0,
-        "news": 8
+        "news": 6
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -254,49 +252,29 @@
         "price": {
           "label": "가격",
           "max_score": 30,
-          "score": 9,
-          "items": 1,
+          "score": 0,
+          "items": 0,
           "up": 0,
           "down": 0,
-          "neutral": 1,
-          "examples": [
-            {
-              "title": "[전광판] '26년 34주차 돼지 평균 도매가격 6,351원(전주 대비 0.3%, 전년 대비 -3.7%) - 돼지와사람",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 58
-            }
-          ]
+          "neutral": 0,
+          "examples": []
         },
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 13,
-          "items": 2,
-          "up": 2,
+          "score": 0,
+          "items": 0,
+          "up": 0,
           "down": 0,
           "neutral": 0,
-          "examples": [
-            {
-              "title": "데이터로 보는 2026년 상반기 한돈시장 수급 동향 및 전망 / 박민희 본부장 - 축산정보뉴스",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 51
-            },
-            {
-              "title": "2026년 상반기 세계 주요 국가의 돼지고기 수급 동향 및 전망 / 정종현 대표 - 축산정보뉴스",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 51
-            }
-          ]
+          "examples": []
         },
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
           "score": 18,
-          "items": 31,
-          "up": 31,
+          "items": 32,
+          "up": 32,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -333,18 +311,12 @@
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 8,
-          "items": 3,
+          "score": 6,
+          "items": 2,
           "up": 0,
           "down": 0,
-          "neutral": 3,
+          "neutral": 2,
           "examples": [
-            {
-              "title": "갈 곳 잃은 스페인산 돈육 국내 공습… 한돈 원료육 시장 ‘직격탄’ - 팜인사이트",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 81
-            },
             {
               "title": "글래드 호텔, 추석 선물세트 공개…한우·흑돼지부터 호텔 셰프 명절 음식까지 - 뉴스탭",
               "direction": "neutral",
@@ -360,37 +332,39 @@
           ]
         }
       },
-      "reason": "질병/방역 18점 + 수급/도축 13점 + 가격 9점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 18점 + 뉴스/수요 6점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
-        "severity": "none",
+        "severity": "low",
         "axes": [],
-        "memo": "주의 필요 · 누락근거: 정책/고시"
+        "memo": "주의 필요 · 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 주요 근거축 다수 누락"
       },
       "hold_decision": {
         "should_hold": false,
-        "reasons": [],
-        "recommended_status": "보합/혼조",
-        "recommended_direction": "neutral",
-        "adjusted_confidence": 85
+        "reasons": [
+          "주요 근거축 다수 누락"
+        ],
+        "recommended_status": "하방 가능성",
+        "recommended_direction": "down",
+        "adjusted_confidence": 71
       }
     },
     {
       "id": "POULTRY",
       "name": "계육",
-      "signal_score": 34,
+      "signal_score": 35,
       "direction": "down",
       "status": "하방 가능성",
-      "quality_score": 69,
-      "confidence_score": 70,
+      "quality_score": 68,
+      "confidence_score": 72,
       "coverage_rate": 60,
-      "evidence_count": 8,
-      "official_count": 6,
+      "evidence_count": 10,
+      "official_count": 7,
       "direction_counts": {
-        "up": 7,
+        "up": 8,
         "down": 0,
-        "neutral": 1,
+        "neutral": 2,
         "hold": 0
       },
       "coverage_types": [
@@ -403,7 +377,7 @@
         "supply": 11,
         "disease": 19,
         "policy": 0,
-        "news": 4
+        "news": 5
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -444,8 +418,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 6,
-          "up": 6,
+          "items": 7,
+          "up": 7,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -482,14 +456,20 @@
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 4,
-          "items": 1,
+          "score": 5,
+          "items": 2,
           "up": 0,
           "down": 0,
-          "neutral": 1,
+          "neutral": 2,
           "examples": [
             {
               "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - 더스쿠프",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 51
+            },
+            {
+              "title": "베트남 양계농가, 올들어 계육·계란값 폭락에 ‘울상’…”생산비도 못 건져” - 인사이드비나",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 51
@@ -497,7 +477,7 @@
           ]
         }
       },
-      "reason": "질병/방역 19점 + 수급/도축 11점 + 뉴스/수요 4점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 수급/도축 11점 + 뉴스/수요 5점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
@@ -510,7 +490,7 @@
         "reasons": [],
         "recommended_status": "하방 가능성",
         "recommended_direction": "down",
-        "adjusted_confidence": 70
+        "adjusted_confidence": 72
       }
     },
     {
@@ -632,8 +612,8 @@
       "official_count": 5,
       "direction_counts": {
         "up": 16,
-        "down": 3,
-        "neutral": 13,
+        "down": 2,
+        "neutral": 14,
         "hold": 0
       },
       "coverage_types": [
@@ -662,9 +642,9 @@
           "label": "가격",
           "max_score": 30,
           "score": 23,
-          "items": 11,
+          "items": 10,
           "up": 3,
-          "down": 1,
+          "down": 0,
           "neutral": 7,
           "examples": [
             {
@@ -754,10 +734,10 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 8,
-          "items": 5,
+          "items": 6,
           "up": 0,
           "down": 0,
-          "neutral": 5,
+          "neutral": 6,
           "examples": [
             {
               "title": "계란시장 ‘거래 기준’ 복원 필요 - 축산경제신문",
