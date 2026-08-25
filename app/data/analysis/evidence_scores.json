@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-25T11:47:06Z",
+  "updated_at": "2026-08-25T13:14:14Z",
   "policy": "phase2_evidence_score_v3_sanitized",
   "score_axes": {
     "price": {
@@ -233,10 +233,10 @@
       "quality_score": 65,
       "confidence_score": 77,
       "coverage_rate": 80,
-      "evidence_count": 33,
-      "official_count": 13,
+      "evidence_count": 35,
+      "official_count": 14,
       "direction_counts": {
-        "up": 30,
+        "up": 32,
         "down": 0,
         "neutral": 3,
         "hold": 0
@@ -306,8 +306,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 18,
-          "items": 28,
-          "up": 28,
+          "items": 30,
+          "up": 30,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -817,12 +817,12 @@
     {
       "id": "OTHER",
       "name": "기타",
-      "signal_score": 32,
-      "direction": "down",
-      "status": "하방 가능성",
+      "signal_score": 48,
+      "direction": "neutral",
+      "status": "보합/혼조",
       "quality_score": 75,
-      "confidence_score": 75,
-      "coverage_rate": 60,
+      "confidence_score": 82,
+      "coverage_rate": 80,
       "evidence_count": 30,
       "official_count": 30,
       "direction_counts": {
@@ -832,13 +832,14 @@
         "hold": 0
       },
       "coverage_types": [
+        "수급/도축",
         "수요/행사",
         "일반",
         "질병/방역"
       ],
       "score_breakdown": {
         "price": 0,
-        "supply": 0,
+        "supply": 16,
         "disease": 19,
         "policy": 0,
         "news": 13
@@ -864,19 +865,26 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 0,
-          "items": 0,
-          "up": 0,
+          "score": 16,
+          "items": 1,
+          "up": 1,
           "down": 0,
           "neutral": 0,
-          "examples": []
+          "examples": [
+            {
+              "title": "농림축산식품부, 5월 수급 동향 점검…과일 출하 감소에도 공급 차질 없을 전망 - 국제일보",
+              "direction": "up",
+              "source_level": 5,
+              "quality_score": 75
+            }
+          ]
         },
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 10,
-          "up": 10,
+          "items": 9,
+          "up": 9,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -940,22 +948,20 @@
           ]
         }
       },
-      "reason": "질병/방역 19점 + 뉴스/수요 13점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 수급/도축 16점 + 뉴스/수요 13점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
-        "severity": "low",
+        "severity": "none",
         "axes": [],
-        "memo": "주의 필요 · 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 주요 근거축 다수 누락"
+        "memo": "주의 필요 · 누락근거: 가격, 정책/고시"
       },
       "hold_decision": {
         "should_hold": false,
-        "reasons": [
-          "주요 근거축 다수 누락"
-        ],
-        "recommended_status": "하방 가능성",
-        "recommended_direction": "down",
-        "adjusted_confidence": 75
+        "reasons": [],
+        "recommended_status": "보합/혼조",
+        "recommended_direction": "neutral",
+        "adjusted_confidence": 82
       }
     }
   ],
