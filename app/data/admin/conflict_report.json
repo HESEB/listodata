@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-08-25T09:02:25Z",
+  "updated_at": "2026-08-25T09:53:41Z",
   "policy": "phase2_conflict_hold_v1",
   "notice": "상방·하방 근거 충돌, 근거 누락, 신뢰도 부족에 따른 판단 유보 검수 리포트입니다.",
   "summary": {
     "species_count": 6,
-    "conflict_species_count": 0,
-    "hold_recommended_count": 1,
-    "high_conflict_count": 0
+    "conflict_species_count": 1,
+    "hold_recommended_count": 2,
+    "high_conflict_count": 1
   },
   "species": [
     {
@@ -17,8 +17,8 @@
       "conflict_axes": [],
       "missing_evidence": [],
       "hold_reasons": [],
-      "original_confidence": 71,
-      "adjusted_confidence": 71,
+      "original_confidence": 70,
+      "adjusted_confidence": 70,
       "should_hold": false,
       "recommended_status": "상방 가능성",
       "recommended_direction": "up",
@@ -34,8 +34,8 @@
         "정책/고시"
       ],
       "hold_reasons": [],
-      "original_confidence": 78,
-      "adjusted_confidence": 78,
+      "original_confidence": 77,
+      "adjusted_confidence": 77,
       "should_hold": false,
       "recommended_status": "보합/혼조",
       "recommended_direction": "neutral",
@@ -52,8 +52,8 @@
         "정책/고시"
       ],
       "hold_reasons": [],
-      "original_confidence": 72,
-      "adjusted_confidence": 72,
+      "original_confidence": 70,
+      "adjusted_confidence": 70,
       "should_hold": false,
       "recommended_status": "하방 가능성",
       "recommended_direction": "down",
@@ -68,23 +68,21 @@
       "missing_evidence": [
         "가격",
         "수급/도축",
-        "질병/방역",
         "정책/고시",
         "뉴스/수요"
       ],
       "hold_reasons": [
-        "근거자료 없음",
         "커버리지 부족",
         "신뢰도 부족",
         "공식자료 부족",
         "주요 근거축 다수 누락"
       ],
-      "original_confidence": 0,
-      "adjusted_confidence": 0,
+      "original_confidence": 30,
+      "adjusted_confidence": 30,
       "should_hold": true,
       "recommended_status": "판단 유보",
       "recommended_direction": "hold",
-      "memo": "판단 유보 권장 · 누락근거: 가격, 수급/도축, 질병/방역, 정책/고시, 뉴스/수요 / 유보사유: 근거자료 없음, 커버리지 부족, 신뢰도 부족, 공식자료 부족, 주요 근거축 다수 누락"
+      "memo": "판단 유보 권장 · 누락근거: 가격, 수급/도축, 정책/고시, 뉴스/수요 / 유보사유: 커버리지 부족, 신뢰도 부족, 공식자료 부족, 주요 근거축 다수 누락"
     },
     {
       "id": "EGG",
@@ -94,8 +92,8 @@
       "conflict_axes": [],
       "missing_evidence": [],
       "hold_reasons": [],
-      "original_confidence": 87,
-      "adjusted_confidence": 87,
+      "original_confidence": 86,
+      "adjusted_confidence": 86,
       "should_hold": false,
       "recommended_status": "상방 가능성",
       "recommended_direction": "up",
@@ -104,23 +102,63 @@
     {
       "id": "OTHER",
       "name": "기타",
-      "has_conflict": false,
-      "conflict_severity": "low",
-      "conflict_axes": [],
+      "has_conflict": true,
+      "conflict_severity": "high",
+      "conflict_axes": [
+        "수급/도축"
+      ],
       "missing_evidence": [
         "가격",
-        "수급/도축",
         "정책/고시"
       ],
       "hold_reasons": [
-        "주요 근거축 다수 누락"
+        "상·하방 근거 강충돌"
       ],
-      "original_confidence": 75,
-      "adjusted_confidence": 75,
-      "should_hold": false,
-      "recommended_status": "하방 가능성",
-      "recommended_direction": "down",
-      "memo": "주의 필요 · 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 주요 근거축 다수 누락"
+      "original_confidence": 82,
+      "adjusted_confidence": 64,
+      "should_hold": [
+        {
+          "axis": "supply",
+          "label": "수급/도축",
+          "items": 2,
+          "has_conflict": true,
+          "severity": "high",
+          "dominant_direction": "up",
+          "weighted_direction": {
+            "up": 5.0,
+            "down": 4.1,
+            "neutral": 0.0
+          },
+          "conflict_ratio": 0.82,
+          "examples": {
+            "up": [
+              {
+                "title": "농림축산식품부, 5월 수급 동향 점검…과일 출하 감소에도 공급 차질 없을 전망 - 국제일보",
+                "source": "국제일보",
+                "direction": "up",
+                "quality_score": 75,
+                "source_level": 5,
+                "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5qM1pmSk1JWlJIUHNJdUlhME1mZm9vZkU1WndQVlk2LUZCVEZmelM1NmV6YkZnRThzb21iVnA3M3BXM3hKZmdMcVhFTmZLNE5XMmFLalVMY1ZTN2tpaU9SLXRuNXg?oc=5"
+              }
+            ],
+            "down": [
+              {
+                "title": "중동전쟁 상황하에서 정부는 축산물 수급 및 가격 안정에 최선을 다하겠습니다. - 대한민국 정책브리핑",
+                "source": "대한민국 정책브리핑",
+                "direction": "down",
+                "quality_score": 75,
+                "source_level": 5,
+                "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5OdzFNaVJVZXE1VVI4UF9KUnBLUkZUNndVRHVDVkJXWFhyN1RkNTZKWlMtNUpGY2daaXFyZmVyZmJ2d1Z2cjFxYUJKZVVVOVRwTVJfNTVsQlBlcm1mMWpjM3BjQk13ekNRTWRXRg?oc=5"
+              }
+            ],
+            "neutral": []
+          },
+          "memo": "수급/도축 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
+        }
+      ],
+      "recommended_status": "판단 유보",
+      "recommended_direction": "hold",
+      "memo": "판단 유보 권장 · 충돌축: 수급/도축 / 누락근거: 가격, 정책/고시 / 유보사유: 상·하방 근거 강충돌"
     }
   ],
   "axis_reports": {
@@ -316,7 +354,7 @@
         "weighted_direction": {
           "up": 7.68,
           "down": 0.0,
-          "neutral": 50.54
+          "neutral": 50.34
         },
         "conflict_ratio": 0.0,
         "examples": {
@@ -439,12 +477,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 26,
+        "items": 31,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 117.06,
+          "up": 138.14,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -592,12 +630,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 8,
+        "items": 9,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 38.2,
+          "up": 41.24,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -605,12 +643,20 @@
         "examples": {
           "up": [
             {
-              "title": "농식품부, 조류인플루엔자 경보 '관심' 하향…'평시 방역' 전환 - 연합뉴스",
+              "title": "고병원성 AI 탓…산란계·오리 사육마릿수 감소 - 농민신문",
+              "source": "농민신문",
+              "direction": "up",
+              "quality_score": 51,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5RekxzbTNyM2hUakRkSWFhZjFBc2R4eDBuLTFJeHliZm8zVE5GYm50TmpRZFptdjlhNmh3UGl3ZEdSQzhQdzlIMFFNR0Fwd3ZxVHJYYUZQQzdVUQ?oc=5"
+            },
+            {
+              "title": "논산 오리농장서 AI 항원 검출…2만6천마리 살처분 예정 - 연합뉴스",
               "source": "연합뉴스",
               "direction": "up",
-              "quality_score": 75,
-              "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1DeTU0bTdGemdJaDdkTzBQTkJCc0cxcGh6WTVaZVhoWUV1VTU2ZDFsS09uY1Mxajh3WlhaT1FWN2FEZlUwaWhGV2Jlb1cyaDI2aWpFZWJqYlZPTVHSAWBBVV95cUxQRklUNTFqUnVuRTBybERtR1pEdEZiQkhGWHZZOVF5QnJwQVF4cWF1UEZKSkdzTURNc3RsWWI0YlhhbmlQRXRoVWpBX1duM1h6S2t3UXNnRTQ3LXdOTURWSG8?oc=5"
+              "quality_score": 51,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9hdk1UTXZvcDROc21OSU1NR1J3YWZ3MUpXT2NRaHExU1ZUbTd6ZFNyQjEwdzhNNmYyQ0lkYXpmZ1hRRDd2Y0g3SnlrRm5lYjlPMlZuaEtNckZyUVnSAWBBVV95cUxNNV9HczZBOU1RaTRXc0ExYWxrcG9pRGJLMGg1WVplYTNfbHVQRllSWTkzQUEyRWV6ekNNdHIwT3RzUFAtLVY1Y1lDc0tJQXptS3pXTmZHTWJybFc0TllzUFk?oc=5"
             },
             {
               "title": "알림소식 > 보도자료 > 6월 1일자로 고병원성 조류인플루엔자(AI) 평시 방역체계로 전환하여 상시 방역활동 추진 - 농림축산식품부",
@@ -619,14 +665,6 @@
               "quality_score": 75,
               "source_level": 5,
               "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQekF6emV1b3Zrdnd1ODVMdmhYcWEwWVBremo2Y2h2bE5xUnl2dVdJelMxYmgtZXNycXRfY0NTYjhWSVN5b0tyTUx1Vzk4dk0tRml5R1BHQ0dlNkdrckZaOU1IOHU0LU9DMEF0UFJCLVNaRHJmaHM3QkxLMTNGZ05WUTRidTZzbXpkVk1zY3Y5cXp4d3JueS05MTFyandLSW16YlVhTjUtVEgxX21DZlJ2aGh3RDVRR0czeHZXTFAyR3Z4RkdkVVNqcQ?oc=5"
-            },
-            {
-              "title": "알림소식 > 보도자료 > 고병원성 조류인플루엔자 발생농장에서 다수 방역 미흡사항 확인, 엄정 조치 및 관리 강화 - 농림축산식품부",
-              "source": "농림축산식품부",
-              "direction": "up",
-              "quality_score": 75,
-              "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMi2ANBVV95cUxOUUZZUFVtbW82b3BPZW1xMTNyTVUxdUJ2dVN5SnZhVWR1UmNxNXRRdWhqRUl5MnpnY1ItTFZPak1TWDJaNFBmYTkwOGtvOFEwMHNGMElGNkNqSWQ4clVxVmNXN1VndFRRaFAtSVpGWDNRcTZOWC1ualhxZXhIUTBLVTNSLUN2dUlSbVJUVlA5YWRoQVNDaVZvZ3doN3dwZm1hQWp3MGpnRVhUQVVuOVRkUXhwb0ZHNjh4QmRkWFlPbllJYnhmQ3kzVTNCQTRMTXM3TUhrZ0V2RzZrS200cmlhcFo5NnhpOTYyWmdhNEVlYlJKN0UxNFp4UTZJTWlRek1Jc0d1RUVBXy0xcG52a05KTXppYzJpU28ta0NMUlBGb1dDS0Fna2R2b09Fa0hCRTU2U0JOU1ZLQ1U5UjZhSU9KRllXSDlWVWRSVHFvNHJRRHBHODBtOGM4LUR0dXJ0WFZwazlIVFpyYmNsZkZyamZTcHBNWEtSOHZfR0hDZkdodGhsTmhJODJhYnlSTGxMR2NtRHlGZEdWYjVTYzQ2ZUR3UEg4NVRBQjJVY3I3VDVIWkxqdTF2VV8zSXV0SnFIVk0wOU9kdVdvRnl1N01RVllkejVwVGVtM2Vj?oc=5"
             }
           ],
           "down": [],
@@ -657,14 +695,14 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 1,
+        "items": 2,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "neutral",
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 2.67
+          "neutral": 5.34
         },
         "conflict_ratio": 0,
         "examples": {
@@ -678,6 +716,14 @@
               "quality_score": 51,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9zLWJuZkd6RHh0X19CTWtzbUNOVWJ1QmR6VWNHZGJ2Z3h2bVNGWU1wOVpPZ01YMHpwMDNZc2lfWDdvUFJuYXAxUE1uRGlva28tMmNLcVhVQ3JiR0xzM1g5R1BtbEQxNmZ6dkk2RWF3?oc=5"
+            },
+            {
+              "title": "베트남 양계농가, 올들어 계육·계란값 폭락에 ‘울상’…”생산비도 못 건져” - 인사이드비나",
+              "source": "인사이드비나",
+              "direction": "neutral",
+              "quality_score": 51,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1SMGVLTE4wXzkzYXpSZUpSNDcyemRwams2RDBheXNyUW9YM1psSjJyLVNVX2lacnhWOE92MTNMdnByb085MVRXLXhlLVliblZSY3NKeGh1YlZOS1o0Z3MydVNBOVVkLWdhOVVjSw?oc=5"
             }
           ]
         },
@@ -728,22 +774,39 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 0,
+        "items": 2,
         "has_conflict": false,
         "severity": "none",
-        "dominant_direction": "neutral",
+        "dominant_direction": "up",
         "weighted_direction": {
-          "up": 0.0,
+          "up": 8.04,
           "down": 0.0,
           "neutral": 0.0
         },
-        "conflict_ratio": 0,
+        "conflict_ratio": 0.0,
         "examples": {
-          "up": [],
+          "up": [
+            {
+              "title": "고병원성 AI 탓…산란계·오리 사육마릿수 감소 - 농민신문",
+              "source": "농민신문",
+              "direction": "up",
+              "quality_score": 51,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5RekxzbTNyM2hUakRkSWFhZjFBc2R4eDBuLTFJeHliZm8zVE5GYm50TmpRZFptdjlhNmh3UGl3ZEdSQzhQdzlIMFFNR0Fwd3ZxVHJYYUZQQzdVUQ?oc=5"
+            },
+            {
+              "title": "논산 오리농장서 AI 항원 검출…2만6천마리 살처분 예정 - 연합뉴스",
+              "source": "연합뉴스",
+              "direction": "up",
+              "quality_score": 51,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9hdk1UTXZvcDROc21OSU1NR1J3YWZ3MUpXT2NRaHExU1ZUbTd6ZFNyQjEwdzhNNmYyQ0lkYXpmZ1hRRDd2Y0g3SnlrRm5lYjlPMlZuaEtNckZyUVnSAWBBVV95cUxNNV9HczZBOU1RaTRXc0ExYWxrcG9pRGJLMGg1WVplYTNfbHVQRllSWTkzQUEyRWV6ekNNdHIwT3RzUFAtLVY1Y1lDc0tJQXptS3pXTmZHTWJybFc0TllzUFk?oc=5"
+            }
+          ],
           "down": [],
           "neutral": []
         },
-        "memo": "질병/방역 축은 중립 또는 보조 근거 중심"
+        "memo": "질병/방역 축은 상방 근거 우세"
       },
       {
         "axis": "policy",
@@ -914,18 +977,26 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 1,
+        "items": 2,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 4.1,
+          "up": 8.12,
           "down": 0.0,
           "neutral": 0.0
         },
         "conflict_ratio": 0.0,
         "examples": {
           "up": [
+            {
+              "title": "고병원성 AI 탓…산란계·오리 사육마릿수 감소 - 농민신문",
+              "source": "농민신문",
+              "direction": "up",
+              "quality_score": 51,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5RekxzbTNyM2hUakRkSWFhZjFBc2R4eDBuLTFJeHliZm8zVE5GYm50TmpRZFptdjlhNmh3UGl3ZEdSQzhQdzlIMFFNR0Fwd3ZxVHJYYUZQQzdVUQ?oc=5"
+            },
             {
               "title": "충남 천안 산란계 농장에서 H5형 조류인플루엔자 항원 확인 - 농림축산식품부",
               "source": "농림축산식품부",
@@ -988,14 +1059,14 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 6,
+        "items": 7,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "neutral",
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 17.64
+          "neutral": 20.31
         },
         "conflict_ratio": 0,
         "examples": {
@@ -1055,22 +1126,40 @@
       {
         "axis": "supply",
         "label": "수급/도축",
-        "items": 0,
-        "has_conflict": false,
-        "severity": "none",
-        "dominant_direction": "neutral",
+        "items": 2,
+        "has_conflict": true,
+        "severity": "high",
+        "dominant_direction": "up",
         "weighted_direction": {
-          "up": 0.0,
-          "down": 0.0,
+          "up": 5.0,
+          "down": 4.1,
           "neutral": 0.0
         },
-        "conflict_ratio": 0,
+        "conflict_ratio": 0.82,
         "examples": {
-          "up": [],
-          "down": [],
+          "up": [
+            {
+              "title": "농림축산식품부, 5월 수급 동향 점검…과일 출하 감소에도 공급 차질 없을 전망 - 국제일보",
+              "source": "국제일보",
+              "direction": "up",
+              "quality_score": 75,
+              "source_level": 5,
+              "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5qM1pmSk1JWlJIUHNJdUlhME1mZm9vZkU1WndQVlk2LUZCVEZmelM1NmV6YkZnRThzb21iVnA3M3BXM3hKZmdMcVhFTmZLNE5XMmFLalVMY1ZTN2tpaU9SLXRuNXg?oc=5"
+            }
+          ],
+          "down": [
+            {
+              "title": "중동전쟁 상황하에서 정부는 축산물 수급 및 가격 안정에 최선을 다하겠습니다. - 대한민국 정책브리핑",
+              "source": "대한민국 정책브리핑",
+              "direction": "down",
+              "quality_score": 75,
+              "source_level": 5,
+              "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5OdzFNaVJVZXE1VVI4UF9KUnBLUkZUNndVRHVDVkJXWFhyN1RkNTZKWlMtNUpGY2daaXFyZmVyZmJ2d1Z2cjFxYUJKZVVVOVRwTVJfNTVsQlBlcm1mMWpjM3BjQk13ekNRTWRXRg?oc=5"
+            }
+          ],
           "neutral": []
         },
-        "memo": "수급/도축 축은 중립 또는 보조 근거 중심"
+        "memo": "수급/도축 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
       },
       {
         "axis": "disease",
