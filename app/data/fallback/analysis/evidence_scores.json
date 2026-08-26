@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-26T09:59:52Z",
+  "updated_at": "2026-08-26T10:53:20Z",
   "policy": "phase2_evidence_score_v3_sanitized",
   "score_axes": {
     "price": {
@@ -236,13 +236,13 @@
       "signal_score": 48,
       "direction": "neutral",
       "status": "보합/혼조",
-      "quality_score": 67,
+      "quality_score": 66,
       "confidence_score": 85,
       "coverage_rate": 100,
-      "evidence_count": 34,
+      "evidence_count": 35,
       "official_count": 14,
       "direction_counts": {
-        "up": 29,
+        "up": 30,
         "down": 1,
         "neutral": 4,
         "hold": 0
@@ -313,8 +313,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 18,
-          "items": 28,
-          "up": 27,
+          "items": 29,
+          "up": 28,
           "down": 1,
           "neutral": 0,
           "examples": [
@@ -397,28 +397,27 @@
     {
       "id": "POULTRY",
       "name": "계육",
-      "signal_score": 34,
+      "signal_score": 23,
       "direction": "down",
       "status": "하방 가능성",
-      "quality_score": 69,
-      "confidence_score": 70,
-      "coverage_rate": 60,
-      "evidence_count": 8,
+      "quality_score": 72,
+      "confidence_score": 64,
+      "coverage_rate": 40,
+      "evidence_count": 7,
       "official_count": 6,
       "direction_counts": {
-        "up": 7,
+        "up": 6,
         "down": 0,
         "neutral": 1,
         "hold": 0
       },
       "coverage_types": [
-        "수급/도축",
         "일반",
         "질병/방역"
       ],
       "score_breakdown": {
         "price": 0,
-        "supply": 11,
+        "supply": 0,
         "disease": 19,
         "policy": 0,
         "news": 4
@@ -444,19 +443,12 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 11,
-          "items": 1,
-          "up": 1,
+          "score": 0,
+          "items": 0,
+          "up": 0,
           "down": 0,
           "neutral": 0,
-          "examples": [
-            {
-              "title": "굽네치킨, 가격 동결하고 순살 치킨 중량 조정…계육 수급 불안 여파 - 에너지경제신문",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 51
-            }
-          ]
+          "examples": []
         },
         "disease": {
           "label": "질병/방역",
@@ -515,20 +507,22 @@
           ]
         }
       },
-      "reason": "질병/방역 19점 + 수급/도축 11점 + 뉴스/수요 4점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 뉴스/수요 4점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
-        "severity": "none",
+        "severity": "low",
         "axes": [],
-        "memo": "주의 필요 · 누락근거: 가격, 정책/고시"
+        "memo": "주의 필요 · 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 주요 근거축 다수 누락"
       },
       "hold_decision": {
         "should_hold": false,
-        "reasons": [],
+        "reasons": [
+          "주요 근거축 다수 누락"
+        ],
         "recommended_status": "하방 가능성",
         "recommended_direction": "down",
-        "adjusted_confidence": 70
+        "adjusted_confidence": 64
       }
     },
     {
@@ -824,28 +818,29 @@
     {
       "id": "OTHER",
       "name": "기타",
-      "signal_score": 32,
-      "direction": "down",
-      "status": "하방 가능성",
+      "signal_score": 48,
+      "direction": "neutral",
+      "status": "보합/혼조",
       "quality_score": 75,
-      "confidence_score": 75,
-      "coverage_rate": 60,
-      "evidence_count": 28,
-      "official_count": 28,
+      "confidence_score": 82,
+      "coverage_rate": 80,
+      "evidence_count": 29,
+      "official_count": 29,
       "direction_counts": {
-        "up": 8,
+        "up": 9,
         "down": 0,
         "neutral": 20,
         "hold": 0
       },
       "coverage_types": [
+        "수급/도축",
         "수요/행사",
         "일반",
         "질병/방역"
       ],
       "score_breakdown": {
         "price": 0,
-        "supply": 0,
+        "supply": 16,
         "disease": 19,
         "policy": 0,
         "news": 13
@@ -871,12 +866,19 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 0,
-          "items": 0,
-          "up": 0,
+          "score": 16,
+          "items": 1,
+          "up": 1,
           "down": 0,
           "neutral": 0,
-          "examples": []
+          "examples": [
+            {
+              "title": "농림축산식품부, 5월 수급 동향 점검…과일 출하 감소에도 공급 차질 없을 전망 - 국제일보",
+              "direction": "up",
+              "source_level": 5,
+              "quality_score": 75
+            }
+          ]
         },
         "disease": {
           "label": "질병/방역",
@@ -947,22 +949,20 @@
           ]
         }
       },
-      "reason": "질병/방역 19점 + 뉴스/수요 13점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 수급/도축 16점 + 뉴스/수요 13점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
-        "severity": "low",
+        "severity": "none",
         "axes": [],
-        "memo": "주의 필요 · 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 주요 근거축 다수 누락"
+        "memo": "주의 필요 · 누락근거: 가격, 정책/고시"
       },
       "hold_decision": {
         "should_hold": false,
-        "reasons": [
-          "주요 근거축 다수 누락"
-        ],
-        "recommended_status": "하방 가능성",
-        "recommended_direction": "down",
-        "adjusted_confidence": 75
+        "reasons": [],
+        "recommended_status": "보합/혼조",
+        "recommended_direction": "neutral",
+        "adjusted_confidence": 82
       }
     }
   ],
