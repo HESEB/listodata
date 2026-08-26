@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-26T10:53:20Z",
+  "updated_at": "2026-08-26T11:48:11Z",
   "policy": "phase2_evidence_score_v3_sanitized",
   "score_axes": {
     "price": {
@@ -43,9 +43,9 @@
     {
       "id": "BEEF",
       "name": "한우",
-      "signal_score": 60,
-      "direction": "up",
-      "status": "상방 가능성",
+      "signal_score": 58,
+      "direction": "neutral",
+      "status": "보합/혼조",
       "quality_score": 71,
       "confidence_score": 70,
       "coverage_rate": 100,
@@ -67,7 +67,7 @@
       ],
       "score_breakdown": {
         "price": 11,
-        "supply": 18,
+        "supply": 16,
         "disease": 13,
         "policy": 5,
         "news": 13
@@ -112,18 +112,12 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 18,
-          "items": 3,
-          "up": 3,
+          "score": 16,
+          "items": 2,
+          "up": 2,
           "down": 0,
           "neutral": 0,
           "examples": [
-            {
-              "title": "한우 수급조절·경영지원 법제화…5년마다 종합계획 수립 - v.daum.net",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 71
-            },
             {
               "title": "큰소도 송아지도 없다...엇박자 수급조절이 부른 한우 시장의 '극단적 불균형' - 팜인사이트",
               "direction": "up",
@@ -188,8 +182,8 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 13,
-          "items": 16,
-          "up": 1,
+          "items": 17,
+          "up": 2,
           "down": 0,
           "neutral": 15,
           "examples": [
@@ -214,7 +208,7 @@
           ]
         }
       },
-      "reason": "수급/도축 18점 + 질병/방역 13점 + 뉴스/수요 13점 기반, 상방성 자료가 우세",
+      "reason": "수급/도축 16점 + 질병/방역 13점 + 뉴스/수요 13점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
@@ -225,8 +219,8 @@
       "hold_decision": {
         "should_hold": false,
         "reasons": [],
-        "recommended_status": "상방 가능성",
-        "recommended_direction": "up",
+        "recommended_status": "보합/혼조",
+        "recommended_direction": "neutral",
         "adjusted_confidence": 70
       }
     },
@@ -236,13 +230,13 @@
       "signal_score": 48,
       "direction": "neutral",
       "status": "보합/혼조",
-      "quality_score": 66,
+      "quality_score": 67,
       "confidence_score": 85,
       "coverage_rate": 100,
-      "evidence_count": 35,
+      "evidence_count": 33,
       "official_count": 14,
       "direction_counts": {
-        "up": 30,
+        "up": 28,
         "down": 1,
         "neutral": 4,
         "hold": 0
@@ -313,8 +307,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 18,
-          "items": 29,
-          "up": 28,
+          "items": 27,
+          "up": 26,
           "down": 1,
           "neutral": 0,
           "examples": [
@@ -373,7 +367,7 @@
               "title": "갈 곳 잃은 스페인산 돈육 국내 공습… 한돈 원료육 시장 ‘직격탄’ - 팜인사이트",
               "direction": "neutral",
               "source_level": 3,
-              "quality_score": 81
+              "quality_score": 76
             }
           ]
         }
@@ -397,27 +391,28 @@
     {
       "id": "POULTRY",
       "name": "계육",
-      "signal_score": 23,
+      "signal_score": 34,
       "direction": "down",
       "status": "하방 가능성",
-      "quality_score": 72,
-      "confidence_score": 64,
-      "coverage_rate": 40,
-      "evidence_count": 7,
+      "quality_score": 69,
+      "confidence_score": 70,
+      "coverage_rate": 60,
+      "evidence_count": 8,
       "official_count": 6,
       "direction_counts": {
-        "up": 6,
+        "up": 7,
         "down": 0,
         "neutral": 1,
         "hold": 0
       },
       "coverage_types": [
+        "수급/도축",
         "일반",
         "질병/방역"
       ],
       "score_breakdown": {
         "price": 0,
-        "supply": 0,
+        "supply": 11,
         "disease": 19,
         "policy": 0,
         "news": 4
@@ -443,12 +438,19 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 0,
-          "items": 0,
-          "up": 0,
+          "score": 11,
+          "items": 1,
+          "up": 1,
           "down": 0,
           "neutral": 0,
-          "examples": []
+          "examples": [
+            {
+              "title": "굽네치킨, 가격 동결하고 순살 치킨 중량 조정…계육 수급 불안 여파 - 에너지경제신문",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 51
+            }
+          ]
         },
         "disease": {
           "label": "질병/방역",
@@ -507,22 +509,20 @@
           ]
         }
       },
-      "reason": "질병/방역 19점 + 뉴스/수요 4점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 수급/도축 11점 + 뉴스/수요 4점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
-        "severity": "low",
+        "severity": "none",
         "axes": [],
-        "memo": "주의 필요 · 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 주요 근거축 다수 누락"
+        "memo": "주의 필요 · 누락근거: 가격, 정책/고시"
       },
       "hold_decision": {
         "should_hold": false,
-        "reasons": [
-          "주요 근거축 다수 누락"
-        ],
+        "reasons": [],
         "recommended_status": "하방 가능성",
         "recommended_direction": "down",
-        "adjusted_confidence": 64
+        "adjusted_confidence": 70
       }
     },
     {
@@ -643,9 +643,9 @@
       "evidence_count": 32,
       "official_count": 8,
       "direction_counts": {
-        "up": 16,
+        "up": 15,
         "down": 1,
-        "neutral": 15,
+        "neutral": 16,
         "hold": 0
       },
       "coverage_types": [
@@ -676,9 +676,9 @@
           "max_score": 30,
           "score": 24,
           "items": 11,
-          "up": 4,
+          "up": 3,
           "down": 0,
-          "neutral": 7,
+          "neutral": 8,
           "examples": [
             {
               "title": "정부 압박에 내렸던 빵 가격, 6개월 만에 다시 제자리로... “원가 부담 누적” - 조선비즈 - Chosunbiz",
@@ -693,10 +693,10 @@
               "quality_score": 65
             },
             {
-              "title": "\"한 줄 4천원 육박\"…쌀·계란값 상승에 김밥 가격도 부담 - v.daum.net",
+              "title": "쌀·계란값 상승에 김밥 가격도 부담 - v.daum.net",
               "direction": "up",
               "source_level": 3,
-              "quality_score": 40
+              "quality_score": 65
             }
           ]
         },
@@ -818,29 +818,28 @@
     {
       "id": "OTHER",
       "name": "기타",
-      "signal_score": 48,
-      "direction": "neutral",
-      "status": "보합/혼조",
+      "signal_score": 32,
+      "direction": "down",
+      "status": "하방 가능성",
       "quality_score": 75,
-      "confidence_score": 82,
-      "coverage_rate": 80,
-      "evidence_count": 29,
-      "official_count": 29,
+      "confidence_score": 75,
+      "coverage_rate": 60,
+      "evidence_count": 30,
+      "official_count": 30,
       "direction_counts": {
-        "up": 9,
+        "up": 10,
         "down": 0,
         "neutral": 20,
         "hold": 0
       },
       "coverage_types": [
-        "수급/도축",
         "수요/행사",
         "일반",
         "질병/방역"
       ],
       "score_breakdown": {
         "price": 0,
-        "supply": 16,
+        "supply": 0,
         "disease": 19,
         "policy": 0,
         "news": 13
@@ -866,26 +865,19 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 16,
-          "items": 1,
-          "up": 1,
+          "score": 0,
+          "items": 0,
+          "up": 0,
           "down": 0,
           "neutral": 0,
-          "examples": [
-            {
-              "title": "농림축산식품부, 5월 수급 동향 점검…과일 출하 감소에도 공급 차질 없을 전망 - 국제일보",
-              "direction": "up",
-              "source_level": 5,
-              "quality_score": 75
-            }
-          ]
+          "examples": []
         },
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 7,
-          "up": 7,
+          "items": 9,
+          "up": 9,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -949,20 +941,22 @@
           ]
         }
       },
-      "reason": "질병/방역 19점 + 수급/도축 16점 + 뉴스/수요 13점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 뉴스/수요 13점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
-        "severity": "none",
+        "severity": "low",
         "axes": [],
-        "memo": "주의 필요 · 누락근거: 가격, 정책/고시"
+        "memo": "주의 필요 · 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 주요 근거축 다수 누락"
       },
       "hold_decision": {
         "should_hold": false,
-        "reasons": [],
-        "recommended_status": "보합/혼조",
-        "recommended_direction": "neutral",
-        "adjusted_confidence": 82
+        "reasons": [
+          "주요 근거축 다수 누락"
+        ],
+        "recommended_status": "하방 가능성",
+        "recommended_direction": "down",
+        "adjusted_confidence": 75
       }
     }
   ],

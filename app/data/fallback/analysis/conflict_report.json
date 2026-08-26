@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-26T10:53:20Z",
+  "updated_at": "2026-08-26T11:48:11Z",
   "policy": "phase2_conflict_hold_v1",
   "notice": "상방·하방 근거 충돌, 근거 누락, 신뢰도 부족에 따른 판단 유보 검수 리포트입니다.",
   "summary": {
@@ -20,8 +20,8 @@
       "original_confidence": 70,
       "adjusted_confidence": 70,
       "should_hold": false,
-      "recommended_status": "상방 가능성",
-      "recommended_direction": "up",
+      "recommended_status": "보합/혼조",
+      "recommended_direction": "neutral",
       "memo": "충돌 또는 판단 유보 요인 없음"
     },
     {
@@ -45,22 +45,19 @@
       "id": "POULTRY",
       "name": "계육",
       "has_conflict": false,
-      "conflict_severity": "low",
+      "conflict_severity": "none",
       "conflict_axes": [],
       "missing_evidence": [
         "가격",
-        "수급/도축",
         "정책/고시"
       ],
-      "hold_reasons": [
-        "주요 근거축 다수 누락"
-      ],
-      "original_confidence": 64,
-      "adjusted_confidence": 64,
+      "hold_reasons": [],
+      "original_confidence": 70,
+      "adjusted_confidence": 70,
       "should_hold": false,
       "recommended_status": "하방 가능성",
       "recommended_direction": "down",
-      "memo": "주의 필요 · 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 주요 근거축 다수 누락"
+      "memo": "주의 필요 · 누락근거: 가격, 정책/고시"
     },
     {
       "id": "DUCK",
@@ -108,19 +105,22 @@
       "id": "OTHER",
       "name": "기타",
       "has_conflict": false,
-      "conflict_severity": "none",
+      "conflict_severity": "low",
       "conflict_axes": [],
       "missing_evidence": [
         "가격",
+        "수급/도축",
         "정책/고시"
       ],
-      "hold_reasons": [],
-      "original_confidence": 82,
-      "adjusted_confidence": 82,
+      "hold_reasons": [
+        "주요 근거축 다수 누락"
+      ],
+      "original_confidence": 75,
+      "adjusted_confidence": 75,
       "should_hold": false,
-      "recommended_status": "보합/혼조",
-      "recommended_direction": "neutral",
-      "memo": "주의 필요 · 누락근거: 가격, 정책/고시"
+      "recommended_status": "하방 가능성",
+      "recommended_direction": "down",
+      "memo": "주의 필요 · 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 주요 근거축 다수 누락"
     }
   ],
   "axis_reports": {
@@ -198,26 +198,18 @@
       {
         "axis": "supply",
         "label": "수급/도축",
-        "items": 3,
+        "items": 2,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 10.32,
+          "up": 6.8,
           "down": 0.0,
           "neutral": 0.0
         },
         "conflict_ratio": 0.0,
         "examples": {
           "up": [
-            {
-              "title": "한우 수급조절·경영지원 법제화…5년마다 종합계획 수립 - v.daum.net",
-              "source": "v.daum.net",
-              "direction": "up",
-              "quality_score": 71,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE8tTnNGVGVzTDc1VTgwTHpqZjNiNlJ0OUt0UDVfTkdSb1gyNEJWYm9KM0phUEFhT0c0c3hJSHBvbnZHMmxpSnFRLUZSZjJLUUN6TTI2RA?oc=5"
-            },
             {
               "title": "큰소도 송아지도 없다...엇박자 수급조절이 부른 한우 시장의 '극단적 불균형' - 팜인사이트",
               "source": "팜인사이트",
@@ -317,18 +309,26 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 16,
+        "items": 17,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 3.71,
+          "up": 7.68,
           "down": 0.0,
           "neutral": 47.04
         },
         "conflict_ratio": 0.0,
         "examples": {
           "up": [
+            {
+              "title": "축평원, 한우 직거래 우수모델 확산…유통비용 절감 나선다 - 축산신문",
+              "source": "축산신문",
+              "direction": "up",
+              "quality_score": 71,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBtTU1nTmhtZnMwUnhWcTE5anc1a2lWZDJrWnVMdE52eHBFYTVWZldvUnN0Z3hwNEtITF85S3Q3dVpPWmFjSk5Jc3RyTFh2aC1Vb1ZHdlU0WWJjZE9VUk5yWlFOMW5HY202?oc=5"
+            },
             {
               "title": "한우농가, 1년 새 약 3천700호 감소 - 축산신문",
               "source": "축산신문",
@@ -439,12 +439,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 29,
+        "items": 27,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 125.86,
+          "up": 117.82,
           "down": 3.26,
           "neutral": 0.0
         },
@@ -520,7 +520,7 @@
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 9.32
+          "neutral": 9.22
         },
         "conflict_ratio": 0,
         "examples": {
@@ -547,7 +547,7 @@
               "title": "갈 곳 잃은 스페인산 돈육 국내 공습… 한돈 원료육 시장 ‘직격탄’ - 팜인사이트",
               "source": "팜인사이트",
               "direction": "neutral",
-              "quality_score": 81,
+              "quality_score": 76,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE50SkVOTjNzeUZuWEdhZGFKbXJrVjloclpkUzlLdmRBZ2QySno4Y0o3LTdHcUN3Nmw3dUQ3N0tCakUtRG5BV04zLUw5bmFSWU1OWDNrSWxXdDNPeFR0dk5idi10bGhwWUZLM3RQa0F3?oc=5"
             }
@@ -580,22 +580,31 @@
       {
         "axis": "supply",
         "label": "수급/도축",
-        "items": 0,
+        "items": 1,
         "has_conflict": false,
         "severity": "none",
-        "dominant_direction": "neutral",
+        "dominant_direction": "up",
         "weighted_direction": {
-          "up": 0.0,
+          "up": 3.12,
           "down": 0.0,
           "neutral": 0.0
         },
-        "conflict_ratio": 0,
+        "conflict_ratio": 0.0,
         "examples": {
-          "up": [],
+          "up": [
+            {
+              "title": "굽네치킨, 가격 동결하고 순살 치킨 중량 조정…계육 수급 불안 여파 - 에너지경제신문",
+              "source": "에너지경제신문",
+              "direction": "up",
+              "quality_score": 51,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1pVlZEbkI4LXN4ci16NjFBZE8zWk1lWXJobHRVUC1uejE0dVBYcnFONFhMbE5NTVNUMWtiZVNrMTVvYU1YODM4Z1d1b0lmZC1ueUFWZHZEaVl6TnM?oc=5"
+            }
+          ],
           "down": [],
           "neutral": []
         },
-        "memo": "수급/도축 축은 중립 또는 보조 근거 중심"
+        "memo": "수급/도축 축은 상방 근거 우세"
       },
       {
         "axis": "disease",
@@ -803,9 +812,9 @@
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 14.76,
+          "up": 11.41,
           "down": 0.0,
-          "neutral": 21.01
+          "neutral": 23.68
         },
         "conflict_ratio": 0.0,
         "examples": {
@@ -819,20 +828,20 @@
               "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1WRmFQUk9OeGNEM2JnbG1NNUppRXFNa3NMVTBwRDRXZjBYZm9VN2Z1T1dQdjhLN2YtdEFndy0zT2Rvei1IdXJTbm5LcmpvaWEtYk5OZ1NLaUIwTlXSAWBBVV95cUxPYjZyQ3pmWkI1WWtxRW40WGp6dl9YcUYtNjZuNUI4Ri0tV05QSlJ3N2VzVWRKZ1BtNWFZN3N5a0dSLXdMa0p3d0NraWRKZENmazlXQVJkWGliTUVBSkhFU28?oc=5"
             },
             {
-              "title": "\"한 줄 4천원 육박\"…쌀·계란값 상승에 김밥 가격도 부담 - v.daum.net",
-              "source": "v.daum.net",
-              "direction": "up",
-              "quality_score": 40,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBWNEpoX0hDeGl0MjlFeUR1M2pyaTZNWnJEa1UxVG9hejdLcUxOX1FhbGo0WGtIMTdxZGMyNWY5bzBoSWoxVlZJcVBmZlphd1E?oc=5"
-            },
-            {
               "title": "쌀·계란값 상승에 김밥 가격도 부담 - v.daum.net",
               "source": "v.daum.net",
               "direction": "up",
               "quality_score": 65,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1Sd1U2RUFlYkprUV9iU3Fpbl9qR01pVGFDUDE0UWVkVFpBUFk0WXV1Y29WVktGX0dhdmp2OG54Q2R4am0tMGNIOHJFNkdNZXRwb0dRcg?oc=5"
+            },
+            {
+              "title": "한 판에 만원 넘는다…계란값 상승 언제까지 ? - 인천일보",
+              "source": "인천일보",
+              "direction": "up",
+              "quality_score": 58,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE16VjNRaGxwWldVU0M0cjNhWTlIWDlVTXYyRnI5Y1NaWVdheDh4SHdTZEc0SjZHNVpxQ195NEs5ZHNxUWZSSnZsSkhVMWhuenNPRnh4bjdSOVdQemZ2Y0NBUGhaQXZGZ2NWdWFMd184c0U?oc=5"
             }
           ],
           "down": [],
@@ -1055,41 +1064,32 @@
       {
         "axis": "supply",
         "label": "수급/도축",
-        "items": 1,
+        "items": 0,
         "has_conflict": false,
         "severity": "none",
-        "dominant_direction": "up",
+        "dominant_direction": "neutral",
         "weighted_direction": {
-          "up": 5.0,
+          "up": 0.0,
           "down": 0.0,
           "neutral": 0.0
         },
-        "conflict_ratio": 0.0,
+        "conflict_ratio": 0,
         "examples": {
-          "up": [
-            {
-              "title": "농림축산식품부, 5월 수급 동향 점검…과일 출하 감소에도 공급 차질 없을 전망 - 국제일보",
-              "source": "국제일보",
-              "direction": "up",
-              "quality_score": 75,
-              "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5qM1pmSk1JWlJIUHNJdUlhME1mZm9vZkU1WndQVlk2LUZCVEZmelM1NmV6YkZnRThzb21iVnA3M3BXM3hKZmdMcVhFTmZLNE5XMmFLalVMY1ZTN2tpaU9SLXRuNXg?oc=5"
-            }
-          ],
+          "up": [],
           "down": [],
           "neutral": []
         },
-        "memo": "수급/도축 축은 상방 근거 우세"
+        "memo": "수급/도축 축은 중립 또는 보조 근거 중심"
       },
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 7,
+        "items": 9,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 34.1,
+          "up": 43.2,
           "down": 0.0,
           "neutral": 0.0
         },
