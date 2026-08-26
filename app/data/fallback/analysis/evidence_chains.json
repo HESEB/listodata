@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-26T07:11:29Z",
+  "updated_at": "2026-08-26T08:03:14Z",
   "policy": "phase2_evidence_chain_v2",
   "notice": "뉴스/공식자료 → 근거축 → 시장영향 → 신뢰도 → 구매전략으로 연결한 Evidence Chain입니다.",
   "items": [
@@ -207,7 +207,7 @@
               "published_at": "2026-08-24T07:11:41Z",
               "source": "ebn.co.kr",
               "source_level": 4,
-              "quality_score": 93,
+              "quality_score": 88,
               "direction": "neutral",
               "direction_label": "중립/보조",
               "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE82NVB1TXBsX3JJTlpVQWp0SmxfUTQ5RWhYam1JNlN2RzB0YjA5U0pnN08tNHh6R0RBbnBoVmxJNlBYbWl1NkNpNkx0b2luMjAzSnhpbzRYM2Q2bXlBdlE5SEprbC1rX1d4?oc=5"
@@ -455,7 +455,7 @@
           "weighted_direction": {
             "up": 3.71,
             "down": 0.0,
-            "neutral": 47.14
+            "neutral": 47.04
           },
           "conflict_ratio": 0.0,
           "examples": {
@@ -1957,16 +1957,16 @@
     {
       "id": "OTHER",
       "name": "기타",
-      "status": "보합/혼조",
-      "direction": "neutral",
-      "signal_score": 48,
-      "confidence_score": 82,
-      "coverage_rate": 80,
-      "reason": "질병/방역 19점 + 수급/도축 16점 + 뉴스/수요 13점 기반, 상방성 자료가 우세",
+      "status": "하방 가능성",
+      "direction": "down",
+      "signal_score": 32,
+      "confidence_score": 75,
+      "coverage_rate": 60,
+      "reason": "질병/방역 19점 + 뉴스/수요 13점 기반, 상방성 자료가 우세",
       "summary_chain": [
         {
           "step": "1. 자료 수집",
-          "value": "29건",
+          "value": "28건",
           "meaning": "축종 관련 정제자료 수"
         },
         {
@@ -1976,17 +1976,17 @@
         },
         {
           "step": "3. 시장 영향",
-          "value": "상·하방 근거 혼재",
-          "meaning": "질병/방역 19점 + 수급/도축 16점 + 뉴스/수요 13점 기반, 상방성 자료가 우세"
+          "value": "하방성 근거 우세",
+          "meaning": "질병/방역 19점 + 뉴스/수요 13점 기반, 상방성 자료가 우세"
         },
         {
           "step": "4. 신뢰도",
-          "value": "82점 / 커버리지 80%",
+          "value": "75점 / 커버리지 60%",
           "meaning": "출처·최신성·공식자료·근거범위 종합"
         },
         {
           "step": "5. 구매전략",
-          "value": "수입·환율·사료·물류 보조지표 관찰",
+          "value": "공통 하방 요인 반영 여부 확인",
           "meaning": "현 데이터 기준 참고 액션"
         }
       ],
@@ -2006,25 +2006,14 @@
         {
           "axis": "supply",
           "label": "수급/도축",
-          "score": 16,
+          "score": 0,
           "max_score": 25,
-          "items": 1,
-          "direction": "up",
-          "market_impact": "공급 축소 또는 출하 제한 가능성",
+          "items": 0,
+          "direction": "neutral",
+          "market_impact": "수급 방향 추가 확인 필요",
           "causal_step": "도축·도계·출하 흐름 → 공급 가능량 변화 → 가격 방향성",
-          "evidence_examples": [
-            {
-              "title": "농림축산식품부, 5월 수급 동향 점검…과일 출하 감소에도 공급 차질 없을 전망 - 국제일보",
-              "published_at": "2026-05-18T07:00:00Z",
-              "source": "국제일보",
-              "source_level": 5,
-              "quality_score": 75,
-              "direction": "up",
-              "direction_label": "상방 요인",
-              "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5qM1pmSk1JWlJIUHNJdUlhME1mZm9vZkU1WndQVlk2LUZCVEZmelM1NmV6YkZnRThzb21iVnA3M3BXM3hKZmdMcVhFTmZLNE5XMmFLalVMY1ZTN2tpaU9SLXRuNXg?oc=5"
-            }
-          ],
-          "confidence_note": "근거 일부 연결"
+          "evidence_examples": [],
+          "confidence_note": "직접 연결 근거 부족"
         },
         {
           "axis": "disease",
@@ -2127,28 +2116,32 @@
       ],
       "missing_evidence": [
         "가격",
+        "수급/도축",
         "정책/고시"
       ],
-      "hold_reason": "일부 근거축 부족: 가격, 정책/고시",
-      "purchase_action": "수입·환율·사료·물류 보조지표 관찰",
+      "hold_reason": "일부 근거축 부족: 가격, 수급/도축, 정책/고시",
+      "purchase_action": "공통 하방 요인 반영 여부 확인",
       "chain_policy": "phase2_evidence_chain_v2",
       "conflict": {
         "id": "OTHER",
         "name": "기타",
         "has_conflict": false,
-        "conflict_severity": "none",
+        "conflict_severity": "low",
         "conflict_axes": [],
         "missing_evidence": [
           "가격",
+          "수급/도축",
           "정책/고시"
         ],
-        "hold_reasons": [],
-        "original_confidence": 82,
-        "adjusted_confidence": 82,
+        "hold_reasons": [
+          "주요 근거축 다수 누락"
+        ],
+        "original_confidence": 75,
+        "adjusted_confidence": 75,
         "should_hold": false,
-        "recommended_status": "보합/혼조",
-        "recommended_direction": "neutral",
-        "memo": "주의 필요 · 누락근거: 가격, 정책/고시"
+        "recommended_status": "하방 가능성",
+        "recommended_direction": "down",
+        "memo": "주의 필요 · 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 주요 근거축 다수 누락"
       },
       "axis_conflicts": [
         {
@@ -2174,31 +2167,22 @@
         {
           "axis": "supply",
           "label": "수급/도축",
-          "items": 1,
+          "items": 0,
           "has_conflict": false,
           "severity": "none",
-          "dominant_direction": "up",
+          "dominant_direction": "neutral",
           "weighted_direction": {
-            "up": 5.0,
+            "up": 0.0,
             "down": 0.0,
             "neutral": 0.0
           },
-          "conflict_ratio": 0.0,
+          "conflict_ratio": 0,
           "examples": {
-            "up": [
-              {
-                "title": "농림축산식품부, 5월 수급 동향 점검…과일 출하 감소에도 공급 차질 없을 전망 - 국제일보",
-                "source": "국제일보",
-                "direction": "up",
-                "quality_score": 75,
-                "source_level": 5,
-                "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5qM1pmSk1JWlJIUHNJdUlhME1mZm9vZkU1WndQVlk2LUZCVEZmelM1NmV6YkZnRThzb21iVnA3M3BXM3hKZmdMcVhFTmZLNE5XMmFLalVMY1ZTN2tpaU9SLXRuNXg?oc=5"
-              }
-            ],
+            "up": [],
             "down": [],
             "neutral": []
           },
-          "memo": "수급/도축 축은 상방 근거 우세"
+          "memo": "수급/도축 축은 중립 또는 보조 근거 중심"
         },
         {
           "axis": "disease",
