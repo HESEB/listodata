@@ -1,20 +1,20 @@
 {
-  "updated_at": "2026-08-29T09:07:36Z",
+  "updated_at": "2026-08-29T14:32:15Z",
   "notice": "Phase 2 Display Layer 초안입니다. 기존 market_dashboard.json은 별도로 유지됩니다.",
   "species": [
     {
       "id": "BEEF",
       "name": "한우",
-      "signal_score": 59,
-      "direction": "neutral",
-      "status": "보합/혼조",
-      "quality_score": 71,
-      "confidence_score": 70,
+      "signal_score": 62,
+      "direction": "up",
+      "status": "상방 가능성",
+      "quality_score": 70,
+      "confidence_score": 72,
       "coverage_rate": 100,
-      "evidence_count": 30,
-      "official_count": 1,
+      "evidence_count": 31,
+      "official_count": 2,
       "direction_counts": {
-        "up": 5,
+        "up": 6,
         "down": 2,
         "neutral": 23,
         "hold": 0
@@ -30,7 +30,7 @@
       "score_breakdown": {
         "price": 11,
         "supply": 18,
-        "disease": 12,
+        "disease": 15,
         "policy": 5,
         "news": 13
       },
@@ -103,9 +103,9 @@
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
-          "score": 12,
-          "items": 1,
-          "up": 1,
+          "score": 15,
+          "items": 2,
+          "up": 2,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -114,6 +114,12 @@
               "direction": "up",
               "source_level": 3,
               "quality_score": 76
+            },
+            {
+              "title": "알림소식 > 보도자료 > 충북 청주시 한우 농장 구제역 발생 - 농림축산식품부",
+              "direction": "up",
+              "source_level": 5,
+              "quality_score": 75
             }
           ]
         },
@@ -176,7 +182,7 @@
           ]
         }
       },
-      "reason": "수급/도축 18점 + 뉴스/수요 13점 + 질병/방역 12점 기반, 상방성 자료가 우세",
+      "reason": "수급/도축 18점 + 질병/방역 15점 + 뉴스/수요 13점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
@@ -188,10 +194,10 @@
       "quality_score": 73,
       "confidence_score": 88,
       "coverage_rate": 100,
-      "evidence_count": 19,
+      "evidence_count": 18,
       "official_count": 10,
       "direction_counts": {
-        "up": 15,
+        "up": 14,
         "down": 0,
         "neutral": 4,
         "hold": 0
@@ -256,8 +262,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 14,
-          "up": 14,
+          "items": 13,
+          "up": 13,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -274,10 +280,10 @@
               "quality_score": 81
             },
             {
-              "title": "서산 소 농장서 무슨 일이....구제역 NSP 항체 96두 무더기 검출 - 돼지와사람",
+              "title": "예천 구제역 추가 발생 없이 마무리…전국 위기경보 '관심' 하향 - 돼지와사람",
               "direction": "up",
               "source_level": 3,
-              "quality_score": 81
+              "quality_score": 76
             }
           ]
         },
@@ -327,30 +333,31 @@
     {
       "id": "POULTRY",
       "name": "계육",
-      "signal_score": 34,
-      "direction": "down",
-      "status": "하방 가능성",
-      "quality_score": 71,
-      "confidence_score": 73,
-      "coverage_rate": 60,
-      "evidence_count": 11,
-      "official_count": 7,
+      "signal_score": 39,
+      "direction": "neutral",
+      "status": "보합/혼조",
+      "quality_score": 75,
+      "confidence_score": 82,
+      "coverage_rate": 80,
+      "evidence_count": 13,
+      "official_count": 8,
       "direction_counts": {
-        "up": 10,
+        "up": 11,
         "down": 0,
-        "neutral": 1,
+        "neutral": 2,
         "hold": 0
       },
       "coverage_types": [
         "수급/도축",
         "일반",
+        "정책/고시",
         "질병/방역"
       ],
       "score_breakdown": {
         "price": 0,
         "supply": 11,
         "disease": 19,
-        "policy": 0,
+        "policy": 5,
         "news": 4
       },
       "score_breakdown_labels": {
@@ -392,11 +399,17 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 9,
-          "up": 9,
+          "items": 10,
+          "up": 10,
           "down": 0,
           "neutral": 0,
           "examples": [
+            {
+              "title": "한국오리협회 전북도지회, 부안서 AI 방역교육…AI 차단방역 ‘기본수칙 준수’ 강조 - 부안뉴스",
+              "direction": "up",
+              "source_level": 4,
+              "quality_score": 93
+            },
             {
               "title": "전남 고흥 소재 육용오리 농장, 정밀검사 결과,고병원성 AI(H5N6형) 확진 - 서울Pn",
               "direction": "up",
@@ -408,24 +421,25 @@
               "direction": "up",
               "source_level": 3,
               "quality_score": 76
-            },
-            {
-              "title": "알림소식 > 보도자료 > 6월 1일자로 고병원성 조류인플루엔자(AI) 평시 방역체계로 전환하여 상시 방역활동 추진 - 농림축산식품부",
-              "direction": "up",
-              "source_level": 5,
-              "quality_score": 75
             }
           ]
         },
         "policy": {
           "label": "정책/고시",
           "max_score": 10,
-          "score": 0,
-          "items": 0,
+          "score": 5,
+          "items": 1,
           "up": 0,
           "down": 0,
-          "neutral": 0,
-          "examples": []
+          "neutral": 1,
+          "examples": [
+            {
+              "title": "'2억개 수입' 정부 승부수에도…'계란 1판' 7300원대인 까닭 [프라이스&] - 한국경제",
+              "direction": "neutral",
+              "source_level": 5,
+              "quality_score": 100
+            }
+          ]
         },
         "news": {
           "label": "뉴스/수요",
@@ -445,22 +459,22 @@
           ]
         }
       },
-      "reason": "질병/방역 19점 + 수급/도축 11점 + 뉴스/수요 4점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 수급/도축 11점 + 정책/고시 5점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
       "id": "DUCK",
       "name": "오리",
-      "signal_score": 13,
+      "signal_score": 16,
       "direction": "hold",
       "status": "판단 유보",
-      "quality_score": 81,
-      "confidence_score": 43,
+      "quality_score": 87,
+      "confidence_score": 46,
       "coverage_rate": 20,
-      "evidence_count": 1,
+      "evidence_count": 2,
       "official_count": 0,
       "direction_counts": {
-        "up": 1,
+        "up": 2,
         "down": 0,
         "neutral": 0,
         "hold": 0
@@ -471,7 +485,7 @@
       "score_breakdown": {
         "price": 0,
         "supply": 0,
-        "disease": 13,
+        "disease": 16,
         "policy": 0,
         "news": 0
       },
@@ -506,12 +520,18 @@
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
-          "score": 13,
-          "items": 1,
-          "up": 1,
+          "score": 16,
+          "items": 2,
+          "up": 2,
           "down": 0,
           "neutral": 0,
           "examples": [
+            {
+              "title": "한국오리협회 전북도지회, 부안서 AI 방역교육…AI 차단방역 ‘기본수칙 준수’ 강조 - 부안뉴스",
+              "direction": "up",
+              "source_level": 4,
+              "quality_score": 93
+            },
             {
               "title": "전남 고흥 소재 육용오리 농장, 정밀검사 결과,고병원성 AI(H5N6형) 확진 - 서울Pn",
               "direction": "up",
@@ -541,24 +561,24 @@
           "examples": []
         }
       },
-      "reason": "질병/방역 13점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 16점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
       "id": "EGG",
       "name": "계란",
-      "signal_score": 52,
+      "signal_score": 56,
       "direction": "neutral",
       "status": "보합/혼조",
-      "quality_score": 73,
-      "confidence_score": 74,
+      "quality_score": 72,
+      "confidence_score": 76,
       "coverage_rate": 100,
       "evidence_count": 32,
-      "official_count": 2,
+      "official_count": 3,
       "direction_counts": {
         "up": 6,
-        "down": 14,
-        "neutral": 12,
+        "down": 12,
+        "neutral": 14,
         "hold": 0
       },
       "coverage_types": [
@@ -566,13 +586,14 @@
         "수급/도축",
         "수요/행사",
         "일반",
+        "정책/고시",
         "질병/방역"
       ],
       "score_breakdown": {
-        "price": 12,
+        "price": 11,
         "supply": 22,
         "disease": 12,
-        "policy": 0,
+        "policy": 5,
         "news": 6
       },
       "score_breakdown_labels": {
@@ -586,11 +607,11 @@
         "price": {
           "label": "가격",
           "max_score": 30,
-          "score": 12,
+          "score": 11,
           "items": 11,
           "up": 0,
-          "down": 7,
-          "neutral": 4,
+          "down": 6,
+          "neutral": 5,
           "examples": [
             {
               "title": "\"생산량 증가로 계란값 하반기 안정\"…체감 가격은 여전 - v.daum.net",
@@ -602,7 +623,7 @@
               "title": "계란값 하락 전망에도 소비자 체감 여전히 높아 - 천지일보",
               "direction": "down",
               "source_level": 3,
-              "quality_score": 81
+              "quality_score": 76
             },
             {
               "title": "계란값 안정 전망에도 높은 가격 - 뉴스1",
@@ -625,7 +646,7 @@
               "title": "산란계 수 회복·생산량 증가 전망…계란값 하락할 듯 - 경향신문",
               "direction": "down",
               "source_level": 3,
-              "quality_score": 81
+              "quality_score": 76
             },
             {
               "title": "계란 수급 여건 개선에도 수입 추진…농가 ‘부글부글 - 축산신문",
@@ -661,28 +682,29 @@
         "policy": {
           "label": "정책/고시",
           "max_score": 10,
-          "score": 0,
-          "items": 0,
+          "score": 5,
+          "items": 1,
           "up": 0,
           "down": 0,
-          "neutral": 0,
-          "examples": []
+          "neutral": 1,
+          "examples": [
+            {
+              "title": "'2억개 수입' 정부 승부수에도…'계란 1판' 7300원대인 까닭 [프라이스&] - 한국경제",
+              "direction": "neutral",
+              "source_level": 5,
+              "quality_score": 100
+            }
+          ]
         },
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 6,
-          "items": 13,
+          "items": 12,
           "up": 0,
-          "down": 5,
+          "down": 4,
           "neutral": 8,
           "examples": [
-            {
-              "title": "계란값 안정 전망에도 소비자 체감 아직…3분기 작년보다 6.5%↑ - 스포츠한국",
-              "direction": "down",
-              "source_level": 3,
-              "quality_score": 76
-            },
             {
               "title": "계란값 안정 전망에도 체감은 아직…3분기 들어 작년보다 6.5% 올라 - 연합뉴스",
               "direction": "down",
@@ -694,11 +716,17 @@
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 76
+            },
+            {
+              "title": "계란값 안정 전망에도 체감 안나…체감 물가는 여전히 7000원대 - 이슈밸리",
+              "direction": "down",
+              "source_level": 3,
+              "quality_score": 76
             }
           ]
         }
       },
-      "reason": "수급/도축 22점 + 가격 12점 + 질병/방역 12점 기반, 하방성 자료가 우세",
+      "reason": "수급/도축 22점 + 질병/방역 12점 + 가격 11점 기반, 하방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
@@ -711,11 +739,11 @@
       "confidence_score": 75,
       "coverage_rate": 60,
       "evidence_count": 34,
-      "official_count": 32,
+      "official_count": 31,
       "direction_counts": {
-        "up": 14,
+        "up": 15,
         "down": 1,
-        "neutral": 19,
+        "neutral": 18,
         "hold": 0
       },
       "coverage_types": [
@@ -762,8 +790,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 13,
-          "up": 13,
+          "items": 14,
+          "up": 14,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -780,10 +808,10 @@
               "quality_score": 76
             },
             {
-              "title": "축평원, '축산유통정보 다봄' AI기반 서비스 고도화 추진 - 뉴시스",
+              "title": "구제역, 평시 방역 체계로 전환…위기 경보 ‘관심’ 단계로 하향 - 식품저널 foodnews",
               "direction": "up",
               "source_level": 3,
-              "quality_score": 51
+              "quality_score": 76
             }
           ]
         },
@@ -801,10 +829,10 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 9,
-          "items": 21,
+          "items": 20,
           "up": 1,
           "down": 1,
-          "neutral": 19,
+          "neutral": 18,
           "examples": [
             {
               "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
