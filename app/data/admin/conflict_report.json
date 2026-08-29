@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-08-28T18:47:43Z",
+  "updated_at": "2026-08-29T02:15:47Z",
   "policy": "phase2_conflict_hold_v1",
   "notice": "상방·하방 근거 충돌, 근거 누락, 신뢰도 부족에 따른 판단 유보 검수 리포트입니다.",
   "summary": {
     "species_count": 6,
-    "conflict_species_count": 1,
+    "conflict_species_count": 2,
     "hold_recommended_count": 2,
     "high_conflict_count": 1
   },
@@ -17,11 +17,11 @@
       "conflict_axes": [],
       "missing_evidence": [],
       "hold_reasons": [],
-      "original_confidence": 73,
-      "adjusted_confidence": 73,
+      "original_confidence": 70,
+      "adjusted_confidence": 70,
       "should_hold": false,
-      "recommended_status": "상방 가능성",
-      "recommended_direction": "up",
+      "recommended_status": "보합/혼조",
+      "recommended_direction": "neutral",
       "memo": "충돌 또는 판단 유보 요인 없음"
     },
     {
@@ -86,19 +86,21 @@
     {
       "id": "EGG",
       "name": "계란",
-      "has_conflict": false,
-      "conflict_severity": "none",
-      "conflict_axes": [],
+      "has_conflict": true,
+      "conflict_severity": "medium",
+      "conflict_axes": [
+        "수급/도축"
+      ],
       "missing_evidence": [
         "정책/고시"
       ],
       "hold_reasons": [],
-      "original_confidence": 75,
-      "adjusted_confidence": 75,
+      "original_confidence": 77,
+      "adjusted_confidence": 67,
       "should_hold": false,
       "recommended_status": "보합/혼조",
       "recommended_direction": "neutral",
-      "memo": "주의 필요 · 누락근거: 정책/고시"
+      "memo": "주의 필요 · 충돌축: 수급/도축 / 누락근거: 정책/고시"
     },
     {
       "id": "OTHER",
@@ -123,14 +125,14 @@
         {
           "axis": "news",
           "label": "뉴스/수요",
-          "items": 22,
+          "items": 21,
           "has_conflict": true,
           "severity": "high",
           "dominant_direction": "up",
           "weighted_direction": {
             "up": 4.55,
             "down": 4.1,
-            "neutral": 73.0
+            "neutral": 69.35
           },
           "conflict_ratio": 0.9,
           "examples": {
@@ -201,7 +203,7 @@
         "weighted_direction": {
           "up": 0.0,
           "down": 7.29,
-          "neutral": 9.78
+          "neutral": 8.89
         },
         "conflict_ratio": 0.0,
         "examples": {
@@ -234,20 +236,20 @@
               "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE8zV29TYWcxMDVNR1h2U0tWdVdycXJWall6R0p2YUJiUGZMR1h4TFoyMXV4dnVhVUMxdlBabXRTWjNLWHQ3emsxa2psODl2eGlCb240UG1ReHRFQ0ZrRGoyUTVxZm5tTE43Y2ZDTlR6MVF4UdIBckFVX3lxTE8zV29TYWcxMDVNR1h2U0tWdVdycXJWall6R0p2YUJiUGZMR1h4TFoyMXV4dnVhVUMxdlBabXRTWjNLWHQ3emsxa2psODl2eGlCb240UG1ReHRFQ0ZrRGoyUTVxZm5tTE43Y2ZDTlR6MVF4UQ?oc=5"
             },
             {
-              "title": "\"한우 외식, 싼 가격에 즐겨요\" 한우협회, ‘알뜰한우판매점’ 280곳 선정 - 소셜타임스",
-              "source": "소셜타임스",
-              "direction": "neutral",
-              "quality_score": 83,
-              "source_level": 4,
-              "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE16NEZxamxsY3ZMWmZMbGwyZ0ZlRmFhckRVd1E3WHVzZ3hIVTc2YlZoeGRmNG1GV1ZsTnR1bXVCVUUteFB1dWY0SUs3cm9UeVhEOTEzUE5nanVoR3FCZlAxZmhVMFJLTW5teG9ieFoxdw?oc=5"
-            },
-            {
               "title": "“한우고기를 합리적 가격에”…‘알뜰한우판매점’ 280곳 선정 - 농민신문",
               "source": "농민신문",
               "direction": "neutral",
               "quality_score": 65,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE50ZjE1Vzk1UW5keEhWcFlYWDhnODN5NUtrNnEzeDhlMmg0bUtET0xCbHhSaC1OaEh0SVpPeTR5c1NwNklRWmpuaEFGblBMM3JRNWV4ZnRGeHpiUQ?oc=5"
+            },
+            {
+              "title": "한우 송아지 가격 600만 원 뚫나… 번식률 저하로 '품귀 현상' 심화 - 팜인사이트",
+              "source": "팜인사이트",
+              "direction": "neutral",
+              "quality_score": 51,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE0tc1d6d1ZrUzIzSGRfaF9UX3haUE5uUWVtcFFPQmtWTWRUZTNOT0I3OGl4NGpYZFl2bEdjeVlmRlpBcFdPWmduUGNrN2FrU0t0X0hOdVVURldsalVpcVNTT0UxZ2x4RnZrc2pkNHNB?oc=5"
             }
           ]
         },
@@ -261,7 +263,7 @@
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 11.55,
+          "up": 11.45,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -272,7 +274,7 @@
               "title": "횡성한우, 소비자신뢰 대상 19년 연속…사육 감소·가격 부담 속 브랜드 경쟁력 주목 - 뉴스타운",
               "source": "뉴스타운",
               "direction": "up",
-              "quality_score": 69,
+              "quality_score": 64,
               "source_level": 2,
               "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFA1NHFMVi1FQlI1ZEZUcG85eXRUa0lscHJpOUl1dkp4RGdZTWk0Uk82QnV5SzZxYVpUazFlNm5mSkZySUE0TjF4ampoR21IeU93LTlDcGVySUVyRl9lcWNaQ2RTNU5kUDFRS1JseXl3?oc=5"
             },
@@ -301,12 +303,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 2,
+        "items": 1,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 8.62,
+          "up": 3.62,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -320,14 +322,6 @@
               "quality_score": 76,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFB4MUYwZkdxSFNNWjJuRDlZeUNib3JQR3dRNFNoNnR5Y1cxbXk5ck5FQVZkNW9yRl9obVJBTTNvV0NpY2VpMFpSRE9UUjNUMTRqeXNkZdIBWEFVX3lxTE9uOUY0QXI5dlhWd1JlTm9CYnU5R0dmY2g1X2paZ3RHdTExNjdEVERPTmEzQVowTzBhcGdBcFllRzM0NTducDE1Y3hOUnZZLXFDTTgxd01Wa3E?oc=5"
-            },
-            {
-              "title": "알림소식 > 보도자료 > 충북 청주시 한우 농장 구제역 발생 - 농림축산식품부",
-              "source": "농림축산식품부",
-              "direction": "up",
-              "quality_score": 75,
-              "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOOGtoemFWRDgzNjVXRHI0SkNDTVc3Wl9qZnMxMk0zSzlfR0l5N3EyWUVIQVJjTXZmaU80clV1NGljeUFYYU1taUxUTDY5dXNpNGNjTW1leXFxNHhUXzNNR1YycEhEaXlGN3lwTjlKMzV1SDA1UjQtblFTZW5xZjNlcjNfYTFiZENzRDBJQzU4VVNlX0lxRWNiWXp4V2lxT1lQamRjSi0yNTFhVXVIT2NBU0ZYWUJuS2VWeFM2MkhCSjJmaG8wWnUwRA?oc=5"
             }
           ],
           "down": [],
@@ -338,14 +332,14 @@
       {
         "axis": "policy",
         "label": "정책/고시",
-        "items": 2,
+        "items": 3,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "neutral",
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 6.24
+          "neutral": 9.05
         },
         "conflict_ratio": 0,
         "examples": {
@@ -367,6 +361,14 @@
               "quality_score": 71,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5hS3lDTlctSFd2NDRIR3c2UkI4T3JYdzQ0Q0h6Z1pMYkxtckktWlptV1Fib2hvNU5iWmNGeDNXdU1xSVJuRmhBSXE2MnpLY3NhOFJZeE5UV3l1VWtnRWlydmFFa0NKNFFy?oc=5"
+            },
+            {
+              "title": "한우 단기비육 정책 가속도…현장은 ‘온도차’ - 축산신문",
+              "source": "축산신문",
+              "direction": "neutral",
+              "quality_score": 58,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE90S0czRFZBR3QwUWxqWTFaa3Z6N0VCaXJ4QXlrMlhDYjdvR3VqQ0pZUENua1JsUVlvTm1UdFRVbVBydkhKcUxVZUVGNUF4M0FMbVhoNHczTnF4MkNNT2hFc2Q0Zw?oc=5"
             }
           ]
         },
@@ -375,14 +377,14 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 18,
+        "items": 17,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
           "up": 3.71,
           "down": 0.0,
-          "neutral": 53.9
+          "neutral": 50.7
         },
         "conflict_ratio": 0.0,
         "examples": {
@@ -399,28 +401,28 @@
           "down": [],
           "neutral": [
             {
+              "title": "의령군, 한우 수정란 이식사업 성과 가시화 - 진주뉴스",
+              "source": "진주뉴스",
+              "direction": "neutral",
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBfSzJFc0lLOFlkcWUxYi10SnlTc3lTeGYtYTNXaWU4aTg2VEpMaUtISjI4bDNMR3VYUTFscTE0UGsydG9FM3pOcWxCNjdrR3VqRXZrZVNueVBIbkQwaU9mdTM3Qkg3RXllcWc?oc=5"
+            },
+            {
               "title": "한우 고급육 생산의 핵심…단계별 영양관리 - 축산신문",
               "source": "축산신문",
               "direction": "neutral",
               "quality_score": 81,
               "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1rRF8tX3dub2ItNGpDLW9tR2JXVUxveGlKenFkX2pKMmRTMHdfZ3N6VjRpRmJDSGN2WkptZXYwRktOSWpDXzloT2ZyVjZ5dXlCMUFKdzA3STNSYVc5Qy1zOWpuNjktQkxIcXZn?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9ZUkp4T2lPR0dwOHkyZDNWeWRocVhJRWZ4Vk1rX1p6b3NDXy1Idm9aeERtV0RCakpYX1VFQVlUQW42NERKSThESGljcGdLY2U2RlMwbzJBVjQ4MmZlbTVPUlBnV3pnVU1N?oc=5"
             },
             {
-              "title": "의령군, 한우 수정란 이식사업 성과 가시화 - 의령인터넷뉴스",
-              "source": "의령인터넷뉴스",
+              "title": "의령군, 수정란 이식사업 한우 개량 성과…농가 경쟁력 강화 - 뉴스핌",
+              "source": "뉴스핌",
               "direction": "neutral",
               "quality_score": 81,
               "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1ZLVUzRU00MHRRTE9XQUQyOV85Q3licnV3d3R3cGJGcGd0VE8tdW9FNzZockFHR0hTN2pqNVNkX0ZZdzVGX0I5MVkwMVpzUEs5TDVmSVN0ejM0dE8tamdkT2FTenZUc2s?oc=5"
-            },
-            {
-              "title": "의령군 한우 수정란 이식 송아지, 경매가 105만원 높아 - 경남미디어",
-              "source": "경남미디어",
-              "direction": "neutral",
-              "quality_score": 81,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE8tZHZFeVJNdmkzcG9Zc3ZmRi1RQXAyd1YtSUpfaUdqQ0lCT1h1cnVuQ3BCdkkxUnY2cV82QlBSWFFSSmcxYlNCR2N5V2Z6UkhNUUxDbG1hcTNBZXYzb2NfcWNCQWg5SmNoaElr?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1aMkRuY2M1b1BpcV9YWFdDWURxdnBGeEYwX3ozaDhuX1BGWTFFLWVVY0oyRDBMdDhqMFRlU3AzYXdFeVBialhfWGY0REtEclFhcS1QMmxjbUF0TW8w?oc=5"
             }
           ]
         },
@@ -489,12 +491,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 14,
+        "items": 12,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 65.78,
+          "up": 56.16,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -510,20 +512,20 @@
               "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE8yajZLM3J0dHNGWHhZcXB5Y3BMUy1PNTVPc3JXMU9Vb1Izd2lFMkJjcndlNlBqMlNBM2pIeVhCWnhPOVF4elNvMm5wU2drendYRGdGb3VJcTREM0xUSkV0SFpkVi04Q3pBc3N4bA?oc=5"
             },
             {
-              "title": "구제역 위기 경보 하향 조정... 평시 방역 체계로 전환 - 한돈뉴스",
-              "source": "한돈뉴스",
-              "direction": "up",
-              "quality_score": 81,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBhY1IybDdyM00xMzFaMW1vVzZCb3lMald4X0NfTDIzc1hJTVBxRS1GcWxST0FSeWJPYVNrcHlLalBxV0tScVBEbXh2ZGdhcy1wUk8yVkM3eFlDeEhfMHRBRHM1ZjVvRUwxZzZOcdIBbEFVX3lxTFBhY1IybDdyM00xMzFaMW1vVzZCb3lMald4X0NfTDIzc1hJTVBxRS1GcWxST0FSeWJPYVNrcHlLalBxV0tScVBEbXh2ZGdhcy1wUk8yVkM3eFlDeEhfMHRBRHM1ZjVvRUwxZzZOcQ?oc=5"
-            },
-            {
               "title": "서산 소 농장서 무슨 일이....구제역 NSP 항체 96두 무더기 검출 - 돼지와사람",
               "source": "돼지와사람",
               "direction": "up",
               "quality_score": 81,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE16SGt1Q0VkWmNNU3N2Q253Z3VaNTdfVnEyVm8zNjVSdG1pdGVlbndPSkc3bXdHa28wMVpTUjdnTkt1TlVueTdYbDRlLVpvdjVPdHg3dnZtdmRxdVJpSkhVek5n?oc=5"
+            },
+            {
+              "title": "예천 구제역 추가 발생 없이 마무리…전국 위기경보 '관심' 하향 - 돼지와사람",
+              "source": "돼지와사람",
+              "direction": "up",
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE11YUlzS1pCbnFpNTE2eVpwRnoxdGwyNFJKcGlXcHMtM0poTkdnQUphVzc4Y1NaODU0M1dvUzlBSW1VV3ptRTR6NGxmYWVkenVfUXRFcmJGXzIzTGNxTlExM013?oc=5"
             }
           ],
           "down": [],
@@ -650,12 +652,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 9,
+        "items": 10,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 41.54,
+          "up": 45.64,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -857,14 +859,14 @@
       {
         "axis": "price",
         "label": "가격",
-        "items": 9,
+        "items": 10,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "down",
         "weighted_direction": {
           "up": 0.0,
-          "down": 24.52,
-          "neutral": 9.21
+          "down": 24.72,
+          "neutral": 11.82
         },
         "conflict_ratio": 0.0,
         "examples": {
@@ -876,15 +878,7 @@
               "direction": "down",
               "quality_score": 81,
               "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE5HODBoVXJTYmpLSHhyak9wU0xpOThtNWhzLTAtQnZZdWVRN3MzUnpYSzNrZjZ3dWJrV01rWFp3TjF4cV83VUh4azRJZw?oc=5"
-            },
-            {
-              "title": "\"생산량 증가로 계란값 하반기 안정\"…체감 가격은 여전 - news.sbs.co.kr",
-              "source": "news.sbs.co.kr",
-              "direction": "down",
-              "quality_score": 56,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE0yZnh3TE50WUs5dWR0dXNuTlBJenJpdV92NDhsQmpSRTFYRVNFbWRkUG1SSmw1Sm1qUUhUb1NDOWZpYWhnQ2dQd0Frek11WGhRM1hDQ0JLMGF5cVZSUVc3U1hKTFNhSEpfM0HSAWZBVV95cUxObW1KUldLeEpvR01MenRiREw0SEJOSS1CM2tKU1dEMTBtLTIxOUZWdjM3R0I0VTRIelgzU095YUk5bTRqbl9KczhQNjFBOGlLb1NwTURvWUZob0dKdkdCdkdCMGJROWc?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5jN2d0ZkdnS2FCaEFxMW94aFlmcHZSclFWNDlPMWRiZ2lNRkVIRThHZ0c3bk5kUkJrUGJFOC1fdUNWR3ZKYThpSVJMamhWVFg0VGVMSA?oc=5"
             },
             {
               "title": "계란값 하락 전망에도 소비자 체감 여전히 높아 - 천지일보",
@@ -893,6 +887,14 @@
               "quality_score": 81,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5qUkRmZGdMYy1NbEJzME9qMEdHaU4wTGdZVGVhNjRyeXJzbTJZWTlIaHg3dFN3czVmNmNwbjVnRTNBODQyV2U1SHc5dFhxX2IyVGJZNk5EbE0xd1d1MGlrTUxyV2tzLVloZFE?oc=5"
+            },
+            {
+              "title": "계란값 안정 전망에도 높은 가격 - 뉴스1",
+              "source": "뉴스1",
+              "direction": "down",
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFA0cUM5Z3BwaU8yWWFnYTRLdDVMSmJLMWlXcUhNLVVjak9tSmFVUEpwaEVRTEVTNUFGUmhQcEhKaTE4Z3B4dURvZ0huTQ?oc=5"
             }
           ],
           "neutral": [
@@ -900,7 +902,7 @@
               "title": "계란 산지값 한 달 새 277원 내렸지만…소비자 한 판은 7385원 - 메디컬투데이",
               "source": "메디컬투데이",
               "direction": "neutral",
-              "quality_score": 81,
+              "quality_score": 76,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE44VHdoa1Nra0dCNnc2RHVhS1p4ZmhlUkJHcGFfcUE1bzRVQnpQOVQ2Nk93MkMzZFRDSVpLc3l2NWF3SG5hY0Z5V0JQa1FyUmIzOTJGb3ctZ3F2WEVMbi1tLTNMMy10RzlwUV90Tw?oc=5"
             },
@@ -908,17 +910,17 @@
               "title": "\"계란값 좀 내려가나 했더니\"…가격 보고 화들짝 - 한국경제",
               "source": "한국경제",
               "direction": "neutral",
-              "quality_score": 81,
+              "quality_score": 76,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE44aUl1NGxhSTJwUGptcHRZMUhpSWIza2ZoS1VjQTIzek5OSnBHR3BQRFBfTUVLaVo3eUdHOWJhVkZQNDNvZE56a2VfMnN2ck5hR0Z4SUw3c1dwQQ?oc=5"
             },
             {
-              "title": "계란 산지가격 고시 중단…“시장만 더 혼란” - 축산신문",
-              "source": "축산신문",
+              "title": "\"내년 설까지는 가격 계속 오를 것\" 한 판에 1만원 '금란'의 공습[계란 난맥상]① - v.daum.net",
+              "source": "v.daum.net",
               "direction": "neutral",
-              "quality_score": 51,
+              "quality_score": 58,
               "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5HaFRKM2dfT190M0xWUlNIbGR6bUxsUFRXTTFrWTl1d25vbGtiTUpGLWw4M2xZMHllbmVFVnJXbEQ1eTU1SF9WQTMwRDl6MXJjSC1NUmNRTTNaZUJqM0tRRWFfdEgtX2Ff?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5zNHdlbjNVaFprSndxMlVuUUhEdkt3Slp6UEpYdjB3NmZlWVJ3TnctTVF1Z2IzUEdmbGdZZ0l3RWo5dnFkaU0zY3Y4V2ZQMFU?oc=5"
             }
           ]
         },
@@ -927,16 +929,16 @@
       {
         "axis": "supply",
         "label": "수급/도축",
-        "items": 5,
-        "has_conflict": false,
-        "severity": "none",
+        "items": 6,
+        "has_conflict": true,
+        "severity": "medium",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 14.38,
-          "down": 3.52,
+          "up": 15.09,
+          "down": 7.24,
           "neutral": 0.0
         },
-        "conflict_ratio": 0.24,
+        "conflict_ratio": 0.48,
         "examples": {
           "up": [
             {
@@ -948,12 +950,12 @@
               "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBrOHBrWDVFRDdvVGRneWpDQ3Y0UzRUTXFTMFV4TjM4Y1NJUGktWl9jLXZfQjNMOGxOR25YX096dWhnTEJrVFFja1hwZy1BbDBWSHNrVUNCeGU2UjdfVkZIV1o1N3c5Nk41?oc=5"
             },
             {
-              "title": "'계란값 폭등' 네탓 공방 2라운드…산란계協 법인취소 '법정다툼' - v.daum.net",
-              "source": "v.daum.net",
+              "title": "산란계협회 과징금 다시 도마…임호선 “후장기 거래·정보 비대칭 잡아야” - 푸드투데이",
+              "source": "푸드투데이",
               "direction": "up",
-              "quality_score": 65,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5XZXJPWXZWRC0tQVZYS3I2YlpiVzdJaU1qSHJQRF9CSWhCSDQyblIwaUw4TWk0X0h2c1ZWNzhmVk9pRllFZFZlZXQ3WTg1Y2s?oc=5"
+              "quality_score": 88,
+              "source_level": 4,
+              "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE93ajVZN0pwRkdxT29LNU1iUWhvYVowaUNoLUlJaXg2bkEzc214RlVlNUlFUEZXY0ZiUlUxNGlDRThabFNGRHZqWFdQaVJvTS1HN0pCREE1MjlSQ3VSLTJJS1NYN0pFUQ?oc=5"
             },
             {
               "title": "계란가격 정보 단절로 시장 혼선…수급 대응도 ‘안갯속’ - 축산신문",
@@ -966,6 +968,14 @@
           ],
           "down": [
             {
+              "title": "산란계 수 회복·생산량 증가 전망…계란값 하락할 듯 - 경향신문",
+              "source": "경향신문",
+              "direction": "down",
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5uMDRHMUlFeXFzM05sSFNnYXlkZ2NWLU1qRkNpZlNrNDh2MFJjc1B3MTFpMWtxMkQzU2JTU095eFFLdEZURzVldi1fTzI2S0JKTmt4WUk3djE5QdIBX0FVX3lxTE42azV6a0hJQlNHaEVJUTUweElZM0ZrUUU5UjJXa0NfWXRtaHhTS0FLbVNZUm5nMHlBOHlLbzZNRC1wb3pDektrdmYwdXU5OGpWaUIwVG1acHNUeVFsQ3Nj?oc=5"
+            },
+            {
               "title": "계란, 공급량 증가세… 가격 하락 전망 - 농수축산신문",
               "source": "농수축산신문",
               "direction": "down",
@@ -976,23 +986,31 @@
           ],
           "neutral": []
         },
-        "memo": "수급/도축 축은 상방 근거 우세"
+        "memo": "수급/도축 축에서 상방·하방 근거가 동시에 감지되어 medium 충돌로 분류"
       },
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 1,
+        "items": 2,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 4.1,
+          "up": 8.2,
           "down": 0.0,
           "neutral": 0.0
         },
         "conflict_ratio": 0.0,
         "examples": {
           "up": [
+            {
+              "title": "충남 천안 산란계 농장에서 H5형 조류인플루엔자 항원 확인 - 농림축산식품부",
+              "source": "농림축산식품부",
+              "direction": "up",
+              "quality_score": 75,
+              "source_level": 5,
+              "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE92cWVVWS1Ba0Nma3h5YU5tVVRzdE5FTk1RTld1NWZTSGlwSFN5aHA0UkhfYUN2R0N0VWxYU1pRYW5EeThUdFhybVBMR3JfQVRFazFMd24wY0tJLXRwTDk1aEJVYk1IUWM?oc=5"
+            },
             {
               "title": "경기 김포 산란계 농장에 대한 예찰 검사에서 H5형 조류인플루엔자 항원 확인 - 농림축산식품부",
               "source": "농림축산식품부",
@@ -1030,14 +1048,14 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 15,
+        "items": 14,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "down",
         "weighted_direction": {
           "up": 0.0,
-          "down": 18.6,
-          "neutral": 32.0
+          "down": 18.3,
+          "neutral": 28.03
         },
         "conflict_ratio": 0.0,
         "examples": {
@@ -1063,7 +1081,7 @@
               "title": "계란값 안정 전망에도 체감 안나…체감 물가는 여전히 7000원대 - 이슈밸리",
               "source": "이슈밸리",
               "direction": "down",
-              "quality_score": 81,
+              "quality_score": 76,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBKS0lKNmctZDNBTXg5b2hiSGtoZ2dON3RVQnJYSXdTcENGWjFOcmdTQk0telprM1FtaTJPZE1wMG5QcmxmZDhRYlppSzU4Y2RNOF9sQ1VOS2pqYjJaYlczS1llTzV5M1Y5SEFSdXhn?oc=5"
             }
@@ -1073,7 +1091,7 @@
               "title": "숫자는 내린다는데…장바구니 ‘금계란’ 여전 - 소년한국일보",
               "source": "소년한국일보",
               "direction": "neutral",
-              "quality_score": 81,
+              "quality_score": 76,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5qb0JqOE5FUGRFNklhX2lkb2hPN0taUjA0WklncXFEcy1YQnlUYlhBQ3ZtMkU0WS1CcVhGSTFzRlJwSklsYXpzeFhLT1NuaWRjUUpwenRqM2ZMWlQ2cVJJZGJPRExqRDMyQjIxZC1KVnrSAXBBVV95cUxOam9CajhORVBkRTZJYV9pZG9oTzdLWlIwNFpJZ3FxRHMtWEJ5VGJYQUN2bTJFNFktQnFYRkkxc0ZScEpJbGF6c3hYS09TbmlkY1FKcHp0ajNmTFpUNnFSSWRiT0RMakQzMkIyMWQtSlZ6?oc=5"
             },
@@ -1081,7 +1099,7 @@
               "title": "\"계란값 좀 내려가나 했는데\"…한 판 여전히 7000원대 - ebn.co.kr",
               "source": "ebn.co.kr",
               "direction": "neutral",
-              "quality_score": 81,
+              "quality_score": 76,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9id05FTF92Z2YxVGt0RzhRSmhCMExwYndJeGFDUWxOMGp1eTFHbG85NjM0c0E0VWhJeUhkM1dCcnhBbWNnQk55VjU0cS1UTC13M3pUNF9tOWlsNjJpbHhObTFYTlZPT3Q5?oc=5"
             },
@@ -1089,7 +1107,7 @@
               "title": "[영상] 마트서 계란 살 때마다 “손이 떨린다”…한 판 ‘7000원대’ 도대체 언제까지? - 서울경제",
               "source": "서울경제",
               "direction": "neutral",
-              "quality_score": 81,
+              "quality_score": 76,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1uZW5QSWpfZTBRNVFlelhXeHh1dHVJcGc4NEVsWU16RW8xLTZJSWt3ZVVkZVRPNFl3UnhrVVNXRWdDWm9NdWplS1praWNWUVR4ZWc?oc=5"
             }
@@ -1142,12 +1160,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 11,
+        "items": 12,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 53.32,
+          "up": 58.32,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -1207,14 +1225,14 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 22,
+        "items": 21,
         "has_conflict": true,
         "severity": "high",
         "dominant_direction": "up",
         "weighted_direction": {
           "up": 4.55,
           "down": 4.1,
-          "neutral": 73.0
+          "neutral": 69.35
         },
         "conflict_ratio": 0.9,
         "examples": {
