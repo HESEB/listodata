@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-30T12:57:38Z",
+  "updated_at": "2026-08-30T17:33:54Z",
   "policy": "phase2_evidence_score_v3_sanitized",
   "score_axes": {
     "price": {
@@ -43,16 +43,16 @@
     {
       "id": "BEEF",
       "name": "한우",
-      "signal_score": 62,
+      "signal_score": 60,
       "direction": "up",
       "status": "상방 가능성",
-      "quality_score": 68,
+      "quality_score": 69,
       "confidence_score": 72,
       "coverage_rate": 100,
-      "evidence_count": 30,
+      "evidence_count": 29,
       "official_count": 2,
       "direction_counts": {
-        "up": 6,
+        "up": 5,
         "down": 3,
         "neutral": 21,
         "hold": 0
@@ -67,7 +67,7 @@
       ],
       "score_breakdown": {
         "price": 11,
-        "supply": 20,
+        "supply": 18,
         "disease": 11,
         "policy": 8,
         "news": 12
@@ -112,9 +112,9 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 20,
-          "items": 4,
-          "up": 3,
+          "score": 18,
+          "items": 3,
+          "up": 2,
           "down": 1,
           "neutral": 0,
           "examples": [
@@ -214,51 +214,52 @@
           ]
         }
       },
-      "reason": "수급/도축 20점 + 뉴스/수요 12점 + 가격 11점 기반, 상방성 자료가 우세",
+      "reason": "수급/도축 18점 + 뉴스/수요 12점 + 가격 11점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
-        "has_conflict": false,
-        "severity": "none",
-        "axes": [],
-        "memo": "충돌 또는 판단 유보 요인 없음"
+        "has_conflict": true,
+        "severity": "medium",
+        "axes": [
+          "수급/도축"
+        ],
+        "memo": "주의 필요 · 충돌축: 수급/도축"
       },
       "hold_decision": {
         "should_hold": false,
         "reasons": [],
         "recommended_status": "상방 가능성",
         "recommended_direction": "up",
-        "adjusted_confidence": 72
+        "adjusted_confidence": 62
       }
     },
     {
       "id": "PORK",
       "name": "돈육",
-      "signal_score": 46,
-      "direction": "neutral",
-      "status": "보합/혼조",
-      "quality_score": 71,
-      "confidence_score": 80,
-      "coverage_rate": 80,
-      "evidence_count": 18,
+      "signal_score": 34,
+      "direction": "down",
+      "status": "하방 가능성",
+      "quality_score": 73,
+      "confidence_score": 74,
+      "coverage_rate": 60,
+      "evidence_count": 16,
       "official_count": 8,
       "direction_counts": {
-        "up": 14,
+        "up": 13,
         "down": 0,
-        "neutral": 4,
+        "neutral": 3,
         "hold": 0
       },
       "coverage_types": [
         "가격",
-        "수급/도축",
         "일반",
         "질병/방역"
       ],
       "score_breakdown": {
         "price": 9,
-        "supply": 11,
+        "supply": 0,
         "disease": 19,
         "policy": 0,
-        "news": 7
+        "news": 6
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -288,19 +289,12 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 11,
-          "items": 1,
-          "up": 1,
+          "score": 0,
+          "items": 0,
+          "up": 0,
           "down": 0,
           "neutral": 0,
-          "examples": [
-            {
-              "title": "데이터로 보는 2026년 상반기 한돈시장 수급 동향 및 전망 / 박민희 본부장 - 축산정보뉴스",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 51
-            }
-          ]
+          "examples": []
         },
         "disease": {
           "label": "질병/방역",
@@ -344,11 +338,11 @@
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 7,
-          "items": 3,
+          "score": 6,
+          "items": 2,
           "up": 0,
           "down": 0,
-          "neutral": 3,
+          "neutral": 2,
           "examples": [
             {
               "title": "[유통 혁신으로 여는 농업 경쟁력]④ 싱가포르 매장 오른 제주 한우·한돈…현지 유통망 넓힌다 - 전자신문",
@@ -361,61 +355,53 @@
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 71
-            },
-            {
-              "title": "[칼럼] 1만원 계란값이 남긴 경고...한돈에서 같은 실수 말아야 - 돼지와사람",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 51
             }
           ]
         }
       },
-      "reason": "질병/방역 19점 + 수급/도축 11점 + 가격 9점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 가격 9점 + 뉴스/수요 6점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
         "severity": "none",
         "axes": [],
-        "memo": "주의 필요 · 누락근거: 정책/고시"
+        "memo": "주의 필요 · 누락근거: 수급/도축, 정책/고시"
       },
       "hold_decision": {
         "should_hold": false,
         "reasons": [],
-        "recommended_status": "보합/혼조",
-        "recommended_direction": "neutral",
-        "adjusted_confidence": 80
+        "recommended_status": "하방 가능성",
+        "recommended_direction": "down",
+        "adjusted_confidence": 74
       }
     },
     {
       "id": "POULTRY",
       "name": "계육",
-      "signal_score": 39,
-      "direction": "neutral",
-      "status": "보합/혼조",
-      "quality_score": 75,
-      "confidence_score": 82,
-      "coverage_rate": 80,
-      "evidence_count": 12,
+      "signal_score": 24,
+      "direction": "down",
+      "status": "하방 가능성",
+      "quality_score": 80,
+      "confidence_score": 70,
+      "coverage_rate": 40,
+      "evidence_count": 10,
       "official_count": 7,
       "direction_counts": {
-        "up": 10,
+        "up": 9,
         "down": 0,
-        "neutral": 2,
+        "neutral": 1,
         "hold": 0
       },
       "coverage_types": [
-        "수급/도축",
-        "일반",
         "정책/고시",
         "질병/방역"
       ],
       "score_breakdown": {
         "price": 0,
-        "supply": 11,
+        "supply": 0,
         "disease": 19,
         "policy": 5,
-        "news": 4
+        "news": 0
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -438,19 +424,12 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 11,
-          "items": 1,
-          "up": 1,
+          "score": 0,
+          "items": 0,
+          "up": 0,
           "down": 0,
           "neutral": 0,
-          "examples": [
-            {
-              "title": "굽네치킨, 가격 동결하고 순살 치킨 중량 조정…계육 수급 불안 여파 - 에너지경제신문",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 51
-            }
-          ]
+          "examples": []
         },
         "disease": {
           "label": "질병/방역",
@@ -501,35 +480,30 @@
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 4,
-          "items": 1,
+          "score": 0,
+          "items": 0,
           "up": 0,
           "down": 0,
-          "neutral": 1,
-          "examples": [
-            {
-              "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - 더스쿠프",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 51
-            }
-          ]
+          "neutral": 0,
+          "examples": []
         }
       },
-      "reason": "질병/방역 19점 + 수급/도축 11점 + 정책/고시 5점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 정책/고시 5점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
-        "severity": "none",
+        "severity": "low",
         "axes": [],
-        "memo": "주의 필요 · 누락근거: 가격"
+        "memo": "주의 필요 · 누락근거: 가격, 수급/도축, 뉴스/수요 / 유보사유: 주요 근거축 다수 누락"
       },
       "hold_decision": {
         "should_hold": false,
-        "reasons": [],
-        "recommended_status": "보합/혼조",
-        "recommended_direction": "neutral",
-        "adjusted_confidence": 82
+        "reasons": [
+          "주요 근거축 다수 누락"
+        ],
+        "recommended_status": "하방 가능성",
+        "recommended_direction": "down",
+        "adjusted_confidence": 70
       }
     },
     {
@@ -657,15 +631,15 @@
       "signal_score": 55,
       "direction": "neutral",
       "status": "보합/혼조",
-      "quality_score": 71,
-      "confidence_score": 76,
+      "quality_score": 74,
+      "confidence_score": 77,
       "coverage_rate": 100,
-      "evidence_count": 32,
+      "evidence_count": 28,
       "official_count": 3,
       "direction_counts": {
-        "up": 6,
-        "down": 10,
-        "neutral": 16,
+        "up": 7,
+        "down": 9,
+        "neutral": 12,
         "hold": 0
       },
       "coverage_types": [
@@ -695,10 +669,10 @@
           "label": "가격",
           "max_score": 30,
           "score": 11,
-          "items": 10,
+          "items": 8,
           "up": 1,
-          "down": 4,
-          "neutral": 5,
+          "down": 3,
+          "neutral": 4,
           "examples": [
             {
               "title": "\"생산량 증가로 계란값 하반기 안정\"…체감 가격은 여전 - v.daum.net",
@@ -724,8 +698,8 @@
           "label": "수급/도축",
           "max_score": 25,
           "score": 21,
-          "items": 5,
-          "up": 4,
+          "items": 6,
+          "up": 5,
           "down": 1,
           "neutral": 0,
           "examples": [
@@ -742,10 +716,10 @@
               "quality_score": 71
             },
             {
-              "title": "'계란값 폭등' 네탓 공방 2라운드…산란계協 법인취소 '법정다툼' - v.daum.net",
+              "title": "산란계협회 과징금 다시 도마…임호선 “후장기 거래·정보 비대칭 잡아야” - 푸드투데이",
               "direction": "up",
-              "source_level": 3,
-              "quality_score": 65
+              "source_level": 4,
+              "quality_score": 83
             }
           ]
         },
@@ -770,22 +744,16 @@
           "label": "정책/고시",
           "max_score": 10,
           "score": 5,
-          "items": 2,
+          "items": 1,
           "up": 0,
           "down": 0,
-          "neutral": 2,
+          "neutral": 1,
           "examples": [
             {
               "title": "'2억개 수입' 정부 승부수에도…'계란 1판' 7300원대인 까닭 [프라이스&] - 한국경제",
               "direction": "neutral",
               "source_level": 5,
               "quality_score": 100
-            },
-            {
-              "title": "계란 한 판 8000원 시대…코스피는 올리고 계란값은 내린다! - 대한민국 정책브리핑",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 51
             }
           ]
         },
@@ -793,10 +761,10 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 6,
-          "items": 14,
+          "items": 12,
           "up": 0,
           "down": 5,
-          "neutral": 9,
+          "neutral": 7,
           "examples": [
             {
               "title": "계란값 안정 전망에도 체감은 아직…3분기 들어 작년보다 6.5% 올라 - 연합뉴스",
@@ -832,7 +800,7 @@
         "reasons": [],
         "recommended_status": "보합/혼조",
         "recommended_direction": "neutral",
-        "adjusted_confidence": 76
+        "adjusted_confidence": 77
       }
     },
     {
@@ -844,10 +812,10 @@
       "quality_score": 76,
       "confidence_score": 57,
       "coverage_rate": 60,
-      "evidence_count": 34,
-      "official_count": 32,
+      "evidence_count": 33,
+      "official_count": 31,
       "direction_counts": {
-        "up": 13,
+        "up": 12,
         "down": 1,
         "neutral": 20,
         "hold": 0
@@ -896,8 +864,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 12,
-          "up": 12,
+          "items": 11,
+          "up": 11,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -941,7 +909,7 @@
           "neutral": 20,
           "examples": [
             {
-              "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
+              "title": "축산물품질평가원, ‘축산유통정보 다봄’ 기능 개선 논의 - 축산정보뉴스",
               "direction": "neutral",
               "source_level": 5,
               "quality_score": 75
@@ -1009,12 +977,12 @@
               ],
               "neutral": [
                 {
-                  "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
-                  "source": "농업인신문",
+                  "title": "축산물품질평가원, ‘축산유통정보 다봄’ 기능 개선 논의 - 축산정보뉴스",
+                  "source": "축산정보뉴스",
                   "direction": "neutral",
                   "quality_score": 75,
                   "source_level": 5,
-                  "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9LREJ2QWpsLU4xVnVxdWRCamFCcjZnZUMtNVAybHFXQWpaOW44Q2hMaUJDY3lYUU9vN0NIYWtlb1MzVnBxRXI3OTJzdng3dWEyZEdudngwVmsyUTBiQUpXVmJzZlRXelc4WkY5emhn?oc=5"
+                  "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5ORUxicHVQU2RPMkU2ZjgzYnM0XzNyaXE2ZV9GV2VtZUx1b2xSejFGRkNLaFdRS19EXzVlRHRLamU5eFNiTUIxMzZiNktlVnVOQnN3YUxFeTdHUnA4RGR3?oc=5"
                 },
                 {
                   "title": "농림축산식품부 - - 농림축산식품부",
