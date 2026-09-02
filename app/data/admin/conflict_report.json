@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-09-02T18:46:09Z",
+  "updated_at": "2026-09-02T21:52:09Z",
   "policy": "phase2_conflict_hold_v1",
   "notice": "상방·하방 근거 충돌, 근거 누락, 신뢰도 부족에 따른 판단 유보 검수 리포트입니다.",
   "summary": {
     "species_count": 6,
-    "conflict_species_count": 1,
-    "hold_recommended_count": 1,
-    "high_conflict_count": 0
+    "conflict_species_count": 2,
+    "hold_recommended_count": 3,
+    "high_conflict_count": 1
   },
   "species": [
     {
@@ -30,11 +30,34 @@
       "id": "PORK",
       "name": "돈육",
       "has_conflict": false,
+      "conflict_severity": "low",
+      "conflict_axes": [],
+      "missing_evidence": [
+        "가격",
+        "수급/도축",
+        "정책/고시",
+        "뉴스/수요"
+      ],
+      "hold_reasons": [
+        "커버리지 부족",
+        "주요 근거축 다수 누락"
+      ],
+      "original_confidence": 61,
+      "adjusted_confidence": 61,
+      "should_hold": true,
+      "recommended_status": "판단 유보",
+      "recommended_direction": "hold",
+      "memo": "판단 유보 권장 · 누락근거: 가격, 수급/도축, 정책/고시, 뉴스/수요 / 유보사유: 커버리지 부족, 주요 근거축 다수 누락"
+    },
+    {
+      "id": "POULTRY",
+      "name": "계육",
+      "has_conflict": false,
       "conflict_severity": "none",
       "conflict_axes": [],
       "missing_evidence": [
-        "수급/도축",
-        "정책/고시"
+        "가격",
+        "수급/도축"
       ],
       "hold_reasons": [],
       "original_confidence": 74,
@@ -42,28 +65,7 @@
       "should_hold": false,
       "recommended_status": "하방 가능성",
       "recommended_direction": "down",
-      "memo": "주의 필요 · 누락근거: 수급/도축, 정책/고시"
-    },
-    {
-      "id": "POULTRY",
-      "name": "계육",
-      "has_conflict": false,
-      "conflict_severity": "low",
-      "conflict_axes": [],
-      "missing_evidence": [
-        "가격",
-        "수급/도축",
-        "뉴스/수요"
-      ],
-      "hold_reasons": [
-        "주요 근거축 다수 누락"
-      ],
-      "original_confidence": 68,
-      "adjusted_confidence": 68,
-      "should_hold": false,
-      "recommended_status": "하방 가능성",
-      "recommended_direction": "down",
-      "memo": "주의 필요 · 누락근거: 가격, 수급/도축, 뉴스/수요 / 유보사유: 주요 근거축 다수 누락"
+      "memo": "주의 필요 · 누락근거: 가격, 수급/도축"
     },
     {
       "id": "DUCK",
@@ -100,8 +102,8 @@
       ],
       "missing_evidence": [],
       "hold_reasons": [],
-      "original_confidence": 84,
-      "adjusted_confidence": 74,
+      "original_confidence": 83,
+      "adjusted_confidence": 73,
       "should_hold": false,
       "recommended_status": "보합/혼조",
       "recommended_direction": "neutral",
@@ -110,20 +112,88 @@
     {
       "id": "OTHER",
       "name": "기타",
-      "has_conflict": false,
-      "conflict_severity": "none",
-      "conflict_axes": [],
+      "has_conflict": true,
+      "conflict_severity": "high",
+      "conflict_axes": [
+        "뉴스/수요"
+      ],
       "missing_evidence": [
         "가격",
         "정책/고시"
       ],
-      "hold_reasons": [],
+      "hold_reasons": [
+        "상·하방 근거 강충돌"
+      ],
       "original_confidence": 82,
-      "adjusted_confidence": 82,
-      "should_hold": false,
-      "recommended_status": "보합/혼조",
-      "recommended_direction": "neutral",
-      "memo": "주의 필요 · 누락근거: 가격, 정책/고시"
+      "adjusted_confidence": 64,
+      "should_hold": [
+        {
+          "axis": "news",
+          "label": "뉴스/수요",
+          "items": 21,
+          "has_conflict": true,
+          "severity": "high",
+          "dominant_direction": "up",
+          "weighted_direction": {
+            "up": 4.55,
+            "down": 4.1,
+            "neutral": 69.35
+          },
+          "conflict_ratio": 0.9,
+          "examples": {
+            "up": [
+              {
+                "title": "인천 동물생산업장 개 브루셀라병 검출에 따른 확산 방지조치 시행 - 농림축산식품부",
+                "source": "농림축산식품부",
+                "direction": "up",
+                "quality_score": 75,
+                "source_level": 5,
+                "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1tbTd1YUhmdXg5cUM3WTBDdkV2RlVYQ1JUemVPSUx3WGdLaXpDVjdPcktndmtobEpQc01BTnctMkpJdlA2c3p4VzdHMmJ0bmhRMTBCdm5GSDlKSGJGbUp1NDA5cVBIajg?oc=5"
+              }
+            ],
+            "down": [
+              {
+                "title": "양돈 농가 소독설비 설치 부담 완화 제도화 - 농림축산식품부",
+                "source": "농림축산식품부",
+                "direction": "down",
+                "quality_score": 75,
+                "source_level": 5,
+                "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE01Z2lweHdUU29QaGZ0bEFGZ2Q2bGJscmQ3NW5ielZvdW9nNS1hb2tlSXZpVEhfUi04WHAzUXFUWXdmVDM3M05GRnIxb0VVX0Y5Y0drNXBnenhWVWNkSWd5N0JwS0xBdmM?oc=5"
+              }
+            ],
+            "neutral": [
+              {
+                "title": "축산물품질평가원, ‘축산유통정보 다봄’ 기능 개선 논의 - 축산정보뉴스",
+                "source": "축산정보뉴스",
+                "direction": "neutral",
+                "quality_score": 75,
+                "source_level": 5,
+                "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5ORUxicHVQU2RPMkU2ZjgzYnM0XzNyaXE2ZV9GV2VtZUx1b2xSejFGRkNLaFdRS19EXzVlRHRLamU5eFNiTUIxMzZiNktlVnVOQnN3YUxFeTdHUnA4RGR3?oc=5"
+              },
+              {
+                "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
+                "source": "농업인신문",
+                "direction": "neutral",
+                "quality_score": 75,
+                "source_level": 5,
+                "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9LREJ2QWpsLU4xVnVxdWRCamFCcjZnZUMtNVAybHFXQWpaOW44Q2hMaUJDY3lYUU9vN0NIYWtlb1MzVnBxRXI3OTJzdng3dWEyZEdudngwVmsyUTBiQUpXVmJzZlRXelc4WkY5emhn?oc=5"
+              },
+              {
+                "title": "축산물품질평가원 축산물 소비 트렌드 인사이트 ’ 5 월호 발간 - ekape.or.kr",
+                "source": "ekape.or.kr",
+                "direction": "neutral",
+                "quality_score": 75,
+                "source_level": 5,
+                "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPZjlZX2VGWmlqOUlNelNBUGR4Yk42SExLYmVlSlZHTEJyY1l3ZXdLMHExRVowX2lfX3NBbkVfYXVkZzBXbkFMT21VSnRsQV9OZ2FjcTY4MzZsYTJHYWszMmE1TGpVSXZhT3pEN18tUVNPbzhDUk1PcGgzYm14blF4SjJIVV9oTENzRHBRNUtR?oc=5"
+              }
+            ]
+          },
+          "memo": "뉴스/수요 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
+        }
+      ],
+      "recommended_status": "판단 유보",
+      "recommended_direction": "hold",
+      "memo": "판단 유보 권장 · 충돌축: 뉴스/수요 / 누락근거: 가격, 정책/고시 / 유보사유: 상·하방 근거 강충돌"
     }
   ],
   "axis_reports": {
@@ -131,22 +201,22 @@
       {
         "axis": "price",
         "label": "가격",
-        "items": 4,
+        "items": 6,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "down",
         "weighted_direction": {
           "up": 0.0,
           "down": 12.31,
-          "neutral": 3.27
+          "neutral": 9.52
         },
         "conflict_ratio": 0.0,
         "examples": {
           "up": [],
           "down": [
             {
-              "title": "NS홈쇼핑 인수 홈플 익스프레스, 9일까지 한우 50% 할인 행사 - 네이트",
-              "source": "네이트",
+              "title": "NS홈쇼핑 인수 홈플 익스프레스, 9일까지 한우 50% 할인 행사 - news.nate.com",
+              "source": "news.nate.com",
               "direction": "down",
               "quality_score": 69,
               "source_level": 2,
@@ -171,12 +241,28 @@
           ],
           "neutral": [
             {
-              "title": "추석 앞둔 한우, 여전히 높은 가격 - 네이트",
-              "source": "네이트",
+              "title": "추석 앞둔 한우, 여전히 높은 가격 - news.nate.com",
+              "source": "news.nate.com",
               "direction": "neutral",
               "quality_score": 81,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1HRjZuSFhIYXBiSl9sY3FFeW1wUWM2TTRjb2VYcnJnbWI4Mlg0bUkwNXBhbkkySUJqSV9WcklWRXFIOXdJbTYyZy01MmhndzdGQkpN?oc=5"
+            },
+            {
+              "title": "\"한우 외식, 싼 가격에 즐겨요\" 한우협회, ‘알뜰한우판매점’ 280곳 선정 - 소셜타임스",
+              "source": "소셜타임스",
+              "direction": "neutral",
+              "quality_score": 77,
+              "source_level": 4,
+              "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE16NEZxamxsY3ZMWmZMbGwyZ0ZlRmFhckRVd1E3WHVzZ3hIVTc2YlZoeGRmNG1GV1ZsTnR1bXVCVUUteFB1dWY0SUs3cm9UeVhEOTEzUE5nanVoR3FCZlAxZmhVMFJLTW5teG9ieFoxdw?oc=5"
+            },
+            {
+              "title": "“한우고기를 합리적 가격에”…‘알뜰한우판매점’ 280곳 선정 - 농민신문",
+              "source": "농민신문",
+              "direction": "neutral",
+              "quality_score": 58,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE50ZjE1Vzk1UW5keEhWcFlYWDhnODN5NUtrNnEzeDhlMmg0bUtET0xCbHhSaC1OaEh0SVpPeTR5c1NwNklRWmpuaEFGblBMM3JRNWV4ZnRGeHpiUQ?oc=5"
             }
           ]
         },
@@ -185,12 +271,12 @@
       {
         "axis": "supply",
         "label": "수급/도축",
-        "items": 2,
+        "items": 1,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 7.88,
+          "up": 4.62,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -204,14 +290,6 @@
               "quality_score": 81,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1EaVd3bTAzaVhiTzFISkNCMjF3WWJUWWsxOXVNX3pZMXpsQkVobllsRVNNYmtLQUZoRE5PYnBsRHkwUlNYOUZrSHdaZjZPN2xkMnR5OTZpM2VWRE9kUlhsT25EdnBLYVBM?oc=5"
-            },
-            {
-              "title": "큰소도 송아지도 없다...엇박자 수급조절이 부른 한우 시장의 '극단적 불균형' - 팜인사이트",
-              "source": "팜인사이트",
-              "direction": "up",
-              "quality_score": 58,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE84cFdPQ09GeGdWWExTX3R5YTdldEpISmMyc25CUi1iWWIyM1VoYjcxOVd4WlFVSVc1YkpKM3BWWUVsQ3RPNXpWamYwU1RpTGkzWmpwU25MQUMtVUNlaXdJUDhabW1Md3pQTG5CMWd3?oc=5"
             }
           ],
           "down": [],
@@ -294,7 +372,7 @@
         "weighted_direction": {
           "up": 3.85,
           "down": 0.0,
-          "neutral": 57.14
+          "neutral": 57.63
         },
         "conflict_ratio": 0.0,
         "examples": {
@@ -343,29 +421,20 @@
       {
         "axis": "price",
         "label": "가격",
-        "items": 1,
+        "items": 0,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "neutral",
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 2.81
+          "neutral": 0.0
         },
         "conflict_ratio": 0,
         "examples": {
           "up": [],
           "down": [],
-          "neutral": [
-            {
-              "title": "[전광판] '26년 34주차 돼지 평균 도매가격 6,351원(전주 대비 0.3%, 전년 대비 -3.7%) - 돼지와사람",
-              "source": "돼지와사람",
-              "direction": "neutral",
-              "quality_score": 58,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1jRWM3SElnMVVDNXJUdmZIdVFxanJ1WExGaWx5OTZQUzk1cWJFRlpMNmdkSXBnVS1aZV9PZVZacXRkdElzM1RHWnNTS2JCQ21scE84YTRvWWplOWE1T3NGSnpxRW8?oc=5"
-            }
-          ]
+          "neutral": []
         },
         "memo": "가격 축은 중립 또는 보조 근거 중심"
       },
@@ -392,12 +461,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 11,
+        "items": 12,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 51.64,
+          "up": 56.64,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -457,29 +526,20 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 1,
+        "items": 0,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "neutral",
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 2.95
+          "neutral": 0.0
         },
         "conflict_ratio": 0,
         "examples": {
           "up": [],
           "down": [],
-          "neutral": [
-            {
-              "title": "갈 곳 잃은 스페인산 돈육 국내 공습… 한돈 원료육 시장 ‘직격탄’ - 팜인사이트",
-              "source": "팜인사이트",
-              "direction": "neutral",
-              "quality_score": 65,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE50SkVOTjNzeUZuWEdhZGFKbXJrVjloclpkUzlLdmRBZ2QySno4Y0o3LTdHcUN3Nmw3dUQ3N0tCakUtRG5BV04zLUw5bmFSWU1OWDNrSWxXdDNPeFR0dk5idi10bGhwWUZLM3RQa0F3?oc=5"
-            }
-          ]
+          "neutral": []
         },
         "memo": "뉴스/수요 축은 중립 또는 보조 근거 중심"
       }
@@ -528,18 +588,26 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 8,
+        "items": 9,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 36.14,
+          "up": 40.76,
           "down": 0.0,
           "neutral": 0.0
         },
         "conflict_ratio": 0.0,
         "examples": {
           "up": [
+            {
+              "title": "겨울철 조류인플루엔자 대비…야생동물 방역 대응력 강화 - snakorea.com",
+              "source": "snakorea.com",
+              "direction": "up",
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBUUnIzbnkxWUx6ejJiemhOZ29lVlNTUHVVUDhHa0UtMnd4SFZpS1NjNnFNX2Z4QjM1X1F1VThHWWR0WFpnc29aRWhKVTVCSVhDLXlYVXRBUjEzUFUzWVlwRmJiYUhEVGxIVTZV?oc=5"
+            },
             {
               "title": "무안 육용오리농장서 조류인플루엔자 항원 검출…방역 강화 - 매일경제 마켓",
               "source": "매일경제 마켓",
@@ -555,14 +623,6 @@
               "quality_score": 71,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQZUtPUFNpV3JxbEdvdkpJRmY1bGtHNl9fVFdBNDhxMmlVU2FndnlTTmZvTVBjcEpSS3VBNGVQM1dRR05HRDVnSDlEUDdlU1R0T0NvMlhsQXk3azZFRmVOUXFPaTV3QVJlcGNDN0pwRjdtMFFnNEpvWmJ6QzJuSHA3Slg4WFloQ1k3c0xz?oc=5"
-            },
-            {
-              "title": "알림소식 > 보도자료 > 6월 1일자로 고병원성 조류인플루엔자(AI) 평시 방역체계로 전환하여 상시 방역활동 추진 - mafra.go.kr",
-              "source": "mafra.go.kr",
-              "direction": "up",
-              "quality_score": 75,
-              "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQekF6emV1b3Zrdnd1ODVMdmhYcWEwWVBremo2Y2h2bE5xUnl2dVdJelMxYmgtZXNycXRfY0NTYjhWSVN5b0tyTUx1Vzk4dk0tRml5R1BHQ0dlNkdrckZaOU1IOHU0LU9DMEF0UFJCLVNaRHJmaHM3QkxLMTNGZ05WUTRidTZzbXpkVk1zY3Y5cXp4d3JueS05MTFyandLSW16YlVhTjUtVEgxX21DZlJ2aGh3RDVRR0czeHZXTFAyR3Z4RkdkVVNqcQ?oc=5"
             }
           ],
           "down": [],
@@ -602,20 +662,29 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 0,
+        "items": 1,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "neutral",
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 0.0
+          "neutral": 2.67
         },
         "conflict_ratio": 0,
         "examples": {
           "up": [],
           "down": [],
-          "neutral": []
+          "neutral": [
+            {
+              "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - 더스쿠프",
+              "source": "더스쿠프",
+              "direction": "neutral",
+              "quality_score": 51,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9zLWJuZkd6RHh0X19CTWtzbUNOVWJ1QmR6VWNHZGJ2Z3h2bVNGWU1wOVpPZ01YMHpwMDNZc2lfWDdvUFJuYXAxUE1uRGlva28tMmNLcVhVQ3JiR0xzM1g5R1BtbEQxNmZ6dkk2RWF3?oc=5"
+            }
+          ]
         },
         "memo": "뉴스/수요 축은 중립 또는 보조 근거 중심"
       }
@@ -743,21 +812,21 @@
       {
         "axis": "price",
         "label": "가격",
-        "items": 13,
+        "items": 14,
         "has_conflict": true,
         "severity": "medium",
         "dominant_direction": "down",
         "weighted_direction": {
-          "up": 11.11,
-          "down": 25.0,
+          "up": 14.18,
+          "down": 24.5,
           "neutral": 11.36
         },
-        "conflict_ratio": 0.44,
+        "conflict_ratio": 0.58,
         "examples": {
           "up": [
             {
-              "title": "중국 계란 가격 상승, 3 년 만에 최고치를 기록 - sunsirs.com",
-              "source": "sunsirs.com",
+              "title": "중국 계란 가격 상승, 3 년 만에 최고치를 기록 - Sunsirs",
+              "source": "Sunsirs",
               "direction": "up",
               "quality_score": 71,
               "source_level": 3,
@@ -772,12 +841,12 @@
               "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE4wSEg3dGxsdXRDSXY2RUIzSkZLRFJXSS1JSUloTTdQZ1dZNFJLMUY5OGNBbDRXVDNnOWdKcVFyQzA2empTMU51VzFPZ1IyUjA?oc=5"
             },
             {
-              "title": "소비자단체협 \"2분기 계란 가격 15.8% 상승…간장·된장도 올라\" - 연합뉴스",
-              "source": "연합뉴스",
+              "title": "한 판에 만원 넘는다…계란값 상승 언제까지 ? - 인천일보",
+              "source": "인천일보",
               "direction": "up",
-              "quality_score": 51,
+              "quality_score": 26,
               "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5uT3NQTDdVU0JPV25aREpQbFhfVjBkM1QyNTBUcEVMWUh1djZCRjRWNllfT0pqMWpIWHB2UjBNMF9fUjczM0pVSm1weFFFbU4zQWRCeEZiNG5XQlXSAWBBVV95cUxQZDdRQlRwV24tSVhoNUl0dTJaWTMzdnVJcl9IQ29ZSDc3Qlpjd21BQUhUVnRiYVFsRjFwRlVybzVQdS1ZcDE4Ui13bm93MlZoS1VaRXpra1N6YXB6OUJua1c?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE16VjNRaGxwWldVU0M0cjNhWTlIWDlVTXYyRnI5Y1NaWVdheDh4SHdTZEc0SjZHNVpxQ195NEs5ZHNxUWZSSnZsSkhVMWhuenNPRnh4bjdSOVdQemZ2Y0NBUGhaQXZGZ2NWdWFMd184c0U?oc=5"
             }
           ],
           "down": [
@@ -803,7 +872,7 @@
               "direction": "down",
               "quality_score": 71,
               "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE9teTdlM1ZOcDJJLTVud2txZy14V3IwbHViV3ZhNmVfQVRibE14eGFJUV8wSU1XUWpBN1IyWjJMRmxGVzJJX2c?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5jN2d0ZkdnS2FCaEFxMW94aFlmcHZSclFWNDlPMWRiZ2lNRkVIRThHZ0c3bk5kUkJrUGJFOC1fdUNWR3ZKYThpSVJMamhWVFg0VGVMSA?oc=5"
             }
           ],
           "neutral": [
@@ -905,8 +974,8 @@
         "examples": {
           "up": [
             {
-              "title": "경기 김포 산란계 농장에 대한 예찰 검사에서 H5형 조류인플루엔자 항원 확인 - mafra.go.kr",
-              "source": "mafra.go.kr",
+              "title": "경기 김포 산란계 농장에 대한 예찰 검사에서 H5형 조류인플루엔자 항원 확인 - 농림축산식품부",
+              "source": "농림축산식품부",
               "direction": "up",
               "quality_score": 75,
               "source_level": 5,
@@ -956,8 +1025,8 @@
         "dominant_direction": "down",
         "weighted_direction": {
           "up": 0.0,
-          "down": 10.56,
-          "neutral": 6.08
+          "down": 7.04,
+          "neutral": 8.75
         },
         "conflict_ratio": 0.0,
         "examples": {
@@ -978,14 +1047,6 @@
               "quality_score": 71,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE9CZnk1YlpPb0hMdEZVejFrbEo1dXBsVldKLTdoRC1LLUh5MkFfYmZsUV8zMHVJbmlxd0xYQ2htbUs2MkxwXzRWTi1uOA?oc=5"
-            },
-            {
-              "title": "계란값 안정 전망에도 체감은 아직…3분기 들어 작년보다 6.5%↑ - 연합뉴스",
-              "source": "연합뉴스",
-              "direction": "down",
-              "quality_score": 71,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5TOWNjNXZxODRNRDN1NTg5UnNqMFkxa2gwVVJENklZNExrVEJFcXA5VVhDZGpUYm5yOVltVnR0cWU3MmFOb2lLTURBSURuNFNMTXZhVDdDNGFwNmfSAWBBVV95cUxQeVVUak1VQnZ5cTdDbXd0MUVnOGhmOGdkQ2RPaXVCbXZvZ2VxNGdoZVpVRmhkcEUzTTZxX2c0V2xrSTJLV1N4UDRIWG9KSk5jUDE0OVBaNjBhaTVWdUlud2s?oc=5"
             }
           ],
           "neutral": [
@@ -1004,6 +1065,14 @@
               "quality_score": 58,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5jNzAwYlRrN291X0liLTB5WDJNQTFXSzVZOVdwYjhzUWtlYVNzY0ZJdlUwd1ByY0p1d3ozVnM4VVFwMDlWeUw5eVdXM3d2UXc?oc=5"
+            },
+            {
+              "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - 더스쿠프",
+              "source": "더스쿠프",
+              "direction": "neutral",
+              "quality_score": 51,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9zLWJuZkd6RHh0X19CTWtzbUNOVWJ1QmR6VWNHZGJ2Z3h2bVNGWU1wOVpPZ01YMHpwMDNZc2lfWDdvUFJuYXAxUE1uRGlva28tMmNLcVhVQ3JiR0xzM1g5R1BtbEQxNmZ6dkk2RWF3?oc=5"
             }
           ]
         },
@@ -1071,12 +1140,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 5,
+        "items": 10,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 22.44,
+          "up": 46.94,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -1136,19 +1205,37 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 10,
-        "has_conflict": false,
-        "severity": "none",
-        "dominant_direction": "neutral",
+        "items": 21,
+        "has_conflict": true,
+        "severity": "high",
+        "dominant_direction": "up",
         "weighted_direction": {
-          "up": 0.0,
-          "down": 0.0,
-          "neutral": 36.5
+          "up": 4.55,
+          "down": 4.1,
+          "neutral": 69.35
         },
-        "conflict_ratio": 0,
+        "conflict_ratio": 0.9,
         "examples": {
-          "up": [],
-          "down": [],
+          "up": [
+            {
+              "title": "인천 동물생산업장 개 브루셀라병 검출에 따른 확산 방지조치 시행 - 농림축산식품부",
+              "source": "농림축산식품부",
+              "direction": "up",
+              "quality_score": 75,
+              "source_level": 5,
+              "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1tbTd1YUhmdXg5cUM3WTBDdkV2RlVYQ1JUemVPSUx3WGdLaXpDVjdPcktndmtobEpQc01BTnctMkpJdlA2c3p4VzdHMmJ0bmhRMTBCdm5GSDlKSGJGbUp1NDA5cVBIajg?oc=5"
+            }
+          ],
+          "down": [
+            {
+              "title": "양돈 농가 소독설비 설치 부담 완화 제도화 - 농림축산식품부",
+              "source": "농림축산식품부",
+              "direction": "down",
+              "quality_score": 75,
+              "source_level": 5,
+              "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE01Z2lweHdUU29QaGZ0bEFGZ2Q2bGJscmQ3NW5ielZvdW9nNS1hb2tlSXZpVEhfUi04WHAzUXFUWXdmVDM3M05GRnIxb0VVX0Y5Y0drNXBnenhWVWNkSWd5N0JwS0xBdmM?oc=5"
+            }
+          ],
           "neutral": [
             {
               "title": "축산물품질평가원, ‘축산유통정보 다봄’ 기능 개선 논의 - 축산정보뉴스",
@@ -1159,24 +1246,24 @@
               "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5ORUxicHVQU2RPMkU2ZjgzYnM0XzNyaXE2ZV9GV2VtZUx1b2xSejFGRkNLaFdRS19EXzVlRHRLamU5eFNiTUIxMzZiNktlVnVOQnN3YUxFeTdHUnA4RGR3?oc=5"
             },
             {
-              "title": "축산물품질평가원 축산물 소비 트렌드 인사이트 ’ 5 월호 발간 - 축산물품질평가원",
-              "source": "축산물품질평가원",
+              "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
+              "source": "농업인신문",
+              "direction": "neutral",
+              "quality_score": 75,
+              "source_level": 5,
+              "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9LREJ2QWpsLU4xVnVxdWRCamFCcjZnZUMtNVAybHFXQWpaOW44Q2hMaUJDY3lYUU9vN0NIYWtlb1MzVnBxRXI3OTJzdng3dWEyZEdudngwVmsyUTBiQUpXVmJzZlRXelc4WkY5emhn?oc=5"
+            },
+            {
+              "title": "축산물품질평가원 축산물 소비 트렌드 인사이트 ’ 5 월호 발간 - ekape.or.kr",
+              "source": "ekape.or.kr",
               "direction": "neutral",
               "quality_score": 75,
               "source_level": 5,
               "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPZjlZX2VGWmlqOUlNelNBUGR4Yk42SExLYmVlSlZHTEJyY1l3ZXdLMHExRVowX2lfX3NBbkVfYXVkZzBXbkFMT21VSnRsQV9OZ2FjcTY4MzZsYTJHYWszMmE1TGpVSXZhT3pEN18tUVNPbzhDUk1PcGgzYm14blF4SjJIVV9oTENzRHBRNUtR?oc=5"
-            },
-            {
-              "title": "농림축산식품부 - - mafra.go.kr",
-              "source": "mafra.go.kr",
-              "direction": "neutral",
-              "quality_score": 75,
-              "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1jeXl3alQyb3lFNEdYLU01UDVwbXRCUHVjQnhTZlBoZENQRHo3RlB6SUpKejVuYkR3eFlfNDhIYURYMG5fN213b1J4Nk1HRFQwei04VDBfM2UyR1FxallDQWR0bVd6RjlQWUx4aDc3Z0tVWWUwY1pGdmdYR0N4dWs?oc=5"
             }
           ]
         },
-        "memo": "뉴스/수요 축은 중립 또는 보조 근거 중심"
+        "memo": "뉴스/수요 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
       }
     ]
   }
