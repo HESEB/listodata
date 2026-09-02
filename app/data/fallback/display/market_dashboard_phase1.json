@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-09-01T18:35:59Z",
+  "updated_at": "2026-09-01T21:50:09Z",
   "notice": "Phase 2 Display Layer 초안입니다. 기존 market_dashboard.json은 별도로 유지됩니다.",
   "species": [
     {
       "id": "BEEF",
       "name": "한우",
-      "signal_score": 61,
-      "direction": "up",
-      "status": "상방 가능성",
+      "signal_score": 48,
+      "direction": "neutral",
+      "status": "보합/혼조",
       "quality_score": 71,
       "confidence_score": 70,
       "coverage_rate": 100,
       "evidence_count": 30,
       "official_count": 1,
       "direction_counts": {
-        "up": 5,
+        "up": 4,
         "down": 2,
-        "neutral": 23,
+        "neutral": 24,
         "hold": 0
       },
       "coverage_types": [
@@ -24,13 +24,12 @@
         "수급/도축",
         "수요/행사",
         "일반",
-        "정책/고시",
-        "질병/방역"
+        "정책/고시"
       ],
       "score_breakdown": {
         "price": 12,
         "supply": 19,
-        "disease": 13,
+        "disease": 0,
         "policy": 5,
         "news": 12
       },
@@ -64,7 +63,7 @@
               "quality_score": 100
             },
             {
-              "title": "\"한우 외식, 싼 가격에 즐겨요\" 한우협회, ‘알뜰한우판매점’ 280곳 선정 - 소셜타임스",
+              "title": "\"한우 외식, 싼 가격에 즐겨요\" 한우협회, ‘알뜰한우판매점’ 280곳 선정 - esocialtimes.com",
               "direction": "neutral",
               "source_level": 4,
               "quality_score": 77
@@ -81,7 +80,7 @@
           "neutral": 0,
           "examples": [
             {
-              "title": "한우 공급 감소, 도매가격 ‘강세’ 지지 - 축산신문",
+              "title": "한우 공급 감소, 도매가격 ‘강세’ 지지 - chuksannews.co.kr",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
@@ -103,28 +102,21 @@
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
-          "score": 13,
-          "items": 1,
-          "up": 1,
+          "score": 0,
+          "items": 0,
+          "up": 0,
           "down": 0,
           "neutral": 0,
-          "examples": [
-            {
-              "title": "진안 한우농가 150여명 한자리…위기 극복·경쟁력 강화 다짐 - jeollailbo.com",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 81
-            }
-          ]
+          "examples": []
         },
         "policy": {
           "label": "정책/고시",
           "max_score": 10,
           "score": 5,
-          "items": 3,
+          "items": 2,
           "up": 0,
           "down": 0,
-          "neutral": 3,
+          "neutral": 2,
           "examples": [
             {
               "title": "\"한우는커녕 수입산도 어렵다\"…추석 앞두고 소고기 고공행진 - 아시아경제",
@@ -133,16 +125,10 @@
               "quality_score": 81
             },
             {
-              "title": "시행된 한우법, 농가 체감할 후속 대책 시급 - 축산신문",
+              "title": "시행된 한우법, 농가 체감할 후속 대책 시급 - chuksannews.co.kr",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 71
-            },
-            {
-              "title": "“볏짚 환원 지원, 한우농가 조사료난 부추길라” - 축산신문",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 65
             }
           ]
         },
@@ -150,11 +136,17 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 12,
-          "items": 18,
+          "items": 20,
           "up": 1,
           "down": 0,
-          "neutral": 17,
+          "neutral": 19,
           "examples": [
+            {
+              "title": "추석 3주 앞두고 밥상물가 비상…시금치 183%·상추 78%·한우 17%↑ - v.daum.net",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 81
+            },
             {
               "title": "진안군 한우농가 150명 한자리에…만삭우·송아지 사양관리 교육 - onulnews.com",
               "direction": "neutral",
@@ -162,13 +154,7 @@
               "quality_score": 81
             },
             {
-              "title": "진안군 한우농가 한자리에...한우산업 재도약 다짐 - 무진장인터넷뉴스",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 81
-            },
-            {
-              "title": "사료비 오르고 한우값은 출렁…진안 한우농가 150명 ‘생산비·품질 경쟁력’ 해법 찾았다 - 더펜뉴스",
+              "title": "진안군 한우농가 한자리에...한우산업 재도약 다짐 - mjjnews.net",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 81
@@ -176,24 +162,24 @@
           ]
         }
       },
-      "reason": "수급/도축 19점 + 질병/방역 13점 + 가격 12점 기반, 상방성 자료가 우세",
+      "reason": "수급/도축 19점 + 가격 12점 + 뉴스/수요 12점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
       "id": "PORK",
       "name": "돈육",
-      "signal_score": 34,
+      "signal_score": 33,
       "direction": "down",
       "status": "하방 가능성",
-      "quality_score": 72,
-      "confidence_score": 73,
+      "quality_score": 73,
+      "confidence_score": 74,
       "coverage_rate": 60,
-      "evidence_count": 16,
+      "evidence_count": 15,
       "official_count": 10,
       "direction_counts": {
         "up": 13,
         "down": 0,
-        "neutral": 3,
+        "neutral": 2,
         "hold": 0
       },
       "coverage_types": [
@@ -206,7 +192,7 @@
         "supply": 0,
         "disease": 19,
         "policy": 0,
-        "news": 6
+        "news": 5
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -259,13 +245,13 @@
               "quality_score": 76
             },
             {
-              "title": "충남도, ASF·AI·구제역 대비 가축방역 대응체계 점검 - 농수축산신문",
+              "title": "충남도, ASF·AI·구제역 대비 가축방역 대응체계 점검 - aflnews.co.kr",
               "direction": "up",
               "source_level": 3,
               "quality_score": 71
             },
             {
-              "title": "구제역 위기 경보 하향 조정... 평시 방역 체계로 전환 - 한돈뉴스",
+              "title": "구제역 위기 경보 하향 조정... 평시 방역 체계로 전환 - pignpork.com",
               "direction": "up",
               "source_level": 3,
               "quality_score": 71
@@ -285,18 +271,12 @@
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 6,
-          "items": 2,
+          "score": 5,
+          "items": 1,
           "up": 0,
           "down": 0,
-          "neutral": 2,
+          "neutral": 1,
           "examples": [
-            {
-              "title": "[유통 혁신으로 여는 농업 경쟁력]④ 싱가포르 매장 오른 제주 한우·한돈…현지 유통망 넓힌다 - 전자신문",
-              "direction": "neutral",
-              "source_level": 2,
-              "quality_score": 59
-            },
             {
               "title": "갈 곳 잃은 스페인산 돈육 국내 공습… 한돈 원료육 시장 ‘직격탄’ - 팜인사이트",
               "direction": "neutral",
@@ -306,7 +286,7 @@
           ]
         }
       },
-      "reason": "질병/방역 19점 + 가격 9점 + 뉴스/수요 6점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 가격 9점 + 뉴스/수요 5점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
@@ -541,14 +521,14 @@
       "signal_score": 56,
       "direction": "neutral",
       "status": "보합/혼조",
-      "quality_score": 72,
-      "confidence_score": 79,
+      "quality_score": 70,
+      "confidence_score": 78,
       "coverage_rate": 100,
       "evidence_count": 32,
       "official_count": 4,
       "direction_counts": {
-        "up": 6,
-        "down": 12,
+        "up": 7,
+        "down": 11,
         "neutral": 14,
         "hold": 0
       },
@@ -594,7 +574,7 @@
               "title": "계란값, 하반기 생산량 회복에 하락 전망… 소비자들 체감은 '아직' - 금강일보",
               "direction": "down",
               "source_level": 3,
-              "quality_score": 81
+              "quality_score": 76
             },
             {
               "title": "\"생산량 증가로 계란값 하반기 안정\"…체감 가격은 여전 - v.daum.net",
@@ -608,8 +588,8 @@
           "label": "수급/도축",
           "max_score": 25,
           "score": 21,
-          "items": 5,
-          "up": 4,
+          "items": 6,
+          "up": 5,
           "down": 1,
           "neutral": 0,
           "examples": [
@@ -620,7 +600,7 @@
               "quality_score": 71
             },
             {
-              "title": "계란 수급 여건 개선에도 수입 추진…농가 ‘부글부글 - 축산신문",
+              "title": "계란 수급 여건 개선에도 수입 추진…농가 ‘부글부글 - chuksannews.co.kr",
               "direction": "up",
               "source_level": 3,
               "quality_score": 71
@@ -671,9 +651,9 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 6,
-          "items": 16,
+          "items": 15,
           "up": 0,
-          "down": 6,
+          "down": 5,
           "neutral": 10,
           "examples": [
             {
@@ -683,13 +663,13 @@
               "quality_score": 81
             },
             {
-              "title": "\"사려니 부담되네\"…계란값이 떨어지지 않는 3가지 이유 - withbuyer.com",
+              "title": "\"사려니 부담되네\"…계란값이 떨어지지 않는 3가지 이유 - 더바이어",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 81
             },
             {
-              "title": "계란값 안정 전망에도 소비자 체감 아직…3분기 작년보다 6.5%↑ - news.nate.com",
+              "title": "계란값 안정 전망에도 소비자 체감 아직…3분기 작년보다 6.5%↑ - 네이트",
               "direction": "down",
               "source_level": 3,
               "quality_score": 71
@@ -709,12 +689,12 @@
       "quality_score": 76,
       "confidence_score": 82,
       "coverage_rate": 80,
-      "evidence_count": 32,
-      "official_count": 29,
+      "evidence_count": 33,
+      "official_count": 30,
       "direction_counts": {
-        "up": 14,
+        "up": 13,
         "down": 1,
-        "neutral": 17,
+        "neutral": 19,
         "hold": 0
       },
       "coverage_types": [
@@ -758,7 +738,7 @@
           "neutral": 0,
           "examples": [
             {
-              "title": "박정훈 식량정책실장, 추석 맞이 축산물 수급 현장 점검 - 농수축산신문",
+              "title": "박정훈 식량정책실장, 추석 맞이 축산물 수급 현장 점검 - aflnews.co.kr",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
@@ -769,8 +749,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 12,
-          "up": 12,
+          "items": 11,
+          "up": 11,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -808,25 +788,25 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 9,
-          "items": 19,
+          "items": 21,
           "up": 1,
           "down": 1,
-          "neutral": 17,
+          "neutral": 19,
           "examples": [
             {
-              "title": "축산물품질평가원, ‘축산유통정보 다봄’ 기능 개선 논의 - liveinfo.kr",
+              "title": "축산물품질평가원, ‘축산유통정보 다봄’ 기능 개선 논의 - 축산정보뉴스",
+              "direction": "neutral",
+              "source_level": 5,
+              "quality_score": 75
+            },
+            {
+              "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
               "direction": "neutral",
               "source_level": 5,
               "quality_score": 75
             },
             {
               "title": "축산물품질평가원 축산물 소비 트렌드 인사이트 ’ 5 월호 발간 - 축산물품질평가원",
-              "direction": "neutral",
-              "source_level": 5,
-              "quality_score": 75
-            },
-            {
-              "title": "농림축산식품부 - - 농림축산식품부",
               "direction": "neutral",
               "source_level": 5,
               "quality_score": 75
