@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-02T18:46:09Z",
+  "updated_at": "2026-09-02T21:52:09Z",
   "policy": "phase2_history_prediction_v1",
   "items": [
     {
@@ -7,7 +7,7 @@
       "name": "한우",
       "latest": {
         "date": "2026-09-02",
-        "timestamp": "2026-09-02T18:46:09Z",
+        "timestamp": "2026-09-02T21:52:09Z",
         "species": "BEEF",
         "name": "한우",
         "signal_score": 47,
@@ -16,7 +16,7 @@
         "confidence_score": 72,
         "coverage_rate": 100,
         "quality_score": 76,
-        "evidence_count": 28,
+        "evidence_count": 29,
         "official_count": 1,
         "score_breakdown": {
           "price": 12,
@@ -28,7 +28,7 @@
         "conflict_severity": "none",
         "has_conflict": false,
         "hold_reasons": [],
-        "reason": "수급/도축 17점 + 뉴스/수요 13점 + 가격 12점 기반, 상·하방 자료가 혼재"
+        "reason": "수급/도축 17점 + 뉴스/수요 13점 + 가격 12점 기반, 하방성 자료가 우세"
       },
       "windows": {
         "7d": {
@@ -81,65 +81,142 @@
       "name": "돈육",
       "latest": {
         "date": "2026-09-02",
-        "timestamp": "2026-09-02T18:46:09Z",
+        "timestamp": "2026-09-02T21:52:09Z",
         "species": "PORK",
         "name": "돈육",
-        "signal_score": 33,
-        "direction": "down",
-        "status": "하방 가능성",
-        "confidence_score": 74,
-        "coverage_rate": 60,
-        "quality_score": 74,
-        "evidence_count": 13,
-        "official_count": 9,
+        "signal_score": 19,
+        "direction": "hold",
+        "status": "판단 유보",
+        "confidence_score": 61,
+        "coverage_rate": 20,
+        "quality_score": 76,
+        "evidence_count": 12,
+        "official_count": 10,
         "score_breakdown": {
-          "price": 9,
+          "price": 0,
           "supply": 0,
           "disease": 19,
           "policy": 0,
-          "news": 5
+          "news": 0
         },
-        "conflict_severity": "none",
+        "conflict_severity": "low",
         "has_conflict": false,
-        "hold_reasons": [],
-        "reason": "질병/방역 19점 + 가격 9점 + 뉴스/수요 5점 기반, 상방성 자료가 우세"
+        "hold_reasons": [
+          "커버리지 부족",
+          "주요 근거축 다수 누락"
+        ],
+        "reason": "질병/방역 19점 기반, 상방성 자료가 우세"
       },
       "windows": {
         "7d": {
           "window_days": 7,
           "status": "falling",
           "direction": "down",
-          "change": -16,
-          "average_signal": 41.4,
-          "confidence": 80.6,
+          "change": -30,
+          "average_signal": 39.4,
+          "confidence": 78.7,
           "start_score": 49,
-          "end_score": 33,
+          "end_score": 19,
           "sample_days": 7,
-          "memo": "7일 구간 신호 -16.0점 하락"
+          "memo": "7일 구간 신호 -30.0점 하락"
         },
         "14d": {
           "window_days": 14,
           "status": "falling",
           "direction": "down",
-          "change": -11,
-          "average_signal": 42.6,
-          "confidence": 80.5,
+          "change": -25,
+          "average_signal": 41.6,
+          "confidence": 79.6,
           "start_score": 44,
-          "end_score": 33,
+          "end_score": 19,
           "sample_days": 14,
-          "memo": "14일 구간 신호 -11.0점 하락"
+          "memo": "14일 구간 신호 -25.0점 하락"
         },
         "30d": {
           "window_days": 30,
           "status": "falling",
           "direction": "down",
-          "change": -17,
-          "average_signal": 43.0,
-          "confidence": 79.3,
+          "change": -31,
+          "average_signal": 42.6,
+          "confidence": 78.8,
           "start_score": 50,
-          "end_score": 33,
+          "end_score": 19,
           "sample_days": 30,
-          "memo": "30일 구간 신호 -17.0점 하락"
+          "memo": "30일 구간 신호 -31.0점 하락"
+        }
+      },
+      "prediction": {
+        "label": "판단 유보",
+        "memo": "현재 신뢰도 또는 근거 부족",
+        "confidence": 61,
+        "horizon": "7/14/30일 참고 방향성",
+        "disclaimer": "가격 예측이 아니라 수집 근거 신호의 방향성 참고값입니다."
+      }
+    },
+    {
+      "id": "POULTRY",
+      "name": "계육",
+      "latest": {
+        "date": "2026-09-02",
+        "timestamp": "2026-09-02T21:52:09Z",
+        "species": "POULTRY",
+        "name": "계육",
+        "signal_score": 28,
+        "direction": "down",
+        "status": "하방 가능성",
+        "confidence_score": 74,
+        "coverage_rate": 60,
+        "quality_score": 74,
+        "evidence_count": 11,
+        "official_count": 7,
+        "score_breakdown": {
+          "price": 0,
+          "supply": 0,
+          "disease": 19,
+          "policy": 5,
+          "news": 4
+        },
+        "conflict_severity": "none",
+        "has_conflict": false,
+        "hold_reasons": [],
+        "reason": "질병/방역 19점 + 정책/고시 5점 + 뉴스/수요 4점 기반, 상방성 자료가 우세"
+      },
+      "windows": {
+        "7d": {
+          "window_days": 7,
+          "status": "sideways",
+          "direction": "neutral",
+          "change": -2,
+          "average_signal": 32.3,
+          "confidence": 74.3,
+          "start_score": 30,
+          "end_score": 28,
+          "sample_days": 7,
+          "memo": "7일 구간 신호 변화 제한적"
+        },
+        "14d": {
+          "window_days": 14,
+          "status": "sideways",
+          "direction": "neutral",
+          "change": -6,
+          "average_signal": 31.6,
+          "confidence": 72.1,
+          "start_score": 34,
+          "end_score": 28,
+          "sample_days": 14,
+          "memo": "14일 구간 신호 변화 제한적"
+        },
+        "30d": {
+          "window_days": 30,
+          "status": "falling",
+          "direction": "down",
+          "change": -9,
+          "average_signal": 35.6,
+          "confidence": 73.1,
+          "start_score": 37,
+          "end_score": 28,
+          "sample_days": 30,
+          "memo": "30일 구간 신호 -9.0점 하락"
         }
       },
       "prediction": {
@@ -151,87 +228,11 @@
       }
     },
     {
-      "id": "POULTRY",
-      "name": "계육",
-      "latest": {
-        "date": "2026-09-02",
-        "timestamp": "2026-09-02T18:46:09Z",
-        "species": "POULTRY",
-        "name": "계육",
-        "signal_score": 23,
-        "direction": "down",
-        "status": "하방 가능성",
-        "confidence_score": 68,
-        "coverage_rate": 40,
-        "quality_score": 76,
-        "evidence_count": 9,
-        "official_count": 7,
-        "score_breakdown": {
-          "price": 0,
-          "supply": 0,
-          "disease": 18,
-          "policy": 5,
-          "news": 0
-        },
-        "conflict_severity": "low",
-        "has_conflict": false,
-        "hold_reasons": [
-          "주요 근거축 다수 누락"
-        ],
-        "reason": "질병/방역 18점 + 정책/고시 5점 기반, 상방성 자료가 우세"
-      },
-      "windows": {
-        "7d": {
-          "window_days": 7,
-          "status": "sideways",
-          "direction": "neutral",
-          "change": -7,
-          "average_signal": 31.6,
-          "confidence": 73.4,
-          "start_score": 30,
-          "end_score": 23,
-          "sample_days": 7,
-          "memo": "7일 구간 신호 변화 제한적"
-        },
-        "14d": {
-          "window_days": 14,
-          "status": "falling",
-          "direction": "down",
-          "change": -11,
-          "average_signal": 31.3,
-          "confidence": 71.7,
-          "start_score": 34,
-          "end_score": 23,
-          "sample_days": 14,
-          "memo": "14일 구간 신호 -11.0점 하락"
-        },
-        "30d": {
-          "window_days": 30,
-          "status": "falling",
-          "direction": "down",
-          "change": -14,
-          "average_signal": 35.4,
-          "confidence": 72.9,
-          "start_score": 37,
-          "end_score": 23,
-          "sample_days": 30,
-          "memo": "30일 구간 신호 -14.0점 하락"
-        }
-      },
-      "prediction": {
-        "label": "하방 가능성",
-        "memo": "최근 신호와 현재 방향성이 하방으로 정렬",
-        "confidence": 68,
-        "horizon": "7/14/30일 참고 방향성",
-        "disclaimer": "가격 예측이 아니라 수집 근거 신호의 방향성 참고값입니다."
-      }
-    },
-    {
       "id": "DUCK",
       "name": "오리",
       "latest": {
         "date": "2026-09-02",
-        "timestamp": "2026-09-02T18:46:09Z",
+        "timestamp": "2026-09-02T21:52:09Z",
         "species": "DUCK",
         "name": "오리",
         "signal_score": 14,
@@ -310,39 +311,39 @@
       "name": "계란",
       "latest": {
         "date": "2026-09-02",
-        "timestamp": "2026-09-02T18:46:09Z",
+        "timestamp": "2026-09-02T21:52:09Z",
         "species": "EGG",
         "name": "계란",
-        "signal_score": 55,
+        "signal_score": 54,
         "direction": "neutral",
         "status": "보합/혼조",
-        "confidence_score": 84,
+        "confidence_score": 83,
         "coverage_rate": 100,
-        "quality_score": 70,
-        "evidence_count": 26,
+        "quality_score": 66,
+        "evidence_count": 27,
         "official_count": 6,
         "score_breakdown": {
           "price": 11,
           "supply": 21,
           "disease": 12,
           "policy": 5,
-          "news": 6
+          "news": 5
         },
         "conflict_severity": "medium",
         "has_conflict": true,
         "hold_reasons": [],
-        "reason": "수급/도축 21점 + 질병/방역 12점 + 가격 11점 기반, 하방성 자료가 우세"
+        "reason": "수급/도축 21점 + 질병/방역 12점 + 가격 11점 기반, 상방성 자료가 우세"
       },
       "windows": {
         "7d": {
           "window_days": 7,
           "status": "sideways",
           "direction": "neutral",
-          "change": -2,
-          "average_signal": 55.1,
-          "confidence": 78.1,
+          "change": -3,
+          "average_signal": 55.0,
+          "confidence": 78.0,
           "start_score": 57,
-          "end_score": 55,
+          "end_score": 54,
           "sample_days": 7,
           "memo": "7일 구간 신호 변화 제한적"
         },
@@ -350,11 +351,11 @@
           "window_days": 14,
           "status": "mixed",
           "direction": "mixed",
-          "change": -18,
-          "average_signal": 62.5,
-          "confidence": 79.2,
+          "change": -19,
+          "average_signal": 62.4,
+          "confidence": 79.1,
           "start_score": 73,
-          "end_score": 55,
+          "end_score": 54,
           "sample_days": 14,
           "memo": "14일 구간 신호 혼조"
         },
@@ -362,11 +363,11 @@
           "window_days": 30,
           "status": "mixed",
           "direction": "mixed",
-          "change": -23,
+          "change": -24,
           "average_signal": 67.7,
-          "confidence": 80.9,
+          "confidence": 80.8,
           "start_score": 78,
-          "end_score": 55,
+          "end_score": 54,
           "sample_days": 30,
           "memo": "30일 구간 신호 혼조"
         }
@@ -374,7 +375,7 @@
       "prediction": {
         "label": "보합/혼조",
         "memo": "신호 변화가 제한적이거나 방향성이 혼재",
-        "confidence": 63,
+        "confidence": 62,
         "horizon": "7/14/30일 참고 방향성",
         "disclaimer": "가격 예측이 아니라 수집 근거 신호의 방향성 참고값입니다."
       }
@@ -384,17 +385,17 @@
       "name": "기타",
       "latest": {
         "date": "2026-09-02",
-        "timestamp": "2026-09-02T18:46:09Z",
+        "timestamp": "2026-09-02T21:52:09Z",
         "species": "OTHER",
         "name": "기타",
         "signal_score": 46,
-        "direction": "neutral",
-        "status": "보합/혼조",
-        "confidence_score": 82,
+        "direction": "hold",
+        "status": "판단 유보",
+        "confidence_score": 64,
         "coverage_rate": 80,
         "quality_score": 76,
-        "evidence_count": 17,
-        "official_count": 13,
+        "evidence_count": 33,
+        "official_count": 29,
         "score_breakdown": {
           "price": 0,
           "supply": 18,
@@ -402,9 +403,11 @@
           "policy": 0,
           "news": 9
         },
-        "conflict_severity": "none",
-        "has_conflict": false,
-        "hold_reasons": [],
+        "conflict_severity": "high",
+        "has_conflict": true,
+        "hold_reasons": [
+          "상·하방 근거 강충돌"
+        ],
         "reason": "질병/방역 19점 + 수급/도축 18점 + 뉴스/수요 9점 기반, 상방성 자료가 우세"
       },
       "windows": {
@@ -414,7 +417,7 @@
           "direction": "mixed",
           "change": 18,
           "average_signal": 32.9,
-          "confidence": 64.1,
+          "confidence": 61.6,
           "start_score": 28,
           "end_score": 46,
           "sample_days": 7,
@@ -426,7 +429,7 @@
           "direction": "mixed",
           "change": 18,
           "average_signal": 32.7,
-          "confidence": 66.2,
+          "confidence": 64.9,
           "start_score": 28,
           "end_score": 46,
           "sample_days": 14,
@@ -438,7 +441,7 @@
           "direction": "mixed",
           "change": 15,
           "average_signal": 35.9,
-          "confidence": 72.4,
+          "confidence": 71.8,
           "start_score": 31,
           "end_score": 46,
           "sample_days": 30,
@@ -446,9 +449,9 @@
         }
       },
       "prediction": {
-        "label": "보합/혼조",
-        "memo": "신호 변화가 제한적이거나 방향성이 혼재",
-        "confidence": 82,
+        "label": "판단 유보",
+        "memo": "현재 신뢰도 또는 근거 부족",
+        "confidence": 64,
         "horizon": "7/14/30일 참고 방향성",
         "disclaimer": "가격 예측이 아니라 수집 근거 신호의 방향성 참고값입니다."
       }

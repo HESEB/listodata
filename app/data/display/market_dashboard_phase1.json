@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-09-02T21:52:09Z",
+  "updated_at": "2026-09-03T00:19:58Z",
   "notice": "Phase 2 Display Layer 초안입니다. 기존 market_dashboard.json은 별도로 유지됩니다.",
   "species": [
     {
       "id": "BEEF",
       "name": "한우",
-      "signal_score": 47,
-      "direction": "neutral",
-      "status": "보합/혼조",
-      "quality_score": 76,
+      "signal_score": 60,
+      "direction": "up",
+      "status": "상방 가능성",
+      "quality_score": 75,
       "confidence_score": 72,
       "coverage_rate": 100,
       "evidence_count": 29,
       "official_count": 1,
       "direction_counts": {
-        "up": 2,
+        "up": 3,
         "down": 3,
-        "neutral": 24,
+        "neutral": 23,
         "hold": 0
       },
       "coverage_types": [
@@ -24,12 +24,13 @@
         "수급/도축",
         "수요/행사",
         "일반",
-        "정책/고시"
+        "정책/고시",
+        "질병/방역"
       ],
       "score_breakdown": {
         "price": 12,
         "supply": 17,
-        "disease": 0,
+        "disease": 13,
         "policy": 5,
         "news": 13
       },
@@ -51,22 +52,22 @@
           "neutral": 3,
           "examples": [
             {
-              "title": "추석 앞둔 한우, 여전히 높은 가격 - news.nate.com",
+              "title": "추석 앞둔 한우, 여전히 높은 가격 - 네이트",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 81
-            },
-            {
-              "title": "NS홈쇼핑 인수 홈플 익스프레스, 9일까지 한우 50% 할인 행사 - news.nate.com",
-              "direction": "down",
-              "source_level": 2,
-              "quality_score": 69
             },
             {
               "title": "서울광장서 구미 미식여행 떠나볼까?…한우 29%·G-푸드 55%·깜짝경매 80% 할인 - 대구일보",
               "direction": "down",
               "source_level": 2,
               "quality_score": 64
+            },
+            {
+              "title": "한우 가격 하락에 정부 지원…한우산업법 본격 시행 - 안동MBC",
+              "direction": "down",
+              "source_level": 5,
+              "quality_score": 100
             }
           ]
         },
@@ -90,12 +91,19 @@
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
-          "score": 0,
-          "items": 0,
-          "up": 0,
+          "score": 13,
+          "items": 1,
+          "up": 1,
           "down": 0,
           "neutral": 0,
-          "examples": []
+          "examples": [
+            {
+              "title": "진안 한우농가 150여명 한자리…위기 극복·경쟁력 강화 다짐 - jeollailbo.com",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 81
+            }
+          ]
         },
         "policy": {
           "label": "정책/고시",
@@ -130,11 +138,17 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 13,
-          "items": 19,
+          "items": 18,
           "up": 1,
           "down": 0,
-          "neutral": 18,
+          "neutral": 17,
           "examples": [
+            {
+              "title": "\"같은 한우인데 12만원부터 300만원까지\"…추석 선물시장, '양극화' 더 벌어졌다 - 네이트",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 81
+            },
             {
               "title": "폭염에도 버틴 농산물 물가…추석 장바구니 변수는 ‘한우’ - 산경일보",
               "direction": "neutral",
@@ -146,17 +160,11 @@
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 81
-            },
-            {
-              "title": "갤러리아百, 프리미엄 추석 선물세트 본판매…한우·유명디저트 강화 - 뉴스1",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 81
             }
           ]
         }
       },
-      "reason": "수급/도축 17점 + 뉴스/수요 13점 + 가격 12점 기반, 하방성 자료가 우세",
+      "reason": "수급/도축 17점 + 질병/방역 13점 + 뉴스/수요 13점 기반, 상·하방 자료가 혼재",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
@@ -165,13 +173,13 @@
       "signal_score": 19,
       "direction": "hold",
       "status": "판단 유보",
-      "quality_score": 76,
-      "confidence_score": 61,
+      "quality_score": 77,
+      "confidence_score": 62,
       "coverage_rate": 20,
-      "evidence_count": 12,
-      "official_count": 10,
+      "evidence_count": 10,
+      "official_count": 9,
       "direction_counts": {
-        "up": 12,
+        "up": 10,
         "down": 0,
         "neutral": 0,
         "hold": 0
@@ -218,8 +226,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 12,
-          "up": 12,
+          "items": 10,
+          "up": 10,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -236,10 +244,10 @@
               "quality_score": 71
             },
             {
-              "title": "구제역 위기 경보 하향 조정... 평시 방역 체계로 전환 - 한돈뉴스",
+              "title": "‘구제역 백신 국산화’와 ‘아프리카돼지열병 백신 개발’에 더욱 속도 낸다 - mafra.go.kr",
               "direction": "up",
-              "source_level": 3,
-              "quality_score": 71
+              "source_level": 5,
+              "quality_score": 75
             }
           ]
         },
@@ -334,13 +342,13 @@
           "neutral": 0,
           "examples": [
             {
-              "title": "겨울철 조류인플루엔자 대비…야생동물 방역 대응력 강화 - snakorea.com",
+              "title": "겨울철 조류인플루엔자 선제 대응…야생동물 방역 실무역량 높인다 - 동방일보",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
             },
             {
-              "title": "무안 육용오리농장서 조류인플루엔자 항원 검출…방역 강화 - 매일경제 마켓",
+              "title": "무안 육용오리농장서 조류인플루엔자 항원 검출…방역 강화 - stock.mk.co.kr",
               "direction": "up",
               "source_level": 3,
               "quality_score": 71
@@ -456,7 +464,7 @@
           "neutral": 0,
           "examples": [
             {
-              "title": "무안 육용오리농장서 조류인플루엔자 항원 검출…방역 강화 - 매일경제 마켓",
+              "title": "무안 육용오리농장서 조류인플루엔자 항원 검출…방역 강화 - stock.mk.co.kr",
               "direction": "up",
               "source_level": 3,
               "quality_score": 71
@@ -505,8 +513,8 @@
       "evidence_count": 27,
       "official_count": 6,
       "direction_counts": {
-        "up": 10,
-        "down": 9,
+        "up": 11,
+        "down": 8,
         "neutral": 8,
         "hold": 0
       },
@@ -536,25 +544,25 @@
           "label": "가격",
           "max_score": 30,
           "score": 11,
-          "items": 14,
+          "items": 13,
           "up": 4,
-          "down": 6,
+          "down": 5,
           "neutral": 4,
           "examples": [
             {
-              "title": "정부는 외식물가 안정을 위해 농산물 가격안정에 최선을 다하고, 업계와의 소통을 강화하겠습니다. - 대한민국 정책브리핑",
+              "title": "정부는 외식물가 안정을 위해 농산물 가격안정에 최선을 다하고, 업계와의 소통을 강화하겠습니다. - korea.kr",
               "direction": "down",
               "source_level": 5,
               "quality_score": 100
             },
             {
-              "title": "계란값, 하반기 생산량 회복에 하락 전망… 소비자들 체감은 '아직' - 금강일보",
+              "title": "\"생산량 증가로 계란값 하반기 안정\"…체감 가격은 여전 - v.daum.net",
               "direction": "down",
               "source_level": 3,
-              "quality_score": 76
+              "quality_score": 71
             },
             {
-              "title": "\"생산량 증가로 계란값 하반기 안정\"…체감 가격은 여전 - v.daum.net",
+              "title": "계란값 하락 전망에도 소비자 체감 여전히 높아 - 천지일보",
               "direction": "down",
               "source_level": 3,
               "quality_score": 71
@@ -565,8 +573,8 @@
           "label": "수급/도축",
           "max_score": 25,
           "score": 21,
-          "items": 6,
-          "up": 5,
+          "items": 7,
+          "up": 6,
           "down": 1,
           "neutral": 0,
           "examples": [
@@ -600,7 +608,7 @@
           "neutral": 0,
           "examples": [
             {
-              "title": "경기 김포 산란계 농장에 대한 예찰 검사에서 H5형 조류인플루엔자 항원 확인 - 농림축산식품부",
+              "title": "경기 김포 산란계 농장에 대한 예찰 검사에서 H5형 조류인플루엔자 항원 확인 - mafra.go.kr",
               "direction": "up",
               "source_level": 5,
               "quality_score": 75
@@ -634,7 +642,7 @@
           "neutral": 3,
           "examples": [
             {
-              "title": "전북 계란값 5500원대로 ‘뚝’…그래도 장바구니는 여전히 무겁다 - 전북일보 인터넷신문",
+              "title": "전북 계란값 5500원대로 ‘뚝’…그래도 장바구니는 여전히 무겁다 - jjan.kr",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 81
@@ -663,15 +671,15 @@
       "signal_score": 46,
       "direction": "neutral",
       "status": "보합/혼조",
-      "quality_score": 76,
-      "confidence_score": 82,
+      "quality_score": 77,
+      "confidence_score": 83,
       "coverage_rate": 80,
-      "evidence_count": 33,
-      "official_count": 29,
+      "evidence_count": 17,
+      "official_count": 14,
       "direction_counts": {
-        "up": 13,
-        "down": 1,
-        "neutral": 19,
+        "up": 6,
+        "down": 0,
+        "neutral": 11,
         "hold": 0
       },
       "coverage_types": [
@@ -732,8 +740,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 10,
-          "up": 10,
+          "items": 4,
+          "up": 4,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -744,16 +752,16 @@
               "quality_score": 95
             },
             {
-              "title": "8월 27일 자로 구제역 방역이 평시 방역 체계로 전환됩니다 - 대한민국 정책브리핑",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 71
-            },
-            {
               "title": "축평원, '축산유통정보 다봄' AI기반 서비스 고도화 추진 - 뉴시스",
               "direction": "up",
               "source_level": 3,
               "quality_score": 51
+            },
+            {
+              "title": "이전에 게재된 구제역 백신접종 명령 변경 공고 농림축산식품부공고제2026-437호 )에 대해 붙임과 같이 취소 공고 합니다. - mafra.go.kr",
+              "direction": "up",
+              "source_level": 5,
+              "quality_score": 95
             }
           ]
         },
@@ -771,17 +779,11 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 9,
-          "items": 21,
-          "up": 1,
-          "down": 1,
-          "neutral": 19,
+          "items": 11,
+          "up": 0,
+          "down": 0,
+          "neutral": 11,
           "examples": [
-            {
-              "title": "축산물품질평가원, ‘축산유통정보 다봄’ 기능 개선 논의 - 축산정보뉴스",
-              "direction": "neutral",
-              "source_level": 5,
-              "quality_score": 75
-            },
             {
               "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
               "direction": "neutral",
@@ -789,7 +791,13 @@
               "quality_score": 75
             },
             {
-              "title": "축산물품질평가원 축산물 소비 트렌드 인사이트 ’ 5 월호 발간 - ekape.or.kr",
+              "title": "축산물품질평가원 축산물 소비 트렌드 인사이트 ’ 5 월호 발간 - 축산물품질평가원",
+              "direction": "neutral",
+              "source_level": 5,
+              "quality_score": 75
+            },
+            {
+              "title": "농림축산식품부 - - mafra.go.kr",
               "direction": "neutral",
               "source_level": 5,
               "quality_score": 75

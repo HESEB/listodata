@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-02T21:52:09Z",
+  "updated_at": "2026-09-03T00:19:58Z",
   "policy": "phase2_evidence_score_v3_sanitized",
   "score_axes": {
     "price": {
@@ -43,18 +43,18 @@
     {
       "id": "BEEF",
       "name": "한우",
-      "signal_score": 47,
-      "direction": "neutral",
-      "status": "보합/혼조",
-      "quality_score": 76,
+      "signal_score": 60,
+      "direction": "up",
+      "status": "상방 가능성",
+      "quality_score": 75,
       "confidence_score": 72,
       "coverage_rate": 100,
       "evidence_count": 29,
       "official_count": 1,
       "direction_counts": {
-        "up": 2,
+        "up": 3,
         "down": 3,
-        "neutral": 24,
+        "neutral": 23,
         "hold": 0
       },
       "coverage_types": [
@@ -62,12 +62,13 @@
         "수급/도축",
         "수요/행사",
         "일반",
-        "정책/고시"
+        "정책/고시",
+        "질병/방역"
       ],
       "score_breakdown": {
         "price": 12,
         "supply": 17,
-        "disease": 0,
+        "disease": 13,
         "policy": 5,
         "news": 13
       },
@@ -89,22 +90,22 @@
           "neutral": 3,
           "examples": [
             {
-              "title": "추석 앞둔 한우, 여전히 높은 가격 - news.nate.com",
+              "title": "추석 앞둔 한우, 여전히 높은 가격 - 네이트",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 81
-            },
-            {
-              "title": "NS홈쇼핑 인수 홈플 익스프레스, 9일까지 한우 50% 할인 행사 - news.nate.com",
-              "direction": "down",
-              "source_level": 2,
-              "quality_score": 69
             },
             {
               "title": "서울광장서 구미 미식여행 떠나볼까?…한우 29%·G-푸드 55%·깜짝경매 80% 할인 - 대구일보",
               "direction": "down",
               "source_level": 2,
               "quality_score": 64
+            },
+            {
+              "title": "한우 가격 하락에 정부 지원…한우산업법 본격 시행 - 안동MBC",
+              "direction": "down",
+              "source_level": 5,
+              "quality_score": 100
             }
           ]
         },
@@ -128,12 +129,19 @@
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
-          "score": 0,
-          "items": 0,
-          "up": 0,
+          "score": 13,
+          "items": 1,
+          "up": 1,
           "down": 0,
           "neutral": 0,
-          "examples": []
+          "examples": [
+            {
+              "title": "진안 한우농가 150여명 한자리…위기 극복·경쟁력 강화 다짐 - jeollailbo.com",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 81
+            }
+          ]
         },
         "policy": {
           "label": "정책/고시",
@@ -168,11 +176,17 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 13,
-          "items": 19,
+          "items": 18,
           "up": 1,
           "down": 0,
-          "neutral": 18,
+          "neutral": 17,
           "examples": [
+            {
+              "title": "\"같은 한우인데 12만원부터 300만원까지\"…추석 선물시장, '양극화' 더 벌어졌다 - 네이트",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 81
+            },
             {
               "title": "폭염에도 버틴 농산물 물가…추석 장바구니 변수는 ‘한우’ - 산경일보",
               "direction": "neutral",
@@ -184,29 +198,23 @@
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 81
-            },
-            {
-              "title": "갤러리아百, 프리미엄 추석 선물세트 본판매…한우·유명디저트 강화 - 뉴스1",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 81
             }
           ]
         }
       },
-      "reason": "수급/도축 17점 + 뉴스/수요 13점 + 가격 12점 기반, 하방성 자료가 우세",
+      "reason": "수급/도축 17점 + 질병/방역 13점 + 뉴스/수요 13점 기반, 상·하방 자료가 혼재",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
         "severity": "none",
         "axes": [],
-        "memo": "주의 필요 · 누락근거: 질병/방역"
+        "memo": "충돌 또는 판단 유보 요인 없음"
       },
       "hold_decision": {
         "should_hold": false,
         "reasons": [],
-        "recommended_status": "보합/혼조",
-        "recommended_direction": "neutral",
+        "recommended_status": "상방 가능성",
+        "recommended_direction": "up",
         "adjusted_confidence": 72
       }
     },
@@ -216,13 +224,13 @@
       "signal_score": 19,
       "direction": "hold",
       "status": "판단 유보",
-      "quality_score": 76,
-      "confidence_score": 61,
+      "quality_score": 77,
+      "confidence_score": 62,
       "coverage_rate": 20,
-      "evidence_count": 12,
-      "official_count": 10,
+      "evidence_count": 10,
+      "official_count": 9,
       "direction_counts": {
-        "up": 12,
+        "up": 10,
         "down": 0,
         "neutral": 0,
         "hold": 0
@@ -269,8 +277,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 12,
-          "up": 12,
+          "items": 10,
+          "up": 10,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -287,10 +295,10 @@
               "quality_score": 71
             },
             {
-              "title": "구제역 위기 경보 하향 조정... 평시 방역 체계로 전환 - 한돈뉴스",
+              "title": "‘구제역 백신 국산화’와 ‘아프리카돼지열병 백신 개발’에 더욱 속도 낸다 - mafra.go.kr",
               "direction": "up",
-              "source_level": 3,
-              "quality_score": 71
+              "source_level": 5,
+              "quality_score": 75
             }
           ]
         },
@@ -331,7 +339,7 @@
         ],
         "recommended_status": "판단 유보",
         "recommended_direction": "hold",
-        "adjusted_confidence": 61
+        "adjusted_confidence": 62
       }
     },
     {
@@ -401,13 +409,13 @@
           "neutral": 0,
           "examples": [
             {
-              "title": "겨울철 조류인플루엔자 대비…야생동물 방역 대응력 강화 - snakorea.com",
+              "title": "겨울철 조류인플루엔자 선제 대응…야생동물 방역 실무역량 높인다 - 동방일보",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
             },
             {
-              "title": "무안 육용오리농장서 조류인플루엔자 항원 검출…방역 강화 - 매일경제 마켓",
+              "title": "무안 육용오리농장서 조류인플루엔자 항원 검출…방역 강화 - stock.mk.co.kr",
               "direction": "up",
               "source_level": 3,
               "quality_score": 71
@@ -536,7 +544,7 @@
           "neutral": 0,
           "examples": [
             {
-              "title": "무안 육용오리농장서 조류인플루엔자 항원 검출…방역 강화 - 매일경제 마켓",
+              "title": "무안 육용오리농장서 조류인플루엔자 항원 검출…방역 강화 - stock.mk.co.kr",
               "direction": "up",
               "source_level": 3,
               "quality_score": 71
@@ -595,16 +603,16 @@
       "id": "EGG",
       "name": "계란",
       "signal_score": 54,
-      "direction": "neutral",
-      "status": "보합/혼조",
+      "direction": "hold",
+      "status": "판단 유보",
       "quality_score": 66,
-      "confidence_score": 83,
+      "confidence_score": 65,
       "coverage_rate": 100,
       "evidence_count": 27,
       "official_count": 6,
       "direction_counts": {
-        "up": 10,
-        "down": 9,
+        "up": 11,
+        "down": 8,
         "neutral": 8,
         "hold": 0
       },
@@ -634,25 +642,25 @@
           "label": "가격",
           "max_score": 30,
           "score": 11,
-          "items": 14,
+          "items": 13,
           "up": 4,
-          "down": 6,
+          "down": 5,
           "neutral": 4,
           "examples": [
             {
-              "title": "정부는 외식물가 안정을 위해 농산물 가격안정에 최선을 다하고, 업계와의 소통을 강화하겠습니다. - 대한민국 정책브리핑",
+              "title": "정부는 외식물가 안정을 위해 농산물 가격안정에 최선을 다하고, 업계와의 소통을 강화하겠습니다. - korea.kr",
               "direction": "down",
               "source_level": 5,
               "quality_score": 100
             },
             {
-              "title": "계란값, 하반기 생산량 회복에 하락 전망… 소비자들 체감은 '아직' - 금강일보",
+              "title": "\"생산량 증가로 계란값 하반기 안정\"…체감 가격은 여전 - v.daum.net",
               "direction": "down",
               "source_level": 3,
-              "quality_score": 76
+              "quality_score": 71
             },
             {
-              "title": "\"생산량 증가로 계란값 하반기 안정\"…체감 가격은 여전 - v.daum.net",
+              "title": "계란값 하락 전망에도 소비자 체감 여전히 높아 - 천지일보",
               "direction": "down",
               "source_level": 3,
               "quality_score": 71
@@ -663,8 +671,8 @@
           "label": "수급/도축",
           "max_score": 25,
           "score": 21,
-          "items": 6,
-          "up": 5,
+          "items": 7,
+          "up": 6,
           "down": 1,
           "neutral": 0,
           "examples": [
@@ -698,7 +706,7 @@
           "neutral": 0,
           "examples": [
             {
-              "title": "경기 김포 산란계 농장에 대한 예찰 검사에서 H5형 조류인플루엔자 항원 확인 - 농림축산식품부",
+              "title": "경기 김포 산란계 농장에 대한 예찰 검사에서 H5형 조류인플루엔자 항원 확인 - mafra.go.kr",
               "direction": "up",
               "source_level": 5,
               "quality_score": 75
@@ -732,7 +740,7 @@
           "neutral": 3,
           "examples": [
             {
-              "title": "전북 계란값 5500원대로 ‘뚝’…그래도 장바구니는 여전히 무겁다 - 전북일보 인터넷신문",
+              "title": "전북 계란값 5500원대로 ‘뚝’…그래도 장바구니는 여전히 무겁다 - jjan.kr",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 81
@@ -756,35 +764,133 @@
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": true,
-        "severity": "medium",
+        "severity": "high",
         "axes": [
           "가격"
         ],
-        "memo": "주의 필요 · 충돌축: 가격"
+        "memo": "판단 유보 권장 · 충돌축: 가격 / 유보사유: 상·하방 근거 강충돌"
       },
       "hold_decision": {
-        "should_hold": false,
-        "reasons": [],
-        "recommended_status": "보합/혼조",
-        "recommended_direction": "neutral",
-        "adjusted_confidence": 73
+        "should_hold": [
+          {
+            "axis": "price",
+            "label": "가격",
+            "items": 13,
+            "has_conflict": true,
+            "severity": "high",
+            "dominant_direction": "down",
+            "weighted_direction": {
+              "up": 14.18,
+              "down": 20.43,
+              "neutral": 11.36
+            },
+            "conflict_ratio": 0.69,
+            "examples": {
+              "up": [
+                {
+                  "title": "중국 계란 가격 상승, 3 년 만에 최고치를 기록 - Sunsirs",
+                  "source": "Sunsirs",
+                  "direction": "up",
+                  "quality_score": 71,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE8weGNsWDJHalNpMTVrSEd5R2x0NW12cElJRFJSSVREaGtDRWhCaVo0M29RYU9PZ0RHTnIyTy0tMU5tMWVnSE9uUURDSElpNkprM0dIZ0c2dkxsZk1mS2c?oc=5"
+                },
+                {
+                  "title": "한 판에 만원 넘는다…계란값 상승 언제까지 ? - v.daum.net",
+                  "source": "v.daum.net",
+                  "direction": "up",
+                  "quality_score": 51,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE4wSEg3dGxsdXRDSXY2RUIzSkZLRFJXSS1JSUloTTdQZ1dZNFJLMUY5OGNBbDRXVDNnOWdKcVFyQzA2empTMU51VzFPZ1IyUjA?oc=5"
+                },
+                {
+                  "title": "한 판에 만원 넘는다…계란값 상승 언제까지 ? - 인천일보",
+                  "source": "인천일보",
+                  "direction": "up",
+                  "quality_score": 26,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE16VjNRaGxwWldVU0M0cjNhWTlIWDlVTXYyRnI5Y1NaWVdheDh4SHdTZEc0SjZHNVpxQ195NEs5ZHNxUWZSSnZsSkhVMWhuenNPRnh4bjdSOVdQemZ2Y0NBUGhaQXZGZ2NWdWFMd184c0U?oc=5"
+                }
+              ],
+              "down": [
+                {
+                  "title": "정부는 외식물가 안정을 위해 농산물 가격안정에 최선을 다하고, 업계와의 소통을 강화하겠습니다. - korea.kr",
+                  "source": "korea.kr",
+                  "direction": "down",
+                  "quality_score": 100,
+                  "source_level": 5,
+                  "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE8wT0xEUmFOSzNxbkR0Z3JVOWd6WjZyTmt5TUpTeXV1VkhBX3lPRjlrSkRhRDRJdHZMTmEtdE9qZUttbzgyNFdrdGE3Y3ZOVExvaGNYS1FqSEZpZHpzNmFleWQ2QWhQaHB3WDlRcFV0TQ?oc=5"
+                },
+                {
+                  "title": "\"생산량 증가로 계란값 하반기 안정\"…체감 가격은 여전 - v.daum.net",
+                  "source": "v.daum.net",
+                  "direction": "down",
+                  "quality_score": 71,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5jN2d0ZkdnS2FCaEFxMW94aFlmcHZSclFWNDlPMWRiZ2lNRkVIRThHZ0c3bk5kUkJrUGJFOC1fdUNWR3ZKYThpSVJMamhWVFg0VGVMSA?oc=5"
+                },
+                {
+                  "title": "계란값 하락 전망에도 소비자 체감 여전히 높아 - 천지일보",
+                  "source": "천지일보",
+                  "direction": "down",
+                  "quality_score": 71,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5qUkRmZGdMYy1NbEJzME9qMEdHaU4wTGdZVGVhNjRyeXJzbTJZWTlIaHg3dFN3czVmNmNwbjVnRTNBODQyV2U1SHc5dFhxX2IyVGJZNk5EbE0xd1d1MGlrTUxyV2tzLVloZFE?oc=5"
+                }
+              ],
+              "neutral": [
+                {
+                  "title": "\"계란값 좀 내려가나 했더니\"…가격 보고 화들짝 - 한국경제",
+                  "source": "한국경제",
+                  "direction": "neutral",
+                  "quality_score": 71,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE44aUl1NGxhSTJwUGptcHRZMUhpSWIza2ZoS1VjQTIzek5OSnBHR3BQRFBfTUVLaVo3eUdHOWJhVkZQNDNvZE56a2VfMnN2ck5hR0Z4SUw3c1dwQQ?oc=5"
+                },
+                {
+                  "title": "[이슈 클릭] “생산자단체 계란 가격고시, 가격발견·정보전파인가 기득권인가” - 전업농신문",
+                  "source": "전업농신문",
+                  "direction": "neutral",
+                  "quality_score": 58,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBrUlBRX3IzM2NqV09wa0d5YlZ4cEpiTXRmSkZnU291Y3BVOUJZN0lyMGFieVdnaFI0RThqcHVjcWlTTGM0UVlHREE0ZFU1SHRpTDh2TFNqNkVWVUd0azI4RWxkdmt1OVBiSlBSYw?oc=5"
+                },
+                {
+                  "title": "[계란 난맥상]③가격은 누가 정하나…후진적 유통구조가 낳은 '불신' - v.daum.net",
+                  "source": "v.daum.net",
+                  "direction": "neutral",
+                  "quality_score": 58,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBZSkZ4NnpPMjlJZDV1TG9kbFdzUG5BZkNIY0Z1M2IwU1huYjYzZDlmMDhBMjJHVHpYcEFsSXIzTWh3dUVHTHJubnk3M1NZNXc?oc=5"
+                }
+              ]
+            },
+            "memo": "가격 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
+          }
+        ],
+        "reasons": [
+          "상·하방 근거 강충돌"
+        ],
+        "recommended_status": "판단 유보",
+        "recommended_direction": "hold",
+        "adjusted_confidence": 65
       }
     },
     {
       "id": "OTHER",
       "name": "기타",
       "signal_score": 46,
-      "direction": "hold",
-      "status": "판단 유보",
-      "quality_score": 76,
-      "confidence_score": 64,
+      "direction": "neutral",
+      "status": "보합/혼조",
+      "quality_score": 77,
+      "confidence_score": 83,
       "coverage_rate": 80,
-      "evidence_count": 33,
-      "official_count": 29,
+      "evidence_count": 17,
+      "official_count": 14,
       "direction_counts": {
-        "up": 13,
-        "down": 1,
-        "neutral": 19,
+        "up": 6,
+        "down": 0,
+        "neutral": 11,
         "hold": 0
       },
       "coverage_types": [
@@ -845,8 +951,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 10,
-          "up": 10,
+          "items": 4,
+          "up": 4,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -857,16 +963,16 @@
               "quality_score": 95
             },
             {
-              "title": "8월 27일 자로 구제역 방역이 평시 방역 체계로 전환됩니다 - 대한민국 정책브리핑",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 71
-            },
-            {
               "title": "축평원, '축산유통정보 다봄' AI기반 서비스 고도화 추진 - 뉴시스",
               "direction": "up",
               "source_level": 3,
               "quality_score": 51
+            },
+            {
+              "title": "이전에 게재된 구제역 백신접종 명령 변경 공고 농림축산식품부공고제2026-437호 )에 대해 붙임과 같이 취소 공고 합니다. - mafra.go.kr",
+              "direction": "up",
+              "source_level": 5,
+              "quality_score": 95
             }
           ]
         },
@@ -884,17 +990,11 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 9,
-          "items": 21,
-          "up": 1,
-          "down": 1,
-          "neutral": 19,
+          "items": 11,
+          "up": 0,
+          "down": 0,
+          "neutral": 11,
           "examples": [
-            {
-              "title": "축산물품질평가원, ‘축산유통정보 다봄’ 기능 개선 논의 - 축산정보뉴스",
-              "direction": "neutral",
-              "source_level": 5,
-              "quality_score": 75
-            },
             {
               "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
               "direction": "neutral",
@@ -902,7 +1002,13 @@
               "quality_score": 75
             },
             {
-              "title": "축산물품질평가원 축산물 소비 트렌드 인사이트 ’ 5 월호 발간 - ekape.or.kr",
+              "title": "축산물품질평가원 축산물 소비 트렌드 인사이트 ’ 5 월호 발간 - 축산물품질평가원",
+              "direction": "neutral",
+              "source_level": 5,
+              "quality_score": 75
+            },
+            {
+              "title": "농림축산식품부 - - mafra.go.kr",
               "direction": "neutral",
               "source_level": 5,
               "quality_score": 75
@@ -913,85 +1019,17 @@
       "reason": "질병/방역 19점 + 수급/도축 18점 + 뉴스/수요 9점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
-        "has_conflict": true,
-        "severity": "high",
-        "axes": [
-          "뉴스/수요"
-        ],
-        "memo": "판단 유보 권장 · 충돌축: 뉴스/수요 / 누락근거: 가격, 정책/고시 / 유보사유: 상·하방 근거 강충돌"
+        "has_conflict": false,
+        "severity": "none",
+        "axes": [],
+        "memo": "주의 필요 · 누락근거: 가격, 정책/고시"
       },
       "hold_decision": {
-        "should_hold": [
-          {
-            "axis": "news",
-            "label": "뉴스/수요",
-            "items": 21,
-            "has_conflict": true,
-            "severity": "high",
-            "dominant_direction": "up",
-            "weighted_direction": {
-              "up": 4.55,
-              "down": 4.1,
-              "neutral": 69.35
-            },
-            "conflict_ratio": 0.9,
-            "examples": {
-              "up": [
-                {
-                  "title": "인천 동물생산업장 개 브루셀라병 검출에 따른 확산 방지조치 시행 - 농림축산식품부",
-                  "source": "농림축산식품부",
-                  "direction": "up",
-                  "quality_score": 75,
-                  "source_level": 5,
-                  "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1tbTd1YUhmdXg5cUM3WTBDdkV2RlVYQ1JUemVPSUx3WGdLaXpDVjdPcktndmtobEpQc01BTnctMkpJdlA2c3p4VzdHMmJ0bmhRMTBCdm5GSDlKSGJGbUp1NDA5cVBIajg?oc=5"
-                }
-              ],
-              "down": [
-                {
-                  "title": "양돈 농가 소독설비 설치 부담 완화 제도화 - 농림축산식품부",
-                  "source": "농림축산식품부",
-                  "direction": "down",
-                  "quality_score": 75,
-                  "source_level": 5,
-                  "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE01Z2lweHdUU29QaGZ0bEFGZ2Q2bGJscmQ3NW5ielZvdW9nNS1hb2tlSXZpVEhfUi04WHAzUXFUWXdmVDM3M05GRnIxb0VVX0Y5Y0drNXBnenhWVWNkSWd5N0JwS0xBdmM?oc=5"
-                }
-              ],
-              "neutral": [
-                {
-                  "title": "축산물품질평가원, ‘축산유통정보 다봄’ 기능 개선 논의 - 축산정보뉴스",
-                  "source": "축산정보뉴스",
-                  "direction": "neutral",
-                  "quality_score": 75,
-                  "source_level": 5,
-                  "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5ORUxicHVQU2RPMkU2ZjgzYnM0XzNyaXE2ZV9GV2VtZUx1b2xSejFGRkNLaFdRS19EXzVlRHRLamU5eFNiTUIxMzZiNktlVnVOQnN3YUxFeTdHUnA4RGR3?oc=5"
-                },
-                {
-                  "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
-                  "source": "농업인신문",
-                  "direction": "neutral",
-                  "quality_score": 75,
-                  "source_level": 5,
-                  "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9LREJ2QWpsLU4xVnVxdWRCamFCcjZnZUMtNVAybHFXQWpaOW44Q2hMaUJDY3lYUU9vN0NIYWtlb1MzVnBxRXI3OTJzdng3dWEyZEdudngwVmsyUTBiQUpXVmJzZlRXelc4WkY5emhn?oc=5"
-                },
-                {
-                  "title": "축산물품질평가원 축산물 소비 트렌드 인사이트 ’ 5 월호 발간 - ekape.or.kr",
-                  "source": "ekape.or.kr",
-                  "direction": "neutral",
-                  "quality_score": 75,
-                  "source_level": 5,
-                  "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPZjlZX2VGWmlqOUlNelNBUGR4Yk42SExLYmVlSlZHTEJyY1l3ZXdLMHExRVowX2lfX3NBbkVfYXVkZzBXbkFMT21VSnRsQV9OZ2FjcTY4MzZsYTJHYWszMmE1TGpVSXZhT3pEN18tUVNPbzhDUk1PcGgzYm14blF4SjJIVV9oTENzRHBRNUtR?oc=5"
-                }
-              ]
-            },
-            "memo": "뉴스/수요 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
-          }
-        ],
-        "reasons": [
-          "상·하방 근거 강충돌"
-        ],
-        "recommended_status": "판단 유보",
-        "recommended_direction": "hold",
-        "adjusted_confidence": 64
+        "should_hold": false,
+        "reasons": [],
+        "recommended_status": "보합/혼조",
+        "recommended_direction": "neutral",
+        "adjusted_confidence": 83
       }
     }
   ],
