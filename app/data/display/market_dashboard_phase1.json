@@ -1,36 +1,37 @@
 {
-  "updated_at": "2026-09-12T19:25:40Z",
+  "updated_at": "2026-09-12T22:21:48Z",
   "notice": "Phase 2 Display Layer 초안입니다. 기존 market_dashboard.json은 별도로 유지됩니다.",
   "species": [
     {
       "id": "BEEF",
       "name": "한우",
-      "signal_score": 48,
+      "signal_score": 45,
       "direction": "neutral",
       "status": "보합/혼조",
       "quality_score": 80,
-      "confidence_score": 84,
-      "coverage_rate": 80,
+      "confidence_score": 91,
+      "coverage_rate": 100,
       "evidence_count": 30,
       "official_count": 8,
       "direction_counts": {
-        "up": 6,
-        "down": 10,
-        "neutral": 14,
+        "up": 4,
+        "down": 11,
+        "neutral": 15,
         "hold": 0
       },
       "coverage_types": [
         "가격",
         "수급/도축",
         "수요/행사",
-        "일반"
+        "일반",
+        "정책/고시"
       ],
       "score_breakdown": {
         "price": 13,
-        "supply": 22,
+        "supply": 19,
         "disease": 0,
-        "policy": 0,
-        "news": 13
+        "policy": 4,
+        "news": 9
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -44,11 +45,17 @@
           "label": "가격",
           "max_score": 30,
           "score": 13,
-          "items": 12,
+          "items": 15,
           "up": 2,
-          "down": 9,
-          "neutral": 1,
+          "down": 10,
+          "neutral": 3,
           "examples": [
+            {
+              "title": "[알뜰 주말] 사과·배·참외 가격 ‘뚝’… 한우 대신 닭볶음탕 어때요 - 조선비즈 - Chosunbiz",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 81
+            },
             {
               "title": "추석 앞 ‘반값 한우·과일’ 나온다…정부, 역대 최대 1490억 할인지원 - 한겨레",
               "direction": "down",
@@ -56,30 +63,24 @@
               "quality_score": 100
             },
             {
-              "title": "농식품부·한우자조금, 추석 한우 최대 52% 할인…등심 100g 7590원 - 푸드투데이",
+              "title": "추석엔 ‘소프라이즈’···전국 온·오프라인서 대한민국 한우고기 할인행사 - 한국농어민신문",
               "direction": "down",
-              "source_level": 5,
-              "quality_score": 100
-            },
-            {
-              "title": "추석 앞두고 한우값 ‘껑충’…정부, 할인 지원 확대 - 대구일보",
-              "direction": "down",
-              "source_level": 5,
-              "quality_score": 100
+              "source_level": 2,
+              "quality_score": 69
             }
           ]
         },
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 22,
-          "items": 4,
-          "up": 3,
+          "score": 19,
+          "items": 3,
+          "up": 2,
           "down": 1,
           "neutral": 0,
           "examples": [
             {
-              "title": "사육두수 줄고 번식의향 증가…한우 수급 ‘엇박자’ - 축산신문",
+              "title": "사육두수 줄고 번식의향 증가…한우 수급 ‘엇박자’ - chuksannews.co.kr",
               "direction": "up",
               "source_level": 3,
               "quality_score": 76
@@ -111,28 +112,29 @@
         "policy": {
           "label": "정책/고시",
           "max_score": 10,
-          "score": 0,
-          "items": 0,
+          "score": 4,
+          "items": 1,
           "up": 0,
           "down": 0,
-          "neutral": 0,
-          "examples": []
+          "neutral": 1,
+          "examples": [
+            {
+              "title": "“한우는 사치, 이거 먹을래요”…수입산 삼겹살 소비 50% 늘었다 [푸드360] - 헤럴드경제",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 81
+            }
+          ]
         },
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 13,
-          "items": 14,
-          "up": 1,
+          "score": 9,
+          "items": 11,
+          "up": 0,
           "down": 0,
-          "neutral": 13,
+          "neutral": 11,
           "examples": [
-            {
-              "title": "고성 한우축제 개막…‘칡소’ 홍보 박차 - KBS 뉴스",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 81
-            },
             {
               "title": "\"안 오른 게 없어요\"…반값 한우에 '장사진' - v.daum.net",
               "direction": "neutral",
@@ -144,24 +146,30 @@
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 81
+            },
+            {
+              "title": "추석 장보기 어디서 싸게? 한우 최대 52%, 성수품 최대 70% - 푸드투데이",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 76
             }
           ]
         }
       },
-      "reason": "수급/도축 22점 + 가격 13점 + 뉴스/수요 13점 기반, 하방성 자료가 우세",
+      "reason": "수급/도축 19점 + 가격 13점 + 뉴스/수요 9점 기반, 하방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
       "id": "PORK",
       "name": "돈육",
-      "signal_score": 44,
+      "signal_score": 43,
       "direction": "neutral",
       "status": "보합/혼조",
-      "quality_score": 75,
-      "confidence_score": 82,
-      "coverage_rate": 80,
+      "quality_score": 76,
+      "confidence_score": 89,
+      "coverage_rate": 100,
       "evidence_count": 30,
-      "official_count": 12,
+      "official_count": 13,
       "direction_counts": {
         "up": 22,
         "down": 3,
@@ -172,14 +180,15 @@
         "가격",
         "수요/행사",
         "일반",
+        "정책/고시",
         "질병/방역"
       ],
       "score_breakdown": {
         "price": 13,
         "supply": 0,
         "disease": 19,
-        "policy": 0,
-        "news": 12
+        "policy": 4,
+        "news": 7
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -232,8 +241,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 20,
-          "up": 20,
+          "items": 21,
+          "up": 21,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -244,7 +253,7 @@
               "quality_score": 81
             },
             {
-              "title": "강릉시, 아프리카돼지열병 방역훈련 - gnnettv.co.kr",
+              "title": "강릉시, 아프리카돼지열병 방역훈련 - 강릉넷TV",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
@@ -260,22 +269,35 @@
         "policy": {
           "label": "정책/고시",
           "max_score": 10,
-          "score": 0,
-          "items": 0,
+          "score": 4,
+          "items": 1,
           "up": 0,
           "down": 0,
-          "neutral": 0,
-          "examples": []
+          "neutral": 1,
+          "examples": [
+            {
+              "title": "“한우는 사치, 이거 먹을래요”…수입산 삼겹살 소비 50% 늘었다 [푸드360] - 헤럴드경제",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 81
+            }
+          ]
         },
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 12,
-          "items": 5,
-          "up": 1,
+          "score": 7,
+          "items": 3,
+          "up": 0,
           "down": 0,
-          "neutral": 4,
+          "neutral": 3,
           "examples": [
+            {
+              "title": "추석 코 앞인데…한우 ‘등심 1+’ 1년새 34% 올라 - v.daum.net",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 71
+            },
             {
               "title": "추석 앞두고 소고기 ‘고공행진’…한우 등심만 34% 올랐다 [푸드360] - v.daum.net",
               "direction": "neutral",
@@ -283,53 +305,48 @@
               "quality_score": 71
             },
             {
-              "title": "한우 등심 22.6%·안심 19.9%↑…축산물 값 강세, 추석 앞두고 어떡하나 - v.daum.net",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 71
-            },
-            {
-              "title": "등심 22%↑ 안심 20%↑ 추석 앞두고 한우 값 고공행진 - 조선일보",
+              "title": "갈 곳 잃은 스페인산 돈육 국내 공습… 한돈 원료육 시장 ‘직격탄’ - 팜인사이트",
               "direction": "neutral",
               "source_level": 3,
-              "quality_score": 71
+              "quality_score": 58
             }
           ]
         }
       },
-      "reason": "질병/방역 19점 + 가격 13점 + 뉴스/수요 12점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 가격 13점 + 뉴스/수요 7점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
       "id": "POULTRY",
       "name": "계육",
-      "signal_score": 47,
+      "signal_score": 50,
       "direction": "neutral",
       "status": "보합/혼조",
       "quality_score": 72,
       "confidence_score": 87,
       "coverage_rate": 100,
-      "evidence_count": 17,
+      "evidence_count": 18,
       "official_count": 9,
       "direction_counts": {
         "up": 13,
         "down": 1,
-        "neutral": 3,
+        "neutral": 4,
         "hold": 0
       },
       "coverage_types": [
         "가격",
         "수급/도축",
+        "수요/행사",
         "일반",
         "정책/고시",
         "질병/방역"
       ],
       "score_breakdown": {
-        "price": 12,
+        "price": 13,
         "supply": 7,
         "disease": 19,
         "policy": 5,
-        "news": 4
+        "news": 6
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -342,17 +359,17 @@
         "price": {
           "label": "가격",
           "max_score": 30,
-          "score": 12,
+          "score": 13,
           "items": 1,
           "up": 0,
           "down": 0,
           "neutral": 1,
           "examples": [
             {
-              "title": "전세기 타고 온 미국 계란이 국산의 절반 가격에 팔리는 까닭 - 조선일보",
+              "title": "[알뜰 주말] 사과·배·참외 가격 ‘뚝’… 한우 대신 닭볶음탕 어때요 - 조선비즈 - Chosunbiz",
               "direction": "neutral",
               "source_level": 3,
-              "quality_score": 76
+              "quality_score": 81
             }
           ]
         },
@@ -422,12 +439,18 @@
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 4,
-          "items": 1,
+          "score": 6,
+          "items": 2,
           "up": 0,
           "down": 0,
-          "neutral": 1,
+          "neutral": 2,
           "examples": [
+            {
+              "title": "“전통시장 추석 차례상 30만원 넘었다”…폭염에 닭고기·계란값 껑충 - v.daum.net",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 71
+            },
             {
               "title": "계란값은 어떻게 금값 됐나…닭도 달걀도 아닌 ‘담합’의 결과 - 더스쿠프",
               "direction": "neutral",
@@ -437,7 +460,7 @@
           ]
         }
       },
-      "reason": "질병/방역 19점 + 가격 12점 + 수급/도축 7점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 가격 13점 + 수급/도축 7점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
@@ -542,29 +565,30 @@
       "signal_score": 58,
       "direction": "neutral",
       "status": "보합/혼조",
-      "quality_score": 66,
-      "confidence_score": 80,
+      "quality_score": 68,
+      "confidence_score": 78,
       "coverage_rate": 100,
-      "evidence_count": 28,
-      "official_count": 5,
+      "evidence_count": 27,
+      "official_count": 4,
       "direction_counts": {
-        "up": 8,
-        "down": 6,
-        "neutral": 14,
+        "up": 7,
+        "down": 10,
+        "neutral": 10,
         "hold": 0
       },
       "coverage_types": [
         "가격",
         "수급/도축",
+        "수요/행사",
         "일반",
         "정책/고시",
         "질병/방역"
       ],
       "score_breakdown": {
         "price": 11,
-        "supply": 22,
+        "supply": 21,
         "disease": 16,
-        "policy": 4,
+        "policy": 5,
         "news": 5
       },
       "score_breakdown_labels": {
@@ -579,19 +603,13 @@
           "label": "가격",
           "max_score": 30,
           "score": 11,
-          "items": 11,
+          "items": 9,
           "up": 1,
-          "down": 4,
-          "neutral": 6,
+          "down": 5,
+          "neutral": 3,
           "examples": [
             {
-              "title": "전세기 타고 온 미국 계란이 국산의 절반 가격에 팔리는 까닭 - 조선일보",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 76
-            },
-            {
-              "title": "중국 계란 가격은 8 월에 높은 수준으로 유지; 추가 급격한 상승을위한 여지가 제한되어 있습니다. - sunsirs.com",
+              "title": "중국 계란 가격은 8 월에 높은 수준으로 유지; 추가 급격한 상승을위한 여지가 제한되어 있습니다. - Sunsirs",
               "direction": "up",
               "source_level": 3,
               "quality_score": 76
@@ -601,35 +619,41 @@
               "direction": "down",
               "source_level": 3,
               "quality_score": 76
+            },
+            {
+              "title": "[사실은 이렇습니다] 계란 산지가격은 하락세에 있습니다. - 네이트",
+              "direction": "down",
+              "source_level": 3,
+              "quality_score": 76
             }
           ]
         },
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 22,
+          "score": 21,
           "items": 5,
-          "up": 4,
-          "down": 1,
+          "up": 3,
+          "down": 2,
           "neutral": 0,
           "examples": [
             {
-              "title": "법인 자격 상실 위기 산란계협회 ‘숨 돌렸다’ - 축산신문",
+              "title": "법인 자격 상실 위기 산란계협회 ‘숨 돌렸다’ - chuksannews.co.kr",
               "direction": "up",
               "source_level": 4,
               "quality_score": 88
             },
             {
-              "title": "계란 수급 및 가격안정에 최선을 다하겠습니다. - 대한민국 정책브리핑",
+              "title": "양계관련조합장협의회, 계란 수급·가격 안정 대응 논의 - 축산경제신문",
               "direction": "down",
               "source_level": 3,
-              "quality_score": 71
+              "quality_score": 65
             },
             {
-              "title": "'계란값 폭등' 네탓 공방 2라운드…산란계協 법인취소 '법정다툼' - v.daum.net",
+              "title": "계란값 담합 판단에 법인 자격까지 잃을 뻔한 산란계협회 - 뉴스법률",
               "direction": "up",
-              "source_level": 3,
-              "quality_score": 58
+              "source_level": 4,
+              "quality_score": 77
             }
           ]
         },
@@ -665,23 +689,17 @@
         "policy": {
           "label": "정책/고시",
           "max_score": 10,
-          "score": 4,
-          "items": 2,
+          "score": 5,
+          "items": 1,
           "up": 0,
           "down": 0,
-          "neutral": 2,
+          "neutral": 1,
           "examples": [
             {
               "title": "'2억개 수입' 정부 승부수에도…'계란 1판' 7300원대인 까닭 [프라이스&] - 한국경제",
               "direction": "neutral",
               "source_level": 5,
               "quality_score": 89
-            },
-            {
-              "title": "계란 한 판 8000원 시대…코스피는 올리고 계란값은 내린다! - 대한민국 정책브리핑",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 51
             }
           ]
         },
@@ -689,9 +707,9 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 5,
-          "items": 7,
+          "items": 9,
           "up": 0,
-          "down": 1,
+          "down": 3,
           "neutral": 6,
           "examples": [
             {
@@ -707,42 +725,43 @@
               "quality_score": 71
             },
             {
-              "title": "전북 계란값 5500원대로 ‘뚝’…그래도 장바구니는 여전히 무겁다 - v.daum.net",
+              "title": "추석 차례상 비용 30만원대...계란 16.7%, 동태포 30% 비싸져 - v.daum.net",
               "direction": "neutral",
               "source_level": 3,
-              "quality_score": 65
+              "quality_score": 71
             }
           ]
         }
       },
-      "reason": "수급/도축 22점 + 질병/방역 16점 + 가격 11점 기반, 상방성 자료가 우세",
+      "reason": "수급/도축 21점 + 질병/방역 16점 + 가격 11점 기반, 하방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
       "id": "OTHER",
       "name": "기타",
-      "signal_score": 28,
-      "direction": "down",
-      "status": "하방 가능성",
-      "quality_score": 77,
-      "confidence_score": 76,
-      "coverage_rate": 60,
-      "evidence_count": 32,
+      "signal_score": 41,
+      "direction": "neutral",
+      "status": "보합/혼조",
+      "quality_score": 76,
+      "confidence_score": 82,
+      "coverage_rate": 80,
+      "evidence_count": 33,
       "official_count": 29,
       "direction_counts": {
-        "up": 15,
+        "up": 16,
         "down": 1,
         "neutral": 16,
         "hold": 0
       },
       "coverage_types": [
+        "수급/도축",
         "수요/행사",
         "일반",
         "질병/방역"
       ],
       "score_breakdown": {
         "price": 0,
-        "supply": 0,
+        "supply": 13,
         "disease": 19,
         "policy": 0,
         "news": 9
@@ -768,12 +787,19 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 0,
-          "items": 0,
-          "up": 0,
+          "score": 13,
+          "items": 1,
+          "up": 1,
           "down": 0,
           "neutral": 0,
-          "examples": []
+          "examples": [
+            {
+              "title": "박정훈 식량정책실장, 추석 맞이 축산물 수급 현장 점검 - 농수축산신문",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 65
+            }
+          ]
         },
         "disease": {
           "label": "질병/방역",
@@ -797,7 +823,7 @@
               "quality_score": 71
             },
             {
-              "title": "농식품부, 경북 예천 구제역 방역 현장 점검…\"방역 관리 총력\" - 연합뉴스",
+              "title": "박정훈 농식품부 식량정책실장, 구제역 방역 추진 상황 현장 점검 - 대한민국 정책브리핑",
               "direction": "up",
               "source_level": 5,
               "quality_score": 89
@@ -844,7 +870,7 @@
           ]
         }
       },
-      "reason": "질병/방역 19점 + 뉴스/수요 9점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 수급/도축 13점 + 뉴스/수요 9점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     }
   ]
