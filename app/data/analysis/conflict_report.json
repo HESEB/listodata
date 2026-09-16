@@ -1,33 +1,30 @@
 {
-  "updated_at": "2026-09-15T21:26:46Z",
+  "updated_at": "2026-09-16T06:07:00Z",
   "policy": "phase2_conflict_hold_v1",
   "notice": "상방·하방 근거 충돌, 근거 누락, 신뢰도 부족에 따른 판단 유보 검수 리포트입니다.",
   "summary": {
     "species_count": 6,
     "conflict_species_count": 4,
-    "hold_recommended_count": 5,
-    "high_conflict_count": 4
+    "hold_recommended_count": 2,
+    "high_conflict_count": 1
   },
   "species": [
     {
       "id": "BEEF",
       "name": "한우",
       "has_conflict": true,
-      "conflict_severity": "high",
+      "conflict_severity": "medium",
       "conflict_axes": [
-        "가격",
-        "질병/방역"
+        "가격"
       ],
       "missing_evidence": [],
-      "hold_reasons": [
-        "상·하방 근거 강충돌"
-      ],
+      "hold_reasons": [],
       "original_confidence": 86,
-      "adjusted_confidence": 50,
-      "should_hold": true,
-      "recommended_status": "판단 유보",
-      "recommended_direction": "hold",
-      "memo": "판단 유보 권장 · 충돌축: 가격, 질병/방역 / 유보사유: 상·하방 근거 강충돌"
+      "adjusted_confidence": 76,
+      "should_hold": false,
+      "recommended_status": "상방 가능성",
+      "recommended_direction": "up",
+      "memo": "주의 필요 · 충돌축: 가격"
     },
     {
       "id": "PORK",
@@ -41,20 +38,20 @@
       "hold_reasons": [
         "상·하방 근거 강충돌"
       ],
-      "original_confidence": 88,
-      "adjusted_confidence": 70,
+      "original_confidence": 90,
+      "adjusted_confidence": 72,
       "should_hold": [
         {
           "axis": "price",
           "label": "가격",
-          "items": 5,
+          "items": 6,
           "has_conflict": true,
           "severity": "high",
           "dominant_direction": "down",
           "weighted_direction": {
             "up": 8.02,
             "down": 8.14,
-            "neutral": 3.27
+            "neutral": 6.12
           },
           "conflict_ratio": 0.99,
           "examples": {
@@ -78,8 +75,8 @@
             ],
             "down": [
               {
-                "title": "추석 과일·수산물 가격 안정세… 한우·돼지고기는 10% 안팎 올라 - IT조선",
-                "source": "IT조선",
+                "title": "추석 과일·수산물 가격 안정세… 한우·돼지고기는 10% 안팎 올라 - it.chosun.com",
+                "source": "it.chosun.com",
                 "direction": "down",
                 "quality_score": 76,
                 "source_level": 3,
@@ -99,9 +96,17 @@
                 "title": "계란·돼지고기 비싼 이유 있었네…이익 숨기고 가격 올려 1조원대 탈세 - 뉴시스",
                 "source": "뉴시스",
                 "direction": "neutral",
-                "quality_score": 81,
+                "quality_score": 76,
                 "source_level": 3,
                 "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE4yZ1lEUDd5YzJGdEtNY3hVdXhLa1N1UndsOVdPa29TdkZOZHBKU1hISUttcXQyZmQ4MEM2WE9mOGhYU1EzZ0hRLW9rV09RWUpsWWNqemhVeXFFUjdCbmNSRdIBeEFVX3lxTE1Odk12NXFZZVBheDMyV3lOOF9sQ0lqVGFja1p1OGJCb3REM0ZIdU1xbzVUYmlEV0lSUDU1VG1udUpVM0lLUkFqNGx6X1pRa0ZfV21mdFgtSmMteHR3aHdiaFNfTjUxZXhTY0l1WDZJbjJQekNqbEpjRQ?oc=5"
+              },
+              {
+                "title": "[전광판] '26년 37주차 평균 도매가격 7,023원(전주 대비 1.3%, 전년 대비 6.9%) - 돼지와사람",
+                "source": "돼지와사람",
+                "direction": "neutral",
+                "quality_score": 65,
+                "source_level": 3,
+                "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1jRWM3SElnMVVDNXJUdmZIdVFxanJ1WExGaWx5OTZQUzk1cWJFRlpMNmdkSXBnVS1aZV9PZVZacXRkdElzM1RHWnNTS2JCQ21scE84YTRvWWplOWE1T3NGSnpxRW8?oc=5"
               }
             ]
           },
@@ -119,15 +124,16 @@
       "conflict_severity": "none",
       "conflict_axes": [],
       "missing_evidence": [
+        "정책/고시",
         "뉴스/수요"
       ],
       "hold_reasons": [],
-      "original_confidence": 82,
-      "adjusted_confidence": 82,
+      "original_confidence": 77,
+      "adjusted_confidence": 77,
       "should_hold": false,
       "recommended_status": "보합/혼조",
       "recommended_direction": "neutral",
-      "memo": "주의 필요 · 누락근거: 뉴스/수요"
+      "memo": "주의 필요 · 누락근거: 정책/고시, 뉴스/수요"
     },
     {
       "id": "DUCK",
@@ -158,28 +164,26 @@
       "id": "EGG",
       "name": "계란",
       "has_conflict": true,
-      "conflict_severity": "high",
+      "conflict_severity": "medium",
       "conflict_axes": [
-        "가격",
-        "수급/도축",
-        "질병/방역"
+        "수급/도축"
       ],
-      "missing_evidence": [],
-      "hold_reasons": [
-        "상·하방 근거 강충돌"
+      "missing_evidence": [
+        "정책/고시"
       ],
-      "original_confidence": 84,
-      "adjusted_confidence": 46,
-      "should_hold": true,
-      "recommended_status": "판단 유보",
-      "recommended_direction": "hold",
-      "memo": "판단 유보 권장 · 충돌축: 가격, 수급/도축, 질병/방역 / 유보사유: 상·하방 근거 강충돌"
+      "hold_reasons": [],
+      "original_confidence": 68,
+      "adjusted_confidence": 58,
+      "should_hold": false,
+      "recommended_status": "보합/혼조",
+      "recommended_direction": "neutral",
+      "memo": "주의 필요 · 충돌축: 수급/도축 / 누락근거: 정책/고시"
     },
     {
       "id": "OTHER",
       "name": "기타",
       "has_conflict": true,
-      "conflict_severity": "high",
+      "conflict_severity": "medium",
       "conflict_axes": [
         "수급/도축",
         "뉴스/수요"
@@ -189,85 +193,14 @@
         "정책/고시"
       ],
       "hold_reasons": [
-        "상·하방 근거 강충돌"
+        "복수 근거축 충돌"
       ],
-      "original_confidence": 84,
-      "adjusted_confidence": 56,
-      "should_hold": [
-        {
-          "axis": "supply",
-          "label": "수급/도축",
-          "items": 7,
-          "has_conflict": true,
-          "severity": "high",
-          "dominant_direction": "up",
-          "weighted_direction": {
-            "up": 15.76,
-            "down": 13.4,
-            "neutral": 0.0
-          },
-          "conflict_ratio": 0.85,
-          "examples": {
-            "up": [
-              {
-                "title": "송옥주 의원, 축산물 수급조절·물가관리 법제화 추진 - adtimes.co.kr",
-                "source": "adtimes.co.kr",
-                "direction": "up",
-                "quality_score": 81,
-                "source_level": 3,
-                "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9kaGthSy1JQW1hQ08zcW01blE3Ujl6YV9xUldjRmZzNWhaYVJkRHlNdDY5ZEZ3Y3FfQVJVR3VRdzlMQTVYVzZDcm9OTEpXVU1lN1BCTC1CbzJ3aTJNVVB6cUpWMWY5N2NLZDZzbA?oc=5"
-              },
-              {
-                "title": "송옥주, ‘축산물 수급조절·물가관리법’ 대표발의…담합 논란 막는다 - 아이뉴스24",
-                "source": "아이뉴스24",
-                "direction": "up",
-                "quality_score": 81,
-                "source_level": 3,
-                "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE1EWERkdm02c0phYzdyejdobklQWkJCUDNTNTludFJTcmFCeEJEU0NSbmpaNzRyakE3T1B4cXZRZTZkMmhpTUtsWkFRaG8?oc=5"
-              },
-              {
-                "title": "송옥주 의원, 축산물 담합 시비 없는 수급조절 법제화 추진 - 식품저널 foodnews",
-                "source": "식품저널 foodnews",
-                "direction": "up",
-                "quality_score": 81,
-                "source_level": 3,
-                "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE51TGx0NDNpMHhYcUJSTTJnYWZaMmNCb3EzMlJydlhfWDZ2UnhRdXFlS1FSVmg3U18tSFlzUlR5RVREUW9RWlZiMmtOSG5hVk9SRURwcG0tWjdiLWprdUg3T0o1Mk5zOWZSTGpVOVp3?oc=5"
-              }
-            ],
-            "down": [
-              {
-                "title": "김종구 농림축산식품부차관, 추석 명절 축산물 수급 안정에 총력 - nuriilbo.com",
-                "source": "nuriilbo.com",
-                "direction": "down",
-                "quality_score": 100,
-                "source_level": 5,
-                "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE94NFFNbktvNnVpWDFNVnpfTGFkQjRMcHhCVkpaRUNJNUtvTWZwNjk3Nks5SUtFRUQwcC1neWtvVEtEaWw2YjZxbUlBNDFxSDZXYzlTZ2VFcW01TXc?oc=5"
-              },
-              {
-                "title": "김종구 농림축산식품부차관, 추석 명절 축산물 수급 안정에 총력 - 더시그널뉴스",
-                "source": "더시그널뉴스",
-                "direction": "down",
-                "quality_score": 80,
-                "source_level": 5,
-                "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5mLVlNOXV2cHFIam9lY2hlSF9GZXdyWG85ZGhzZDJtY2ptODIyd0xnOFVHWExDa2U2Z0pldUZfUTFvMGZoa1RTOG05d0tYdlFYb1F5RUdTbkJJbmNUcVo2cUlYVnhtMG1PSzNjRElJanp3TE0?oc=5"
-              },
-              {
-                "title": "송미령 농식품부 장관, 음성공판장 찾아 “추석 축산물 수급·가격 안정 총력” - 중부매일",
-                "source": "중부매일",
-                "direction": "down",
-                "quality_score": 100,
-                "source_level": 5,
-                "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1TN0xwUE92Tm9LNXlZb1p4ZTBaQzlLd01YVEF1akpFZlRoYkIyVWFlZFhkdWN4Szhnc2FWRXZMZ3pOcU5tM0JvNWkyWVg2UEJzYi16Tzc0YThCbjBMemE5QlR3SG1YOU9oOVHSAW5BVV95cUxNVlRqaEFXT0ZMNXZPclRqbUd6LVcwMk00WUQtM3I5ekJqb2doV1hiZ21KZ1d2Zmc2TmpCdUExSDlZQnpCa0hCVTcyOUk1RDAtSkppd21PQjN4bWRmNFNydGk5RzhOY1hHcnNXb09Odw?oc=5"
-              }
-            ],
-            "neutral": []
-          },
-          "memo": "수급/도축 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
-        }
-      ],
-      "recommended_status": "판단 유보",
-      "recommended_direction": "hold",
-      "memo": "판단 유보 권장 · 충돌축: 수급/도축, 뉴스/수요 / 누락근거: 가격, 정책/고시 / 유보사유: 상·하방 근거 강충돌"
+      "original_confidence": 85,
+      "adjusted_confidence": 65,
+      "should_hold": false,
+      "recommended_status": "보합/혼조",
+      "recommended_direction": "neutral",
+      "memo": "주의 필요 · 충돌축: 수급/도축, 뉴스/수요 / 누락근거: 가격, 정책/고시 / 유보사유: 복수 근거축 충돌"
     }
   ],
   "axis_reports": {
@@ -277,14 +210,14 @@
         "label": "가격",
         "items": 9,
         "has_conflict": true,
-        "severity": "high",
+        "severity": "medium",
         "dominant_direction": "down",
         "weighted_direction": {
           "up": 11.99,
-          "down": 18.04,
-          "neutral": 6.96
+          "down": 21.72,
+          "neutral": 4.15
         },
-        "conflict_ratio": 0.66,
+        "conflict_ratio": 0.55,
         "examples": {
           "up": [
             {
@@ -314,8 +247,16 @@
           ],
           "down": [
             {
-              "title": "추석 과일·수산물 가격 안정세… 한우·돼지고기는 10% 안팎 올라 - IT조선",
-              "source": "IT조선",
+              "title": "추석 장보기, 한우 할인으로 알뜰하게! - 전체 | 카드/한컷 | 멀티미디어 - 대한민국 정책브리핑",
+              "source": "대한민국 정책브리핑",
+              "direction": "down",
+              "quality_score": 69,
+              "source_level": 2,
+              "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNc3FuRjFNSEtHUnVDS3cwandKbFhPdkRwYmgyaUN6TDJkMFo0c1V3czU2Q3lsMGZlcEZOeUZVRDFHMnZOeWJiVWFabDgzUjlVZnlWNy04eUl0OUVsbEZ3SjQ2MW42RU8zQzF0MW83YmRfS09RYVdWaFRDNEhlc01IREdhMlZrekw0QmU0?oc=5"
+            },
+            {
+              "title": "추석 과일·수산물 가격 안정세… 한우·돼지고기는 10% 안팎 올라 - it.chosun.com",
+              "source": "it.chosun.com",
               "direction": "down",
               "quality_score": 76,
               "source_level": 3,
@@ -328,14 +269,6 @@
               "quality_score": 76,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9WUlhFUkprb3Y3RU5OUXRidlUtWEFVbUtaV0RxWlJkR1lpd3dLeHBwUjV4U05FdEpNMi1uSlF3Y2NXNE1raV9zTFB1cE9uOGFLdzNwVGZoeXN2UVNoWk1leHBfUXBFUlhIT3c?oc=5"
-            },
-            {
-              "title": "추석 앞두고 한우값 ‘껑충’…정부, 할인 지원 확대 - 대구일보",
-              "source": "대구일보",
-              "direction": "down",
-              "quality_score": 95,
-              "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFB3bTJhaEM3cVo4SE4ydjFkdXhudkdsLWNPbm00SlBzSU04a1d6RnN2eV8wM0IyYjZqdUVXT19oWFlyUG4wajhFbEVJM0NUUlIwRk1PbHQ0WHZOS1ZmUEVRSF9VSzcxcDJH?oc=5"
             }
           ],
           "neutral": [
@@ -345,19 +278,11 @@
               "direction": "neutral",
               "quality_score": 100,
               "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9PUHN3OGM5ZXFQNm1FdzM0T2cwTll4bkJlNkZNRjROLWFGSVVqcklIQTliYUtSSEp6c1BQYnNUTnRlSkhEUUJtZTR6OTJBcFhYMEd3enV2SlRDZGZrMVJCZjlRX1plMzRNcnpZMQ?oc=5"
-            },
-            {
-              "title": "한우 도매가격, 연중 최고치 경신 - 축산경제신문",
-              "source": "축산경제신문",
-              "direction": "neutral",
-              "quality_score": 58,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9tWlFxcGtIazU4S2J3dUNtVHRVd2dsT3Y0ZFVHQ2FHUFNqeElmMkVzcTRjVlVXUkMxWWxWSHJVY2l5QzJWWW9IMmN5YTdNOUVTZnpqdlFnYTZONlMzVDBwUC1sRDd3V0psWXJvaVRB0gFyQVVfeXFMTzNXb1NhZzEwNU1HWHZTS1Z1V3JxclZqWXpHSnZhQmJQZkxHWHhMWjIxdXh2dWFVQzF2UFptdFNaM0tYdDd6azFramw4OXZ4aUJvbjRQbVF4dEVDRmtEajJRNXFmbm1MTjdjZkNOVHoxUXhR?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE90RTRWSHNkMlhFcVQzQVlCN0xyNkVrcTdxZndrcDBuNFBhclpBdUdXVUJDZm1GRk55b2Fxb2taS2FfazVXenFYZDJMeUNrM0FzeXd3a2JsZ3NBandJLTR0cDFtM25CVW4tcTRKZTRBbVc0QQ?oc=5"
             }
           ]
         },
-        "memo": "가격 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
+        "memo": "가격 축에서 상방·하방 근거가 동시에 감지되어 medium 충돌로 분류"
       },
       {
         "axis": "supply",
@@ -407,16 +332,16 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 2,
-        "has_conflict": true,
-        "severity": "high",
+        "items": 1,
+        "has_conflict": false,
+        "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
           "up": 5.0,
-          "down": 3.72,
+          "down": 0.0,
           "neutral": 0.0
         },
-        "conflict_ratio": 0.74,
+        "conflict_ratio": 0.0,
         "examples": {
           "up": [
             {
@@ -428,19 +353,10 @@
               "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOOGtoemFWRDgzNjVXRHI0SkNDTVc3Wl9qZnMxMk0zSzlfR0l5N3EyWUVIQVJjTXZmaU80clV1NGljeUFYYU1taUxUTDY5dXNpNGNjTW1leXFxNHhUXzNNR1YycEhEaXlGN3lwTjlKMzV1SDA1UjQtblFTZW5xZjNlcjNfYTFiZENzRDBJQzU4VVNlX0lxRWNiWXp4V2lxT1lQamRjSi0yNTFhVXVIT2NBU0ZYWUJuS2VWeFM2MkhCSjJmaG8wWnUwRA?oc=5"
             }
           ],
-          "down": [
-            {
-              "title": "신평농장 대표 박덕기, 합천군 농축산물가격안정기금 200만원 기탁 - gndnews1.com",
-              "source": "gndnews1.com",
-              "direction": "down",
-              "quality_score": 81,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFB3Q0QtcUFxMlgwTl95dnZQWG1sWGU0YXN2cXdwMmNELVVYYW9JemtPU0w4RlZtVGtyd09pblJRZ1Y4ZkttV1l3bEx2SG5LMGdQa2k2Q1AweUtMcmp5Y19BcXI0SQ?oc=5"
-            }
-          ],
+          "down": [],
           "neutral": []
         },
-        "memo": "질병/방역 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
+        "memo": "질병/방역 축은 상방 근거 우세"
       },
       {
         "axis": "policy",
@@ -452,7 +368,7 @@
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 3.27
+          "neutral": 3.17
         },
         "conflict_ratio": 0,
         "examples": {
@@ -463,7 +379,7 @@
               "title": "“비싼 한우는 구경만”…수입 삼겹살 소비 49% 급증 - v.daum.net",
               "source": "v.daum.net",
               "direction": "neutral",
-              "quality_score": 81,
+              "quality_score": 76,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE9zRDh3TmtyU0dmU09La3FHY1ZvNDRrUmlHZzI3cFpMYWFnZ2FFd041VGwzem5CY2hGdkgxUlZyUm5KVVNyREE?oc=5"
             }
@@ -474,14 +390,14 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 16,
+        "items": 17,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "neutral",
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 51.78
+          "neutral": 54.39
         },
         "conflict_ratio": 0,
         "examples": {
@@ -489,28 +405,28 @@
           "down": [],
           "neutral": [
             {
-              "title": "추석 앞두고 치솟는 한우값, 횡성한우는 왜 더 민감한가? - 서프라이즈뉴스",
-              "source": "서프라이즈뉴스",
+              "title": "서귀포시축협, 9월 가축시장 개장 - youngjuilbo.com",
+              "source": "youngjuilbo.com",
               "direction": "neutral",
               "quality_score": 81,
               "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9uWVVPX251NGpiWDRYVm5CSVZLUVkzSW5nUVVQeFFQc3MtaTlkaWp2Uk1SZmMyM1BMa1A1MFI5OEJVUVhQQzZRSWl2OWpvSVBGMlhGUFVYX2NLanRpNXZ6S05KRTVBRk93U3ppb2xB?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9EemhBUUQtd0tDX3pQS2hBX2lBRnJnY2RLdWM4eTNrMkgzY0xFejdWOHRSTjh3bGczYjZkQWlBQ2RoaEEzVlA3N0o2QmVNcEMzNnVlc0FvYldEZGlNVHJDdW1MelZwMmdBbHFUWEpZVQ?oc=5"
             },
             {
-              "title": "‘하동솔잎한우’ UAE 첫 수출 - 하동신문",
-              "source": "하동신문",
+              "title": "포천 한우와 한탄강의 가을 만남…제14회 포천한우축제 성료 - 1gan.co.kr",
+              "source": "1gan.co.kr",
               "direction": "neutral",
               "quality_score": 81,
               "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5wc0tCTHN6OThmTHJ0Vi0ybVlVTWRYR0V0MWJYWVhWSktBeFcxeDJRZEtfektibDhIc21CZGt0dklqaVhFMUdmVWRUWldDbWdUSTFWNzczYXVyQ3o1VFpRcUswTl82UmU2ejF0eGJYX0M?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE96SFB2VTJqdDNkRDl0M0FxeGY0dGRKQUppaG5BcVEtT1lXTXlFeS1RT3hROGRKZXlUSXlXSlZNdUdYQW9EalpfMW5aMFFSNk9wUHFFS0k4UzJQclZOc3lPYTYyMzBXQm9J?oc=5"
             },
             {
-              "title": "추석 성수품, 사과·배는 싸지고 한우·돼지고기는 올라 - v.daum.net",
-              "source": "v.daum.net",
+              "title": "포천 한우와 한탄강의 가을, 제14회 포천한우축제 마무리 - 연합뉴스",
+              "source": "연합뉴스",
               "direction": "neutral",
               "quality_score": 81,
               "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9yeEVHMDZ3UHZJSjFIb0g5N1dBd2o0V3o5a1N1NG1fbF9uR0FvdU1xQjdSV2tRbWlBU0V6QXJrMXVfZjVxRk5VTFBTcUJ0VGM?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFB4b1I4NUVpTUhoWl96VklUVHBkai1sTGVZeW5nUkw3U0FZWXlGUmVCSGlNY2JxcjhUZ3NKZzAzQWN3bzhjMi1lc3h4NzVQbFNhdkVOX19TQXNVOXM?oc=5"
             }
           ]
         },
@@ -521,14 +437,14 @@
       {
         "axis": "price",
         "label": "가격",
-        "items": 5,
+        "items": 6,
         "has_conflict": true,
         "severity": "high",
         "dominant_direction": "down",
         "weighted_direction": {
           "up": 8.02,
           "down": 8.14,
-          "neutral": 3.27
+          "neutral": 6.12
         },
         "conflict_ratio": 0.99,
         "examples": {
@@ -552,8 +468,8 @@
           ],
           "down": [
             {
-              "title": "추석 과일·수산물 가격 안정세… 한우·돼지고기는 10% 안팎 올라 - IT조선",
-              "source": "IT조선",
+              "title": "추석 과일·수산물 가격 안정세… 한우·돼지고기는 10% 안팎 올라 - it.chosun.com",
+              "source": "it.chosun.com",
               "direction": "down",
               "quality_score": 76,
               "source_level": 3,
@@ -573,9 +489,17 @@
               "title": "계란·돼지고기 비싼 이유 있었네…이익 숨기고 가격 올려 1조원대 탈세 - 뉴시스",
               "source": "뉴시스",
               "direction": "neutral",
-              "quality_score": 81,
+              "quality_score": 76,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE4yZ1lEUDd5YzJGdEtNY3hVdXhLa1N1UndsOVdPa29TdkZOZHBKU1hISUttcXQyZmQ4MEM2WE9mOGhYU1EzZ0hRLW9rV09RWUpsWWNqemhVeXFFUjdCbmNSRdIBeEFVX3lxTE1Odk12NXFZZVBheDMyV3lOOF9sQ0lqVGFja1p1OGJCb3REM0ZIdU1xbzVUYmlEV0lSUDU1VG1udUpVM0lLUkFqNGx6X1pRa0ZfV21mdFgtSmMteHR3aHdiaFNfTjUxZXhTY0l1WDZJbjJQekNqbEpjRQ?oc=5"
+            },
+            {
+              "title": "[전광판] '26년 37주차 평균 도매가격 7,023원(전주 대비 1.3%, 전년 대비 6.9%) - 돼지와사람",
+              "source": "돼지와사람",
+              "direction": "neutral",
+              "quality_score": 65,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1jRWM3SElnMVVDNXJUdmZIdVFxanJ1WExGaWx5OTZQUzk1cWJFRlpMNmdkSXBnVS1aZV9PZVZacXRkdElzM1RHWnNTS2JCQ21scE84YTRvWWplOWE1T3NGSnpxRW8?oc=5"
             }
           ]
         },
@@ -618,7 +542,7 @@
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 79.42,
+          "up": 79.21,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -626,28 +550,28 @@
         "examples": {
           "up": [
             {
-              "title": "[칼럼] ASF 만 7년, 이제 농장 밖을 봐야 한다 - pigpeople.net",
-              "source": "pigpeople.net",
+              "title": "순천시, 양돈농가 방역시설 집중 점검...‘아프리카돼지열병(ASF) 차단 방역’ - newsggam.com",
+              "source": "newsggam.com",
               "direction": "up",
               "quality_score": 81,
               "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9udTJKbDZQMHFPWUVILWhNVDVEMXUwR1Q2MVJoTDE4eHhxMGdCVTZJM0FWdGRmcVpucGlHZlk2aFhVeHFEcjUydHFlNXhwbzZVV2IzOVh6dkNabjFfOTV5LWtB?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBrWnpMbnpVcWNaVHZzYlRGWGkyV2Z1MnJNTXpDQXRLRGxZNHhLYUtFZXlCc1FiQlFfaDlLa3BoQ29zdXhSWGMtYzFYWi13TExNbXlHYkIxbWtJOW9sa1R2QW5yT0IwZW5VN0E?oc=5"
             },
             {
-              "title": "구제역·AI·ASF 막는다…전주, 특별방역 한발 앞서 ‘24시간 소독’ - 더펜뉴스",
-              "source": "더펜뉴스",
+              "title": "올겨울 가축전염병 비상... AI·구제역·ASF 고위험 지역 집중 관리 - 한국재난뉴스",
+              "source": "한국재난뉴스",
               "direction": "up",
               "quality_score": 81,
               "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9fYlBWa0dBTFlXbUZIbWxGUXpzT1FPTFBRd2pFTGhnSjJvZW05cEZoOG4zVWxuU2JQU3dqd195emhnNzJCdDBOY3U2MkZDZndFelIzcGlPSktyOTZpUXpiVENFZw?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1vZjhQS0VKdWRYY1FBNTI3TEtaLXhtMjJKbkotcjdPRXR4b1ZGSGZ5RVNWamc0SktGQ2M3VS0weDROYmRQRHczR2hteXNESEFDSjFVamtyVkNwMUVoZ2VLR2hKNU9KZ3hzdVE?oc=5"
             },
             {
-              "title": "강릉시, 아프리카돼지열병 방역훈련 - 강릉넷TV",
-              "source": "강릉넷TV",
+              "title": "올겨울 AI·구제역·ASF 비상…정부, 10월부터 특별방역 돌입 - 뉴스1",
+              "source": "뉴스1",
               "direction": "up",
-              "quality_score": 71,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBfUm0wcUxUU0EybXJTVnZvcV85WWhlYk4xWFFHN0xTMVEyNk5fOGhSTDZlbDFtcmZDVHlCWlpBSWhUOHM4RUxETHptdjJxTUlxUjVHbWVzQUROUGhudUxENHkzeThrd0VRU3c?oc=5"
+              "quality_score": 100,
+              "source_level": 5,
+              "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE96LXRGRFF0RWppOWNvVFdIdTByM21pR2RreUhnb19vYTR4WWUwY2NPaFU1MTB5MTcxb3hFZDcxWk5Kc1kwOFIwa1phQVFpbzFCZ05ETNIBWkFVX3lxTE1pLUFPZmtybGtkTzlqQXNEeG1INklFR0VoRExDb2JpZmMyWDJZMjFBLWpjREdrZUNYNGxDaFpUemNmVjFESGItN3lwV0ZacGViS3kybVZvUzI3Zw?oc=5"
             }
           ],
           "down": [],
@@ -665,7 +589,7 @@
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 3.27
+          "neutral": 3.17
         },
         "conflict_ratio": 0,
         "examples": {
@@ -676,7 +600,7 @@
               "title": "“비싼 한우는 구경만”…수입 삼겹살 소비 49% 급증 - v.daum.net",
               "source": "v.daum.net",
               "direction": "neutral",
-              "quality_score": 81,
+              "quality_score": 76,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE9zRDh3TmtyU0dmU09La3FHY1ZvNDRrUmlHZzI3cFpMYWFnZ2FFd041VGwzem5CY2hGdkgxUlZyUm5KVVNyREE?oc=5"
             }
@@ -687,14 +611,14 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 6,
+        "items": 4,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "neutral",
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 18.54
+          "neutral": 12.42
         },
         "conflict_ratio": 0,
         "examples": {
@@ -707,23 +631,23 @@
               "direction": "neutral",
               "quality_score": 81,
               "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9yeEVHMDZ3UHZJSjFIb0g5N1dBd2o0V3o5a1N1NG1fbF9uR0FvdU1xQjdSV2tRbWlBU0V6QXJrMXVfZjVxRk5VTFBTcUJ0VGM?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTFAzenhJdVdtZ3Fnb1B0a0huOXJJWXFhLTI4OFF4Ql9TSllqaGNSSFdfcVJZRGJ2TkFTcE4xcFNENGFKdi1taFE?oc=5"
             },
             {
-              "title": "한우·삼겹살 두 자릿수 ‘껑충’… 사과값 내려도 무거운 추석 장바구니 - v.daum.net",
+              "title": "한우·삼겹살 두 자릿수 ‘껑충’…사과값 내려도 무거운 추석 장바구니 - v.daum.net",
               "source": "v.daum.net",
               "direction": "neutral",
               "quality_score": 76,
               "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE9QSXhKUV9pbFU4YUs4QmtiOEZmZmw2eTBUSnI3SnVYY1NZaXNnc0pqN1h3dkdkT3ZWSW9lZ1NFZzVWc1RuSmc?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFAtRGJXSTljM1NiZXVmbkFZZ29BQjY3Und6VnhtYk5DWWpZR3MwMmlxZHVhZWp4Wk1lUjNWTkhDYU5hTGZRM011MGhfaGhuRUE?oc=5"
             },
             {
-              "title": "추석 성수품 물가 엇갈려…사과·배는 싸지고 한우·돼지고기는 올랐다 - v.daum.net",
-              "source": "v.daum.net",
+              "title": "엇갈린 추석 장바구니 물가…사과·배 내리고 한우·돼지고기 올라 - 대전일보",
+              "source": "대전일보",
               "direction": "neutral",
               "quality_score": 76,
               "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE1fZE5QSGNsUjk0YVViVFhQVUtlRi1KdG1lWXhJU1VFX0lCNGVscmhmcUlVX0IxZGZfVVVScTRxQTZ2dTdvR3c?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBHTDIxTkVrbUJVYkZkVHVDN2pfV2hkSFBrcklJWTVNVFFpdzhjbVBCOVluNGFSLVh6NzQ3dVRycmg1UWtPQThobkZHVFJTSWxuVGU1bDREUmR2OS1FRFNwOXdNcjhKZVo2TUxuLXY2ZkFxaDTSAXNBVV95cUxQR0wyMU5Fa21CVWJGZFR1QzdqX1doZEhQa3JJSVk1TVRRaXc4Y21QQjlZbjRhUi1Yejc0N3VUcnJoNVFrT0E4aG5GR1RSU0lsblRlNWw0RFJkdjktRURTcDl3TXI4SmVaNk1Mbi12NmZBcWg0?oc=5"
             }
           ]
         },
@@ -749,8 +673,8 @@
           "down": [],
           "neutral": [
             {
-              "title": "전세기 타고 온 미국 계란이 국산의 절반 가격에 팔리는 까닭 - 조선일보",
-              "source": "조선일보",
+              "title": "전세기 타고 온 미국 계란이 국산의 절반 가격에 팔리는 까닭 - chosun.com",
+              "source": "chosun.com",
               "direction": "neutral",
               "quality_score": 71,
               "source_level": 3,
@@ -769,7 +693,7 @@
         "dominant_direction": "down",
         "weighted_direction": {
           "up": 0.0,
-          "down": 3.62,
+          "down": 3.52,
           "neutral": 0.0
         },
         "conflict_ratio": 0.0,
@@ -780,7 +704,7 @@
               "title": "육계값 하락에 치킨업계 ‘숨통’…“가격보다 수급 안정” - 데일리한국",
               "source": "데일리한국",
               "direction": "down",
-              "quality_score": 76,
+              "quality_score": 71,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9iQTJlZWktWHRYNTlvekZGLUpPWUQ0NTBDZ0tCRVZpWUJnbkl5NkZhZ2JFaUlmMU1oSVp1MFRGdGNVTDNEcmVvUzBiWEVpTG1TLTAxXzBSRXdBWDFNWmdwdGE0MENwNkZJRWxkOFRFZ9IBc0FVX3lxTE50angxVGExYy1COXB2eVVFdHVvSDVUZFJJeTlDMzMtbEFISnJlOUxST3hvWlhaX21QLWtqRzJ3a2NKeFFsVUlmZUFFU1gwRTc1d1FTNWVDa1FCRmc1Tm5KR3BKeko1OTQxNWRoMHhhOFNMdWs?oc=5"
             }
@@ -792,12 +716,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 13,
+        "items": 17,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 61.33,
+          "up": 82.95,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -805,28 +729,28 @@
         "examples": {
           "up": [
             {
-              "title": "영암군, AI 방역·사육환경 개선 논의 - 남도일보",
-              "source": "남도일보",
+              "title": "해외 AI 2배 급증·새 구제역 등장…농식품부, 겨울철 방역 강화 - v.daum.net",
+              "source": "v.daum.net",
               "direction": "up",
-              "quality_score": 81,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1JOUJLZWlzRnlaNU1mVDFkLWt2T1ZnQ2dIT2FqMElTeGZ6SGdCQUxNTDRMdVVjQVhfNUlvVW9EaUk0WXJhc3JPQjJaa0c1SzFSZHViNGVRNi1XanRxUWtLUFhDT0xSRlkxMjNGRNIBcEFVX3lxTE9sZ1MyQXJXX18wVFk4Y0JlemNnZ2IyZnNNT0ZtRmVIZmFxbDdDM1ZNMkhVek1mSHNKOUM4U2RMbXA4TXpQVlFZQ25ZeXA2Ul9maDUyd3NVZjQ3TGRKUXk4NHBDTjBILUNVcHQtZzhBTms?oc=5"
+              "quality_score": 100,
+              "source_level": 5,
+              "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1EbXp1S043ZEtQQnBQSFNmdHdHbzRfd1F4QlRYYUxBbW4wMlh4eEk0SllZRzBlQUtOZnBPajhsd2tjNlBnbHZWRDdqNVYzbms?oc=5"
             },
             {
-              "title": "영암군, 가금농가 간담회… 방역·사육여건 개선 논의 - theleader.co.kr",
-              "source": "theleader.co.kr",
+              "title": "해외 야생조류 AI 2배·SAT1형 구제역 위협…정부, 겨울 방역 고삐 - edaily.co.kr",
+              "source": "edaily.co.kr",
               "direction": "up",
-              "quality_score": 81,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1YbXdtNkZtamJhOUxmTV9yaEkza1cwcmNGRFVzamtmekZKejF1N0NYQlpNc0R3c3BRYjFPWnZNU2xqUXJYZ0lfWFZ2MW5tbmttZ2h0MFZzczVac1hUWDQzSHA5TjVUNTlua1Bvaw?oc=5"
+              "quality_score": 100,
+              "source_level": 5,
+              "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQR3QteWZxQ0lST0NhLWxCMFhDLUZER2pUYUtyYnEzemxtcWx6ZU13bTNJRnhnNlRtUjE1ZkY5cU9MMjNnN3g3bkVudEE3VGR5WVhzZk9CalRfWFJzVXpudVY3RDBqMXh5UHJ3MWhScGlGMU5OclI2Z2NFSnRGX3Zpcw?oc=5"
             },
             {
-              "title": "토종닭업계, 겨울 AI 대비 방역 고삐…“생산·유통 전 과정 차단방역” - 한국영농신문",
-              "source": "한국영농신문",
+              "title": "AI 2배 늘고, 신종 구제역까지‥정부, 겨울철 가축전염병 방역 강화 - MBC 뉴스",
+              "source": "MBC 뉴스",
               "direction": "up",
-              "quality_score": 81,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE41aTZPWU92UE9PeENtcS1MMkhWUThfbjh5V085NEFURV9rTXVnbU14bGQ0ZURYdGg5NmNjem9zdkVlbTJXa0FIVzRSZ1VzYi0wODZzTm5xRjRyY19YTUxQYnRIck1Ndk4zZU1LTnZn?oc=5"
+              "quality_score": 100,
+              "source_level": 5,
+              "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9HdVFpdHctX1kwaEc2N1QwYUZQdUhKdDRGZ3NWeDdUejlBdkFvam52SkluMjl6TnJnV1prRHNwRGVlbjRYTVdRcUIyVWdmUGNuZWk0R09FdWJvTVFDNC03Ty1MZkhNNGFPbkNxem1Bdy1WN1hH0gF0QVVfeXFMT0d1UWl0dy1fWTBoRzY3VDBhRlB1SEp0NEZnc1Z4N1R6OUF2QW9qbnZKSW4yOXpOcmdXWmtEc3BEZWVuNFhNV1FxQjJVZ2ZQY25laTRHT0V1Ym9NUUM0LTdPLUxmSE00YU9uQ3F6bUF3LVY3WEc?oc=5"
             }
           ],
           "down": [],
@@ -837,29 +761,20 @@
       {
         "axis": "policy",
         "label": "정책/고시",
-        "items": 1,
+        "items": 0,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "neutral",
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 3.79
+          "neutral": 0.0
         },
         "conflict_ratio": 0,
         "examples": {
           "up": [],
           "down": [],
-          "neutral": [
-            {
-              "title": "'2억개 수입' 정부 승부수에도…'계란 1판' 7300원대인 까닭 [프라이스&] - 한국경제",
-              "source": "한국경제",
-              "direction": "neutral",
-              "quality_score": 82,
-              "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1sTWpSdk9yVEJxX3ZPQUM5R2MxTXRMOGFtOGJleTBES1RKQ3lxQ2VDQWVVQTUzV2x2b2ctVF9Zcm1STF8yeTA1UDlYTEg4UW9mM0RWZl9aM1YtQQ?oc=5"
-            }
-          ]
+          "neutral": []
         },
         "memo": "정책/고시 축은 중립 또는 보조 근거 중심"
       },
@@ -999,16 +914,16 @@
       {
         "axis": "price",
         "label": "가격",
-        "items": 12,
-        "has_conflict": true,
-        "severity": "high",
+        "items": 13,
+        "has_conflict": false,
+        "severity": "none",
         "dominant_direction": "down",
         "weighted_direction": {
-          "up": 8.14,
-          "down": 11.39,
-          "neutral": 21.23
+          "up": 4.17,
+          "down": 14.6,
+          "neutral": 25.18
         },
-        "conflict_ratio": 0.71,
+        "conflict_ratio": 0.29,
         "examples": {
           "up": [
             {
@@ -1018,14 +933,6 @@
               "quality_score": 81,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFB1NFdqT09lcDRLZDlObnFLM1dfR1RyWTAtV1NwbnhkV1VLbVJ5QXRzV0tHUTNQX21EeHhLR1Z6bFRlUlc4MWxrN2xoWC1rd2l6Ti01SUNSaExlVlhXS1IzdGhUbmNPSFduNEwxUEZ3?oc=5"
-            },
-            {
-              "title": "중국 계란 가격은 8 월에 높은 수준으로 유지; 추가 급격한 상승을위한 여지가 제한되어 있습니다. - Sunsirs",
-              "source": "Sunsirs",
-              "direction": "up",
-              "quality_score": 71,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5kSFlKbWVJMFlMUGxNcndoWTByWjRtU0tmYWlGNU1qYmxzWmJLYU5yTG1HMlFOczU3NGZMM1pkVTdMWXA1dktQeXVGeFZPM2k1UUs4UWlJell4aGhzd3c?oc=5"
             }
           ],
           "down": [
@@ -1056,10 +963,18 @@
           ],
           "neutral": [
             {
+              "title": "[단독] 정부 발표 계란 소비자가격 '통계 왜곡 정황' - 팜인사이트",
+              "source": "팜인사이트",
+              "direction": "neutral",
+              "quality_score": 100,
+              "source_level": 5,
+              "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5NbjBSWVFFamttOWtLa1ZLOFBLLVlScldHUlMzUjctdndOVE1NSnNfMEJHanFnRmN6c2J2YjdMZE81c3BZZUt6WjlQeFYyMnI3ck82YmtUcGNYLWstV24wV3pHRkRQOFU4RkFPQmpR?oc=5"
+            },
+            {
               "title": "계란·돼지고기 비싼 이유 있었네…이익 숨기고 가격 올려 1조원대 탈세 - 뉴시스",
               "source": "뉴시스",
               "direction": "neutral",
-              "quality_score": 81,
+              "quality_score": 76,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE4yZ1lEUDd5YzJGdEtNY3hVdXhLa1N1UndsOVdPa29TdkZOZHBKU1hISUttcXQyZmQ4MEM2WE9mOGhYU1EzZ0hRLW9rV09RWUpsWWNqemhVeXFFUjdCbmNSRdIBeEFVX3lxTE1Odk12NXFZZVBheDMyV3lOOF9sQ0lqVGFja1p1OGJCb3REM0ZIdU1xbzVUYmlEV0lSUDU1VG1udUpVM0lLUkFqNGx6X1pRa0ZfV21mdFgtSmMteHR3aHdiaFNfTjUxZXhTY0l1WDZJbjJQekNqbEpjRQ?oc=5"
             },
@@ -1067,37 +982,37 @@
               "title": "[Issue+] 계란 가격은 어떻게 형성되나 - 농수축산신문",
               "source": "농수축산신문",
               "direction": "neutral",
-              "quality_score": 81,
+              "quality_score": 76,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBPOGZ3VnRYRGhTTWNaU2RSX0JiVVh2TkNwVVl6LWpaVkVieVFHR0V6dG1BVlVIa001RXU1VkhnMHVRMWFiN1Z5cnBJU1NPckhtQXZpblIwR1JIMzdPWTlCOHJjWTIzZGN4NUZvaQ?oc=5"
-            },
-            {
-              "title": "중국 계란 가격 급증; 이것이 마지막 물결입니까? - Sunsirs",
-              "source": "Sunsirs",
-              "direction": "neutral",
-              "quality_score": 71,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBYSUtzM2FSX2xvNzlmclo2bS0tZXRXN3VGeks0clJfQ0hGcFh5WFlZNl83eHRyemJrOS1yUnhJNnBQa1NMNkdIZkNaWUplRE9lUWVCUzJKZ1AySWNDQVE?oc=5"
             }
           ]
         },
-        "memo": "가격 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
+        "memo": "가격 축은 하방 근거 우세"
       },
       {
         "axis": "supply",
         "label": "수급/도축",
-        "items": 6,
+        "items": 5,
         "has_conflict": true,
         "severity": "medium",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 16.96,
+          "up": 12.48,
           "down": 6.98,
           "neutral": 0.0
         },
-        "conflict_ratio": 0.41,
+        "conflict_ratio": 0.56,
         "examples": {
           "up": [
+            {
+              "title": "강원도 태백에 320만마리 규모 '스마트 산란계단지' 조성...일평균 186만개 계란 생산 - 생생비즈플러스",
+              "source": "생생비즈플러스",
+              "direction": "up",
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFAwRlZ3OUNSN3AyWncxcXdiVFNJWTMwVE1yeFA1NXhKMjZXWkRpaU9JQVJnaXg0TkE3dm8weUk2TkZVMG4tTXN6d2Nyb1dBbmxoU3lWU0R3TzRXSVZpbXpxaThMeDlfUUptR0N5bg?oc=5"
+            },
             {
               "title": "추석 앞 계란·한우값 강세…농식품부, 계란 공급 2.4배 확대 - 머니투데이 - 머니투데이",
               "source": "머니투데이",
@@ -1113,14 +1028,6 @@
               "quality_score": 58,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5XZXJPWXZWRC0tQVZYS3I2YlpiVzdJaU1qSHJQRF9CSWhCSDQyblIwaUw4TWk0X0h2c1ZWNzhmVk9pRllFZFZlZXQ3WTg1Y2s?oc=5"
-            },
-            {
-              "title": "정부, ’계란값 담합’ 산란계협회 법인 허가 취소 - 연합뉴스TV",
-              "source": "연합뉴스TV",
-              "direction": "up",
-              "quality_score": 75,
-              "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBsYkVfdVVPamJDUEVnaHVuLXFfMVo4UGY3R1RnQ1d4SFJVYnFfam9TWEFZZVZ0M0NlSlNTUjlTYkZMRmkyaFBTM2FiRGZVUVl6aGxLU2RrS3lOR2toRDJycnRMX1NPczg?oc=5"
             }
           ],
           "down": [
@@ -1149,17 +1056,33 @@
         "axis": "disease",
         "label": "질병/방역",
         "items": 3,
-        "has_conflict": true,
-        "severity": "medium",
+        "has_conflict": false,
+        "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 9.1,
-          "down": 3.72,
+          "up": 13.34,
+          "down": 0.0,
           "neutral": 0.0
         },
-        "conflict_ratio": 0.41,
+        "conflict_ratio": 0.0,
         "examples": {
           "up": [
+            {
+              "title": "'철새 AI' 급증에 산란계 농장 출입 통제 강화...신종 구제역도 선제 대응 - 뉴스핌",
+              "source": "뉴스핌",
+              "direction": "up",
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE05bW1leWxZQlVPcDQ4SGZrYmQ4R1NzeVVEVGFocklJTlM1dlZjS2NYcXhac1pEWkhhYXhTVjFkUV9JOE5QQzI5Y010RGlWcW1vLUJFQmFCMVlYMmNU?oc=5"
+            },
+            {
+              "title": "대형 산란계 ‘4중 방역망’ 친다…새 구제역 백신 3200만마리분 비축 - 이투데이",
+              "source": "이투데이",
+              "direction": "up",
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5BZmhHWmc4S3VVbVFLbGN4VWxnYWxZclBqR1NEVTAteDlTZFlyUzBUemtrbjZCc25zdENDdVNFaXdMVUY0SW5INTRlb25RME1wU0hTcQ?oc=5"
+            },
             {
               "title": "「산란계 농장 고병원성 조류인플루엔자 방역 기준 유형부여에 관한 고시」 개정안 행정예고 - 농림축산식품부",
               "source": "농림축산식품부",
@@ -1167,56 +1090,30 @@
               "quality_score": 75,
               "source_level": 5,
               "url": "https://news.google.com/rss/articles/CBMi2ANBVV95cUxPVVlKb1BSRTNZUXU5NlVQMXdfLWxaczVoX1FHUW91ekFwQm5EMDRPREFpWkV4M2ZVOUV0THRFTWFGcTJtLUpxZUxQZFk0QWt6T25UVUs0MkxjM1cyU3dfRmd4RnhGOFF3QWMyNEpvU3FGaDFVc0pMSVNsb2pQUXZETU9taHJ6ODMyWWVIZWVLQldSRFRZS09IdWRwVTI1VHZNeEducG5YRkhTZjcycGozYlpVYzVxWmRpQTZQMS1GdUhIc1ozUFk2Z3NSTFI1ek1ZczlFblk4RUMzM1FUZ2xFaVQ1ZlYtNEgzd2ducHhxRjRMU05MR255WEJtUi1IZWJZeXYzNUVzUWNUX0tBQkt5YXUxSFl5NUk1M0Fmb01tbk1EQ3R5OEhLNWRBOHc1UTlqXzBSX0tITlBMbDFERm5FaTMxN2xjMEt1dktTYU5JUVNLRkpTOFN4N3hjUzdCRjJzZURlQVlwYzZtOEZUTHdvNTdndHB0NFNNeHcxMmVNQ25IUFN5d2F1cVo3bHUyb3lYMnJuLUktSW5LR25PdElpVXlmTU1WcXdYMWtobmMzdzk1a2RyVEUta3BkTWUxbFJrRXZRYlZYMFVpYkJUNXFjTUZWNGpERHRy?oc=5"
-            },
-            {
-              "title": "충남 천안 산란계 농장에서 H5형 조류인플루엔자 항원 확인 - 농림축산식품부",
-              "source": "농림축산식품부",
-              "direction": "up",
-              "quality_score": 75,
-              "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE92cWVVWS1Ba0Nma3h5YU5tVVRzdE5FTk1RTld1NWZTSGlwSFN5aHA0UkhfYUN2R0N0VWxYU1pRYW5EeThUdFhybVBMR3JfQVRFazFMd24wY0tJLXRwTDk1aEJVYk1IUWM?oc=5"
             }
           ],
-          "down": [
-            {
-              "title": "신평농장 대표 박덕기, 합천군 농축산물가격안정기금 200만원 기탁 - gndnews1.com",
-              "source": "gndnews1.com",
-              "direction": "down",
-              "quality_score": 81,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFB3Q0QtcUFxMlgwTl95dnZQWG1sWGU0YXN2cXdwMmNELVVYYW9JemtPU0w4RlZtVGtyd09pblJRZ1Y4ZkttV1l3bEx2SG5LMGdQa2k2Q1AweUtMcmp5Y19BcXI0SQ?oc=5"
-            }
-          ],
+          "down": [],
           "neutral": []
         },
-        "memo": "질병/방역 축에서 상방·하방 근거가 동시에 감지되어 medium 충돌로 분류"
+        "memo": "질병/방역 축은 상방 근거 우세"
       },
       {
         "axis": "policy",
         "label": "정책/고시",
-        "items": 1,
+        "items": 0,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "neutral",
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 3.79
+          "neutral": 0.0
         },
         "conflict_ratio": 0,
         "examples": {
           "up": [],
           "down": [],
-          "neutral": [
-            {
-              "title": "'2억개 수입' 정부 승부수에도…'계란 1판' 7300원대인 까닭 [프라이스&] - 한국경제",
-              "source": "한국경제",
-              "direction": "neutral",
-              "quality_score": 82,
-              "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1sTWpSdk9yVEJxX3ZPQUM5R2MxTXRMOGFtOGJleTBES1RKQ3lxQ2VDQWVVQTUzV2x2b2ctVF9Zcm1STF8yeTA1UDlYTEg4UW9mM0RWZl9aM1YtQQ?oc=5"
-            }
-          ]
+          "neutral": []
         },
         "memo": "정책/고시 축은 중립 또는 보조 근거 중심"
       },
@@ -1299,21 +1196,21 @@
       {
         "axis": "supply",
         "label": "수급/도축",
-        "items": 7,
+        "items": 6,
         "has_conflict": true,
-        "severity": "high",
+        "severity": "medium",
         "dominant_direction": "up",
         "weighted_direction": {
           "up": 15.76,
-          "down": 13.4,
+          "down": 9.2,
           "neutral": 0.0
         },
-        "conflict_ratio": 0.85,
+        "conflict_ratio": 0.58,
         "examples": {
           "up": [
             {
-              "title": "송옥주 의원, 축산물 수급조절·물가관리 법제화 추진 - adtimes.co.kr",
-              "source": "adtimes.co.kr",
+              "title": "송옥주 의원, 축산물 수급조절·물가관리 법제화 추진 - 행정신문",
+              "source": "행정신문",
               "direction": "up",
               "quality_score": 81,
               "source_level": 3,
@@ -1338,18 +1235,10 @@
           ],
           "down": [
             {
-              "title": "김종구 농림축산식품부차관, 추석 명절 축산물 수급 안정에 총력 - nuriilbo.com",
-              "source": "nuriilbo.com",
-              "direction": "down",
-              "quality_score": 100,
-              "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE94NFFNbktvNnVpWDFNVnpfTGFkQjRMcHhCVkpaRUNJNUtvTWZwNjk3Nks5SUtFRUQwcC1neWtvVEtEaWw2YjZxbUlBNDFxSDZXYzlTZ2VFcW01TXc?oc=5"
-            },
-            {
               "title": "김종구 농림축산식품부차관, 추석 명절 축산물 수급 안정에 총력 - 더시그널뉴스",
               "source": "더시그널뉴스",
               "direction": "down",
-              "quality_score": 80,
+              "quality_score": 100,
               "source_level": 5,
               "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5mLVlNOXV2cHFIam9lY2hlSF9GZXdyWG85ZGhzZDJtY2ptODIyd0xnOFVHWExDa2U2Z0pldUZfUTFvMGZoa1RTOG05d0tYdlFYb1F5RUdTbkJJbmNUcVo2cUlYVnhtMG1PSzNjRElJanp3TE0?oc=5"
             },
@@ -1364,7 +1253,7 @@
           ],
           "neutral": []
         },
-        "memo": "수급/도축 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
+        "memo": "수급/도축 축에서 상방·하방 근거가 동시에 감지되어 medium 충돌로 분류"
       },
       {
         "axis": "disease",
@@ -1374,7 +1263,7 @@
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 67.7,
+          "up": 71.68,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -1382,28 +1271,28 @@
         "examples": {
           "up": [
             {
-              "title": "문경 축산농가에 풀사료 3268t 공급…구제역 방역도 강화 - kyongbuk.co.kr",
-              "source": "kyongbuk.co.kr",
-              "direction": "up",
-              "quality_score": 76,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBuYnZFOEZKNUV2TG1EaDk2akdxNzRDX1AzWEEyclkwRVdCOHJUb0doQk43eDJveEVjc0RmRmdKdUlWb216VjdmOExCMnhxV2t6UlBUUEs3ZjVEM1hIelBOOWZhNTFOQW9jUUx4eDh1RQ?oc=5"
-            },
-            {
-              "title": "식량정책실장, 구제역 방역 최일선 경북도 방역 추진상황 점검 - 대한민국 정책브리핑",
-              "source": "대한민국 정책브리핑",
-              "direction": "up",
-              "quality_score": 65,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOa3JwVEppd1VVRlR5eTBKdWpyMnNwWWtMejBSeHFZQXdUQk5DaXJmVVVpV2FkSWR6TXV3VDFzM1N4cUZITDg5aU5lNmZsdVJHY3JialZSNUtkc0dyb1IxdU5BZl9Kb1FBQ0lVSnIxb0NrZ1hvNEs2TEVXYmozS3I0ZThIWGo1WEw4T3VJ?oc=5"
-            },
-            {
-              "title": "농식품부, 구제역 발생한 경북 예천 현장 점검…“방역 관리 총력” - v.daum.net",
+              "title": "농식품부, 내달부터 내년 2월까지 가축 전염병 특별 방역 - v.daum.net",
               "source": "v.daum.net",
               "direction": "up",
-              "quality_score": 89,
+              "quality_score": 100,
               "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1zQWVwLVR2QUREMjlUam1xVTc1ZnZVSHRmY2dJMnQyVGhGT2VzYUFDdzc5TGZTX194eXdYdWh6Z3Zja0hPbEg1dkRFM3czRVE?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1JeUFhSmpNWE56NHg3Z2tMTkhmRGdyUkJYaDVaMndpeTJFU19rVzBNclUyWS1aaW9YOWMwWU43djJzUVJlSFk5TXF1RVVoQVE?oc=5"
+            },
+            {
+              "title": "겨울철 가축전염병 위험요인 집중 관리…정부, 특별방역대책 추진 - 한국식품의약신문",
+              "source": "한국식품의약신문",
+              "direction": "up",
+              "quality_score": 100,
+              "source_level": 5,
+              "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1aSDJudUtDVWRMLXZWbWtCS3VlTlFsQ3hQQkZyYk93YktqeDE5d0hPdExpOVpzNE9VTXpDWGp0WmtaT0s1NFhMcTRMUmVMd19ZenJMNUlkQ3FCa19ZZS0wcXV1N2Qzc3c?oc=5"
+            },
+            {
+              "title": "고병원성AI 2배 급증, 신유형 구제역까지...농식품부 특별방역 나선다 - 중앙일보",
+              "source": "중앙일보",
+              "direction": "up",
+              "quality_score": 100,
+              "source_level": 5,
+              "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9fZDlQdmxJVDhZcXNRY2Z5YU8tdEs4RjdRSGNxR0szQk03Sm9renl3Vmozb3I1UVlYZGh2Y2prZUhxX2hzcDVKTGplWVdTVzF5dHUtLVpR?oc=5"
             }
           ],
           "down": [],
@@ -1434,14 +1323,14 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 14,
+        "items": 15,
         "has_conflict": true,
         "severity": "medium",
         "dominant_direction": "up",
         "weighted_direction": {
           "up": 9.1,
           "down": 4.1,
-          "neutral": 40.43
+          "neutral": 44.08
         },
         "conflict_ratio": 0.45,
         "examples": {

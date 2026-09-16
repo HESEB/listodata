@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-20",
+  "updated_at": "2026-09-16T06:07:01Z",
   "policy": "phase10_kosis_final_validation_v1",
   "summary": {
     "status": "setup_required",
@@ -15,10 +15,142 @@
     "anomaly_status": "collection_required",
     "source_files_modified": false
   },
-  "stages": [],
-  "first_blocked_stage": {"stage":"preflight","status":"secret_registration_required","passed":false,"blocked":true,"next_action":"KOSIS_API_KEY 등록 후 Update market data 실행","details":{}},
-  "next_action": "KOSIS_API_KEY 등록 후 Update market data를 실행하세요.",
-  "source_paths": {},
-  "security": {"api_key_exposed": false, "request_url_exposed": false},
-  "notice": "Actions 실행 전 초기 상태입니다."
+  "stages": [
+    {
+      "stage": "preflight",
+      "status": "secret_registration_required",
+      "passed": false,
+      "blocked": true,
+      "next_action": "GitHub Actions Secret에 KOSIS_API_KEY를 등록한 뒤 Update market data를 수동 실행하세요.",
+      "details": {
+        "secret_configured": false,
+        "repository_ready": true,
+        "workflow_ready": true
+      }
+    },
+    {
+      "stage": "first_run",
+      "status": "secret_required",
+      "passed": false,
+      "blocked": false,
+      "next_action": "Repository Actions Secret에 KOSIS_API_KEY를 등록하세요.",
+      "details": {
+        "catalog_rows": 0,
+        "detail_rows": 0,
+        "metric_candidates": 0
+      }
+    },
+    {
+      "stage": "candidate_review",
+      "status": "candidate_generation_required",
+      "passed": false,
+      "blocked": true,
+      "next_action": "P2 검수 후 P3를 순서대로 처리하고 후보 없는 지표는 재조사하세요.",
+      "details": {
+        "approved_metric_count": 0,
+        "unresolved_metric_count": 10,
+        "conflict_metric_count": 0
+      }
+    },
+    {
+      "stage": "approval_precheck",
+      "status": "approval_input_required",
+      "passed": false,
+      "blocked": true,
+      "next_action": "승인 JSON을 생성·반영하세요.",
+      "details": {
+        "mapping_generation_allowed": false,
+        "error_count": 0,
+        "warning_count": 0
+      }
+    },
+    {
+      "stage": "approved_mapping",
+      "status": "comparison_ready",
+      "passed": false,
+      "blocked": true,
+      "next_action": "승인 매핑 변경사항을 검수한 뒤 실제 KOSIS 응답 Dry Run을 진행하세요.",
+      "details": {
+        "approved_metric_count": 0,
+        "unresolved_metric_count": 10,
+        "operational_difference_count": 10
+      }
+    },
+    {
+      "stage": "dry_run",
+      "status": "approval_precheck_required",
+      "passed": false,
+      "blocked": true,
+      "next_action": "승인 JSON 사전점검을 통과한 뒤 Dry Run을 실행하세요.",
+      "details": {
+        "tested_table_count": 0,
+        "passed_table_count": 0,
+        "failed_table_count": 0
+      }
+    },
+    {
+      "stage": "promotion",
+      "status": "approval_required",
+      "passed": false,
+      "blocked": true,
+      "next_action": "Dry Run 통과 후 운영 승격 승인",
+      "details": {
+        "promotion_decision": "pending",
+        "operational_table_count": 0
+      }
+    },
+    {
+      "stage": "operational_collection",
+      "status": "fallback",
+      "passed": false,
+      "blocked": true,
+      "next_action": "Update market data 실행 후 KOSIS 2개 소스 성공 확인",
+      "details": {
+        "mapping_source": "template_fallback",
+        "successful_kosis_source_count": 0,
+        "runtime_url_count": 0
+      }
+    },
+    {
+      "stage": "anomaly_review",
+      "status": "collection_required",
+      "passed": false,
+      "blocked": true,
+      "next_action": "첫 운영 수집을 실행하세요.",
+      "details": {
+        "record_count": 0,
+        "critical_count": 0,
+        "warning_count": 0
+      }
+    }
+  ],
+  "first_blocked_stage": {
+    "stage": "preflight",
+    "status": "secret_registration_required",
+    "passed": false,
+    "blocked": true,
+    "next_action": "GitHub Actions Secret에 KOSIS_API_KEY를 등록한 뒤 Update market data를 수동 실행하세요.",
+    "details": {
+      "secret_configured": false,
+      "repository_ready": true,
+      "workflow_ready": true
+    }
+  },
+  "next_action": "GitHub Actions Secret에 KOSIS_API_KEY를 등록한 뒤 Update market data를 수동 실행하세요.",
+  "source_paths": {
+    "preflight": "app/data/admin/kosis_preflight_status.json",
+    "first_run": "app/data/admin/kosis_first_run_diagnostic.json",
+    "candidate_review": "app/data/admin/kosis_p2_p3_review.json",
+    "approval_precheck": "app/data/admin/kosis_approval_precheck.json",
+    "approved_mapping": "app/data/admin/kosis_approved_mapping_comparison.json",
+    "dry_run": "app/data/admin/kosis_dry_run.json",
+    "promotion": "app/data/admin/kosis_mapping_promotion_status.json",
+    "operational_collection": "app/data/admin/kosis_runtime_mapping_status.json",
+    "anomaly_review": "app/data/admin/kosis_first_collection_anomalies.json"
+  },
+  "security": {
+    "api_key_exposed": false,
+    "request_url_exposed": false
+  },
+  "notice": "Phase 10 전체 실행 상태를 통합 판정하며 원본 승인·운영·공식데이터 파일을 수정하지 않습니다."
 }
