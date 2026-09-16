@@ -1,11 +1,13 @@
 {
-  "updated_at": "2026-09-15T21:26:38Z",
-  "policy": "phase9_kosis_detail_api_v1",
+  "updated_at": "2026-09-16T00:39:09Z",
+  "policy": "phase10_5_kosis_detail_api_v2",
   "summary": {
     "status": "credential_required",
     "secret_configured": false,
     "table_candidate_count": 0,
     "request_count": 0,
+    "metadata_row_count": 0,
+    "probe_row_count": 0,
     "detail_row_count": 0,
     "metric_candidate_count": 0,
     "approved_candidate_count": 0,
@@ -17,7 +19,8 @@
     "GitHub Actions Secret KOSIS_API_KEY 미등록"
   ],
   "security": {
-    "api_key_exposed": false
+    "api_key_exposed": false,
+    "request_query_exposed": false
   },
-  "notice": "통계목록 후보의 공식 상세 응답에서 항목·분류·단위 코드를 수집합니다. 응답 구조가 다르거나 근거가 부족한 후보는 검증 필요 상태로 유지하며 기존 매핑 템플릿을 자동 변경하지 않습니다."
+  "notice": "분류·항목 후보는 KOSIS 통계표 메타(type=ITM)에서 찾고, ITM_ID·분류값 조합은 통계표선택 API로 실제 응답을 시험해 complete 근거만 승인 후보로 제공합니다."
 }

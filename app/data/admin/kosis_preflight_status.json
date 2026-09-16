@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-15",
+  "updated_at": "2026-09-16T00:39:09Z",
   "policy": "phase10_kosis_preflight_v1",
   "summary": {
     "status": "secret_registration_required",
@@ -12,17 +12,51 @@
     "phase9_status": "setup_required",
     "api_key_exposed": false
   },
-  "file_checks": [],
+  "file_checks": [
+    {
+      "path": ".github/workflows/update-market-data.yml",
+      "exists": true
+    },
+    {
+      "path": "scripts/collect_kosis_catalog_candidates.py",
+      "exists": true
+    },
+    {
+      "path": "scripts/collect_kosis_detail_codes.py",
+      "exists": true
+    },
+    {
+      "path": "scripts/build_kosis_approved_mapping.py",
+      "exists": true
+    },
+    {
+      "path": "scripts/kosis_mapping_runtime.py",
+      "exists": true
+    },
+    {
+      "path": "scripts/validate_kosis_single_key_runtime.py",
+      "exists": true
+    },
+    {
+      "path": "app/data/config/kosis_table_mapping_operational.json",
+      "exists": true
+    }
+  ],
   "phase9_research": {
     "passed": false,
     "status": "credential_required",
     "next_action": "KOSIS_API_KEY 등록 후 Update market data 실행"
   },
   "next_action": "GitHub Actions Secret에 KOSIS_API_KEY를 등록한 뒤 Update market data를 수동 실행하세요.",
+  "links": {
+    "secret_settings": "https://github.com/HESEB/listodata/settings/secrets/actions",
+    "workflow": "https://github.com/HESEB/listodata/actions/workflows/update-market-data.yml",
+    "kosis": "https://kosis.kr/openapi/index/index.jsp"
+  },
   "security": {
     "never_store_api_key": true,
     "never_display_api_key": true,
     "register_key_only_not_full_url": true
   },
-  "notice": "Actions 실행 전 초기 상태입니다. Secret 실제 값은 저장하거나 표시하지 않습니다."
+  "notice": "이 화면은 Secret 실제 값을 읽거나 표시하지 않습니다. Actions 실행 시 환경변수 존재 여부와 저장소 준비 상태만 판정합니다."
 }
