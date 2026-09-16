@@ -1,0 +1,171 @@
+name: Phase 10.5 live KOSIS validation
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/phase10-5-live-kosis-validation.yml'
+      - 'scripts/collect_kosis_catalog_candidates.py'
+      - 'scripts/collect_kosis_detail_codes.py'
+      - 'app/data/config/kosis_catalog_api_config.json'
+      - 'app/data/config/kosis_detail_api_config.json'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: phase10-5-live-kosis-validation
+  cancel-in-progress: true
+
+jobs:
+  validate-live-kosis:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Detect KOSIS API key safely
+        env:
+          KOSIS_API_KEY: ${{ secrets.KOSIS_API_KEY }}
+        run: python scripts/build_kosis_preflight_status.py
+
+      - name: Call KOSIS statistics-list API
+        env:
+          KOSIS_API_KEY: ${{ secrets.KOSIS_API_KEY }}
+        run: python scripts/collect_kosis_catalog_candidates.py
+
+      - name: Call KOSIS metadata and Param probe APIs
+        env:
+          KOSIS_API_KEY: ${{ secrets.KOSIS_API_KEY }}
+        run: python scripts/collect_kosis_detail_codes.py
+
+      - name: Build KOSIS research status
+        run: python scripts/research_kosis_table_codes.py
+
+      - name: Diagnose first live KOSIS run
+        env:
+          KOSIS_API_KEY: ${{ secrets.KOSIS_API_KEY }}
+        run: python scripts/diagnose_kosis_first_run.py
+
+      - name: Score candidate quality
+        run: python scripts/score_kosis_candidates.py
+
+      - name: Build P1 review queue
+        run: python scripts/build_kosis_p1_batch_review.py
+
+      - name: Build P2 P3 review tracker
+        run: python scripts/build_kosis_p2_p3_review.py
+
+      - name: Validate approval JSON gate
+        run: python scripts/validate_kosis_approval_json.py
+
+      - name: Validate dry run gate
+        env:
+          KOSIS_API_KEY: ${{ secrets.KOSIS_API_KEY }}
+        run: python scripts/validate_kosis_dry_run.py
+
+      - name: Build live validation summary
+        run: |
+          python - <<'PY'
+          import json
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          root = Path('app/data')
+          def load(path, default=None):
+              try:
+                  return json.loads((root / path).read_text(encoding='utf-8'))
+              except Exception:
+                  return default or {}
+
+          preflight = load('admin/kosis_preflight_status.json')
+          catalog = load('admin/kosis_catalog_research.json')
+          detail = load('admin/kosis_detail_research.json')
+          diagnostic = load('admin/kosis_first_run_diagnostic.json')
+          approval = load('admin/kosis_approval_precheck.json')
+          dry = load('admin/kosis_dry_run.json')
+
+          ps = preflight.get('summary') or {}
+          cs = catalog.get('summary') or {}
+          ds = detail.get('summary') or {}
+          gs = diagnostic.get('summary') or {}
+          aps = approval.get('summary') or {}
+          drs = dry.get('summary') or {}
+
+          secret = bool(ps.get('secret_configured') or cs.get('secret_configured') or ds.get('secret_configured'))
+          catalog_requests = int(cs.get('request_count') or 0)
+          catalog_rows = int(cs.get('response_row_count') or 0)
+          table_candidates = int(cs.get('candidate_count') or 0)
+          detail_requests = int(ds.get('request_count') or 0)
+          metadata_rows = int(ds.get('metadata_row_count') or 0)
+          probe_rows = int(ds.get('probe_row_count') or 0)
+          metric_candidates = int(ds.get('metric_candidate_count') or 0)
+          complete_metrics = int(ds.get('approved_candidate_count') or 0)
+
+          if not secret:
+              status = 'secret_required'
+              next_action = 'Repository Actions Secret KOSIS_API_KEY 등록 여부를 확인하세요.'
+          elif catalog_requests <= 0:
+              status = 'catalog_not_executed'
+              next_action = 'KOSIS 통계목록 API 호출 단계를 확인하세요.'
+          elif catalog_rows <= 0:
+              status = 'catalog_response_empty'
+              next_action = '통계목록 API 인증·응답·목록 계층을 확인하세요.'
+          elif table_candidates <= 0:
+              status = 'catalog_candidate_empty'
+              next_action = '목표 지표 검색어와 통계표 후보 선정을 보정하세요.'
+          elif detail_requests <= 0 or metadata_rows <= 0:
+              status = 'metadata_response_empty'
+              next_action = 'statisticsData getMeta ITM 응답 구조를 확인하세요.'
+          elif probe_rows <= 0:
+              status = 'param_probe_empty'
+              next_action = 'Param statisticsParameterData의 objL1·itmId·prdSe 조합을 보정하세요.'
+          elif complete_metrics <= 0:
+              status = 'probe_received_no_complete_metric'
+              next_action = '실제 응답의 ITM_ID·C1·단위 정규화와 후보 조합을 보정하세요.'
+          else:
+              status = 'live_api_verified'
+              next_action = '실제 후보를 검수해 승인 JSON 단계로 진행하세요.'
+
+          payload = {
+              'updated_at': datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00','Z'),
+              'policy': 'phase10_5_live_kosis_validation_v1',
+              'summary': {
+                  'status': status,
+                  'secret_detected': secret,
+                  'catalog_request_count': catalog_requests,
+                  'catalog_response_row_count': catalog_rows,
+                  'table_candidate_count': table_candidates,
+                  'detail_request_count': detail_requests,
+                  'metadata_row_count': metadata_rows,
+                  'param_probe_row_count': probe_rows,
+                  'metric_candidate_count': metric_candidates,
+                  'complete_metric_count': complete_metrics,
+                  'diagnostic_status': gs.get('status'),
+                  'approval_precheck_status': aps.get('status'),
+                  'dry_run_status': drs.get('status'),
+                  'api_key_exposed': False,
+                  'request_url_exposed': False
+              },
+              'catalog_errors': (catalog.get('errors') or [])[:20],
+              'detail_errors': (detail.get('errors') or [])[:20],
+              'next_action': next_action,
+              'notice': '실제 Secret 값과 인증 URL은 기록하지 않고 API 실행 결과의 개수·상태만 저장합니다.'
+          }
+          for rel in ('admin/phase10_5_live_kosis_validation.json','analysis/phase10_5_live_kosis_validation.json'):
+              path = root / rel
+              path.parent.mkdir(parents=True, exist_ok=True)
+              path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          print(json.dumps(payload['summary'], ensure_ascii=False))
+          PY
+
+      - name: Commit live validation status
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'chore: record Phase 10.5 live KOSIS validation'
+          file_pattern: app/data/admin/*.json app/data/analysis/*.json
