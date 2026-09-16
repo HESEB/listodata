@@ -25,6 +25,11 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Build KOSIS preflight status
+        env:
+          KOSIS_API_KEY: ${{ secrets.KOSIS_API_KEY }}
+        run: python scripts/build_kosis_preflight_status.py
+
       - name: Snapshot fallback data
         run: python scripts/protect_fallback_data.py snapshot
 
@@ -36,7 +41,7 @@ jobs:
           KOSIS_API_KEY: ${{ secrets.KOSIS_API_KEY }}
         run: python scripts/collect_kosis_catalog_candidates.py
 
-      - name: Collect KOSIS item and classification candidates
+      - name: Collect KOSIS metadata and validate detail candidates
         env:
           KOSIS_API_KEY: ${{ secrets.KOSIS_API_KEY }}
         run: python scripts/collect_kosis_detail_codes.py
@@ -44,14 +49,59 @@ jobs:
       - name: Build KOSIS code research status
         run: python scripts/research_kosis_table_codes.py
 
+      - name: Diagnose KOSIS first run
+        env:
+          KOSIS_API_KEY: ${{ secrets.KOSIS_API_KEY }}
+        run: python scripts/diagnose_kosis_first_run.py
+
+      - name: Score and prioritize KOSIS candidates
+        run: python scripts/score_kosis_candidates.py
+
+      - name: Build KOSIS P1 batch review queue
+        run: python scripts/build_kosis_p1_batch_review.py
+
+      - name: Build KOSIS P2 P3 review tracker
+        run: python scripts/build_kosis_p2_p3_review.py
+
+      - name: Validate KOSIS approval JSON
+        run: python scripts/validate_kosis_approval_json.py
+
+      - name: Read KOSIS approval gate
+        id: kosis_approval_gate
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          path = Path("app/data/admin/kosis_approval_precheck.json")
+          doc = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {"summary": {}}
+          allowed = bool((doc.get("summary") or {}).get("mapping_generation_allowed"))
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as fh:
+              fh.write("allowed=" + ("true" if allowed else "false") + "\n")
+          print({"mapping_generation_allowed": allowed})
+          PY
+
+      - name: Preserve previous approved KOSIS mapping
+        if: steps.kosis_approval_gate.outputs.allowed == 'true'
+        run: python scripts/preserve_previous_kosis_approved_mapping.py
+
       - name: Build approved KOSIS mapping
+        if: steps.kosis_approval_gate.outputs.allowed == 'true'
         run: python scripts/build_kosis_approved_mapping.py
+
+      - name: Compare approved KOSIS mapping
+        run: python scripts/compare_kosis_approved_mapping.py
 
       - name: Validate KOSIS table mappings
         run: python scripts/validate_kosis_table_mapping.py
 
       - name: Build KOSIS API URL templates
         run: python scripts/build_kosis_api_urls.py
+
+      - name: Validate KOSIS dry run
+        env:
+          KOSIS_API_KEY: ${{ secrets.KOSIS_API_KEY }}
+        run: python scripts/validate_kosis_dry_run.py
 
       - name: Validate official API setup
         env:
@@ -70,6 +120,9 @@ jobs:
           KOSIS_LIVESTOCK_PRODUCTION_API_URL: ${{ secrets.KOSIS_LIVESTOCK_PRODUCTION_API_URL }}
           DATA_GO_KR_LIVESTOCK_MARKET_API_URL: ${{ secrets.DATA_GO_KR_LIVESTOCK_MARKET_API_URL }}
         run: python scripts/collect_real_official_sources.py
+
+      - name: Validate first KOSIS collection anomalies
+        run: python scripts/validate_kosis_first_collection_anomalies.py
 
       - name: Validate KOSIS operational collection and legacy phaseout
         run: python scripts/validate_kosis_operational_collection.py
@@ -179,6 +232,9 @@ jobs:
 
       - name: Validate Phase 9 final readiness
         run: python scripts/validate_phase9_readiness.py
+
+      - name: Validate Phase 10 final readiness
+        run: python scripts/validate_phase10_final.py
 
       - name: Validate Phase 8 final readiness
         run: python scripts/validate_phase8_readiness.py
