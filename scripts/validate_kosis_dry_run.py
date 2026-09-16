@@ -10,6 +10,7 @@ from urllib.request import Request, urlopen
 ROOT=Path(__file__).resolve().parents[1]
 DATA=ROOT/'app'/'data'
 MAPPING=DATA/'config'/'kosis_table_mapping_approved.json'
+PRECHECK=DATA/'admin'/'kosis_approval_precheck.json'
 URL_POLICY=DATA/'config'/'kosis_url_generator_policy.json'
 DRY_POLICY=DATA/'config'/'kosis_dry_run_policy.json'
 ADMIN=DATA/'admin'/'kosis_dry_run.json'
@@ -39,12 +40,18 @@ def rows(payload):
 def main():
     key=os.environ.get('KOSIS_API_KEY','').strip()
     mapping=read(MAPPING,{'tables':[],'generation_summary':{}})
+    precheck=read(PRECHECK,{'summary':{}})
+    precheck_allowed=bool((precheck.get('summary') or {}).get('mapping_generation_allowed'))
     up=read(URL_POLICY,{})
     dp=read(DRY_POLICY,{})
     active=[t for t in mapping.get('tables',[]) if isinstance(t,dict) and t.get('selected')]
     results=[]
-    if not key:status='credential_required'
-    elif not active:status='approved_mapping_required'
+    if not precheck_allowed:
+        status='approval_precheck_required'
+    elif not key:
+        status='credential_required'
+    elif not active:
+        status='approved_mapping_required'
     else:
         names=up.get('parameter_names') or {}
         for table in active:
@@ -97,8 +104,35 @@ def main():
                 result['row_count']=0;result['passed']=False
             results.append(result)
         status='passed' if results and all(x.get('passed') for x in results) else 'failed'
-    summary={'status':status,'approved_mapping_status':(mapping.get('generation_summary') or {}).get('status'),'table_count':len(active),'tested_table_count':len(results),'passed_table_count':sum(1 for x in results if x.get('passed')),'failed_table_count':sum(1 for x in results if not x.get('passed')),'dry_run_passed':bool(results) and all(x.get('passed') for x in results),'operational_mapping_modified':False,'official_data_modified':False}
-    doc={'updated_at':now(),'policy':'phase10_kosis_dry_run_v1','summary':summary,'tables':results,'next_action':'Dry Run 통과 후 운영 승격 승인 단계로 진행하세요.' if summary['dry_run_passed'] else ('KOSIS_API_KEY를 등록하세요.' if status=='credential_required' else '승인 매핑과 응답 검증 오류를 수정하세요.'),'security':{'api_key_exposed':False,'request_url_exposed':False,'response_saved_raw':False},'notice':dp.get('notice')}
+    summary={
+        'status':status,
+        'precheck_allowed':precheck_allowed,
+        'approved_mapping_status':(mapping.get('generation_summary') or {}).get('status'),
+        'table_count':len(active),
+        'tested_table_count':len(results),
+        'passed_table_count':sum(1 for x in results if x.get('passed')),
+        'failed_table_count':sum(1 for x in results if not x.get('passed')),
+        'dry_run_passed':precheck_allowed and bool(results) and all(x.get('passed') for x in results),
+        'operational_mapping_modified':False,
+        'official_data_modified':False
+    }
+    if status=='approval_precheck_required':
+        next_action='승인 JSON 사전점검을 통과한 뒤 Dry Run을 실행하세요.'
+    elif status=='credential_required':
+        next_action='KOSIS_API_KEY를 등록하세요.'
+    elif summary['dry_run_passed']:
+        next_action='Dry Run 통과 후 운영 승격 승인 단계로 진행하세요.'
+    else:
+        next_action='승인 매핑과 응답 검증 오류를 수정하세요.'
+    doc={
+        'updated_at':now(),
+        'policy':'phase10_5_kosis_dry_run_v2',
+        'summary':summary,
+        'tables':results,
+        'next_action':next_action,
+        'security':{'api_key_exposed':False,'request_url_exposed':False,'response_saved_raw':False},
+        'notice':'승인 JSON 사전점검을 통과한 승인 매핑만 실제 KOSIS Dry Run 대상으로 사용합니다.'
+    }
     write(ADMIN,doc);write(ANALYSIS,doc);print(json.dumps(summary,ensure_ascii=False));return 0
 
 if __name__=='__main__':raise SystemExit(main())
