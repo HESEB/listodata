@@ -1,9 +1,10 @@
-name: Update Data
+name: Legacy Update Data (manual)
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "15 */6 * * *"  # Every 6 hours (UTC)
+
+# Legacy MVP updater retained only for manual compatibility checks.
+# The production Data First path is .github/workflows/update-market-data.yml.
 
 jobs:
   update:
@@ -19,7 +20,7 @@ jobs:
         with:
           node-version: 20
 
-      - name: Run update_data
+      - name: Run legacy update_data
         env:
           DATA_GO_KR_SERVICE_KEY: ${{ secrets.DATA_GO_KR_SERVICE_KEY }}
           KAMIS_CERT_KEY: ${{ secrets.KAMIS_CERT_KEY }}

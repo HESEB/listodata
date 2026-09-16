@@ -3,8 +3,9 @@
 """Collect real official livestock data.
 
 Promoted KOSIS operational mappings are preferred and runtime URLs are built in
-memory from KOSIS_API_KEY. Before promotion, legacy full-URL Secrets remain the
-safe fallback. Credentials and generated URLs are never persisted.
+memory from KOSIS_API_KEY. KOSIS response field C1 is normalized to the internal
+C1_ID contract before exact mapping. Credentials and generated URLs are never
+persisted.
 """
 from __future__ import annotations
 
@@ -26,7 +27,7 @@ ADMIN_STATUS = DATA / "admin" / "real_official_source_connections.json"
 ANALYSIS_STATUS = DATA / "analysis" / "real_official_source_connections.json"
 RUNTIME_STATUS = DATA / "admin" / "kosis_runtime_mapping_status.json"
 RUNTIME_ANALYSIS = DATA / "analysis" / "kosis_runtime_mapping_status.json"
-USER_AGENT = "HESEB-Livestock-Terminal/3.0 (+https://heseb.github.io/listodata/)"
+USER_AGENT = "HESEB-Livestock-Terminal/3.1 (+https://heseb.github.io/listodata/)"
 
 
 def now_iso() -> str:
@@ -129,19 +130,27 @@ def exact_metric_index(table: dict | None) -> dict[tuple[str, str], dict]:
     return index
 
 
+def kosis_classification_value(row: dict) -> str:
+    """Normalize official KOSIS C1 response to the internal C1_ID field."""
+    return str(row.get("C1") or row.get("C1_ID") or row.get("objL1") or "").strip()
+
+
 def kosis_records(payload: Any, source: dict, table: dict | None) -> list[dict]:
     rows = as_records(payload)
     out = []
     exact = exact_metric_index(table)
     for row in rows:
-        item_id = str(row.get("ITM_ID") or "")
-        class_id = str(row.get("C1_ID") or "")
+        item_id = str(row.get("ITM_ID") or row.get("itmId") or "").strip()
+        class_id = kosis_classification_value(row)
         mapping = exact.get((item_id, class_id))
         if mapping:
             rule = {"metric_id": mapping.get("metric_id"), "species": mapping.get("species")}
             mapping_mode = "operational_code_match"
         else:
-            context = " ".join(str(row.get(k) or "") for k in ("TBL_NM", "ITM_NM", "C1_NM", "C2_NM", "C3_NM"))
+            context = " ".join(
+                str(row.get(k) or "")
+                for k in ("TBL_NM", "ITM_NM", "C1_NM", "C1_OBJ_NM", "C2_NM", "C3_NM")
+            )
             rule = choose_metric(context, source.get("metric_rules", []))
             mapping_mode = "legacy_keyword_match"
         value = to_number(row.get("DT"))
@@ -273,7 +282,7 @@ def main() -> int:
     if collected:
         write_json(OUTPUT, {
             "updated_at": now_iso(),
-            "policy": "phase9_real_official_sources_runtime_v1",
+            "policy": "phase10_5_real_official_sources_runtime_v2",
             "mapping_source": runtime["mapping_source"],
             "records": collected,
             "notice": "실제 공식기관 API에서 수집한 데이터입니다. 인증 URL은 저장하지 않습니다.",
@@ -282,7 +291,12 @@ def main() -> int:
     else:
         preserved = bool(existing.get("records"))
         if not OUTPUT.exists():
-            write_json(OUTPUT, {"updated_at": None, "policy": "phase9_real_official_sources_runtime_v1", "records": [], "notice": "공식 API 인증정보 설정 전 초기 상태"})
+            write_json(OUTPUT, {
+                "updated_at": None,
+                "policy": "phase10_5_real_official_sources_runtime_v2",
+                "records": [],
+                "notice": "공식 API 인증정보 설정 전 초기 상태",
+            })
 
     success_count = sum(1 for x in results if x["status"] == "success")
     credential_count = sum(1 for x in results if x["status"] == "credential_required")
@@ -291,7 +305,7 @@ def main() -> int:
     status = "ready" if success_count else ("credential_required" if credential_count and not failed_count else "limited")
     status_payload = {
         "updated_at": now_iso(),
-        "policy": "phase9_real_official_sources_runtime_v1",
+        "policy": "phase10_5_real_official_sources_runtime_v2",
         "summary": {
             "status": status,
             "source_count": len(results),
@@ -303,26 +317,34 @@ def main() -> int:
             "previous_data_preserved": preserved,
             "operational_mapping_active": operational_active,
             "runtime_url_count": runtime_url_count,
+            "kosis_c1_normalized": True,
             "fallback_used": runtime["fallback_used"],
         },
         "runtime_mapping": runtime,
         "sources": results,
         "output": str(OUTPUT.relative_to(ROOT)),
         "security": {"api_key_exposed": False, "runtime_urls_persisted": False},
-        "notice": "승격된 운영 매핑은 KOSIS_API_KEY와 결합해 실행 중에만 URL을 생성합니다. 미승격 상태에서는 기존 Secret URL을 사용합니다.",
+        "notice": "승격된 운영 매핑은 KOSIS_API_KEY와 결합해 실행 중에만 URL을 생성합니다. KOSIS 응답 C1은 내부 C1_ID로 정규화합니다.",
     }
     write_json(ADMIN_STATUS, status_payload)
     write_json(ANALYSIS_STATUS, status_payload)
     runtime_payload = {
         "updated_at": status_payload["updated_at"],
-        "policy": "phase9_kosis_runtime_mapping_v1",
+        "policy": "phase10_5_kosis_runtime_mapping_v2",
         "summary": {
             "status": "active" if operational_active else "fallback",
             "mapping_source": runtime["mapping_source"],
             "promotion_status": runtime["promotion_status"],
             "runtime_url_count": runtime_url_count,
-            "kosis_source_count": sum(1 for x in results if x.get("endpoint_mode") in {"operational_runtime", "legacy_secret_url"} and str(x.get("source_id", "")).startswith("KOSIS_")),
-            "successful_kosis_source_count": sum(1 for x in results if str(x.get("source_id", "")).startswith("KOSIS_") and x.get("status") == "success"),
+            "kosis_source_count": sum(
+                1 for x in results
+                if x.get("endpoint_mode") in {"operational_runtime", "legacy_secret_url"}
+                and str(x.get("source_id", "")).startswith("KOSIS_")
+            ),
+            "successful_kosis_source_count": sum(
+                1 for x in results
+                if str(x.get("source_id", "")).startswith("KOSIS_") and x.get("status") == "success"
+            ),
             "fallback_used": runtime["fallback_used"],
         },
         "runtime_mapping": runtime,

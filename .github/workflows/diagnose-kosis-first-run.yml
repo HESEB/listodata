@@ -1,10 +1,7 @@
-name: Diagnose KOSIS first run
+name: Diagnose KOSIS first run (manual)
 
 on:
   workflow_dispatch:
-  workflow_run:
-    workflows: ["Update market data"]
-    types: [completed]
 
 permissions:
   contents: write
@@ -15,7 +12,6 @@ concurrency:
 
 jobs:
   diagnose:
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
