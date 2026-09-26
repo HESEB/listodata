@@ -1,26 +1,26 @@
 {
-  "updated_at": "2026-09-25T22:27:57Z",
+  "updated_at": "2026-09-26T01:38:41Z",
   "policy": "phase5_market_memory_v2",
   "notice": "과거 신호 변동, 이벤트 캘린더, 현재 시장신호를 연결한 시장 메모리입니다. 가격 예측이 아니라 구매 판단 보조자료입니다.",
   "summary": {
-    "memory_event_count": 133,
+    "memory_event_count": 139,
     "species_with_cases": 6,
-    "calendar_linked_count": 106,
-    "similar_case_count": 0
+    "calendar_linked_count": 111,
+    "similar_case_count": 3
   },
   "species": [
     {
       "id": "BEEF",
       "name": "한우",
-      "event_count": 24,
-      "jump_count": 12,
+      "event_count": 25,
+      "jump_count": 13,
       "drop_count": 12,
-      "avg_jump_change": 18.8,
+      "avg_jump_change": 21.8,
       "avg_drop_change": -21.9,
-      "latest_signal_score": 0,
-      "latest_status": "판단 유보",
-      "current_confidence": 0,
-      "current_conflict": "low",
+      "latest_signal_score": 59,
+      "latest_status": "보합/혼조",
+      "current_confidence": 71,
+      "current_conflict": "medium",
       "top_cases": [
         {
           "date": "2026-09-17",
@@ -77,6 +77,33 @@
           "memory_id": "BEEF_2026-09-18_signal_jump_63"
         },
         {
+          "date": "2026-09-26",
+          "species": "BEEF",
+          "name": "한우",
+          "event_type": "signal_jump",
+          "change": 59,
+          "from_score": 0,
+          "to_score": 59,
+          "memo": "한우 신호 +59.0점 변동",
+          "event_type_label": "신호 급등",
+          "nearby_calendar_events": [
+            {
+              "event_id": "CHUSEOK_2026",
+              "title": "추석 명절 선물세트·행사 수요",
+              "event_type": "holiday_demand",
+              "event_type_label": "명절 수요",
+              "date_start": "2026-09-10",
+              "date_end": "2026-10-05",
+              "impact_direction": "up",
+              "impact_level": 5,
+              "distance_days": 9,
+              "purchase_check": "한우 정육·구이·선물세트 원료육, 돈육/계육 행사 물량, 협력사 작업 리드타임 사전 확정"
+            }
+          ],
+          "purchase_implication": "한우 상방 신호가 확대된 사례로, 단기 견적 재확인 및 운영 물량 선확보 검토 필요 / 인접 이벤트: 추석 명절 선물세트·행사 수요 / 변동폭 큼",
+          "memory_id": "BEEF_2026-09-26_signal_jump_59"
+        },
+        {
           "date": "2026-09-25",
           "species": "BEEF",
           "name": "한우",
@@ -108,11 +135,14 @@
           "species": "BEEF",
           "name": "한우",
           "event_type": "signal_jump",
+          "event_type_label": "신호 급등",
           "change": 28,
           "from_score": 31,
           "to_score": 59,
+          "confidence_score": 50,
+          "conflict_severity": "high",
           "memo": "한우 신호 +28.0점 변동",
-          "event_type_label": "신호 급등",
+          "source": "signal_history",
           "nearby_calendar_events": [
             {
               "event_id": "CHUSEOK_2026",
@@ -129,49 +159,22 @@
           ],
           "purchase_implication": "한우 상방 신호가 확대된 사례로, 단기 견적 재확인 및 운영 물량 선확보 검토 필요 / 인접 이벤트: 추석 명절 선물세트·행사 수요 / 변동폭 큼",
           "memory_id": "BEEF_2026-09-15_signal_jump_28"
-        },
-        {
-          "date": "2026-09-05",
-          "species": "BEEF",
-          "name": "한우",
-          "event_type": "signal_jump",
-          "change": 25,
-          "from_score": 43,
-          "to_score": 68,
-          "memo": "한우 신호 +25.0점 변동",
-          "event_type_label": "신호 급등",
-          "nearby_calendar_events": [
-            {
-              "event_id": "CHUSEOK_2026",
-              "title": "추석 명절 선물세트·행사 수요",
-              "event_type": "holiday_demand",
-              "event_type_label": "명절 수요",
-              "date_start": "2026-09-10",
-              "date_end": "2026-10-05",
-              "impact_direction": "up",
-              "impact_level": 5,
-              "distance_days": 5,
-              "purchase_check": "한우 정육·구이·선물세트 원료육, 돈육/계육 행사 물량, 협력사 작업 리드타임 사전 확정"
-            }
-          ],
-          "purchase_implication": "한우 상방 신호가 확대된 사례로, 단기 견적 재확인 및 운영 물량 선확보 검토 필요 / 인접 이벤트: 추석 명절 선물세트·행사 수요 / 변동폭 큼",
-          "memory_id": "BEEF_2026-09-05_signal_jump_25"
         }
       ],
-      "memory_note": "한우 현재 판단 유보 상태로, 과거 사례보다 최신 공식자료 보강 우선"
+      "memory_note": "한우은 과거 변동 사례를 보조 참고자료로 활용"
     },
     {
       "id": "PORK",
       "name": "돈육",
-      "event_count": 21,
-      "jump_count": 10,
+      "event_count": 22,
+      "jump_count": 11,
       "drop_count": 11,
-      "avg_jump_change": 18.0,
+      "avg_jump_change": 20.6,
       "avg_drop_change": -21.7,
-      "latest_signal_score": 0,
+      "latest_signal_score": 47,
       "latest_status": "판단 유보",
-      "current_confidence": 0,
-      "current_conflict": "low",
+      "current_confidence": 69,
+      "current_conflict": "high",
       "top_cases": [
         {
           "date": "2026-09-25",
@@ -262,6 +265,45 @@
           ],
           "purchase_implication": "돈육 하방 신호가 확대된 사례로, 추가 비축보다 필요 물량 중심 운영 검토 필요 / 인접 이벤트: 추석 명절 선물세트·행사 수요 / 변동폭 큼",
           "memory_id": "PORK_2026-09-17_signal_drop_m54"
+        },
+        {
+          "date": "2026-09-26",
+          "species": "PORK",
+          "name": "돈육",
+          "event_type": "signal_jump",
+          "change": 47,
+          "from_score": 0,
+          "to_score": 47,
+          "memo": "돈육 신호 +47.0점 변동",
+          "event_type_label": "신호 급등",
+          "nearby_calendar_events": [
+            {
+              "event_id": "CHUSEOK_2026",
+              "title": "추석 명절 선물세트·행사 수요",
+              "event_type": "holiday_demand",
+              "event_type_label": "명절 수요",
+              "date_start": "2026-09-10",
+              "date_end": "2026-10-05",
+              "impact_direction": "up",
+              "impact_level": 5,
+              "distance_days": 9,
+              "purchase_check": "한우 정육·구이·선물세트 원료육, 돈육/계육 행사 물량, 협력사 작업 리드타임 사전 확정"
+            },
+            {
+              "event_id": "SCHOOL_MEAL_RESTART_2026_H2",
+              "title": "2학기 학교급식 재개",
+              "event_type": "demand_recovery",
+              "event_type_label": "수요 회복",
+              "date_start": "2026-08-20",
+              "date_end": "2026-09-10",
+              "impact_direction": "up",
+              "impact_level": 3,
+              "distance_days": 16,
+              "purchase_check": "급식용 후지·등심·계육·계란 수요 회복 여부 확인"
+            }
+          ],
+          "purchase_implication": "돈육 상방 신호가 확대된 사례로, 단기 견적 재확인 및 운영 물량 선확보 검토 필요 / 인접 이벤트: 추석 명절 선물세트·행사 수요 / 변동폭 큼",
+          "memory_id": "PORK_2026-09-26_signal_jump_47"
         },
         {
           "date": "2026-09-05",
@@ -364,57 +406,6 @@
           ],
           "purchase_implication": "돈육 상방 신호가 확대된 사례로, 단기 견적 재확인 및 운영 물량 선확보 검토 필요 / 인접 이벤트: 추석 명절 선물세트·행사 수요 / 변동폭 큼",
           "memory_id": "PORK_2026-09-18_signal_jump_36"
-        },
-        {
-          "date": "2026-09-09",
-          "species": "PORK",
-          "name": "돈육",
-          "event_type": "signal_drop",
-          "change": -28,
-          "from_score": 73,
-          "to_score": 45,
-          "memo": "돈육 신호 -28.0점 변동",
-          "event_type_label": "신호 하락",
-          "nearby_calendar_events": [
-            {
-              "event_id": "CHUSEOK_2026",
-              "title": "추석 명절 선물세트·행사 수요",
-              "event_type": "holiday_demand",
-              "event_type_label": "명절 수요",
-              "date_start": "2026-09-10",
-              "date_end": "2026-10-05",
-              "impact_direction": "up",
-              "impact_level": 5,
-              "distance_days": 1,
-              "purchase_check": "한우 정육·구이·선물세트 원료육, 돈육/계육 행사 물량, 협력사 작업 리드타임 사전 확정"
-            },
-            {
-              "event_id": "SCHOOL_MEAL_RESTART_2026_H2",
-              "title": "2학기 학교급식 재개",
-              "event_type": "demand_recovery",
-              "event_type_label": "수요 회복",
-              "date_start": "2026-08-20",
-              "date_end": "2026-09-10",
-              "impact_direction": "up",
-              "impact_level": 3,
-              "distance_days": 1,
-              "purchase_check": "급식용 후지·등심·계육·계란 수요 회복 여부 확인"
-            },
-            {
-              "event_id": "SUMMER_HEAT_2026",
-              "title": "혹서기 도축·도계 감소 리스크",
-              "event_type": "supply_risk",
-              "event_type_label": "공급 리스크",
-              "date_start": "2026-07-01",
-              "date_end": "2026-08-31",
-              "impact_direction": "up",
-              "impact_level": 4,
-              "distance_days": 9,
-              "purchase_check": "혹서기 증체 지연·도축/도계량 감소 여부 확인 후 하절기 운영 물량 분할 확보"
-            }
-          ],
-          "purchase_implication": "돈육 하방 신호가 확대된 사례로, 추가 비축보다 필요 물량 중심 운영 검토 필요 / 인접 이벤트: 추석 명절 선물세트·행사 수요 / 변동폭 큼",
-          "memory_id": "PORK_2026-09-09_signal_drop_m28"
         }
       ],
       "memory_note": "돈육 현재 판단 유보 상태로, 과거 사례보다 최신 공식자료 보강 우선"
@@ -422,15 +413,15 @@
     {
       "id": "POULTRY",
       "name": "계육",
-      "event_count": 25,
-      "jump_count": 11,
+      "event_count": 26,
+      "jump_count": 12,
       "drop_count": 14,
-      "avg_jump_change": 17.7,
+      "avg_jump_change": 19.5,
       "avg_drop_change": -16.9,
-      "latest_signal_score": 0,
-      "latest_status": "판단 유보",
-      "current_confidence": 0,
-      "current_conflict": "low",
+      "latest_signal_score": 39,
+      "latest_status": "보합/혼조",
+      "current_confidence": 81,
+      "current_conflict": "none",
       "top_cases": [
         {
           "date": "2026-09-17",
@@ -535,6 +526,45 @@
           "memory_id": "POULTRY_2026-09-18_signal_jump_40"
         },
         {
+          "date": "2026-09-26",
+          "species": "POULTRY",
+          "name": "계육",
+          "event_type": "signal_jump",
+          "change": 39,
+          "from_score": 0,
+          "to_score": 39,
+          "memo": "계육 신호 +39.0점 변동",
+          "event_type_label": "신호 급등",
+          "nearby_calendar_events": [
+            {
+              "event_id": "CHUSEOK_2026",
+              "title": "추석 명절 선물세트·행사 수요",
+              "event_type": "holiday_demand",
+              "event_type_label": "명절 수요",
+              "date_start": "2026-09-10",
+              "date_end": "2026-10-05",
+              "impact_direction": "up",
+              "impact_level": 5,
+              "distance_days": 9,
+              "purchase_check": "한우 정육·구이·선물세트 원료육, 돈육/계육 행사 물량, 협력사 작업 리드타임 사전 확정"
+            },
+            {
+              "event_id": "SCHOOL_MEAL_RESTART_2026_H2",
+              "title": "2학기 학교급식 재개",
+              "event_type": "demand_recovery",
+              "event_type_label": "수요 회복",
+              "date_start": "2026-08-20",
+              "date_end": "2026-09-10",
+              "impact_direction": "up",
+              "impact_level": 3,
+              "distance_days": 16,
+              "purchase_check": "급식용 후지·등심·계육·계란 수요 회복 여부 확인"
+            }
+          ],
+          "purchase_implication": "계육 상방 신호가 확대된 사례로, 단기 견적 재확인 및 운영 물량 선확보 검토 필요 / 인접 이벤트: 추석 명절 선물세트·행사 수요 / 변동폭 큼",
+          "memory_id": "POULTRY_2026-09-26_signal_jump_39"
+        },
+        {
           "date": "2026-09-25",
           "species": "POULTRY",
           "name": "계육",
@@ -623,72 +653,21 @@
           ],
           "purchase_implication": "계육 상방 신호가 확대된 사례로, 단기 견적 재확인 및 운영 물량 선확보 검토 필요 / 인접 이벤트: 추석 명절 선물세트·행사 수요 / 변동폭 큼",
           "memory_id": "POULTRY_2026-09-05_signal_jump_30"
-        },
-        {
-          "date": "2026-09-10",
-          "species": "POULTRY",
-          "name": "계육",
-          "event_type": "signal_jump",
-          "change": 29,
-          "from_score": 25,
-          "to_score": 54,
-          "memo": "계육 신호 +29.0점 변동",
-          "event_type_label": "신호 급등",
-          "nearby_calendar_events": [
-            {
-              "event_id": "CHUSEOK_2026",
-              "title": "추석 명절 선물세트·행사 수요",
-              "event_type": "holiday_demand",
-              "event_type_label": "명절 수요",
-              "date_start": "2026-09-10",
-              "date_end": "2026-10-05",
-              "impact_direction": "up",
-              "impact_level": 5,
-              "distance_days": 0,
-              "purchase_check": "한우 정육·구이·선물세트 원료육, 돈육/계육 행사 물량, 협력사 작업 리드타임 사전 확정"
-            },
-            {
-              "event_id": "SCHOOL_MEAL_RESTART_2026_H2",
-              "title": "2학기 학교급식 재개",
-              "event_type": "demand_recovery",
-              "event_type_label": "수요 회복",
-              "date_start": "2026-08-20",
-              "date_end": "2026-09-10",
-              "impact_direction": "up",
-              "impact_level": 3,
-              "distance_days": 0,
-              "purchase_check": "급식용 후지·등심·계육·계란 수요 회복 여부 확인"
-            },
-            {
-              "event_id": "SUMMER_HEAT_2026",
-              "title": "혹서기 도축·도계 감소 리스크",
-              "event_type": "supply_risk",
-              "event_type_label": "공급 리스크",
-              "date_start": "2026-07-01",
-              "date_end": "2026-08-31",
-              "impact_direction": "up",
-              "impact_level": 4,
-              "distance_days": 10,
-              "purchase_check": "혹서기 증체 지연·도축/도계량 감소 여부 확인 후 하절기 운영 물량 분할 확보"
-            }
-          ],
-          "purchase_implication": "계육 상방 신호가 확대된 사례로, 단기 견적 재확인 및 운영 물량 선확보 검토 필요 / 인접 이벤트: 추석 명절 선물세트·행사 수요 / 변동폭 큼",
-          "memory_id": "POULTRY_2026-09-10_signal_jump_29"
         }
       ],
-      "memory_note": "계육 현재 판단 유보 상태로, 과거 사례보다 최신 공식자료 보강 우선"
+      "memory_note": "계육은 과거 변동 사례를 보조 참고자료로 활용"
     },
     {
       "id": "DUCK",
       "name": "오리",
-      "event_count": 15,
-      "jump_count": 8,
+      "event_count": 16,
+      "jump_count": 9,
       "drop_count": 7,
-      "avg_jump_change": 12.0,
+      "avg_jump_change": 14.6,
       "avg_drop_change": -15.3,
-      "latest_signal_score": 0,
+      "latest_signal_score": 35,
       "latest_status": "판단 유보",
-      "current_confidence": 0,
+      "current_confidence": 51,
       "current_conflict": "low",
       "top_cases": [
         {
@@ -717,6 +696,33 @@
           ],
           "purchase_implication": "오리 하방 신호가 확대된 사례로, 추가 비축보다 필요 물량 중심 운영 검토 필요 / 인접 이벤트: 추석 명절 선물세트·행사 수요 / 변동폭 큼",
           "memory_id": "DUCK_2026-09-25_signal_drop_m35"
+        },
+        {
+          "date": "2026-09-26",
+          "species": "DUCK",
+          "name": "오리",
+          "event_type": "signal_jump",
+          "change": 35,
+          "from_score": 0,
+          "to_score": 35,
+          "memo": "오리 신호 +35.0점 변동",
+          "event_type_label": "신호 급등",
+          "nearby_calendar_events": [
+            {
+              "event_id": "CHUSEOK_2026",
+              "title": "추석 명절 선물세트·행사 수요",
+              "event_type": "holiday_demand",
+              "event_type_label": "명절 수요",
+              "date_start": "2026-09-10",
+              "date_end": "2026-10-05",
+              "impact_direction": "up",
+              "impact_level": 5,
+              "distance_days": 9,
+              "purchase_check": "한우 정육·구이·선물세트 원료육, 돈육/계육 행사 물량, 협력사 작업 리드타임 사전 확정"
+            }
+          ],
+          "purchase_implication": "오리 상방 신호가 확대된 사례로, 단기 견적 재확인 및 운영 물량 선확보 검토 필요 / 인접 이벤트: 추석 명절 선물세트·행사 수요 / 변동폭 큼",
+          "memory_id": "DUCK_2026-09-26_signal_jump_35"
         },
         {
           "date": "2026-09-20",
@@ -834,45 +840,6 @@
           ],
           "purchase_implication": "오리 상방 신호가 확대된 사례로, 단기 견적 재확인 및 운영 물량 선확보 검토 필요 / 인접 이벤트: 추석 명절 선물세트·행사 수요",
           "memory_id": "DUCK_2026-09-05_signal_jump_14"
-        },
-        {
-          "date": "2026-09-17",
-          "species": "DUCK",
-          "name": "오리",
-          "event_type": "signal_drop",
-          "change": -14,
-          "from_score": 14,
-          "to_score": 0,
-          "memo": "오리 신호 -14.0점 변동",
-          "event_type_label": "신호 하락",
-          "nearby_calendar_events": [
-            {
-              "event_id": "CHUSEOK_2026",
-              "title": "추석 명절 선물세트·행사 수요",
-              "event_type": "holiday_demand",
-              "event_type_label": "명절 수요",
-              "date_start": "2026-09-10",
-              "date_end": "2026-10-05",
-              "impact_direction": "up",
-              "impact_level": 5,
-              "distance_days": 7,
-              "purchase_check": "한우 정육·구이·선물세트 원료육, 돈육/계육 행사 물량, 협력사 작업 리드타임 사전 확정"
-            },
-            {
-              "event_id": "SUMMER_HEAT_2026",
-              "title": "혹서기 도축·도계 감소 리스크",
-              "event_type": "supply_risk",
-              "event_type_label": "공급 리스크",
-              "date_start": "2026-07-01",
-              "date_end": "2026-08-31",
-              "impact_direction": "up",
-              "impact_level": 4,
-              "distance_days": 17,
-              "purchase_check": "혹서기 증체 지연·도축/도계량 감소 여부 확인 후 하절기 운영 물량 분할 확보"
-            }
-          ],
-          "purchase_implication": "오리 하방 신호가 확대된 사례로, 추가 비축보다 필요 물량 중심 운영 검토 필요 / 인접 이벤트: 추석 명절 선물세트·행사 수요",
-          "memory_id": "DUCK_2026-09-17_signal_drop_m14"
         }
       ],
       "memory_note": "오리 현재 판단 유보 상태로, 과거 사례보다 최신 공식자료 보강 우선"
@@ -880,15 +847,15 @@
     {
       "id": "EGG",
       "name": "계란",
-      "event_count": 23,
-      "jump_count": 10,
+      "event_count": 24,
+      "jump_count": 11,
       "drop_count": 13,
-      "avg_jump_change": 21.7,
+      "avg_jump_change": 25.4,
       "avg_drop_change": -23.3,
-      "latest_signal_score": 0,
-      "latest_status": "판단 유보",
-      "current_confidence": 0,
-      "current_conflict": "low",
+      "latest_signal_score": 62,
+      "latest_status": "상방 가능성",
+      "current_confidence": 80,
+      "current_conflict": "medium",
       "top_cases": [
         {
           "date": "2026-09-18",
@@ -969,6 +936,45 @@
           "memory_id": "EGG_2026-09-25_signal_drop_m63"
         },
         {
+          "date": "2026-09-26",
+          "species": "EGG",
+          "name": "계란",
+          "event_type": "signal_jump",
+          "change": 62,
+          "from_score": 0,
+          "to_score": 62,
+          "memo": "계란 신호 +62.0점 변동",
+          "event_type_label": "신호 급등",
+          "nearby_calendar_events": [
+            {
+              "event_id": "CHUSEOK_2026",
+              "title": "추석 명절 선물세트·행사 수요",
+              "event_type": "holiday_demand",
+              "event_type_label": "명절 수요",
+              "date_start": "2026-09-10",
+              "date_end": "2026-10-05",
+              "impact_direction": "up",
+              "impact_level": 5,
+              "distance_days": 9,
+              "purchase_check": "한우 정육·구이·선물세트 원료육, 돈육/계육 행사 물량, 협력사 작업 리드타임 사전 확정"
+            },
+            {
+              "event_id": "SCHOOL_MEAL_RESTART_2026_H2",
+              "title": "2학기 학교급식 재개",
+              "event_type": "demand_recovery",
+              "event_type_label": "수요 회복",
+              "date_start": "2026-08-20",
+              "date_end": "2026-09-10",
+              "impact_direction": "up",
+              "impact_level": 3,
+              "distance_days": 16,
+              "purchase_check": "급식용 후지·등심·계육·계란 수요 회복 여부 확인"
+            }
+          ],
+          "purchase_implication": "계란 상방 신호가 확대된 사례로, 단기 견적 재확인 및 운영 물량 선확보 검토 필요 / 인접 이벤트: 추석 명절 선물세트·행사 수요 / 변동폭 큼",
+          "memory_id": "EGG_2026-09-26_signal_jump_62"
+        },
+        {
           "date": "2026-09-17",
           "species": "EGG",
           "name": "계란",
@@ -1045,61 +1051,22 @@
           ],
           "purchase_implication": "계란 상방 신호가 확대된 사례로, 단기 견적 재확인 및 운영 물량 선확보 검토 필요 / 인접 이벤트: 추석 명절 선물세트·행사 수요 / 변동폭 큼",
           "memory_id": "EGG_2026-09-05_signal_jump_51"
-        },
-        {
-          "date": "2026-09-04",
-          "species": "EGG",
-          "name": "계란",
-          "event_type": "signal_drop",
-          "change": -42,
-          "from_score": 55,
-          "to_score": 13,
-          "memo": "계란 신호 -42.0점 변동",
-          "event_type_label": "신호 하락",
-          "nearby_calendar_events": [
-            {
-              "event_id": "CHUSEOK_2026",
-              "title": "추석 명절 선물세트·행사 수요",
-              "event_type": "holiday_demand",
-              "event_type_label": "명절 수요",
-              "date_start": "2026-09-10",
-              "date_end": "2026-10-05",
-              "impact_direction": "up",
-              "impact_level": 5,
-              "distance_days": 6,
-              "purchase_check": "한우 정육·구이·선물세트 원료육, 돈육/계육 행사 물량, 협력사 작업 리드타임 사전 확정"
-            },
-            {
-              "event_id": "SCHOOL_MEAL_RESTART_2026_H2",
-              "title": "2학기 학교급식 재개",
-              "event_type": "demand_recovery",
-              "event_type_label": "수요 회복",
-              "date_start": "2026-08-20",
-              "date_end": "2026-09-10",
-              "impact_direction": "up",
-              "impact_level": 3,
-              "distance_days": 6,
-              "purchase_check": "급식용 후지·등심·계육·계란 수요 회복 여부 확인"
-            }
-          ],
-          "purchase_implication": "계란 하방 신호가 확대된 사례로, 추가 비축보다 필요 물량 중심 운영 검토 필요 / 인접 이벤트: 추석 명절 선물세트·행사 수요 / 변동폭 큼",
-          "memory_id": "EGG_2026-09-04_signal_drop_m42"
         }
       ],
-      "memory_note": "계란 현재 판단 유보 상태로, 과거 사례보다 최신 공식자료 보강 우선"
+      "memory_note": "계란 현재 상방 신호와 과거 급등 사례를 함께 비교 필요"
     },
     {
       "id": "OTHER",
       "name": "기타",
-      "event_count": 25,
-      "jump_count": 13,
+      "event_count": 26,
+      "jump_count": 14,
       "drop_count": 12,
-      "avg_jump_change": 20.7,
+      "avg_jump_change": 23.9,
       "avg_drop_change": -23.8,
-      "latest_signal_score": 0,
+      "latest_signal_score": 65,
       "latest_status": "판단 유보",
-      "current_confidence": 0,
-      "current_conflict": "low",
+      "current_confidence": 62,
+      "current_conflict": "high",
       "top_cases": [
         {
           "date": "2026-09-25",
@@ -1130,6 +1097,20 @@
           "memory_id": "OTHER_2026-09-18_signal_jump_66"
         },
         {
+          "date": "2026-09-26",
+          "species": "OTHER",
+          "name": "기타",
+          "event_type": "signal_jump",
+          "change": 65,
+          "from_score": 0,
+          "to_score": 65,
+          "memo": "기타 신호 +65.0점 변동",
+          "event_type_label": "신호 급등",
+          "nearby_calendar_events": [],
+          "purchase_implication": "기타 상방 신호가 확대된 사례로, 단기 견적 재확인 및 운영 물량 선확보 검토 필요 / 변동폭 큼",
+          "memory_id": "OTHER_2026-09-26_signal_jump_65"
+        },
+        {
           "date": "2026-09-17",
           "species": "OTHER",
           "name": "기타",
@@ -1156,26 +1137,43 @@
           "nearby_calendar_events": [],
           "purchase_implication": "기타 상방 신호가 확대된 사례로, 단기 견적 재확인 및 운영 물량 선확보 검토 필요 / 변동폭 큼",
           "memory_id": "OTHER_2026-09-05_signal_jump_41"
-        },
-        {
-          "date": "2026-09-04",
-          "species": "OTHER",
-          "name": "기타",
-          "event_type": "signal_drop",
-          "change": -33,
-          "from_score": 42,
-          "to_score": 9,
-          "memo": "기타 신호 -33.0점 변동",
-          "event_type_label": "신호 하락",
-          "nearby_calendar_events": [],
-          "purchase_implication": "기타 하방 신호가 확대된 사례로, 추가 비축보다 필요 물량 중심 운영 검토 필요 / 변동폭 큼",
-          "memory_id": "OTHER_2026-09-04_signal_drop_m33"
         }
       ],
       "memory_note": "기타 현재 판단 유보 상태로, 과거 사례보다 최신 공식자료 보강 우선"
     }
   ],
-  "similar_cases": [],
+  "similar_cases": [
+    {
+      "species": "EGG",
+      "name": "계란",
+      "current_status": "상방 가능성",
+      "current_signal_score": 62,
+      "case_date": "2026-09-26",
+      "case_change": 62,
+      "case_memo": "계란 신호 +62.0점 변동",
+      "purchase_implication": "계란 상방 신호가 확대된 사례로, 단기 견적 재확인 및 운영 물량 선확보 검토 필요 / 인접 이벤트: 추석 명절 선물세트·행사 수요 / 변동폭 큼"
+    },
+    {
+      "species": "EGG",
+      "name": "계란",
+      "current_status": "상방 가능성",
+      "current_signal_score": 62,
+      "case_date": "2026-09-18",
+      "case_change": 63,
+      "case_memo": "계란 신호 +63.0점 변동",
+      "purchase_implication": "계란 상방 신호가 확대된 사례로, 단기 견적 재확인 및 운영 물량 선확보 검토 필요 / 인접 이벤트: 추석 명절 선물세트·행사 수요 / 변동폭 큼"
+    },
+    {
+      "species": "EGG",
+      "name": "계란",
+      "current_status": "상방 가능성",
+      "current_signal_score": 62,
+      "case_date": "2026-09-05",
+      "case_change": 51,
+      "case_memo": "계란 신호 +51.0점 변동",
+      "purchase_implication": "계란 상방 신호가 확대된 사례로, 단기 견적 재확인 및 운영 물량 선확보 검토 필요 / 인접 이벤트: 추석 명절 선물세트·행사 수요 / 변동폭 큼"
+    }
+  ],
   "items": [
     {
       "date": "2026-07-09",
@@ -3887,11 +3885,14 @@
       "species": "BEEF",
       "name": "한우",
       "event_type": "signal_jump",
+      "event_type_label": "신호 급등",
       "change": 25,
       "from_score": 43,
       "to_score": 68,
+      "confidence_score": 55,
+      "conflict_severity": "high",
       "memo": "한우 신호 +25.0점 변동",
-      "event_type_label": "신호 급등",
+      "source": "signal_history",
       "nearby_calendar_events": [
         {
           "event_id": "CHUSEOK_2026",
@@ -4108,11 +4109,14 @@
       "species": "BEEF",
       "name": "한우",
       "event_type": "signal_jump",
+      "event_type_label": "신호 급등",
       "change": 18,
       "from_score": 68,
       "to_score": 86,
+      "confidence_score": 74,
+      "conflict_severity": "none",
       "memo": "한우 신호 +18.0점 변동",
-      "event_type_label": "신호 급등",
+      "source": "signal_history",
       "nearby_calendar_events": [
         {
           "event_id": "CHUSEOK_2026",
@@ -4330,11 +4334,14 @@
       "species": "BEEF",
       "name": "한우",
       "event_type": "signal_drop",
+      "event_type_label": "신호 하락",
       "change": -14,
       "from_score": 81,
       "to_score": 67,
+      "confidence_score": 86,
+      "conflict_severity": "medium",
       "memo": "한우 신호 -14.0점 변동",
-      "event_type_label": "신호 하락",
+      "source": "signal_history",
       "nearby_calendar_events": [
         {
           "event_id": "CHUSEOK_2026",
@@ -4459,11 +4466,14 @@
       "species": "BEEF",
       "name": "한우",
       "event_type": "signal_drop",
+      "event_type_label": "신호 하락",
       "change": -16,
       "from_score": 67,
       "to_score": 51,
+      "confidence_score": 92,
+      "conflict_severity": "none",
       "memo": "한우 신호 -16.0점 변동",
-      "event_type_label": "신호 하락",
+      "source": "signal_history",
       "nearby_calendar_events": [
         {
           "event_id": "CHUSEOK_2026",
@@ -4675,11 +4685,14 @@
       "species": "BEEF",
       "name": "한우",
       "event_type": "signal_drop",
+      "event_type_label": "신호 하락",
       "change": -15,
       "from_score": 60,
       "to_score": 45,
+      "confidence_score": 91,
+      "conflict_severity": "medium",
       "memo": "한우 신호 -15.0점 변동",
-      "event_type_label": "신호 하락",
+      "source": "signal_history",
       "nearby_calendar_events": [
         {
           "event_id": "CHUSEOK_2026",
@@ -4811,11 +4824,14 @@
       "species": "BEEF",
       "name": "한우",
       "event_type": "signal_jump",
+      "event_type_label": "신호 급등",
       "change": 28,
       "from_score": 31,
       "to_score": 59,
+      "confidence_score": 50,
+      "conflict_severity": "high",
       "memo": "한우 신호 +28.0점 변동",
-      "event_type_label": "신호 급등",
+      "source": "signal_history",
       "nearby_calendar_events": [
         {
           "event_id": "CHUSEOK_2026",
@@ -5919,6 +5935,191 @@
       ],
       "purchase_implication": "계육 하방 신호가 확대된 사례로, 추가 비축보다 필요 물량 중심 운영 검토 필요 / 인접 이벤트: 추석 명절 선물세트·행사 수요 / 변동폭 큼",
       "memory_id": "POULTRY_2026-09-25_signal_drop_m37"
+    },
+    {
+      "date": "2026-09-26",
+      "species": "BEEF",
+      "name": "한우",
+      "event_type": "signal_jump",
+      "change": 59,
+      "from_score": 0,
+      "to_score": 59,
+      "memo": "한우 신호 +59.0점 변동",
+      "event_type_label": "신호 급등",
+      "nearby_calendar_events": [
+        {
+          "event_id": "CHUSEOK_2026",
+          "title": "추석 명절 선물세트·행사 수요",
+          "event_type": "holiday_demand",
+          "event_type_label": "명절 수요",
+          "date_start": "2026-09-10",
+          "date_end": "2026-10-05",
+          "impact_direction": "up",
+          "impact_level": 5,
+          "distance_days": 9,
+          "purchase_check": "한우 정육·구이·선물세트 원료육, 돈육/계육 행사 물량, 협력사 작업 리드타임 사전 확정"
+        }
+      ],
+      "purchase_implication": "한우 상방 신호가 확대된 사례로, 단기 견적 재확인 및 운영 물량 선확보 검토 필요 / 인접 이벤트: 추석 명절 선물세트·행사 수요 / 변동폭 큼",
+      "memory_id": "BEEF_2026-09-26_signal_jump_59"
+    },
+    {
+      "date": "2026-09-26",
+      "species": "DUCK",
+      "name": "오리",
+      "event_type": "signal_jump",
+      "change": 35,
+      "from_score": 0,
+      "to_score": 35,
+      "memo": "오리 신호 +35.0점 변동",
+      "event_type_label": "신호 급등",
+      "nearby_calendar_events": [
+        {
+          "event_id": "CHUSEOK_2026",
+          "title": "추석 명절 선물세트·행사 수요",
+          "event_type": "holiday_demand",
+          "event_type_label": "명절 수요",
+          "date_start": "2026-09-10",
+          "date_end": "2026-10-05",
+          "impact_direction": "up",
+          "impact_level": 5,
+          "distance_days": 9,
+          "purchase_check": "한우 정육·구이·선물세트 원료육, 돈육/계육 행사 물량, 협력사 작업 리드타임 사전 확정"
+        }
+      ],
+      "purchase_implication": "오리 상방 신호가 확대된 사례로, 단기 견적 재확인 및 운영 물량 선확보 검토 필요 / 인접 이벤트: 추석 명절 선물세트·행사 수요 / 변동폭 큼",
+      "memory_id": "DUCK_2026-09-26_signal_jump_35"
+    },
+    {
+      "date": "2026-09-26",
+      "species": "EGG",
+      "name": "계란",
+      "event_type": "signal_jump",
+      "change": 62,
+      "from_score": 0,
+      "to_score": 62,
+      "memo": "계란 신호 +62.0점 변동",
+      "event_type_label": "신호 급등",
+      "nearby_calendar_events": [
+        {
+          "event_id": "CHUSEOK_2026",
+          "title": "추석 명절 선물세트·행사 수요",
+          "event_type": "holiday_demand",
+          "event_type_label": "명절 수요",
+          "date_start": "2026-09-10",
+          "date_end": "2026-10-05",
+          "impact_direction": "up",
+          "impact_level": 5,
+          "distance_days": 9,
+          "purchase_check": "한우 정육·구이·선물세트 원료육, 돈육/계육 행사 물량, 협력사 작업 리드타임 사전 확정"
+        },
+        {
+          "event_id": "SCHOOL_MEAL_RESTART_2026_H2",
+          "title": "2학기 학교급식 재개",
+          "event_type": "demand_recovery",
+          "event_type_label": "수요 회복",
+          "date_start": "2026-08-20",
+          "date_end": "2026-09-10",
+          "impact_direction": "up",
+          "impact_level": 3,
+          "distance_days": 16,
+          "purchase_check": "급식용 후지·등심·계육·계란 수요 회복 여부 확인"
+        }
+      ],
+      "purchase_implication": "계란 상방 신호가 확대된 사례로, 단기 견적 재확인 및 운영 물량 선확보 검토 필요 / 인접 이벤트: 추석 명절 선물세트·행사 수요 / 변동폭 큼",
+      "memory_id": "EGG_2026-09-26_signal_jump_62"
+    },
+    {
+      "date": "2026-09-26",
+      "species": "OTHER",
+      "name": "기타",
+      "event_type": "signal_jump",
+      "change": 65,
+      "from_score": 0,
+      "to_score": 65,
+      "memo": "기타 신호 +65.0점 변동",
+      "event_type_label": "신호 급등",
+      "nearby_calendar_events": [],
+      "purchase_implication": "기타 상방 신호가 확대된 사례로, 단기 견적 재확인 및 운영 물량 선확보 검토 필요 / 변동폭 큼",
+      "memory_id": "OTHER_2026-09-26_signal_jump_65"
+    },
+    {
+      "date": "2026-09-26",
+      "species": "PORK",
+      "name": "돈육",
+      "event_type": "signal_jump",
+      "change": 47,
+      "from_score": 0,
+      "to_score": 47,
+      "memo": "돈육 신호 +47.0점 변동",
+      "event_type_label": "신호 급등",
+      "nearby_calendar_events": [
+        {
+          "event_id": "CHUSEOK_2026",
+          "title": "추석 명절 선물세트·행사 수요",
+          "event_type": "holiday_demand",
+          "event_type_label": "명절 수요",
+          "date_start": "2026-09-10",
+          "date_end": "2026-10-05",
+          "impact_direction": "up",
+          "impact_level": 5,
+          "distance_days": 9,
+          "purchase_check": "한우 정육·구이·선물세트 원료육, 돈육/계육 행사 물량, 협력사 작업 리드타임 사전 확정"
+        },
+        {
+          "event_id": "SCHOOL_MEAL_RESTART_2026_H2",
+          "title": "2학기 학교급식 재개",
+          "event_type": "demand_recovery",
+          "event_type_label": "수요 회복",
+          "date_start": "2026-08-20",
+          "date_end": "2026-09-10",
+          "impact_direction": "up",
+          "impact_level": 3,
+          "distance_days": 16,
+          "purchase_check": "급식용 후지·등심·계육·계란 수요 회복 여부 확인"
+        }
+      ],
+      "purchase_implication": "돈육 상방 신호가 확대된 사례로, 단기 견적 재확인 및 운영 물량 선확보 검토 필요 / 인접 이벤트: 추석 명절 선물세트·행사 수요 / 변동폭 큼",
+      "memory_id": "PORK_2026-09-26_signal_jump_47"
+    },
+    {
+      "date": "2026-09-26",
+      "species": "POULTRY",
+      "name": "계육",
+      "event_type": "signal_jump",
+      "change": 39,
+      "from_score": 0,
+      "to_score": 39,
+      "memo": "계육 신호 +39.0점 변동",
+      "event_type_label": "신호 급등",
+      "nearby_calendar_events": [
+        {
+          "event_id": "CHUSEOK_2026",
+          "title": "추석 명절 선물세트·행사 수요",
+          "event_type": "holiday_demand",
+          "event_type_label": "명절 수요",
+          "date_start": "2026-09-10",
+          "date_end": "2026-10-05",
+          "impact_direction": "up",
+          "impact_level": 5,
+          "distance_days": 9,
+          "purchase_check": "한우 정육·구이·선물세트 원료육, 돈육/계육 행사 물량, 협력사 작업 리드타임 사전 확정"
+        },
+        {
+          "event_id": "SCHOOL_MEAL_RESTART_2026_H2",
+          "title": "2학기 학교급식 재개",
+          "event_type": "demand_recovery",
+          "event_type_label": "수요 회복",
+          "date_start": "2026-08-20",
+          "date_end": "2026-09-10",
+          "impact_direction": "up",
+          "impact_level": 3,
+          "distance_days": 16,
+          "purchase_check": "급식용 후지·등심·계육·계란 수요 회복 여부 확인"
+        }
+      ],
+      "purchase_implication": "계육 상방 신호가 확대된 사례로, 단기 견적 재확인 및 운영 물량 선확보 검토 필요 / 인접 이벤트: 추석 명절 선물세트·행사 수요 / 변동폭 큼",
+      "memory_id": "POULTRY_2026-09-26_signal_jump_39"
     }
   ],
   "inputs": {
