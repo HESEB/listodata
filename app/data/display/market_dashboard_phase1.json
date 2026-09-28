@@ -1,34 +1,35 @@
 {
-  "updated_at": "2026-09-28T15:35:19Z",
+  "updated_at": "2026-09-28T22:06:55Z",
   "notice": "Phase 2 Display Layer 초안입니다. 기존 market_dashboard.json은 별도로 유지됩니다.",
   "species": [
     {
       "id": "BEEF",
       "name": "한우",
-      "signal_score": 41,
+      "signal_score": 54,
       "direction": "neutral",
       "status": "보합/혼조",
-      "quality_score": 70,
-      "confidence_score": 62,
-      "coverage_rate": 80,
+      "quality_score": 71,
+      "confidence_score": 73,
+      "coverage_rate": 100,
       "evidence_count": 31,
-      "official_count": 1,
+      "official_count": 2,
       "direction_counts": {
-        "up": 4,
+        "up": 5,
         "down": 7,
-        "neutral": 20,
+        "neutral": 19,
         "hold": 0
       },
       "coverage_types": [
         "가격",
         "수급/도축",
         "수요/행사",
-        "일반"
+        "일반",
+        "질병/방역"
       ],
       "score_breakdown": {
         "price": 11,
         "supply": 21,
-        "disease": 0,
+        "disease": 13,
         "policy": 0,
         "news": 9
       },
@@ -50,12 +51,6 @@
           "neutral": 3,
           "examples": [
             {
-              "title": "홍천 인삼·한우 명품축제, 군예산 1억 5000만 원 투입…6년근 수삼 할인판매 - news.tf.co.kr",
-              "direction": "down",
-              "source_level": 2,
-              "quality_score": 69
-            },
-            {
               "title": "지갑 가볍게, 입 안은 풍성하게… 포항서 '경북 한우' 파격 할인 장터 열린다 - 이로운넷",
               "direction": "down",
               "source_level": 2,
@@ -66,6 +61,12 @@
               "direction": "down",
               "source_level": 2,
               "quality_score": 64
+            },
+            {
+              "title": "한우 부담에 돼지고기 선물 늘었다…추석엔 가격도 취향도 따진다 - v.daum.net",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 71
             }
           ]
         },
@@ -85,7 +86,7 @@
               "quality_score": 81
             },
             {
-              "title": "사육두수 경북 12% 늘때 전남 35% 급증…`한우 1번지` 위상 위태 - imaeil.com",
+              "title": "사육두수 경북 12% 늘때 전남 35% 급증…`한우 1번지` 위상 위태 - 매일신문",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
@@ -101,12 +102,19 @@
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
-          "score": 0,
-          "items": 0,
-          "up": 0,
+          "score": 13,
+          "items": 1,
+          "up": 1,
           "down": 0,
           "neutral": 0,
-          "examples": []
+          "examples": [
+            {
+              "title": "포항서 '한우 소비촉진 행사' 열린다…쌀전업농 전국대회와 연계 - shinailbo.co.kr",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 81
+            }
+          ]
         },
         "policy": {
           "label": "정책/고시",
@@ -122,10 +130,10 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 9,
-          "items": 17,
+          "items": 16,
           "up": 0,
           "down": 0,
-          "neutral": 17,
+          "neutral": 16,
           "examples": [
             {
               "title": "울산 언양 한우불고기축제 10월 9일 개막…10년 만에 다시 열린다 - 영남경제",
@@ -148,7 +156,7 @@
           ]
         }
       },
-      "reason": "수급/도축 21점 + 가격 11점 + 뉴스/수요 9점 기반, 하방성 자료가 우세",
+      "reason": "수급/도축 21점 + 질병/방역 13점 + 가격 11점 기반, 하방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
@@ -160,10 +168,10 @@
       "quality_score": 72,
       "confidence_score": 80,
       "coverage_rate": 80,
-      "evidence_count": 22,
+      "evidence_count": 21,
       "official_count": 11,
       "direction_counts": {
-        "up": 16,
+        "up": 15,
         "down": 1,
         "neutral": 5,
         "hold": 0
@@ -239,11 +247,17 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 15,
-          "up": 15,
+          "items": 14,
+          "up": 14,
           "down": 0,
           "neutral": 0,
           "examples": [
+            {
+              "title": "야생멧돼지 ASF 양성 가정… 김포시, 가축전염병 대응훈련 - 아이뉴스24",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 81
+            },
             {
               "title": "찬바람 불자 가축전염병 '비상'… 정부, AI·구제역·ASF 특별방역 돌입 - 전업농신문",
               "direction": "up",
@@ -251,13 +265,7 @@
               "quality_score": 100
             },
             {
-              "title": "경기북부, ASF 이어 AI도 자체 정밀진단···가축방역 대응 빨라진다 - agrinet.co.kr",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 81
-            },
-            {
-              "title": "김포시, ASF 대비 가상방역훈련...현장 대응 역량 강화 - 경인신문",
+              "title": "경기북부, ASF 이어 AI도 자체 정밀진단···가축방역 대응 빨라진다 - 한국농어민신문",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
@@ -284,7 +292,7 @@
           "neutral": 2,
           "examples": [
             {
-              "title": "한우 4.5%·돼지고기 7.6% 뛰었다…추석 닷새 앞 밥상물가 비상 - imaeil.com",
+              "title": "한우 4.5%·돼지고기 7.6% 뛰었다…추석 닷새 앞 밥상물가 비상 - 매일신문",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 65
@@ -389,13 +397,13 @@
               "quality_score": 81
             },
             {
-              "title": "송미령 장관, 충남 찾아 AI·구제역 차단방역 현장 점검 - farminsight.net",
+              "title": "송미령 장관, 충남 찾아 AI·구제역 차단방역 현장 점검 - 팜인사이트",
               "direction": "up",
               "source_level": 3,
               "quality_score": 76
             },
             {
-              "title": "경기도, 조류인플루엔자 방역에 '디지털 트윈' 활용 - 연합뉴스",
+              "title": "경기도, 조류인플루엔자 방역에 ‘디지털 트윈’ 활용 - KBS 뉴스",
               "direction": "up",
               "source_level": 3,
               "quality_score": 71
@@ -436,27 +444,25 @@
     {
       "id": "DUCK",
       "name": "오리",
-      "signal_score": 12,
+      "signal_score": 0,
       "direction": "hold",
       "status": "판단 유보",
-      "quality_score": 70,
-      "confidence_score": 38,
-      "coverage_rate": 20,
-      "evidence_count": 1,
+      "quality_score": 0,
+      "confidence_score": 0,
+      "coverage_rate": 0,
+      "evidence_count": 0,
       "official_count": 0,
       "direction_counts": {
-        "up": 1,
+        "up": 0,
         "down": 0,
         "neutral": 0,
         "hold": 0
       },
-      "coverage_types": [
-        "질병/방역"
-      ],
+      "coverage_types": [],
       "score_breakdown": {
         "price": 0,
         "supply": 0,
-        "disease": 12,
+        "disease": 0,
         "policy": 0,
         "news": 0
       },
@@ -491,19 +497,12 @@
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
-          "score": 12,
-          "items": 1,
-          "up": 1,
+          "score": 0,
+          "items": 0,
+          "up": 0,
           "down": 0,
           "neutral": 0,
-          "examples": [
-            {
-              "title": "한국오리협회 전북도지회, 부안서 AI 방역교육…AI 차단방역 ‘기본수칙 준수’ 강조 - 부안뉴스",
-              "direction": "up",
-              "source_level": 4,
-              "quality_score": 70
-            }
-          ]
+          "examples": []
         },
         "policy": {
           "label": "정책/고시",
@@ -526,24 +525,24 @@
           "examples": []
         }
       },
-      "reason": "질병/방역 12점 기반, 상방성 자료가 우세",
+      "reason": "유효 근거 부족",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
       "id": "EGG",
       "name": "계란",
-      "signal_score": 61,
+      "signal_score": 63,
       "direction": "up",
       "status": "상방 가능성",
-      "quality_score": 73,
+      "quality_score": 74,
       "confidence_score": 80,
       "coverage_rate": 100,
       "evidence_count": 29,
       "official_count": 4,
       "direction_counts": {
-        "up": 14,
+        "up": 15,
         "down": 3,
-        "neutral": 12,
+        "neutral": 11,
         "hold": 0
       },
       "coverage_types": [
@@ -556,7 +555,7 @@
       "score_breakdown": {
         "price": 11,
         "supply": 23,
-        "disease": 16,
+        "disease": 18,
         "policy": 3,
         "news": 8
       },
@@ -572,10 +571,10 @@
           "label": "가격",
           "max_score": 30,
           "score": 11,
-          "items": 8,
+          "items": 6,
           "up": 0,
-          "down": 2,
-          "neutral": 6,
+          "down": 1,
+          "neutral": 5,
           "examples": [
             {
               "title": "계란 유통 81.7%가 도매인데…가격은 소매가 좌우 - 소년한국일보",
@@ -590,7 +589,7 @@
               "quality_score": 76
             },
             {
-              "title": "법원, 공정위 ‘계란값 담합’ 제재 효력 정지…산지가격 고시 조건부 허용 - news.kbs.co.kr",
+              "title": "법원, 공정위 ‘계란값 담합’ 제재 효력 정지…산지가격 고시 조건부 허용 - KBS 뉴스",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 65
@@ -601,13 +600,19 @@
           "label": "수급/도축",
           "max_score": 25,
           "score": 23,
-          "items": 12,
-          "up": 11,
+          "items": 13,
+          "up": 12,
           "down": 1,
           "neutral": 0,
           "examples": [
             {
-              "title": "산란계협회, 계란 가격정보 제공 길 열렸다 - 한국농정신문",
+              "title": "USDA 계란 시장 개요 2026년 9월 28일: 가격, 재고, 수요 - 뉴스 및 통계 - IndexBox",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 81
+            },
+            {
+              "title": "산란계협회, 계란 가격정보 제공 길 열렸다 - ikpnews.net",
               "direction": "up",
               "source_level": 4,
               "quality_score": 83
@@ -617,24 +622,24 @@
               "direction": "up",
               "source_level": 3,
               "quality_score": 71
-            },
-            {
-              "title": "공급이 느슨하게 남아있다; 중국 계란 가격은 순환적 인 철회에 대한 압력에 직면 - Sunsirs",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 71
             }
           ]
         },
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
-          "score": 16,
-          "items": 3,
+          "score": 18,
+          "items": 4,
           "up": 3,
-          "down": 0,
+          "down": 1,
           "neutral": 0,
           "examples": [
+            {
+              "title": "'계란 한 판 4000원대' 농협, 축산물 가격안정 총력 - shinailbo.co.kr",
+              "direction": "down",
+              "source_level": 4,
+              "quality_score": 77
+            },
             {
               "title": "「산란계 농장 고병원성 조류인플루엔자 방역 기준 유형부여에 관한 고시」 개정안 행정예고 - 농림축산식품부",
               "direction": "up",
@@ -643,12 +648,6 @@
             },
             {
               "title": "충남 천안 산란계 농장에서 H5형 조류인플루엔자 항원 확인 - 농림축산식품부",
-              "direction": "up",
-              "source_level": 5,
-              "quality_score": 75
-            },
-            {
-              "title": "충남 아산 산란계 농장 고병원성 조류인플루엔자 확진 - 농림축산식품부",
               "direction": "up",
               "source_level": 5,
               "quality_score": 75
@@ -682,7 +681,7 @@
           "neutral": 5,
           "examples": [
             {
-              "title": "서울고법, 공정위 계란값 담합 처분 집행정지 - agrinet.co.kr",
+              "title": "서울고법, 공정위 계란값 담합 처분 집행정지 - 한국농어민신문",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 71
@@ -702,7 +701,7 @@
           ]
         }
       },
-      "reason": "수급/도축 23점 + 질병/방역 16점 + 가격 11점 기반, 상방성 자료가 우세",
+      "reason": "수급/도축 23점 + 질병/방역 18점 + 가격 11점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
@@ -714,10 +713,10 @@
       "quality_score": 77,
       "confidence_score": 90,
       "coverage_rate": 100,
-      "evidence_count": 39,
+      "evidence_count": 40,
       "official_count": 35,
       "direction_counts": {
-        "up": 18,
+        "up": 19,
         "down": 2,
         "neutral": 19,
         "hold": 0
@@ -794,8 +793,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 13,
-          "up": 13,
+          "items": 14,
+          "up": 14,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -806,16 +805,16 @@
               "quality_score": 100
             },
             {
+              "title": "송미령 농식품장관, 추석 연휴 충남 일대 방역 점검 - 연합뉴스",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 71
+            },
+            {
               "title": "축평원, '축산유통정보 다봄' AI기반 서비스 고도화 추진 - 뉴시스",
               "direction": "up",
               "source_level": 3,
               "quality_score": 51
-            },
-            {
-              "title": "인천광역시 강화군 소재 소(牛) 농장 예찰 검사에서 구제역 확진 - 농림축산식품부",
-              "direction": "up",
-              "source_level": 5,
-              "quality_score": 89
             }
           ]
         },
