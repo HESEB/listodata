@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-10-02T23:01:21Z",
+  "updated_at": "2026-10-03T02:03:49Z",
   "notice": "Phase 2 Display Layer 초안입니다. 기존 market_dashboard.json은 별도로 유지됩니다.",
   "species": [
     {
       "id": "BEEF",
       "name": "한우",
-      "signal_score": 70,
+      "signal_score": 68,
       "direction": "up",
       "status": "상방 가능성",
-      "quality_score": 77,
-      "confidence_score": 70,
+      "quality_score": 76,
+      "confidence_score": 69,
       "coverage_rate": 100,
-      "evidence_count": 31,
+      "evidence_count": 30,
       "official_count": 0,
       "direction_counts": {
         "up": 8,
         "down": 3,
-        "neutral": 20,
+        "neutral": 19,
         "hold": 0
       },
       "coverage_types": [
@@ -30,7 +30,7 @@
       "score_breakdown": {
         "price": 27,
         "supply": 14,
-        "disease": 14,
+        "disease": 12,
         "policy": 6,
         "news": 9
       },
@@ -46,8 +46,8 @@
           "label": "가격",
           "max_score": 30,
           "score": 27,
-          "items": 6,
-          "up": 4,
+          "items": 7,
+          "up": 5,
           "down": 2,
           "neutral": 0,
           "examples": [
@@ -91,18 +91,12 @@
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
-          "score": 14,
-          "items": 2,
-          "up": 2,
+          "score": 12,
+          "items": 1,
+          "up": 1,
           "down": 0,
           "neutral": 0,
           "examples": [
-            {
-              "title": "우량한우 첫 경매, 구제역에 연기 - 축산경제신문",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 81
-            },
             {
               "title": "한우농장 ‘부자 승계’ 모범사례…출하체중 30kg 늘고 수취가격 9.2%↑ - 축산신문",
               "direction": "up",
@@ -144,10 +138,10 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 9,
-          "items": 18,
+          "items": 17,
           "up": 1,
           "down": 1,
-          "neutral": 16,
+          "neutral": 15,
           "examples": [
             {
               "title": "한우 송아지 친자확인 국가 통합관리 촉구...창원시의회, 농가 부담 완화 요구 - newfilenews.com",
@@ -170,36 +164,37 @@
           ]
         }
       },
-      "reason": "가격 27점 + 수급/도축 14점 + 질병/방역 14점 기반, 상방성 자료가 우세",
+      "reason": "가격 27점 + 수급/도축 14점 + 질병/방역 12점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
       "id": "PORK",
       "name": "돈육",
-      "signal_score": 28,
-      "direction": "down",
-      "status": "하방 가능성",
-      "quality_score": 77,
-      "confidence_score": 69,
-      "coverage_rate": 40,
-      "evidence_count": 17,
-      "official_count": 10,
+      "signal_score": 42,
+      "direction": "neutral",
+      "status": "보합/혼조",
+      "quality_score": 75,
+      "confidence_score": 75,
+      "coverage_rate": 60,
+      "evidence_count": 22,
+      "official_count": 11,
       "direction_counts": {
-        "up": 16,
+        "up": 20,
         "down": 0,
-        "neutral": 1,
+        "neutral": 2,
         "hold": 0
       },
       "coverage_types": [
         "가격",
+        "일반",
         "질병/방역"
       ],
       "score_breakdown": {
-        "price": 9,
+        "price": 17,
         "supply": 0,
         "disease": 19,
         "policy": 0,
-        "news": 0
+        "news": 6
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -212,12 +207,18 @@
         "price": {
           "label": "가격",
           "max_score": 30,
-          "score": 9,
-          "items": 1,
-          "up": 0,
+          "score": 17,
+          "items": 2,
+          "up": 1,
           "down": 0,
           "neutral": 1,
           "examples": [
+            {
+              "title": "추석 앞두고 한우 가격 고공행진…등심 소비자가 22% 상승 - 연합뉴스",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 58
+            },
             {
               "title": "[전광판] '26년 40주차 평균 도매가격 5,886원(전주 대비 -2.6%, 전년 대비 -3.0%) - 돼지와사람",
               "direction": "neutral",
@@ -240,8 +241,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 16,
-          "up": 16,
+          "items": 19,
+          "up": 19,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -261,7 +262,7 @@
               "title": "아프리카돼지열병(ASF) 방역대책추진현황 260930 18시기준 - 경기도뉴스포털",
               "direction": "up",
               "source_level": 3,
-              "quality_score": 81
+              "quality_score": 76
             }
           ]
         },
@@ -278,15 +279,22 @@
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 0,
-          "items": 0,
+          "score": 6,
+          "items": 1,
           "up": 0,
           "down": 0,
-          "neutral": 0,
-          "examples": []
+          "neutral": 1,
+          "examples": [
+            {
+              "title": "분뇨차량 172만 건 분석해보니 98.9%가 권역 안에서 움직였다 - 돼지와사람",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 81
+            }
+          ]
         }
       },
-      "reason": "질병/방역 19점 + 가격 9점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 가격 17점 + 뉴스/수요 6점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
@@ -336,13 +344,13 @@
           "neutral": 1,
           "examples": [
             {
-              "title": "육계 가격 하락에 치킨 가격도 내려갈까 - newsis.com",
+              "title": "육계 가격 하락에 치킨 가격도 내려갈까 - 뉴시스",
               "direction": "down",
               "source_level": 3,
               "quality_score": 81
             },
             {
-              "title": "닭값 하락에도 그대로…대통령 언급에 치킨 가격 내릴까 - newsis.com",
+              "title": "닭값 하락에도 그대로…대통령 언급에 치킨 가격 내릴까 - 뉴시스",
               "direction": "down",
               "source_level": 3,
               "quality_score": 81
@@ -431,8 +439,8 @@
       "signal_score": 15,
       "direction": "hold",
       "status": "판단 유보",
-      "quality_score": 78,
-      "confidence_score": 42,
+      "quality_score": 76,
+      "confidence_score": 41,
       "coverage_rate": 20,
       "evidence_count": 2,
       "official_count": 0,
@@ -493,7 +501,7 @@
               "title": "충북도, 동절기 특별 방역대책 추진…AI 고위험 오리 사육 중단·FMD 백신 비축 - gukjenews.com",
               "direction": "up",
               "source_level": 3,
-              "quality_score": 81
+              "quality_score": 76
             },
             {
               "title": "전남광주, 겨울철 고병원성 AI 차단 총력…철새도래지·오리농장 방역 강화 - 매일일보",
@@ -530,7 +538,7 @@
     {
       "id": "EGG",
       "name": "계란",
-      "signal_score": 60,
+      "signal_score": 61,
       "direction": "up",
       "status": "상방 가능성",
       "quality_score": 75,
@@ -553,7 +561,7 @@
         "질병/방역"
       ],
       "score_breakdown": {
-        "price": 11,
+        "price": 12,
         "supply": 23,
         "disease": 15,
         "policy": 3,
@@ -570,7 +578,7 @@
         "price": {
           "label": "가격",
           "max_score": 30,
-          "score": 11,
+          "score": 12,
           "items": 13,
           "up": 0,
           "down": 4,
@@ -612,7 +620,7 @@
               "quality_score": 93
             },
             {
-              "title": "“내로남불식 계란 원가 잣대”…농식품부·산란계협회 갈등 전말 - amnews.co.kr",
+              "title": "“내로남불식 계란 원가 잣대”…농식품부·산란계협회 갈등 전말 - 농축유통신문",
               "direction": "up",
               "source_level": 5,
               "quality_score": 100
@@ -695,34 +703,35 @@
           ]
         }
       },
-      "reason": "수급/도축 23점 + 질병/방역 15점 + 가격 11점 기반, 상방성 자료가 우세",
+      "reason": "수급/도축 23점 + 질병/방역 15점 + 가격 12점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
       "id": "OTHER",
       "name": "기타",
-      "signal_score": 51,
-      "direction": "neutral",
-      "status": "보합/혼조",
+      "signal_score": 60,
+      "direction": "up",
+      "status": "상방 가능성",
       "quality_score": 78,
-      "confidence_score": 83,
-      "coverage_rate": 80,
-      "evidence_count": 35,
+      "confidence_score": 90,
+      "coverage_rate": 100,
+      "evidence_count": 38,
       "official_count": 33,
       "direction_counts": {
-        "up": 14,
+        "up": 16,
         "down": 2,
-        "neutral": 19,
+        "neutral": 20,
         "hold": 0
       },
       "coverage_types": [
+        "가격",
         "수급/도축",
         "수요/행사",
         "일반",
         "질병/방역"
       ],
       "score_breakdown": {
-        "price": 0,
+        "price": 9,
         "supply": 18,
         "disease": 20,
         "policy": 0,
@@ -739,12 +748,19 @@
         "price": {
           "label": "가격",
           "max_score": 30,
-          "score": 0,
-          "items": 0,
+          "score": 9,
+          "items": 1,
           "up": 0,
           "down": 0,
-          "neutral": 0,
-          "examples": []
+          "neutral": 1,
+          "examples": [
+            {
+              "title": "“계속되는 축산물 가격담합 시비 끝낸다” - 농축유통신문",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 58
+            }
+          ]
         },
         "supply": {
           "label": "수급/도축",
@@ -779,25 +795,25 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 20,
-          "items": 10,
-          "up": 10,
+          "items": 12,
+          "up": 12,
           "down": 0,
           "neutral": 0,
           "examples": [
             {
+              "title": "검역본부, 겨울철 효율적 구제역 방역 박차 - 농축유통신문",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 81
+            },
+            {
+              "title": "충북도, 10월부터 구제역 특별방역체계 가동 - 농축유통신문",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 81
+            },
+            {
               "title": "알림소식 > 공지·공고 > 2026년 동식물 방역방제 유공 정부포상 후보자 공개검증 - 농림축산식품부",
-              "direction": "up",
-              "source_level": 5,
-              "quality_score": 100
-            },
-            {
-              "title": "종 가축전염병 전환에 따른 방역조치 조정과 가축방역사 위촉 대상 및 교육기관 확대 등을 주요 - 농림축산식품부",
-              "direction": "up",
-              "source_level": 5,
-              "quality_score": 100
-            },
-            {
-              "title": "알림소식 > 보도자료 > 현장에서 직접 써보고 고른다… 더 편리하고 안전한 가축방역물품 찾는다 - 농림축산식품부",
               "direction": "up",
               "source_level": 5,
               "quality_score": 100
