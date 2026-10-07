@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-06T21:41:08Z",
+  "updated_at": "2026-10-07T01:37:23Z",
   "policy": "phase7_ai_judgment_layer_v1",
   "engine_type": "explainable_dss_synthesis",
   "is_llm": false,
@@ -17,7 +17,7 @@
       "direction_code": "hold",
       "direction_label": "판단 유보",
       "confidence_score": 15.0,
-      "coverage_score": 100.0,
+      "coverage_score": 80.0,
       "recommended_action": "판단 유보",
       "headline": "한우/우육: 판단 유보",
       "explanation": "공식 수치 기반 판단 게이트를 통과하지 못해 방향과 구매행동을 확정하지 않습니다.",
@@ -30,28 +30,26 @@
       ],
       "key_signals": [
         {
-          "name": "질병/방역",
-          "signal": 19,
-          "reason": "Evidence Score 보조근거"
-        },
-        {
           "name": "가격",
-          "signal": 18,
+          "signal": 26,
           "reason": "Evidence Score 보조근거"
         },
         {
-          "name": "수급/도축",
-          "signal": 13,
+          "name": "질병/방역",
+          "signal": 17,
+          "reason": "Evidence Score 보조근거"
+        },
+        {
+          "name": "뉴스/수요",
+          "signal": 9,
           "reason": "Evidence Score 보조근거"
         }
       ],
-      "history_context": "7d 7일 구간 신호 변화 제한적, 14d 14일 구간 신호 변화 제한적, 30d 30일 구간 신호 -22.0점 하락",
+      "history_context": "7d 7일 구간 신호 혼조, 14d 14일 구간 신호 변화 제한적, 30d 30일 구간 신호 -29.0점 하락",
       "conflict": {
-        "has_conflict": true,
-        "severity": "high",
-        "axes": [
-          "가격"
-        ]
+        "has_conflict": false,
+        "severity": "none",
+        "axes": []
       },
       "guardrails": [
         "확률값 임의 생성 금지",
@@ -67,7 +65,7 @@
       "direction_code": "hold",
       "direction_label": "판단 유보",
       "confidence_score": 15.0,
-      "coverage_score": 40.0,
+      "coverage_score": 60.0,
       "recommended_action": "판단 유보",
       "headline": "돈육: 판단 유보",
       "explanation": "공식 수치 기반 판단 게이트를 통과하지 못해 방향과 구매행동을 확정하지 않습니다.",
@@ -90,15 +88,15 @@
           "reason": "Evidence Score 보조근거"
         },
         {
-          "name": "수급/도축",
-          "signal": 0,
+          "name": "뉴스/수요",
+          "signal": 4,
           "reason": "Evidence Score 보조근거"
         }
       ],
-      "history_context": "7d 7일 구간 신호 -14.0점 하락, 14d 14일 구간 신호 -26.0점 하락, 30d 30일 구간 신호 -42.0점 하락",
+      "history_context": "7d 7일 구간 신호 변화 제한적, 14d 14일 구간 신호 -24.0점 하락, 30d 30일 구간 신호 -41.0점 하락",
       "conflict": {
         "has_conflict": false,
-        "severity": "low",
+        "severity": "none",
         "axes": []
       },
       "guardrails": [
@@ -143,7 +141,7 @@
           "reason": "Evidence Score 보조근거"
         }
       ],
-      "history_context": "7d 7일 구간 신호 변화 제한적, 14d 14일 구간 신호 변화 제한적, 30d 30일 구간 신호 변화 제한적",
+      "history_context": "7d 7일 구간 신호 변화 제한적, 14d 14일 구간 신호 변화 제한적, 30d 30일 구간 신호 -14.0점 하락",
       "conflict": {
         "has_conflict": false,
         "severity": "none",
@@ -191,7 +189,7 @@
           "reason": "Evidence Score 보조근거"
         }
       ],
-      "history_context": "7d 7일 구간 신호 변화 제한적, 14d 14일 구간 신호 -11.0점 하락, 30d 30일 구간 신호 변화 제한적",
+      "history_context": "7d 7일 구간 신호 변화 제한적, 14d 14일 구간 신호 -19.0점 하락, 30d 30일 구간 신호 변화 제한적",
       "conflict": {
         "has_conflict": false,
         "severity": "low",
@@ -230,7 +228,7 @@
         },
         {
           "name": "질병/방역",
-          "signal": 15,
+          "signal": 18,
           "reason": "Evidence Score 보조근거"
         },
         {
@@ -239,11 +237,13 @@
           "reason": "Evidence Score 보조근거"
         }
       ],
-      "history_context": "7d 7일 구간 신호 변화 제한적, 14d 14일 구간 신호 혼조, 30d 30일 구간 신호 변화 제한적",
+      "history_context": "7d 7일 구간 신호 변화 제한적, 14d 14일 구간 신호 변화 제한적, 30d 30일 구간 신호 변화 제한적",
       "conflict": {
-        "has_conflict": false,
-        "severity": "none",
-        "axes": []
+        "has_conflict": true,
+        "severity": "medium",
+        "axes": [
+          "가격"
+        ]
       },
       "guardrails": [
         "확률값 임의 생성 금지",
