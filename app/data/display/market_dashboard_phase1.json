@@ -1,34 +1,35 @@
 {
-  "updated_at": "2026-10-13T00:47:41Z",
+  "updated_at": "2026-10-13T07:47:25Z",
   "notice": "Phase 2 Display Layer 초안입니다. 기존 market_dashboard.json은 별도로 유지됩니다.",
   "species": [
     {
       "id": "BEEF",
       "name": "한우",
-      "signal_score": 44,
+      "signal_score": 47,
       "direction": "neutral",
       "status": "보합/혼조",
-      "quality_score": 79,
-      "confidence_score": 64,
-      "coverage_rate": 80,
-      "evidence_count": 34,
+      "quality_score": 78,
+      "confidence_score": 70,
+      "coverage_rate": 100,
+      "evidence_count": 35,
       "official_count": 0,
       "direction_counts": {
         "up": 4,
-        "down": 2,
+        "down": 3,
         "neutral": 28,
         "hold": 0
       },
       "coverage_types": [
         "가격",
         "수급/도축",
+        "수요/행사",
         "일반",
         "질병/방역"
       ],
       "score_breakdown": {
         "price": 12,
-        "supply": 4,
-        "disease": 19,
+        "supply": 9,
+        "disease": 17,
         "policy": 0,
         "news": 9
       },
@@ -44,11 +45,17 @@
           "label": "가격",
           "max_score": 30,
           "score": 12,
-          "items": 6,
+          "items": 7,
           "up": 0,
-          "down": 1,
+          "down": 2,
           "neutral": 5,
           "examples": [
+            {
+              "title": "한우·한돈 최대 30% 할인…24일 파주서 경기축산대회 - 일간경기",
+              "direction": "down",
+              "source_level": 2,
+              "quality_score": 69
+            },
             {
               "title": "‘생생정보’ 화성 향남읍 ‘1++ 한우곰탕’ 맛집 위치는? “가격파괴 정육식당” - 톱스타뉴스",
               "direction": "neutral",
@@ -60,24 +67,24 @@
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 81
-            },
-            {
-              "title": "‘2TV 생생정보’ 오늘방송맛집- 가격파괴, 한우 곰탕이 단돈 5000원대? ‘방○○’ - 이투데이",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 81
             }
           ]
         },
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 4,
-          "items": 1,
-          "up": 0,
+          "score": 9,
+          "items": 2,
+          "up": 1,
           "down": 1,
           "neutral": 0,
           "examples": [
+            {
+              "title": "추석 열흘 앞두고 축산물 수급 총력…소고기 1.3배·계란 2.4배 푼다 - 전자신문",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 58
+            },
             {
               "title": "추석 축산물 공급 점검…한우 최대 50%·한돈 20% 할인 - 한국영농신문",
               "direction": "down",
@@ -89,18 +96,12 @@
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
-          "score": 19,
-          "items": 4,
-          "up": 4,
+          "score": 17,
+          "items": 3,
+          "up": 3,
           "down": 0,
           "neutral": 0,
           "examples": [
-            {
-              "title": "문경약돌한우 상생장터 구제역 악재 속 '내실 있는 성과' - 국제뉴스",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 81
-            },
             {
               "title": "잇단 구제역 발생에 이동제한 장기화…예천 한우농가, 피로도 ‘극심’ - 농민신문",
               "direction": "up",
@@ -112,6 +113,12 @@
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
+            },
+            {
+              "title": "[프라임경북뉴스nTV]문경시, 구제역 방역 강화 속 ‘문경약돌한우 상생장터’ 개최… 축제 축소해 내실 기한다 - 프라임경북뉴스",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 76
             }
           ]
         },
@@ -135,43 +142,43 @@
           "neutral": 23,
           "examples": [
             {
-              "title": "태백 쇠바우골 고기축제 성황…한우 조기 완판으로 인기 입증 - 파이낸셜경제",
+              "title": "횡성축산업협동조합, 한결같은 한우 맛 세계도 반해 - 한국경제",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 81
             },
             {
-              "title": "횡성한우축제, 방문객 40만명·매출 44억 ‘역대 최고’ - 강원일보",
+              "title": "태백 한우의 힘…쇠바우골 고기축제 6300명 몰렸다 - 프레시안",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 81
             },
             {
-              "title": "제22회 횡성한우축제 , 방문객과 매출 역대 최고 기록 달성 - 글로벌뉴스통신GNA",
+              "title": "전국한우협회 양양군지부, ‘2026 강원한우 소비촉진행사’ 개최 - 농수축산신문",
               "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 81
+              "source_level": 4,
+              "quality_score": 93
             }
           ]
         }
       },
-      "reason": "질병/방역 19점 + 가격 12점 + 뉴스/수요 9점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 17점 + 가격 12점 + 수급/도축 9점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
       "id": "PORK",
       "name": "돈육",
-      "signal_score": 34,
+      "signal_score": 32,
       "direction": "down",
       "status": "하방 가능성",
-      "quality_score": 73,
-      "confidence_score": 74,
+      "quality_score": 72,
+      "confidence_score": 73,
       "coverage_rate": 60,
-      "evidence_count": 15,
-      "official_count": 7,
+      "evidence_count": 17,
+      "official_count": 8,
       "direction_counts": {
-        "up": 13,
-        "down": 1,
+        "up": 14,
+        "down": 2,
         "neutral": 1,
         "hold": 0
       },
@@ -181,7 +188,7 @@
         "질병/방역"
       ],
       "score_breakdown": {
-        "price": 11,
+        "price": 9,
         "supply": 4,
         "disease": 19,
         "policy": 0,
@@ -198,12 +205,18 @@
         "price": {
           "label": "가격",
           "max_score": 30,
-          "score": 11,
-          "items": 1,
+          "score": 9,
+          "items": 2,
           "up": 0,
-          "down": 0,
+          "down": 1,
           "neutral": 1,
           "examples": [
+            {
+              "title": "한우·한돈 최대 30% 할인…24일 파주서 경기축산대회 - 일간경기",
+              "direction": "down",
+              "source_level": 2,
+              "quality_score": 69
+            },
             {
               "title": "[전광판] '26년 42주차 평균 도매가격 6,064원(전주 대비 1.7%, 전년 대비 3.1%) - 돼지와사람",
               "direction": "neutral",
@@ -233,8 +246,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 13,
-          "up": 13,
+          "items": 14,
+          "up": 14,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -254,7 +267,7 @@
               "title": "철원군, 겨울철 가축전염병 방역 강화…AI·구제역·ASF 집중 대응 - 파이낸셜뉴스",
               "direction": "up",
               "source_level": 3,
-              "quality_score": 81
+              "quality_score": 76
             }
           ]
         },
@@ -279,7 +292,7 @@
           "examples": []
         }
       },
-      "reason": "질병/방역 19점 + 가격 11점 + 수급/도축 4점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 가격 9점 + 수급/도축 4점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
@@ -288,13 +301,13 @@
       "signal_score": 31,
       "direction": "down",
       "status": "하방 가능성",
-      "quality_score": 74,
-      "confidence_score": 74,
+      "quality_score": 75,
+      "confidence_score": 75,
       "coverage_rate": 60,
-      "evidence_count": 30,
-      "official_count": 12,
+      "evidence_count": 32,
+      "official_count": 11,
       "direction_counts": {
-        "up": 28,
+        "up": 30,
         "down": 2,
         "neutral": 0,
         "hold": 0
@@ -349,7 +362,7 @@
               "title": "육계값 하락에 치킨업계 ‘숨통’…“가격보다 수급 안정” - 한국아이닷컴",
               "direction": "down",
               "source_level": 3,
-              "quality_score": 58
+              "quality_score": 51
             }
           ]
         },
@@ -357,25 +370,25 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 28,
-          "up": 28,
+          "items": 30,
+          "up": 30,
           "down": 0,
           "neutral": 0,
           "examples": [
             {
-              "title": "[포토뉴스]영산강 조류인플루엔자 방역 - 경향신문",
+              "title": "천안시, 조류인플루엔자 인체감염 예방 총력…철새 이동기 방역 강화 - 충청매일",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
             },
             {
-              "title": "충남도, 조류인플루엔자 방역강화…천안 산란계 농장 매주 검사 - 티제이비",
+              "title": "조류인플루엔자 실전형 가상방역훈련 - 완주신문",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
             },
             {
-              "title": "충남도, ‘동절기 고병원성 조류인플루엔자’ 방역 총력 - 전업농신문",
+              "title": "완주군, 조류인플루엔자 철통 방어 ‘실전형 가상훈련’ - 전북제일신문",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
@@ -514,11 +527,11 @@
       "signal_score": 82,
       "direction": "up",
       "status": "상방 우세",
-      "quality_score": 78,
-      "confidence_score": 90,
+      "quality_score": 77,
+      "confidence_score": 88,
       "coverage_rate": 100,
       "evidence_count": 34,
-      "official_count": 8,
+      "official_count": 6,
       "direction_counts": {
         "up": 14,
         "down": 4,
@@ -580,8 +593,8 @@
           "label": "수급/도축",
           "max_score": 25,
           "score": 23,
-          "items": 8,
-          "up": 5,
+          "items": 9,
+          "up": 6,
           "down": 3,
           "neutral": 0,
           "examples": [
@@ -609,8 +622,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 18,
-          "items": 7,
-          "up": 7,
+          "items": 6,
+          "up": 6,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -673,22 +686,22 @@
           "neutral": 4,
           "examples": [
             {
-              "title": "국감 쟁점 된 '1,300원 브라질 계란' 데이터 추적해보니… - 조달경제신문",
+              "title": "3만9000원에 사서 4980원에 팔았다…브라질산 계란 논란 - 중앙일보",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 81
+            },
+            {
+              "title": "국감 쟁점 된 '1,300원 브라질 계란' 데이터 추적해보니… - 조달경제신문",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 76
             },
             {
               "title": "브라질산 계란 한 판 3만9000원, 마트 판매가 4980원, 그 비밀은? - 데일리저널",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 76
-            },
-            {
-              "title": "[국감 현장] “내일 계란값도 모른다”…도매시장 없는 계란 유통의 민낯 - 푸드투데이",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 71
             }
           ]
         }
@@ -705,12 +718,12 @@
       "quality_score": 75,
       "confidence_score": 82,
       "coverage_rate": 80,
-      "evidence_count": 36,
-      "official_count": 33,
+      "evidence_count": 35,
+      "official_count": 32,
       "direction_counts": {
-        "up": 17,
+        "up": 18,
         "down": 2,
-        "neutral": 17,
+        "neutral": 15,
         "hold": 0
       },
       "coverage_types": [
@@ -777,8 +790,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 12,
-          "up": 12,
+          "items": 13,
+          "up": 13,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -816,10 +829,10 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 13,
-          "items": 20,
+          "items": 18,
           "up": 2,
           "down": 1,
-          "neutral": 17,
+          "neutral": 15,
           "examples": [
             {
               "title": "겨울철새 남하 시작...10월 중하순 본격 도래 전망 - 농림축산식품부",
