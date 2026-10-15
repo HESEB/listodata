@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-15T15:06:18Z",
+  "updated_at": "2026-10-15T19:13:21Z",
   "policy": "phase2_evidence_score_v3_sanitized",
   "score_axes": {
     "price": {
@@ -347,29 +347,30 @@
     {
       "id": "POULTRY",
       "name": "계육",
-      "signal_score": 26,
+      "signal_score": 31,
       "direction": "down",
       "status": "하방 가능성",
-      "quality_score": 77,
-      "confidence_score": 69,
-      "coverage_rate": 40,
-      "evidence_count": 28,
-      "official_count": 10,
+      "quality_score": 78,
+      "confidence_score": 76,
+      "coverage_rate": 60,
+      "evidence_count": 30,
+      "official_count": 12,
       "direction_counts": {
-        "up": 27,
+        "up": 28,
         "down": 1,
-        "neutral": 0,
+        "neutral": 1,
         "hold": 0
       },
       "coverage_types": [
         "가격",
+        "정책/고시",
         "질병/방역"
       ],
       "score_breakdown": {
         "price": 7,
         "supply": 0,
         "disease": 19,
-        "policy": 0,
+        "policy": 5,
         "news": 0
       },
       "score_breakdown_labels": {
@@ -411,11 +412,17 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 27,
-          "up": 27,
+          "items": 28,
+          "up": 28,
           "down": 0,
           "neutral": 0,
           "examples": [
+            {
+              "title": "“조류인플루엔자·구제역 철통방어” 철원군 특별방역 추진 - 강원일보",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 81
+            },
             {
               "title": "농식품부, 겨울철 AI·구제역 차단 ‘특별방역대책’ 점검 - 식품저널 foodnews",
               "direction": "up",
@@ -427,24 +434,25 @@
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
-            },
-            {
-              "title": "철새 늘자 AI 방역 강화…대형 산란계 농장 4단계 관리 - 데일리안",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 81
             }
           ]
         },
         "policy": {
           "label": "정책/고시",
           "max_score": 10,
-          "score": 0,
-          "items": 0,
+          "score": 5,
+          "items": 1,
           "up": 0,
           "down": 0,
-          "neutral": 0,
-          "examples": []
+          "neutral": 1,
+          "examples": [
+            {
+              "title": "정부가 브라질산 계란을 수입한 까닭은 - 더리포트",
+              "direction": "neutral",
+              "source_level": 5,
+              "quality_score": 100
+            }
+          ]
         },
         "news": {
           "label": "뉴스/수요",
@@ -457,22 +465,20 @@
           "examples": []
         }
       },
-      "reason": "질병/방역 19점 + 가격 7점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 가격 7점 + 정책/고시 5점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
-        "severity": "low",
+        "severity": "none",
         "axes": [],
-        "memo": "주의 필요 · 누락근거: 수급/도축, 정책/고시, 뉴스/수요 / 유보사유: 주요 근거축 다수 누락"
+        "memo": "주의 필요 · 누락근거: 수급/도축, 뉴스/수요"
       },
       "hold_decision": {
         "should_hold": false,
-        "reasons": [
-          "주요 근거축 다수 누락"
-        ],
+        "reasons": [],
         "recommended_status": "하방 가능성",
         "recommended_direction": "down",
-        "adjusted_confidence": 69
+        "adjusted_confidence": 76
       }
     },
     {
@@ -601,15 +607,15 @@
       "signal_score": 74,
       "direction": "hold",
       "status": "판단 유보",
-      "quality_score": 81,
-      "confidence_score": 63,
+      "quality_score": 82,
+      "confidence_score": 64,
       "coverage_rate": 100,
-      "evidence_count": 36,
-      "official_count": 9,
+      "evidence_count": 37,
+      "official_count": 10,
       "direction_counts": {
         "up": 14,
         "down": 4,
-        "neutral": 18,
+        "neutral": 19,
         "hold": 0
       },
       "coverage_types": [
@@ -725,11 +731,17 @@
           "label": "정책/고시",
           "max_score": 10,
           "score": 4,
-          "items": 11,
+          "items": 12,
           "up": 0,
           "down": 1,
-          "neutral": 10,
+          "neutral": 11,
           "examples": [
+            {
+              "title": "이 대통령 \"브라질 정상회담 위해 계란 고가에 수입? 허위 사실\" - YTN",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 81
+            },
             {
               "title": "이 대통령, 장동혁 겨냥 “브라질 계란 수입에 800억 낭비?…허위사실” - 한겨레",
               "direction": "neutral",
@@ -737,16 +749,10 @@
               "quality_score": 81
             },
             {
-              "title": "이 대통령 “브라질 계란 수입에 800억 낭비?…정치적 목적의 허위사실” - 주간경향",
+              "title": "정부가 브라질산 계란을 수입한 까닭은 - 더리포트",
               "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 81
-            },
-            {
-              "title": "브라질산 계란 수입이 좌파 커넥션? 이 대통령의 팩트체크 - OhmyNews",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 81
+              "source_level": 5,
+              "quality_score": 100
             }
           ]
         },
@@ -846,24 +852,24 @@
         ],
         "recommended_status": "판단 유보",
         "recommended_direction": "hold",
-        "adjusted_confidence": 63
+        "adjusted_confidence": 64
       }
     },
     {
       "id": "OTHER",
       "name": "기타",
-      "signal_score": 59,
+      "signal_score": 55,
       "direction": "hold",
       "status": "판단 유보",
       "quality_score": 75,
-      "confidence_score": 71,
+      "confidence_score": 53,
       "coverage_rate": 100,
-      "evidence_count": 42,
-      "official_count": 39,
+      "evidence_count": 38,
+      "official_count": 35,
       "direction_counts": {
-        "up": 23,
+        "up": 17,
         "down": 2,
-        "neutral": 17,
+        "neutral": 19,
         "hold": 0
       },
       "coverage_types": [
@@ -878,7 +884,7 @@
         "supply": 18,
         "disease": 19,
         "policy": 0,
-        "news": 13
+        "news": 9
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -921,13 +927,13 @@
               "quality_score": 82
             },
             {
-              "title": "송옥주, ‘축산물 수급조절·물가관리법’ 대표발의…담합 논란 막는다 - 아이뉴스24",
+              "title": "송옥주 의원, 축산물 수급조절·물가관리 법제화 추진 - 뉴스 따옴",
               "direction": "up",
               "source_level": 3,
               "quality_score": 58
             },
             {
-              "title": "송옥주 의원, 축산물 담합 시비 없는 수급조절 법제화 추진 - 식품저널 foodnews",
+              "title": "송옥주, ‘축산물 수급조절·물가관리법’ 대표발의…담합 논란 막는다 - 아이뉴스24",
               "direction": "up",
               "source_level": 3,
               "quality_score": 58
@@ -938,8 +944,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 18,
-          "up": 18,
+          "items": 14,
+          "up": 14,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -976,11 +982,11 @@
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 13,
+          "score": 9,
           "items": 20,
-          "up": 3,
+          "up": 1,
           "down": 1,
-          "neutral": 16,
+          "neutral": 18,
           "examples": [
             {
               "title": "K2WebWizard - 농림축산식품부",
@@ -995,79 +1001,33 @@
               "quality_score": 75
             },
             {
-              "title": "❶ 농식품부는 가축전염병 확산 방지를 위해 총력 대응하고 있습니다 - 농림축산식품부",
-              "direction": "up",
+              "title": "데이터 상세보기 - 농림축산식품 공공데이터 포털",
+              "direction": "neutral",
               "source_level": 5,
               "quality_score": 75
             }
           ]
         }
       },
-      "reason": "질병/방역 19점 + 수급/도축 18점 + 뉴스/수요 13점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 수급/도축 18점 + 가격 9점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": true,
         "severity": "high",
         "axes": [
-          "수급/도축"
+          "수급/도축",
+          "뉴스/수요"
         ],
-        "memo": "판단 유보 권장 · 충돌축: 수급/도축 / 누락근거: 정책/고시 / 유보사유: 상·하방 근거 강충돌"
+        "memo": "판단 유보 권장 · 충돌축: 수급/도축, 뉴스/수요 / 누락근거: 정책/고시 / 유보사유: 상·하방 근거 강충돌"
       },
       "hold_decision": {
-        "should_hold": [
-          {
-            "axis": "supply",
-            "label": "수급/도축",
-            "items": 3,
-            "has_conflict": true,
-            "severity": "high",
-            "dominant_direction": "up",
-            "weighted_direction": {
-              "up": 6.52,
-              "down": 4.24,
-              "neutral": 0.0
-            },
-            "conflict_ratio": 0.65,
-            "examples": {
-              "up": [
-                {
-                  "title": "송옥주, ‘축산물 수급조절·물가관리법’ 대표발의…담합 논란 막는다 - 아이뉴스24",
-                  "source": "아이뉴스24",
-                  "direction": "up",
-                  "quality_score": 58,
-                  "source_level": 3,
-                  "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE5WUlZmcTdYX29RTWo3S3hmRDhKelBjR0dabHdScDFhaTY5b2Zya1VheUtENzFEMnoxdlVnaVJkclFITHdyRjFvVS1nSQ?oc=5"
-                },
-                {
-                  "title": "송옥주 의원, 축산물 담합 시비 없는 수급조절 법제화 추진 - 식품저널 foodnews",
-                  "source": "식품저널 foodnews",
-                  "direction": "up",
-                  "quality_score": 58,
-                  "source_level": 3,
-                  "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE51TGx0NDNpMHhYcUJSTTJnYWZaMmNCb3EzMlJydlhfWDZ2UnhRdXFlS1FSVmg3U18tSFlzUlR5RVREUW9RWlZiMmtOSG5hVk9SRURwcG0tWjdiLWprdUg3T0o1Mk5zOWZSTGpVOVp3?oc=5"
-                }
-              ],
-              "down": [
-                {
-                  "title": "김종구 농림축산식품부차관, 추석 명절 축산물 수급 안정에 총력 - 행정신문",
-                  "source": "행정신문",
-                  "direction": "down",
-                  "quality_score": 82,
-                  "source_level": 5,
-                  "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFAzMnNmODVlTmREUFFHcHJyNVpYQ1ZoWEgyWW9heEthejZ6SzlTa3dycGY3VG5lTmFPVDZ5eENqc0dsV25QMFI4Y2FyNGpVOWdNYWVvM1dNN0FaaW5ZVHdPWU9lNGFSbWdySkNrdQ?oc=5"
-                }
-              ],
-              "neutral": []
-            },
-            "memo": "수급/도축 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
-          }
-        ],
+        "should_hold": true,
         "reasons": [
           "상·하방 근거 강충돌"
         ],
         "recommended_status": "판단 유보",
         "recommended_direction": "hold",
-        "adjusted_confidence": 71
+        "adjusted_confidence": 53
       }
     }
   ],

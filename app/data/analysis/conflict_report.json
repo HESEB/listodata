@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-15T15:06:18Z",
+  "updated_at": "2026-10-15T19:13:21Z",
   "policy": "phase2_conflict_hold_v1",
   "notice": "상방·하방 근거 충돌, 근거 누락, 신뢰도 부족에 따른 판단 유보 검수 리포트입니다.",
   "summary": {
@@ -52,22 +52,19 @@
       "id": "POULTRY",
       "name": "계육",
       "has_conflict": false,
-      "conflict_severity": "low",
+      "conflict_severity": "none",
       "conflict_axes": [],
       "missing_evidence": [
         "수급/도축",
-        "정책/고시",
         "뉴스/수요"
       ],
-      "hold_reasons": [
-        "주요 근거축 다수 누락"
-      ],
-      "original_confidence": 69,
-      "adjusted_confidence": 69,
+      "hold_reasons": [],
+      "original_confidence": 76,
+      "adjusted_confidence": 76,
       "should_hold": false,
       "recommended_status": "하방 가능성",
       "recommended_direction": "down",
-      "memo": "주의 필요 · 누락근거: 수급/도축, 정책/고시, 뉴스/수요 / 유보사유: 주요 근거축 다수 누락"
+      "memo": "주의 필요 · 누락근거: 수급/도축, 뉴스/수요"
     },
     {
       "id": "DUCK",
@@ -107,8 +104,8 @@
       "hold_reasons": [
         "상·하방 근거 강충돌"
       ],
-      "original_confidence": 91,
-      "adjusted_confidence": 63,
+      "original_confidence": 92,
+      "adjusted_confidence": 64,
       "should_hold": [
         {
           "axis": "price",
@@ -168,7 +165,8 @@
       "has_conflict": true,
       "conflict_severity": "high",
       "conflict_axes": [
-        "수급/도축"
+        "수급/도축",
+        "뉴스/수요"
       ],
       "missing_evidence": [
         "정책/고시"
@@ -177,58 +175,11 @@
         "상·하방 근거 강충돌"
       ],
       "original_confidence": 89,
-      "adjusted_confidence": 71,
-      "should_hold": [
-        {
-          "axis": "supply",
-          "label": "수급/도축",
-          "items": 3,
-          "has_conflict": true,
-          "severity": "high",
-          "dominant_direction": "up",
-          "weighted_direction": {
-            "up": 6.52,
-            "down": 4.24,
-            "neutral": 0.0
-          },
-          "conflict_ratio": 0.65,
-          "examples": {
-            "up": [
-              {
-                "title": "송옥주, ‘축산물 수급조절·물가관리법’ 대표발의…담합 논란 막는다 - 아이뉴스24",
-                "source": "아이뉴스24",
-                "direction": "up",
-                "quality_score": 58,
-                "source_level": 3,
-                "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE5WUlZmcTdYX29RTWo3S3hmRDhKelBjR0dabHdScDFhaTY5b2Zya1VheUtENzFEMnoxdlVnaVJkclFITHdyRjFvVS1nSQ?oc=5"
-              },
-              {
-                "title": "송옥주 의원, 축산물 담합 시비 없는 수급조절 법제화 추진 - 식품저널 foodnews",
-                "source": "식품저널 foodnews",
-                "direction": "up",
-                "quality_score": 58,
-                "source_level": 3,
-                "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE51TGx0NDNpMHhYcUJSTTJnYWZaMmNCb3EzMlJydlhfWDZ2UnhRdXFlS1FSVmg3U18tSFlzUlR5RVREUW9RWlZiMmtOSG5hVk9SRURwcG0tWjdiLWprdUg3T0o1Mk5zOWZSTGpVOVp3?oc=5"
-              }
-            ],
-            "down": [
-              {
-                "title": "김종구 농림축산식품부차관, 추석 명절 축산물 수급 안정에 총력 - 행정신문",
-                "source": "행정신문",
-                "direction": "down",
-                "quality_score": 82,
-                "source_level": 5,
-                "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFAzMnNmODVlTmREUFFHcHJyNVpYQ1ZoWEgyWW9heEthejZ6SzlTa3dycGY3VG5lTmFPVDZ5eENqc0dsV25QMFI4Y2FyNGpVOWdNYWVvM1dNN0FaaW5ZVHdPWU9lNGFSbWdySkNrdQ?oc=5"
-              }
-            ],
-            "neutral": []
-          },
-          "memo": "수급/도축 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
-        }
-      ],
+      "adjusted_confidence": 53,
+      "should_hold": true,
       "recommended_status": "판단 유보",
       "recommended_direction": "hold",
-      "memo": "판단 유보 권장 · 충돌축: 수급/도축 / 누락근거: 정책/고시 / 유보사유: 상·하방 근거 강충돌"
+      "memo": "판단 유보 권장 · 충돌축: 수급/도축, 뉴스/수요 / 누락근거: 정책/고시 / 유보사유: 상·하방 근거 강충돌"
     }
   ],
   "axis_reports": {
@@ -648,18 +599,26 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 27,
+        "items": 28,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 124.22,
+          "up": 129.32,
           "down": 0.0,
           "neutral": 0.0
         },
         "conflict_ratio": 0.0,
         "examples": {
           "up": [
+            {
+              "title": "“조류인플루엔자·구제역 철통방어” 철원군 특별방역 추진 - 강원일보",
+              "source": "강원일보",
+              "direction": "up",
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFB3cGY3cnlvUG92bVBiLWY1LUJfNmVxZTB6NE5HczVyOGIzR2t6bVY5dGVvVkJhX2RtN1RXTEVWcGZrNDdJbzRkOHdvQk1Jczc1RS1rNEZLVllYejA?oc=5"
+            },
             {
               "title": "농식품부, 겨울철 AI·구제역 차단 ‘특별방역대책’ 점검 - 식품저널 foodnews",
               "source": "식품저널 foodnews",
@@ -675,14 +634,6 @@
               "quality_score": 81,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5xaFp1Mzc2ekMzdnhxQTBTMjlRZ0hwUDltR0w1QWttUkFab1c3Z0lFYXQ4YUJnMEEwX3loczlEb0JsbU11anNRcG5oZnlZZ2VsVXVxZGNQVTdWWjJuQkdiSGhhTy0?oc=5"
-            },
-            {
-              "title": "철새 늘자 AI 방역 강화…대형 산란계 농장 4단계 관리 - 데일리안",
-              "source": "데일리안",
-              "direction": "up",
-              "quality_score": 81,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMigwJBVV95cUxPZEZ5TlFoSXNIemI5bW5wR0FVNXpYM21FVENUQjNLS1k0Um5YOHJWRFJyeEtqSm9CcGZSMjhfQzFkdWtzQ0FRZkhJUHZidXJxZE5LVElwRmdudmNZbFFLc2xhcnU5emk4TW11ZzkzS05jQ2lxelpfVWpZdE5rU0VGZERHUnZfZ2lDQWxYd0c5Zzc1TFdmQWlVbmx1STdiUm9MeUs2YlRMOEdmZUlLd2kyZEdNNWpkYWpfN0NFci1HLWRNLURoQ1dLNUREMG9iRDdUQ2xjb1M5RWhidXpTTlhCbTFVNHpGNXItZHNmQWFIVjlUQ2lHZ2U2SzVpclVxV2U0aS04?oc=5"
             }
           ],
           "down": [],
@@ -693,20 +644,29 @@
       {
         "axis": "policy",
         "label": "정책/고시",
-        "items": 0,
+        "items": 1,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "neutral",
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 0.0
+          "neutral": 4.15
         },
         "conflict_ratio": 0,
         "examples": {
           "up": [],
           "down": [],
-          "neutral": []
+          "neutral": [
+            {
+              "title": "정부가 브라질산 계란을 수입한 까닭은 - 더리포트",
+              "source": "더리포트",
+              "direction": "neutral",
+              "quality_score": 100,
+              "source_level": 5,
+              "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5UZ0ZzbnVzZ2hOb3dlZ0VDOElOc1gySk80WmRBd3gxS2d3Ty1qN1lLSzYtZ3ZYc183d1dzVGIwVnVrcnIyR3NGVlg2bE04R0szNkZGMWtUVk1FbVBmbWdfeTdfdW1rTFNUYUhraHp3?oc=5"
+            }
+          ]
         },
         "memo": "정책/고시 축은 중립 또는 보조 근거 중심"
       },
@@ -968,7 +928,7 @@
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 47.62,
+          "up": 46.72,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -1008,14 +968,14 @@
       {
         "axis": "policy",
         "label": "정책/고시",
-        "items": 11,
+        "items": 12,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "down",
         "weighted_direction": {
           "up": 0.0,
           "down": 4.17,
-          "neutral": 33.7
+          "neutral": 38.31
         },
         "conflict_ratio": 0.0,
         "examples": {
@@ -1032,6 +992,14 @@
           ],
           "neutral": [
             {
+              "title": "이 대통령 \"브라질 정상회담 위해 계란 고가에 수입? 허위 사실\" - YTN",
+              "source": "YTN",
+              "direction": "neutral",
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBsTmtheTJaaExKWk1YX0x1cXRXd0R5QXJyWnVYZHFkN0VQSFBtcnNEUExWM1AzWDB0UEkxT2JxU3N6Z05RR2Ytbm1hTGdleVNhSndaOXpoOFNKSU1qMGc?oc=5"
+            },
+            {
               "title": "이 대통령, 장동혁 겨냥 “브라질 계란 수입에 800억 낭비?…허위사실” - 한겨레",
               "source": "한겨레",
               "direction": "neutral",
@@ -1040,20 +1008,12 @@
               "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5QUUFVaVBIRFZrRnMwendiNVFiNWNfa1BDS0Q0U3N1MVp6ZDNEaDhFQXZZbEREM2RrbzlvVWxpSWI1TWdfQUZvQW00bjhXdHlrRlNTcDhOelFiYlJsZHYxYzZnU1RMYi1qYkRv?oc=5"
             },
             {
-              "title": "이 대통령 “브라질 계란 수입에 800억 낭비?…정치적 목적의 허위사실” - 주간경향",
-              "source": "주간경향",
+              "title": "정부가 브라질산 계란을 수입한 까닭은 - 더리포트",
+              "source": "더리포트",
               "direction": "neutral",
-              "quality_score": 81,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5wSVNCaS1CX0xzUmZJWXE0aUZsR2F2dmV5V1VtRGpnbzd1NFUxRE5RRFFaZnZMLUlTdFNwT09SVjd5cEN1VmZxMjk5RzlDbDZkVHMyNlNzdERjdmRheFE?oc=5"
-            },
-            {
-              "title": "브라질산 계란 수입이 좌파 커넥션? 이 대통령의 팩트체크 - OhmyNews",
-              "source": "OhmyNews",
-              "direction": "neutral",
-              "quality_score": 81,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBTTXVMampIdUpoV2V6TWc2UENkU1RfM2xabURNY3NyZ3RxbWtkYjNBYk1kTUx3ZHVwQmZJS2F1czV3VDIxa3FBNThtU0hJTUhhQXh1VGZrZHgyVnlGUUhFdEV4TEtIa3NwRS1NNUtBa2ZhUTFxQmVR?oc=5"
+              "quality_score": 100,
+              "source_level": 5,
+              "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5UZ0ZzbnVzZ2hOb3dlZ0VDOElOc1gySk80WmRBd3gxS2d3Ty1qN1lLSzYtZ3ZYc183d1dzVGIwVnVrcnIyR3NGVlg2bE04R0szNkZGMWtUVk1FbVBmbWdfeTdfdW1rTFNUYUhraHp3?oc=5"
             }
           ]
         },
@@ -1151,20 +1111,20 @@
         "examples": {
           "up": [
             {
+              "title": "송옥주 의원, 축산물 수급조절·물가관리 법제화 추진 - 뉴스 따옴",
+              "source": "뉴스 따옴",
+              "direction": "up",
+              "quality_score": 58,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE8xSndGYXBvVWJnUUgxMVVreEUwYzhiSUxXU0hkNV8xRGs3TkZqaXdSSTZfckZEa1BQLXEwZGQtSW1jWG03OFlJOVZUVUNWSjFPd0Jfd29XZV9mUGNjcjM5ZTZXUGtsV09sMTRzamxn0gFyQVVfeXFMTmtFNkpIMm9RZ09NblhyR0tJbzh3MkdHclloQUxiR0RzbTZoZDMyRzZ1SGFtWWVvS0FOWFFhZlVXSUtCNkdZaUx6SHVCYVJkTFY1V3ZFeGd5eENTbk9CbW5JbWRpS0pzRmI0QTVUZHhXV1hB?oc=5"
+            },
+            {
               "title": "송옥주, ‘축산물 수급조절·물가관리법’ 대표발의…담합 논란 막는다 - 아이뉴스24",
               "source": "아이뉴스24",
               "direction": "up",
               "quality_score": 58,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE5WUlZmcTdYX29RTWo3S3hmRDhKelBjR0dabHdScDFhaTY5b2Zya1VheUtENzFEMnoxdlVnaVJkclFITHdyRjFvVS1nSQ?oc=5"
-            },
-            {
-              "title": "송옥주 의원, 축산물 담합 시비 없는 수급조절 법제화 추진 - 식품저널 foodnews",
-              "source": "식품저널 foodnews",
-              "direction": "up",
-              "quality_score": 58,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE51TGx0NDNpMHhYcUJSTTJnYWZaMmNCb3EzMlJydlhfWDZ2UnhRdXFlS1FSVmg3U18tSFlzUlR5RVREUW9RWlZiMmtOSG5hVk9SRURwcG0tWjdiLWprdUg3T0o1Mk5zOWZSTGpVOVp3?oc=5"
             }
           ],
           "down": [
@@ -1184,12 +1144,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 18,
+        "items": 14,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 88.08,
+          "up": 67.18,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -1250,50 +1210,34 @@
         "axis": "news",
         "label": "뉴스/수요",
         "items": 20,
-        "has_conflict": false,
-        "severity": "none",
+        "has_conflict": true,
+        "severity": "high",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 13.65,
+          "up": 4.55,
           "down": 4.1,
-          "neutral": 58.54
+          "neutral": 65.84
         },
-        "conflict_ratio": 0.3,
+        "conflict_ratio": 0.9,
         "examples": {
           "up": [
             {
-              "title": "❶ 농식품부는 가축전염병 확산 방지를 위해 총력 대응하고 있습니다 - 농림축산식품부",
+              "title": "인천 동물생산업장 개 브루셀라병 검출에 따른 확산 방지조치 시행 - 농림축산식품부",
               "source": "농림축산식품부",
               "direction": "up",
               "quality_score": 75,
               "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFAyUG5KblNOeTFZSmRxZktRcjlGcktTY1haMS1Bc0d0R1RNU0txRTlPUkllSkpqeVJNVFg2LUhYbHJ4QjN6NTdYRHBOZDlsTzlLSGNvTkFJZXR0LUdzSlBHalN2Y2xkVEE?oc=5"
-            },
-            {
-              "title": "가축질병 발생현황 - 농림축산식품부",
-              "source": "농림축산식품부",
-              "direction": "up",
-              "quality_score": 75,
-              "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5YSHkxSjZtaklQanEtQlRRb1ppcHlnUC1KLXBSWEg4RXVYaHQ3c00zZmlsVEg3b012WGZrUmtYUlBvZDF2cHlNcV84eVgwZ253VVpxNlFxM1NVOUIzU2c?oc=5"
-            },
-            {
-              "title": "가축전염병(FMD) 발생현황 정보공개 - 농림축산식품부",
-              "source": "농림축산식품부",
-              "direction": "up",
-              "quality_score": 75,
-              "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5HR24tZWFxb29uTmlxYXB5Zlh2c3ZnMUs1NXhwVHJ0V1I0d0EwVlFBM2xnby1YX1JQLVlVb2llSmwtLUV5cGJJbTczZHJ2dXotdV9Ib3JEVm15dHc?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1tbTd1YUhmdXg5cUM3WTBDdkV2RlVYQ1JUemVPSUx3WGdLaXpDVjdPcktndmtobEpQc01BTnctMkpJdlA2c3p4VzdHMmJ0bmhRMTBCdm5GSDlKSGJGbUp1NDA5cVBIajg?oc=5"
             }
           ],
           "down": [
             {
-              "title": "알림소식 > 보도자료 > 럼피스킨 2종 가축질병으로 관리 완화 등 관리방식 대폭 바뀐다 - 농림축산식품부",
+              "title": "양돈 농가 소독설비 설치 부담 완화 제도화 - 농림축산식품부",
               "source": "농림축산식품부",
               "direction": "down",
               "quality_score": 75,
               "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMirANBVV95cUxNazFFdjcxY1Z3bDVyajJDM2dTeU9rTXFpVnpiR2Rlb01vZlNORHBLcUVBV0tVOUtQcmtDaU43aFhNQ2NXTGljUUhoRUJraklHUm1UYXU1UTBYUktubXktVjJ6cGJaRV9iNzN1ZTFFSmxOdTlfSWRsVTRBbENOLU5sZU1kMHNXc3RpUFpoUlc0SVlCZXZQOHpSdFJXajk1dHBzU3NxRW91eWRlSDIweGE2Y2pvUU1mdjlHV1VFaE1IcmthUl80NU9tSThodkh6R0dtMkgyUnZHUXhmeUdxY1Zaa2ZCMHF3bGt5SG1sT3dOUXgtdzF5T09HeGg3aUNRbGlvcVlmQUdsYmtzWk0wQWNOWW5QUW9iMFpHZlkwWVBaTE9nN0pSUVdlR085Q0twWl9Zdmdocm4xeFRkZ2xEWTdaNm1YWnBHa2djdmpDdHVXVXRzNUstMnBJZ0FCWXd4OGdxZncxUmh4VVl3anpPVUFxOHFMSVlhbU9vTjlqeW45aDlvazQyTm9WQnhPZ1YzVDYyVWpXWUJCUzNSemExc2FOUFFfV0dVZDNhTENBaA?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE01Z2lweHdUU29QaGZ0bEFGZ2Q2bGJscmQ3NW5ielZvdW9nNS1hb2tlSXZpVEhfUi04WHAzUXFUWXdmVDM3M05GRnIxb0VVX0Y5Y0drNXBnenhWVWNkSWd5N0JwS0xBdmM?oc=5"
             }
           ],
           "neutral": [
@@ -1303,7 +1247,7 @@
               "direction": "neutral",
               "quality_score": 82,
               "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9kc1c2aTB6ZnY3S1psWmxvUEpDRkh5VGR6YXBxUG9aLThraEdCN3dQTU8yVUxKLWVaSHNUMEtxOXp4NTFZcV9ESWxLMUFFVGE0ejhicVRBdWhhWWN5OWZDVTN6VnR3VF9rTlc0?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1pWlRjR0JYZ0Nfc3lVVkVhVTBYZzkwMFRnYS1ZSjR1WXFSZ283aDZvY1pVZ0RzdndTWXFDREZHb3dleGg2YWtLZ3RzaUhobVQyX0ppdVEzbEYxMU44SWQ4MWhzNTFxLUk?oc=5"
             },
             {
               "title": "농림축산식품부 - - 농림축산식품부",
@@ -1311,19 +1255,19 @@
               "direction": "neutral",
               "quality_score": 75,
               "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBwbE9uQVJuenNWMm1vWF8xNnY1WjZQYTJlelZCcXFyZXhoMVlCblAyUnZPLTRybW1hVVgxSGxTcEVHVVM4ZHhYc0wwOGxjaW1DSlNvbkpndWQ1UWNXZHdFQjllQldtbXZNN1hfM1BvbGtZNzRyUjVXTlo2c0pYYW8?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1jeXl3alQyb3lFNEdYLU01UDVwbXRCUHVjQnhTZlBoZENQRHo3RlB6SUpKejVuYkR3eFlfNDhIYURYMG5fN213b1J4Nk1HRFQwei04VDBfM2UyR1FxallDQWR0bVd6RjlQWUx4aDc3Z0tVWWUwY1pGdmdYR0N4dWs?oc=5"
             },
             {
-              "title": "소식그림 - 농림축산식품부",
-              "source": "농림축산식품부",
+              "title": "데이터 상세보기 - 농림축산식품 공공데이터 포털",
+              "source": "농림축산식품 공공데이터 포털",
               "direction": "neutral",
               "quality_score": 75,
               "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMiggJBVV95cUxOVnRHX2poand0cHNLYko0LWJlODdYcUZ0a3R4d1VrZW02X1g1ZDF1TlA1X2UtbXlfaTlLRkwtWmFxTE9WTXZNRlVGemM5NjNoRXFMME4zdTFJWm9iZThValg4SjRPTGRaN2RQUXpRS0hfMElvU3JEYm8wazA5UTd4ekJ3Uk1mSWNyYTBmRnFucWRnZEtScnhEeHNUOXVwdDhxelF6NjA2SmNPc2cxUWtZNXNkckI4MG1GdHRYTzB1NWhVR0VtUVpxZjZfTVBGbnFkUWtxemUzcDRWVF9VUkRjV2Jva2RsajhYMHVRN3RGSENGT2J1OUtqQUJDdWhEeGJGSkE?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNMnNpVUdTdU1jc2dFS0MwOC1HSlpITGFBa2ZSOHJUXzd4U2xYS0NMTDB0eTd4SWhVQU9acmFNeGp4OFhXcEdJRnhNQXRiWUVJYkFzZmtiUmtwcXltc25pX0t0YVRMd2lKcmFqZnZOTTRXelFjSFluazRsemFQd3JqZHFFenhRZ0tIdlJMQ1h0N1c0cTRNVFd5cjY1cFNIM0xfMzllMQ?oc=5"
             }
           ]
         },
-        "memo": "뉴스/수요 축은 상방 근거 우세"
+        "memo": "뉴스/수요 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
       }
     ]
   }
