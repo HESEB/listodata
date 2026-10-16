@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-16T12:31:19Z",
+  "updated_at": "2026-10-16T17:29:39Z",
   "notice": "Phase 2 Display Layer 초안입니다. 기존 market_dashboard.json은 별도로 유지됩니다.",
   "species": [
     {
@@ -8,8 +8,8 @@
       "signal_score": 34,
       "direction": "down",
       "status": "하방 가능성",
-      "quality_score": 74,
-      "confidence_score": 61,
+      "quality_score": 75,
+      "confidence_score": 62,
       "coverage_rate": 80,
       "evidence_count": 30,
       "official_count": 0,
@@ -134,10 +134,10 @@
               "quality_score": 81
             },
             {
-              "title": "양평 박세민 농가, ‘경기 한우평가’ 대상 - 경기도민뉴스",
+              "title": "농협경제지주, 병원식·학교급식·중동 수출까지…쌀·한우 소비처 넓히기 - 폴리뉴스 Polinews",
               "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 81
+              "source_level": 4,
+              "quality_score": 93
             }
           ]
         }
@@ -276,29 +276,30 @@
     {
       "id": "POULTRY",
       "name": "계육",
-      "signal_score": 26,
+      "signal_score": 31,
       "direction": "down",
       "status": "하방 가능성",
       "quality_score": 78,
-      "confidence_score": 69,
-      "coverage_rate": 40,
-      "evidence_count": 25,
-      "official_count": 9,
+      "confidence_score": 76,
+      "coverage_rate": 60,
+      "evidence_count": 26,
+      "official_count": 10,
       "direction_counts": {
         "up": 24,
         "down": 1,
-        "neutral": 0,
+        "neutral": 1,
         "hold": 0
       },
       "coverage_types": [
         "가격",
+        "정책/고시",
         "질병/방역"
       ],
       "score_breakdown": {
         "price": 7,
         "supply": 0,
         "disease": 19,
-        "policy": 0,
+        "policy": 5,
         "news": 0
       },
       "score_breakdown_labels": {
@@ -368,12 +369,19 @@
         "policy": {
           "label": "정책/고시",
           "max_score": 10,
-          "score": 0,
-          "items": 0,
+          "score": 5,
+          "items": 1,
           "up": 0,
           "down": 0,
-          "neutral": 0,
-          "examples": []
+          "neutral": 1,
+          "examples": [
+            {
+              "title": "정부가 브라질산 계란을 수입한 까닭은 - 더리포트",
+              "direction": "neutral",
+              "source_level": 5,
+              "quality_score": 100
+            }
+          ]
         },
         "news": {
           "label": "뉴스/수요",
@@ -386,7 +394,7 @@
           "examples": []
         }
       },
-      "reason": "질병/방역 19점 + 가격 7점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 가격 7점 + 정책/고시 5점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
@@ -479,18 +487,18 @@
     {
       "id": "EGG",
       "name": "계란",
-      "signal_score": 85,
-      "direction": "up",
-      "status": "상방 우세",
-      "quality_score": 84,
-      "confidence_score": 93,
+      "signal_score": 53,
+      "direction": "neutral",
+      "status": "보합/혼조",
+      "quality_score": 83,
+      "confidence_score": 92,
       "coverage_rate": 100,
-      "evidence_count": 32,
-      "official_count": 9,
+      "evidence_count": 31,
+      "official_count": 7,
       "direction_counts": {
-        "up": 12,
-        "down": 4,
-        "neutral": 16,
+        "up": 9,
+        "down": 5,
+        "neutral": 17,
         "hold": 0
       },
       "coverage_types": [
@@ -501,11 +509,11 @@
         "질병/방역"
       ],
       "score_breakdown": {
-        "price": 28,
-        "supply": 24,
+        "price": 9,
+        "supply": 10,
         "disease": 20,
         "policy": 4,
-        "news": 9
+        "news": 10
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -518,18 +526,12 @@
         "price": {
           "label": "가격",
           "max_score": 30,
-          "score": 28,
-          "items": 4,
-          "up": 2,
+          "score": 9,
+          "items": 2,
+          "up": 0,
           "down": 1,
           "neutral": 1,
           "examples": [
-            {
-              "title": "[농식품부 국정감사] 정부, 계란값 상승률 3배 부풀렸다 - 축산경제신문",
-              "direction": "up",
-              "source_level": 5,
-              "quality_score": 100
-            },
             {
               "title": "계란 산지가격 하락세 뚜렷…소비자가격 반영은 더뎌 - 축산신문",
               "direction": "down",
@@ -537,20 +539,20 @@
               "quality_score": 81
             },
             {
-              "title": "계란 도매가 하락분 어디로…소비자가는 되레 상승 - 뉴스토마토",
+              "title": "[국감] 수입 계란에 1200억원 썼지만···산지·소비자가 격차 확대 - 서울파이낸스",
               "direction": "neutral",
               "source_level": 3,
-              "quality_score": 76
+              "quality_score": 71
             }
           ]
         },
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 24,
+          "score": 10,
           "items": 5,
-          "up": 3,
-          "down": 2,
+          "up": 2,
+          "down": 3,
           "neutral": 0,
           "examples": [
             {
@@ -560,16 +562,16 @@
               "quality_score": 81
             },
             {
-              "title": "“계란산업, ‘가격’도 ‘수급’도 정부 정책에 흔들렸다” - 농업인신문",
-              "direction": "up",
-              "source_level": 5,
-              "quality_score": 100
-            },
-            {
               "title": "[사설] 수입계란에 1200억, 산란계 농가엔 10억… 땜질 언제까지 - 한국일보",
               "direction": "up",
               "source_level": 3,
-              "quality_score": 76
+              "quality_score": 71
+            },
+            {
+              "title": "\"계란 한판 3만9000원에 사서 4980원 판매\"…논란에 \"수급안정 조치\" - 이데일리",
+              "direction": "down",
+              "source_level": 3,
+              "quality_score": 71
             }
           ]
         },
@@ -612,12 +614,6 @@
           "neutral": 9,
           "examples": [
             {
-              "title": "윤석열 때도 계란 수입했는데... 한동훈의 '브라질 선물' 공세 - OhmyNews",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 81
-            },
-            {
               "title": "브라질산 계란, 수입선 다변화 포석 - 대한급식신문",
               "direction": "neutral",
               "source_level": 3,
@@ -628,17 +624,23 @@
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 81
+            },
+            {
+              "title": "이 대통령, 장동혁 겨냥 “브라질 계란 수입에 800억 낭비?…허위사실” - 한겨레",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 81
             }
           ]
         },
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 9,
-          "items": 6,
+          "score": 10,
+          "items": 7,
           "up": 0,
           "down": 0,
-          "neutral": 6,
+          "neutral": 7,
           "examples": [
             {
               "title": "농식품부 , 6.7% 오른 계란값 23.3% 로 뻥튀기해 담합 몰이 '공정위 과징금 부과' - livesnews.com",
@@ -653,7 +655,7 @@
               "quality_score": 81
             },
             {
-              "title": "나경원 \"커피 원가 120원 궤변 반복\"…이 대통령 ‘계란 계산법’ 정면 비판 - 뉴시스",
+              "title": "나경원 “달걀 원가 178원만 따지나”…이 대통령 ‘브라질산 계란’ 계산법 정면 비판 - 독립신문",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 81
@@ -661,7 +663,7 @@
           ]
         }
       },
-      "reason": "가격 28점 + 수급/도축 24점 + 질병/방역 20점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 20점 + 수급/도축 10점 + 뉴스/수요 10점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
@@ -670,15 +672,15 @@
       "signal_score": 28,
       "direction": "down",
       "status": "하방 가능성",
-      "quality_score": 76,
-      "confidence_score": 75,
+      "quality_score": 77,
+      "confidence_score": 76,
       "coverage_rate": 60,
-      "evidence_count": 35,
-      "official_count": 35,
+      "evidence_count": 34,
+      "official_count": 34,
       "direction_counts": {
-        "up": 16,
+        "up": 17,
         "down": 1,
-        "neutral": 18,
+        "neutral": 16,
         "hold": 0
       },
       "coverage_types": [
@@ -725,8 +727,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 15,
-          "up": 15,
+          "items": 16,
+          "up": 16,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -737,13 +739,13 @@
               "quality_score": 100
             },
             {
-              "title": "인천광역시 강화군 소재 소(牛) 농장 예찰 검사에서 구제역 확진 - 농림축산식품부",
+              "title": "농식품부 장관, 충청남도 추석 연휴 방역 대응체계 현장 점검 - 농림축산식품부",
               "direction": "up",
               "source_level": 5,
               "quality_score": 82
             },
             {
-              "title": "겨울철 가축전염병 위험 요인 집중 관리로 ‘26/’27 겨울철 특별방역대책 추진 - 농림축산식품부",
+              "title": "인천광역시 강화군 소재 소(牛) 농장 예찰 검사에서 구제역 확진 - 농림축산식품부",
               "direction": "up",
               "source_level": 5,
               "quality_score": 82
@@ -764,10 +766,10 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 9,
-          "items": 20,
+          "items": 18,
           "up": 1,
           "down": 1,
-          "neutral": 18,
+          "neutral": 16,
           "examples": [
             {
               "title": "K2WebWizard - 농림축산식품부",
