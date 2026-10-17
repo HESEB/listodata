@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-17T13:46:54Z",
+  "updated_at": "2026-10-17T17:16:26Z",
   "policy": "phase2_conflict_hold_v1",
   "notice": "상방·하방 근거 충돌, 근거 누락, 신뢰도 부족에 따른 판단 유보 검수 리포트입니다.",
   "summary": {
@@ -61,8 +61,8 @@
       "hold_reasons": [
         "주요 근거축 다수 누락"
       ],
-      "original_confidence": 69,
-      "adjusted_confidence": 69,
+      "original_confidence": 68,
+      "adjusted_confidence": 68,
       "should_hold": false,
       "recommended_status": "하방 가능성",
       "recommended_direction": "down",
@@ -76,22 +76,24 @@
       "conflict_axes": [],
       "missing_evidence": [
         "가격",
+        "수급/도축",
         "질병/방역",
         "정책/고시",
         "뉴스/수요"
       ],
       "hold_reasons": [
+        "근거자료 없음",
         "커버리지 부족",
         "신뢰도 부족",
         "공식자료 부족",
         "주요 근거축 다수 누락"
       ],
-      "original_confidence": 33,
-      "adjusted_confidence": 33,
+      "original_confidence": 0,
+      "adjusted_confidence": 0,
       "should_hold": true,
       "recommended_status": "판단 유보",
       "recommended_direction": "hold",
-      "memo": "판단 유보 권장 · 누락근거: 가격, 질병/방역, 정책/고시, 뉴스/수요 / 유보사유: 커버리지 부족, 신뢰도 부족, 공식자료 부족, 주요 근거축 다수 누락"
+      "memo": "판단 유보 권장 · 누락근거: 가격, 수급/도축, 질병/방역, 정책/고시, 뉴스/수요 / 유보사유: 근거자료 없음, 커버리지 부족, 신뢰도 부족, 공식자료 부족, 주요 근거축 다수 누락"
     },
     {
       "id": "EGG",
@@ -357,7 +359,7 @@
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 57.05
+          "neutral": 56.95
         },
         "conflict_ratio": 0,
         "examples": {
@@ -446,12 +448,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 18,
+        "items": 17,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 83.78,
+          "up": 79.68,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -582,12 +584,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 25,
+        "items": 24,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 115.52,
+          "up": 111.12,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -689,31 +691,22 @@
       {
         "axis": "supply",
         "label": "수급/도축",
-        "items": 1,
+        "items": 0,
         "has_conflict": false,
         "severity": "none",
-        "dominant_direction": "up",
+        "dominant_direction": "neutral",
         "weighted_direction": {
-          "up": 3.26,
+          "up": 0.0,
           "down": 0.0,
           "neutral": 0.0
         },
-        "conflict_ratio": 0.0,
+        "conflict_ratio": 0,
         "examples": {
-          "up": [
-            {
-              "title": "[Issue+] 오리사육제한, 이대로 좋은가 - 농수축산신문",
-              "source": "농수축산신문",
-              "direction": "up",
-              "quality_score": 58,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1ST09TYXJoR1U0M2ZHWDlDdWdGY29VeFFoMWF6SjVLZV8wbXJIaFNXb2c4WWZIMEpzSXNnemV4REZrUlJ4bnRldWJuUFRvVTQ0OWN3RnZhYW9xcjBoZlpIYi16UFBMeGZCeXRpMQ?oc=5"
-            }
-          ],
+          "up": [],
           "down": [],
           "neutral": []
         },
-        "memo": "수급/도축 축은 상방 근거 우세"
+        "memo": "수급/도축 축은 중립 또는 보조 근거 중심"
       },
       {
         "axis": "disease",
@@ -787,7 +780,7 @@
         "weighted_direction": {
           "up": 13.09,
           "down": 4.07,
-          "neutral": 6.02
+          "neutral": 6.34
         },
         "conflict_ratio": 0.31,
         "examples": {
@@ -829,20 +822,20 @@
           ],
           "neutral": [
             {
+              "title": "산지선 내렸다는데 계란 한 판엔 7000원대?[왜 이 가격] - 이데일리",
+              "source": "이데일리",
+              "direction": "neutral",
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxONVdzS3ZkU2dNTjl4X0pfQnVTUlZWSHdVWFdaajVRekdpTVh6aHgzc3BQZmtBcnY0eGtOSnBqU1VkOWtaWjZqbUxRb3M2QmwxWDhPMnJPNm5WOTVZNWdRdHNIWlZ2ankxMm13TEdqMUhFNVhNc094NjdwMHpaTkpiRg?oc=5"
+            },
+            {
               "title": "계란 도매가 하락분 어디로…소비자가는 되레 상승 - 뉴스토마토",
               "source": "뉴스토마토",
               "direction": "neutral",
               "quality_score": 71,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5LN0JNVnp2VTVYMUhjSDYyY2d3SWZpRWdiV05WQl8xYkVQREp5MWRkdS1uQWZxdHVpMEM1SmVCekxieVFzTHY3VFQ2RXk2ME81dTdjQ0FsaWR6Tmd1cTJubA?oc=5"
-            },
-            {
-              "title": "계란 산지가격 고시 재개 ‘먹구름’ - 축산신문",
-              "source": "축산신문",
-              "direction": "neutral",
-              "quality_score": 65,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE94OGtnbHA5QWVTaHVFVEp5ZGN4RF8zbDV5Ynl0RkJDN3VxeTRBSzVfOEtsc2xCTmdGX0padDZ6Q0g2S19zVTl0WkdaNUJSYXdkVkctNFZ0dXp4S1hqMFVUS3BGMFJULTlw?oc=5"
             }
           ]
         },
@@ -1019,7 +1012,7 @@
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 24.13
+          "neutral": 24.03
         },
         "conflict_ratio": 0,
         "examples": {
@@ -1108,12 +1101,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 16,
+        "items": 17,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 76.28,
+          "up": 81.42,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -1129,20 +1122,20 @@
               "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE51T2p1RVQyaTJfWTVHQmQ2TXRrdHIxYldyaDROa2xjb0JUdHo2cGtKMm82ZTFzNjJLYUpWTk43dzBpQVYyUVRiTU03aFBGLTVFNlI0eEhoc2huTFRUZmtCb3psWk0yOGZUMndB?oc=5"
             },
             {
+              "title": "2026년 동식물 방역방제 유공 정부포상 후보자 공개검증 - 농림축산식품부",
+              "source": "농림축산식품부",
+              "direction": "up",
+              "quality_score": 82,
+              "source_level": 5,
+              "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE44bmR6RDB0RTQ4UGRobjdNZXhLcE8tdzdaQU5IVk9hYU04WGFfUzlZSWtIc2JROXVhZlBWTG9nT3FSQlVqM0pCWlZNRnc2RlNYQmRyV2R1c0RpMGVxN2Y0VE1DRG8xZkU?oc=5"
+            },
+            {
               "title": "알림소식 > 보도자료 > 현장에서 직접 써보고 고른다… 더 편리하고 안전한 가축방역물품 찾는다 - 농림축산식품부",
               "source": "농림축산식품부",
               "direction": "up",
               "quality_score": 82,
               "source_level": 5,
               "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBWY3lqdFFHclpKQmZUejVrM3R4R2h5dnNRQVhkMWduNndGZGE4TER4YXZDaTNDcENQZXY2WWRlUTV2Vks2SkdmdmJUUlNqUU8weGdFaG5GYkN2TExyYnRkbjhwV3BNN2RWSzVDWlpDX004Mm1GWVgyYjJvUQ?oc=5"
-            },
-            {
-              "title": "인천광역시 강화군 소재 소(牛) 농장 예찰 검사에서 구제역 확진 - 농림축산식품부",
-              "source": "농림축산식품부",
-              "direction": "up",
-              "quality_score": 82,
-              "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBSTzZnT0Z3eVlNZVlDeHczM0lFVDNGVlAxM1NsTnB0RkRxbFR2WXdUbFlRN3l0MGI1YlFIYnY5VkdlSmVRSVJEVVlvS0RJbjk0ZHh4b2YtdURsb2c4Y2psY3lPU0lNdXVLemc?oc=5"
             }
           ],
           "down": [],
