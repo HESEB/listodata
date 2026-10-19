@@ -1,25 +1,25 @@
 {
-  "updated_at": "2026-10-19T01:24:18Z",
+  "updated_at": "2026-10-19T07:52:45Z",
   "policy": "phase7_judgment_alerts_v1",
   "notice": "판단상태·방향·구매행동 전환은 Critical, 큰 품질/충돌 변화는 Warning, 기타 변화는 Info입니다.",
   "summary": {
-    "total": 1,
+    "total": 2,
     "critical": 0,
-    "warning": 1,
+    "warning": 2,
     "info": 0,
-    "review_required": 1
+    "review_required": 2
   },
   "alerts": [
     {
-      "id": "2026-10-19T01:24:18Z-EGG",
-      "timestamp": "2026-10-19T01:24:18Z",
-      "species": "EGG",
-      "label": "계란",
+      "id": "2026-10-19T07:52:45Z-PORK",
+      "timestamp": "2026-10-19T07:52:45Z",
+      "species": "PORK",
+      "label": "돈육",
       "severity": "warning",
       "category": "data_or_conflict_change",
-      "headline": "계란 판단 변화 감지",
+      "headline": "돈육 판단 변화 감지",
       "reasons": [
-        "충돌강도 none → medium"
+        "충돌강도 low → none"
       ],
       "current": {
         "status": "hold",
@@ -27,10 +27,31 @@
         "action": "판단 유보",
         "confidence": 15.0,
         "coverage": 0.0,
-        "conflict": "medium"
+        "conflict": "none"
+      },
+      "review_required": true
+    },
+    {
+      "id": "2026-10-19T07:52:45Z-BEEF",
+      "timestamp": "2026-10-19T07:52:45Z",
+      "species": "BEEF",
+      "label": "한우/우육",
+      "severity": "warning",
+      "category": "data_or_conflict_change",
+      "headline": "한우/우육 판단 변화 감지",
+      "reasons": [
+        "충돌강도 none → high"
+      ],
+      "current": {
+        "status": "hold",
+        "direction": "판단 유보",
+        "action": "판단 유보",
+        "confidence": 15.0,
+        "coverage": 0.0,
+        "conflict": "high"
       },
       "review_required": true
     }
   ],
-  "history_snapshots": 58
+  "history_snapshots": 59
 }
