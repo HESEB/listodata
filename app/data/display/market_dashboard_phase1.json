@@ -1,20 +1,20 @@
 {
-  "updated_at": "2026-10-20T17:16:02Z",
+  "updated_at": "2026-10-20T20:40:09Z",
   "notice": "Phase 2 Display Layer 초안입니다. 기존 market_dashboard.json은 별도로 유지됩니다.",
   "species": [
     {
       "id": "BEEF",
       "name": "한우",
-      "signal_score": 49,
+      "signal_score": 36,
       "direction": "neutral",
       "status": "보합/혼조",
       "quality_score": 79,
-      "confidence_score": 67,
-      "coverage_rate": 80,
-      "evidence_count": 31,
-      "official_count": 1,
+      "confidence_score": 57,
+      "coverage_rate": 60,
+      "evidence_count": 30,
+      "official_count": 0,
       "direction_counts": {
-        "up": 6,
+        "up": 5,
         "down": 3,
         "neutral": 22,
         "hold": 0
@@ -22,13 +22,12 @@
       "coverage_types": [
         "가격",
         "수요/행사",
-        "일반",
-        "질병/방역"
+        "일반"
       ],
       "score_breakdown": {
         "price": 27,
         "supply": 0,
-        "disease": 13,
+        "disease": 0,
         "policy": 0,
         "news": 9
       },
@@ -82,19 +81,12 @@
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
-          "score": 13,
-          "items": 1,
-          "up": 1,
+          "score": 0,
+          "items": 0,
+          "up": 0,
           "down": 0,
           "neutral": 0,
-          "examples": [
-            {
-              "title": "전남 무안 한우 농장에서 구제역 발생 - 농림축산식품부",
-              "direction": "up",
-              "source_level": 5,
-              "quality_score": 75
-            }
-          ]
+          "examples": []
         },
         "policy": {
           "label": "정책/고시",
@@ -116,12 +108,6 @@
           "neutral": 20,
           "examples": [
             {
-              "title": "축협 판매역량 강화…농가경제 힘 됐다 - 축산신문",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 81
-            },
-            {
               "title": "제16회 철마한우불고기축제 21일 개막…맛·공연·체험 어우러진 '가을 한마당' - 정관타임스Live",
               "direction": "neutral",
               "source_level": 3,
@@ -132,11 +118,17 @@
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 81
+            },
+            {
+              "title": "농진청, ‘영불’ 한우 씨수소 40마리 선발 - 한국농어민신문",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 81
             }
           ]
         }
       },
-      "reason": "가격 27점 + 질병/방역 13점 + 뉴스/수요 9점 기반, 상방성 자료가 우세",
+      "reason": "가격 27점 + 뉴스/수요 9점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
@@ -148,10 +140,10 @@
       "quality_score": 74,
       "confidence_score": 67,
       "coverage_rate": 40,
-      "evidence_count": 18,
-      "official_count": 11,
+      "evidence_count": 14,
+      "official_count": 7,
       "direction_counts": {
-        "up": 17,
+        "up": 13,
         "down": 0,
         "neutral": 1,
         "hold": 0
@@ -206,8 +198,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 17,
-          "up": 17,
+          "items": 13,
+          "up": 13,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -258,25 +250,26 @@
     {
       "id": "POULTRY",
       "name": "계육",
-      "signal_score": 19,
-      "direction": "hold",
-      "status": "판단 유보",
+      "signal_score": 26,
+      "direction": "down",
+      "status": "하방 가능성",
       "quality_score": 77,
-      "confidence_score": 62,
-      "coverage_rate": 20,
+      "confidence_score": 69,
+      "coverage_rate": 40,
       "evidence_count": 27,
       "official_count": 10,
       "direction_counts": {
-        "up": 27,
-        "down": 0,
+        "up": 26,
+        "down": 1,
         "neutral": 0,
         "hold": 0
       },
       "coverage_types": [
+        "가격",
         "질병/방역"
       ],
       "score_breakdown": {
-        "price": 0,
+        "price": 7,
         "supply": 0,
         "disease": 19,
         "policy": 0,
@@ -293,12 +286,19 @@
         "price": {
           "label": "가격",
           "max_score": 30,
-          "score": 0,
-          "items": 0,
+          "score": 7,
+          "items": 1,
           "up": 0,
-          "down": 0,
+          "down": 1,
           "neutral": 0,
-          "examples": []
+          "examples": [
+            {
+              "title": "육계 가격 하락에 치킨 가격도 내려갈까 - 뉴시스",
+              "direction": "down",
+              "source_level": 3,
+              "quality_score": 58
+            }
+          ]
         },
         "supply": {
           "label": "수급/도축",
@@ -314,8 +314,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 27,
-          "up": 27,
+          "items": 26,
+          "up": 26,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -360,7 +360,7 @@
           "examples": []
         }
       },
-      "reason": "질병/방역 19점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 가격 7점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
@@ -453,16 +453,16 @@
     {
       "id": "EGG",
       "name": "계란",
-      "signal_score": 68,
+      "signal_score": 66,
       "direction": "up",
       "status": "상방 가능성",
       "quality_score": 78,
-      "confidence_score": 88,
+      "confidence_score": 90,
       "coverage_rate": 100,
-      "evidence_count": 29,
-      "official_count": 6,
+      "evidence_count": 30,
+      "official_count": 8,
       "direction_counts": {
-        "up": 10,
+        "up": 11,
         "down": 5,
         "neutral": 14,
         "hold": 0
@@ -476,7 +476,7 @@
       ],
       "score_breakdown": {
         "price": 13,
-        "supply": 23,
+        "supply": 21,
         "disease": 19,
         "policy": 4,
         "news": 9
@@ -521,9 +521,9 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 23,
-          "items": 4,
-          "up": 3,
+          "score": 21,
+          "items": 3,
+          "up": 2,
           "down": 1,
           "neutral": 0,
           "examples": [
@@ -534,16 +534,16 @@
               "quality_score": 81
             },
             {
-              "title": "“계란 기준가격 마련해야”…유통업계, 가격 혼선·수급 불안 해소 촉구 - 헤럴드경제",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 81
-            },
-            {
               "title": "계란값 하락 견인한 것은 '수입' 아닌 '수급'…산란계 농가 원가 압박 심화 - 팜인사이트",
               "direction": "down",
               "source_level": 3,
               "quality_score": 71
+            },
+            {
+              "title": "“계란산업, ‘가격’도 ‘수급’도 정부 정책에 흔들렸다” - 농업인신문",
+              "direction": "up",
+              "source_level": 5,
+              "quality_score": 95
             }
           ]
         },
@@ -551,8 +551,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 5,
-          "up": 5,
+          "items": 7,
+          "up": 7,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -580,10 +580,10 @@
           "label": "정책/고시",
           "max_score": 10,
           "score": 4,
-          "items": 8,
+          "items": 9,
           "up": 0,
           "down": 1,
-          "neutral": 7,
+          "neutral": 8,
           "examples": [
             {
               "title": "이형일, 브라질산 계란 고가 수입 논란에 정면 반박 - 스페셜경제",
@@ -609,10 +609,10 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 9,
-          "items": 6,
+          "items": 5,
           "up": 0,
           "down": 0,
-          "neutral": 6,
+          "neutral": 5,
           "examples": [
             {
               "title": "계란 유통인들 “생존권 확보·산업 발전 다짐” - 한국농정신문",
@@ -635,7 +635,7 @@
           ]
         }
       },
-      "reason": "수급/도축 23점 + 질병/방역 19점 + 가격 13점 기반, 상방성 자료가 우세",
+      "reason": "수급/도축 21점 + 질병/방역 19점 + 가격 13점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
@@ -644,15 +644,15 @@
       "signal_score": 32,
       "direction": "down",
       "status": "하방 가능성",
-      "quality_score": 77,
+      "quality_score": 78,
       "confidence_score": 76,
       "coverage_rate": 60,
-      "evidence_count": 38,
-      "official_count": 38,
+      "evidence_count": 35,
+      "official_count": 35,
       "direction_counts": {
-        "up": 23,
+        "up": 18,
         "down": 0,
-        "neutral": 15,
+        "neutral": 17,
         "hold": 0
       },
       "coverage_types": [
@@ -699,8 +699,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 19,
-          "up": 19,
+          "items": 17,
+          "up": 17,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -738,10 +738,10 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 13,
-          "items": 19,
-          "up": 4,
+          "items": 18,
+          "up": 1,
           "down": 0,
-          "neutral": 15,
+          "neutral": 17,
           "examples": [
             {
               "title": "겨울철새 남하 시작...10월 중하순 본격 도래 전망 - 농림축산식품부",
@@ -759,7 +759,7 @@
               "title": "K2WebWizard - 농림축산식품부",
               "direction": "neutral",
               "source_level": 5,
-              "quality_score": 75
+              "quality_score": 82
             }
           ]
         }
