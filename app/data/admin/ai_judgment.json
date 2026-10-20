@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-20T00:25:06Z",
+  "updated_at": "2026-10-20T06:06:10Z",
   "policy": "phase7_ai_judgment_layer_v2",
   "engine_type": "explainable_dss_synthesis",
   "is_llm": false,
@@ -12,17 +12,17 @@
   },
   "changes": [
     {
-      "species": "BEEF",
-      "label": "한우/우육",
+      "species": "PORK",
+      "label": "돈육",
       "reasons": [
-        "충돌강도 none → medium"
+        "충돌강도 none → low"
       ]
     },
     {
       "species": "EGG",
       "label": "계란",
       "reasons": [
-        "충돌강도 medium → high"
+        "충돌강도 high → medium"
       ]
     }
   ],
@@ -44,13 +44,7 @@
           {
             "type": "evidence_support",
             "name": "가격",
-            "signal": 28,
-            "reason": "Evidence Score 보조근거"
-          },
-          {
-            "type": "evidence_support",
-            "name": "질병/방역",
-            "signal": 13,
+            "signal": 27,
             "reason": "Evidence Score 보조근거"
           },
           {
@@ -58,10 +52,16 @@
             "name": "뉴스/수요",
             "signal": 9,
             "reason": "Evidence Score 보조근거"
+          },
+          {
+            "type": "evidence_support",
+            "name": "수급/도축",
+            "signal": 0,
+            "reason": "Evidence Score 보조근거"
           }
         ],
         "gate": "HOLD 우선",
-        "conflict_note": "주의 필요 · 충돌축: 가격 / 누락근거: 수급/도축, 정책/고시",
+        "conflict_note": "판단 유보 권장 · 충돌축: 가격 / 누락근거: 수급/도축, 질병/방역, 정책/고시 / 유보사유: 주요 근거축 다수 누락",
         "why_this_action": [
           "공식 데이터 커버리지 부족",
           "공식 데이터 품질 부족",
@@ -79,13 +79,7 @@
         {
           "type": "evidence_support",
           "name": "가격",
-          "signal": 28,
-          "reason": "Evidence Score 보조근거"
-        },
-        {
-          "type": "evidence_support",
-          "name": "질병/방역",
-          "signal": 13,
+          "signal": 27,
           "reason": "Evidence Score 보조근거"
         },
         {
@@ -93,27 +87,33 @@
           "name": "뉴스/수요",
           "signal": 9,
           "reason": "Evidence Score 보조근거"
+        },
+        {
+          "type": "evidence_support",
+          "name": "수급/도축",
+          "signal": 0,
+          "reason": "Evidence Score 보조근거"
         }
       ],
-      "history_context": "7d 7일 구간 신호 변화 제한적, 14d 14일 구간 신호 혼조, 30d 30일 구간 신호 변화 제한적",
+      "history_context": "7d 7일 구간 신호 변화 제한적, 14d 14일 구간 신호 변화 제한적, 30d 30일 구간 신호 -14.0점 하락",
       "trend_windows": [
         {
           "window": "7d",
           "direction": "neutral",
-          "change": 7,
+          "change": -7,
           "memo": "7일 구간 신호 변화 제한적"
         },
         {
           "window": "14d",
-          "direction": "mixed",
-          "change": 12,
-          "memo": "14일 구간 신호 혼조"
+          "direction": "neutral",
+          "change": -2,
+          "memo": "14일 구간 신호 변화 제한적"
         },
         {
           "window": "30d",
-          "direction": "neutral",
-          "change": 0,
-          "memo": "30일 구간 신호 변화 제한적"
+          "direction": "down",
+          "change": -14,
+          "memo": "30일 구간 신호 -14.0점 하락"
         }
       ],
       "conflict": {
@@ -124,10 +124,10 @@
         ]
       },
       "change": {
-        "changed": true,
-        "previous_updated_at": "2026-10-19T21:07:51Z",
+        "changed": false,
+        "previous_updated_at": "2026-10-20T00:25:06Z",
         "reasons": [
-          "충돌강도 none → medium"
+          "변화 없음"
         ],
         "confidence_delta": 0.0,
         "coverage_delta": 0.0
@@ -167,13 +167,13 @@
           },
           {
             "type": "evidence_support",
-            "name": "뉴스/수요",
-            "signal": 5,
+            "name": "수급/도축",
+            "signal": 0,
             "reason": "Evidence Score 보조근거"
           }
         ],
         "gate": "HOLD 우선",
-        "conflict_note": "주의 필요 · 누락근거: 수급/도축, 정책/고시",
+        "conflict_note": "주의 필요 · 누락근거: 수급/도축, 정책/고시, 뉴스/수요 / 유보사유: 주요 근거축 다수 누락",
         "why_this_action": [
           "공식 데이터 커버리지 부족",
           "공식 데이터 품질 부족",
@@ -202,42 +202,42 @@
         },
         {
           "type": "evidence_support",
-          "name": "뉴스/수요",
-          "signal": 5,
+          "name": "수급/도축",
+          "signal": 0,
           "reason": "Evidence Score 보조근거"
         }
       ],
-      "history_context": "7d 7일 구간 신호 변화 제한적, 14d 14일 구간 신호 변화 제한적, 30d 30일 구간 신호 -9.0점 하락",
+      "history_context": "7d 7일 구간 신호 -10.0점 하락, 14d 14일 구간 신호 변화 제한적, 30d 30일 구간 신호 -14.0점 하락",
       "trend_windows": [
         {
           "window": "7d",
-          "direction": "neutral",
-          "change": -5,
-          "memo": "7일 구간 신호 변화 제한적"
+          "direction": "down",
+          "change": -10,
+          "memo": "7일 구간 신호 -10.0점 하락"
         },
         {
           "window": "14d",
           "direction": "neutral",
-          "change": 1,
+          "change": -4,
           "memo": "14일 구간 신호 변화 제한적"
         },
         {
           "window": "30d",
           "direction": "down",
-          "change": -9,
-          "memo": "30일 구간 신호 -9.0점 하락"
+          "change": -14,
+          "memo": "30일 구간 신호 -14.0점 하락"
         }
       ],
       "conflict": {
         "has_conflict": false,
-        "severity": "none",
+        "severity": "low",
         "axes": []
       },
       "change": {
-        "changed": false,
-        "previous_updated_at": "2026-10-19T21:07:51Z",
+        "changed": true,
+        "previous_updated_at": "2026-10-20T00:25:06Z",
         "reasons": [
-          "변화 없음"
+          "충돌강도 none → low"
         ],
         "confidence_delta": 0.0,
         "coverage_delta": 0.0
@@ -345,7 +345,7 @@
       },
       "change": {
         "changed": false,
-        "previous_updated_at": "2026-10-19T21:07:51Z",
+        "previous_updated_at": "2026-10-20T00:25:06Z",
         "reasons": [
           "변화 없음"
         ],
@@ -455,7 +455,7 @@
       },
       "change": {
         "changed": false,
-        "previous_updated_at": "2026-10-19T21:07:51Z",
+        "previous_updated_at": "2026-10-20T00:25:06Z",
         "reasons": [
           "변화 없음"
         ],
@@ -486,24 +486,24 @@
           {
             "type": "evidence_support",
             "name": "수급/도축",
-            "signal": 24,
-            "reason": "Evidence Score 보조근거"
-          },
-          {
-            "type": "evidence_support",
-            "name": "가격",
-            "signal": 19,
+            "signal": 21,
             "reason": "Evidence Score 보조근거"
           },
           {
             "type": "evidence_support",
             "name": "질병/방역",
-            "signal": 19,
+            "signal": 20,
+            "reason": "Evidence Score 보조근거"
+          },
+          {
+            "type": "evidence_support",
+            "name": "가격",
+            "signal": 12,
             "reason": "Evidence Score 보조근거"
           }
         ],
         "gate": "HOLD 우선",
-        "conflict_note": "판단 유보 권장 · 충돌축: 가격 / 유보사유: 상·하방 근거 강충돌",
+        "conflict_note": "주의 필요 · 충돌축: 가격, 수급/도축 / 유보사유: 복수 근거축 충돌",
         "why_this_action": [
           "공식 데이터 커버리지 부족",
           "공식 데이터 품질 부족",
@@ -521,55 +521,56 @@
         {
           "type": "evidence_support",
           "name": "수급/도축",
-          "signal": 24,
-          "reason": "Evidence Score 보조근거"
-        },
-        {
-          "type": "evidence_support",
-          "name": "가격",
-          "signal": 19,
+          "signal": 21,
           "reason": "Evidence Score 보조근거"
         },
         {
           "type": "evidence_support",
           "name": "질병/방역",
-          "signal": 19,
+          "signal": 20,
+          "reason": "Evidence Score 보조근거"
+        },
+        {
+          "type": "evidence_support",
+          "name": "가격",
+          "signal": 12,
           "reason": "Evidence Score 보조근거"
         }
       ],
-      "history_context": "7d 7일 구간 신호 혼조, 14d 14일 구간 신호 +12.0점 상승, 30d 30일 구간 신호 변화 제한적",
+      "history_context": "7d 7일 구간 신호 혼조, 14d 14일 구간 신호 변화 제한적, 30d 30일 구간 신호 변화 제한적",
       "trend_windows": [
         {
           "window": "7d",
           "direction": "mixed",
-          "change": -8,
+          "change": -16,
           "memo": "7일 구간 신호 혼조"
         },
         {
           "window": "14d",
-          "direction": "up",
-          "change": 12,
-          "memo": "14일 구간 신호 +12.0점 상승"
+          "direction": "neutral",
+          "change": 4,
+          "memo": "14일 구간 신호 변화 제한적"
         },
         {
           "window": "30d",
           "direction": "neutral",
-          "change": 7,
+          "change": -1,
           "memo": "30일 구간 신호 변화 제한적"
         }
       ],
       "conflict": {
         "has_conflict": true,
-        "severity": "high",
+        "severity": "medium",
         "axes": [
-          "가격"
+          "가격",
+          "수급/도축"
         ]
       },
       "change": {
         "changed": true,
-        "previous_updated_at": "2026-10-19T21:07:51Z",
+        "previous_updated_at": "2026-10-20T00:25:06Z",
         "reasons": [
-          "충돌강도 medium → high"
+          "충돌강도 high → medium"
         ],
         "confidence_delta": 0.0,
         "coverage_delta": 0.0
