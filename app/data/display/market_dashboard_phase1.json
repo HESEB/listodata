@@ -1,20 +1,20 @@
 {
-  "updated_at": "2026-10-20T06:06:09Z",
+  "updated_at": "2026-10-20T11:47:01Z",
   "notice": "Phase 2 Display Layer 초안입니다. 기존 market_dashboard.json은 별도로 유지됩니다.",
   "species": [
     {
       "id": "BEEF",
       "name": "한우",
-      "signal_score": 36,
+      "signal_score": 47,
       "direction": "neutral",
       "status": "보합/혼조",
       "quality_score": 78,
-      "confidence_score": 56,
-      "coverage_rate": 60,
-      "evidence_count": 30,
+      "confidence_score": 63,
+      "coverage_rate": 80,
+      "evidence_count": 31,
       "official_count": 0,
       "direction_counts": {
-        "up": 4,
+        "up": 5,
         "down": 2,
         "neutral": 24,
         "hold": 0
@@ -22,12 +22,13 @@
       "coverage_types": [
         "가격",
         "수요/행사",
-        "일반"
+        "일반",
+        "질병/방역"
       ],
       "score_breakdown": {
         "price": 27,
         "supply": 0,
-        "disease": 0,
+        "disease": 11,
         "policy": 0,
         "news": 9
       },
@@ -81,12 +82,19 @@
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
-          "score": 0,
-          "items": 0,
-          "up": 0,
+          "score": 11,
+          "items": 1,
+          "up": 1,
           "down": 0,
           "neutral": 0,
-          "examples": []
+          "examples": [
+            {
+              "title": "경북도, 구제역 발생 예천 한우농가 긴급 방역…임상예찰 강화 - 연합뉴스",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 58
+            }
+          ]
         },
         "policy": {
           "label": "정책/고시",
@@ -108,19 +116,19 @@
           "neutral": 21,
           "examples": [
             {
-              "title": "원주시, '제12회 원주 치악산한우 축제' 22일 개막 - 일간투데이",
+              "title": "정육대·품격한우, 업무협약 체결…한우 유통 협력 기반 마련 - livesnews.com",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 81
             },
             {
-              "title": "경주 중앙시장 떡·한우축제…성동시장선 숟가락·젓가락축제 - 뉴스1",
+              "title": "제16회 철마한우불고기축제 21일 개막…맛·공연·체험 어우러진 '가을 한마당' - 정관타임스Live",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 81
             },
             {
-              "title": "철마한우불고기축제, 21일 개막… 맛과 흥의 가을 잔치 > 뉴스 - 더코리아",
+              "title": "‘제8회 경기 한우 고급육 평가대회’ 대상에 양평 박세민 농가 - 한국농어민신문",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 81
@@ -128,22 +136,22 @@
           ]
         }
       },
-      "reason": "가격 27점 + 뉴스/수요 9점 기반, 상방성 자료가 우세",
+      "reason": "가격 27점 + 질병/방역 11점 + 뉴스/수요 9점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
       "id": "PORK",
       "name": "돈육",
-      "signal_score": 28,
+      "signal_score": 29,
       "direction": "down",
       "status": "하방 가능성",
-      "quality_score": 72,
-      "confidence_score": 66,
+      "quality_score": 74,
+      "confidence_score": 67,
       "coverage_rate": 40,
-      "evidence_count": 16,
+      "evidence_count": 13,
       "official_count": 9,
       "direction_counts": {
-        "up": 15,
+        "up": 12,
         "down": 0,
         "neutral": 1,
         "hold": 0
@@ -155,7 +163,7 @@
       "score_breakdown": {
         "price": 10,
         "supply": 0,
-        "disease": 18,
+        "disease": 19,
         "policy": 0,
         "news": 0
       },
@@ -197,29 +205,29 @@
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
-          "score": 18,
-          "items": 15,
-          "up": 15,
+          "score": 19,
+          "items": 12,
+          "up": 12,
           "down": 0,
           "neutral": 0,
           "examples": [
             {
-              "title": "서귀포시, 가축전염병 특별방역 돌입…내년 2월까지 AI·구제역·ASF 유입 차단 - 제주뉴스",
+              "title": "야생멧돼지 ASF 통제 '게임체인저' 기대…코미팜, 경구백신 개발 속도 - 돼지와사람",
               "direction": "up",
               "source_level": 3,
-              "quality_score": 76
+              "quality_score": 81
             },
             {
-              "title": "경북도, 장마철 ASF 차단방역 강화 - 안동MBC",
+              "title": "아프리카돼지열병(ASF) 방역대책추진현황 261014 18시기준 - 경기도뉴스포털",
               "direction": "up",
               "source_level": 3,
               "quality_score": 71
             },
             {
-              "title": "겨울철 가축전염병 특별방역 강화… AI·구제역 차단 총력 - 한돈뉴스",
+              "title": "철원군, 겨울철 가축전염병 방역 강화…AI·구제역·ASF 집중 대응 - 뉴스1",
               "direction": "up",
               "source_level": 3,
-              "quality_score": 71
+              "quality_score": 65
             }
           ]
         },
@@ -244,32 +252,31 @@
           "examples": []
         }
       },
-      "reason": "질병/방역 18점 + 가격 10점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 가격 10점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
       "id": "POULTRY",
       "name": "계육",
-      "signal_score": 26,
-      "direction": "down",
-      "status": "하방 가능성",
-      "quality_score": 75,
-      "confidence_score": 68,
-      "coverage_rate": 40,
-      "evidence_count": 28,
-      "official_count": 10,
+      "signal_score": 19,
+      "direction": "hold",
+      "status": "판단 유보",
+      "quality_score": 77,
+      "confidence_score": 62,
+      "coverage_rate": 20,
+      "evidence_count": 26,
+      "official_count": 9,
       "direction_counts": {
-        "up": 27,
-        "down": 1,
+        "up": 26,
+        "down": 0,
         "neutral": 0,
         "hold": 0
       },
       "coverage_types": [
-        "가격",
         "질병/방역"
       ],
       "score_breakdown": {
-        "price": 7,
+        "price": 0,
         "supply": 0,
         "disease": 19,
         "policy": 0,
@@ -286,19 +293,12 @@
         "price": {
           "label": "가격",
           "max_score": 30,
-          "score": 7,
-          "items": 1,
+          "score": 0,
+          "items": 0,
           "up": 0,
-          "down": 1,
+          "down": 0,
           "neutral": 0,
-          "examples": [
-            {
-              "title": "육계 가격 하락에 치킨 가격도 내려갈까 - 뉴시스",
-              "direction": "down",
-              "source_level": 3,
-              "quality_score": 58
-            }
-          ]
+          "examples": []
         },
         "supply": {
           "label": "수급/도축",
@@ -314,28 +314,28 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 27,
-          "up": 27,
+          "items": 26,
+          "up": 26,
           "down": 0,
           "neutral": 0,
           "examples": [
             {
-              "title": "순천만 야생조류 분변에서 고병원성 조류인플루엔자(AI) 첫 검출… 전국 방역 강화 - 한국방송뉴스",
+              "title": "[포토뉴스] 고병원성조류인플루엔자(AI) 가상방역 현장훈련 - 강원일보",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
             },
             {
-              "title": "순천만 야생조류 분변서 고병원성 조류인플루엔자 첫 검출…방역 강화 - 뉴시스",
+              "title": "[포토뉴스]양구서 2026년 고병원성 조류인플루엔자 가상방역 현장훈련 - 강원일보",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
             },
             {
-              "title": "농림축산식품부, 고병원성 조류인플루엔자 방역 위한 훈련 실시 - 뉴스1",
+              "title": "양구서 고병원성 조류인플루엔자 가상 방역 훈련 - 강원도민일보",
               "direction": "up",
-              "source_level": 5,
-              "quality_score": 100
+              "source_level": 3,
+              "quality_score": 81
             }
           ]
         },
@@ -360,7 +360,7 @@
           "examples": []
         }
       },
-      "reason": "질병/방역 19점 + 가격 7점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
@@ -453,18 +453,18 @@
     {
       "id": "EGG",
       "name": "계란",
-      "signal_score": 67,
+      "signal_score": 66,
       "direction": "up",
       "status": "상방 가능성",
       "quality_score": 78,
-      "confidence_score": 85,
+      "confidence_score": 90,
       "coverage_rate": 100,
-      "evidence_count": 24,
-      "official_count": 5,
+      "evidence_count": 31,
+      "official_count": 7,
       "direction_counts": {
-        "up": 11,
-        "down": 4,
-        "neutral": 9,
+        "up": 12,
+        "down": 5,
+        "neutral": 14,
         "hold": 0
       },
       "coverage_types": [
@@ -476,10 +476,10 @@
       ],
       "score_breakdown": {
         "price": 12,
-        "supply": 21,
-        "disease": 20,
-        "policy": 6,
-        "news": 8
+        "supply": 23,
+        "disease": 18,
+        "policy": 4,
+        "news": 9
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -493,11 +493,17 @@
           "label": "가격",
           "max_score": 30,
           "score": 12,
-          "items": 5,
-          "up": 1,
-          "down": 2,
+          "items": 7,
+          "up": 2,
+          "down": 3,
           "neutral": 2,
           "examples": [
+            {
+              "title": "이형일, 브라질산 계란 수입 논란에 \"가격 안정 위한 가치 있는 정책\" - 경기매일",
+              "direction": "down",
+              "source_level": 3,
+              "quality_score": 81
+            },
             {
               "title": "계란산업협회, 계란 기준가격·유통개선 모색 - 핀포인트뉴스",
               "direction": "neutral",
@@ -508,23 +514,17 @@
               "title": "이형일, 브라질산 계란 수입 논란에 \"가격 안정 위한 가치 있는 정책\" - 뉴시스",
               "direction": "down",
               "source_level": 3,
-              "quality_score": 81
-            },
-            {
-              "title": "산지선 내렸다는데 계란 한 판엔 7000원대?[왜 이 가격] - 이데일리",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 76
+              "quality_score": 56
             }
           ]
         },
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 21,
-          "items": 5,
+          "score": 23,
+          "items": 4,
           "up": 3,
-          "down": 2,
+          "down": 1,
           "neutral": 0,
           "examples": [
             {
@@ -550,7 +550,7 @@
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
-          "score": 20,
+          "score": 18,
           "items": 7,
           "up": 7,
           "down": 0,
@@ -563,10 +563,10 @@
               "quality_score": 81
             },
             {
-              "title": "AI로 1134만 마리 살처분…정부, 브라질서 계란 112만개 긴급 수혈 - nbn 시사경제",
+              "title": "'브라질산 수입' 논란 속 계란값 6000원대…AI가 수급 변수 - 머니투데이 - 머니투데이",
               "direction": "up",
-              "source_level": 5,
-              "quality_score": 95
+              "source_level": 3,
+              "quality_score": 76
             },
             {
               "title": "계란값 다시 7000원대…겨울철 AI 확산에 가격 불안 커지나 - 매일일보",
@@ -579,11 +579,11 @@
         "policy": {
           "label": "정책/고시",
           "max_score": 10,
-          "score": 6,
-          "items": 4,
+          "score": 4,
+          "items": 8,
           "up": 0,
-          "down": 0,
-          "neutral": 4,
+          "down": 1,
+          "neutral": 7,
           "examples": [
             {
               "title": "이형일, 브라질산 계란 고가 수입 논란에 정면 반박 - 스페셜경제",
@@ -592,13 +592,13 @@
               "quality_score": 81
             },
             {
-              "title": "브라질산 계란, 수입선 다변화 포석 - 대한급식신문",
-              "direction": "neutral",
+              "title": "송미령 \"농지조사 상담 계속…브라질계란 수입은 물가안정조치\"(종합) - 연합뉴스",
+              "direction": "down",
               "source_level": 3,
-              "quality_score": 71
+              "quality_score": 81
             },
             {
-              "title": "이 대통령, 장동혁 겨냥 “브라질 계란 수입에 800억 낭비?…허위사실” - 한겨레",
+              "title": "브라질산 계란, 수입선 다변화 포석 - 대한급식신문",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 71
@@ -608,12 +608,18 @@
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 8,
-          "items": 3,
+          "score": 9,
+          "items": 5,
           "up": 0,
           "down": 0,
-          "neutral": 3,
+          "neutral": 5,
           "examples": [
+            {
+              "title": "계란 유통인들 “생존권 확보·산업 발전 다짐” - 한국농정신문",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 81
+            },
             {
               "title": "\"비싸서 난리더니 이젠 남아돈다?\"…계란값 뚝 떨어진 이유 [박상경의 영수증 리뷰] - 한국경제",
               "direction": "neutral",
@@ -625,46 +631,38 @@
               "direction": "neutral",
               "source_level": 5,
               "quality_score": 95
-            },
-            {
-              "title": "브라질 계란 800억 안썼다…李 \"16억에 불과\" 그런데 14억이 부대비용 - 매일신문",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 71
             }
           ]
         }
       },
-      "reason": "수급/도축 21점 + 질병/방역 20점 + 가격 12점 기반, 상방성 자료가 우세",
+      "reason": "수급/도축 23점 + 질병/방역 18점 + 가격 12점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
       "id": "OTHER",
       "name": "기타",
-      "signal_score": 52,
-      "direction": "neutral",
-      "status": "보합/혼조",
-      "quality_score": 76,
-      "confidence_score": 89,
-      "coverage_rate": 100,
-      "evidence_count": 39,
-      "official_count": 36,
+      "signal_score": 32,
+      "direction": "down",
+      "status": "하방 가능성",
+      "quality_score": 78,
+      "confidence_score": 76,
+      "coverage_rate": 60,
+      "evidence_count": 35,
+      "official_count": 35,
       "direction_counts": {
-        "up": 20,
-        "down": 1,
-        "neutral": 18,
+        "up": 18,
+        "down": 0,
+        "neutral": 17,
         "hold": 0
       },
       "coverage_types": [
-        "가격",
-        "수급/도축",
         "수요/행사",
         "일반",
         "질병/방역"
       ],
       "score_breakdown": {
-        "price": 9,
-        "supply": 11,
+        "price": 0,
+        "supply": 0,
         "disease": 19,
         "policy": 0,
         "news": 13
@@ -680,49 +678,29 @@
         "price": {
           "label": "가격",
           "max_score": 30,
-          "score": 9,
-          "items": 1,
+          "score": 0,
+          "items": 0,
           "up": 0,
           "down": 0,
-          "neutral": 1,
-          "examples": [
-            {
-              "title": "“계속되는 축산물 가격담합 시비 끝낸다” - 농축유통신문",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 51
-            }
-          ]
+          "neutral": 0,
+          "examples": []
         },
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 11,
-          "items": 2,
-          "up": 1,
-          "down": 1,
+          "score": 0,
+          "items": 0,
+          "up": 0,
+          "down": 0,
           "neutral": 0,
-          "examples": [
-            {
-              "title": "송옥주 의원, 축산물 수급조절·물가관리 법제화 추진 - 축산신문",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 51
-            },
-            {
-              "title": "김종구 농림축산식품부차관, 추석 명절 축산물 수급 안정에 총력 - 행정신문",
-              "direction": "down",
-              "source_level": 5,
-              "quality_score": 75
-            }
-          ]
+          "examples": []
         },
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 18,
-          "up": 18,
+          "items": 17,
+          "up": 17,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -733,16 +711,16 @@
               "quality_score": 95
             },
             {
-              "title": "검역본부, 겨울철 효율적 구제역 방역 박차 - 농축유통신문",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 58
-            },
-            {
               "title": "겨울철 가축전염병 예방을 위한 특별방역대책점검회의 개최 - 농림축산식품부",
               "direction": "up",
               "source_level": 5,
               "quality_score": 95
+            },
+            {
+              "title": "알림소식 > 공지·공고 > 2026년 동식물 방역방제 유공 정부포상 후보자 공개검증 - 농림축산식품부",
+              "direction": "up",
+              "source_level": 5,
+              "quality_score": 82
             }
           ]
         },
@@ -786,7 +764,7 @@
           ]
         }
       },
-      "reason": "질병/방역 19점 + 뉴스/수요 13점 + 수급/도축 11점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 뉴스/수요 13점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     }
   ]
