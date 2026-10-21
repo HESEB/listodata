@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-10-21T20:13:04Z",
+  "updated_at": "2026-10-21T23:25:13Z",
   "notice": "Phase 2 Display Layer 초안입니다. 기존 market_dashboard.json은 별도로 유지됩니다.",
   "species": [
     {
       "id": "BEEF",
       "name": "한우",
-      "signal_score": 36,
-      "direction": "neutral",
-      "status": "보합/혼조",
-      "quality_score": 78,
-      "confidence_score": 56,
+      "signal_score": 20,
+      "direction": "down",
+      "status": "하방 가능성",
+      "quality_score": 76,
+      "confidence_score": 55,
       "coverage_rate": 60,
-      "evidence_count": 28,
+      "evidence_count": 27,
       "official_count": 0,
       "direction_counts": {
-        "up": 4,
-        "down": 3,
-        "neutral": 21,
+        "up": 0,
+        "down": 4,
+        "neutral": 23,
         "hold": 0
       },
       "coverage_types": [
@@ -25,7 +25,7 @@
         "일반"
       ],
       "score_breakdown": {
-        "price": 27,
+        "price": 11,
         "supply": 0,
         "disease": 0,
         "policy": 0,
@@ -42,11 +42,11 @@
         "price": {
           "label": "가격",
           "max_score": 30,
-          "score": 27,
-          "items": 9,
-          "up": 4,
-          "down": 3,
-          "neutral": 2,
+          "score": 11,
+          "items": 7,
+          "up": 0,
+          "down": 4,
+          "neutral": 3,
           "examples": [
             {
               "title": "한우 등심 절반 가격에 스테이크 배양육 만든다…생산비 최대 80% 절감 - 한국식품의약신문",
@@ -102,10 +102,10 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 9,
-          "items": 19,
+          "items": 20,
           "up": 0,
           "down": 0,
-          "neutral": 19,
+          "neutral": 20,
           "examples": [
             {
               "title": "강진만 춤추는 갈대축제, 한우 숯불구이 향 솔솔 - 일등방송",
@@ -128,7 +128,7 @@
           ]
         }
       },
-      "reason": "가격 27점 + 뉴스/수요 9점 기반, 상방성 자료가 우세",
+      "reason": "가격 11점 + 뉴스/수요 9점 기반, 하방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
@@ -140,10 +140,10 @@
       "quality_score": 74,
       "confidence_score": 67,
       "coverage_rate": 40,
-      "evidence_count": 20,
-      "official_count": 11,
+      "evidence_count": 18,
+      "official_count": 9,
       "direction_counts": {
-        "up": 17,
+        "up": 15,
         "down": 1,
         "neutral": 2,
         "hold": 0
@@ -210,8 +210,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 17,
-          "up": 17,
+          "items": 15,
+          "up": 15,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -262,27 +262,28 @@
     {
       "id": "POULTRY",
       "name": "계육",
-      "signal_score": 26,
+      "signal_score": 31,
       "direction": "down",
       "status": "하방 가능성",
       "quality_score": 79,
-      "confidence_score": 70,
-      "coverage_rate": 40,
-      "evidence_count": 32,
-      "official_count": 11,
+      "confidence_score": 77,
+      "coverage_rate": 60,
+      "evidence_count": 34,
+      "official_count": 13,
       "direction_counts": {
-        "up": 31,
-        "down": 1,
+        "up": 32,
+        "down": 2,
         "neutral": 0,
         "hold": 0
       },
       "coverage_types": [
         "가격",
+        "수급/도축",
         "질병/방역"
       ],
       "score_breakdown": {
         "price": 7,
-        "supply": 0,
+        "supply": 5,
         "disease": 19,
         "policy": 0,
         "news": 0
@@ -315,19 +316,26 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 0,
-          "items": 0,
+          "score": 5,
+          "items": 1,
           "up": 0,
-          "down": 0,
+          "down": 1,
           "neutral": 0,
-          "examples": []
+          "examples": [
+            {
+              "title": "육계값 하락에 치킨업계 ‘숨통’…“가격보다 수급 안정” - 데일리한국",
+              "direction": "down",
+              "source_level": 3,
+              "quality_score": 51
+            }
+          ]
         },
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 31,
-          "up": 31,
+          "items": 32,
+          "up": 32,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -372,7 +380,7 @@
           "examples": []
         }
       },
-      "reason": "질병/방역 19점 + 가격 7점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 가격 7점 + 수급/도축 5점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
@@ -465,18 +473,18 @@
     {
       "id": "EGG",
       "name": "계란",
-      "signal_score": 67,
+      "signal_score": 72,
       "direction": "up",
       "status": "상방 가능성",
-      "quality_score": 79,
-      "confidence_score": 91,
+      "quality_score": 77,
+      "confidence_score": 79,
       "coverage_rate": 100,
-      "evidence_count": 31,
-      "official_count": 9,
+      "evidence_count": 19,
+      "official_count": 3,
       "direction_counts": {
-        "up": 12,
-        "down": 5,
-        "neutral": 14,
+        "up": 9,
+        "down": 3,
+        "neutral": 7,
         "hold": 0
       },
       "coverage_types": [
@@ -487,11 +495,11 @@
         "질병/방역"
       ],
       "score_breakdown": {
-        "price": 13,
-        "supply": 21,
-        "disease": 20,
-        "policy": 4,
-        "news": 9
+        "price": 19,
+        "supply": 22,
+        "disease": 19,
+        "policy": 6,
+        "news": 6
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -504,10 +512,10 @@
         "price": {
           "label": "가격",
           "max_score": 30,
-          "score": 13,
-          "items": 6,
+          "score": 19,
+          "items": 5,
           "up": 2,
-          "down": 3,
+          "down": 2,
           "neutral": 1,
           "examples": [
             {
@@ -523,19 +531,19 @@
               "quality_score": 81
             },
             {
-              "title": "계란산업협회, 계란 기준가격·유통개선 모색 - 핀포인트뉴스",
-              "direction": "neutral",
-              "source_level": 4,
-              "quality_score": 93
+              "title": "이형일, 브라질산 계란 수입 논란에 \"가격 안정 위한 가치 있는 정책\" - 뉴시스",
+              "direction": "down",
+              "source_level": 3,
+              "quality_score": 56
             }
           ]
         },
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 21,
-          "items": 3,
-          "up": 2,
+          "score": 22,
+          "items": 4,
+          "up": 3,
           "down": 1,
           "neutral": 0,
           "examples": [
@@ -546,10 +554,10 @@
               "quality_score": 81
             },
             {
-              "title": "계란값 하락 견인한 것은 '수입' 아닌 '수급' - 팜인사이트",
-              "direction": "down",
+              "title": "“계란 기준가격 마련해야”…유통업계, 가격 혼선·수급 불안 해소 촉구 - 헤럴드경제",
+              "direction": "up",
               "source_level": 3,
-              "quality_score": 71
+              "quality_score": 76
             },
             {
               "title": "“계란산업, ‘가격’도 ‘수급’도 정부 정책에 흔들렸다” - 농업인신문",
@@ -562,9 +570,9 @@
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
-          "score": 20,
-          "items": 8,
-          "up": 8,
+          "score": 19,
+          "items": 4,
+          "up": 4,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -591,11 +599,11 @@
         "policy": {
           "label": "정책/고시",
           "max_score": 10,
-          "score": 4,
-          "items": 7,
+          "score": 6,
+          "items": 5,
           "up": 0,
-          "down": 1,
-          "neutral": 6,
+          "down": 0,
+          "neutral": 5,
           "examples": [
             {
               "title": "브라질산 계란 한 판 수입원가 4만4천원…적정성 논란 - 축산신문",
@@ -604,10 +612,10 @@
               "quality_score": 81
             },
             {
-              "title": "송미령 \"농지조사 상담 계속…브라질계란 수입은 물가안정조치\"(종합) - 연합뉴스",
-              "direction": "down",
+              "title": "이형일, 브라질산 계란 고가 수입 논란에 정면 반박 - 스페셜경제",
+              "direction": "neutral",
               "source_level": 3,
-              "quality_score": 76
+              "quality_score": 81
             },
             {
               "title": "브라질산 계란, 수입선 다변화 포석 - 대한급식신문",
@@ -620,64 +628,54 @@
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 9,
-          "items": 7,
+          "score": 6,
+          "items": 1,
           "up": 0,
           "down": 0,
-          "neutral": 7,
+          "neutral": 1,
           "examples": [
-            {
-              "title": "계란 유통인들 “생존권 확보·산업 발전 다짐” - 한국농정신문",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 81
-            },
             {
               "title": "\"비싸서 난리더니 이젠 남아돈다?\"…계란값 뚝 떨어진 이유 [박상경의 영수증 리뷰] - 한국경제",
               "direction": "neutral",
               "source_level": 3,
-              "quality_score": 81
-            },
-            {
-              "title": "농식품부 , 6.7% 오른 계란값 23.3% 로 뻥튀기해 담합 몰이 '공정위 과징금 부과' - livesnews.com",
-              "direction": "neutral",
-              "source_level": 5,
-              "quality_score": 95
+              "quality_score": 76
             }
           ]
         }
       },
-      "reason": "수급/도축 21점 + 질병/방역 20점 + 가격 13점 기반, 상방성 자료가 우세",
+      "reason": "수급/도축 22점 + 가격 19점 + 질병/방역 19점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
       "id": "OTHER",
       "name": "기타",
-      "signal_score": 28,
-      "direction": "down",
-      "status": "하방 가능성",
-      "quality_score": 77,
-      "confidence_score": 76,
-      "coverage_rate": 60,
-      "evidence_count": 36,
-      "official_count": 36,
+      "signal_score": 60,
+      "direction": "up",
+      "status": "상방 가능성",
+      "quality_score": 72,
+      "confidence_score": 87,
+      "coverage_rate": 100,
+      "evidence_count": 38,
+      "official_count": 32,
       "direction_counts": {
         "up": 20,
-        "down": 1,
-        "neutral": 15,
+        "down": 2,
+        "neutral": 16,
         "hold": 0
       },
       "coverage_types": [
+        "가격",
+        "수급/도축",
         "수요/행사",
         "일반",
         "질병/방역"
       ],
       "score_breakdown": {
-        "price": 0,
-        "supply": 0,
+        "price": 9,
+        "supply": 19,
         "disease": 19,
         "policy": 0,
-        "news": 9
+        "news": 13
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -690,32 +688,64 @@
         "price": {
           "label": "가격",
           "max_score": 30,
-          "score": 0,
-          "items": 0,
+          "score": 9,
+          "items": 1,
           "up": 0,
           "down": 0,
-          "neutral": 0,
-          "examples": []
+          "neutral": 1,
+          "examples": [
+            {
+              "title": "“계속되는 축산물 가격담합 시비 끝낸다” - 농축유통신문",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 51
+            }
+          ]
         },
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 0,
-          "items": 0,
-          "up": 0,
-          "down": 0,
+          "score": 19,
+          "items": 7,
+          "up": 5,
+          "down": 2,
           "neutral": 0,
-          "examples": []
+          "examples": [
+            {
+              "title": "송옥주 의원, 축산물 수급조절·물가관리 법제화 추진 - 축산신문",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 51
+            },
+            {
+              "title": "김종구 농림축산식품부차관, 추석 명절 축산물 수급 안정에 총력 - 행정신문",
+              "direction": "down",
+              "source_level": 5,
+              "quality_score": 75
+            },
+            {
+              "title": "송옥주 의원, 축산물 수급조절·물가관리 법제화 추진 - 경인뷰",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 26
+            }
+          ]
         },
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 19,
-          "up": 19,
+          "items": 13,
+          "up": 13,
           "down": 0,
           "neutral": 0,
           "examples": [
+            {
+              "title": "겨울철 가축전염병 예방을 위한 특별방역대책점검회의 개최 - 농림축산식품부",
+              "direction": "up",
+              "source_level": 5,
+              "quality_score": 95
+            },
             {
               "title": "알림소식 > 공지·공고 > 2026년 동식물 방역방제 유공 정부포상 후보자 공개검증 - 농림축산식품부",
               "direction": "up",
@@ -724,12 +754,6 @@
             },
             {
               "title": "종 가축전염병 전환에 따른 방역조치 조정과 가축방역사 위촉 대상 및 교육기관 확대 등을 주요 - 농림축산식품부",
-              "direction": "up",
-              "source_level": 5,
-              "quality_score": 82
-            },
-            {
-              "title": "알림소식 > 보도자료 > 현장에서 직접 써보고 고른다… 더 편리하고 안전한 가축방역물품 찾는다 - 농림축산식품부",
               "direction": "up",
               "source_level": 5,
               "quality_score": 82
@@ -749,20 +773,20 @@
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 9,
+          "score": 13,
           "items": 17,
-          "up": 1,
-          "down": 1,
+          "up": 2,
+          "down": 0,
           "neutral": 15,
           "examples": [
             {
-              "title": "문서뷰어 - 농림축산식품부",
+              "title": "겨울철새 남하 시작...10월 중하순 본격 도래 전망 - 농림축산식품부",
               "direction": "neutral",
               "source_level": 5,
-              "quality_score": 100
+              "quality_score": 82
             },
             {
-              "title": "겨울철새 남하 시작...10월 중하순 본격 도래 전망 - 농림축산식품부",
+              "title": "동정 및 행사 - 농림축산식품부",
               "direction": "neutral",
               "source_level": 5,
               "quality_score": 82
@@ -776,7 +800,7 @@
           ]
         }
       },
-      "reason": "질병/방역 19점 + 뉴스/수요 9점 기반, 상방성 자료가 우세",
+      "reason": "수급/도축 19점 + 질병/방역 19점 + 뉴스/수요 13점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     }
   ]
