@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-22T04:58:26Z",
+  "updated_at": "2026-10-22T10:17:06Z",
   "policy": "phase2_cross_market_matrix_v1",
   "notice": "축종 간 대체수요·가금 질병·공통 변수 전이 가능성을 Evidence Score와 Conflict 결과로 가중한 검수용 매트릭스입니다.",
   "items": [
@@ -38,7 +38,7 @@
       "source_direction": "down",
       "source_status": "하방 가능성",
       "source_signal_score": 29,
-      "source_confidence": 68,
+      "source_confidence": 69,
       "target_status": "하방 가능성",
       "shared_axes": [
         "가격",
@@ -55,11 +55,11 @@
       "kind": "substitution",
       "effect": "판단유보 전이",
       "severity": "hold",
-      "strength": 0.013,
+      "strength": 0.011,
       "base_strength": 0.18,
       "source_direction": "hold",
       "source_status": "판단 유보",
-      "source_signal_score": 44,
+      "source_signal_score": 38,
       "source_confidence": 45,
       "target_status": "하방 가능성",
       "shared_axes": [
@@ -81,7 +81,7 @@
       "source_direction": "down",
       "source_status": "하방 가능성",
       "source_signal_score": 29,
-      "source_confidence": 68,
+      "source_confidence": 69,
       "target_status": "판단 유보",
       "shared_axes": [
         "가격"
@@ -139,18 +139,18 @@
       "kind": "avian_risk",
       "effect": "약한 전이",
       "severity": "low",
-      "strength": 0.287,
+      "strength": 0.279,
       "base_strength": 0.28,
       "source_direction": "up",
       "source_status": "상방 가능성",
-      "source_signal_score": 68,
-      "source_confidence": 90,
+      "source_signal_score": 66,
+      "source_confidence": 89,
       "target_status": "하방 가능성",
       "shared_axes": [
         "가격",
         "질병/방역"
       ],
-      "conflict_note": "주의 필요 · 충돌축: 가격",
+      "conflict_note": "주의 필요 · 충돌축: 가격, 수급/도축 / 유보사유: 복수 근거축 충돌",
       "memo": "계란 상방 가능성 신호가 계육에 전이 가능 / 계란·계육은 산란계/가금 질병 이슈를 공유 / 공통 근거축: 가격, 질병/방역 / 단, 원천 축종에 충돌 근거 존재"
     },
     {
@@ -181,20 +181,22 @@
       "to": "BEEF",
       "to_name": "한우",
       "kind": "common_factor",
-      "effect": "관찰",
-      "severity": "watch",
-      "strength": -0.042,
+      "effect": "판단유보 전이",
+      "severity": "hold",
+      "strength": 0.033,
       "base_strength": 0.16,
-      "source_direction": "down",
-      "source_status": "하방 가능성",
-      "source_signal_score": 32,
-      "source_confidence": 76,
+      "source_direction": "hold",
+      "source_status": "판단 유보",
+      "source_signal_score": 60,
+      "source_confidence": 70,
       "target_status": "판단 유보",
       "shared_axes": [
+        "가격",
+        "수급/도축",
         "뉴스/수요"
       ],
-      "conflict_note": "주의 필요 · 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 주요 근거축 다수 누락",
-      "memo": "기타 하방 가능성 신호가 한우에 전이 가능 / 수입·환율·사료·물류 등 공통 변수 영향 / 공통 근거축: 뉴스/수요"
+      "conflict_note": "판단 유보 권장 · 충돌축: 수급/도축 / 누락근거: 정책/고시 / 유보사유: 상·하방 근거 강충돌",
+      "memo": "기타 판단 유보 신호가 한우에 전이 가능 / 수입·환율·사료·물류 등 공통 변수 영향 / 공통 근거축: 가격, 수급/도축, 뉴스/수요 / 단, 원천 축종에 충돌 근거 존재"
     },
     {
       "from": "OTHER",
@@ -202,20 +204,21 @@
       "to": "PORK",
       "to_name": "돈육",
       "kind": "common_factor",
-      "effect": "관찰",
-      "severity": "watch",
-      "strength": -0.046,
+      "effect": "판단유보 전이",
+      "severity": "hold",
+      "strength": 0.031,
       "base_strength": 0.18,
-      "source_direction": "down",
-      "source_status": "하방 가능성",
-      "source_signal_score": 32,
-      "source_confidence": 76,
+      "source_direction": "hold",
+      "source_status": "판단 유보",
+      "source_signal_score": 60,
+      "source_confidence": 70,
       "target_status": "하방 가능성",
       "shared_axes": [
+        "가격",
         "질병/방역"
       ],
-      "conflict_note": "주의 필요 · 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 주요 근거축 다수 누락",
-      "memo": "기타 하방 가능성 신호가 돈육에 전이 가능 / 수입·환율·사료·물류 등 공통 변수 영향 / 공통 근거축: 질병/방역"
+      "conflict_note": "판단 유보 권장 · 충돌축: 수급/도축 / 누락근거: 정책/고시 / 유보사유: 상·하방 근거 강충돌",
+      "memo": "기타 판단 유보 신호가 돈육에 전이 가능 / 수입·환율·사료·물류 등 공통 변수 영향 / 공통 근거축: 가격, 질병/방역 / 단, 원천 축종에 충돌 근거 존재"
     },
     {
       "from": "OTHER",
@@ -223,20 +226,21 @@
       "to": "POULTRY",
       "to_name": "계육",
       "kind": "common_factor",
-      "effect": "관찰",
-      "severity": "watch",
-      "strength": -0.046,
+      "effect": "판단유보 전이",
+      "severity": "hold",
+      "strength": 0.031,
       "base_strength": 0.18,
-      "source_direction": "down",
-      "source_status": "하방 가능성",
-      "source_signal_score": 32,
-      "source_confidence": 76,
+      "source_direction": "hold",
+      "source_status": "판단 유보",
+      "source_signal_score": 60,
+      "source_confidence": 70,
       "target_status": "하방 가능성",
       "shared_axes": [
+        "가격",
         "질병/방역"
       ],
-      "conflict_note": "주의 필요 · 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 주요 근거축 다수 누락",
-      "memo": "기타 하방 가능성 신호가 계육에 전이 가능 / 수입·환율·사료·물류 등 공통 변수 영향 / 공통 근거축: 질병/방역"
+      "conflict_note": "판단 유보 권장 · 충돌축: 수급/도축 / 누락근거: 정책/고시 / 유보사유: 상·하방 근거 강충돌",
+      "memo": "기타 판단 유보 신호가 계육에 전이 가능 / 수입·환율·사료·물류 등 공통 변수 영향 / 공통 근거축: 가격, 질병/방역 / 단, 원천 축종에 충돌 근거 존재"
     }
   ],
   "species_summary": {
@@ -245,8 +249,8 @@
       "name": "한우",
       "incoming_count": 2,
       "outgoing_count": 1,
-      "incoming_strength": 0.062,
-      "outgoing_strength": 0.013,
+      "incoming_strength": 0.053,
+      "outgoing_strength": 0.011,
       "top_incoming": [
         {
           "from": "OTHER",
@@ -254,20 +258,22 @@
           "to": "BEEF",
           "to_name": "한우",
           "kind": "common_factor",
-          "effect": "관찰",
-          "severity": "watch",
-          "strength": -0.042,
+          "effect": "판단유보 전이",
+          "severity": "hold",
+          "strength": 0.033,
           "base_strength": 0.16,
-          "source_direction": "down",
-          "source_status": "하방 가능성",
-          "source_signal_score": 32,
-          "source_confidence": 76,
+          "source_direction": "hold",
+          "source_status": "판단 유보",
+          "source_signal_score": 60,
+          "source_confidence": 70,
           "target_status": "판단 유보",
           "shared_axes": [
+            "가격",
+            "수급/도축",
             "뉴스/수요"
           ],
-          "conflict_note": "주의 필요 · 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 주요 근거축 다수 누락",
-          "memo": "기타 하방 가능성 신호가 한우에 전이 가능 / 수입·환율·사료·물류 등 공통 변수 영향 / 공통 근거축: 뉴스/수요"
+          "conflict_note": "판단 유보 권장 · 충돌축: 수급/도축 / 누락근거: 정책/고시 / 유보사유: 상·하방 근거 강충돌",
+          "memo": "기타 판단 유보 신호가 한우에 전이 가능 / 수입·환율·사료·물류 등 공통 변수 영향 / 공통 근거축: 가격, 수급/도축, 뉴스/수요 / 단, 원천 축종에 충돌 근거 존재"
         },
         {
           "from": "PORK",
@@ -282,7 +288,7 @@
           "source_direction": "down",
           "source_status": "하방 가능성",
           "source_signal_score": 29,
-          "source_confidence": 68,
+          "source_confidence": 69,
           "target_status": "판단 유보",
           "shared_axes": [
             "가격"
@@ -300,11 +306,11 @@
           "kind": "substitution",
           "effect": "판단유보 전이",
           "severity": "hold",
-          "strength": 0.013,
+          "strength": 0.011,
           "base_strength": 0.18,
           "source_direction": "hold",
           "source_status": "판단 유보",
-          "source_signal_score": 44,
+          "source_signal_score": 38,
           "source_confidence": 45,
           "target_status": "하방 가능성",
           "shared_axes": [
@@ -320,7 +326,7 @@
       "name": "돈육",
       "incoming_count": 3,
       "outgoing_count": 2,
-      "incoming_strength": 0.107,
+      "incoming_strength": 0.09,
       "outgoing_strength": 0.067,
       "top_incoming": [
         {
@@ -351,20 +357,21 @@
           "to": "PORK",
           "to_name": "돈육",
           "kind": "common_factor",
-          "effect": "관찰",
-          "severity": "watch",
-          "strength": -0.046,
+          "effect": "판단유보 전이",
+          "severity": "hold",
+          "strength": 0.031,
           "base_strength": 0.18,
-          "source_direction": "down",
-          "source_status": "하방 가능성",
-          "source_signal_score": 32,
-          "source_confidence": 76,
+          "source_direction": "hold",
+          "source_status": "판단 유보",
+          "source_signal_score": 60,
+          "source_confidence": 70,
           "target_status": "하방 가능성",
           "shared_axes": [
+            "가격",
             "질병/방역"
           ],
-          "conflict_note": "주의 필요 · 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 주요 근거축 다수 누락",
-          "memo": "기타 하방 가능성 신호가 돈육에 전이 가능 / 수입·환율·사료·물류 등 공통 변수 영향 / 공통 근거축: 질병/방역"
+          "conflict_note": "판단 유보 권장 · 충돌축: 수급/도축 / 누락근거: 정책/고시 / 유보사유: 상·하방 근거 강충돌",
+          "memo": "기타 판단 유보 신호가 돈육에 전이 가능 / 수입·환율·사료·물류 등 공통 변수 영향 / 공통 근거축: 가격, 질병/방역 / 단, 원천 축종에 충돌 근거 존재"
         },
         {
           "from": "BEEF",
@@ -374,11 +381,11 @@
           "kind": "substitution",
           "effect": "판단유보 전이",
           "severity": "hold",
-          "strength": 0.013,
+          "strength": 0.011,
           "base_strength": 0.18,
           "source_direction": "hold",
           "source_status": "판단 유보",
-          "source_signal_score": 44,
+          "source_signal_score": 38,
           "source_confidence": 45,
           "target_status": "하방 가능성",
           "shared_axes": [
@@ -402,7 +409,7 @@
           "source_direction": "down",
           "source_status": "하방 가능성",
           "source_signal_score": 29,
-          "source_confidence": 68,
+          "source_confidence": 69,
           "target_status": "하방 가능성",
           "shared_axes": [
             "가격",
@@ -424,7 +431,7 @@
           "source_direction": "down",
           "source_status": "하방 가능성",
           "source_signal_score": 29,
-          "source_confidence": 68,
+          "source_confidence": 69,
           "target_status": "판단 유보",
           "shared_axes": [
             "가격"
@@ -439,7 +446,7 @@
       "name": "계육",
       "incoming_count": 4,
       "outgoing_count": 3,
-      "incoming_strength": 0.38,
+      "incoming_strength": 0.357,
       "outgoing_strength": 0.158,
       "top_incoming": [
         {
@@ -450,18 +457,18 @@
           "kind": "avian_risk",
           "effect": "약한 전이",
           "severity": "low",
-          "strength": 0.287,
+          "strength": 0.279,
           "base_strength": 0.28,
           "source_direction": "up",
           "source_status": "상방 가능성",
-          "source_signal_score": 68,
-          "source_confidence": 90,
+          "source_signal_score": 66,
+          "source_confidence": 89,
           "target_status": "하방 가능성",
           "shared_axes": [
             "가격",
             "질병/방역"
           ],
-          "conflict_note": "주의 필요 · 충돌축: 가격",
+          "conflict_note": "주의 필요 · 충돌축: 가격, 수급/도축 / 유보사유: 복수 근거축 충돌",
           "memo": "계란 상방 가능성 신호가 계육에 전이 가능 / 계란·계육은 산란계/가금 질병 이슈를 공유 / 공통 근거축: 가격, 질병/방역 / 단, 원천 축종에 충돌 근거 존재"
         },
         {
@@ -477,7 +484,7 @@
           "source_direction": "down",
           "source_status": "하방 가능성",
           "source_signal_score": 29,
-          "source_confidence": 68,
+          "source_confidence": 69,
           "target_status": "하방 가능성",
           "shared_axes": [
             "가격",
@@ -492,20 +499,21 @@
           "to": "POULTRY",
           "to_name": "계육",
           "kind": "common_factor",
-          "effect": "관찰",
-          "severity": "watch",
-          "strength": -0.046,
+          "effect": "판단유보 전이",
+          "severity": "hold",
+          "strength": 0.031,
           "base_strength": 0.18,
-          "source_direction": "down",
-          "source_status": "하방 가능성",
-          "source_signal_score": 32,
-          "source_confidence": 76,
+          "source_direction": "hold",
+          "source_status": "판단 유보",
+          "source_signal_score": 60,
+          "source_confidence": 70,
           "target_status": "하방 가능성",
           "shared_axes": [
+            "가격",
             "질병/방역"
           ],
-          "conflict_note": "주의 필요 · 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 주요 근거축 다수 누락",
-          "memo": "기타 하방 가능성 신호가 계육에 전이 가능 / 수입·환율·사료·물류 등 공통 변수 영향 / 공통 근거축: 질병/방역"
+          "conflict_note": "판단 유보 권장 · 충돌축: 수급/도축 / 누락근거: 정책/고시 / 유보사유: 상·하방 근거 강충돌",
+          "memo": "기타 판단 유보 신호가 계육에 전이 가능 / 수입·환율·사료·물류 등 공통 변수 영향 / 공통 근거축: 가격, 질병/방역 / 단, 원천 축종에 충돌 근거 존재"
         }
       ],
       "top_outgoing": [
@@ -636,7 +644,7 @@
       "incoming_count": 1,
       "outgoing_count": 1,
       "incoming_strength": 0.057,
-      "outgoing_strength": 0.287,
+      "outgoing_strength": 0.279,
       "top_incoming": [
         {
           "from": "POULTRY",
@@ -670,18 +678,18 @@
           "kind": "avian_risk",
           "effect": "약한 전이",
           "severity": "low",
-          "strength": 0.287,
+          "strength": 0.279,
           "base_strength": 0.28,
           "source_direction": "up",
           "source_status": "상방 가능성",
-          "source_signal_score": 68,
-          "source_confidence": 90,
+          "source_signal_score": 66,
+          "source_confidence": 89,
           "target_status": "하방 가능성",
           "shared_axes": [
             "가격",
             "질병/방역"
           ],
-          "conflict_note": "주의 필요 · 충돌축: 가격",
+          "conflict_note": "주의 필요 · 충돌축: 가격, 수급/도축 / 유보사유: 복수 근거축 충돌",
           "memo": "계란 상방 가능성 신호가 계육에 전이 가능 / 계란·계육은 산란계/가금 질병 이슈를 공유 / 공통 근거축: 가격, 질병/방역 / 단, 원천 축종에 충돌 근거 존재"
         }
       ]
@@ -692,29 +700,53 @@
       "incoming_count": 0,
       "outgoing_count": 3,
       "incoming_strength": 0,
-      "outgoing_strength": 0.134,
+      "outgoing_strength": 0.095,
       "top_incoming": [],
       "top_outgoing": [
+        {
+          "from": "OTHER",
+          "from_name": "기타",
+          "to": "BEEF",
+          "to_name": "한우",
+          "kind": "common_factor",
+          "effect": "판단유보 전이",
+          "severity": "hold",
+          "strength": 0.033,
+          "base_strength": 0.16,
+          "source_direction": "hold",
+          "source_status": "판단 유보",
+          "source_signal_score": 60,
+          "source_confidence": 70,
+          "target_status": "판단 유보",
+          "shared_axes": [
+            "가격",
+            "수급/도축",
+            "뉴스/수요"
+          ],
+          "conflict_note": "판단 유보 권장 · 충돌축: 수급/도축 / 누락근거: 정책/고시 / 유보사유: 상·하방 근거 강충돌",
+          "memo": "기타 판단 유보 신호가 한우에 전이 가능 / 수입·환율·사료·물류 등 공통 변수 영향 / 공통 근거축: 가격, 수급/도축, 뉴스/수요 / 단, 원천 축종에 충돌 근거 존재"
+        },
         {
           "from": "OTHER",
           "from_name": "기타",
           "to": "PORK",
           "to_name": "돈육",
           "kind": "common_factor",
-          "effect": "관찰",
-          "severity": "watch",
-          "strength": -0.046,
+          "effect": "판단유보 전이",
+          "severity": "hold",
+          "strength": 0.031,
           "base_strength": 0.18,
-          "source_direction": "down",
-          "source_status": "하방 가능성",
-          "source_signal_score": 32,
-          "source_confidence": 76,
+          "source_direction": "hold",
+          "source_status": "판단 유보",
+          "source_signal_score": 60,
+          "source_confidence": 70,
           "target_status": "하방 가능성",
           "shared_axes": [
+            "가격",
             "질병/방역"
           ],
-          "conflict_note": "주의 필요 · 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 주요 근거축 다수 누락",
-          "memo": "기타 하방 가능성 신호가 돈육에 전이 가능 / 수입·환율·사료·물류 등 공통 변수 영향 / 공통 근거축: 질병/방역"
+          "conflict_note": "판단 유보 권장 · 충돌축: 수급/도축 / 누락근거: 정책/고시 / 유보사유: 상·하방 근거 강충돌",
+          "memo": "기타 판단 유보 신호가 돈육에 전이 가능 / 수입·환율·사료·물류 등 공통 변수 영향 / 공통 근거축: 가격, 질병/방역 / 단, 원천 축종에 충돌 근거 존재"
         },
         {
           "from": "OTHER",
@@ -722,41 +754,21 @@
           "to": "POULTRY",
           "to_name": "계육",
           "kind": "common_factor",
-          "effect": "관찰",
-          "severity": "watch",
-          "strength": -0.046,
+          "effect": "판단유보 전이",
+          "severity": "hold",
+          "strength": 0.031,
           "base_strength": 0.18,
-          "source_direction": "down",
-          "source_status": "하방 가능성",
-          "source_signal_score": 32,
-          "source_confidence": 76,
+          "source_direction": "hold",
+          "source_status": "판단 유보",
+          "source_signal_score": 60,
+          "source_confidence": 70,
           "target_status": "하방 가능성",
           "shared_axes": [
+            "가격",
             "질병/방역"
           ],
-          "conflict_note": "주의 필요 · 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 주요 근거축 다수 누락",
-          "memo": "기타 하방 가능성 신호가 계육에 전이 가능 / 수입·환율·사료·물류 등 공통 변수 영향 / 공통 근거축: 질병/방역"
-        },
-        {
-          "from": "OTHER",
-          "from_name": "기타",
-          "to": "BEEF",
-          "to_name": "한우",
-          "kind": "common_factor",
-          "effect": "관찰",
-          "severity": "watch",
-          "strength": -0.042,
-          "base_strength": 0.16,
-          "source_direction": "down",
-          "source_status": "하방 가능성",
-          "source_signal_score": 32,
-          "source_confidence": 76,
-          "target_status": "판단 유보",
-          "shared_axes": [
-            "뉴스/수요"
-          ],
-          "conflict_note": "주의 필요 · 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 주요 근거축 다수 누락",
-          "memo": "기타 하방 가능성 신호가 한우에 전이 가능 / 수입·환율·사료·물류 등 공통 변수 영향 / 공통 근거축: 뉴스/수요"
+          "conflict_note": "판단 유보 권장 · 충돌축: 수급/도축 / 누락근거: 정책/고시 / 유보사유: 상·하방 근거 강충돌",
+          "memo": "기타 판단 유보 신호가 계육에 전이 가능 / 수입·환율·사료·물류 등 공통 변수 영향 / 공통 근거축: 가격, 질병/방역 / 단, 원천 축종에 충돌 근거 존재"
         }
       ]
     }
