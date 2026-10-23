@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-10-23T19:19:15Z",
+  "updated_at": "2026-10-23T22:22:05Z",
   "policy": "phase2_conflict_hold_v1",
   "notice": "상방·하방 근거 충돌, 근거 누락, 신뢰도 부족에 따른 판단 유보 검수 리포트입니다.",
   "summary": {
     "species_count": 6,
     "conflict_species_count": 1,
-    "hold_recommended_count": 1,
-    "high_conflict_count": 0
+    "hold_recommended_count": 2,
+    "high_conflict_count": 1
   },
   "species": [
     {
@@ -97,18 +97,92 @@
       "id": "EGG",
       "name": "계란",
       "has_conflict": true,
-      "conflict_severity": "medium",
+      "conflict_severity": "high",
       "conflict_axes": [
         "가격"
       ],
       "missing_evidence": [],
-      "hold_reasons": [],
+      "hold_reasons": [
+        "상·하방 근거 강충돌"
+      ],
       "original_confidence": 86,
-      "adjusted_confidence": 76,
-      "should_hold": false,
-      "recommended_status": "상방 가능성",
-      "recommended_direction": "up",
-      "memo": "주의 필요 · 충돌축: 가격"
+      "adjusted_confidence": 68,
+      "should_hold": [
+        {
+          "axis": "price",
+          "label": "가격",
+          "items": 6,
+          "has_conflict": true,
+          "severity": "high",
+          "dominant_direction": "neutral",
+          "weighted_direction": {
+            "up": 8.24,
+            "down": 8.24,
+            "neutral": 6.83
+          },
+          "conflict_ratio": 1.0,
+          "examples": {
+            "up": [
+              {
+                "title": "박성민 의원, 계란값 급등·골목상권 지원기준 강화 질타 - 울산종합일보",
+                "source": "울산종합일보",
+                "direction": "up",
+                "quality_score": 81,
+                "source_level": 3,
+                "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBWWnZsUnJXelNpSjhYSllqZkpscE16cFVCYlRCMWFldVpRcmxyVzhwVzViSWswN3BrWVdFVVM0YVF2Q1VNVGFUYm05R1JIY1VGVk1xcmRyUG5JeGE1R19KeW5tYXZ5dHhCZkNTUkZB?oc=5"
+              },
+              {
+                "title": "계란값 급락…과일·커피값은 상승 - 미주중앙일보",
+                "source": "미주중앙일보",
+                "direction": "up",
+                "quality_score": 76,
+                "source_level": 3,
+                "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE50RVRYQzZjY0hlcndBeXQ3Qjg5dzJNVEwzbWhLakdGU3dVNlBxcGx6ZDZ2WTB6NUhxdXZvZXZQNlZvWmk0eUZuWjBRX0xLV0tBRHpjQlBrZHlwazZWeHprLXJB?oc=5"
+              }
+            ],
+            "down": [
+              {
+                "title": "계란값 하락…업계 “수입보다 국내 생산 회복 영향” - 축산신문",
+                "source": "축산신문",
+                "direction": "down",
+                "quality_score": 81,
+                "source_level": 3,
+                "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5OaDJnWlY2RVExTVlHNmx1a2xNVnFxbURaVVlFSWZNc0M0bTdIWjdid3RmU3I5RFZjMHFPRUtUVXdQRWZJOVdtRmFHS3NJb2pZNjBqLUhubGtkV2puRTVDZmtNWnNaTzlK?oc=5"
+              },
+              {
+                "title": "2026년 42주차 EU A등급 계란 가격 소폭 하락 - IndexBox",
+                "source": "IndexBox",
+                "direction": "down",
+                "quality_score": 76,
+                "source_level": 3,
+                "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNdXl0NVZDWG9saHNSRzhDbnZkSmtlVzcwWHNCTXdYNnNVVW1mdU1uMFpiek5odnJrQWI3b21RdnF0NnB3RDlzeDFfaTJsWW9KX2lYZTVGenZRamVIUHM4a0pHYlc5Z2NEYzJXRXYyNWNvc09naTdDOE9BZzY2LThmclZDR2s?oc=5"
+              }
+            ],
+            "neutral": [
+              {
+                "title": "계란산업협회, 계란 기준가격·유통개선 모색 - 핀포인트뉴스",
+                "source": "핀포인트뉴스",
+                "direction": "neutral",
+                "quality_score": 88,
+                "source_level": 4,
+                "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5zbzN5OGhMSXBBenJmdXNoYXp5dXdMakJpbTF1M3JlVEc3NmVrUnZiclNRLXNXZXRYUkZKSENzSGpiUGpFaU1rWXU0Y0hpbmk5bXh5VmRGT3ZOTTI3LWdQYzZwVVQyVmMxeWh1TlBicEFyZngweGln0gF3QVVfeXFMTnNvM3k4aExJcEF6cmZ1c2hhenl1d0xqQmltMXUzcmVURzc2ZWtSdmJyU1Etc1dldFhSRkpIQ3NIamJQakVpTWtZdTRjSGluaTlteHlWZEZPdk5NMjctZ1BjNnBVVDJWYzF5aHVOUGJwQXJmeDB4aWc?oc=5"
+              },
+              {
+                "title": "치솟던 계란 산지가격 ‘뚝’…10개당 2,000원 선 무너진 이유 - 더바이어",
+                "source": "더바이어",
+                "direction": "neutral",
+                "quality_score": 76,
+                "source_level": 3,
+                "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5TWkNLSnJEMlEwQ2ZaTW9IakVQUnFscmVMTWZvZUZJdC13b3VYQllGc21DdTd3bkVmZktqRkNOaTNqeXRtci1QOE5iWGhGY1pBdEhtb0YyYWNLUE8xUHh3VkYteDMyOGVtTEVZ?oc=5"
+              }
+            ]
+          },
+          "memo": "가격 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
+        }
+      ],
+      "recommended_status": "판단 유보",
+      "recommended_direction": "hold",
+      "memo": "판단 유보 권장 · 충돌축: 가격 / 유보사유: 상·하방 근거 강충돌"
     },
     {
       "id": "OTHER",
@@ -137,16 +211,16 @@
       {
         "axis": "price",
         "label": "가격",
-        "items": 11,
+        "items": 10,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "down",
         "weighted_direction": {
           "up": 3.97,
-          "down": 22.86,
+          "down": 18.2,
           "neutral": 12.88
         },
-        "conflict_ratio": 0.17,
+        "conflict_ratio": 0.22,
         "examples": {
           "up": [
             {
@@ -285,14 +359,14 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 17,
+        "items": 18,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "neutral",
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 59.3
+          "neutral": 62.57
         },
         "conflict_ratio": 0,
         "examples": {
@@ -399,12 +473,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 18,
+        "items": 20,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 84.16,
+          "up": 92.3,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -428,12 +502,12 @@
               "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE0wejRmaDdXVjA3NkNPbFAzUFZoeGtYaWlkX1ZzeHcyV01sbVRUWVNxb2JrLTlCNnFDMjNCTFB2TUUwSVRWSHgyUzdjc2pWYl9HLVJpOXNjQU1ua01JUGxOd19nTkpnUQ?oc=5"
             },
             {
-              "title": "순천시, AI·ASF 등 가축전염병 차단 방역 강화 - 웹이코노미",
-              "source": "웹이코노미",
+              "title": "ASF 이동제한·살처분 범위 완화, 정밀검사는 폐사체·퇴비로 전환 - 데일리벳",
+              "source": "데일리벳",
               "direction": "up",
               "quality_score": 81,
               "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1oOEd3c1BmSW1XOGpZZS1GcjZnemVZeHV4bEdmQTBCb2JwWS1zN3dRbUpoMFlhcHlSYTdsc04tTWVpaTlPUTZTcDVhNVZzaldjOF9HTUFPRFNETm9kam9OYjFoSjREeDNmYjItbUp6M19wdw?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE95NmNpbnJIaE16U0tfT0g0QmxpUmFualN0QzhPMXBKNkg4WnBpbWNLNDVDTjBMdHB1QVczZzV1WHVzN1FpT1Fnd2JTcVpnaUdlS3dab2ZDOWk?oc=5"
             }
           ],
           "down": [],
@@ -535,12 +609,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 35,
+        "items": 34,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 160.02,
+          "up": 156.32,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -724,16 +798,16 @@
       {
         "axis": "price",
         "label": "가격",
-        "items": 8,
+        "items": 6,
         "has_conflict": true,
-        "severity": "medium",
-        "dominant_direction": "down",
+        "severity": "high",
+        "dominant_direction": "neutral",
         "weighted_direction": {
           "up": 8.24,
-          "down": 21.04,
-          "neutral": 3.66
+          "down": 8.24,
+          "neutral": 6.83
         },
-        "conflict_ratio": 0.39,
+        "conflict_ratio": 1.0,
         "examples": {
           "up": [
             {
@@ -754,14 +828,6 @@
             }
           ],
           "down": [
-            {
-              "title": "농협경제지주 '제22회 전국한우경진대회' 개최...과채류 소비촉진-가격안정 추진 - 여성소비자신문",
-              "source": "여성소비자신문",
-              "direction": "down",
-              "quality_score": 93,
-              "source_level": 4,
-              "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5oNl9VNjB0ZWFxNmp2WkpkSjBRRjlmRWZYeThwYUVvX3N3dkNvaUJucWJGLTVwTzBkT1RpYUc4ZUdQaHRNVzVib3ZjZU1pWUxXcHRDWlJwNXNmdV9tY05zeHNQNEFUZw?oc=5"
-            },
             {
               "title": "계란값 하락…업계 “수입보다 국내 생산 회복 영향” - 축산신문",
               "source": "축산신문",
@@ -787,26 +853,42 @@
               "quality_score": 88,
               "source_level": 4,
               "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5zbzN5OGhMSXBBenJmdXNoYXp5dXdMakJpbTF1M3JlVEc3NmVrUnZiclNRLXNXZXRYUkZKSENzSGpiUGpFaU1rWXU0Y0hpbmk5bXh5VmRGT3ZOTTI3LWdQYzZwVVQyVmMxeWh1TlBicEFyZngweGln0gF3QVVfeXFMTnNvM3k4aExJcEF6cmZ1c2hhenl1d0xqQmltMXUzcmVURzc2ZWtSdmJyU1Etc1dldFhSRkpIQ3NIamJQakVpTWtZdTRjSGluaTlteHlWZEZPdk5NMjctZ1BjNnBVVDJWYzF5aHVOUGJwQXJmeDB4aWc?oc=5"
+            },
+            {
+              "title": "치솟던 계란 산지가격 ‘뚝’…10개당 2,000원 선 무너진 이유 - 더바이어",
+              "source": "더바이어",
+              "direction": "neutral",
+              "quality_score": 76,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5TWkNLSnJEMlEwQ2ZaTW9IakVQUnFscmVMTWZvZUZJdC13b3VYQllGc21DdTd3bkVmZktqRkNOaTNqeXRtci1QOE5iWGhGY1pBdEhtb0YyYWNLUE8xUHh3VkYteDMyOGVtTEVZ?oc=5"
             }
           ]
         },
-        "memo": "가격 축에서 상방·하방 근거가 동시에 감지되어 medium 충돌로 분류"
+        "memo": "가격 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
       },
       {
         "axis": "supply",
         "label": "수급/도축",
-        "items": 5,
+        "items": 6,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 16.46,
+          "up": 20.67,
           "down": 3.52,
           "neutral": 0.0
         },
-        "conflict_ratio": 0.21,
+        "conflict_ratio": 0.17,
         "examples": {
           "up": [
+            {
+              "title": "[단독] “계란값 15년째 제자리”라던 산란계협회…비교 기준부터 달랐다 - 핀포인트뉴스",
+              "source": "핀포인트뉴스",
+              "direction": "up",
+              "quality_score": 93,
+              "source_level": 4,
+              "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1YUzdHOENNQUJKQTYxQjRodF9HUXJiSU5zTHM5bVlxVzM5S3dET3NZY25qQVBOVEFLOW16WVdOMHpsNGI3MGplaGFjTG1ISXVSQmYxOE5lS0RodEgzbzdaUlR1UVRxOGlVU0ZUQ0s3SzJVOERIZkk00gF3QVVfeXFMTVhTN0c4Q01BQkpBNjFCNGh0X0dRcmJJTnNMczltWXFXMzlLd0RPc1ljbmpBUE5UQUs5bXpZV04wemw0YjcwamVoYWNMbUhJdVJCZjE4TmVLRGh0SDNvN1pSVHVRVHE4aVVTRlRDSzdLMlU4REhmSTQ?oc=5"
+            },
             {
               "title": "소비 위축이 낳은 ‘金계란’의 역설…산란계도 사상 최대 - 서울경제",
               "source": "서울경제",
@@ -822,14 +904,6 @@
               "quality_score": 81,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE52dUg5ajBIbzRXOW5yNnFxNE1uUFFISmxCdExIRHQzbjlSMTBGeTUzQl9HbGtZenpvTm5HcmlsVk14VGNlY3E0RlhNb256aWV3S0t3dDBxWmhZbjMzSmRZckVScVpFMm8?oc=5"
-            },
-            {
-              "title": "계란 기준가격 부재·수급 불안…유통업계, 제도 개선 논의 - 매일일보",
-              "source": "매일일보",
-              "direction": "up",
-              "quality_score": 76,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9rU0dQb1J0b1g1WUY2V002LUFOc0JoRGN3NDlKVmFqMG5HbjRhcFZLSmdoMFFNYV94RXNHWG1MQWd4M29XLVh6THhaVjA3ZExkSjdvOUtSdm9sNnZ4NFBTUE9kc0c?oc=5"
             }
           ],
           "down": [
@@ -883,7 +957,7 @@
               "direction": "up",
               "quality_score": 81,
               "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5ERTZDa1QwZGxJTGd0M0prcVNhWG5ERXoyN3lWbnRkSkRWQjdvQlc4aDd5MGsyeExNR0IwTDg5TU4xMS1ha2pXSjZMYXZwZlp3STFJX0RB?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5yR0M3eG90WjgxT25YTFk4QlZpd0RUTS00R082V1ozMW10LTFhX3dBd2FUQ0hDblY2VlpfU2RnbG8tT25uV003dkE3M3FzS3BENTY4Y2Zydw?oc=5"
             }
           ],
           "down": [],
@@ -894,20 +968,28 @@
       {
         "axis": "policy",
         "label": "정책/고시",
-        "items": 5,
+        "items": 6,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "neutral",
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 15.95
+          "neutral": 19.22
         },
         "conflict_ratio": 0,
         "examples": {
           "up": [],
           "down": [],
           "neutral": [
+            {
+              "title": "한 판 4만4000원씩 주고 수입했는데…석달새 계란값 23% 급락, 이유는 - 매일경제 마켓",
+              "source": "매일경제 마켓",
+              "direction": "neutral",
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9Xd183NVZGOXZ5SXdOUDh1SkhaU3B1QWxfR2hMUDRYd215LXFGQndlV0p1SlpyR1ZKSlVMRlRXX3JaTWlNSVlxR1AycktmZ0NqZ3c?oc=5"
+            },
             {
               "title": "브라질산 계란 한 판 수입원가 4만4천원…적정성 논란 - 축산신문",
               "source": "축산신문",
@@ -923,14 +1005,6 @@
               "quality_score": 65,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1NQU5PN1hvTWF5SzNESnVOeG94Z2dvd2R5RjhEclUtd05ueVpiV1NlYkF6RXBnTUJpd3lrTXZueEFkUnBCQVBtbjhEVjlTRWFLQVdZR1RHSDlRbkNjcWZjdmV3YkszR3VBc0lfZURXUml3N210cHfSAWZBVV95cUxQVERObWpHa25ZdDRCYTN0eHY3SmRYUnNXTDdOcndlNWY4MmhIN3FNSDRjeDZKRDlXSzQwZnZzTW9yamRtX0hrNHhFVDFZdGNRcWdrR0tLeWlIekRTcHFGOVV2c1E2Smc?oc=5"
-            },
-            {
-              "title": "정부, 계란한판 3만9천원 수입해 4980원에 풀었다는데 - 문화일보",
-              "source": "문화일보",
-              "direction": "neutral",
-              "quality_score": 89,
-              "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9hQWJfWXFCYm4wR3k3amFiYXBQU2FncnBpeGVfd1kwT3lJWnVFaVZjUDQ3UFllY1hsanF3eWMxTnVjdWFpWS1pYWhkRTZTanRt?oc=5"
             }
           ]
         },
@@ -1091,14 +1165,14 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 18,
+        "items": 17,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
           "up": 9.1,
           "down": 0.0,
-          "neutral": 59.04
+          "neutral": 55.39
         },
         "conflict_ratio": 0.0,
         "examples": {
