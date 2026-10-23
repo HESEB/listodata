@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-22T20:11:26Z",
+  "updated_at": "2026-10-22T23:26:33Z",
   "policy": "phase2_evidence_score_v3_sanitized",
   "score_axes": {
     "price": {
@@ -43,18 +43,18 @@
     {
       "id": "BEEF",
       "name": "한우",
-      "signal_score": 45,
-      "direction": "hold",
-      "status": "판단 유보",
+      "signal_score": 38,
+      "direction": "neutral",
+      "status": "보합/혼조",
       "quality_score": 77,
-      "confidence_score": 45,
+      "confidence_score": 63,
       "coverage_rate": 80,
-      "evidence_count": 28,
+      "evidence_count": 27,
       "official_count": 0,
       "direction_counts": {
-        "up": 3,
-        "down": 2,
-        "neutral": 23,
+        "up": 1,
+        "down": 5,
+        "neutral": 21,
         "hold": 0
       },
       "coverage_types": [
@@ -64,7 +64,7 @@
         "일반"
       ],
       "score_breakdown": {
-        "price": 19,
+        "price": 12,
         "supply": 17,
         "disease": 0,
         "policy": 0,
@@ -81,12 +81,18 @@
         "price": {
           "label": "가격",
           "max_score": 30,
-          "score": 19,
-          "items": 9,
-          "up": 2,
-          "down": 2,
-          "neutral": 5,
+          "score": 12,
+          "items": 8,
+          "up": 0,
+          "down": 5,
+          "neutral": 3,
           "examples": [
+            {
+              "title": "농협경제지주 '제22회 전국한우경진대회' 개최...과채류 소비촉진-가격안정 추진 - 여성소비자신문",
+              "direction": "down",
+              "source_level": 4,
+              "quality_score": 93
+            },
             {
               "title": "가을 채소값 '하락'… 한우·과일 '상승' - 대한급식신문",
               "direction": "neutral",
@@ -98,12 +104,6 @@
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 81
-            },
-            {
-              "title": "한우 최대 42% 할인하고 캐릭터 공연까지…강원 곳곳서 ‘축산물 축제’ - 뉴스21 통신",
-              "direction": "down",
-              "source_level": 2,
-              "quality_score": 69
             }
           ]
         },
@@ -174,41 +174,37 @@
           ]
         }
       },
-      "reason": "가격 19점 + 수급/도축 17점 + 뉴스/수요 9점 기반, 상방성 자료가 우세",
+      "reason": "수급/도축 17점 + 가격 12점 + 뉴스/수요 9점 기반, 하방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
-        "has_conflict": true,
-        "severity": "high",
-        "axes": [
-          "가격"
-        ],
-        "memo": "판단 유보 권장 · 충돌축: 가격 / 누락근거: 질병/방역, 정책/고시 / 유보사유: 상·하방 근거 강충돌"
+        "has_conflict": false,
+        "severity": "none",
+        "axes": [],
+        "memo": "주의 필요 · 누락근거: 질병/방역, 정책/고시"
       },
       "hold_decision": {
-        "should_hold": true,
-        "reasons": [
-          "상·하방 근거 강충돌"
-        ],
-        "recommended_status": "판단 유보",
-        "recommended_direction": "hold",
-        "adjusted_confidence": 45
+        "should_hold": false,
+        "reasons": [],
+        "recommended_status": "보합/혼조",
+        "recommended_direction": "neutral",
+        "adjusted_confidence": 63
       }
     },
     {
       "id": "PORK",
       "name": "돈육",
-      "signal_score": 34,
+      "signal_score": 28,
       "direction": "down",
       "status": "하방 가능성",
-      "quality_score": 79,
-      "confidence_score": 70,
+      "quality_score": 78,
+      "confidence_score": 69,
       "coverage_rate": 40,
-      "evidence_count": 21,
-      "official_count": 10,
+      "evidence_count": 23,
+      "official_count": 11,
       "direction_counts": {
-        "up": 19,
-        "down": 0,
-        "neutral": 2,
+        "up": 21,
+        "down": 1,
+        "neutral": 1,
         "hold": 0
       },
       "coverage_types": [
@@ -216,7 +212,7 @@
         "질병/방역"
       ],
       "score_breakdown": {
-        "price": 15,
+        "price": 9,
         "supply": 0,
         "disease": 19,
         "policy": 0,
@@ -233,11 +229,11 @@
         "price": {
           "label": "가격",
           "max_score": 30,
-          "score": 15,
+          "score": 9,
           "items": 2,
           "up": 0,
-          "down": 0,
-          "neutral": 2,
+          "down": 1,
+          "neutral": 1,
           "examples": [
             {
               "title": "한우 등심 절반 가격에 스테이크 배양육 만든다…생산비 최대 80% 절감 - 한국식품의약신문",
@@ -246,10 +242,10 @@
               "quality_score": 81
             },
             {
-              "title": "한우 등심 절반 가격…결이 씹히는 '스테이크 배양육' 개발 - 노컷뉴스",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 81
+              "title": "대형마트 “한우·삼겹살 등 40~50% 할인…제철 과일·채소도 절반값” - 경향신문",
+              "direction": "down",
+              "source_level": 2,
+              "quality_score": 59
             }
           ]
         },
@@ -267,8 +263,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 19,
-          "up": 19,
+          "items": 21,
+          "up": 21,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -313,7 +309,7 @@
           "examples": []
         }
       },
-      "reason": "질병/방역 19점 + 가격 15점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 가격 9점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
@@ -328,7 +324,7 @@
         ],
         "recommended_status": "하방 가능성",
         "recommended_direction": "down",
-        "adjusted_confidence": 70
+        "adjusted_confidence": 69
       }
     },
     {
@@ -340,10 +336,10 @@
       "quality_score": 79,
       "confidence_score": 70,
       "coverage_rate": 40,
-      "evidence_count": 36,
-      "official_count": 15,
+      "evidence_count": 33,
+      "official_count": 13,
       "direction_counts": {
-        "up": 35,
+        "up": 32,
         "down": 1,
         "neutral": 0,
         "hold": 0
@@ -398,8 +394,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 35,
-          "up": 35,
+          "items": 32,
+          "up": 32,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -410,7 +406,7 @@
               "quality_score": 81
             },
             {
-              "title": "순천시, 조류인플루엔자(AI)와 아프리카돼지열병(ASF) 가축전염병 차단 방역 총력 - 뉴스깜",
+              "title": "순천시, 조류인플루엔자(AI)와 아프리카돼지열병(ASF) 가축전염병 차단 방역 총력 - KJA뉴스통신",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
@@ -575,13 +571,13 @@
       "direction": "up",
       "status": "상방 가능성",
       "quality_score": 77,
-      "confidence_score": 90,
+      "confidence_score": 88,
       "coverage_rate": 100,
-      "evidence_count": 30,
-      "official_count": 7,
+      "evidence_count": 31,
+      "official_count": 6,
       "direction_counts": {
         "up": 12,
-        "down": 6,
+        "down": 7,
         "neutral": 12,
         "hold": 0
       },
@@ -611,11 +607,17 @@
           "label": "가격",
           "max_score": 30,
           "score": 12,
-          "items": 8,
+          "items": 9,
           "up": 1,
-          "down": 5,
+          "down": 6,
           "neutral": 2,
           "examples": [
+            {
+              "title": "농협경제지주 '제22회 전국한우경진대회' 개최...과채류 소비촉진-가격안정 추진 - 여성소비자신문",
+              "direction": "down",
+              "source_level": 4,
+              "quality_score": 93
+            },
             {
               "title": "농지 전수조사에 농지가격 하락·거래 위축 논란…국회 농해수위, 농민 피해보상 대책 촉구 - 창업일보",
               "direction": "down",
@@ -625,12 +627,6 @@
             {
               "title": "계란값 하락…업계 “수입보다 국내 생산 회복 영향” - 축산신문",
               "direction": "down",
-              "source_level": 3,
-              "quality_score": 81
-            },
-            {
-              "title": "계란값 급락…과일·커피값은 상승 - 미주중앙일보",
-              "direction": "up",
               "source_level": 3,
               "quality_score": 81
             }
@@ -675,6 +671,12 @@
           "neutral": 0,
           "examples": [
             {
+              "title": "송옥주, “계란문제, 수입아닌 방역‧공정으로 풀어야” - 경인신문",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 81
+            },
+            {
               "title": "계란값 잡으려 수입만?…국감서 AI 백신 도입·유통 개선 주문 - 머니투데이 - 머니투데이",
               "direction": "up",
               "source_level": 3,
@@ -685,12 +687,6 @@
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
-            },
-            {
-              "title": "[진단] 계란 수급 불안 되풀이… 정부, AI 백신 도입 검토 착수 - 이코노미톡뉴스",
-              "direction": "up",
-              "source_level": 5,
-              "quality_score": 100
             }
           ]
         },
@@ -766,34 +762,36 @@
         "reasons": [],
         "recommended_status": "상방 가능성",
         "recommended_direction": "up",
-        "adjusted_confidence": 90
+        "adjusted_confidence": 88
       }
     },
     {
       "id": "OTHER",
       "name": "기타",
-      "signal_score": 32,
-      "direction": "down",
-      "status": "하방 가능성",
-      "quality_score": 78,
-      "confidence_score": 76,
-      "coverage_rate": 60,
-      "evidence_count": 31,
-      "official_count": 31,
+      "signal_score": 52,
+      "direction": "neutral",
+      "status": "보합/혼조",
+      "quality_score": 76,
+      "confidence_score": 89,
+      "coverage_rate": 100,
+      "evidence_count": 34,
+      "official_count": 32,
       "direction_counts": {
-        "up": 15,
+        "up": 17,
         "down": 0,
-        "neutral": 16,
+        "neutral": 17,
         "hold": 0
       },
       "coverage_types": [
+        "가격",
+        "수급/도축",
         "수요/행사",
         "일반",
         "질병/방역"
       ],
       "score_breakdown": {
-        "price": 0,
-        "supply": 0,
+        "price": 9,
+        "supply": 11,
         "disease": 19,
         "policy": 0,
         "news": 13
@@ -809,29 +807,43 @@
         "price": {
           "label": "가격",
           "max_score": 30,
-          "score": 0,
-          "items": 0,
+          "score": 9,
+          "items": 1,
           "up": 0,
           "down": 0,
-          "neutral": 0,
-          "examples": []
+          "neutral": 1,
+          "examples": [
+            {
+              "title": "“계속되는 축산물 가격담합 시비 끝낸다” - 농축유통신문",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 51
+            }
+          ]
         },
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 0,
-          "items": 0,
-          "up": 0,
+          "score": 11,
+          "items": 1,
+          "up": 1,
           "down": 0,
           "neutral": 0,
-          "examples": []
+          "examples": [
+            {
+              "title": "송옥주 의원, 축산물 수급조절·물가관리 법제화 추진 - 축산신문",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 51
+            }
+          ]
         },
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 13,
-          "up": 13,
+          "items": 14,
+          "up": 14,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -895,22 +907,20 @@
           ]
         }
       },
-      "reason": "질병/방역 19점 + 뉴스/수요 13점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 뉴스/수요 13점 + 수급/도축 11점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
-        "severity": "low",
+        "severity": "none",
         "axes": [],
-        "memo": "주의 필요 · 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 주요 근거축 다수 누락"
+        "memo": "주의 필요 · 누락근거: 정책/고시"
       },
       "hold_decision": {
         "should_hold": false,
-        "reasons": [
-          "주요 근거축 다수 누락"
-        ],
-        "recommended_status": "하방 가능성",
-        "recommended_direction": "down",
-        "adjusted_confidence": 76
+        "reasons": [],
+        "recommended_status": "보합/혼조",
+        "recommended_direction": "neutral",
+        "adjusted_confidence": 89
       }
     }
   ],
