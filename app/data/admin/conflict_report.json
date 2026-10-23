@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-23T15:09:48Z",
+  "updated_at": "2026-10-23T19:19:15Z",
   "policy": "phase2_conflict_hold_v1",
   "notice": "상방·하방 근거 충돌, 근거 누락, 신뢰도 부족에 따른 판단 유보 검수 리포트입니다.",
   "summary": {
     "species_count": 6,
-    "conflict_species_count": 0,
+    "conflict_species_count": 1,
     "hold_recommended_count": 1,
     "high_conflict_count": 0
   },
@@ -20,8 +20,8 @@
         "정책/고시"
       ],
       "hold_reasons": [],
-      "original_confidence": 65,
-      "adjusted_confidence": 65,
+      "original_confidence": 64,
+      "adjusted_confidence": 64,
       "should_hold": false,
       "recommended_status": "보합/혼조",
       "recommended_direction": "neutral",
@@ -59,8 +59,8 @@
       "hold_reasons": [
         "주요 근거축 다수 누락"
       ],
-      "original_confidence": 68,
-      "adjusted_confidence": 68,
+      "original_confidence": 69,
+      "adjusted_confidence": 69,
       "should_hold": false,
       "recommended_status": "하방 가능성",
       "recommended_direction": "down",
@@ -96,17 +96,19 @@
     {
       "id": "EGG",
       "name": "계란",
-      "has_conflict": false,
-      "conflict_severity": "none",
-      "conflict_axes": [],
+      "has_conflict": true,
+      "conflict_severity": "medium",
+      "conflict_axes": [
+        "가격"
+      ],
       "missing_evidence": [],
       "hold_reasons": [],
-      "original_confidence": 82,
-      "adjusted_confidence": 82,
+      "original_confidence": 86,
+      "adjusted_confidence": 76,
       "should_hold": false,
       "recommended_status": "상방 가능성",
       "recommended_direction": "up",
-      "memo": "충돌 또는 판단 유보 요인 없음"
+      "memo": "주의 필요 · 충돌축: 가격"
     },
     {
       "id": "OTHER",
@@ -135,16 +137,16 @@
       {
         "axis": "price",
         "label": "가격",
-        "items": 10,
+        "items": 11,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "down",
         "weighted_direction": {
           "up": 3.97,
-          "down": 19.28,
+          "down": 22.86,
           "neutral": 12.88
         },
-        "conflict_ratio": 0.21,
+        "conflict_ratio": 0.17,
         "examples": {
           "up": [
             {
@@ -283,14 +285,14 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 18,
+        "items": 17,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "neutral",
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 63.06
+          "neutral": 59.3
         },
         "conflict_ratio": 0,
         "examples": {
@@ -397,12 +399,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 20,
+        "items": 18,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 93.76,
+          "up": 84.16,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -533,12 +535,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 30,
+        "items": 35,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 136.64,
+          "up": 160.02,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -722,16 +724,16 @@
       {
         "axis": "price",
         "label": "가격",
-        "items": 9,
-        "has_conflict": false,
-        "severity": "none",
+        "items": 8,
+        "has_conflict": true,
+        "severity": "medium",
         "dominant_direction": "down",
         "weighted_direction": {
           "up": 8.24,
-          "down": 24.39,
+          "down": 21.04,
           "neutral": 3.66
         },
-        "conflict_ratio": 0.34,
+        "conflict_ratio": 0.39,
         "examples": {
           "up": [
             {
@@ -788,23 +790,31 @@
             }
           ]
         },
-        "memo": "가격 축은 하방 근거 우세"
+        "memo": "가격 축에서 상방·하방 근거가 동시에 감지되어 medium 충돌로 분류"
       },
       {
         "axis": "supply",
         "label": "수급/도축",
-        "items": 4,
+        "items": 5,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 12.74,
+          "up": 16.46,
           "down": 3.52,
           "neutral": 0.0
         },
-        "conflict_ratio": 0.28,
+        "conflict_ratio": 0.21,
         "examples": {
           "up": [
+            {
+              "title": "소비 위축이 낳은 ‘金계란’의 역설…산란계도 사상 최대 - 서울경제",
+              "source": "서울경제",
+              "direction": "up",
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5GNktWbUNkMlA5RTMxdmFySEFBV0RhQS1WR1h2aS03cFVwSjNwdWVqZE4tMHFORWN3cjFlYWo4STFPSzlaQXlBSTZka081VDJCcGfSAVNBVV95cUxOZkNHSFNlTldhdXdpOWpCUnVBVkdUVE5yTjZmcWlhOF9UZmI2ZUdSN2MxUVhnZEk1aUIza1NaWDZvVFlGbXpTUFA0a09lcDR1cTBWRQ?oc=5"
+            },
             {
               "title": "계란값 상승에 산란계 사육 6.7% 증가...소·돼지·육용계는 감소 - M이코노미뉴스",
               "source": "M이코노미뉴스",
@@ -820,14 +830,6 @@
               "quality_score": 76,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9rU0dQb1J0b1g1WUY2V002LUFOc0JoRGN3NDlKVmFqMG5HbjRhcFZLSmdoMFFNYV94RXNHWG1MQWd4M29XLVh6THhaVjA3ZExkSjdvOUtSdm9sNnZ4NFBTUE9kc0c?oc=5"
-            },
-            {
-              "title": "“계란산업, ‘가격’도 ‘수급’도 정부 정책에 흔들렸다” - 농업인신문",
-              "source": "농업인신문",
-              "direction": "up",
-              "quality_score": 95,
-              "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5uNE1UUGFLdEx5LU42bU9ibjdiZ0pELWU2cmtQclF5d3dfa2VTcEZJUXV4YWtvTkE4LTZETmFwNzluZmk5Y1MyeTRvOEYzNVZDanBYQ2JMOGVUY3dxMmxUV01IVzZDZm02RmZYbG13?oc=5"
             }
           ],
           "down": [
@@ -847,12 +849,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 8,
+        "items": 9,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 33.7,
+          "up": 37.8,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -1024,12 +1026,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 19,
+        "items": 14,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 94.32,
+          "up": 70.22,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -1089,14 +1091,14 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 17,
+        "items": 18,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 27.3,
+          "up": 9.1,
           "down": 0.0,
-          "neutral": 40.29
+          "neutral": 59.04
         },
         "conflict_ratio": 0.0,
         "examples": {
@@ -1116,18 +1118,18 @@
               "quality_score": 75,
               "source_level": 5,
               "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1tbTd1YUhmdXg5cUM3WTBDdkV2RlVYQ1JUemVPSUx3WGdLaXpDVjdPcktndmtobEpQc01BTnctMkpJdlA2c3p4VzdHMmJ0bmhRMTBCdm5GSDlKSGJGbUp1NDA5cVBIajg?oc=5"
-            },
-            {
-              "title": "FMD 긴급행동지침(SOP) - - 농림축산식품부",
-              "source": "농림축산식품부",
-              "direction": "up",
-              "quality_score": 75,
-              "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMi4gNBVV95cUxQTUtSbHJGelZHeVdnd193Y3JCMHo1aTRudThqZXF5NDFOcHNYVjVtdDZqMFI1Wks0TTFGd2hMZk9zTUFHNGY0MkJRcjVHQW4zTUh0UWdEekk1Sll0bFdfa21IYm1TbHp0VG5sYldzWl9hYkt0U2VYZTN1eTFnT0VTOGhfVnVMQU5OOHdYM096Uk1XQkE0elgzREdXYTRZcVVhT0FsdU1PZjdlclNRN1pwaDRVZWxNNzBMM20wNEd6dlE3R21tTmlocmw4S3ZGNkNpWGQ3UXBSOG5jc3h5N0NIN09LLTZZR05WMGFBUHVRZmxjTGVXc1ltRTE0YU0tN0FJQ3c3SGVIVTlITTRIS3FUQjJhcXlSR0U4ZkpvQ3IzWl9lQXMweVBQbWQtVmp0bFB4ZjlncFQwbm5qYW5EYWpVRUFuakdTVzgtUEdmMVlOY0VIMXJZazFVTDVQeFhrbUdCRmJEcmxQdWkySFphZjlwcVFJb19aVGdKV2RjQzFQbTVkTm55OE84eGhOdUlkclVvdDE4eXFXQ3VpWHgyQnJIR2tNbnFxVU1laGFrTzBnYjFUSHJQdTZVUHg4MmtHTm1PeFB6T3BSa2dLbnBzaDl1Q0hQVEhZVi1ONzRDMTd5TGdsZw?oc=5"
             }
           ],
           "down": [],
           "neutral": [
+            {
+              "title": "문서뷰어 - 농림축산식품부",
+              "source": "농림축산식품부",
+              "direction": "neutral",
+              "quality_score": 100,
+              "source_level": 5,
+              "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPcXFLLWc2RDlsMjhfTWlNb2toMWptb2FiMTNDOG0wOEdpMWZ6WFlCSTNDT05nVFVzRGVicEE5Z1lYdVppR1hSMG1pVEJXLU5Nb1VkSjIzUGtQb0l1ZGVIZC1LN3hGNEd4RWlIRmRScjREeV80eUkwQWp2aV9QNEhiZC1pWkpxVzFmWUhJUGc1WDBKVVR1V2NnTEN1cjBqd21JZTFRLU1LUjN6RE1reDlKbzRZRE5pWWFYejdB?oc=5"
+            },
             {
               "title": "겨울철새 남하 시작...10월 중하순 본격 도래 전망 - 농림축산식품부",
               "source": "농림축산식품부",
@@ -1137,20 +1139,12 @@
               "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFAwNjNYb1Nyb2xQcVNjSjdMeWpaMUNxc3RNLXhJNjJjS0FMR1doWWFLMFd4TURmWkY3eHBjbmpoekJWT05XRWtBeTdLWGhDS1hud1MxSGZQTlZOWkdNRmV2QXV0eFJGNEE?oc=5"
             },
             {
-              "title": "K2WebWizard - 농림축산식품부",
+              "title": "농림축산식품부 - - 농림축산식품부",
               "source": "농림축산식품부",
               "direction": "neutral",
               "quality_score": 75,
               "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFB6WHVLaWtXZktnbFQ2eDdhaXhIQjZ4ejZlRUJzNkh0ejVRQlljZ2psZ09CU3pzY01pMUZDQW5tNjBRTDFYWUphSTZZcGdadEhEcnI1Z1Vadm1PWG11M2NWNTFmNGpTSy1QaG9j?oc=5"
-            },
-            {
-              "title": "데이터 상세보기 - 농림축산식품 공공데이터 포털",
-              "source": "농림축산식품 공공데이터 포털",
-              "direction": "neutral",
-              "quality_score": 75,
-              "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNMnNpVUdTdU1jc2dFS0MwOC1HSlpITGFBa2ZSOHJUXzd4U2xYS0NMTDB0eTd4SWhVQU9acmFNeGp4OFhXcEdJRnhNQXRiWUVJYkFzZmtiUmtwcXltc25pX0t0YVRMd2lKcmFqZnZOTTRXelFjSFluazRsemFQd3JqZHFFenhRZ0tIdlJMQ1h0N1c0cTRNVFd5cjY1cFNIM0xfMzllMQ?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1jeXl3alQyb3lFNEdYLU01UDVwbXRCUHVjQnhTZlBoZENQRHo3RlB6SUpKejVuYkR3eFlfNDhIYURYMG5fN213b1J4Nk1HRFQwei04VDBfM2UyR1FxallDQWR0bVd6RjlQWUx4aDc3Z0tVWWUwY1pGdmdYR0N4dWs?oc=5"
             }
           ]
         },
