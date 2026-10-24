@@ -1,33 +1,34 @@
 {
-  "updated_at": "2026-10-23T22:22:05Z",
+  "updated_at": "2026-10-24T01:39:09Z",
   "notice": "Phase 2 Display Layer 초안입니다. 기존 market_dashboard.json은 별도로 유지됩니다.",
   "species": [
     {
       "id": "BEEF",
       "name": "한우",
-      "signal_score": 36,
+      "signal_score": 53,
       "direction": "neutral",
       "status": "보합/혼조",
-      "quality_score": 80,
-      "confidence_score": 64,
-      "coverage_rate": 80,
+      "quality_score": 79,
+      "confidence_score": 71,
+      "coverage_rate": 100,
       "evidence_count": 29,
       "official_count": 0,
       "direction_counts": {
-        "up": 2,
+        "up": 3,
         "down": 5,
-        "neutral": 22,
+        "neutral": 21,
         "hold": 0
       },
       "coverage_types": [
         "가격",
+        "수급/도축",
         "수요/행사",
         "일반",
         "질병/방역"
       ],
       "score_breakdown": {
         "price": 12,
-        "supply": 0,
+        "supply": 17,
         "disease": 14,
         "policy": 0,
         "news": 10
@@ -72,12 +73,19 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 0,
-          "items": 0,
-          "up": 0,
+          "score": 17,
+          "items": 1,
+          "up": 1,
           "down": 0,
           "neutral": 0,
-          "examples": []
+          "examples": [
+            {
+              "title": "[물가분석]명절 지나도 소고기 가격 부담…한우 공급 감소에 수입육 관세까지 - nbn 시사경제",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 81
+            }
+          ]
         },
         "disease": {
           "label": "질병/방역",
@@ -110,10 +118,10 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 10,
-          "items": 18,
+          "items": 17,
           "up": 0,
           "down": 0,
-          "neutral": 18,
+          "neutral": 17,
           "examples": [
             {
               "title": "11월 1일 ‘한우먹는날’ 맞이 온라인 한우장터 개최 - 농수축산신문",
@@ -136,7 +144,7 @@
           ]
         }
       },
-      "reason": "질병/방역 14점 + 가격 12점 + 뉴스/수요 10점 기반, 하방성 자료가 우세",
+      "reason": "수급/도축 17점 + 질병/방역 14점 + 가격 12점 기반, 하방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
@@ -226,6 +234,12 @@
           "neutral": 0,
           "examples": [
             {
+              "title": "포천시, ASF 재발 막는다…양돈농가 84곳 드론 방역 강화 - 포천매일뉴스",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 81
+            },
+            {
               "title": "순천시, 조류인플루엔자(AI)와 아프리카돼지열병(ASF) 가축전염병 차단 방역 총력 - 내외통신",
               "direction": "up",
               "source_level": 3,
@@ -233,12 +247,6 @@
             },
             {
               "title": "양돈농가 84곳에 드론 방역…ASF 차단 총력 - 포천일보",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 81
-            },
-            {
-              "title": "ASF 이동제한·살처분 범위 완화, 정밀검사는 폐사체·퇴비로 전환 - 데일리벳",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
@@ -475,18 +483,18 @@
     {
       "id": "EGG",
       "name": "계란",
-      "signal_score": 77,
+      "signal_score": 76,
       "direction": "up",
       "status": "상방 우세",
-      "quality_score": 79,
-      "confidence_score": 86,
+      "quality_score": 78,
+      "confidence_score": 85,
       "coverage_rate": 100,
       "evidence_count": 31,
       "official_count": 5,
       "direction_counts": {
         "up": 16,
-        "down": 3,
-        "neutral": 12,
+        "down": 4,
+        "neutral": 11,
         "hold": 0
       },
       "coverage_types": [
@@ -498,7 +506,7 @@
       ],
       "score_breakdown": {
         "price": 19,
-        "supply": 24,
+        "supply": 23,
         "disease": 19,
         "policy": 6,
         "news": 9
@@ -515,9 +523,9 @@
           "label": "가격",
           "max_score": 30,
           "score": 19,
-          "items": 6,
-          "up": 2,
-          "down": 2,
+          "items": 8,
+          "up": 3,
+          "down": 3,
           "neutral": 2,
           "examples": [
             {
@@ -530,7 +538,7 @@
               "title": "계란값 하락…업계 “수입보다 국내 생산 회복 영향” - 축산신문",
               "direction": "down",
               "source_level": 3,
-              "quality_score": 81
+              "quality_score": 76
             },
             {
               "title": "2026년 42주차 EU A등급 계란 가격 소폭 하락 - IndexBox",
@@ -543,7 +551,7 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 24,
+          "score": 23,
           "items": 6,
           "up": 5,
           "down": 1,
@@ -573,8 +581,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 9,
-          "up": 9,
+          "items": 8,
+          "up": 8,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -591,7 +599,7 @@
               "quality_score": 81
             },
             {
-              "title": "계란값 이제 좀 잡히나 했더니…다시 찾아온 AI에 ‘덜덜’ [푸드360] - 헤럴드경제",
+              "title": "계란값 잡으려 수입만?…국감서 AI 백신 도입·유통 개선 주문 - 머니투데이 - 머니투데이",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
@@ -602,13 +610,13 @@
           "label": "정책/고시",
           "max_score": 10,
           "score": 6,
-          "items": 6,
+          "items": 5,
           "up": 0,
           "down": 0,
-          "neutral": 6,
+          "neutral": 5,
           "examples": [
             {
-              "title": "한 판 4만4000원씩 주고 수입했는데…석달새 계란값 23% 급락, 이유는 - 매일경제 마켓",
+              "title": "한 판 4만4000원씩 주고 수입했는데…석달새 계란값 23% 급락, 이유는 - 매일경제",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 81
@@ -620,10 +628,10 @@
               "quality_score": 76
             },
             {
-              "title": "브라질산 계란 한판 수입가 4만4000원…올해만 16억 썼다, 왜? - 동아일보",
+              "title": "정부, 계란한판 3만9천원 수입해 4980원에 풀었다는데 - 문화일보",
               "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 65
+              "source_level": 5,
+              "quality_score": 89
             }
           ]
         },
@@ -646,18 +654,18 @@
               "title": "계란 유통인들 “생존권 확보·산업 발전 다짐” - 한국농정신문",
               "direction": "neutral",
               "source_level": 3,
-              "quality_score": 76
+              "quality_score": 71
             },
             {
               "title": "\"비싸서 난리더니 이젠 남아돈다?\"…계란값 뚝 떨어진 이유 [박상경의 영수증 리뷰] - 한국경제",
               "direction": "neutral",
               "source_level": 3,
-              "quality_score": 76
+              "quality_score": 71
             }
           ]
         }
       },
-      "reason": "수급/도축 24점 + 가격 19점 + 질병/방역 19점 기반, 상방성 자료가 우세",
+      "reason": "수급/도축 23점 + 가격 19점 + 질병/방역 19점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
@@ -672,9 +680,9 @@
       "evidence_count": 31,
       "official_count": 31,
       "direction_counts": {
-        "up": 16,
+        "up": 17,
         "down": 0,
-        "neutral": 15,
+        "neutral": 14,
         "hold": 0
       },
       "coverage_types": [
@@ -721,8 +729,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 20,
-          "items": 14,
-          "up": 14,
+          "items": 15,
+          "up": 15,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -760,10 +768,10 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 13,
-          "items": 17,
+          "items": 16,
           "up": 2,
           "down": 0,
-          "neutral": 15,
+          "neutral": 14,
           "examples": [
             {
               "title": "문서뷰어 - 농림축산식품부",
