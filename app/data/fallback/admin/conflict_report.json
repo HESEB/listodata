@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-10-25T11:41:30Z",
+  "updated_at": "2026-10-25T16:30:29Z",
   "policy": "phase2_conflict_hold_v1",
   "notice": "상방·하방 근거 충돌, 근거 누락, 신뢰도 부족에 따른 판단 유보 검수 리포트입니다.",
   "summary": {
     "species_count": 6,
     "conflict_species_count": 1,
-    "hold_recommended_count": 2,
-    "high_conflict_count": 0
+    "hold_recommended_count": 3,
+    "high_conflict_count": 1
   },
   "species": [
     {
@@ -97,18 +97,100 @@
       "id": "EGG",
       "name": "계란",
       "has_conflict": true,
-      "conflict_severity": "medium",
+      "conflict_severity": "high",
       "conflict_axes": [
         "가격"
       ],
       "missing_evidence": [],
-      "hold_reasons": [],
-      "original_confidence": 81,
-      "adjusted_confidence": 71,
-      "should_hold": false,
-      "recommended_status": "상방 가능성",
-      "recommended_direction": "up",
-      "memo": "주의 필요 · 충돌축: 가격"
+      "hold_reasons": [
+        "상·하방 근거 강충돌"
+      ],
+      "original_confidence": 84,
+      "adjusted_confidence": 66,
+      "should_hold": [
+        {
+          "axis": "price",
+          "label": "가격",
+          "items": 7,
+          "has_conflict": true,
+          "severity": "high",
+          "dominant_direction": "down",
+          "weighted_direction": {
+            "up": 7.82,
+            "down": 12.01,
+            "neutral": 6.34
+          },
+          "conflict_ratio": 0.65,
+          "examples": {
+            "up": [
+              {
+                "title": "계란값 급락…과일·커피값은 상승 - 미주중앙일보",
+                "source": "미주중앙일보",
+                "direction": "up",
+                "quality_score": 71,
+                "source_level": 3,
+                "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE50RVRYQzZjY0hlcndBeXQ3Qjg5dzJNVEwzbWhLakdGU3dVNlBxcGx6ZDZ2WTB6NUhxdXZvZXZQNlZvWmk0eUZuWjBRX0xLV0tBRHpjQlBrZHlwazZWeHprLXJB?oc=5"
+              },
+              {
+                "title": "[국감] “계란값 낮춘다더니”…초대형 양계단지, 가격 인상 전제 수익 설계 - 식품저널 foodnews",
+                "source": "식품저널 foodnews",
+                "direction": "up",
+                "quality_score": 65,
+                "source_level": 3,
+                "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFAtc3BnR1ZQWERiZGUwalF1ejhqUExCZzZSb1RNWDk3Qnp0UGM2Q2QtZVQ2REoycXRzd0NBN0d3X0w1TTl3RGwya2lLTjdZWW5pdlZsQVFKOEdFV3lnMS16N2FFSVVMWS1NY1pZeTRB?oc=5"
+              }
+            ],
+            "down": [
+              {
+                "title": "계란값 하락…업계 “수입보다 국내 생산 회복 영향” - 축산신문",
+                "source": "축산신문",
+                "direction": "down",
+                "quality_score": 76,
+                "source_level": 3,
+                "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5OaDJnWlY2RVExTVlHNmx1a2xNVnFxbURaVVlFSWZNc0M0bTdIWjdid3RmU3I5RFZjMHFPRUtUVXdQRWZJOVdtRmFHS3NJb2pZNjBqLUhubGtkV2puRTVDZmtNWnNaTzlK?oc=5"
+              },
+              {
+                "title": "2026년 42주차 EU A등급 계란 가격 소폭 하락 - IndexBox",
+                "source": "IndexBox",
+                "direction": "down",
+                "quality_score": 71,
+                "source_level": 3,
+                "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNdXl0NVZDWG9saHNSRzhDbnZkSmtlVzcwWHNCTXdYNnNVVW1mdU1uMFpiek5odnJrQWI3b21RdnF0NnB3RDlzeDFfaTJsWW9KX2lYZTVGenZRamVIUHM4a0pHYlc5Z2NEYzJXRXYyNWNvc09naTdDOE9BZzY2LThmclZDR2s?oc=5"
+              },
+              {
+                "title": "선스어스(SunSirs): 국경절 이후의 한산기, 중국 계란 가격은 계절적 하락 추세에 진입하다 - Sunsirs",
+                "source": "Sunsirs",
+                "direction": "down",
+                "quality_score": 71,
+                "source_level": 3,
+                "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5ObHNxY2xkd2piTGZ6cDQ5cmNmUml2SlNldDhnTVRBRnoyVHZ5dTZNRWw4X0p0c3UtbnI4OG1Nc0Q0UVZ0clVYQ2lRZ1VKXzFtVlVzSExYRDh0VnpPNnc?oc=5"
+              }
+            ],
+            "neutral": [
+              {
+                "title": "점심에 계란 프라이 하나 더?…여름엔 ‘금값’ 계란, 가을지나 가격 ‘뚝’[경제뭔데] - 경향신문",
+                "source": "경향신문",
+                "direction": "neutral",
+                "quality_score": 81,
+                "source_level": 3,
+                "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5Gdy1zWjE5Tnc0Wkh1M2pRQTBBSjRWSWhvakY2S2pDVktQc0Y1Mkl3MHVEVzhCVWhwSnlvV21qYjVlNnEzU2trUF9mRkZyU19lVkxEREw4N3pSZ9IBX0FVX3lxTE80cVlweVVjQVh3VHFuSFRUc3MxNlhfTmU3TTladWxkc291TEt2QlFtVkRhWVZzXy1aaXdQUERpdXBwU1lsZWNBYXYtUnUwb0tJT1dOT0JubF90M0JITURz?oc=5"
+              },
+              {
+                "title": "치솟던 계란 산지가격 ‘뚝’…10개당 2,000원 선 무너진 이유 - 더바이어",
+                "source": "더바이어",
+                "direction": "neutral",
+                "quality_score": 71,
+                "source_level": 3,
+                "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5TWkNLSnJEMlEwQ2ZaTW9IakVQUnFscmVMTWZvZUZJdC13b3VYQllGc21DdTd3bkVmZktqRkNOaTNqeXRtci1QOE5iWGhGY1pBdEhtb0YyYWNLUE8xUHh3VkYteDMyOGVtTEVZ?oc=5"
+              }
+            ]
+          },
+          "memo": "가격 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
+        }
+      ],
+      "recommended_status": "판단 유보",
+      "recommended_direction": "hold",
+      "memo": "판단 유보 권장 · 충돌축: 가격 / 유보사유: 상·하방 근거 강충돌"
     },
     {
       "id": "OTHER",
@@ -124,8 +206,8 @@
       "hold_reasons": [
         "주요 근거축 다수 누락"
       ],
-      "original_confidence": 75,
-      "adjusted_confidence": 75,
+      "original_confidence": 76,
+      "adjusted_confidence": 76,
       "should_hold": false,
       "recommended_status": "하방 가능성",
       "recommended_direction": "down",
@@ -143,19 +225,19 @@
         "dominant_direction": "down",
         "weighted_direction": {
           "up": 3.97,
-          "down": 22.46,
+          "down": 22.56,
           "neutral": 12.36
         },
         "conflict_ratio": 0.18,
         "examples": {
           "up": [
             {
-              "title": "서귀포시축협, 10월 가축시장 개장... 한우 가격 강세 지속 - 농수축산신문",
-              "source": "농수축산신문",
+              "title": "서귀포시축협 10월 가축시장 71두 낙찰...한우가격 강세 지속 - 헤드라인제주",
+              "source": "헤드라인제주",
               "direction": "up",
               "quality_score": 71,
               "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9hZnJxNldjaWdUeVFNMFN4cXZZeWRKZTNUSHl6U3R5WUc0TUJXbFdVdzlzZzNLcUJ3bFVBZmlkekxXeGEyRUpNM0lZenlSakdQZzItdHdzaGdHQ0F5UXN0V2xaRjMtZXFmblkxSQ?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5pMmJhUlY5VWp3T1h3RWFrLUFxTFAxWlhqS2tsTnh3MGRLVzN1anJsT1lIOUJRVzVteVJYemtxY3RkOTk0NFd1M25FUDVrWmtXUWNRQzh5azIyMEtMUVpPTS1MQmxVc2o0ZlRGNDVoUTk4b1E?oc=5"
             }
           ],
           "down": [
@@ -176,12 +258,12 @@
               "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1vaExiY2h5dVRVdDVScmtkcGFuTTlRNWZYY1hmU09ZaDFudGhPY3MtZDVNbkI1aVVWb0wxVHJZVW04bUVtNEQ2R2hEcFJVNTlWOVB3NjNGbk5ULTEyby1HYk5vUVZQUWprWkZ3?oc=5"
             },
             {
-              "title": "한우먹는날 맞아 온라인 한우장터 운영…4일간 할인 판매 - livesnews.com",
-              "source": "livesnews.com",
+              "title": "'강원축산물 大축제' 개최… 한돈·한우 최대 40% 할인 - 한돈뉴스",
+              "source": "한돈뉴스",
               "direction": "down",
               "quality_score": 64,
               "source_level": 2,
-              "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBaYjJYMWdURHd3WlltTHhxd25xT3BSN09TSmF1MXk5RXpHTXFqejF2RDhzSlpmd051ZWlhMHBMaUdiaXJkRTNvdkJSSkhEQUZTcXRwU2xwcl90cjh4TFNDdWFn?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5SdzNTdlVramhDNzM4YkVhTG01TVQ0cDFJanFObFVPZTM4dVFHaGc2OXkxY21TRGxDSHhTOVRHMThMM1M4eGpabzg5MzVHU0dmMDZjVXJzckU4TzFnb3BnTWd3OTVHX2M0NFA3Q9IBbEFVX3lxTE5SdzNTdlVramhDNzM4YkVhTG01TVQ0cDFJanFObFVPZTM4dVFHaGc2OXkxY21TRGxDSHhTOVRHMThMM1M4eGpabzg5MzVHU0dmMDZjVXJzckU4TzFnb3BnTWd3OTVHX2M0NFA3Qw?oc=5"
             }
           ],
           "neutral": [
@@ -301,7 +383,7 @@
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 52.35
+          "neutral": 52.16
         },
         "conflict_ratio": 0,
         "examples": {
@@ -309,28 +391,28 @@
           "down": [],
           "neutral": [
             {
+              "title": "기장군, 맛과 흥으로 물드는 가을... '제16회 철마한우불고기축제' 21일 개막 - 티뉴스",
+              "source": "티뉴스",
+              "direction": "neutral",
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE4zSS1XS2JFUUpKTkVWbVExV2hUUkM1SVpEM3E4TU9FQ0ZWRmVCekZ5ZHBoalVNQUZPMU5vWm9vQ3VvcExnM1RnRUdnZ1hRTklSeEZza1Vva3lCc2pHd0FYZkpZYW8?oc=5"
+            },
+            {
+              "title": "한우 등심 100g 8,380원…‘한우먹는날’ 온라인 장터 26일 개장 - 한국영농신문",
+              "source": "한국영농신문",
+              "direction": "neutral",
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1jTlF2MXdYbUdnVjloZEhnX3JtcW9UZ2ktbVR5bWZEeDhoX2xlbXhDOExpTnlfQkJjUnZQdEowaUd2OHdHRGI2X3dQLWxyNzVTMlJlM3Y2OElTVTJkY2F2Ni1BN1RPMlJPRkZWSVpR?oc=5"
+            },
+            {
               "title": "한우자조금, 11월 1일 ‘한우먹는날’ 맞이 온라인 한우장터 개최 - 축산정보뉴스",
               "source": "축산정보뉴스",
               "direction": "neutral",
               "quality_score": 93,
               "source_level": 4,
               "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBkZ2FYQVRxcmJDTlVJYkJjU0RrTjFUQlcxS2sxWmxraWswSEh2TmZXcER6cFVGTDlVdEcybjZ4a2M2Z2drMXFhcHRHR2Y4V1N0cTcyZWZ0b2VhZk5rdHRJ?oc=5"
-            },
-            {
-              "title": "한우자조금, ‘한우먹는날’ 맞아 온라인 한우장터 운영 - BBS불교방송",
-              "source": "BBS불교방송",
-              "direction": "neutral",
-              "quality_score": 93,
-              "source_level": 4,
-              "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBJb2puci0yRTBPNWd1Tm9LNFJHQ0JtQkYxclRzSGNCUWUzNFV3ekhsLW1HaGxsQlhfcEx0SXR5SzN2SUpBRnlWUUVGYnhHWDBwdlkxM2dUdEZ1REdxSXlOcjJYazRCaGFpYjNV?oc=5"
-            },
-            {
-              "title": "11월 1일 ‘한우먹는날’ 맞이 온라인 한우장터 개최 - 농수축산신문",
-              "source": "농수축산신문",
-              "direction": "neutral",
-              "quality_score": 76,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5NQzBwbnI1OTVGcXBDUGNIV3MxWmRUVUNIWjAwaUFGM2pVU0JUdE5Pd0pZR2czQUcwcFV4dFpyalB4OGhadGFsSFh5R29yMFFTWk1MaEVRWFRDR01mWTNDS3FucFltYmNjR2xBNQ?oc=5"
             }
           ]
         },
@@ -341,19 +423,27 @@
       {
         "axis": "price",
         "label": "가격",
-        "items": 1,
+        "items": 2,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "down",
         "weighted_direction": {
           "up": 0.0,
-          "down": 3.58,
+          "down": 7.16,
           "neutral": 0.0
         },
         "conflict_ratio": 0.0,
         "examples": {
           "up": [],
           "down": [
+            {
+              "title": "'강원축산물 大축제' 개최… 한돈·한우 최대 40% 할인 - 한돈뉴스",
+              "source": "한돈뉴스",
+              "direction": "down",
+              "quality_score": 64,
+              "source_level": 2,
+              "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5SdzNTdlVramhDNzM4YkVhTG01TVQ0cDFJanFObFVPZTM4dVFHaGc2OXkxY21TRGxDSHhTOVRHMThMM1M4eGpabzg5MzVHU0dmMDZjVXJzckU4TzFnb3BnTWd3OTVHX2M0NFA3Q9IBbEFVX3lxTE5SdzNTdlVramhDNzM4YkVhTG01TVQ0cDFJanFObFVPZTM4dVFHaGc2OXkxY21TRGxDSHhTOVRHMThMM1M4eGpabzg5MzVHU0dmMDZjVXJzckU4TzFnb3BnTWd3OTVHX2M0NFA3Qw?oc=5"
+            },
             {
               "title": "한우먹는날 맞아 할인전…등심 100g 8380원부터 - 푸드투데이",
               "source": "푸드투데이",
@@ -404,13 +494,21 @@
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 106.78,
+          "up": 106.88,
           "down": 0.0,
           "neutral": 0.0
         },
         "conflict_ratio": 0.0,
         "examples": {
           "up": [
+            {
+              "title": "\"ASF 주범 잔반사료, 다시 금지 검토해야\"…국정감사서 제도 재검토 촉구 - 돼지와사람",
+              "source": "돼지와사람",
+              "direction": "up",
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFB4U2lodFNqaHptMzFnVXFSLVJQRnRwNDNMLVpYWWNMV3NQQU84X3Qyd3lpaEt6T2FBeVZ4MEEyM1RsU3cwUDdUdU1xOHZjbGtTMGRJS1BESm03eVdJQndMSWx3?oc=5"
+            },
             {
               "title": "포천시, 드론 띄워 ASF 차단… 양돈농가 84곳에 멧돼지 기피제 살포 - 경기신문",
               "source": "경기신문",
@@ -420,20 +518,12 @@
               "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9RR2tkTDVERVZxYWpEejBNWnFaSnVhY25JM0xhRFBYVmR1Y3QweWo0emFlWm9WXzZLNENqUW5DeXZLaVpPcEZ1NHA3QWRkd3g4Z0VmbTZuZVhRMXYtOWEwMTB3?oc=5"
             },
             {
-              "title": "[찾아라! 성공 레시피] 농장에서 식탁까지…‘명품 한돈’의 비밀 - 연합뉴스",
-              "source": "연합뉴스",
+              "title": "‘ASF 전파 주범’ 잔반사료 급여 2.4배 급증… 송옥주, 전면 금지법 발의 - 시사코리아",
+              "source": "시사코리아",
               "direction": "up",
               "quality_score": 81,
               "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1qTHFKSW1CWFZURzVCYkZjQmgwVzViaDBnczZzVXR6c3FwdlFSWHJjUWVkSmpLQTdGMnVVWEhfTWhZT0Foenowd0xmc3hTblFJQnRXWDI1TDV2TXlJZm5VMNIBYEFVX3lxTE1qTHFKSW1CWFZURzVCYkZjQmgwVzViaDBnczZzVXR6c3FwdlFSWHJjUWVkSmpLQTdGMnVVWEhfTWhZT0Foenowd0xmc3hTblFJQnRXWDI1TDV2TXlJZm5VMA?oc=5"
-            },
-            {
-              "title": "경북도, 장마철 ASF 차단방역 강화 - 안동MBC",
-              "source": "안동MBC",
-              "direction": "up",
-              "quality_score": 81,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOZ0JuLUhkQks1bS0tTHlxSEpMc0FPMndIQS1hNkdUNF9jWjUxRENRSlNLNUU5MDNob3J4Q1RraWMyNXA2MjJRYW14UDVndS0yaDk2bE44TFJEUVVrdnc4UTk4RW1Wa21QRWo0Z2E0bzBSSlYyTXRDVkZEdUItQ2pEYzY0QjE3bmRaVEdITlVhTXlMME01SmFUN0dBVHpDdHRKX0RXNDF6TnE3NDQ?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMiREFVX3lxTFBfMWtaWEdEVDUybkRsYlFNd1lUWnlBOUNjS2dhQmp1U3V0RjF4OHNMLWVVQTgzYmlqNFUtcFhzVTJVZVJB?oc=5"
             }
           ],
           "down": [],
@@ -464,20 +554,28 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 1,
+        "items": 2,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "neutral",
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 3.17
+          "neutral": 6.44
         },
         "conflict_ratio": 0,
         "examples": {
           "up": [],
           "down": [],
           "neutral": [
+            {
+              "title": "한우 등심 100g 8,380원…‘한우먹는날’ 온라인 장터 26일 개장 - 한국영농신문",
+              "source": "한국영농신문",
+              "direction": "neutral",
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1jTlF2MXdYbUdnVjloZEhnX3JtcW9UZ2ktbVR5bWZEeDhoX2xlbXhDOExpTnlfQkJjUnZQdEowaUd2OHdHRGI2X3dQLWxyNzVTMlJlM3Y2OElTVTJkY2F2Ni1BN1RPMlJPRkZWSVpR?oc=5"
+            },
             {
               "title": "한우 등심 100g에 8380원…26일부터 나흘간 온라인 한우장터 열린다 - 뉴스탭",
               "source": "뉴스탭",
@@ -535,12 +633,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 25,
+        "items": 30,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 113.26,
+          "up": 137.92,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -726,11 +824,11 @@
         "label": "가격",
         "items": 7,
         "has_conflict": true,
-        "severity": "medium",
+        "severity": "high",
         "dominant_direction": "down",
         "weighted_direction": {
           "up": 7.82,
-          "down": 12.11,
+          "down": 12.01,
           "neutral": 6.34
         },
         "conflict_ratio": 0.65,
@@ -766,7 +864,7 @@
               "title": "2026년 42주차 EU A등급 계란 가격 소폭 하락 - IndexBox",
               "source": "IndexBox",
               "direction": "down",
-              "quality_score": 76,
+              "quality_score": 71,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNdXl0NVZDWG9saHNSRzhDbnZkSmtlVzcwWHNCTXdYNnNVVW1mdU1uMFpiek5odnJrQWI3b21RdnF0NnB3RDlzeDFfaTJsWW9KX2lYZTVGenZRamVIUHM4a0pHYlc5Z2NEYzJXRXYyNWNvc09naTdDOE9BZzY2LThmclZDR2s?oc=5"
             },
@@ -798,21 +896,21 @@
             }
           ]
         },
-        "memo": "가격 축에서 상방·하방 근거가 동시에 감지되어 medium 충돌로 분류"
+        "memo": "가격 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
       },
       {
         "axis": "supply",
         "label": "수급/도축",
-        "items": 8,
+        "items": 9,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
           "up": 27.49,
-          "down": 3.4,
+          "down": 7.02,
           "neutral": 0.0
         },
-        "conflict_ratio": 0.12,
+        "conflict_ratio": 0.26,
         "examples": {
           "up": [
             {
@@ -842,6 +940,14 @@
           ],
           "down": [
             {
+              "title": "계란의 공급과 수요의 균형이 과잉으로 전환되고 있습니다. 가격도 계속해서 하락 추세를 유지하고 있습니다. - Sunsirs",
+              "source": "Sunsirs",
+              "direction": "down",
+              "quality_score": 76,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBnc20tRlZDMUVSWmdJa1BjWThxSnYzVnhEZk9KTWpQR2tFXzh3dzJuYlpCaGtvZEVpOWpNSUVCdFBpSGVWWE5lNWxWdjhYMFZKX0F4alVxUU9pNl8xZkE?oc=5"
+            },
+            {
               "title": "계란값 하락 견인한 것은 '수입' 아닌 '수급' - 팜인사이트",
               "source": "팜인사이트",
               "direction": "down",
@@ -862,7 +968,7 @@
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 33.3,
+          "up": 33.78,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -1034,12 +1140,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 19,
+        "items": 14,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 94.94,
+          "up": 69.94,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -1099,14 +1205,14 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 16,
+        "items": 17,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 27.3,
+          "up": 9.1,
           "down": 0.0,
-          "neutral": 36.64
+          "neutral": 55.29
         },
         "conflict_ratio": 0.0,
         "examples": {
@@ -1126,18 +1232,18 @@
               "quality_score": 75,
               "source_level": 5,
               "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1tbTd1YUhmdXg5cUM3WTBDdkV2RlVYQ1JUemVPSUx3WGdLaXpDVjdPcktndmtobEpQc01BTnctMkpJdlA2c3p4VzdHMmJ0bmhRMTBCdm5GSDlKSGJGbUp1NDA5cVBIajg?oc=5"
-            },
-            {
-              "title": "FMD 긴급행동지침(SOP) - - 농림축산식품부",
-              "source": "농림축산식품부",
-              "direction": "up",
-              "quality_score": 75,
-              "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMi4gNBVV95cUxQTUtSbHJGelZHeVdnd193Y3JCMHo1aTRudThqZXF5NDFOcHNYVjVtdDZqMFI1Wks0TTFGd2hMZk9zTUFHNGY0MkJRcjVHQW4zTUh0UWdEekk1Sll0bFdfa21IYm1TbHp0VG5sYldzWl9hYkt0U2VYZTN1eTFnT0VTOGhfVnVMQU5OOHdYM096Uk1XQkE0elgzREdXYTRZcVVhT0FsdU1PZjdlclNRN1pwaDRVZWxNNzBMM20wNEd6dlE3R21tTmlocmw4S3ZGNkNpWGQ3UXBSOG5jc3h5N0NIN09LLTZZR05WMGFBUHVRZmxjTGVXc1ltRTE0YU0tN0FJQ3c3SGVIVTlITTRIS3FUQjJhcXlSR0U4ZkpvQ3IzWl9lQXMweVBQbWQtVmp0bFB4ZjlncFQwbm5qYW5EYWpVRUFuakdTVzgtUEdmMVlOY0VIMXJZazFVTDVQeFhrbUdCRmJEcmxQdWkySFphZjlwcVFJb19aVGdKV2RjQzFQbTVkTm55OE84eGhOdUlkclVvdDE4eXFXQ3VpWHgyQnJIR2tNbnFxVU1laGFrTzBnYjFUSHJQdTZVUHg4MmtHTm1PeFB6T3BSa2dLbnBzaDl1Q0hQVEhZVi1ONzRDMTd5TGdsZw?oc=5"
             }
           ],
           "down": [],
           "neutral": [
+            {
+              "title": "문서뷰어 - 농림축산식품부",
+              "source": "농림축산식품부",
+              "direction": "neutral",
+              "quality_score": 95,
+              "source_level": 5,
+              "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPcXFLLWc2RDlsMjhfTWlNb2toMWptb2FiMTNDOG0wOEdpMWZ6WFlCSTNDT05nVFVzRGVicEE5Z1lYdVppR1hSMG1pVEJXLU5Nb1VkSjIzUGtQb0l1ZGVIZC1LN3hGNEd4RWlIRmRScjREeV80eUkwQWp2aV9QNEhiZC1pWkpxVzFmWUhJUGc1WDBKVVR1V2NnTEN1cjBqd21JZTFRLU1LUjN6RE1reDlKbzRZRE5pWWFYejdB?oc=5"
+            },
             {
               "title": "겨울철새 남하 시작...10월 중하순 본격 도래 전망 - 농림축산식품부",
               "source": "농림축산식품부",
@@ -1147,20 +1253,12 @@
               "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFAwNjNYb1Nyb2xQcVNjSjdMeWpaMUNxc3RNLXhJNjJjS0FMR1doWWFLMFd4TURmWkY3eHBjbmpoekJWT05XRWtBeTdLWGhDS1hud1MxSGZQTlZOWkdNRmV2QXV0eFJGNEE?oc=5"
             },
             {
-              "title": "K2WebWizard - 농림축산식품부",
+              "title": "농림축산식품부 - - 농림축산식품부",
               "source": "농림축산식품부",
               "direction": "neutral",
               "quality_score": 75,
               "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFB6WHVLaWtXZktnbFQ2eDdhaXhIQjZ4ejZlRUJzNkh0ejVRQlljZ2psZ09CU3pzY01pMUZDQW5tNjBRTDFYWUphSTZZcGdadEhEcnI1Z1Vadm1PWG11M2NWNTFmNGpTSy1QaG9j?oc=5"
-            },
-            {
-              "title": "데이터 상세보기 - 농림축산식품 공공데이터 포털",
-              "source": "농림축산식품 공공데이터 포털",
-              "direction": "neutral",
-              "quality_score": 75,
-              "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNMnNpVUdTdU1jc2dFS0MwOC1HSlpITGFBa2ZSOHJUXzd4U2xYS0NMTDB0eTd4SWhVQU9acmFNeGp4OFhXcEdJRnhNQXRiWUVJYkFzZmtiUmtwcXltc25pX0t0YVRMd2lKcmFqZnZOTTRXelFjSFluazRsemFQd3JqZHFFenhRZ0tIdlJMQ1h0N1c0cTRNVFd5cjY1cFNIM0xfMzllMQ?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1jeXl3alQyb3lFNEdYLU01UDVwbXRCUHVjQnhTZlBoZENQRHo3RlB6SUpKejVuYkR3eFlfNDhIYURYMG5fN213b1J4Nk1HRFQwei04VDBfM2UyR1FxallDQWR0bVd6RjlQWUx4aDc3Z0tVWWUwY1pGdmdYR0N4dWs?oc=5"
             }
           ]
         },
