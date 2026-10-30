@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-30T19:28:43Z",
+  "updated_at": "2026-10-30T23:52:30Z",
   "notice": "Phase 2 Display Layer 초안입니다. 기존 market_dashboard.json은 별도로 유지됩니다.",
   "species": [
     {
@@ -8,27 +8,29 @@
       "signal_score": 41,
       "direction": "neutral",
       "status": "보합/혼조",
-      "quality_score": 76,
-      "confidence_score": 61,
-      "coverage_rate": 60,
+      "quality_score": 75,
+      "confidence_score": 72,
+      "coverage_rate": 100,
       "evidence_count": 30,
-      "official_count": 2,
+      "official_count": 1,
       "direction_counts": {
-        "up": 3,
-        "down": 15,
-        "neutral": 12,
+        "up": 1,
+        "down": 14,
+        "neutral": 15,
         "hold": 0
       },
       "coverage_types": [
         "가격",
         "수급/도축",
-        "일반"
+        "수요/행사",
+        "일반",
+        "정책/고시"
       ],
       "score_breakdown": {
         "price": 12,
-        "supply": 20,
+        "supply": 16,
         "disease": 0,
-        "policy": 0,
+        "policy": 4,
         "news": 9
       },
       "score_breakdown_labels": {
@@ -43,11 +45,17 @@
           "label": "가격",
           "max_score": 30,
           "score": 12,
-          "items": 16,
+          "items": 15,
           "up": 0,
-          "down": 15,
+          "down": 14,
           "neutral": 1,
           "examples": [
+            {
+              "title": "[알뜰 주말] 한우 반값에 겨울옷도 할인… 유통가 쇼핑축제 개막 - Chosunbiz",
+              "direction": "down",
+              "source_level": 2,
+              "quality_score": 69
+            },
             {
               "title": "세종시, 한우데이 맞아 ‘세종한우대왕’ 30% 할인판매 - 농수축산신문",
               "direction": "down",
@@ -59,36 +67,18 @@
               "direction": "down",
               "source_level": 2,
               "quality_score": 69
-            },
-            {
-              "title": "한우데이 맞아 세종 한우 30% 특별할인 - 디트NEWS24",
-              "direction": "down",
-              "source_level": 2,
-              "quality_score": 69
             }
           ]
         },
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 20,
-          "items": 3,
-          "up": 3,
+          "score": 16,
+          "items": 1,
+          "up": 1,
           "down": 0,
           "neutral": 0,
           "examples": [
-            {
-              "title": "환율 1% 오르면 7개월 뒤 암소 도축률 0.3%↑…한우 수급도 흔든다 - 뉴시스",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 81
-            },
-            {
-              "title": "한우 공급 줄고 가격 오름세…번식 의향 회복이 수급 변수 - 축산신문",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 76
-            },
             {
               "title": "도축마릿수 줄고 소비 증가…‘한우의 날’ 앞두고 경락가격 강세 - 한국농어민신문",
               "direction": "up",
@@ -110,22 +100,35 @@
         "policy": {
           "label": "정책/고시",
           "max_score": 10,
-          "score": 0,
-          "items": 0,
+          "score": 4,
+          "items": 1,
           "up": 0,
           "down": 0,
-          "neutral": 0,
-          "examples": []
+          "neutral": 1,
+          "examples": [
+            {
+              "title": "팜스코, 한우·양돈농가 생산성 향상 지원 강화 - 농업인신문",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 81
+            }
+          ]
         },
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 9,
-          "items": 11,
+          "items": 13,
           "up": 0,
           "down": 0,
-          "neutral": 11,
+          "neutral": 13,
           "examples": [
+            {
+              "title": "아산시-아산축협, 시민과 함께 하는 ‘한우반값축제’ 열어 - 뉴시스",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 81
+            },
             {
               "title": "전국한우협회, ‘한우의 날’ 첫 공식 기념식 개최… 한우산업 새 100년 다짐 - 퍼블릭뉴스통신",
               "direction": "neutral",
@@ -137,17 +140,11 @@
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 81
-            },
-            {
-              "title": "[월요칼럼] 한우의 날, 기념을 넘어 내실 다져야 - 축산경제신문",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 81
             }
           ]
         }
       },
-      "reason": "수급/도축 20점 + 가격 12점 + 뉴스/수요 9점 기반, 하방성 자료가 우세",
+      "reason": "수급/도축 16점 + 가격 12점 + 뉴스/수요 9점 기반, 하방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
@@ -159,10 +156,10 @@
       "quality_score": 74,
       "confidence_score": 67,
       "coverage_rate": 40,
-      "evidence_count": 14,
-      "official_count": 8,
+      "evidence_count": 15,
+      "official_count": 9,
       "direction_counts": {
-        "up": 13,
+        "up": 14,
         "down": 1,
         "neutral": 0,
         "hold": 0
@@ -217,8 +214,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 13,
-          "up": 13,
+          "items": 14,
+          "up": 14,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -232,7 +229,7 @@
               "title": "[속보] 강화서 또 구제역…방역지역 해제 검사 중 젖소 3두 양성 - 돼지와사람",
               "direction": "up",
               "source_level": 3,
-              "quality_score": 81
+              "quality_score": 76
             },
             {
               "title": "잔반사료 급여 농장 20개월 새 2.4배 증가 \"ASF 방역 우려\" - 한돈뉴스",
@@ -272,13 +269,13 @@
       "signal_score": 19,
       "direction": "hold",
       "status": "판단 유보",
-      "quality_score": 77,
-      "confidence_score": 62,
+      "quality_score": 76,
+      "confidence_score": 61,
       "coverage_rate": 20,
-      "evidence_count": 21,
-      "official_count": 12,
+      "evidence_count": 17,
+      "official_count": 8,
       "direction_counts": {
-        "up": 21,
+        "up": 17,
         "down": 0,
         "neutral": 0,
         "hold": 0
@@ -325,8 +322,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 21,
-          "up": 21,
+          "items": 17,
+          "up": 17,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -464,18 +461,18 @@
     {
       "id": "EGG",
       "name": "계란",
-      "signal_score": 66,
+      "signal_score": 65,
       "direction": "up",
       "status": "상방 가능성",
       "quality_score": 70,
-      "confidence_score": 84,
+      "confidence_score": 82,
       "coverage_rate": 100,
-      "evidence_count": 30,
-      "official_count": 6,
+      "evidence_count": 28,
+      "official_count": 5,
       "direction_counts": {
-        "up": 12,
+        "up": 11,
         "down": 4,
-        "neutral": 14,
+        "neutral": 13,
         "hold": 0
       },
       "coverage_types": [
@@ -489,7 +486,7 @@
         "price": 11,
         "supply": 23,
         "disease": 17,
-        "policy": 6,
+        "policy": 5,
         "news": 9
       },
       "score_breakdown_labels": {
@@ -562,8 +559,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 17,
-          "items": 6,
-          "up": 6,
+          "items": 5,
+          "up": 5,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -590,18 +587,12 @@
         "policy": {
           "label": "정책/고시",
           "max_score": 10,
-          "score": 6,
-          "items": 5,
+          "score": 5,
+          "items": 4,
           "up": 0,
           "down": 0,
-          "neutral": 5,
+          "neutral": 4,
           "examples": [
-            {
-              "title": "한 판 4만4000원씩 주고 수입했는데…석달새 계란값 23% 급락, 이유는 - 매일경제",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 71
-            },
             {
               "title": "브라질산 계란 한판 수입가 4만4000원…올해만 16억 썼다, 왜? - 동아일보",
               "direction": "neutral",
@@ -609,7 +600,13 @@
               "quality_score": 58
             },
             {
-              "title": "달걀 수입에 축산발전기금 1211억 썼다…축산업계 ‘공분’ - 농민신문",
+              "title": "정부, 계란한판 3만9천원 수입해 4980원에 풀었다는데 - 문화일보",
+              "direction": "neutral",
+              "source_level": 5,
+              "quality_score": 82
+            },
+            {
+              "title": "3.9만원 수입 계란 4980원에 팔았다…혈세 1200억 쓴 물가 대책 - 중앙일보",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 58
@@ -658,12 +655,12 @@
       "quality_score": 76,
       "confidence_score": 82,
       "coverage_rate": 80,
-      "evidence_count": 31,
-      "official_count": 31,
+      "evidence_count": 36,
+      "official_count": 36,
       "direction_counts": {
-        "up": 15,
+        "up": 24,
         "down": 1,
-        "neutral": 15,
+        "neutral": 11,
         "hold": 0
       },
       "coverage_types": [
@@ -711,8 +708,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 13,
-          "up": 13,
+          "items": 18,
+          "up": 18,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -729,10 +726,10 @@
               "quality_score": 82
             },
             {
-              "title": "종 가축전염병 전환에 따른 방역조치 조정과 가축방역사 위촉 대상 및 교육기관 확대 등을 주요 - 농림축산식품부",
+              "title": "알림소식 > 보도자료 > 겨울철 가축전염병 위험 요인 집중 관리로 ‘26/’27 겨울철 특별방역대책 추진 - 농림축산식품부",
               "direction": "up",
               "source_level": 5,
-              "quality_score": 82
+              "quality_score": 75
             }
           ]
         },
@@ -758,9 +755,9 @@
           "max_score": 15,
           "score": 13,
           "items": 17,
-          "up": 2,
+          "up": 6,
           "down": 1,
-          "neutral": 14,
+          "neutral": 10,
           "examples": [
             {
               "title": "겨울철새 남하 시작...10월 중하순 본격 도래 전망 - 농림축산식품부",
@@ -769,13 +766,13 @@
               "quality_score": 82
             },
             {
-              "title": "농림축산식품부 - - 농림축산식품부",
+              "title": "K2WebWizard - 농림축산식품부",
               "direction": "neutral",
               "source_level": 5,
               "quality_score": 75
             },
             {
-              "title": "K2WebWizard - 농림축산식품부",
+              "title": "농림축산식품부 - - 농림축산식품부",
               "direction": "neutral",
               "source_level": 5,
               "quality_score": 75
