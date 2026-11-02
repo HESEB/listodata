@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-11-02T06:19:25Z",
+  "updated_at": "2026-11-02T16:17:41Z",
   "policy": "phase2_conflict_hold_v1",
   "notice": "상방·하방 근거 충돌, 근거 누락, 신뢰도 부족에 따른 판단 유보 검수 리포트입니다.",
   "summary": {
     "species_count": 6,
-    "conflict_species_count": 1,
+    "conflict_species_count": 0,
     "hold_recommended_count": 2,
     "high_conflict_count": 0
   },
@@ -20,8 +20,8 @@
         "정책/고시"
       ],
       "hold_reasons": [],
-      "original_confidence": 62,
-      "adjusted_confidence": 62,
+      "original_confidence": 61,
+      "adjusted_confidence": 61,
       "should_hold": false,
       "recommended_status": "보합/혼조",
       "recommended_direction": "neutral",
@@ -61,8 +61,8 @@
         "커버리지 부족",
         "주요 근거축 다수 누락"
       ],
-      "original_confidence": 62,
-      "adjusted_confidence": 62,
+      "original_confidence": 61,
+      "adjusted_confidence": 61,
       "should_hold": true,
       "recommended_status": "판단 유보",
       "recommended_direction": "hold",
@@ -77,23 +77,20 @@
       "missing_evidence": [
         "가격",
         "수급/도축",
-        "질병/방역",
         "정책/고시",
         "뉴스/수요"
       ],
       "hold_reasons": [
-        "근거자료 없음",
         "커버리지 부족",
-        "신뢰도 부족",
         "공식자료 부족",
         "주요 근거축 다수 누락"
       ],
-      "original_confidence": 0,
-      "adjusted_confidence": 0,
+      "original_confidence": 43,
+      "adjusted_confidence": 43,
       "should_hold": true,
       "recommended_status": "판단 유보",
       "recommended_direction": "hold",
-      "memo": "판단 유보 권장 · 누락근거: 가격, 수급/도축, 질병/방역, 정책/고시, 뉴스/수요 / 유보사유: 근거자료 없음, 커버리지 부족, 신뢰도 부족, 공식자료 부족, 주요 근거축 다수 누락"
+      "memo": "판단 유보 권장 · 누락근거: 가격, 수급/도축, 정책/고시, 뉴스/수요 / 유보사유: 커버리지 부족, 공식자료 부족, 주요 근거축 다수 누락"
     },
     {
       "id": "EGG",
@@ -103,8 +100,8 @@
       "conflict_axes": [],
       "missing_evidence": [],
       "hold_reasons": [],
-      "original_confidence": 84,
-      "adjusted_confidence": 84,
+      "original_confidence": 83,
+      "adjusted_confidence": 83,
       "should_hold": false,
       "recommended_status": "상방 가능성",
       "recommended_direction": "up",
@@ -113,22 +110,23 @@
     {
       "id": "OTHER",
       "name": "기타",
-      "has_conflict": true,
-      "conflict_severity": "medium",
-      "conflict_axes": [
-        "뉴스/수요"
-      ],
+      "has_conflict": false,
+      "conflict_severity": "low",
+      "conflict_axes": [],
       "missing_evidence": [
         "가격",
-        "수급/도축"
+        "수급/도축",
+        "정책/고시"
       ],
-      "hold_reasons": [],
-      "original_confidence": 82,
-      "adjusted_confidence": 72,
+      "hold_reasons": [
+        "주요 근거축 다수 누락"
+      ],
+      "original_confidence": 75,
+      "adjusted_confidence": 75,
       "should_hold": false,
-      "recommended_status": "보합/혼조",
-      "recommended_direction": "neutral",
-      "memo": "주의 필요 · 충돌축: 뉴스/수요 / 누락근거: 가격, 수급/도축"
+      "recommended_status": "하방 가능성",
+      "recommended_direction": "down",
+      "memo": "주의 필요 · 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 주요 근거축 다수 누락"
     }
   ],
   "axis_reports": {
@@ -136,19 +134,27 @@
       {
         "axis": "price",
         "label": "가격",
-        "items": 10,
+        "items": 11,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "down",
         "weighted_direction": {
           "up": 0.0,
-          "down": 32.82,
+          "down": 36.3,
           "neutral": 2.68
         },
         "conflict_ratio": 0.0,
         "examples": {
           "up": [],
           "down": [
+            {
+              "title": "NS홈쇼핑, NS몰서 '한우세일' 전상품 10% 할인 - 스트레이트뉴스",
+              "source": "스트레이트뉴스",
+              "direction": "down",
+              "quality_score": 69,
+              "source_level": 2,
+              "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBmbEx5bnV3OXB2TENlNUIyYVp3M083RGxsVUdHSW1DRENSOWJ4bmFMWERncVV3MWMwSUVOcFdRRWhZZ3A3cHlmNkZERWFUbUplNl9yVHZHalBxSmtreUg5THpWVFAzSXhfN0s3R1gyZkMxZzQ?oc=5"
+            },
             {
               "title": "NS홈쇼핑, 한우 기획전…8일까지 전 상품 10% 할인 - 뉴스핌",
               "source": "뉴스핌",
@@ -164,14 +170,6 @@
               "quality_score": 69,
               "source_level": 2,
               "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFB1OVNMY253blRhczRxQUxDZU5lZmR3WnlMWWNGWms5eXAxQy1QSjJjU2dTel9uWHB0anJSSmxHbE9rVy1zcVh5MTdlUlRMSDZzdy1GUV9XNkRuaVFaMVE?oc=5"
-            },
-            {
-              "title": "NS홈쇼핑, ‘한우 먹는 날’ 맞아 특별 할인전…소비 촉진 나선다 - 뉴스드림",
-              "source": "뉴스드림",
-              "direction": "down",
-              "quality_score": 69,
-              "source_level": 2,
-              "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1abVdzdG9SYUFfenpNTF9oeFFvRnBuaTBiN0V0VkRiWUs0N1NhRHd3bklFTEtnV2dpRWVidjdYVkxJZldkZUVockpqOFJWcnZRNEFtbEViaXFxYTQzenNQeXpSM1lqNlhzNU1N0gFuQVVfeXFMTmYzT2lYNWhHNkFPUVJ4dDRyaXFOT2NjbVp2djk3bEtrbGlPVEVFMjI3MlB0NTZTVFY5M3NpM1k0WUtZQUZHNDFJYURtVUZmOUJrY0JKeElvaExYc2llWU8yc3lya293RWRual85Y1E?oc=5"
             }
           ],
           "neutral": [
@@ -259,14 +257,14 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 19,
+        "items": 18,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "neutral",
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 61.82
+          "neutral": 57.95
         },
         "conflict_ratio": 0,
         "examples": {
@@ -274,28 +272,28 @@
           "down": [],
           "neutral": [
             {
+              "title": "할랄 한우, 중동 수출 확대 시동…바이어 초청 상담 25건·MOU 5건 - 푸드아이콘",
+              "source": "푸드아이콘",
+              "direction": "neutral",
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5vLWVkZTBBR2hvTHlJbkhIdWlpaU5DaXFKSENJNzRUR0U4czZRM3U3MlF5WHRkSEpXaWM3UzJPamdIRVNJTGNFdFBoVnpBUFZEU01GOGRtXy1VdHRScmxVQjhwNGp4NDRaeDZoSA?oc=5"
+            },
+            {
+              "title": "NS홈쇼핑, ‘2026소프라이즈 대한민국 한우세일’진행 - 일간대한뉴스",
+              "source": "일간대한뉴스",
+              "direction": "neutral",
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9BMm9ycXo3V09iSWNGQ3BDckxwRjNQaUNqWmJkUFUtenNobkhMY3hLTzBhMS1KNkVScGlSVEUxb2pNVEJwWk5zQmptUnltUXI0UXZ3WF9GYTlqTmFoNkl0aEoyT3VvMWM?oc=5"
+            },
+            {
               "title": "전국한우협회 강원도지회, ‘대한민국이 한우 먹는 날’ 행사 개최 - 농수축산신문",
               "source": "농수축산신문",
               "direction": "neutral",
               "quality_score": 93,
               "source_level": 4,
               "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5rOF9sX09pd1dIeV9INl92MVE3cDNEeGFtSVZRU2RjclNmdDFIUWgzaTJtbkNJN2x6TGpMWS0yb0VqaFhzbzJCbTNrcWVOUVdlYXBsMjE4MzRQcGVFblhEejk1NldKNlIza1hRUA?oc=5"
-            },
-            {
-              "title": "NS홈쇼핑 ‘소프라이즈 대한민국 한우세일’ 기획전 진행 - 비욘드포스트",
-              "source": "비욘드포스트",
-              "direction": "neutral",
-              "quality_score": 81,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFA5VHhSTGFhdmFRV25JeERLcGhqb3AxVTVJbUwzSDFDeTJDdUdYbVlkMzg5YTFQZDBSalRobEJlV01tcmJQSFVKRTdSV3F0NnlteW9QanN4LURDTlRHbFN4RWpiNGFTb0JMUkR1SXJ5Ml95NGN3cE5DVm5EbWg?oc=5"
-            },
-            {
-              "title": "NS홈쇼핑, '대한민국 한우 먹는 날' 맞아 NS몰서 한우 특별 기획전 진행 - 컨슈머타임스",
-              "source": "컨슈머타임스",
-              "direction": "neutral",
-              "quality_score": 81,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBmRGg2SUY5ZWxFbEZpcDZpdnpfcW45SkZVZ2c1b1hHM3pTX0hrODVGaTB4R1FSdEZ4WlVLeHQ2MFhVcVYza0dGMmV1V2NaT2VmQ1ZpTXhmaDN2eEIyT3FGV0g3RjdWaHFtVmc?oc=5"
             }
           ]
         },
@@ -355,18 +353,26 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 16,
+        "items": 14,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 76.88,
+          "up": 64.48,
           "down": 0.0,
           "neutral": 0.0
         },
         "conflict_ratio": 0.0,
         "examples": {
           "up": [
+            {
+              "title": "소는 음성인데 농장 환경은 양성…강화 구제역 검사서 뒤늦게 확인 - 돼지와사람",
+              "source": "돼지와사람",
+              "direction": "up",
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE16TEJsUDViVTg3M1lWaHhvb1B6eFNHRFpjOWVKbm03RTBEbzdDTWdQM21oUzVoaW9mZEFCVWlFeUZtdERQLU4wbWR2UDJpcExvUHJOUjVROThLblZPZXk5aWt6bXY?oc=5"
+            },
             {
               "title": "아프리카돼지열병(ASF) 방역대책추진현황 261028 18시기준 - 경기도뉴스포털",
               "source": "경기도뉴스포털",
@@ -382,14 +388,6 @@
               "quality_score": 71,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBVRkZaelVPR09kekVEZzN5c1NxQWZieFJnT0lOODVBNDkwMXlUSlgwY1NzYXZONThNWUhYMDdPNzNlS0tqekR4Ymk0Tmt5a3NNVEpyR1hsVTRKSlpLZVNIdmJnQ0Q?oc=5"
-            },
-            {
-              "title": "경북도, 장마철 ASF 차단방역 강화 - 안동MBC",
-              "source": "안동MBC",
-              "direction": "up",
-              "quality_score": 71,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOZ0JuLUhkQks1bS0tTHlxSEpMc0FPMndIQS1hNkdUNF9jWjUxRENRSlNLNUU5MDNob3J4Q1RraWMyNXA2MjJRYW14UDVndS0yaDk2bE44TFJEUVVrdnc4UTk4RW1Wa21QRWo0Z2E0bzBSSlYyTXRDVkZEdUItQ2pEYzY0QjE3bmRaVEdITlVhTXlMME01SmFUN0dBVHpDdHRKX0RXNDF6TnE3NDQ?oc=5"
             }
           ],
           "down": [],
@@ -499,12 +497,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 19,
+        "items": 21,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 87.54,
+          "up": 96.44,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -512,28 +510,28 @@
         "examples": {
           "up": [
             {
-              "title": "고병원성 AI 확산 우려에 남원시 방역망 강화…초소 1곳서 5곳으로 확대 - 더펜뉴스",
-              "source": "더펜뉴스",
+              "title": "야생 삵 폐사체에서 고병원성 AI 검출…방역 당국 긴장 - 전업농신문",
+              "source": "전업농신문",
               "direction": "up",
               "quality_score": 81,
               "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5DVVIxVHpXNEx5OEdGOUlxaTd3cjhSTjQ4SENHekl0ZVg1MnFkczNSYVN4Z21pY0JNcnFDQnJkWm5hQ0JMemZjUm9qc0lidzRROHpfUUhqT2FZaE5iVklrb2lvTQ?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE90RXdNWTAzcDVzVVQzQ1dueHI2MEM4MVBmVFdjakVvYVB2MGlCYXRFbEFxeGJxM0tON2NIQXBwVnZTUGlTWjNrMnpOQnJ3eDA3UE1WaXFpNjNOeHNqdzZCYXhLMjJSRk0tX0dv?oc=5"
             },
             {
-              "title": "단양군, 조류인플루엔자 가상방역훈련 실시 - 웹이코노미",
-              "source": "웹이코노미",
+              "title": "단양군, 조류인플루엔자 대응 가상방역훈련 실시 - 브레이크뉴스",
+              "source": "브레이크뉴스",
               "direction": "up",
               "quality_score": 81,
               "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9naFN5RXAyN0NDSDV3cDIyS1VHMmtIUmQtY1lfUjRSX3dpLUU5NzRoRHkzVUNFLXp0am1aVzVvdGczLXlwcS16ZFdhUUZVcXV4UHhhRldSWWJxTmdxZDljX3ZyWUdXYjFVREYxZUE0YnFMQQ?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMiQkFVX3lxTE9pRTNZREZDUjBqUnB5Z0VYN2VEQjBCVkxPWXE3aER4VGl4X0hlckxnYzRWMlN2d3NKaktlLTVKRHVydw?oc=5"
             },
             {
-              "title": "단양군, 조류인플루엔자 발생 대비 ‘가상 방역 훈련’ - 충청일보",
-              "source": "충청일보",
+              "title": "충남 서산 야생포유류 삵에서 고병원성 조류인플루엔자 검출… 예찰·방역 강화 - 뉴스파이어",
+              "source": "뉴스파이어",
               "direction": "up",
               "quality_score": 81,
               "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9JeFZCVWRYMXdDN2oyOTFic3pyX3JJQVI1eEdwdjlLTl90NUlpRGh0em80aGU1aGpqckpYNkJFXzA3OHRXV1A1WnJZN2Y0NWRsMVNrMHlwRVJSNDRWUkdmOWVFZ0hqYUJTS21obEd3TDE?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9QbWo3ejVYSFV0em5TUlZBTVN6UU9JblpMYTFqdmlVdzJYdTFYU2hGdVM0a0hsQ2txWXluM2FpQzNocUEtelVtQmJJYU11dEh4cmUxbFpLby0wZDFaV0RuY1prSHNWTVBpQzV5WmZR?oc=5"
             }
           ],
           "down": [],
@@ -626,22 +624,31 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 0,
+        "items": 1,
         "has_conflict": false,
         "severity": "none",
-        "dominant_direction": "neutral",
+        "dominant_direction": "up",
         "weighted_direction": {
-          "up": 0.0,
+          "up": 4.62,
           "down": 0.0,
           "neutral": 0.0
         },
-        "conflict_ratio": 0,
+        "conflict_ratio": 0.0,
         "examples": {
-          "up": [],
+          "up": [
+            {
+              "title": "남원 AI 방역초소 1곳서 5곳으로, 축산차량·종오리 농장 관리 강화 - 시사의창",
+              "source": "시사의창",
+              "direction": "up",
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBfNWZHWDBOTDBxZVUyaWNJbUNoeXFjbVF3dkx3RDRTT1R2N1NOTkdBVGtDbTdsaVFtMmRSdEVZaU10NWJUR1NvR1ljYnQ3ME56N2ZvSw?oc=5"
+            }
+          ],
           "down": [],
           "neutral": []
         },
-        "memo": "질병/방역 축은 중립 또는 보조 근거 중심"
+        "memo": "질병/방역 축은 상방 근거 우세"
       },
       {
         "axis": "policy",
@@ -688,16 +695,16 @@
       {
         "axis": "price",
         "label": "가격",
-        "items": 9,
+        "items": 8,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "down",
         "weighted_direction": {
           "up": 3.71,
-          "down": 15.38,
+          "down": 11.27,
           "neutral": 11.52
         },
-        "conflict_ratio": 0.24,
+        "conflict_ratio": 0.33,
         "examples": {
           "up": [
             {
@@ -710,14 +717,6 @@
             }
           ],
           "down": [
-            {
-              "title": "EU A등급 계란 가격 소폭 하락…주간 평균 100kg당 247.11유로 - 뉴스 및 통계 - IndexBox",
-              "source": "IndexBox",
-              "direction": "down",
-              "quality_score": 71,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPQWFNUzJiQWV2UUhxcXV1NzVGRXFoZDlhci1kdXBrQTViOUplTDNITmFqOEV1TUh2Z2VHa3h2NlJMTnJpOGxDa1F3Vkx2ZkV2MmtBME1yUnpQcENObW1lZTFHMnlBZE5hOV9Cc25JUnFvNHN6Wi1vazJhY245MFRkYWlzUzlqWTdkRWxxUQ?oc=5"
-            },
             {
               "title": "수입 의존 계란 가격 안정 대책 개선해야 - 농축유통신문",
               "source": "농축유통신문",
@@ -733,6 +732,14 @@
               "quality_score": 65,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5OaDJnWlY2RVExTVlHNmx1a2xNVnFxbURaVVlFSWZNc0M0bTdIWjdid3RmU3I5RFZjMHFPRUtUVXdQRWZJOVdtRmFHS3NJb2pZNjBqLUhubGtkV2puRTVDZmtNWnNaTzlK?oc=5"
+            },
+            {
+              "title": "계란값, 완만한 하락세···추석 이후 폭락 예측 벗어나 - 한국농어민신문",
+              "source": "한국농어민신문",
+              "direction": "down",
+              "quality_score": 51,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9hMzg5aVZGSUdiWFlSS3dxV3dpSTlzY0pwLUFiOHBVTUN0clNoRkkxdWQyMS1MU2NhY05sbGI3TzAtNF9VWmNMUTZaMndIc2tJMUxqYjhzZE1BcEtBcG1KN1BjeEtYSUZCUE9icA?oc=5"
             }
           ],
           "neutral": [
@@ -866,20 +873,28 @@
       {
         "axis": "policy",
         "label": "정책/고시",
-        "items": 4,
+        "items": 5,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "neutral",
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 12.22
+          "neutral": 15.17
         },
         "conflict_ratio": 0,
         "examples": {
           "up": [],
           "down": [],
           "neutral": [
+            {
+              "title": "한 판 4만4000원씩 주고 수입했는데…석달새 계란값 23% 급락, 이유는 - 매일경제",
+              "source": "매일경제",
+              "direction": "neutral",
+              "quality_score": 65,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5mUnJTVUtLeUp3SWlMSXl4TTh4bnRxOEFCT0MtdDZqcnB2aWRaVUIzLVlHZ1hGcG96YU1oQ2hPdFRrNVoyVVVMZnFnVkFIbUN1azl0Ug?oc=5"
+            },
             {
               "title": "브라질산 계란 한판 수입가 4만4000원…올해만 16억 썼다, 왜? - 동아일보",
               "source": "동아일보",
@@ -895,14 +910,6 @@
               "quality_score": 82,
               "source_level": 5,
               "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9hQWJfWXFCYm4wR3k3amFiYXBQU2FncnBpeGVfd1kwT3lJWnVFaVZjUDQ3UFllY1hsanF3eWMxTnVjdWFpWS1pYWhkRTZTanRt?oc=5"
-            },
-            {
-              "title": "3.9만원 수입 계란 4980원에 팔았다…혈세 1200억 쓴 물가 대책 - 중앙일보",
-              "source": "중앙일보",
-              "direction": "neutral",
-              "quality_score": 58,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBEV0JzRzNQaW0yZG8zY2w3cXdfT3JuZlFkdzdvMnRobjNwb3FRYzlZZHNrV1FzNDhBcXJ3b0tGZUctWXBFZzlFOTR5MHBzTktoVktzdEZn?oc=5"
             }
           ]
         },
@@ -998,12 +1005,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 15,
+        "items": 17,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 73.48,
+          "up": 83.2,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -1011,20 +1018,12 @@
         "examples": {
           "up": [
             {
-              "title": "겨울철 가축전염병 예방을 위한 특별방역대책점검회의 개최 - 농림축산식품부",
+              "title": "농식품부 장관, 충청남도 추석 연휴 방역 대응체계 현장 점검 - 농림축산식품부",
               "source": "농림축산식품부",
               "direction": "up",
-              "quality_score": 82,
+              "quality_score": 75,
               "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBDbW1PbWZmY1VhQ0ZuWDRneERaSlB1N21uWmhqT3lUNjl0c0trRFhsZ0tSaFZ3VXA5RTlIVFhCbk5xR2RyM25XR05tWFVtLUZKcy1xOHpiRDVDX0llZU1XSnE5aWRselU?oc=5"
-            },
-            {
-              "title": "알림소식 > 공지·공고 > 2026년 동식물 방역방제 유공 정부포상 후보자 공개검증 - 농림축산식품부",
-              "source": "농림축산식품부",
-              "direction": "up",
-              "quality_score": 82,
-              "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBkbm94UC16VTJjbnRwUGFvUVNpV1RaWUVza0JXbmJrZjBGR25tQWoxQmlYdTQ3Q2duZXNYLVl3ejlsQzk2dWt6NjdjcGVwRktBMmVvZl96dkhYR1RFLVJWVFlMaEs5emJmdVBwUVJmaV8xZFdNNDhCMVo1OA?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE0tR2xieFp0QzVhcVZKSzIzNlZsOU9ITWttaXJKVVRuT2V6LXdDSnpNcXlZRllvV1JlUWNwcU04NU9IWExrM05oWFZQbGlhaEtDMHNRYVlvMkloMjVPbW5nTlJsZTFHYXM?oc=5"
             },
             {
               "title": "알림소식 > 보도자료 > 겨울철 가축전염병 위험 요인 집중 관리로 ‘26/’27 겨울철 특별방역대책 추진 - 농림축산식품부",
@@ -1033,6 +1032,14 @@
               "quality_score": 75,
               "source_level": 5,
               "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5CUlh5ZVR3aWNJTlJxbkRBbEI2NGItREdnOG9sM2NZQUVkY2VQRG9EYTMwRXhFSlkzSHo5VXktY21JN2htalBwX09EN2VzNV9DQjRWZjRfTEQxYk1tMEZrZkVZVWRkY2x0MDJJTFZZaEhyUmd2b2E2TFRMdw?oc=5"
+            },
+            {
+              "title": "알림소식 > 보도자료 > 공중방역수의사 적정 인력 수급 관리, 복무 여건 조사 등 처우 개선 추진 - 농림축산식품부",
+              "source": "농림축산식품부",
+              "direction": "up",
+              "quality_score": 75,
+              "source_level": 5,
+              "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1mYk1kWlFrTWtkVzFfSEQ2OXp2LTJWdkxIRnYyanZvU2ZsNUZma29hdHl4bDZrS2ZfZlZfc1BzSEhfaWFhNjJSTEhVcXhjYms1ak9pRWRWeTgyM05oM2tKNGt5NnpHQ1hUbW8zNU5zUGJTak1fWTdmTU5YMA?oc=5"
             }
           ],
           "down": [],
@@ -1043,72 +1050,71 @@
       {
         "axis": "policy",
         "label": "정책/고시",
-        "items": 1,
+        "items": 0,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "neutral",
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 3.65
+          "neutral": 0.0
         },
         "conflict_ratio": 0,
         "examples": {
           "up": [],
           "down": [],
-          "neutral": [
-            {
-              "title": "민간 연구개발, 검역본부가 지원한다! ‘특수연구시설 개방 확대’ - 농림축산식품부",
-              "source": "농림축산식품부",
-              "direction": "neutral",
-              "quality_score": 75,
-              "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5PcVgxR2pMUTJKdE4tcDlOU0luclNfV1VZWW0wMVJTeW1LTEtIM19jMnNpMWVQUzgtcGNUbjhNZFJmOEF2Y3haN3JtYks0UnVDQ0NDMURrNlA0SnUwU3RSVmRWeC1zT0ZhaUgyRGx0WFBzSzc4THZfVVNQMA?oc=5"
-            }
-          ]
+          "neutral": []
         },
         "memo": "정책/고시 축은 중립 또는 보조 근거 중심"
       },
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 19,
-        "has_conflict": true,
-        "severity": "medium",
+        "items": 21,
+        "has_conflict": false,
+        "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 9.1,
+          "up": 13.65,
           "down": 4.1,
-          "neutral": 58.54
+          "neutral": 62.19
         },
-        "conflict_ratio": 0.45,
+        "conflict_ratio": 0.3,
         "examples": {
           "up": [
             {
-              "title": "알림소식 > 보도자료 > 겨울철 가축전염병 비상대응 체계로 전환,추가 발생 선제적 차단 총력 - 농림축산식품부",
+              "title": "❶ 농식품부는 가축전염병 확산 방지를 위해 총력 대응하고 있습니다 - 농림축산식품부",
               "source": "농림축산식품부",
               "direction": "up",
               "quality_score": 75,
               "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMi9gNBVV95cUxOelo0OWlvVHRPbVlDa0h3dFRaUkZNLU5YRll3Wll5VzdOLXFmXzd4NV94emFJdDVVeG1pRE16b1d5N1ZlbzRvQzFfelRYLS1kcnEyMnBsX3E1ZGp4djhUcnVGaHlhX056RTMxUFRnU2wxblc2OVhHZ01mYnFxUzNVSWREZkQ1NFIxVzRISGU4Y3g0WG50Y1QtQlVGVzdEUnVDeDNwa3lmNnN2Nzg0b0xIbGFUMm12ZktyS1ZlOEljTFVjUGMzMEhWM1NMQkpEMFR1b2w2bTlOYmdSS3g2dHRFdGZVWWFjMmVpbmFXQkV1WDlwaUNpaEdtcmZmY3M3UXpkRHR4SExxSHJPNUxIZlhUVkJ4aTN1TmxEd2EtT1JhR21IeFVzSUJxR2tjNGJ5Yk92ZlF6UDlZZ2U3Q1BMNW10d0tiQm9wX3dCS0dYTEZyaExCTFBDdjU0QnlsNGdoaUNEcFJsNE4yRC0tZEI4YS1mR0Z2cEdsREdhclpRMUJpVkh5OW1uYU1GaG9ablpiUlF2TVYyVGNwenBycnZwWk51VmdFc3NnQXlNZk9FUzFzZ3U2V0R0R1JrNXBmU21MVEg5bG90WmdpSkQ0QTBNZzNYYmFjb25SZTgzQWpaZzQ4a191c1ZZbldXVEcwM0VxeUpsSFlrdk1R?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFAyUG5KblNOeTFZSmRxZktRcjlGcktTY1haMS1Bc0d0R1RNU0txRTlPUkllSkpqeVJNVFg2LUhYbHJ4QjN6NTdYRHBOZDlsTzlLSGNvTkFJZXR0LUdzSlBHalN2Y2xkVEE?oc=5"
             },
             {
-              "title": "인천 동물생산업장 개 브루셀라병 검출에 따른 확산 방지조치 시행 - 농림축산식품부",
+              "title": "가축질병 발생현황 - 농림축산식품부",
               "source": "농림축산식품부",
               "direction": "up",
               "quality_score": 75,
               "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1tbTd1YUhmdXg5cUM3WTBDdkV2RlVYQ1JUemVPSUx3WGdLaXpDVjdPcktndmtobEpQc01BTnctMkpJdlA2c3p4VzdHMmJ0bmhRMTBCdm5GSDlKSGJGbUp1NDA5cVBIajg?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE91YnZmblR2NW10MWd2M2xwRTVXLVQyWkhDWWxhU0REM1hHNTYtQlJ0aFlyVzFtZmVkX0FoRWxDNnYxZzhGRW5WazhlcWRyaEJIdGZGdjh6ZkNSRWFZODNxaw?oc=5"
+            },
+            {
+              "title": "가축전염병(FMD) 발생현황 정보공개 - 농림축산식품부",
+              "source": "농림축산식품부",
+              "direction": "up",
+              "quality_score": 75,
+              "source_level": 5,
+              "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5HR24tZWFxb29uTmlxYXB5Zlh2c3ZnMUs1NXhwVHJ0V1I0d0EwVlFBM2xnby1YX1JQLVlVb2llSmwtLUV5cGJJbTczZHJ2dXotdV9Ib3JEVm15dHc?oc=5"
             }
           ],
           "down": [
             {
-              "title": "양돈 농가 소독설비 설치 부담 완화 제도화 - 농림축산식품부",
+              "title": "알림소식 > 보도자료 > 럼피스킨 2종 가축질병으로 관리 완화 등 관리방식 대폭 바뀐다 - 농림축산식품부",
               "source": "농림축산식품부",
               "direction": "down",
               "quality_score": 75,
               "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE01Z2lweHdUU29QaGZ0bEFGZ2Q2bGJscmQ3NW5ielZvdW9nNS1hb2tlSXZpVEhfUi04WHAzUXFUWXdmVDM3M05GRnIxb0VVX0Y5Y0drNXBnenhWVWNkSWd5N0JwS0xBdmM?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMirANBVV95cUxNazFFdjcxY1Z3bDVyajJDM2dTeU9rTXFpVnpiR2Rlb01vZlNORHBLcUVBV0tVOUtQcmtDaU43aFhNQ2NXTGljUUhoRUJraklHUm1UYXU1UTBYUktubXktVjJ6cGJaRV9iNzN1ZTFFSmxOdTlfSWRsVTRBbENOLU5sZU1kMHNXc3RpUFpoUlc0SVlCZXZQOHpSdFJXajk1dHBzU3NxRW91eWRlSDIweGE2Y2pvUU1mdjlHV1VFaE1IcmthUl80NU9tSThodkh6R0dtMkgyUnZHUXhmeUdxY1Zaa2ZCMHF3bGt5SG1sT3dOUXgtdzF5T09HeGg3aUNRbGlvcVlmQUdsYmtzWk0wQWNOWW5QUW9iMFpHZlkwWVBaTE9nN0pSUVdlR085Q0twWl9Zdmdocm4xeFRkZ2xEWTdaNm1YWnBHa2djdmpDdHVXVXRzNUstMnBJZ0FCWXd4OGdxZncxUmh4VVl3anpPVUFxOHFMSVlhbU9vTjlqeW45aDlvazQyTm9WQnhPZ1YzVDYyVWpXWUJCUzNSemExc2FOUFFfV0dVZDNhTENBaA?oc=5"
             }
           ],
           "neutral": [
@@ -1121,24 +1127,24 @@
               "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFAwNjNYb1Nyb2xQcVNjSjdMeWpaMUNxc3RNLXhJNjJjS0FMR1doWWFLMFd4TURmWkY3eHBjbmpoekJWT05XRWtBeTdLWGhDS1hud1MxSGZQTlZOWkdNRmV2QXV0eFJGNEE?oc=5"
             },
             {
+              "title": "K2WebWizard - 농림축산식품부",
+              "source": "농림축산식품부",
+              "direction": "neutral",
+              "quality_score": 75,
+              "source_level": 5,
+              "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5KR2o0SkNPS3M2Slp4RElZcTBnOXUwRF9iTnRlTHVQX0lKcUxpM0tyZjg1NFhBdWtQb1UwMWJxdVByalR4UENncE5tRklNVmNMUk9pUnFLdEVWWVh1d1ktb2dHQ3o5T1YzSUFj?oc=5"
+            },
+            {
               "title": "농림축산식품부 - - 농림축산식품부",
               "source": "농림축산식품부",
               "direction": "neutral",
               "quality_score": 75,
               "source_level": 5,
               "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1jeXl3alQyb3lFNEdYLU01UDVwbXRCUHVjQnhTZlBoZENQRHo3RlB6SUpKejVuYkR3eFlfNDhIYURYMG5fN213b1J4Nk1HRFQwei04VDBfM2UyR1FxallDQWR0bVd6RjlQWUx4aDc3Z0tVWWUwY1pGdmdYR0N4dWs?oc=5"
-            },
-            {
-              "title": "K2WebWizard - 농림축산식품부",
-              "source": "농림축산식품부",
-              "direction": "neutral",
-              "quality_score": 75,
-              "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFB6WHVLaWtXZktnbFQ2eDdhaXhIQjZ4ejZlRUJzNkh0ejVRQlljZ2psZ09CU3pzY01pMUZDQW5tNjBRTDFYWUphSTZZcGdadEhEcnI1Z1Vadm1PWG11M2NWNTFmNGpTSy1QaG9j?oc=5"
             }
           ]
         },
-        "memo": "뉴스/수요 축에서 상방·하방 근거가 동시에 감지되어 medium 충돌로 분류"
+        "memo": "뉴스/수요 축은 상방 근거 우세"
       }
     ]
   }
