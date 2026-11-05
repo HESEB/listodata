@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-04T23:44:43Z",
+  "updated_at": "2026-11-05T06:56:56Z",
   "policy": "phase2_evidence_score_v3_sanitized",
   "score_axes": {
     "price": {
@@ -43,30 +43,29 @@
     {
       "id": "BEEF",
       "name": "한우",
-      "signal_score": 32,
+      "signal_score": 20,
       "direction": "down",
       "status": "하방 가능성",
-      "quality_score": 73,
-      "confidence_score": 61,
-      "coverage_rate": 80,
+      "quality_score": 77,
+      "confidence_score": 56,
+      "coverage_rate": 60,
       "evidence_count": 30,
       "official_count": 0,
       "direction_counts": {
-        "up": 1,
-        "down": 7,
-        "neutral": 22,
+        "up": 0,
+        "down": 3,
+        "neutral": 27,
         "hold": 0
       },
       "coverage_types": [
         "가격",
         "수요/행사",
-        "일반",
-        "질병/방역"
+        "일반"
       ],
       "score_breakdown": {
         "price": 11,
         "supply": 0,
-        "disease": 12,
+        "disease": 0,
         "policy": 0,
         "news": 9
       },
@@ -82,10 +81,10 @@
           "label": "가격",
           "max_score": 30,
           "score": 11,
-          "items": 11,
+          "items": 6,
           "up": 0,
-          "down": 7,
-          "neutral": 4,
+          "down": 3,
+          "neutral": 3,
           "examples": [
             {
               "title": "한우 가격이 소프라이즈! 최대 63% 할인 - 카드/한컷 | 멀티미디어 - 대한민국 정책브리핑",
@@ -97,13 +96,13 @@
               "title": "한우자조금 민경천 \"내국인엔 착한 가격, 외국인엔 잊지 못할 맛\" - 동행미디어 시대",
               "direction": "neutral",
               "source_level": 4,
-              "quality_score": 93
+              "quality_score": 88
             },
             {
-              "title": "최대 63% 할인 ‘한우의 날’…남은 행사는 어디서 - 관광레저신문",
-              "direction": "down",
+              "title": "한우 가격 상승세…유통가 할인 돌입 - 경남도민일보",
+              "direction": "neutral",
               "source_level": 2,
-              "quality_score": 69
+              "quality_score": 59
             }
           ]
         },
@@ -120,19 +119,12 @@
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
-          "score": 12,
-          "items": 1,
-          "up": 1,
+          "score": 0,
+          "items": 0,
+          "up": 0,
           "down": 0,
           "neutral": 0,
-          "examples": [
-            {
-              "title": "소에서는 안 나왔는데…강화 한우농장 환경서 구제역 항원 검출 - 돼지와사람",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 76
-            }
-          ]
+          "examples": []
         },
         "policy": {
           "label": "정책/고시",
@@ -148,25 +140,25 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 9,
-          "items": 18,
+          "items": 24,
           "up": 0,
           "down": 0,
-          "neutral": 18,
+          "neutral": 24,
           "examples": [
             {
-              "title": "동원홈푸드, 대통령상 한우 낙찰… ‘역대 최고 경매가’ 경신 - 뉴스웰",
+              "title": "한 마리에 1억원 육박…역대 최고가 기록했다는 '대통령상 한우', 뭐길래 - 위키트리",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 81
             },
             {
-              "title": "\"마블링만으론 한우의 미래 못 지킨다\"…이재윤 한국종축개량협회장 - 머니투데이 - 머니투데이",
+              "title": "동원홈푸드, 16년 연속 대통령상 한우 낙찰…역대 최고가 9864만원 - 이코노뉴스",
               "direction": "neutral",
-              "source_level": 4,
-              "quality_score": 93
+              "source_level": 3,
+              "quality_score": 81
             },
             {
-              "title": "1억원까지 단 136만원…한우 몸값 역대 최고 9864만원 - 머니투데이 - 머니투데이",
+              "title": "동원홈푸드, 대통령상 한우 16년 연속 낙찰…경매가 9864만원 - 한국면세뉴스",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 81
@@ -174,20 +166,22 @@
           ]
         }
       },
-      "reason": "질병/방역 12점 + 가격 11점 + 뉴스/수요 9점 기반, 하방성 자료가 우세",
+      "reason": "가격 11점 + 뉴스/수요 9점 기반, 하방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
-        "severity": "none",
+        "severity": "low",
         "axes": [],
-        "memo": "주의 필요 · 누락근거: 수급/도축, 정책/고시"
+        "memo": "주의 필요 · 누락근거: 수급/도축, 질병/방역, 정책/고시 / 유보사유: 주요 근거축 다수 누락"
       },
       "hold_decision": {
         "should_hold": false,
-        "reasons": [],
+        "reasons": [
+          "주요 근거축 다수 누락"
+        ],
         "recommended_status": "하방 가능성",
         "recommended_direction": "down",
-        "adjusted_confidence": 61
+        "adjusted_confidence": 56
       }
     },
     {
@@ -196,13 +190,13 @@
       "signal_score": 36,
       "direction": "neutral",
       "status": "보합/혼조",
-      "quality_score": 77,
-      "confidence_score": 76,
+      "quality_score": 76,
+      "confidence_score": 75,
       "coverage_rate": 60,
-      "evidence_count": 23,
+      "evidence_count": 21,
       "official_count": 12,
       "direction_counts": {
-        "up": 22,
+        "up": 20,
         "down": 0,
         "neutral": 1,
         "hold": 0
@@ -258,8 +252,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 21,
-          "up": 21,
+          "items": 19,
+          "up": 19,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -276,10 +270,10 @@
               "quality_score": 81
             },
             {
-              "title": "강원도, 아프리카돼지열병 가상방역훈련 - 동방일보",
+              "title": "국무회의서 ASF 남북 공동방역 논의…정부 \"협력 준비 중\" - 돼지와사람",
               "direction": "up",
-              "source_level": 3,
-              "quality_score": 81
+              "source_level": 5,
+              "quality_score": 100
             }
           ]
         },
@@ -324,7 +318,7 @@
         "reasons": [],
         "recommended_status": "보합/혼조",
         "recommended_direction": "neutral",
-        "adjusted_confidence": 76
+        "adjusted_confidence": 75
       }
     },
     {
@@ -401,19 +395,19 @@
           "neutral": 0,
           "examples": [
             {
-              "title": "농림축산식품부, 경기 연천 산란계 농장에서 고병원성 조류인플루엔자(AI) 첫 발생에 따라 전국 방역관리 강화 - 한국시사경제",
-              "direction": "up",
-              "source_level": 5,
-              "quality_score": 100
-            },
-            {
-              "title": "한 총리, 연천 ’고병원성 조류인플루엔자’ 발생에 “초동 방역 만전 기하라“ - 연합뉴스TV",
+              "title": "김포시 야생 조류인플루엔자（AI） 선제적 대응 강화 - 녹색환경저널",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
             },
             {
-              "title": "연천 산란계농장서 올겨울 첫 고병원성 AI 발생…전국 방역 강화(종합) - 연합뉴스",
+              "title": "\"조류인플루엔자 유입 차단\" 화성시, 방역태세 선제 점검 - 뉴시스",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 81
+            },
+            {
+              "title": "김포시, 고병원성 AI 확진지 방역·예찰 점검... 선제적 대응 총력 - 인디포커스",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
@@ -580,16 +574,16 @@
     {
       "id": "EGG",
       "name": "계란",
-      "signal_score": 72,
+      "signal_score": 73,
       "direction": "up",
       "status": "상방 가능성",
       "quality_score": 64,
       "confidence_score": 82,
       "coverage_rate": 100,
-      "evidence_count": 21,
+      "evidence_count": 23,
       "official_count": 6,
       "direction_counts": {
-        "up": 10,
+        "up": 12,
         "down": 3,
         "neutral": 8,
         "hold": 0
@@ -604,7 +598,7 @@
       "score_breakdown": {
         "price": 23,
         "supply": 20,
-        "disease": 19,
+        "disease": 20,
         "policy": 4,
         "news": 6
       },
@@ -620,8 +614,8 @@
           "label": "가격",
           "max_score": 30,
           "score": 23,
-          "items": 7,
-          "up": 2,
+          "items": 8,
+          "up": 3,
           "down": 1,
           "neutral": 4,
           "examples": [
@@ -677,14 +671,20 @@
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
-          "score": 19,
-          "items": 3,
-          "up": 3,
+          "score": 20,
+          "items": 4,
+          "up": 4,
           "down": 0,
           "neutral": 0,
           "examples": [
             {
-              "title": "농림축산식품부, 경기 연천 산란계 농장에서 고병원성 조류인플루엔자(AI) 첫 발생에 따라 전국 방역관리 강화 - 한국시사경제",
+              "title": "경기 연천 산란계 농장서 고병원성 조류인플루엔자(AI) 발생 - 농수축산신문",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 81
+            },
+            {
+              "title": "농림축산식품부, 경기 연천 산란계 농장에서 고병원성 조류인플루엔자(AI) 첫 발생에 따라 전국 방역관리 강화 - 정필",
               "direction": "up",
               "source_level": 5,
               "quality_score": 100
@@ -694,12 +694,6 @@
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
-            },
-            {
-              "title": "계란 가격 담합·AI 방역까지…농식품부 정책 ‘도마 위’ - 축산신문",
-              "direction": "up",
-              "source_level": 5,
-              "quality_score": 82
             }
           ]
         },
@@ -750,7 +744,7 @@
           ]
         }
       },
-      "reason": "가격 23점 + 수급/도축 20점 + 질병/방역 19점 기반, 상방성 자료가 우세",
+      "reason": "가격 23점 + 수급/도축 20점 + 질병/방역 20점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": true,
@@ -771,18 +765,18 @@
     {
       "id": "OTHER",
       "name": "기타",
-      "signal_score": 49,
+      "signal_score": 48,
       "direction": "neutral",
       "status": "보합/혼조",
       "quality_score": 75,
       "confidence_score": 89,
       "coverage_rate": 100,
-      "evidence_count": 41,
-      "official_count": 40,
+      "evidence_count": 38,
+      "official_count": 37,
       "direction_counts": {
-        "up": 23,
-        "down": 3,
-        "neutral": 15,
+        "up": 22,
+        "down": 2,
+        "neutral": 14,
         "hold": 0
       },
       "coverage_types": [
@@ -794,7 +788,7 @@
       ],
       "score_breakdown": {
         "price": 9,
-        "supply": 8,
+        "supply": 7,
         "disease": 19,
         "policy": 0,
         "news": 13
@@ -827,18 +821,12 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 8,
-          "items": 2,
+          "score": 7,
+          "items": 1,
           "up": 0,
-          "down": 2,
+          "down": 1,
           "neutral": 0,
           "examples": [
-            {
-              "title": "김종구 농림축산식품부차관, 추석 명절 축산물 수급 안정에 총력 - 행정신문",
-              "direction": "down",
-              "source_level": 5,
-              "quality_score": 75
-            },
             {
               "title": "송미령 농식품부 장관, 음성공판장 찾아 “추석 축산물 수급·가격 안정 총력” - 중부매일",
               "direction": "down",
@@ -851,8 +839,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 18,
-          "up": 18,
+          "items": 17,
+          "up": 17,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -863,13 +851,13 @@
               "quality_score": 100
             },
             {
-              "title": "농식품부 장관, 충청남도 추석 연휴 방역 대응체계 현장 점검 - 농림축산식품부",
+              "title": "알림소식 > 보도자료 > 겨울철 가축전염병 위험 요인 집중 관리로 ‘26/’27 겨울철 특별방역대책 추진 - 농림축산식품부",
               "direction": "up",
               "source_level": 5,
               "quality_score": 75
             },
             {
-              "title": "알림소식 > 보도자료 > 겨울철 가축전염병 위험 요인 집중 관리로 ‘26/’27 겨울철 특별방역대책 추진 - 농림축산식품부",
+              "title": "경북 예천 구제역 방역조치 차질 없이 추진 중 - 농림축산식품부",
               "direction": "up",
               "source_level": 5,
               "quality_score": 75
@@ -890,10 +878,10 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 13,
-          "items": 20,
+          "items": 19,
           "up": 5,
           "down": 1,
-          "neutral": 14,
+          "neutral": 13,
           "examples": [
             {
               "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
