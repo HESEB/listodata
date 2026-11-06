@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-06T18:03:13Z",
+  "updated_at": "2026-11-06T23:14:24Z",
   "policy": "phase2_evidence_score_v3_sanitized",
   "score_axes": {
     "price": {
@@ -43,18 +43,18 @@
     {
       "id": "BEEF",
       "name": "한우",
-      "signal_score": 36,
-      "direction": "neutral",
-      "status": "보합/혼조",
-      "quality_score": 76,
-      "confidence_score": 62,
+      "signal_score": 45,
+      "direction": "hold",
+      "status": "판단 유보",
+      "quality_score": 72,
+      "confidence_score": 42,
       "coverage_rate": 80,
       "evidence_count": 30,
       "official_count": 0,
       "direction_counts": {
-        "up": 3,
-        "down": 2,
-        "neutral": 25,
+        "up": 6,
+        "down": 1,
+        "neutral": 23,
         "hold": 0
       },
       "coverage_types": [
@@ -64,8 +64,8 @@
         "일반"
       ],
       "score_breakdown": {
-        "price": 11,
-        "supply": 16,
+        "price": 16,
+        "supply": 20,
         "disease": 0,
         "policy": 0,
         "news": 9
@@ -81,11 +81,11 @@
         "price": {
           "label": "가격",
           "max_score": 30,
-          "score": 11,
-          "items": 6,
+          "score": 16,
+          "items": 4,
           "up": 1,
-          "down": 2,
-          "neutral": 3,
+          "down": 1,
+          "neutral": 2,
           "examples": [
             {
               "title": "한우 가격이 소프라이즈! 최대 63% 할인 - 카드/한컷 | 멀티미디어 - 대한민국 정책브리핑",
@@ -94,25 +94,25 @@
               "quality_score": 64
             },
             {
-              "title": "한우자조금 민경천 \"내국인엔 착한 가격, 외국인엔 잊지 못할 맛\" - 동행미디어 시대",
+              "title": "한우 가격 절반 수준 ‘스테이크형 배양육’ 개발 성공 - 축산신문",
               "direction": "neutral",
-              "source_level": 4,
-              "quality_score": 88
+              "source_level": 3,
+              "quality_score": 65
             },
             {
-              "title": "최대 63% 할인 ‘한우의 날’…남은 행사는 어디서 - 관광레저신문",
-              "direction": "down",
-              "source_level": 2,
-              "quality_score": 64
+              "title": "[Issue+] 추석 이후 한우가격 추이와 전망 - 농수축산신문",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 58
             }
           ]
         },
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 16,
-          "items": 2,
-          "up": 2,
+          "score": 20,
+          "items": 5,
+          "up": 5,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -123,7 +123,13 @@
               "quality_score": 81
             },
             {
-              "title": "한우 가격 비싸진다…올해 사육 마릿수는 감소 전망 - 연합뉴스",
+              "title": "추석 앞두고 ‘한우고기’ 경락값 역대 최고…‘입식 과열’ 우려 - 농민신문",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 51
+            },
+            {
+              "title": "한우 공급 감소, 도매가격 ‘강세’ 지지 - 축산신문",
               "direction": "up",
               "source_level": 3,
               "quality_score": 51
@@ -154,17 +160,11 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 9,
-          "items": 22,
+          "items": 21,
           "up": 0,
           "down": 0,
-          "neutral": 22,
+          "neutral": 21,
           "examples": [
-            {
-              "title": "'생생정보' 한우육개장 맛집 - BNT뉴스",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 81
-            },
             {
               "title": "한우육개장이 단돈 9000원…진한 국물에 소고기까지, '생생정보' 오늘 맛집 - 위키트리",
               "direction": "neutral",
@@ -176,26 +176,34 @@
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 81
+            },
+            {
+              "title": "한우 한 마리에 9864만원…동원홈푸드, 대통령상 최고가 낙찰 기록 썼다 - 미래경제",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 81
             }
           ]
         }
       },
-      "reason": "수급/도축 16점 + 가격 11점 + 뉴스/수요 9점 기반, 상방성 자료가 우세",
+      "reason": "수급/도축 20점 + 가격 16점 + 뉴스/수요 9점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": true,
-        "severity": "medium",
+        "severity": "high",
         "axes": [
           "가격"
         ],
-        "memo": "주의 필요 · 충돌축: 가격 / 누락근거: 질병/방역, 정책/고시"
+        "memo": "판단 유보 권장 · 충돌축: 가격 / 누락근거: 질병/방역, 정책/고시 / 유보사유: 상·하방 근거 강충돌"
       },
       "hold_decision": {
-        "should_hold": false,
-        "reasons": [],
-        "recommended_status": "보합/혼조",
-        "recommended_direction": "neutral",
-        "adjusted_confidence": 52
+        "should_hold": true,
+        "reasons": [
+          "상·하방 근거 강충돌"
+        ],
+        "recommended_status": "판단 유보",
+        "recommended_direction": "hold",
+        "adjusted_confidence": 42
       }
     },
     {
@@ -204,13 +212,13 @@
       "signal_score": 46,
       "direction": "neutral",
       "status": "보합/혼조",
-      "quality_score": 72,
-      "confidence_score": 73,
+      "quality_score": 73,
+      "confidence_score": 74,
       "coverage_rate": 60,
-      "evidence_count": 19,
+      "evidence_count": 17,
       "official_count": 11,
       "direction_counts": {
-        "up": 18,
+        "up": 16,
         "down": 0,
         "neutral": 1,
         "hold": 0
@@ -279,8 +287,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 16,
-          "up": 16,
+          "items": 14,
+          "up": 14,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -291,16 +299,16 @@
               "quality_score": 81
             },
             {
-              "title": "강원도, ASF 발생 대비 현장훈련… 초동방역부터 가축처분까지 점검 - 한돈뉴스",
+              "title": "전국 가금농장에 다시 고병원성 AI 비상…산란계 이어 오리농장까지 - 돼지와사람",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
             },
             {
-              "title": "전국 가금농장에 다시 고병원성 AI 비상…산란계 이어 오리농장까지 - 돼지와사람",
+              "title": "ASF 방역 규제 대폭 완화 추진…역학조사 21일→19일, 재입식 절차 간소화 - 돼지와사람",
               "direction": "up",
               "source_level": 3,
-              "quality_score": 81
+              "quality_score": 76
             }
           ]
         },
@@ -338,7 +346,7 @@
         "reasons": [],
         "recommended_status": "보합/혼조",
         "recommended_direction": "neutral",
-        "adjusted_confidence": 73
+        "adjusted_confidence": 74
       }
     },
     {
@@ -350,10 +358,10 @@
       "quality_score": 80,
       "confidence_score": 77,
       "coverage_rate": 60,
-      "evidence_count": 57,
-      "official_count": 7,
+      "evidence_count": 56,
+      "official_count": 8,
       "direction_counts": {
-        "up": 55,
+        "up": 54,
         "down": 1,
         "neutral": 1,
         "hold": 0
@@ -409,8 +417,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 55,
-          "up": 55,
+          "items": 54,
+          "up": 54,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -427,7 +435,7 @@
               "quality_score": 81
             },
             {
-              "title": "장흥 육용오리 농장에서 AI 항원 검출...이동제한 조치 - KBC광주방송",
+              "title": "장흥 육용오리농장 조류인플루엔자 확진…방역 관리 강화(종합) - 연합뉴스",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
@@ -487,10 +495,10 @@
       "quality_score": 82,
       "confidence_score": 47,
       "coverage_rate": 20,
-      "evidence_count": 34,
+      "evidence_count": 32,
       "official_count": 1,
       "direction_counts": {
-        "up": 34,
+        "up": 32,
         "down": 0,
         "neutral": 0,
         "hold": 0
@@ -537,8 +545,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 34,
-          "up": 34,
+          "items": 32,
+          "up": 32,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -555,7 +563,7 @@
               "quality_score": 81
             },
             {
-              "title": "장흥 육용오리 농장에서 AI 항원 검출...이동제한 조치 - KBC광주방송",
+              "title": "장흥 육용오리농장 조류인플루엔자 확진…방역 관리 강화(종합) - 연합뉴스",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
@@ -605,16 +613,16 @@
     {
       "id": "EGG",
       "name": "계란",
-      "signal_score": 71,
+      "signal_score": 72,
       "direction": "up",
       "status": "상방 가능성",
       "quality_score": 63,
       "confidence_score": 81,
       "coverage_rate": 100,
-      "evidence_count": 23,
+      "evidence_count": 24,
       "official_count": 6,
       "direction_counts": {
-        "up": 10,
+        "up": 11,
         "down": 3,
         "neutral": 10,
         "hold": 0
@@ -628,7 +636,7 @@
       ],
       "score_breakdown": {
         "price": 24,
-        "supply": 19,
+        "supply": 20,
         "disease": 17,
         "policy": 4,
         "news": 7
@@ -673,9 +681,9 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 19,
-          "items": 6,
-          "up": 4,
+          "score": 20,
+          "items": 7,
+          "up": 5,
           "down": 2,
           "neutral": 0,
           "examples": [
@@ -686,14 +694,14 @@
               "quality_score": 63
             },
             {
-              "title": "송옥주 의원, 축산물 수급조절·가격안정 법제화 추진 - 푸드투데이",
-              "direction": "down",
-              "source_level": 3,
-              "quality_score": 51
+              "title": "산란계협회, 계란 가격정보 제공 재개 길 열려 - 축산신문",
+              "direction": "up",
+              "source_level": 4,
+              "quality_score": 63
             },
             {
-              "title": "계란가격 정보 단절로 시장 혼선…수급 대응도 ‘안갯속’ - 축산신문",
-              "direction": "up",
+              "title": "송옥주 의원, 축산물 수급조절·가격안정 법제화 추진 - 푸드투데이",
+              "direction": "down",
               "source_level": 3,
               "quality_score": 51
             }
@@ -781,40 +789,37 @@
           ]
         }
       },
-      "reason": "가격 24점 + 수급/도축 19점 + 질병/방역 17점 기반, 상방성 자료가 우세",
+      "reason": "가격 24점 + 수급/도축 20점 + 질병/방역 17점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": true,
         "severity": "medium",
         "axes": [
-          "가격",
-          "수급/도축"
+          "가격"
         ],
-        "memo": "주의 필요 · 충돌축: 가격, 수급/도축 / 유보사유: 복수 근거축 충돌"
+        "memo": "주의 필요 · 충돌축: 가격"
       },
       "hold_decision": {
         "should_hold": false,
-        "reasons": [
-          "복수 근거축 충돌"
-        ],
+        "reasons": [],
         "recommended_status": "상방 가능성",
         "recommended_direction": "up",
-        "adjusted_confidence": 61
+        "adjusted_confidence": 71
       }
     },
     {
       "id": "OTHER",
       "name": "기타",
-      "signal_score": 54,
+      "signal_score": 57,
       "direction": "neutral",
       "status": "보합/혼조",
-      "quality_score": 74,
+      "quality_score": 73,
       "confidence_score": 88,
       "coverage_rate": 100,
-      "evidence_count": 40,
+      "evidence_count": 41,
       "official_count": 37,
       "direction_counts": {
-        "up": 23,
+        "up": 24,
         "down": 1,
         "neutral": 16,
         "hold": 0
@@ -828,7 +833,7 @@
       ],
       "score_breakdown": {
         "price": 9,
-        "supply": 13,
+        "supply": 16,
         "disease": 19,
         "policy": 0,
         "news": 13
@@ -861,9 +866,9 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 13,
-          "items": 2,
-          "up": 2,
+          "score": 16,
+          "items": 3,
+          "up": 3,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -875,6 +880,12 @@
             },
             {
               "title": "송옥주, ‘축산물 수급조절·물가관리법’ 대표발의…담합 논란 막는다 - 아이뉴스24",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 51
+            },
+            {
+              "title": "박정훈 식량정책실장, 추석 맞이 축산물 수급 현장 점검 - 농수축산신문",
               "direction": "up",
               "source_level": 3,
               "quality_score": 51
@@ -950,7 +961,7 @@
           ]
         }
       },
-      "reason": "질병/방역 19점 + 수급/도축 13점 + 뉴스/수요 13점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 수급/도축 16점 + 뉴스/수요 13점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
