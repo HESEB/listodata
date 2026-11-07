@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-06T23:14:24Z",
+  "updated_at": "2026-11-07T02:52:49Z",
   "policy": "phase2_conflict_hold_v1",
   "notice": "상방·하방 근거 충돌, 근거 누락, 신뢰도 부족에 따른 판단 유보 검수 리포트입니다.",
   "summary": {
@@ -18,18 +18,17 @@
         "가격"
       ],
       "missing_evidence": [
-        "질병/방역",
         "정책/고시"
       ],
       "hold_reasons": [
         "상·하방 근거 강충돌"
       ],
-      "original_confidence": 60,
-      "adjusted_confidence": 42,
+      "original_confidence": 70,
+      "adjusted_confidence": 52,
       "should_hold": true,
       "recommended_status": "판단 유보",
       "recommended_direction": "hold",
-      "memo": "판단 유보 권장 · 충돌축: 가격 / 누락근거: 질병/방역, 정책/고시 / 유보사유: 상·하방 근거 강충돌"
+      "memo": "판단 유보 권장 · 충돌축: 가격 / 누락근거: 정책/고시 / 유보사유: 상·하방 근거 강충돌"
     },
     {
       "id": "PORK",
@@ -83,8 +82,8 @@
         "커버리지 부족",
         "주요 근거축 다수 누락"
       ],
-      "original_confidence": 47,
-      "adjusted_confidence": 47,
+      "original_confidence": 46,
+      "adjusted_confidence": 46,
       "should_hold": true,
       "recommended_status": "판단 유보",
       "recommended_direction": "hold",
@@ -230,22 +229,31 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 0,
+        "items": 1,
         "has_conflict": false,
         "severity": "none",
-        "dominant_direction": "neutral",
+        "dominant_direction": "up",
         "weighted_direction": {
-          "up": 0.0,
+          "up": 5.0,
           "down": 0.0,
           "neutral": 0.0
         },
-        "conflict_ratio": 0,
+        "conflict_ratio": 0.0,
         "examples": {
-          "up": [],
+          "up": [
+            {
+              "title": "전남 무안 한우 농장에서 구제역 발생 - 농림축산식품부",
+              "source": "농림축산식품부",
+              "direction": "up",
+              "quality_score": 75,
+              "source_level": 5,
+              "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBxTUpqRlU5YzdEWUQzQk1RWFFLUUloNlB6UzE0YWNyVUk4ZVdOSHdURm9mT3MxUmJDNGdvV3RBcUpyTE5VTFJNNHRiX051WG8yRHBwaS14bnZKU2RyelRabg?oc=5"
+            }
+          ],
           "down": [],
           "neutral": []
         },
-        "memo": "질병/방역 축은 중립 또는 보조 근거 중심"
+        "memo": "질병/방역 축은 상방 근거 우세"
       },
       {
         "axis": "policy",
@@ -277,7 +285,7 @@
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 67.76
+          "neutral": 66.86
         },
         "conflict_ratio": 0,
         "examples": {
@@ -384,12 +392,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 14,
+        "items": 13,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 64.76,
+          "up": 60.66,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -520,12 +528,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 54,
+        "items": 53,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 242.2,
+          "up": 236.18,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -533,28 +541,28 @@
         "examples": {
           "up": [
             {
-              "title": "가금농장 고병원성 ‘비상’…장흥 육용오리농장 확진 이어 여주 산란계농장 항원 검출 - 농민신문",
-              "source": "농민신문",
+              "title": "경기도, 고병원성 AI 확산 차단…18개 시군 긴급방역 총력 - 동방일보",
+              "source": "동방일보",
               "direction": "up",
               "quality_score": 81,
               "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1GYkxaV3NiME9FamFraTR1NUU2ZThRU1otc0hwY0dpXzZvQ25zeEFXTFRJSkVqdUV1MzFwS21lLVVzOXU2elppUWozUUFoYnJCbUFQMEZ2SV9tUQ?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9hNFVXODNUMTlMbG5ON3NqbWM2M2ZITnZXNUFsbkt1SlF0WGg0cW1LSktzMkl3LUJmRzNxVmFsZUNzWFlCZlNjZUNiVzJlNHAtbDdmaFdFV1doNUkzM2l4VUFkTi1uNFl3aWloanpmNjR0MnM?oc=5"
             },
             {
-              "title": "장흥 육용오리농장 고병원성 AI 확진…방역 관리 강화 - 연합뉴스TV",
-              "source": "연합뉴스TV",
+              "title": "장흥 육용오리농장 조류인플루엔자 확진…방역 관리 강화 - KBC광주방송",
+              "source": "KBC광주방송",
               "direction": "up",
               "quality_score": 81,
               "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1NTmd1eDFHekxqT1h4dzRBbVcyX3hUSnliVUpVd3VyU0FMRFNHZ0ZUU3FpcC02RGNRWVZGN3VQZnRhN1hxUEdlend3bnVXbFF6VFVnemo5RGUwV3U4VEdCQW9XcVVUNkk?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFAyY0xfOGhpZ1UtTFh0RFExMWlNYWNBNU1yTnZfZkVLeFYxV1F4UE9MbTY0SVRjMTRhbGdwb3hock1EM2I2RkprMGdXRmtSM01DNFI0WmROVkpwdDVMUzlqQw?oc=5"
             },
             {
-              "title": "장흥 육용오리농장 조류인플루엔자 확진…방역 관리 강화(종합) - 연합뉴스",
-              "source": "연합뉴스",
+              "title": "장흥 오리 농장서 고병원성 조류인플루엔자 확진 - YTN",
+              "source": "YTN",
               "direction": "up",
               "quality_score": 81,
               "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9LR2dfNVNIa3A5SGc2Q2Jwb1pjRlNsY3I5Y0ZRRWp4WDdiT1NRMjlwTDFPRUNEMExwT2tfMXBVODg0SVZhcWxHTGI3UnpjUi1YbVVld3VJaGs2bVHSAWBBVV95cUxPeFJVdGNhdjNhRzFUbXhlZlpoNmJ2cm5Sb0lycEZ2SmZJVTFnMjJUVEZmc3U4REtWUVV4RmUxTmViYjdQUEdMOVNiUmNOdV8xYVZtalRBYWY3cW1qZW5PeXY?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5LOGNLNmk1WHJsSVdWeUtNUDNiM2tjakprN29xcjh4emNmcUV3OXZZX2V4UnYzZmdRUklJb00ybVBEWTlyOTFIV3ZaSkZrMU5aZmxocmhVLUlRN2JlMXc?oc=5"
             }
           ],
           "down": [],
@@ -661,7 +669,7 @@
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 139.72,
+          "up": 137.42,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -669,28 +677,28 @@
         "examples": {
           "up": [
             {
-              "title": "가금농장 고병원성 ‘비상’…장흥 육용오리농장 확진 이어 여주 산란계농장 항원 검출 - 농민신문",
-              "source": "농민신문",
+              "title": "장흥 육용오리농장 조류인플루엔자 확진…방역 관리 강화 - KBC광주방송",
+              "source": "KBC광주방송",
               "direction": "up",
               "quality_score": 81,
               "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1GYkxaV3NiME9FamFraTR1NUU2ZThRU1otc0hwY0dpXzZvQ25zeEFXTFRJSkVqdUV1MzFwS21lLVVzOXU2elppUWozUUFoYnJCbUFQMEZ2SV9tUQ?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFAyY0xfOGhpZ1UtTFh0RFExMWlNYWNBNU1yTnZfZkVLeFYxV1F4UE9MbTY0SVRjMTRhbGdwb3hock1EM2I2RkprMGdXRmtSM01DNFI0WmROVkpwdDVMUzlqQw?oc=5"
             },
             {
-              "title": "장흥 육용오리농장 고병원성 AI 확진…방역 관리 강화 - 연합뉴스TV",
-              "source": "연합뉴스TV",
+              "title": "장흥 오리 농장서 고병원성 조류인플루엔자 확진 - YTN",
+              "source": "YTN",
               "direction": "up",
               "quality_score": 81,
               "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1NTmd1eDFHekxqT1h4dzRBbVcyX3hUSnliVUpVd3VyU0FMRFNHZ0ZUU3FpcC02RGNRWVZGN3VQZnRhN1hxUEdlend3bnVXbFF6VFVnemo5RGUwV3U4VEdCQW9XcVVUNkk?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5LOGNLNmk1WHJsSVdWeUtNUDNiM2tjakprN29xcjh4emNmcUV3OXZZX2V4UnYzZmdRUklJb00ybVBEWTlyOTFIV3ZaSkZrMU5aZmxocmhVLUlRN2JlMXc?oc=5"
             },
             {
-              "title": "장흥 육용오리농장 조류인플루엔자 확진…방역 관리 강화(종합) - 연합뉴스",
-              "source": "연합뉴스",
+              "title": "장흥 오리농장서 고병원성 AI 확진…올겨울 가금농장 두 번째 - 뉴시스",
+              "source": "뉴시스",
               "direction": "up",
               "quality_score": 81,
               "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9LR2dfNVNIa3A5SGc2Q2Jwb1pjRlNsY3I5Y0ZRRWp4WDdiT1NRMjlwTDFPRUNEMExwT2tfMXBVODg0SVZhcWxHTGI3UnpjUi1YbVVld3VJaGs2bVHSAWBBVV95cUxPeFJVdGNhdjNhRzFUbXhlZlpoNmJ2cm5Sb0lycEZ2SmZJVTFnMjJUVEZmc3U4REtWUVV4RmUxTmViYjdQUEdMOVNiUmNOdV8xYVZtalRBYWY3cW1qZW5PeXY?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1zY2lvZjdwYkt6QXlXMnFjWUhJRU9fZmZJQUxFdkpHTWFlbjBXVFNFSjN2WlotdVg4XzBFRGtMS0JCdnJpS1V6NFd3TUE3WFYxMTVaNEZhNGQ5SWNKQjQxS9IBeEFVX3lxTE9TWGNUWnNINVpoVGh0aTVWZWZKQWdmMGNxeVJRYUxvRG1NZ2VzWEY3cXNvcnI4T1VUQndEVlZtZTJPbXY3bC1CMVdlMG80UXl0UWcxODhCOEZQUWpKaDdMWENfMUk4ZHNoUkc1MV95ejJ4WEtKZzRPTA?oc=5"
             }
           ],
           "down": [],
@@ -884,12 +892,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 3,
+        "items": 4,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 12.58,
+          "up": 17.1,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -913,12 +921,12 @@
               "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5XRlpOY01wSDJCNS1PTm5OYm1MZnpfY0ZOdS1Rb2U4TDhlQlRrNlJONzI0c1c3MXh3dkdqX0w0OEJOQjVQUHlZdFNjS3lXU2htVDY5V1Q0UE14S25Zd2xhR3hyX1g?oc=5"
             },
             {
-              "title": "계란 가격 담합·AI 방역까지…농식품부 정책 ‘도마 위’ - 축산신문",
-              "source": "축산신문",
+              "title": "연천 산란계농장서 올겨울 첫 고병원성 AI 발생…전국 방역 강화(종합) - 연합뉴스",
+              "source": "연합뉴스",
               "direction": "up",
-              "quality_score": 82,
-              "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE95TVdhUGh2OXM0WGlJS2ljU01MQ2c4amYtSDQ1TURtRkxDRi1veXFkZWlNaUt6c2thLVlGUmNUVExiakdkMlN2ODcyaFlxQm9kUThETGxELWM5TnhITktKTTV3bUtRZXFi?oc=5"
+              "quality_score": 76,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1HYnR1ckpXVTZYS0NJNk9QVHc1anNldktQMzZMa0RxRzVVc2xJMmxoR2M2eG8xaWw2dlhsX1JaVU55UGFGUWZuLWlhQXNwdlVtMFhrcUFxM2VDcVnSAWBBVV95cUxNdW9ZVHR5ZEJLd0xIZUpPOGpWZzBSTVR2N1M2TUZXM2U5VUJtd2UwaUhWdEVMZGJMRW9PZC1mMDhJeVdXY1FWUTB3X0tyUlJkeVFxaDZuSzZKZ09SX0hFemM?oc=5"
             }
           ],
           "down": [],
@@ -1087,12 +1095,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 16,
+        "items": 17,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 79.6,
+          "up": 83.7,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -1152,14 +1160,14 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 21,
+        "items": 20,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
           "up": 22.75,
           "down": 4.1,
-          "neutral": 54.75
+          "neutral": 51.1
         },
         "conflict_ratio": 0.18,
         "examples": {
