@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-09T06:46:25Z",
+  "updated_at": "2026-11-09T17:36:44Z",
   "policy": "phase2_conflict_hold_v1",
   "notice": "상방·하방 근거 충돌, 근거 누락, 신뢰도 부족에 따른 판단 유보 검수 리포트입니다.",
   "summary": {
@@ -13,22 +13,21 @@
       "id": "BEEF",
       "name": "한우",
       "has_conflict": true,
-      "conflict_severity": "high",
+      "conflict_severity": "medium",
       "conflict_axes": [
         "가격"
       ],
       "missing_evidence": [
+        "질병/방역",
         "정책/고시"
       ],
-      "hold_reasons": [
-        "상·하방 근거 강충돌"
-      ],
-      "original_confidence": 69,
-      "adjusted_confidence": 51,
-      "should_hold": true,
-      "recommended_status": "판단 유보",
-      "recommended_direction": "hold",
-      "memo": "판단 유보 권장 · 충돌축: 가격 / 누락근거: 정책/고시 / 유보사유: 상·하방 근거 강충돌"
+      "hold_reasons": [],
+      "original_confidence": 58,
+      "adjusted_confidence": 48,
+      "should_hold": false,
+      "recommended_status": "보합/혼조",
+      "recommended_direction": "neutral",
+      "memo": "주의 필요 · 충돌축: 가격 / 누락근거: 질병/방역, 정책/고시"
     },
     {
       "id": "PORK",
@@ -40,8 +39,8 @@
         "정책/고시"
       ],
       "hold_reasons": [],
-      "original_confidence": 81,
-      "adjusted_confidence": 81,
+      "original_confidence": 80,
+      "adjusted_confidence": 80,
       "should_hold": false,
       "recommended_status": "보합/혼조",
       "recommended_direction": "neutral",
@@ -93,21 +92,21 @@
       "id": "EGG",
       "name": "계란",
       "has_conflict": true,
-      "conflict_severity": "medium",
+      "conflict_severity": "high",
       "conflict_axes": [
         "가격",
         "수급/도축"
       ],
       "missing_evidence": [],
       "hold_reasons": [
-        "복수 근거축 충돌"
+        "상·하방 근거 강충돌"
       ],
-      "original_confidence": 84,
-      "adjusted_confidence": 64,
-      "should_hold": false,
-      "recommended_status": "상방 가능성",
-      "recommended_direction": "up",
-      "memo": "주의 필요 · 충돌축: 가격, 수급/도축 / 유보사유: 복수 근거축 충돌"
+      "original_confidence": 77,
+      "adjusted_confidence": 49,
+      "should_hold": true,
+      "recommended_status": "판단 유보",
+      "recommended_direction": "hold",
+      "memo": "판단 유보 권장 · 충돌축: 가격, 수급/도축 / 유보사유: 상·하방 근거 강충돌"
     },
     {
       "id": "OTHER",
@@ -132,18 +131,26 @@
       {
         "axis": "price",
         "label": "가격",
-        "items": 4,
+        "items": 6,
         "has_conflict": true,
-        "severity": "high",
+        "severity": "medium",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 3.57,
+          "up": 7.14,
           "down": 3.48,
-          "neutral": 5.62
+          "neutral": 8.29
         },
-        "conflict_ratio": 0.97,
+        "conflict_ratio": 0.49,
         "examples": {
           "up": [
+            {
+              "title": "한우 가격 강세…소비 시장 ‘찬물’ 우려 - 축산신문",
+              "source": "축산신문",
+              "direction": "up",
+              "quality_score": 51,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1hTURydnZKTjZ1WHljTmlWd1dOSUVBUzJYY3dVNjRLdk9rVDc0cGVVWXcxM2RMTUozUkxFeDhQOTFRekc1Vm1BTVpuSm1nTkxoOUhNbGZZWnFyamM0QnVBa1pCUHVNZzBT?oc=5"
+            },
             {
               "title": "추석 앞두고 한우 가격 고공행진…등심 소비자가 22% 상승 - 연합뉴스",
               "source": "연합뉴스",
@@ -179,20 +186,28 @@
               "quality_score": 58,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBQY0dvc1JFd1kxNTU4QjdPVmhiNWU1MW01R0NUMHVIXzJrWl9UZ3p6Xzk5MGZYVGZJNU5MUl9hbUx2QUtUb1I0N2FJVEFwVU54cm5ZaDJHelU1T3pOWkdNYXd4a0RCUHFJRDk2Tg?oc=5"
+            },
+            {
+              "title": "[연속보도] 한우 송아지 가격 600만 원 뚫나… 번식률 저하로 '품귀 현상' 심화 - 팜인사이트",
+              "source": "팜인사이트",
+              "direction": "neutral",
+              "quality_score": 51,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE0tc1d6d1ZrUzIzSGRfaF9UX3haUE5uUWVtcFFPQmtWTWRUZTNOT0I3OGl4NGpYZFl2bEdjeVlmRlpBcFdPWmduUGNrN2FrU0t0X0hOdVVURldsalVpcVNTT0UxZ2x4RnZrc2pkNHNB?oc=5"
             }
           ]
         },
-        "memo": "가격 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
+        "memo": "가격 축에서 상방·하방 근거가 동시에 감지되어 medium 충돌로 분류"
       },
       {
         "axis": "supply",
         "label": "수급/도축",
-        "items": 3,
+        "items": 4,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 11.16,
+          "up": 15.18,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -232,31 +247,22 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 1,
+        "items": 0,
         "has_conflict": false,
         "severity": "none",
-        "dominant_direction": "up",
+        "dominant_direction": "neutral",
         "weighted_direction": {
-          "up": 5.0,
+          "up": 0.0,
           "down": 0.0,
           "neutral": 0.0
         },
-        "conflict_ratio": 0.0,
+        "conflict_ratio": 0,
         "examples": {
-          "up": [
-            {
-              "title": "전남 무안 한우 농장에서 구제역 발생 - 농림축산식품부",
-              "source": "농림축산식품부",
-              "direction": "up",
-              "quality_score": 75,
-              "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBxTUpqRlU5YzdEWUQzQk1RWFFLUUloNlB6UzE0YWNyVUk4ZVdOSHdURm9mT3MxUmJDNGdvV3RBcUpyTE5VTFJNNHRiX051WG8yRHBwaS14bnZKU2RyelRabg?oc=5"
-            }
-          ],
+          "up": [],
           "down": [],
           "neutral": []
         },
-        "memo": "질병/방역 축은 상방 근거 우세"
+        "memo": "질병/방역 축은 중립 또는 보조 근거 중심"
       },
       {
         "axis": "policy",
@@ -281,20 +287,28 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 21,
+        "items": 19,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "neutral",
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 65.84
+          "neutral": 59.42
         },
         "conflict_ratio": 0,
         "examples": {
           "up": [],
           "down": [],
           "neutral": [
+            {
+              "title": "사천한우 숯불 향에 발길 북적…지역 축제 열기 더해 - 축산신문",
+              "source": "축산신문",
+              "direction": "neutral",
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE44eTlTcExsVE53Tm42TzVLSGY5WndHT1VZTGhQZnl2UV9QTWo0S1lQb0JqczRzUmxGU0MwZzFoTVJyVVFTaTIzTkFxVm92UzZKdVZMVGFSc0VXcXMtNzFpbkhQY2N4MWVZ?oc=5"
+            },
             {
               "title": "고양 행주한우 숯불구이 축제 ‘성황’ - 농수축산신문",
               "source": "농수축산신문",
@@ -310,14 +324,6 @@
               "quality_score": 81,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE83RU10bHNwSjhUTmluR1dyelhGY1NmeU85aWUxd09waGdzNG15UzJoYjl4SnZScmZDQ1pEcmstMkNmYmVaMG16MEZmbTVBYzNWQ1NkYUdzdTdDTXR4TldmVENKNXJOZ2FTUVJ3?oc=5"
-            },
-            {
-              "title": "G마켓, '빅스마일데이' 2주차...한우 최저가부터 뷰티템 1+1 - 싱글리스트",
-              "source": "싱글리스트",
-              "direction": "neutral",
-              "quality_score": 81,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFA5LUNaLS1ZQzBlelFWc1QwQmxBakhjQ0o1Y0ZRa1R0UHRNVWxrSmhHMmttaEt4azRyT1NDcDNMNlJmRWtBMlJKTXktcjVoMkJxVnp3cllYbGtEVWZWSUptTlpiLXRpUQ?oc=5"
             }
           ]
         },
@@ -400,7 +406,7 @@
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 69.78,
+          "up": 69.68,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -427,7 +433,7 @@
               "title": "전국 가금농장에 다시 고병원성 AI 비상…산란계 이어 오리농장까지 - 돼지와사람",
               "source": "돼지와사람",
               "direction": "up",
-              "quality_score": 76,
+              "quality_score": 71,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5XRlpOY01wSDJCNS1PTm5OYm1MZnpfY0ZOdS1Rb2U4TDhlQlRrNlJONzI0c1c3MXh3dkdqX0w0OEJOQjVQUHlZdFNjS3lXU2htVDY5V1Q0UE14S25Zd2xhR3hyX1g?oc=5"
             }
@@ -540,12 +546,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 62,
+        "items": 60,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 264.96,
+          "up": 255.62,
           "down": 3.72,
           "neutral": 0.0
         },
@@ -553,28 +559,28 @@
         "examples": {
           "up": [
             {
+              "title": "전남광주통합특별시, 조류인플루엔자·럼피스킨 방역 강화 - 대한뉴스통신",
+              "source": "대한뉴스통신",
+              "direction": "up",
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFA5NG5kNnBSOVlhMHNoYllxNWRZaEhCM3B1U2xEaVo5cldPbmswUmtmejJyVmxLVUg4bXZUai1hMVlvM3c5a3lUcHNMMWZSUS1mMkFNbzJrcw?oc=5"
+            },
+            {
+              "title": "병원성 조류인플루엔자 발생에 따른 방역 총력 대응 - 국민기자뉴스",
+              "source": "국민기자뉴스",
+              "direction": "up",
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5wdHNzbDRIRUlKSTNnZS1fSzl4aEJZN01GcHNxTVM3TldKSDIwRjlmVlB3bTl3UVlmcXFvSHViU3Z2ZUVfbDhhVU5wWkI1b0VkYjRCZ2V4SVFuOUZvaVI2Q1U1d9IBZ0FVX3lxTE02WGdtcFFSOEtlX25LMEV5b3d1amc0SXdzSVQxbEdhZFBDMWdUQ09fMkdENFpuTGZTNkZXN1p6MV9vRVZwLWgtbWo0WldtcFpxaHFaRFZpVTJKR0x1SkRZSldjMnN0anc?oc=5"
+            },
+            {
               "title": "전남광주시, 조류인플루엔자·럼피스킨 차단방역 강화 - 보도자료 | 기사 - 더팩트",
               "source": "더팩트",
               "direction": "up",
               "quality_score": 81,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE40R19mdk9rWXBUVHM0eGNkNm84OXlSeFdaakt6MGg5VEhHWWE0VXFyTWp3Q09IX1VOVHlsQWtBVThCNHZDUFVUdUdYYlpac1dsQU5icGlTR3dkNFNvWENz?oc=5"
-            },
-            {
-              "title": "전남광주통합특별시, 조류인플루엔자·럼피스킨 방역 강화 > 뉴스 - 더코리아",
-              "source": "더코리아",
-              "direction": "up",
-              "quality_score": 81,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9Rd1hMOVZKWFQ4R0d4b1gwRmNyZWt0NjNtZzFxTms4UmE0bnVJOFYxTS1GajlqUGxlZHp5NXh5OUJKdUVqVnNaakdueHdCX2duMEVVU3laNmNqR2tTU05kNDMtUWtyWEYzdnpheEk4dlJmUQ?oc=5"
-            },
-            {
-              "title": "산란계 농장 조류인플루엔자 확산 우려…계란값 안정세 '빨간불' - 서울뉴스통신",
-              "source": "서울뉴스통신",
-              "direction": "up",
-              "quality_score": 81,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5rclpwZlhqQjNHOUlBcG10TTl0ejY1eW92MzJaQzk3Nm84SlBDUS1XWHRNVmdNZTNfUVpWcHlldjRWSkZGT2JYbGFUcEZ4UGExaHBtRDE1SHJSVHBYc1d0cmNLNW9FLWU1SVBz?oc=5"
             }
           ],
           "down": [
@@ -690,7 +696,7 @@
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 128.62,
+          "up": 128.32,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -698,10 +704,18 @@
         "examples": {
           "up": [
             {
+              "title": "전남 장흥 오리농가 고병원성 AI 확진에 따라 방역강화 - 얼리어답터뉴스",
+              "source": "얼리어답터뉴스",
+              "direction": "up",
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTE5peVFHNGI0MmprX1FVR3ZJSlNSaEc5RGpsQ0I1MUdwZUpvREZ4eHR2SjFJd19ObEhpb2ppSnJ1VjFNUEZpb0FXenhn?oc=5"
+            },
+            {
               "title": "장흥 오리농장서 H5형 조류인플루엔자 항원 검출 - 남도닷컴",
               "source": "남도닷컴",
               "direction": "up",
-              "quality_score": 81,
+              "quality_score": 76,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5wdEhKRUdVVGxfY3MxX3lwYjNLWHM3QVRTOUdaampnYU9lZ2xYTzA2YTNoMVNaZ3RnRWhHQTJoQUlha2lCXzBLczNDWkRsc1EwNWt4MDVWeURZbnFnSE1DeTBua056c3JOTjA4?oc=5"
             },
@@ -709,17 +723,9 @@
               "title": "장흥 오리 농장서 고병원성 조류인플루엔자 확진 - YTN",
               "source": "YTN",
               "direction": "up",
-              "quality_score": 81,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE0wNXFaQ09zcDg0WXF2aTVGdkJlY3F4U0t4MGFzMjh1SGw0SWxXVjAzZFZ2QTRXY0VvNU5ramdNWXJDbWdLTzhxZllqN3o3YWNvX2V3cjRUdW1ZQ0E5Mmc?oc=5"
-            },
-            {
-              "title": "장흥 육용오리농장 조류인플루엔자 확진…방역 관리 강화 - KBC광주방송",
-              "source": "KBC광주방송",
-              "direction": "up",
               "quality_score": 76,
               "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFAyY0xfOGhpZ1UtTFh0RFExMWlNYWNBNU1yTnZfZkVLeFYxV1F4UE9MbTY0SVRjMTRhbGdwb3hock1EM2I2RkprMGdXRmtSM01DNFI0WmROVkpwdDVMUzlqQw?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE0wNXFaQ09zcDg0WXF2aTVGdkJlY3F4U0t4MGFzMjh1SGw0SWxXVjAzZFZ2QTRXY0VvNU5ramdNWXJDbWdLTzhxZllqN3o3YWNvX2V3cjRUdW1ZQ0E5Mmc?oc=5"
             }
           ],
           "down": [],
@@ -772,16 +778,16 @@
       {
         "axis": "price",
         "label": "가격",
-        "items": 7,
+        "items": 6,
         "has_conflict": true,
-        "severity": "medium",
-        "dominant_direction": "up",
+        "severity": "high",
+        "dominant_direction": "down",
         "weighted_direction": {
-          "up": 7.14,
+          "up": 3.57,
           "down": 4.55,
-          "neutral": 11.94
+          "neutral": 11.8
         },
-        "conflict_ratio": 0.64,
+        "conflict_ratio": 0.78,
         "examples": {
           "up": [
             {
@@ -791,14 +797,6 @@
               "quality_score": 51,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5uT3NQTDdVU0JPV25aREpQbFhfVjBkM1QyNTBUcEVMWUh1djZCRjRWNllfT0pqMWpIWHB2UjBNMF9fUjczM0pVSm1weFFFbU4zQWRCeEZiNG5XQlXSAWBBVV95cUxQZDdRQlRwV24tSVhoNUl0dTJaWTMzdnVJcl9IQ29ZSDc3Qlpjd21BQUhUVnRiYVFsRjFwRlVybzVQdS1ZcDE4Ui13bm93MlZoS1VaRXpra1N6YXB6OUJua1c?oc=5"
-            },
-            {
-              "title": "[뉴스의 2면] 중국, 계란 가격 급등에 민심 이반? - KBS 뉴스",
-              "source": "KBS 뉴스",
-              "direction": "up",
-              "quality_score": 51,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9CWVVTYjhMQWFpOC14UEhmaV9lelMxZ3NaOTlkc0hnOTY0Y1ZLTVZ3TmNfSG1LLXFrVjBPQ0d0Q3FSbmdleW9TWUdweWxsSlFKODQ4MUV0aFl4UkU?oc=5"
             }
           ],
           "down": [
@@ -816,7 +814,7 @@
               "title": "점심에 계란 프라이 하나 더?…여름엔 ‘금값’ 계란, 가을지나 가격 ‘뚝’[경제뭔데] - 경향신문",
               "source": "경향신문",
               "direction": "neutral",
-              "quality_score": 65,
+              "quality_score": 58,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5Gdy1zWjE5Tnc0Wkh1M2pRQTBBSjRWSWhvakY2S2pDVktQc0Y1Mkl3MHVEVzhCVWhwSnlvV21qYjVlNnEzU2trUF9mRkZyU19lVkxEREw4N3pSZ9IBX0FVX3lxTE80cVlweVVjQVh3VHFuSFRUc3MxNlhfTmU3TTladWxkc291TEt2QlFtVkRhWVZzXy1aaXdQUERpdXBwU1lsZWNBYXYtUnUwb0tJT1dOT0JubF90M0JITURz?oc=5"
             },
@@ -838,7 +836,7 @@
             }
           ]
         },
-        "memo": "가격 축에서 상방·하방 근거가 동시에 감지되어 medium 충돌로 분류"
+        "memo": "가격 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
       },
       {
         "axis": "supply",
@@ -856,14 +854,6 @@
         "examples": {
           "up": [
             {
-              "title": "산란계협회, 계란 가격정보 제공 재개 길 열려 - 축산신문",
-              "source": "축산신문",
-              "direction": "up",
-              "quality_score": 63,
-              "source_level": 4,
-              "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFA2X0N4amo1R2g4ZVowSnR4SGs0QkJ3OU93YmdrLTZpLURkTVJ1T2xSVWItV01DNUU0cjRHNUR6VnJOMnN5emhRTDlHLWY5aHc5dlB5S3RxSFpMUWpsU1puU0RGbkNqaGVE?oc=5"
-            },
-            {
               "title": "계란가격 정보 단절로 시장 혼선…수급 대응도 ‘안갯속’ - 축산신문",
               "source": "축산신문",
               "direction": "up",
@@ -878,6 +868,14 @@
               "quality_score": 75,
               "source_level": 5,
               "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5KQ19NZ19JTEozZVo5ZE5waFpuc0JtNDFkWTUyaTJBNEVIN0RmcnFORXpYSTI3VDEzRXY4OVZCekQ0b0psMTlzNnBJbmx3SVdJbFFRU0JyeTNVUdIBX0FVX3lxTFBiVy1SMVJJMXBFeGNHeXFLYzJGTUJqaHZQbmZmRm9oYUlzeXdsS2xFYXBPa3J3d3UyZTNuVVVvXzFEOUtwa3pOLWR0NEhIMlJXUjdBS3M2WUZrSlhIMGt3?oc=5"
+            },
+            {
+              "title": "산란계협회 고시가격 내려도 계란값은 올랐다 - 한국농정신문",
+              "source": "한국농정신문",
+              "direction": "up",
+              "quality_score": 63,
+              "source_level": 4,
+              "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5Gbmt6M3ZBRGFaVFFpQ1pEZEVZTk9NVEhzV1pFanhXeG55LWg4VE9oWHFnY3IwQXF2ZE5YTlJ5c2ttWjhaQ2NNU0FzbC05Ty1rZm15ekI3T2RHMVJQNXlWTmc5WnRNcDDSAWtBVV95cUxPbF9pcjJGVFJSOGFULXh2b0pucGpocGZWSFFWd3gzMUlJc19ucGZRdjVzSzI1UFFqdzZlS3h1TjFuNkV1dVM1dXUzelhsd2NvUU1DbHVxekxOazNSX3NZRThxVWxrMzNFdHR1MA?oc=5"
             }
           ],
           "down": [
@@ -905,16 +903,16 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 11,
+        "items": 10,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 41.12,
+          "up": 36.4,
           "down": 3.72,
           "neutral": 0.0
         },
-        "conflict_ratio": 0.09,
+        "conflict_ratio": 0.1,
         "examples": {
           "up": [
             {
@@ -959,14 +957,14 @@
       {
         "axis": "policy",
         "label": "정책/고시",
-        "items": 2,
+        "items": 1,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "neutral",
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 6.32
+          "neutral": 2.67
         },
         "conflict_ratio": 0,
         "examples": {
@@ -980,14 +978,6 @@
               "quality_score": 51,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1rUDZxcDc1VElpSlhWV0o4amFYUUhTYmRVZ01iZFlxTVBUYVdGTDVzdG5nX1ZfbFJuN2l2RzQzNjE4cmJIVTUzMWJjd0VWMnp0cUVTVWJZQ2FuMW9VYnlmWWF4N1NuMGdvdUE?oc=5"
-            },
-            {
-              "title": "계란 10구 5300원 돌파, 한달 새 17% 올라…정부 2억3천개 수입한다 - 한겨레",
-              "source": "한겨레",
-              "direction": "neutral",
-              "quality_score": 75,
-              "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9JTV8tVHN2UG5mSENjYXZhQklXQUVIeFlDMFE1azdycUhUekxOZGlVQmVveHgwSEVNZWt2T2kwUUQ1ZUhiQURLbjNGaXlVUlBEZ1gtVzU4VGJXa2ZoazE4di1FWnByMXd2T2xXLWx0Nnl4dw?oc=5"
             }
           ]
         },
@@ -1003,7 +993,7 @@
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 9.59
+          "neutral": 8.61
         },
         "conflict_ratio": 0,
         "examples": {
@@ -1027,12 +1017,12 @@
               "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9zLWJuZkd6RHh0X19CTWtzbUNOVWJ1QmR6VWNHZGJ2Z3h2bVNGWU1wOVpPZ01YMHpwMDNZc2lfWDdvUFJuYXAxUE1uRGlva28tMmNLcVhVQ3JiR0xzM1g5R1BtbEQxNmZ6dkk2RWF3?oc=5"
             },
             {
-              "title": "“너무 비싸서 도저히 못 먹겠다”…계란값 치솟자 소비자 불만 폭발, 정부 대안은 - 서울경제",
-              "source": "서울경제",
+              "title": "“농가에 웃돈 줘도 구하기 힘들어” 계란값 역대급 폭등 - 무등일보",
+              "source": "무등일보",
               "direction": "neutral",
-              "quality_score": 75,
-              "source_level": 5,
-              "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE52QWtvWHNIeTNqVHZ2b1o4a2NFXzcwR0VTNDVLcHNmQUdpMDA4RTJXMUo0ekh3czNxYTRwSFFkR2FaZ1k3dUg1dFMxUkZqWGFuNmfSAVNBVV95cUxOWEVsdVQtQmZDS2RER09PYzRiVU5oNmU5RFJjRV9ueDR0ZC0tZzBLMVgzN3VNbklKNVNtZ0dsdm1xckpKYjBGZDVudlducW01RGpPQQ?oc=5"
+              "quality_score": 51,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5tSl9RT2lJaEZaWXpuWERiS2ZoYXJpVWlMMjkwOGJORmNnbFFwWURHYXF3d0g4YVAzdk5lY2Uxa2xaa1RKUmd1V1BJQm1YY3JnQ1FR?oc=5"
             }
           ]
         },
@@ -1106,7 +1096,7 @@
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 83.6,
+          "up": 84.5,
           "down": 0.0,
           "neutral": 0.0
         },
