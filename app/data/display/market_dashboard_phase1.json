@@ -1,20 +1,20 @@
 {
-  "updated_at": "2026-11-09T17:36:43Z",
+  "updated_at": "2026-11-10T01:36:45Z",
   "notice": "Phase 2 Display Layer 초안입니다. 기존 market_dashboard.json은 별도로 유지됩니다.",
   "species": [
     {
       "id": "BEEF",
       "name": "한우",
-      "signal_score": 50,
-      "direction": "neutral",
-      "status": "보합/혼조",
-      "quality_score": 66,
-      "confidence_score": 58,
-      "coverage_rate": 80,
-      "evidence_count": 29,
-      "official_count": 0,
+      "signal_score": 63,
+      "direction": "up",
+      "status": "상방 가능성",
+      "quality_score": 67,
+      "confidence_score": 68,
+      "coverage_rate": 100,
+      "evidence_count": 30,
+      "official_count": 1,
       "direction_counts": {
-        "up": 6,
+        "up": 7,
         "down": 1,
         "neutral": 22,
         "hold": 0
@@ -23,12 +23,13 @@
         "가격",
         "수급/도축",
         "수요/행사",
-        "일반"
+        "일반",
+        "질병/방역"
       ],
       "score_breakdown": {
         "price": 22,
         "supply": 19,
-        "disease": 0,
+        "disease": 13,
         "policy": 0,
         "news": 9
       },
@@ -53,7 +54,7 @@
               "title": "한우 가격이 소프라이즈! 최대 63% 할인 - 전체 | 카드/한컷 | 멀티미디어 - 대한민국 정책브리핑",
               "direction": "down",
               "source_level": 2,
-              "quality_score": 59
+              "quality_score": 53
             },
             {
               "title": "한우 가격 절반 수준 ‘스테이크형 배양육’ 개발 성공 - 축산신문",
@@ -101,12 +102,19 @@
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
-          "score": 0,
-          "items": 0,
-          "up": 0,
+          "score": 13,
+          "items": 1,
+          "up": 1,
           "down": 0,
           "neutral": 0,
-          "examples": []
+          "examples": [
+            {
+              "title": "전남 무안 한우 농장에서 구제역 발생 - 농림축산식품부",
+              "direction": "up",
+              "source_level": 5,
+              "quality_score": 75
+            }
+          ]
         },
         "policy": {
           "label": "정책/고시",
@@ -128,6 +136,12 @@
           "neutral": 19,
           "examples": [
             {
+              "title": "강원한우, UAE 프리미엄 외식시장 공략 속도…현지 레스토랑 3곳과 협약 - 뷰어스",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 81
+            },
+            {
               "title": "사천한우 숯불 향에 발길 북적…지역 축제 열기 더해 - 축산신문",
               "direction": "neutral",
               "source_level": 3,
@@ -138,17 +152,11 @@
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 81
-            },
-            {
-              "title": "한우·한돈 맛보고 공연 즐기고…함안 축산물 페스티벌 - 경남미디어",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 81
             }
           ]
         }
       },
-      "reason": "가격 22점 + 수급/도축 19점 + 뉴스/수요 9점 기반, 상방성 자료가 우세",
+      "reason": "가격 22점 + 수급/도축 19점 + 질병/방역 13점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
@@ -157,13 +165,13 @@
       "signal_score": 52,
       "direction": "neutral",
       "status": "보합/혼조",
-      "quality_score": 72,
-      "confidence_score": 80,
+      "quality_score": 73,
+      "confidence_score": 81,
       "coverage_rate": 80,
-      "evidence_count": 19,
-      "official_count": 11,
+      "evidence_count": 21,
+      "official_count": 12,
       "direction_counts": {
-        "up": 17,
+        "up": 19,
         "down": 0,
         "neutral": 2,
         "hold": 0
@@ -233,25 +241,25 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 15,
-          "up": 15,
+          "items": 17,
+          "up": 17,
           "down": 0,
           "neutral": 0,
           "examples": [
             {
+              "title": "야생멧돼지 ASF 심상찮다…3주여 새 8마리 확인 - 돼지와사람",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 81
+            },
+            {
+              "title": "아시아 구제역 비상…O·A형에 SAT1형까지 가세, 방역 중요성 더욱 커졌다 - 돼지와사람",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 81
+            },
+            {
               "title": "아프리카돼지열병(ASF) 방역대책추진현황 261104 18시기준 - 경기도뉴스포털",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 76
-            },
-            {
-              "title": "강원도, ASF 발생 대비 현장훈련… 초동방역부터 가축처분까지 점검 - 한돈뉴스",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 76
-            },
-            {
-              "title": "전국 가금농장에 다시 고병원성 AI 비상…산란계 이어 오리농장까지 - 돼지와사람",
               "direction": "up",
               "source_level": 3,
               "quality_score": 71
@@ -298,10 +306,10 @@
       "quality_score": 77,
       "confidence_score": 76,
       "coverage_rate": 60,
-      "evidence_count": 62,
+      "evidence_count": 61,
       "official_count": 7,
       "direction_counts": {
-        "up": 59,
+        "up": 58,
         "down": 2,
         "neutral": 1,
         "hold": 0
@@ -357,28 +365,28 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 60,
-          "up": 59,
+          "items": 59,
+          "up": 58,
           "down": 1,
           "neutral": 0,
           "examples": [
             {
-              "title": "전남광주통합특별시, 조류인플루엔자·럼피스킨 방역 강화 - 대한뉴스통신",
+              "title": "강진 조류인플루엔자 방역 점검…대형 산란계 농장 4단계 방역 당부 - 한국영농신문",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
             },
             {
-              "title": "병원성 조류인플루엔자 발생에 따른 방역 총력 대응 - 국민기자뉴스",
+              "title": "전남광주통합특별시, 조류인플루엔자·럼피스킨 방역 강화 - 농수축산신문",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
             },
             {
-              "title": "전남광주시, 조류인플루엔자·럼피스킨 차단방역 강화 - 보도자료 | 기사 - 더팩트",
+              "title": "AI 확진에 계란값 불안 솔솔...농식품부 “공급 탄탄, 과도한 우려” - 한국농어민신문",
               "direction": "up",
-              "source_level": 3,
-              "quality_score": 81
+              "source_level": 5,
+              "quality_score": 100
             }
           ]
         },
@@ -419,7 +427,7 @@
       "signal_score": 18,
       "direction": "hold",
       "status": "판단 유보",
-      "quality_score": 76,
+      "quality_score": 75,
       "confidence_score": 41,
       "coverage_rate": 20,
       "evidence_count": 31,
@@ -478,16 +486,16 @@
           "neutral": 0,
           "examples": [
             {
-              "title": "전남 장흥 오리농가 고병원성 AI 확진에 따라 방역강화 - 얼리어답터뉴스",
+              "title": "육용오리농장서 H5형 AI 항원...장흥군서 검출 '비상' - 이투데이",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
             },
             {
-              "title": "장흥 오리농장서 H5형 조류인플루엔자 항원 검출 - 남도닷컴",
+              "title": "전남광주 장흥 육용오리 농장서 AI 확진 - 보건신문",
               "direction": "up",
               "source_level": 3,
-              "quality_score": 76
+              "quality_score": 81
             },
             {
               "title": "장흥 오리 농장서 고병원성 조류인플루엔자 확진 - YTN",
@@ -524,16 +532,16 @@
     {
       "id": "EGG",
       "name": "계란",
-      "signal_score": 64,
+      "signal_score": 68,
       "direction": "up",
       "status": "상방 가능성",
-      "quality_score": 67,
-      "confidence_score": 77,
+      "quality_score": 71,
+      "confidence_score": 85,
       "coverage_rate": 100,
-      "evidence_count": 25,
-      "official_count": 4,
+      "evidence_count": 27,
+      "official_count": 6,
       "direction_counts": {
-        "up": 13,
+        "up": 15,
         "down": 4,
         "neutral": 8,
         "hold": 0
@@ -546,8 +554,8 @@
         "질병/방역"
       ],
       "score_breakdown": {
-        "price": 16,
-        "supply": 19,
+        "price": 25,
+        "supply": 14,
         "disease": 19,
         "policy": 3,
         "news": 7
@@ -563,12 +571,18 @@
         "price": {
           "label": "가격",
           "max_score": 30,
-          "score": 16,
-          "items": 6,
-          "up": 1,
+          "score": 25,
+          "items": 7,
+          "up": 2,
           "down": 1,
           "neutral": 4,
           "examples": [
+            {
+              "title": "USDA 계란 시장 업데이트: 도매 난각란 가격, 주요 기준 전반에서 상승 - 뉴스 및 통계 - IndexBox",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 81
+            },
             {
               "title": "점심에 계란 프라이 하나 더?…여름엔 ‘금값’ 계란, 가을지나 가격 ‘뚝’[경제뭔데] - 경향신문",
               "direction": "neutral",
@@ -580,21 +594,15 @@
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 51
-            },
-            {
-              "title": "정부가 계란 기준가격 정기 고시…‘공정계란가격법’ 발의 - 축산신문",
-              "direction": "neutral",
-              "source_level": 5,
-              "quality_score": 75
             }
           ]
         },
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 19,
-          "items": 5,
-          "up": 3,
+          "score": 14,
+          "items": 4,
+          "up": 2,
           "down": 2,
           "neutral": 0,
           "examples": [
@@ -605,16 +613,16 @@
               "quality_score": 51
             },
             {
-              "title": "계란가격 정보 단절로 시장 혼선…수급 대응도 ‘안갯속’ - 축산신문",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 51
-            },
-            {
               "title": "농식품부, ‘계란 가격 고시’ 산란계협회 설립허가 취소 - 경향신문",
               "direction": "up",
               "source_level": 5,
               "quality_score": 75
+            },
+            {
+              "title": "계란 수급 및 가격안정에 최선을 다하겠습니다. - 대한민국 정책브리핑",
+              "direction": "down",
+              "source_level": 3,
+              "quality_score": 51
             }
           ]
         },
@@ -622,26 +630,26 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 10,
-          "up": 9,
+          "items": 12,
+          "up": 11,
           "down": 1,
           "neutral": 0,
           "examples": [
             {
+              "title": "강진 조류인플루엔자 방역 점검…대형 산란계 농장 4단계 방역 당부 - 한국영농신문",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 81
+            },
+            {
+              "title": "AI 확진에 계란값 불안 솔솔...농식품부 “공급 탄탄, 과도한 우려” - 한국농어민신문",
+              "direction": "up",
+              "source_level": 5,
+              "quality_score": 100
+            },
+            {
               "title": "산란계 농장 조류인플루엔자 확산 우려…계란값 안정세 '빨간불' - 서울뉴스통신",
               "direction": "up",
-              "source_level": 3,
-              "quality_score": 81
-            },
-            {
-              "title": "고병원성 AI 확산에 계란값 다시 들썩…일주일 새 8% 상승 - 머니투데이 - 머니투데이",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 81
-            },
-            {
-              "title": "산란계 농장 AI, 작년보다 11일 빨랐다…계란값 하락 전망에 변수 - 뉴시스",
-              "direction": "down",
               "source_level": 3,
               "quality_score": 81
             }
@@ -694,7 +702,7 @@
           ]
         }
       },
-      "reason": "수급/도축 19점 + 질병/방역 19점 + 가격 16점 기반, 상방성 자료가 우세",
+      "reason": "가격 25점 + 질병/방역 19점 + 수급/도축 14점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
@@ -706,10 +714,10 @@
       "quality_score": 74,
       "confidence_score": 88,
       "coverage_rate": 100,
-      "evidence_count": 39,
-      "official_count": 37,
+      "evidence_count": 38,
+      "official_count": 36,
       "direction_counts": {
-        "up": 23,
+        "up": 22,
         "down": 1,
         "neutral": 15,
         "hold": 0
@@ -774,8 +782,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 17,
-          "up": 17,
+          "items": 16,
+          "up": 16,
           "down": 0,
           "neutral": 0,
           "examples": [
