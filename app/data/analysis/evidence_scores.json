@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-12T20:01:44Z",
+  "updated_at": "2026-11-13T01:09:49Z",
   "policy": "phase2_evidence_score_v3_sanitized",
   "score_axes": {
     "price": {
@@ -43,17 +43,17 @@
     {
       "id": "BEEF",
       "name": "한우",
-      "signal_score": 45,
+      "signal_score": 37,
       "direction": "hold",
       "status": "판단 유보",
-      "quality_score": 77,
-      "confidence_score": 72,
-      "coverage_rate": 100,
-      "evidence_count": 31,
-      "official_count": 7,
+      "quality_score": 72,
+      "confidence_score": 57,
+      "coverage_rate": 80,
+      "evidence_count": 29,
+      "official_count": 5,
       "direction_counts": {
         "up": 6,
-        "down": 16,
+        "down": 14,
         "neutral": 9,
         "hold": 0
       },
@@ -61,13 +61,12 @@
         "가격",
         "수급/도축",
         "수요/행사",
-        "일반",
-        "질병/방역"
+        "일반"
       ],
       "score_breakdown": {
         "price": 12,
-        "supply": 11,
-        "disease": 13,
+        "supply": 16,
+        "disease": 0,
         "policy": 0,
         "news": 9
       },
@@ -83,17 +82,11 @@
           "label": "가격",
           "max_score": 30,
           "score": 12,
-          "items": 10,
-          "up": 0,
+          "items": 13,
+          "up": 1,
           "down": 9,
-          "neutral": 1,
+          "neutral": 3,
           "examples": [
-            {
-              "title": "한우 반값에 판다…49.9% 할인받는 날짜·매장은? - 아주경제",
-              "direction": "down",
-              "source_level": 2,
-              "quality_score": 69
-            },
             {
               "title": "한우 최대 49.9% 할인…'영하누' 전국 642개 매장서 판매 - 푸드투데이",
               "direction": "down",
@@ -105,16 +98,22 @@
               "direction": "down",
               "source_level": 2,
               "quality_score": 69
+            },
+            {
+              "title": "\"한우 반값에 드세요\"…전국 마트서 최대 49.9% 할인 - 남도일보",
+              "direction": "down",
+              "source_level": 2,
+              "quality_score": 69
             }
           ]
         },
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 11,
-          "items": 12,
+          "score": 16,
+          "items": 10,
           "up": 5,
-          "down": 7,
+          "down": 5,
           "neutral": 0,
           "examples": [
             {
@@ -130,29 +129,22 @@
               "quality_score": 100
             },
             {
-              "title": "2027년 한우자조금 295억 원 규모 편성…수급안정·소비확대 총력 - 팜인사이트",
-              "direction": "down",
-              "source_level": 4,
-              "quality_score": 93
+              "title": "한우 사육기간 줄여 가격 낮춘다 - 대한급식신문",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 81
             }
           ]
         },
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
-          "score": 13,
-          "items": 1,
-          "up": 1,
+          "score": 0,
+          "items": 0,
+          "up": 0,
           "down": 0,
           "neutral": 0,
-          "examples": [
-            {
-              "title": "전남 무안 한우 농장에서 구제역 발생 - 농림축산식품부",
-              "direction": "up",
-              "source_level": 5,
-              "quality_score": 75
-            }
-          ]
+          "examples": []
         },
         "policy": {
           "label": "정책/고시",
@@ -168,10 +160,10 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 9,
-          "items": 8,
+          "items": 6,
           "up": 0,
           "down": 0,
-          "neutral": 8,
+          "neutral": 6,
           "examples": [
             {
               "title": "\"민경천 사퇴하라\" 한우농가들, 자녀 채용 의혹에 책임 추궁 - 비욘드포스트",
@@ -194,7 +186,7 @@
           ]
         }
       },
-      "reason": "질병/방역 13점 + 가격 12점 + 수급/도축 11점 기반, 하방성 자료가 우세",
+      "reason": "수급/도축 16점 + 가격 12점 + 뉴스/수요 9점 기반, 하방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": true,
@@ -202,23 +194,23 @@
         "axes": [
           "수급/도축"
         ],
-        "memo": "판단 유보 권장 · 충돌축: 수급/도축 / 누락근거: 정책/고시 / 유보사유: 상·하방 근거 강충돌"
+        "memo": "판단 유보 권장 · 충돌축: 수급/도축 / 누락근거: 질병/방역, 정책/고시 / 유보사유: 상·하방 근거 강충돌"
       },
       "hold_decision": {
         "should_hold": [
           {
             "axis": "supply",
             "label": "수급/도축",
-            "items": 12,
+            "items": 10,
             "has_conflict": true,
             "severity": "high",
-            "dominant_direction": "down",
+            "dominant_direction": "up",
             "weighted_direction": {
-              "up": 19.48,
-              "down": 26.33,
+              "up": 18.9,
+              "down": 18.89,
               "neutral": 0.0
             },
-            "conflict_ratio": 0.74,
+            "conflict_ratio": 1.0,
             "examples": {
               "up": [
                 {
@@ -256,20 +248,20 @@
                   "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9ha1gyVlhzcU13QXVqREJqVW54MGZmOG1CVUhfY3dabnpPLVE0elB3bnRNVkpKblNpZVdfbzUzMExYMzJPZWlXbjZTT1k2OF9YaEM2QXpsSS1xMk9aSC1SUi13?oc=5"
                 },
                 {
-                  "title": "2027년 한우자조금 295억 원 규모 편성…수급안정·소비확대 총력 - 팜인사이트",
-                  "source": "팜인사이트",
-                  "direction": "down",
-                  "quality_score": 93,
-                  "source_level": 4,
-                  "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBZeE0wVjY0bmFzeUs3T0txZTNxX1Z1MU5PaDVtVkVVZ1NpSGdEVVh0NC1obGxkVWRSTlluVkJELUpRV2duaDFMNzJUSF93b0FQNmJObEQ3MXRjRkVmWnpFRzFXb3M1VHdlVkRUZnFB?oc=5"
-                },
-                {
                   "title": "사육기간 줄인 한우 '영하누' 12일부터 판매…최대 49.9% 할인 - 머니투데이 - 머니투데이",
                   "source": "머니투데이",
                   "direction": "down",
                   "quality_score": 69,
                   "source_level": 2,
                   "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFA1Wmltd0JjQ1gxUndod2l3cGowRmxrSTkxd1VCQjUtemQzUWhRdmlMSnVvWFFTLUt3Y2ZkR0IxOE9hekxvank5S0ZLSWtBY21CSTZRSmNDOGFHYzlPVmFPTnpaRm9DWUotbFhMUlVCYUh6MEREcFdGR9IBfkFVX3lxTE02MWtzZ1UwWmxUSkhndDFrQVZCNzZnQjJPRjBBUGhBdE1kQWpQeEdCLUVBTkNYeDdzQkt5UlZRTF95RVpCRkJBTHZGZDJCTF8xN0RrY00xcTFTRktFVmtKWnY0RUFEMVRMeU5kTDJfTjRia3FaVElCd1pYcWM5dw?oc=5"
+                },
+                {
+                  "title": "농식품부, 사육 기간 줄인 ‘단기 비육 한우’ 최대 49.9% 할인 판매 - 국제신문",
+                  "source": "국제신문",
+                  "direction": "down",
+                  "quality_score": 100,
+                  "source_level": 5,
+                  "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPUFotdDRDd29hdmlpeTlGd0JsVnhhT0laR25DSWdFQlREOHJRaWNTSnNsNlNJQ0tNSl9YT3MzNzltRlBoQVVadVlFa01TN1puY01yUllKRzRNZWdYcE1PT2RiZlRmcmdXSERUV0dRRjlHaXNaam5wTzdfWVB1ZlNFaFNRUXd1d3NXd0V6RkRn?oc=5"
                 }
               ],
               "neutral": []
@@ -282,36 +274,36 @@
         ],
         "recommended_status": "판단 유보",
         "recommended_direction": "hold",
-        "adjusted_confidence": 72
+        "adjusted_confidence": 57
       }
     },
     {
       "id": "PORK",
       "name": "돈육",
-      "signal_score": 25,
+      "signal_score": 33,
       "direction": "down",
       "status": "하방 가능성",
-      "quality_score": 77,
-      "confidence_score": 69,
+      "quality_score": 76,
+      "confidence_score": 68,
       "coverage_rate": 40,
       "evidence_count": 16,
       "official_count": 11,
       "direction_counts": {
-        "up": 15,
+        "up": 16,
         "down": 0,
-        "neutral": 1,
+        "neutral": 0,
         "hold": 0
       },
       "coverage_types": [
-        "일반",
+        "가격",
         "질병/방역"
       ],
       "score_breakdown": {
-        "price": 0,
+        "price": 14,
         "supply": 0,
         "disease": 19,
         "policy": 0,
-        "news": 6
+        "news": 0
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -324,12 +316,19 @@
         "price": {
           "label": "가격",
           "max_score": 30,
-          "score": 0,
-          "items": 0,
-          "up": 0,
+          "score": 14,
+          "items": 1,
+          "up": 1,
           "down": 0,
           "neutral": 0,
-          "examples": []
+          "examples": [
+            {
+              "title": "추석 앞두고 한우 가격 고공행진…등심 소비자가 22% 상승 - 연합뉴스",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 51
+            }
+          ]
         },
         "supply": {
           "label": "수급/도축",
@@ -351,6 +350,12 @@
           "neutral": 0,
           "examples": [
             {
+              "title": "ASF SOP 개편·거점동물병원 도입…돼지 질병 대응체계 변화 예고 - 한돈뉴스",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 81
+            },
+            {
               "title": "예천서 또 구제역 양성...1월 시작했는데 11월에도 끝나지 않았다 - 돼지와사람",
               "direction": "up",
               "source_level": 3,
@@ -361,12 +366,6 @@
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
-            },
-            {
-              "title": "정부, SAT1형 구제역 3차 백신접종 추진…일반 양돈농장은 제외 - 돼지와사람",
-              "direction": "up",
-              "source_level": 5,
-              "quality_score": 100
             }
           ]
         },
@@ -383,28 +382,21 @@
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 6,
-          "items": 1,
+          "score": 0,
+          "items": 0,
           "up": 0,
           "down": 0,
-          "neutral": 1,
-          "examples": [
-            {
-              "title": "한우·한돈 맛보고 공연 즐기고…함안 축산물 페스티벌 - 경남미디어",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 76
-            }
-          ]
+          "neutral": 0,
+          "examples": []
         }
       },
-      "reason": "질병/방역 19점 + 뉴스/수요 6점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 가격 14점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
         "severity": "low",
         "axes": [],
-        "memo": "주의 필요 · 누락근거: 가격, 수급/도축, 정책/고시 / 유보사유: 주요 근거축 다수 누락"
+        "memo": "주의 필요 · 누락근거: 수급/도축, 정책/고시, 뉴스/수요 / 유보사유: 주요 근거축 다수 누락"
       },
       "hold_decision": {
         "should_hold": false,
@@ -413,7 +405,7 @@
         ],
         "recommended_status": "하방 가능성",
         "recommended_direction": "down",
-        "adjusted_confidence": 69
+        "adjusted_confidence": 68
       }
     },
     {
@@ -425,10 +417,10 @@
       "quality_score": 75,
       "confidence_score": 75,
       "coverage_rate": 60,
-      "evidence_count": 59,
-      "official_count": 7,
+      "evidence_count": 54,
+      "official_count": 8,
       "direction_counts": {
-        "up": 56,
+        "up": 51,
         "down": 2,
         "neutral": 1,
         "hold": 0
@@ -484,25 +476,25 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 18,
-          "items": 57,
-          "up": 56,
+          "items": 52,
+          "up": 51,
           "down": 1,
           "neutral": 0,
           "examples": [
             {
-              "title": "파주 메추리·진천 종오리 농장서 ‘H5형 AI 항원’ 검출 - 농민신문",
+              "title": "인천 강화 산란계농장에서 고병원성 조류인플루엔자 발생에 따라 방역관리 강화 - 서울Pn",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
             },
             {
-              "title": "서울 강북구, 겨울철 조류인플루엔자 방역 소독 실시 - 여성종합뉴스",
+              "title": "구제역·고병원성 AI 동시 발병 - 팜인사이트",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
             },
             {
-              "title": "파주 메추리·진천 종오리 농장서 AI 항원 검출…전국 가금농장 방역 비상 - 헤럴드경제",
+              "title": "파주 메추리·진천 종오리 농장서 H5형 AI 항원 확인 - 이데일리",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
@@ -559,8 +551,8 @@
       "signal_score": 18,
       "direction": "hold",
       "status": "판단 유보",
-      "quality_score": 72,
-      "confidence_score": 39,
+      "quality_score": 73,
+      "confidence_score": 40,
       "coverage_rate": 20,
       "evidence_count": 25,
       "official_count": 0,
@@ -618,6 +610,12 @@
           "neutral": 0,
           "examples": [
             {
+              "title": "파주 메추리·진천 종오리 농장서 H5형 AI 항원 확인 - 이데일리",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 81
+            },
+            {
               "title": "파주 메추리·진천 종오리 농장서 ‘H5형 AI 항원’ 검출 - 농민신문",
               "direction": "up",
               "source_level": 3,
@@ -628,12 +626,6 @@
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
-            },
-            {
-              "title": "육용오리농장서 H5형 AI 항원...장흥군서 검출 '비상' - 이투데이",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 76
             }
           ]
         },
@@ -664,25 +656,24 @@
         "has_conflict": false,
         "severity": "low",
         "axes": [],
-        "memo": "판단 유보 권장 · 누락근거: 가격, 수급/도축, 정책/고시, 뉴스/수요 / 유보사유: 커버리지 부족, 신뢰도 부족, 공식자료 부족, 주요 근거축 다수 누락"
+        "memo": "판단 유보 권장 · 누락근거: 가격, 수급/도축, 정책/고시, 뉴스/수요 / 유보사유: 커버리지 부족, 공식자료 부족, 주요 근거축 다수 누락"
       },
       "hold_decision": {
         "should_hold": true,
         "reasons": [
           "커버리지 부족",
-          "신뢰도 부족",
           "공식자료 부족",
           "주요 근거축 다수 누락"
         ],
         "recommended_status": "판단 유보",
         "recommended_direction": "hold",
-        "adjusted_confidence": 39
+        "adjusted_confidence": 40
       }
     },
     {
       "id": "EGG",
       "name": "계란",
-      "signal_score": 61,
+      "signal_score": 60,
       "direction": "hold",
       "status": "판단 유보",
       "quality_score": 73,
@@ -703,7 +694,7 @@
         "질병/방역"
       ],
       "score_breakdown": {
-        "price": 26,
+        "price": 25,
         "supply": 11,
         "disease": 18,
         "policy": 0,
@@ -720,14 +711,14 @@
         "price": {
           "label": "가격",
           "max_score": 30,
-          "score": 26,
+          "score": 25,
           "items": 7,
           "up": 3,
           "down": 0,
           "neutral": 4,
           "examples": [
             {
-              "title": "김밥 한 줄 4000원 시대…올해 외식 메뉴 중 가격 상승률 '최고' - 신아일보",
+              "title": "USDA 계란 시장 개요: 도매 계란 가격 상승, 소매 수요 둔화 - 뉴스 및 통계 - IndexBox",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
@@ -736,13 +727,13 @@
               "title": "산지 내리고 소비지 오르는 계란값…“원인 규명을” - 축산신문",
               "direction": "neutral",
               "source_level": 3,
-              "quality_score": 81
+              "quality_score": 76
             },
             {
               "title": "계란값 상승에 김밥 가격도 껑충…서울 외식 메뉴 상승률 1위 - 한국NGO신문",
               "direction": "up",
               "source_level": 3,
-              "quality_score": 81
+              "quality_score": 76
             }
           ]
         },
@@ -779,6 +770,12 @@
           "neutral": 0,
           "examples": [
             {
+              "title": "인천 강화 산란계농장에서 고병원성 조류인플루엔자 발생에 따라 방역관리 강화 - 서울Pn",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 81
+            },
+            {
               "title": "고병원성AI 확산으로 ‘달걀값’ 급등? - 시사코리아",
               "direction": "up",
               "source_level": 3,
@@ -789,12 +786,6 @@
               "direction": "up",
               "source_level": 3,
               "quality_score": 76
-            },
-            {
-              "title": "AI 확진에 계란값 불안 솔솔...농식품부 “공급 탄탄, 과도한 우려” - 한국농어민신문",
-              "direction": "up",
-              "source_level": 5,
-              "quality_score": 100
             }
           ]
         },
@@ -832,7 +823,7 @@
           ]
         }
       },
-      "reason": "가격 26점 + 질병/방역 18점 + 수급/도축 11점 기반, 상방성 자료가 우세",
+      "reason": "가격 25점 + 질병/방역 18점 + 수급/도축 11점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": true,
@@ -894,16 +885,16 @@
     {
       "id": "OTHER",
       "name": "기타",
-      "signal_score": 54,
+      "signal_score": 52,
       "direction": "neutral",
       "status": "보합/혼조",
-      "quality_score": 74,
-      "confidence_score": 88,
+      "quality_score": 75,
+      "confidence_score": 89,
       "coverage_rate": 100,
-      "evidence_count": 38,
-      "official_count": 35,
+      "evidence_count": 36,
+      "official_count": 34,
       "direction_counts": {
-        "up": 22,
+        "up": 20,
         "down": 1,
         "neutral": 15,
         "hold": 0
@@ -917,7 +908,7 @@
       ],
       "score_breakdown": {
         "price": 9,
-        "supply": 13,
+        "supply": 11,
         "disease": 19,
         "policy": 0,
         "news": 13
@@ -950,20 +941,14 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 13,
-          "items": 2,
-          "up": 2,
+          "score": 11,
+          "items": 1,
+          "up": 1,
           "down": 0,
           "neutral": 0,
           "examples": [
             {
               "title": "송옥주 의원, 축산물 담합 시비 없는 수급조절 법제화 추진 - 식품저널 foodnews",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 51
-            },
-            {
-              "title": "송옥주, ‘축산물 수급조절·물가관리법’ 대표발의…담합 논란 막는다 - 아이뉴스24",
               "direction": "up",
               "source_level": 3,
               "quality_score": 51
@@ -974,8 +959,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 15,
-          "up": 15,
+          "items": 14,
+          "up": 14,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -1025,21 +1010,21 @@
               "quality_score": 75
             },
             {
+              "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
+              "direction": "neutral",
+              "source_level": 5,
+              "quality_score": 75
+            },
+            {
               "title": "K2WebWizard - 농림축산식품부",
               "direction": "neutral",
               "source_level": 5,
               "quality_score": 95
-            },
-            {
-              "title": "농림축산식품부 - - 농림축산식품부",
-              "direction": "neutral",
-              "source_level": 5,
-              "quality_score": 75
             }
           ]
         }
       },
-      "reason": "질병/방역 19점 + 수급/도축 13점 + 뉴스/수요 13점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 뉴스/수요 13점 + 수급/도축 11점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
         "has_conflict": false,
@@ -1052,7 +1037,7 @@
         "reasons": [],
         "recommended_status": "보합/혼조",
         "recommended_direction": "neutral",
-        "adjusted_confidence": 88
+        "adjusted_confidence": 89
       }
     }
   ],
