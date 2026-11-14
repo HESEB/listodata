@@ -1,33 +1,34 @@
 {
-  "updated_at": "2026-11-13T22:41:41Z",
+  "updated_at": "2026-11-14T03:21:42Z",
   "notice": "Phase 2 Display Layer 초안입니다. 기존 market_dashboard.json은 별도로 유지됩니다.",
   "species": [
     {
       "id": "BEEF",
       "name": "한우",
-      "signal_score": 50,
+      "signal_score": 48,
       "direction": "neutral",
       "status": "보합/혼조",
-      "quality_score": 74,
-      "confidence_score": 76,
-      "coverage_rate": 80,
-      "evidence_count": 37,
-      "official_count": 5,
+      "quality_score": 68,
+      "confidence_score": 75,
+      "coverage_rate": 100,
+      "evidence_count": 34,
+      "official_count": 3,
       "direction_counts": {
         "up": 11,
-        "down": 18,
-        "neutral": 8,
+        "down": 10,
+        "neutral": 13,
         "hold": 0
       },
       "coverage_types": [
         "가격",
         "수급/도축",
+        "수요/행사",
         "일반",
         "질병/방역"
       ],
       "score_breakdown": {
-        "price": 12,
-        "supply": 10,
+        "price": 11,
+        "supply": 9,
         "disease": 19,
         "policy": 0,
         "news": 9
@@ -43,11 +44,11 @@
         "price": {
           "label": "가격",
           "max_score": 30,
-          "score": 12,
+          "score": 11,
           "items": 12,
-          "up": 0,
-          "down": 10,
-          "neutral": 2,
+          "up": 2,
+          "down": 6,
+          "neutral": 4,
           "examples": [
             {
               "title": "의령군, 겨울맞이 농특산물 할인행사…한우·대봉감 최대 40% 할인 - 코리아이글뉴스",
@@ -62,39 +63,39 @@
               "quality_score": 69
             },
             {
-              "title": "한우 최대 49.9% 할인…'영하누' 전국 642개 매장서 판매 - 푸드투데이",
+              "title": "농식품부, 단기비육 한우 ‘영하누’ 최대 49.9% 할인 판매 - 경기일보",
               "direction": "down",
-              "source_level": 2,
-              "quality_score": 64
+              "source_level": 5,
+              "quality_score": 100
             }
           ]
         },
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 10,
-          "items": 12,
-          "up": 4,
-          "down": 8,
+          "score": 9,
+          "items": 7,
+          "up": 3,
+          "down": 4,
           "neutral": 0,
           "examples": [
-            {
-              "title": "“사육기간 줄여 가격 내렸다”…‘단기비육 한우고기’ 최대 반값 판매 - 농민신문",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 81
-            },
-            {
-              "title": "농식품부, 사육기간 줄인 한우 ‘영하누’ 할인 판매 - livesnews.com",
-              "direction": "down",
-              "source_level": 5,
-              "quality_score": 100
-            },
             {
               "title": "2027년 한우자조금 295억 원 규모 편성…수급안정·소비확대 총력 - 팜인사이트",
               "direction": "down",
               "source_level": 4,
               "quality_score": 88
+            },
+            {
+              "title": "사육 기간 줄여 몸값 낮춘 한우 ‘영하누’, 반값 할인 - 전업농신문",
+              "direction": "down",
+              "source_level": 2,
+              "quality_score": 64
+            },
+            {
+              "title": "한우도 가성비 시대…사육기간 줄인 '영하누' 최대 반값 할인 - 뉴스1",
+              "direction": "down",
+              "source_level": 2,
+              "quality_score": 64
             }
           ]
         },
@@ -102,8 +103,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 7,
-          "up": 7,
+          "items": 6,
+          "up": 6,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -141,10 +142,10 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 9,
-          "items": 6,
+          "items": 9,
           "up": 0,
           "down": 0,
-          "neutral": 6,
+          "neutral": 9,
           "examples": [
             {
               "title": "11월 한우고기, 판매부진 '모든 등급·부위 적체' - 축산신문",
@@ -167,32 +168,34 @@
           ]
         }
       },
-      "reason": "질병/방역 19점 + 가격 12점 + 수급/도축 10점 기반, 하방성 자료가 우세",
+      "reason": "질병/방역 19점 + 가격 11점 + 수급/도축 9점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
       "id": "PORK",
       "name": "돈육",
-      "signal_score": 19,
-      "direction": "hold",
-      "status": "판단 유보",
-      "quality_score": 76,
-      "confidence_score": 61,
-      "coverage_rate": 20,
-      "evidence_count": 11,
+      "signal_score": 44,
+      "direction": "neutral",
+      "status": "보합/혼조",
+      "quality_score": 72,
+      "confidence_score": 73,
+      "coverage_rate": 60,
+      "evidence_count": 14,
       "official_count": 10,
       "direction_counts": {
-        "up": 11,
+        "up": 14,
         "down": 0,
         "neutral": 0,
         "hold": 0
       },
       "coverage_types": [
+        "가격",
+        "수급/도축",
         "질병/방역"
       ],
       "score_breakdown": {
-        "price": 0,
-        "supply": 0,
+        "price": 14,
+        "supply": 11,
         "disease": 19,
         "policy": 0,
         "news": 0
@@ -208,46 +211,60 @@
         "price": {
           "label": "가격",
           "max_score": 30,
-          "score": 0,
-          "items": 0,
-          "up": 0,
+          "score": 14,
+          "items": 1,
+          "up": 1,
           "down": 0,
           "neutral": 0,
-          "examples": []
+          "examples": [
+            {
+              "title": "추석 앞두고 한우 가격 고공행진…등심 소비자가 22% 상승 - 연합뉴스",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 51
+            }
+          ]
         },
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 0,
-          "items": 0,
-          "up": 0,
+          "score": 11,
+          "items": 1,
+          "up": 1,
           "down": 0,
           "neutral": 0,
-          "examples": []
+          "examples": [
+            {
+              "title": "데이터로 보는 2026년 상반기 한돈시장 수급 동향 및 전망 / 박민희 본부장 - 축산정보뉴스",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 51
+            }
+          ]
         },
         "disease": {
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 11,
-          "up": 11,
+          "items": 12,
+          "up": 12,
           "down": 0,
           "neutral": 0,
           "examples": [
             {
-              "title": "아프리카돼지열병(ASF) 방역대책추진현황 261111 18시기준 - 경기도뉴스포털",
+              "title": "예천서 또 구제역 양성...1월 시작했는데 11월에도 끝나지 않았다 - 돼지와사람",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
             },
             {
-              "title": "경북 예천 돼지·소(牛) 농장에서 구제역 발생 확인 - 농림축산식품부",
+              "title": "아프리카돼지열병(ASF) 방역대책추진현황 261111 18시기준 - 경기도뉴스포털",
               "direction": "up",
-              "source_level": 5,
-              "quality_score": 75
+              "source_level": 3,
+              "quality_score": 76
             },
             {
-              "title": "아프리카돼지열병 등 가축전염병 방역을 위하여 양돈농장에서 준수해야 할 방역기준 변경 공고(2026-373호) - 농림축산식품부",
+              "title": "경북 예천 돼지·소(牛) 농장에서 구제역 발생 확인 - 농림축산식품부",
               "direction": "up",
               "source_level": 5,
               "quality_score": 75
@@ -275,7 +292,7 @@
           "examples": []
         }
       },
-      "reason": "질병/방역 19점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 가격 14점 + 수급/도축 11점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
@@ -284,13 +301,13 @@
       "signal_score": 28,
       "direction": "down",
       "status": "하방 가능성",
-      "quality_score": 77,
-      "confidence_score": 76,
+      "quality_score": 76,
+      "confidence_score": 75,
       "coverage_rate": 60,
-      "evidence_count": 57,
+      "evidence_count": 58,
       "official_count": 8,
       "direction_counts": {
-        "up": 54,
+        "up": 55,
         "down": 2,
         "neutral": 1,
         "hold": 0
@@ -346,25 +363,25 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 55,
-          "up": 54,
+          "items": 56,
+          "up": 55,
           "down": 1,
           "neutral": 0,
           "examples": [
             {
-              "title": "서산 삵 이어 논산 오리까지…충남 AI 방역 비상 - 충청일보",
+              "title": "충북 조루인플루엔자 비상!-진천 종오리농장서 고병원성 AI 확진 - K-Life TV",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
             },
             {
-              "title": "인천 강화서 4번째 고병원성 AI 확진···경기 파주 메추리·충북 진천 오리서도 H5형 검 - 더경남뉴스",
+              "title": "충북 진천 종오리 농장서 고병원성 AI 확진 - 연합뉴스TV",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
             },
             {
-              "title": "진천·파주도 고병원성 AI 확진…전국에 '위험주의보' 발령 - 이데일리",
+              "title": "AI·구제역 동시 확산 조짐…축산농가 방역 ‘비상등’ 켜졌다 - 농민신문",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
@@ -408,13 +425,13 @@
       "signal_score": 18,
       "direction": "hold",
       "status": "판단 유보",
-      "quality_score": 79,
-      "confidence_score": 43,
+      "quality_score": 78,
+      "confidence_score": 42,
       "coverage_rate": 20,
-      "evidence_count": 29,
+      "evidence_count": 28,
       "official_count": 0,
       "direction_counts": {
-        "up": 29,
+        "up": 28,
         "down": 0,
         "neutral": 0,
         "hold": 0
@@ -461,25 +478,25 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 18,
-          "items": 29,
-          "up": 29,
+          "items": 28,
+          "up": 28,
           "down": 0,
           "neutral": 0,
           "examples": [
             {
+              "title": "충북 조루인플루엔자 비상!-진천 종오리농장서 고병원성 AI 확진 - K-Life TV",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 81
+            },
+            {
+              "title": "충북 진천 종오리 농장서 고병원성 AI 확진 - 연합뉴스TV",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 81
+            },
+            {
               "title": "서산 삵 이어 논산 오리까지…충남 AI 방역 비상 - 충청일보",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 81
-            },
-            {
-              "title": "인천 강화서 4번째 고병원성 AI 확진···경기 파주 메추리·충북 진천 오리서도 H5형 검 - 더경남뉴스",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 81
-            },
-            {
-              "title": "충북도, 진천군 종오리 농장에서 조류인플루엔자(AI) 의사환축 발생 - 타임뉴스",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
@@ -516,13 +533,13 @@
       "signal_score": 54,
       "direction": "neutral",
       "status": "보합/혼조",
-      "quality_score": 71,
-      "confidence_score": 69,
+      "quality_score": 69,
+      "confidence_score": 68,
       "coverage_rate": 80,
-      "evidence_count": 23,
+      "evidence_count": 22,
       "official_count": 3,
       "direction_counts": {
-        "up": 14,
+        "up": 13,
         "down": 2,
         "neutral": 7,
         "hold": 0
@@ -552,8 +569,8 @@
           "label": "가격",
           "max_score": 30,
           "score": 25,
-          "items": 9,
-          "up": 4,
+          "items": 10,
+          "up": 5,
           "down": 0,
           "neutral": 5,
           "examples": [
@@ -598,17 +615,11 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 18,
-          "items": 11,
-          "up": 10,
+          "items": 9,
+          "up": 8,
           "down": 1,
           "neutral": 0,
           "examples": [
-            {
-              "title": "강화 산란계농장 고병원성 AI 확진… 파주·진천도 항원 검출 '방역 비상’ - 한국농어민신문",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 81
-            },
             {
               "title": "[칼럼] 고병원성 AI 살처분 충격 딛고 계란 수급 회복… 지속적인 생산량 증가가 안정화 견인 - 케이에스피뉴스",
               "direction": "up",
@@ -616,10 +627,16 @@
               "quality_score": 81
             },
             {
-              "title": "고병원성AI 확산으로 ‘달걀값’ 급등? - 시사코리아",
+              "title": "AI 확진에 계란값 불안 솔솔...농식품부 “공급 탄탄, 과도한 우려” - 한국농어민신문",
+              "direction": "up",
+              "source_level": 5,
+              "quality_score": 95
+            },
+            {
+              "title": "산란계 농장 조류인플루엔자 확산 우려…계란값 안정세 '빨간불' - 서울뉴스통신",
               "direction": "up",
               "source_level": 3,
-              "quality_score": 81
+              "quality_score": 71
             }
           ]
         },
@@ -672,9 +689,9 @@
       "evidence_count": 37,
       "official_count": 35,
       "direction_counts": {
-        "up": 20,
+        "up": 19,
         "down": 1,
-        "neutral": 16,
+        "neutral": 17,
         "hold": 0
       },
       "coverage_types": [
@@ -737,8 +754,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 15,
-          "up": 15,
+          "items": 14,
+          "up": 14,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -776,13 +793,19 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 13,
-          "items": 20,
+          "items": 21,
           "up": 4,
           "down": 1,
-          "neutral": 15,
+          "neutral": 16,
           "examples": [
             {
               "title": "축산물품질평가원, ‘축산유통정보 다봄’ 기능 개선 논의 - 축산정보뉴스",
+              "direction": "neutral",
+              "source_level": 5,
+              "quality_score": 75
+            },
+            {
+              "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
               "direction": "neutral",
               "source_level": 5,
               "quality_score": 75
@@ -792,12 +815,6 @@
               "direction": "neutral",
               "source_level": 5,
               "quality_score": 95
-            },
-            {
-              "title": "농림축산식품부 - - 농림축산식품부",
-              "direction": "neutral",
-              "source_level": 5,
-              "quality_score": 75
             }
           ]
         }
