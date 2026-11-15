@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-14T18:13:25Z",
+  "updated_at": "2026-11-14T22:31:07Z",
   "notice": "Phase 2 Display Layer 초안입니다. 기존 market_dashboard.json은 별도로 유지됩니다.",
   "species": [
     {
@@ -8,14 +8,14 @@
       "signal_score": 57,
       "direction": "neutral",
       "status": "보합/혼조",
-      "quality_score": 60,
+      "quality_score": 59,
       "confidence_score": 71,
       "coverage_rate": 100,
-      "evidence_count": 32,
+      "evidence_count": 31,
       "official_count": 3,
       "direction_counts": {
         "up": 12,
-        "down": 8,
+        "down": 7,
         "neutral": 12,
         "hold": 0
       },
@@ -75,17 +75,11 @@
           "label": "수급/도축",
           "max_score": 25,
           "score": 19,
-          "items": 7,
+          "items": 6,
           "up": 6,
-          "down": 1,
+          "down": 0,
           "neutral": 0,
           "examples": [
-            {
-              "title": "사육 기간 줄여 몸값 낮춘 한우 ‘영하누’, 반값 할인 - 전업농신문",
-              "direction": "down",
-              "source_level": 2,
-              "quality_score": 64
-            },
             {
               "title": "사육두수 줄고 번식의향 증가…한우 수급 ‘엇박자’ - 축산신문",
               "direction": "up",
@@ -94,6 +88,12 @@
             },
             {
               "title": "추석 앞두고 ‘한우고기’ 경락값 역대 최고…‘입식 과열’ 우려 - 농민신문",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 51
+            },
+            {
+              "title": "한우 공급 감소, 도매가격 ‘강세’ 지지 - 축산신문",
               "direction": "up",
               "source_level": 3,
               "quality_score": 51
@@ -326,10 +326,10 @@
       "quality_score": 76,
       "confidence_score": 75,
       "coverage_rate": 60,
-      "evidence_count": 51,
+      "evidence_count": 50,
       "official_count": 8,
       "direction_counts": {
-        "up": 49,
+        "up": 48,
         "down": 1,
         "neutral": 1,
         "hold": 0
@@ -385,8 +385,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 49,
-          "up": 49,
+          "items": 48,
+          "up": 48,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -552,18 +552,18 @@
     {
       "id": "EGG",
       "name": "계란",
-      "signal_score": 64,
+      "signal_score": 65,
       "direction": "up",
       "status": "상방 가능성",
-      "quality_score": 61,
-      "confidence_score": 71,
+      "quality_score": 60,
+      "confidence_score": 74,
       "coverage_rate": 100,
       "evidence_count": 22,
-      "official_count": 3,
+      "official_count": 4,
       "direction_counts": {
-        "up": 9,
+        "up": 7,
         "down": 3,
-        "neutral": 10,
+        "neutral": 12,
         "hold": 0
       },
       "coverage_types": [
@@ -574,11 +574,11 @@
         "질병/방역"
       ],
       "score_breakdown": {
-        "price": 24,
+        "price": 23,
         "supply": 13,
         "disease": 16,
-        "policy": 4,
-        "news": 7
+        "policy": 5,
+        "news": 8
       },
       "score_breakdown_labels": {
         "price": "가격",
@@ -591,9 +591,9 @@
         "price": {
           "label": "가격",
           "max_score": 30,
-          "score": 24,
-          "items": 11,
-          "up": 5,
+          "score": 23,
+          "items": 9,
+          "up": 3,
           "down": 1,
           "neutral": 5,
           "examples": [
@@ -604,16 +604,16 @@
               "quality_score": 81
             },
             {
-              "title": "계란값 상승에 김밥 가격도 껑충…서울 외식 메뉴 상승률 1위 - 한국NGO신문",
-              "direction": "up",
+              "title": "점심에 계란 프라이 하나 더?…여름엔 ‘금값’ 계란, 가을지나 가격 ‘뚝’[경제뭔데] - 경향신문",
+              "direction": "neutral",
               "source_level": 3,
-              "quality_score": 76
+              "quality_score": 58
             },
             {
-              "title": "\"김밥의 배신\" 외식 메뉴 물가 상승률 1위...계란값·인건비 상승 탓 - KBC광주방송",
-              "direction": "up",
+              "title": "법원, 공정위 ‘계란값 담합’ 제재 효력 정지…산지가격 고시 조건부 허용 - KBS 뉴스",
+              "direction": "neutral",
               "source_level": 3,
-              "quality_score": 76
+              "quality_score": 51
             }
           ]
         },
@@ -672,11 +672,11 @@
         "policy": {
           "label": "정책/고시",
           "max_score": 10,
-          "score": 4,
-          "items": 2,
+          "score": 5,
+          "items": 3,
           "up": 0,
           "down": 0,
-          "neutral": 2,
+          "neutral": 3,
           "examples": [
             {
               "title": "3.9만원 수입 계란 4980원에 팔았다…혈세 1200억 쓴 물가 대책 - 중앙일보",
@@ -689,17 +689,23 @@
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 51
+            },
+            {
+              "title": "계란 10구 5300원 돌파, 한달 새 17% 올라…정부 2억3천개 수입한다 - 한겨레",
+              "direction": "neutral",
+              "source_level": 5,
+              "quality_score": 75
             }
           ]
         },
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 7,
-          "items": 3,
+          "score": 8,
+          "items": 4,
           "up": 0,
           "down": 0,
-          "neutral": 3,
+          "neutral": 4,
           "examples": [
             {
               "title": "슈퍼마켓에서 계란을 개당 2,000 VND에 팔고 있는데, 양계 농가들은 어떻게 생계를 유지하는 걸까요? - Vietnam.vn",
@@ -722,7 +728,7 @@
           ]
         }
       },
-      "reason": "가격 24점 + 질병/방역 16점 + 수급/도축 13점 기반, 상방성 자료가 우세",
+      "reason": "가격 23점 + 질병/방역 16점 + 수급/도축 13점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized"
     },
     {
@@ -737,9 +743,9 @@
       "evidence_count": 36,
       "official_count": 34,
       "direction_counts": {
-        "up": 19,
+        "up": 20,
         "down": 1,
-        "neutral": 16,
+        "neutral": 15,
         "hold": 0
       },
       "coverage_types": [
@@ -802,8 +808,8 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 14,
-          "up": 14,
+          "items": 15,
+          "up": 15,
           "down": 0,
           "neutral": 0,
           "examples": [
@@ -841,10 +847,10 @@
           "label": "뉴스/수요",
           "max_score": 15,
           "score": 13,
-          "items": 20,
+          "items": 19,
           "up": 4,
           "down": 1,
-          "neutral": 15,
+          "neutral": 14,
           "examples": [
             {
               "title": "축산물품질평가원, ‘축산유통정보 다봄’ 기능 개선 논의 - 축산정보뉴스",
