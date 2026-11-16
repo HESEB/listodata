@@ -1,13 +1,13 @@
 {
-  "updated_at": "2026-11-16T11:36:37Z",
+  "updated_at": "2026-11-16T22:14:57Z",
   "policy": "phase8_original_news_date_enrichment_v2",
   "summary": {
     "processed_count": 40,
-    "access_success_count": 40,
+    "access_success_count": 35,
     "enriched_count": 0,
-    "failed_count": 0,
+    "failed_count": 5,
     "skipped_count": 0,
-    "access_success_rate": 100.0,
+    "access_success_rate": 87.5,
     "date_found_rate": 0.0,
     "date_found_rate_given_access": 0.0,
     "publisher_count": 1,
@@ -16,7 +16,8 @@
     "critical_publisher_count": 1,
     "source_counts": {},
     "failure_category_counts": {
-      "metadata_not_found": 40
+      "metadata_not_found": 35,
+      "http_blocked": 5
     },
     "exception_applied_count": 1,
     "auto_applied_count": 0
@@ -24,24 +25,77 @@
   "publishers": [
     {
       "publisher_key": "news.google.com",
-      "publisher": "웹이코노미",
+      "publisher": "글로벌뉴스통신GNA",
       "domain": "news.google.com",
       "attempted_count": 40,
-      "access_success_count": 40,
+      "access_success_count": 35,
       "date_found_count": 0,
-      "metadata_not_found_count": 40,
-      "failed_count": 0,
-      "failure_categories": {},
+      "metadata_not_found_count": 35,
+      "failed_count": 5,
+      "failure_categories": {
+        "http_blocked": 5
+      },
       "exception_ids": [
         "google_news_redirect"
       ],
-      "access_success_rate": 100.0,
+      "access_success_rate": 87.5,
       "date_found_rate": 0.0,
       "date_found_rate_given_access": 0.0,
       "health_status": "critical"
     }
   ],
-  "failures": [],
+  "failures": [
+    {
+      "event_id": "NEWS_dac1243536",
+      "publisher": "한국농촌경제신문",
+      "domain": "news.google.com",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1KeVZBRGZ4QkFHcHp1LXR0enNGZmxrajN5cWpUMWdMNlVxS21WYm5IYmM0WGM0dDRHaTJlcEVVYTh1NHNDXzdqVFZuMGZMUEF0cTdFQkdmV0hvZlVpcGxMeQ?oc=5",
+      "failure_category": "http_blocked",
+      "http_status": 429,
+      "exception_id": "google_news_redirect",
+      "error": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "event_id": "NEWS_f5b4557832",
+      "publisher": "파이낸셜뉴스",
+      "domain": "news.google.com",
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1zdUtRdTQ2eU5kS0RodDJQRFNrdGR0MXVVbHpLcGpRN1ZLR3B0YjVSLUYxckk2NEhhSlBhbGNhREdsT2JMUDdNWmxMdVNVdE1Yb2dlOFIxRWxSUQ?oc=5",
+      "failure_category": "http_blocked",
+      "http_status": 429,
+      "exception_id": "google_news_redirect",
+      "error": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "event_id": "NEWS_53dd8c3781",
+      "publisher": "연합뉴스",
+      "domain": "news.google.com",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1YbU5PeFdWMllqZUY2V0xVM0pkZDU2NFhraG5leDdRN2s1RkJpRFlEX2FUQWMwb1BGNGVVWkFYdXRja1JTX3Rjc3FVdjM3cW5yY1M0NmdrN2xJY3PSAWBBVV95cUxNd1ZCRHFhVWR3SXMyX0t4c3ZLUE5HSkpjM2d6QldnTVlQU2VIOVpXMGZPYUYySU03cFlJR0ItNi1lR283YjRMSkgwLVFpTGh3NmJwYjJwX0twLWNnRmFwSXM?oc=5",
+      "failure_category": "http_blocked",
+      "http_status": 429,
+      "exception_id": "google_news_redirect",
+      "error": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "event_id": "NEWS_8af2f46ca8",
+      "publisher": "연합뉴스",
+      "domain": "news.google.com",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5xVXRiUzRCc05KdXdGMHBQSjY3WldvVzc0aFZQdUV3Tjk5QXVqYTdUYkdwaURYWUlNVG4wUmp4S0J1R05KOUZvdDlwMTRuTDR5bXNpU0liaDVFVEU?oc=5",
+      "failure_category": "http_blocked",
+      "http_status": 429,
+      "exception_id": "google_news_redirect",
+      "error": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "event_id": "NEWS_e9bfa679bf",
+      "publisher": "한국NGO신문",
+      "domain": "news.google.com",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFA4V1hMV0xxakVFZk80VlFYOG9scTFielBGMDBRQzVfTWlPT3AxemR1WWt5aWhUcEd1U2diTW0tdXhCdHA1bEI0T202Y25UTkE5LWJwdU9na1lyaXZ3bWFISGt1WG4tYU1F?oc=5",
+      "failure_category": "http_blocked",
+      "http_status": 429,
+      "exception_id": "google_news_redirect",
+      "error": "HTTP Error 429: Too Many Requests"
+    }
+  ],
   "exceptions_path": "app/data/config/original_news_publisher_exceptions.json",
   "notice": "원문 JSON-LD·OpenGraph·meta·time 태그에서 게시일 후보를 수집하고 언론사별 접근 성공률·게시일 발견률·실패 원인을 집계합니다. 원래 published_at은 자동 덮어쓰지 않으며 관리자 검수 근거로만 사용합니다."
 }
