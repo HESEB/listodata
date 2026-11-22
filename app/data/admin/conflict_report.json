@@ -1,49 +1,94 @@
 {
-  "updated_at": "2026-11-21T23:26:08Z",
+  "updated_at": "2026-11-22T07:00:12Z",
   "policy": "phase2_conflict_hold_v1",
   "notice": "상방·하방 근거 충돌, 근거 누락, 신뢰도 부족에 따른 판단 유보 검수 리포트입니다.",
   "summary": {
     "species_count": 6,
-    "conflict_species_count": 3,
-    "hold_recommended_count": 2,
-    "high_conflict_count": 1
+    "conflict_species_count": 4,
+    "hold_recommended_count": 4,
+    "high_conflict_count": 3
   },
   "species": [
     {
       "id": "BEEF",
       "name": "한우",
       "has_conflict": true,
-      "conflict_severity": "medium",
+      "conflict_severity": "high",
       "conflict_axes": [
         "가격"
       ],
       "missing_evidence": [
         "질병/방역"
       ],
-      "hold_reasons": [],
-      "original_confidence": 77,
-      "adjusted_confidence": 67,
-      "should_hold": false,
-      "recommended_status": "보합/혼조",
-      "recommended_direction": "neutral",
-      "memo": "주의 필요 · 충돌축: 가격 / 누락근거: 질병/방역"
+      "hold_reasons": [
+        "상·하방 근거 강충돌"
+      ],
+      "original_confidence": 70,
+      "adjusted_confidence": 52,
+      "should_hold": true,
+      "recommended_status": "판단 유보",
+      "recommended_direction": "hold",
+      "memo": "판단 유보 권장 · 충돌축: 가격 / 누락근거: 질병/방역 / 유보사유: 상·하방 근거 강충돌"
     },
     {
       "id": "PORK",
       "name": "돈육",
-      "has_conflict": false,
-      "conflict_severity": "none",
-      "conflict_axes": [],
+      "has_conflict": true,
+      "conflict_severity": "high",
+      "conflict_axes": [
+        "가격"
+      ],
       "missing_evidence": [
         "정책/고시"
       ],
-      "hold_reasons": [],
-      "original_confidence": 81,
-      "adjusted_confidence": 81,
-      "should_hold": false,
-      "recommended_status": "보합/혼조",
-      "recommended_direction": "neutral",
-      "memo": "주의 필요 · 누락근거: 정책/고시"
+      "hold_reasons": [
+        "상·하방 근거 강충돌"
+      ],
+      "original_confidence": 87,
+      "adjusted_confidence": 69,
+      "should_hold": [
+        {
+          "axis": "price",
+          "label": "가격",
+          "items": 2,
+          "has_conflict": true,
+          "severity": "high",
+          "dominant_direction": "down",
+          "weighted_direction": {
+            "up": 3.57,
+            "down": 4.55,
+            "neutral": 0.0
+          },
+          "conflict_ratio": 0.78,
+          "examples": {
+            "up": [
+              {
+                "title": "추석 앞두고 한우 가격 고공행진…등심 소비자가 22% 상승 - 연합뉴스",
+                "source": "연합뉴스",
+                "direction": "up",
+                "quality_score": 51,
+                "source_level": 3,
+                "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE8tQmdJYVI2LS1ZMVlKcVF0MkxPQUdtalNySmdsOXc4YW44cmVRS3d4V3BHYk5OZHViUEV1aktnLWhCQWMxb1Zqd3ZfMWFQTG83OHRjYmx5eHV6TUXSAWBBVV95cUxQOGZjUTNCMzJOVHNuTmh4ZldqM1E3ZEUyRTZDcVFYaGVvUnVZUmxUOXE1YTYxS1pnWlI3MkM3NklTczB4MjM3eEZVR1d3TTdMV21pY1RwWDUyXzdrZHlsR0U?oc=5"
+              }
+            ],
+            "down": [
+              {
+                "title": "한우·한돈 50% 가격에 먹는다…정부·농협 손잡고 할인 확대 - 경기일보",
+                "source": "경기일보",
+                "direction": "down",
+                "quality_score": 75,
+                "source_level": 5,
+                "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1BYVp5U1Z5eUpfWnVJS21hNTEtSTVXRlhxWnd2WGYzMWI0RWFIVjY1VjF3YVBDdDI0SkloX1NLRjhaWjdjX3hLem82bnJVdlFncUtOeWx6QTRFRTA?oc=5"
+              }
+            ],
+            "neutral": []
+          },
+          "memo": "가격 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
+        }
+      ],
+      "recommended_status": "판단 유보",
+      "recommended_direction": "hold",
+      "memo": "판단 유보 권장 · 충돌축: 가격 / 누락근거: 정책/고시 / 유보사유: 상·하방 근거 강충돌"
     },
     {
       "id": "POULTRY",
@@ -134,14 +179,14 @@
         "label": "가격",
         "items": 10,
         "has_conflict": true,
-        "severity": "medium",
-        "dominant_direction": "up",
+        "severity": "high",
+        "dominant_direction": "down",
         "weighted_direction": {
-          "up": 14.77,
-          "down": 8.05,
-          "neutral": 10.33
+          "up": 10.71,
+          "down": 16.18,
+          "neutral": 7.66
         },
-        "conflict_ratio": 0.55,
+        "conflict_ratio": 0.66,
         "examples": {
           "up": [
             {
@@ -170,6 +215,14 @@
             }
           ],
           "down": [
+            {
+              "title": "장성군 착한가격업소 이용하면 ‘20% 할인’! > 뉴스 - 더코리아",
+              "source": "더코리아",
+              "direction": "down",
+              "quality_score": 64,
+              "source_level": 2,
+              "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE9YalJVaTZBcXpQOXFIX09JQ25tWF8zWDhieEc2UTd5cENWci1jVTNXdjlJTlhlU05PVUZsY0dPZ2E5cWlpeklCQU5DUQ?oc=5"
+            },
             {
               "title": "한우 가격 하락에 정부 지원…한우산업법 본격 시행 - 안동MBC",
               "source": "안동MBC",
@@ -214,17 +267,17 @@
             }
           ]
         },
-        "memo": "가격 축에서 상방·하방 근거가 동시에 감지되어 medium 충돌로 분류"
+        "memo": "가격 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
       },
       {
         "axis": "supply",
         "label": "수급/도축",
-        "items": 6,
+        "items": 5,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 22.82,
+          "up": 18.8,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -291,7 +344,7 @@
         "weighted_direction": {
           "up": 0.0,
           "down": 0.0,
-          "neutral": 3.27
+          "neutral": 3.17
         },
         "conflict_ratio": 0,
         "examples": {
@@ -302,7 +355,7 @@
               "title": "홍천군, 고능력 한우 생산·분양 지원으로 홍천한우 경쟁력 강화 - 경기뉴스원",
               "source": "경기뉴스원",
               "direction": "neutral",
-              "quality_score": 81,
+              "quality_score": 76,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9zRG45YmlnVnRuejllcGl4SlVEZUFOWXc4QjVIeTZNZmpTX2t3bjJoSG9VWnYwTWtZekNGOXhtYnhSbnNNY21nU3hHWXdfSDNSRUp0aE8zOVJHWFVOQ01jTi1yMA?oc=5"
             }
@@ -313,63 +366,72 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 11,
-        "has_conflict": false,
-        "severity": "none",
-        "dominant_direction": "neutral",
-        "weighted_direction": {
-          "up": 0.0,
-          "down": 0.0,
-          "neutral": 38.08
-        },
-        "conflict_ratio": 0,
-        "examples": {
-          "up": [],
-          "down": [],
-          "neutral": [
-            {
-              "title": "합천군, 경남특산물박람회서 합천황토한우·지역 농식품 소비촉진 - 농수축산신문",
-              "source": "농수축산신문",
-              "direction": "neutral",
-              "quality_score": 81,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5PTHQ0WjRwY0x0SHFmajBPTzd2REZQV0kxc3l3WGszdmNHMHVyMHEyeXZseHp5VzhWaXo1UVdnWHA5NzVMd0JjTW5ZdnJGTHRsTUV4OTNkVXNUVFRfZkNLVFRZY1JzQmlaX0d1Wg?oc=5"
-            },
-            {
-              "title": "[포토] 전국한우협회, '한우 등심 특가전' - 이데일리",
-              "source": "이데일리",
-              "direction": "neutral",
-              "quality_score": 88,
-              "source_level": 4,
-              "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPZHM4M2xHN3JvS3NUOUJWOUpmLXA4WVpjOXRTNEFPdWg2amRGWVc4M0oxdERmN1ZHM1FhcEYxUjh1WW1hYXFkVU9qeW5qZ2NDT0tHUjVuSzdWZUwzSDdMQWlCVW52UmFrRWJxTDZBQ2JvVUxRTkZIUDJHc2RVTlRQNA?oc=5"
-            },
-            {
-              "title": "경남 한우 전국대회 석권, 9,864만 원 최고가 기록…농가 수익성 개선은 과제 - 진주인터넷뉴스",
-              "source": "진주인터넷뉴스",
-              "direction": "neutral",
-              "quality_score": 76,
-              "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9rcU13TkNNVUtHQUYyc2pSWV8ybGFhbmxrdG9YVXFiUTZhVC1NRXlFYnI4Ymw0RWhMc3RkSXQ5eVZEeHhNa255ajhtd1YzMlZjMVk3V25Qdy14UmUzLWVMbGdaNHh2NGgxTW9Dek5RWDdNQQ?oc=5"
-            }
-          ]
-        },
-        "memo": "뉴스/수요 축은 중립 또는 보조 근거 중심"
-      }
-    ],
-    "PORK": [
-      {
-        "axis": "price",
-        "label": "가격",
-        "items": 1,
+        "items": 14,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
           "up": 3.57,
           "down": 0.0,
-          "neutral": 0.0
+          "neutral": 40.3
         },
         "conflict_ratio": 0.0,
+        "examples": {
+          "up": [
+            {
+              "title": "한우 등심 22.6%·안심 19.9%↑…축산물 값 강세, 추석 앞두고 어떡하나 - 경기일보",
+              "source": "경기일보",
+              "direction": "up",
+              "quality_score": 51,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE14SEVqTm9EZXJMbHU3U3ZJb2NNeEpkS09EcFVMbXlva2lIQmp2LU9lbkNCM21PTnB5alMweUFpRVV0QVpTQkpGR0JpUVFYcjFXenpSNTV3VHI3R2s?oc=5"
+            }
+          ],
+          "down": [],
+          "neutral": [
+            {
+              "title": "[현장]까다로운 검역 뚫고 세계로…제주 한돈·한우의 수출 도전기 - 아시아경제",
+              "source": "아시아경제",
+              "direction": "neutral",
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1IZ1Rwa19IQ2VkanJyUVp2NVBaWHVpRDQwU0trU2NCd0pfV3B2QUx2b2NGX3R5SHJZV01CQXVoaWxWbmhSVXpUSFYwYzlmZHExZ3NUTW1OUDhJMnNVaG1fUQ?oc=5"
+            },
+            {
+              "title": "싱가포르 식탁 오른 제주 한우·한돈…청정·품질로 수출길 넓힌다[르포] - 이데일리",
+              "source": "이데일리",
+              "direction": "neutral",
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPMDBIVmNQTnAzNXVJcGlCSDU1WklURXVkbDF6bWhuZERPaUVMdnBQRE9xS2pKUVhCNEhERkxfSHV3aHVSQ00zaXpXR2JiTVZCZkl5UWlxREZLUFFHTTBweU5RM21Eb2xpdGFwWnlRbjlJNUFwdzZyZzNzNkVuN2VGWQ?oc=5"
+            },
+            {
+              "title": "[르포] 싱가포르 입맛 잡는 제주 한우·한돈…수출 현장 가보니 - 아주경제",
+              "source": "아주경제",
+              "direction": "neutral",
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9xTmcwTWpuNG5pRlZnN2hVdDFfWTlXN3pBZ1Vla3ZqOTVCSXBfallOMFRObnp6OHN0SWMxYTJfeDdJajY5REcwMlZucDA5YmZfQlRlVkpjU1FVZ9IBWEFVX3lxTFB4ZWl4NTFGRE04NjVEeGNoUlFpQWZlZmx6TUwtRVA2Qkx1b09VRjAweDFwU0VnV2NrU2hxbGxhb0xfUFVsWDU0V3hmVEJnUjVHSEREVEctTTE?oc=5"
+            }
+          ]
+        },
+        "memo": "뉴스/수요 축은 상방 근거 우세"
+      }
+    ],
+    "PORK": [
+      {
+        "axis": "price",
+        "label": "가격",
+        "items": 2,
+        "has_conflict": true,
+        "severity": "high",
+        "dominant_direction": "down",
+        "weighted_direction": {
+          "up": 3.57,
+          "down": 4.55,
+          "neutral": 0.0
+        },
+        "conflict_ratio": 0.78,
         "examples": {
           "up": [
             {
@@ -381,10 +443,19 @@
               "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE8tQmdJYVI2LS1ZMVlKcVF0MkxPQUdtalNySmdsOXc4YW44cmVRS3d4V3BHYk5OZHViUEV1aktnLWhCQWMxb1Zqd3ZfMWFQTG83OHRjYmx5eHV6TUXSAWBBVV95cUxQOGZjUTNCMzJOVHNuTmh4ZldqM1E3ZEUyRTZDcVFYaGVvUnVZUmxUOXE1YTYxS1pnWlI3MkM3NklTczB4MjM3eEZVR1d3TTdMV21pY1RwWDUyXzdrZHlsR0U?oc=5"
             }
           ],
-          "down": [],
+          "down": [
+            {
+              "title": "한우·한돈 50% 가격에 먹는다…정부·농협 손잡고 할인 확대 - 경기일보",
+              "source": "경기일보",
+              "direction": "down",
+              "quality_score": 75,
+              "source_level": 5,
+              "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1BYVp5U1Z5eUpfWnVJS21hNTEtSTVXRlhxWnd2WGYzMWI0RWFIVjY1VjF3YVBDdDI0SkloX1NLRjhaWjdjX3hLem82bnJVdlFncUtOeWx6QTRFRTA?oc=5"
+            }
+          ],
           "neutral": []
         },
-        "memo": "가격 축은 상방 근거 우세"
+        "memo": "가격 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
       },
       {
         "axis": "supply",
@@ -439,7 +510,7 @@
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 67.62,
+          "up": 67.52,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -499,39 +570,56 @@
       {
         "axis": "news",
         "label": "뉴스/수요",
-        "items": 2,
+        "items": 5,
         "has_conflict": false,
         "severity": "none",
-        "dominant_direction": "neutral",
+        "dominant_direction": "up",
         "weighted_direction": {
-          "up": 0.0,
+          "up": 3.57,
           "down": 0.0,
-          "neutral": 6.33
+          "neutral": 12.48
         },
-        "conflict_ratio": 0,
+        "conflict_ratio": 0.0,
         "examples": {
-          "up": [],
+          "up": [
+            {
+              "title": "한우 등심 22.6%·안심 19.9%↑…축산물 값 강세, 추석 앞두고 어떡하나 - 경기일보",
+              "source": "경기일보",
+              "direction": "up",
+              "quality_score": 51,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE14SEVqTm9EZXJMbHU3U3ZJb2NNeEpkS09EcFVMbXlva2lIQmp2LU9lbkNCM21PTnB5alMweUFpRVV0QVpTQkpGR0JpUVFYcjFXenpSNTV3VHI3R2s?oc=5"
+            }
+          ],
           "down": [],
           "neutral": [
             {
-              "title": "[포토] 전국한우협회, '한우 등심 특가전' - 이데일리",
-              "source": "이데일리",
+              "title": "[현장]까다로운 검역 뚫고 세계로…제주 한돈·한우의 수출 도전기 - 아시아경제",
+              "source": "아시아경제",
               "direction": "neutral",
-              "quality_score": 88,
-              "source_level": 4,
-              "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPZHM4M2xHN3JvS3NUOUJWOUpmLXA4WVpjOXRTNEFPdWg2amRGWVc4M0oxdERmN1ZHM1FhcEYxUjh1WW1hYXFkVU9qeW5qZ2NDT0tHUjVuSzdWZUwzSDdMQWlCVW52UmFrRWJxTDZBQ2JvVUxRTkZIUDJHc2RVTlRQNA?oc=5"
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1IZ1Rwa19IQ2VkanJyUVp2NVBaWHVpRDQwU0trU2NCd0pfV3B2QUx2b2NGX3R5SHJZV01CQXVoaWxWbmhSVXpUSFYwYzlmZHExZ3NUTW1OUDhJMnNVaG1fUQ?oc=5"
             },
             {
-              "title": "[칼럼] 1만원 계란값이 남긴 경고...한돈에서 같은 실수 말아야 - 돼지와사람",
-              "source": "돼지와사람",
+              "title": "싱가포르 식탁 오른 제주 한우·한돈…청정·품질로 수출길 넓힌다[르포] - 이데일리",
+              "source": "이데일리",
               "direction": "neutral",
-              "quality_score": 51,
+              "quality_score": 81,
               "source_level": 3,
-              "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9LWXNiUVBKTFhJWXBmeHotZWxMNERHT0ZhOXFTYzFpWVB3N2duWGdGMGJwUXBabW9qS3h1czFqTTV3ME9nWllvV29OUXp3UWxLaURoZFVuOXcyZHNHT014SWFR?oc=5"
+              "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPMDBIVmNQTnAzNXVJcGlCSDU1WklURXVkbDF6bWhuZERPaUVMdnBQRE9xS2pKUVhCNEhERkxfSHV3aHVSQ00zaXpXR2JiTVZCZkl5UWlxREZLUFFHTTBweU5RM21Eb2xpdGFwWnlRbjlJNUFwdzZyZzNzNkVuN2VGWQ?oc=5"
+            },
+            {
+              "title": "[르포] 싱가포르 입맛 잡는 제주 한우·한돈…수출 현장 가보니 - 아주경제",
+              "source": "아주경제",
+              "direction": "neutral",
+              "quality_score": 81,
+              "source_level": 3,
+              "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9xTmcwTWpuNG5pRlZnN2hVdDFfWTlXN3pBZ1Vla3ZqOTVCSXBfallOMFRObnp6OHN0SWMxYTJfeDdJajY5REcwMlZucDA5YmZfQlRlVkpjU1FVZ9IBWEFVX3lxTFB4ZWl4NTFGRE04NjVEeGNoUlFpQWZlZmx6TUwtRVA2Qkx1b09VRjAweDFwU0VnV2NrU2hxbGxhb0xfUFVsWDU0V3hmVEJnUjVHSEREVEctTTE?oc=5"
             }
           ]
         },
-        "memo": "뉴스/수요 축은 중립 또는 보조 근거 중심"
+        "memo": "뉴스/수요 축은 상방 근거 우세"
       }
     ],
     "POULTRY": [
@@ -587,12 +675,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 48,
+        "items": 50,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 207.46,
+          "up": 216.98,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -723,12 +811,12 @@
       {
         "axis": "disease",
         "label": "질병/방역",
-        "items": 29,
+        "items": 31,
         "has_conflict": false,
         "severity": "none",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 119.08,
+          "up": 126.72,
           "down": 0.0,
           "neutral": 0.0
         },
@@ -755,7 +843,7 @@
               "title": "영암 오리농장서 H5형 AI 검출···긴급 방역 나서 - https://www.theleader.co.kr/",
               "source": "https://www.theleader.co.kr/",
               "direction": "up",
-              "quality_score": 81,
+              "quality_score": 76,
               "source_level": 3,
               "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1RX0o0c0lqUUNKMlltLWVTTnp3UjYwaS1maFhONGNzUllMSUhTbUxFWDJXNVloQVFMQ3MtQ1pFRlBmNWc3dXJYNTBCTTRxNk94clpDWnFqaVViN0NFN3FqWGZsdmNnWnlaRHM2Y2FB?oc=5"
             }
@@ -810,14 +898,14 @@
       {
         "axis": "price",
         "label": "가격",
-        "items": 7,
+        "items": 6,
         "has_conflict": true,
         "severity": "high",
         "dominant_direction": "down",
         "weighted_direction": {
           "up": 3.57,
           "down": 4.55,
-          "neutral": 14.47
+          "neutral": 11.8
         },
         "conflict_ratio": 0.78,
         "examples": {
@@ -873,16 +961,16 @@
       {
         "axis": "supply",
         "label": "수급/도축",
-        "items": 6,
+        "items": 5,
         "has_conflict": true,
         "severity": "medium",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 14.44,
+          "up": 10.83,
           "down": 6.24,
           "neutral": 0.0
         },
-        "conflict_ratio": 0.43,
+        "conflict_ratio": 0.58,
         "examples": {
           "up": [
             {
@@ -1082,7 +1170,7 @@
         "severity": "medium",
         "dominant_direction": "up",
         "weighted_direction": {
-          "up": 8.61,
+          "up": 8.51,
           "down": 4.1,
           "neutral": 0.0
         },
@@ -1093,7 +1181,7 @@
               "title": "축산물품질평가원, 축산유통정보 다봄’ 통해 주요 축종별 월간 수급 동향 정보 제공 - 축산정보뉴스",
               "source": "축산정보뉴스",
               "direction": "up",
-              "quality_score": 100,
+              "quality_score": 95,
               "source_level": 5,
               "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5Rcmtkd1VaZW5zTUVVWkVHblhIUk5jNEZXTHFTZi13MEVUa1BrLVg5TVQ4eDkwcHE3VXlpYlhQUjhHYkJoNkpEZk84ZzhrMkh2MVVnbENCcU1qcXYyRllJ?oc=5"
             },
