@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-23T02:53:05Z",
+  "updated_at": "2026-11-23T13:03:12Z",
   "policy": "phase2_evidence_score_v3_sanitized",
   "score_axes": {
     "price": {
@@ -43,30 +43,300 @@
     {
       "id": "BEEF",
       "name": "한우",
-      "signal_score": 41,
-      "direction": "neutral",
-      "status": "보합/혼조",
-      "quality_score": 74,
-      "confidence_score": 73,
-      "coverage_rate": 80,
-      "evidence_count": 30,
+      "signal_score": 49,
+      "direction": "hold",
+      "status": "판단 유보",
+      "quality_score": 65,
+      "confidence_score": 58,
+      "coverage_rate": 100,
+      "evidence_count": 29,
       "official_count": 4,
       "direction_counts": {
-        "up": 5,
-        "down": 8,
-        "neutral": 17,
+        "up": 9,
+        "down": 4,
+        "neutral": 16,
         "hold": 0
       },
       "coverage_types": [
         "가격",
         "수급/도축",
         "수요/행사",
-        "일반"
+        "일반",
+        "정책/고시"
       ],
       "score_breakdown": {
-        "price": 11,
-        "supply": 21,
+        "price": 16,
+        "supply": 20,
         "disease": 0,
+        "policy": 4,
+        "news": 9
+      },
+      "score_breakdown_labels": {
+        "price": "가격",
+        "supply": "수급/도축",
+        "disease": "질병/방역",
+        "policy": "정책/고시",
+        "news": "뉴스/수요"
+      },
+      "axis_detail": {
+        "price": {
+          "label": "가격",
+          "max_score": 30,
+          "score": 16,
+          "items": 12,
+          "up": 4,
+          "down": 4,
+          "neutral": 4,
+          "examples": [
+            {
+              "title": "트레이더스 16주년 특가 행사: 한우부터 가전까지 놓치면 안 될 할인 대전 - 공감신문",
+              "direction": "down",
+              "source_level": 2,
+              "quality_score": 69
+            },
+            {
+              "title": "한우 가격 하락에 정부 지원…한우산업법 본격 시행 - 안동MBC",
+              "direction": "down",
+              "source_level": 5,
+              "quality_score": 89
+            },
+            {
+              "title": "한우 가격이 소프라이즈! 최대 63% 할인 - 전체 | 카드/한컷 | 멀티미디어 - 대한민국 정책브리핑",
+              "direction": "down",
+              "source_level": 2,
+              "quality_score": 46
+            }
+          ]
+        },
+        "supply": {
+          "label": "수급/도축",
+          "max_score": 25,
+          "score": 20,
+          "items": 5,
+          "up": 5,
+          "down": 0,
+          "neutral": 0,
+          "examples": [
+            {
+              "title": "한우값 왜 오르나? 돼지고기 공급은?…축평원, 축산물 수급정보 한눈에 - 머니투데이 - 머니투데이",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 71
+            },
+            {
+              "title": "사육두수 줄고 번식의향 증가…한우 수급 ‘엇박자’ - 축산신문",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 51
+            },
+            {
+              "title": "한우 공급 감소, 도매가격 ‘강세’ 지지 - 축산신문",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 51
+            }
+          ]
+        },
+        "disease": {
+          "label": "질병/방역",
+          "max_score": 20,
+          "score": 0,
+          "items": 0,
+          "up": 0,
+          "down": 0,
+          "neutral": 0,
+          "examples": []
+        },
+        "policy": {
+          "label": "정책/고시",
+          "max_score": 10,
+          "score": 4,
+          "items": 1,
+          "up": 0,
+          "down": 0,
+          "neutral": 1,
+          "examples": [
+            {
+              "title": "홍천군, 고능력 한우 생산·분양 지원으로 홍천한우 경쟁력 강화 - 경기뉴스원",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 76
+            }
+          ]
+        },
+        "news": {
+          "label": "뉴스/수요",
+          "max_score": 15,
+          "score": 9,
+          "items": 11,
+          "up": 0,
+          "down": 0,
+          "neutral": 11,
+          "examples": [
+            {
+              "title": "‘K’ 날개 달고 싱가포르 입맛 사로잡은 한우·한돈 - 농민신문",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 81
+            },
+            {
+              "title": "[현장]까다로운 검역 뚫고 세계로…제주 한돈·한우의 수출 도전기 - 아시아경제",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 81
+            },
+            {
+              "title": "싱가포르 식탁 오른 제주 한우·한돈…청정·품질로 수출길 넓힌다[르포] - 이데일리",
+              "direction": "neutral",
+              "source_level": 3,
+              "quality_score": 81
+            }
+          ]
+        }
+      },
+      "reason": "수급/도축 20점 + 가격 16점 + 뉴스/수요 9점 기반, 상방성 자료가 우세",
+      "score_policy": "phase2_evidence_score_v3_sanitized",
+      "conflict": {
+        "has_conflict": true,
+        "severity": "high",
+        "axes": [
+          "가격"
+        ],
+        "memo": "판단 유보 권장 · 충돌축: 가격 / 누락근거: 질병/방역 / 유보사유: 상·하방 근거 강충돌"
+      },
+      "hold_decision": {
+        "should_hold": [
+          {
+            "axis": "price",
+            "label": "가격",
+            "items": 12,
+            "has_conflict": true,
+            "severity": "high",
+            "dominant_direction": "down",
+            "weighted_direction": {
+              "up": 14.77,
+              "down": 16.28,
+              "neutral": 10.33
+            },
+            "conflict_ratio": 0.91,
+            "examples": {
+              "up": [
+                {
+                  "title": "한우 가격 강세…소비 시장 ‘찬물’ 우려 - 축산신문",
+                  "source": "축산신문",
+                  "direction": "up",
+                  "quality_score": 51,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1hTURydnZKTjZ1WHljTmlWd1dOSUVBUzJYY3dVNjRLdk9rVDc0cGVVWXcxM2RMTUozUkxFeDhQOTFRekc1Vm1BTVpuSm1nTkxoOUhNbGZZWnFyamM0QnVBa1pCUHVNZzBT?oc=5"
+                },
+                {
+                  "title": "추석 앞두고 한우 가격 고공행진…등심 소비자가 22% 상승 - 연합뉴스",
+                  "source": "연합뉴스",
+                  "direction": "up",
+                  "quality_score": 51,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE8tQmdJYVI2LS1ZMVlKcVF0MkxPQUdtalNySmdsOXc4YW44cmVRS3d4V3BHYk5OZHViUEV1aktnLWhCQWMxb1Zqd3ZfMWFQTG83OHRjYmx5eHV6TUXSAWBBVV95cUxQOGZjUTNCMzJOVHNuTmh4ZldqM1E3ZEUyRTZDcVFYaGVvUnVZUmxUOXE1YTYxS1pnWlI3MkM3NklTczB4MjM3eEZVR1d3TTdMV21pY1RwWDUyXzdrZHlsR0U?oc=5"
+                },
+                {
+                  "title": "추석 앞 한우 도매가 2만4000원대…'1+' 이상 비중 60%대로 상승 - 머니투데이 - 머니투데이",
+                  "source": "머니투데이",
+                  "direction": "up",
+                  "quality_score": 51,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBFdHU3MW8tTk9TQnhwYXN5WDUzVkdmeUxLTU1leXRUeGh5UUVXNkVobjVudFRvbmo0T2NuWS1Cd190UVU1YVo5anJvcW1WYmMwZkdNT2FDWjRlN2JrZHFuYmU2V3ZESEdxaHNn0gFwQVVfeXFMT3B1RVN5SmpSbTNHdWRCYnczVzkxam5PTUpTRU1XOGhZYXRvZFBDNUxpWmJsVE4yX2M2LVA0LWJCdy1pd1VqaG1PTnRicFhYYVNPTzRsNUhqVjYtX001RzhxcEZhamh0eVBPSGxTV3ZGdw?oc=5"
+                }
+              ],
+              "down": [
+                {
+                  "title": "트레이더스 16주년 특가 행사: 한우부터 가전까지 놓치면 안 될 할인 대전 - 공감신문",
+                  "source": "공감신문",
+                  "direction": "down",
+                  "quality_score": 69,
+                  "source_level": 2,
+                  "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFB5NjBEcGtKSTdwS3JVckpaRlM0aHpfRXVFbU0teWl4eVprQkVVZWtWT0ZiSDRXV0E2X0EwVzNyeDVDMGlwVzJCNVZQOWJFV3h4ak1pN3FwMGc5Vy04VDRzMWc4VEEzcHhN?oc=5"
+                },
+                {
+                  "title": "한우 가격 하락에 정부 지원…한우산업법 본격 시행 - 안동MBC",
+                  "source": "안동MBC",
+                  "direction": "down",
+                  "quality_score": 89,
+                  "source_level": 5,
+                  "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5NcWtYNlg4emI4QWZISDFJYWdUb01DTHNQVmZqX0xweU5zRzBKQUpfRklzZm9VOWFLbVpKdm9kdlJIUHR2WUtUSE5iaGgxVWs5c1Fxc2duX29ScUwwdERPcGE5dEZBbzR5OVJlMjVHNktuQQ?oc=5"
+                },
+                {
+                  "title": "한우 가격이 소프라이즈! 최대 63% 할인 - 전체 | 카드/한컷 | 멀티미디어 - 대한민국 정책브리핑",
+                  "source": "대한민국 정책브리핑",
+                  "direction": "down",
+                  "quality_score": 46,
+                  "source_level": 2,
+                  "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5PQURoSzBWVUxwb2huV1hKcU8zdVNDeUs2VDBoX2dyWDNGMGRJc0xpSWlXYWw3T3ZhSmpJeGtrVzRBRDhZUW4xQlV1NmpfMGM0ZjNDYk90R0lfN3NnVHBsLU9xNHE2NTRWR19lb1VB?oc=5"
+                }
+              ],
+              "neutral": [
+                {
+                  "title": "한우 가격 상승세…유통가 할인 돌입 - 경남도민일보",
+                  "source": "경남도민일보",
+                  "direction": "neutral",
+                  "quality_score": 46,
+                  "source_level": 2,
+                  "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5XS2Z6TENXLVFwNHVKZFdiVDFfRW9wSmV5dWhON0VVOHNWWDZ0cHpwZThoaVRQMWtsN25VQXBIelNvTExLRlk4SDUtNDI2NlpxUjA4MEY4cUZpeDh0SXJTTTlFcDdEaXhxYmc?oc=5"
+                },
+                {
+                  "title": "[Issue+] 추석 이후 한우가격 추이와 전망 - 농수축산신문",
+                  "source": "농수축산신문",
+                  "direction": "neutral",
+                  "quality_score": 51,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBQY0dvc1JFd1kxNTU4QjdPVmhiNWU1MW01R0NUMHVIXzJrWl9UZ3p6Xzk5MGZYVGZJNU5MUl9hbUx2QUtUb1I0N2FJVEFwVU54cm5ZaDJHelU1T3pOWkdNYXd4a0RCUHFJRDk2Tg?oc=5"
+                },
+                {
+                  "title": "[연속보도] 한우 송아지 가격 600만 원 뚫나… 번식률 저하로 '품귀 현상' 심화 - 팜인사이트",
+                  "source": "팜인사이트",
+                  "direction": "neutral",
+                  "quality_score": 51,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE0tc1d6d1ZrUzIzSGRfaF9UX3haUE5uUWVtcFFPQmtWTWRUZTNOT0I3OGl4NGpYZFl2bEdjeVlmRlpBcFdPWmduUGNrN2FrU0t0X0hOdVVURldsalVpcVNTT0UxZ2x4RnZrc2pkNHNB?oc=5"
+                }
+              ]
+            },
+            "memo": "가격 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
+          }
+        ],
+        "reasons": [
+          "상·하방 근거 강충돌"
+        ],
+        "recommended_status": "판단 유보",
+        "recommended_direction": "hold",
+        "adjusted_confidence": 58
+      }
+    },
+    {
+      "id": "PORK",
+      "name": "돈육",
+      "signal_score": 60,
+      "direction": "hold",
+      "status": "판단 유보",
+      "quality_score": 74,
+      "confidence_score": 63,
+      "coverage_rate": 80,
+      "evidence_count": 21,
+      "official_count": 10,
+      "direction_counts": {
+        "up": 16,
+        "down": 1,
+        "neutral": 4,
+        "hold": 0
+      },
+      "coverage_types": [
+        "가격",
+        "수급/도축",
+        "일반",
+        "질병/방역"
+      ],
+      "score_breakdown": {
+        "price": 13,
+        "supply": 19,
+        "disease": 19,
         "policy": 0,
         "news": 9
       },
@@ -81,208 +351,52 @@
         "price": {
           "label": "가격",
           "max_score": 30,
-          "score": 11,
-          "items": 8,
-          "up": 0,
-          "down": 6,
-          "neutral": 2,
-          "examples": [
-            {
-              "title": "트레이더스 16주년 특가 행사: 한우부터 가전까지 놓치면 안 될 할인 대전 - 공감신문",
-              "direction": "down",
-              "source_level": 2,
-              "quality_score": 69
-            },
-            {
-              "title": "한우 등심 최대 50% 할인…전국한우협회, 24일부터 특가전 - 푸드투데이",
-              "direction": "down",
-              "source_level": 4,
-              "quality_score": 83
-            },
-            {
-              "title": "한우산업법 시행..소값 하락 때 농가 지원 강화 - 안동MBC",
-              "direction": "down",
-              "source_level": 3,
-              "quality_score": 71
-            }
-          ]
-        },
-        "supply": {
-          "label": "수급/도축",
-          "max_score": 25,
-          "score": 21,
-          "items": 7,
-          "up": 5,
-          "down": 2,
-          "neutral": 0,
-          "examples": [
-            {
-              "title": "축산물품질평가원, 한우·돼지 등 4개 축종 월간 수급 동향 정보 제공 - 한돈뉴스",
-              "direction": "up",
-              "source_level": 5,
-              "quality_score": 100
-            },
-            {
-              "title": "한우값 왜 오르나? 돼지고기 공급은?…축평원, 축산물 수급정보 한눈에 - 머니투데이 - 머니투데이",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 71
-            },
-            {
-              "title": "한우 사육두수 감소 지속…송아지값 급등 - 축산신문",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 71
-            }
-          ]
-        },
-        "disease": {
-          "label": "질병/방역",
-          "max_score": 20,
-          "score": 0,
-          "items": 0,
-          "up": 0,
-          "down": 0,
-          "neutral": 0,
-          "examples": []
-        },
-        "policy": {
-          "label": "정책/고시",
-          "max_score": 10,
-          "score": 0,
-          "items": 0,
-          "up": 0,
-          "down": 0,
-          "neutral": 0,
-          "examples": []
-        },
-        "news": {
-          "label": "뉴스/수요",
-          "max_score": 15,
-          "score": 9,
-          "items": 15,
-          "up": 0,
-          "down": 0,
-          "neutral": 15,
-          "examples": [
-            {
-              "title": "‘K’ 날개 달고 싱가포르 입맛 사로잡은 한우·한돈 - 농민신문",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 81
-            },
-            {
-              "title": "[현장]까다로운 검역 뚫고 세계로…제주 한돈·한우의 수출 도전기 - 아시아경제",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 81
-            },
-            {
-              "title": "싱가포르 뚫은 제주한우…와규보다 비싸고 유통기한은 절반 - 헤럴드경제",
-              "direction": "neutral",
-              "source_level": 3,
-              "quality_score": 81
-            }
-          ]
-        }
-      },
-      "reason": "수급/도축 21점 + 가격 11점 + 뉴스/수요 9점 기반, 하방성 자료가 우세",
-      "score_policy": "phase2_evidence_score_v3_sanitized",
-      "conflict": {
-        "has_conflict": false,
-        "severity": "none",
-        "axes": [],
-        "memo": "주의 필요 · 누락근거: 질병/방역, 정책/고시"
-      },
-      "hold_decision": {
-        "should_hold": false,
-        "reasons": [],
-        "recommended_status": "보합/혼조",
-        "recommended_direction": "neutral",
-        "adjusted_confidence": 73
-      }
-    },
-    {
-      "id": "PORK",
-      "name": "돈육",
-      "signal_score": 61,
-      "direction": "up",
-      "status": "상방 가능성",
-      "quality_score": 78,
-      "confidence_score": 83,
-      "coverage_rate": 80,
-      "evidence_count": 25,
-      "official_count": 10,
-      "direction_counts": {
-        "up": 17,
-        "down": 1,
-        "neutral": 7,
-        "hold": 0
-      },
-      "coverage_types": [
-        "가격",
-        "수급/도축",
-        "일반",
-        "질병/방역"
-      ],
-      "score_breakdown": {
-        "price": 9,
-        "supply": 23,
-        "disease": 19,
-        "policy": 0,
-        "news": 10
-      },
-      "score_breakdown_labels": {
-        "price": "가격",
-        "supply": "수급/도축",
-        "disease": "질병/방역",
-        "policy": "정책/고시",
-        "news": "뉴스/수요"
-      },
-      "axis_detail": {
-        "price": {
-          "label": "가격",
-          "max_score": 30,
-          "score": 9,
-          "items": 1,
-          "up": 0,
+          "score": 13,
+          "items": 2,
+          "up": 1,
           "down": 1,
           "neutral": 0,
           "examples": [
             {
-              "title": "한우 등심 최대 50% 할인…전국한우협회, 24일부터 특가전 - 푸드투데이",
+              "title": "한우·한돈 50% 가격에 먹는다…정부·농협 손잡고 할인 확대 - 경기일보",
               "direction": "down",
-              "source_level": 4,
-              "quality_score": 83
+              "source_level": 5,
+              "quality_score": 75
+            },
+            {
+              "title": "추석 앞두고 한우 가격 고공행진…등심 소비자가 22% 상승 - 연합뉴스",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 51
             }
           ]
         },
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 23,
-          "items": 4,
-          "up": 4,
+          "score": 19,
+          "items": 3,
+          "up": 3,
           "down": 0,
           "neutral": 0,
           "examples": [
             {
-              "title": "축산물품질평가원, 한우·돼지 등 4개 축종 월간 수급 동향 정보 제공 - 한돈뉴스",
-              "direction": "up",
-              "source_level": 5,
-              "quality_score": 100
-            },
-            {
               "title": "한돈협회,\"축산물수급관리·자조금 예산, 국회 예결위에서 반드시 증액되길 촉구\" 성명 발표 - 한국농촌경제신문",
               "direction": "up",
               "source_level": 4,
-              "quality_score": 88
+              "quality_score": 83
             },
             {
               "title": "한우값 왜 오르나? 돼지고기 공급은?…축평원, 축산물 수급정보 한눈에 - 머니투데이 - 머니투데이",
               "direction": "up",
               "source_level": 3,
               "quality_score": 71
+            },
+            {
+              "title": "데이터로 보는 2026년 상반기 한돈시장 수급 동향 및 전망 / 박민희 본부장 - 축산정보뉴스",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 51
             }
           ]
         },
@@ -290,11 +404,17 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 13,
-          "up": 13,
+          "items": 12,
+          "up": 12,
           "down": 0,
           "neutral": 0,
           "examples": [
+            {
+              "title": "방역 자부심 무너뜨린 혈장단백 ASF의 악몽 - 팜인사이트",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 81
+            },
             {
               "title": "전북도, 겨울철 ASF·구제역 차단 총력… 양돈농가 방역관리 강화 - 한돈뉴스",
               "direction": "up",
@@ -302,16 +422,10 @@
               "quality_score": 76
             },
             {
-              "title": "ASF 광역울타리 136.6km 철거 완료…양돈업계 우려 속 내년에도 확대 - 돼지와사람",
+              "title": "아프리카돼지열병(ASF) 방역대책추진현황 261118 18시기준 - 경기도뉴스포털",
               "direction": "up",
               "source_level": 3,
-              "quality_score": 76
-            },
-            {
-              "title": "ASF 차단 광역울타리 136.6km 철거 완료 - 환경일보",
-              "direction": "up",
-              "source_level": 3,
-              "quality_score": 76
+              "quality_score": 71
             }
           ]
         },
@@ -328,11 +442,11 @@
         "news": {
           "label": "뉴스/수요",
           "max_score": 15,
-          "score": 10,
-          "items": 7,
+          "score": 9,
+          "items": 4,
           "up": 0,
           "down": 0,
-          "neutral": 7,
+          "neutral": 4,
           "examples": [
             {
               "title": "‘K’ 날개 달고 싱가포르 입맛 사로잡은 한우·한돈 - 농민신문",
@@ -347,7 +461,7 @@
               "quality_score": 81
             },
             {
-              "title": "[르포] 싱가포르 입맛 잡는 제주 한우·한돈…수출 현장 가보니 - 아주경제",
+              "title": "싱가포르 식탁 오른 제주 한우·한돈…청정·품질로 수출길 넓힌다[르포] - 이데일리",
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 81
@@ -355,35 +469,78 @@
           ]
         }
       },
-      "reason": "수급/도축 23점 + 질병/방역 19점 + 뉴스/수요 10점 기반, 상방성 자료가 우세",
+      "reason": "수급/도축 19점 + 질병/방역 19점 + 가격 13점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
-        "has_conflict": false,
-        "severity": "none",
-        "axes": [],
-        "memo": "주의 필요 · 누락근거: 정책/고시"
+        "has_conflict": true,
+        "severity": "high",
+        "axes": [
+          "가격"
+        ],
+        "memo": "판단 유보 권장 · 충돌축: 가격 / 누락근거: 정책/고시 / 유보사유: 상·하방 근거 강충돌"
       },
       "hold_decision": {
-        "should_hold": false,
-        "reasons": [],
-        "recommended_status": "상방 가능성",
-        "recommended_direction": "up",
-        "adjusted_confidence": 83
+        "should_hold": [
+          {
+            "axis": "price",
+            "label": "가격",
+            "items": 2,
+            "has_conflict": true,
+            "severity": "high",
+            "dominant_direction": "down",
+            "weighted_direction": {
+              "up": 3.57,
+              "down": 4.55,
+              "neutral": 0.0
+            },
+            "conflict_ratio": 0.78,
+            "examples": {
+              "up": [
+                {
+                  "title": "추석 앞두고 한우 가격 고공행진…등심 소비자가 22% 상승 - 연합뉴스",
+                  "source": "연합뉴스",
+                  "direction": "up",
+                  "quality_score": 51,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE8tQmdJYVI2LS1ZMVlKcVF0MkxPQUdtalNySmdsOXc4YW44cmVRS3d4V3BHYk5OZHViUEV1aktnLWhCQWMxb1Zqd3ZfMWFQTG83OHRjYmx5eHV6TUXSAWBBVV95cUxQOGZjUTNCMzJOVHNuTmh4ZldqM1E3ZEUyRTZDcVFYaGVvUnVZUmxUOXE1YTYxS1pnWlI3MkM3NklTczB4MjM3eEZVR1d3TTdMV21pY1RwWDUyXzdrZHlsR0U?oc=5"
+                }
+              ],
+              "down": [
+                {
+                  "title": "한우·한돈 50% 가격에 먹는다…정부·농협 손잡고 할인 확대 - 경기일보",
+                  "source": "경기일보",
+                  "direction": "down",
+                  "quality_score": 75,
+                  "source_level": 5,
+                  "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1BYVp5U1Z5eUpfWnVJS21hNTEtSTVXRlhxWnd2WGYzMWI0RWFIVjY1VjF3YVBDdDI0SkloX1NLRjhaWjdjX3hLem82bnJVdlFncUtOeWx6QTRFRTA?oc=5"
+                }
+              ],
+              "neutral": []
+            },
+            "memo": "가격 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
+          }
+        ],
+        "reasons": [
+          "상·하방 근거 강충돌"
+        ],
+        "recommended_status": "판단 유보",
+        "recommended_direction": "hold",
+        "adjusted_confidence": 63
       }
     },
     {
       "id": "POULTRY",
       "name": "계육",
-      "signal_score": 28,
-      "direction": "down",
-      "status": "하방 가능성",
-      "quality_score": 75,
-      "confidence_score": 75,
+      "signal_score": 34,
+      "direction": "hold",
+      "status": "판단 유보",
+      "quality_score": 74,
+      "confidence_score": 56,
       "coverage_rate": 60,
-      "evidence_count": 47,
+      "evidence_count": 45,
       "official_count": 8,
       "direction_counts": {
-        "up": 45,
+        "up": 43,
         "down": 1,
         "neutral": 1,
         "hold": 0
@@ -395,7 +552,7 @@
       ],
       "score_breakdown": {
         "price": 0,
-        "supply": 5,
+        "supply": 11,
         "disease": 19,
         "policy": 0,
         "news": 4
@@ -421,12 +578,18 @@
         "supply": {
           "label": "수급/도축",
           "max_score": 25,
-          "score": 5,
-          "items": 1,
-          "up": 0,
+          "score": 11,
+          "items": 2,
+          "up": 1,
           "down": 1,
           "neutral": 0,
           "examples": [
+            {
+              "title": "“조류 독감 막아라”…경기도 도계장 긴급 점검 - 인천일보",
+              "direction": "up",
+              "source_level": 3,
+              "quality_score": 81
+            },
             {
               "title": "육계값 하락에 치킨업계 ‘숨통’…“가격보다 수급 안정” - 데일리한국",
               "direction": "down",
@@ -439,25 +602,25 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 19,
-          "items": 45,
-          "up": 45,
+          "items": 42,
+          "up": 42,
           "down": 0,
           "neutral": 0,
           "examples": [
             {
-              "title": "이행도 전남광주통합특별시의원, “AI 방역 사각지대 된 분동통로, 해법 마련 시급” - 누리일보",
+              "title": "영암군, AI 확진 농장 오리 3만3천마리 살처분 - www.theleader.co.kr",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
             },
             {
-              "title": "고창군, 조류인플루엔자 유입 차단에 행정력 집중 - 전북도민일보",
+              "title": "조류인플루엔자 확산…고창군 가금농가 방역 총력 - 아시아경제",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
             },
             {
-              "title": "경기도, 고병원성 조류인플루엔자 확산 막기 위해 도계장 긴급 방역점검 - 데일리안",
+              "title": "영암군, 고병원성 조류인플루엔자 확산 차단 방역 집중 - 전남인뉴스",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
@@ -492,20 +655,63 @@
           ]
         }
       },
-      "reason": "질병/방역 19점 + 수급/도축 5점 + 뉴스/수요 4점 기반, 상방성 자료가 우세",
+      "reason": "질병/방역 19점 + 수급/도축 11점 + 뉴스/수요 4점 기반, 상방성 자료가 우세",
       "score_policy": "phase2_evidence_score_v3_sanitized",
       "conflict": {
-        "has_conflict": false,
-        "severity": "none",
-        "axes": [],
-        "memo": "주의 필요 · 누락근거: 가격, 정책/고시"
+        "has_conflict": true,
+        "severity": "high",
+        "axes": [
+          "수급/도축"
+        ],
+        "memo": "판단 유보 권장 · 충돌축: 수급/도축 / 누락근거: 가격, 정책/고시 / 유보사유: 상·하방 근거 강충돌"
       },
       "hold_decision": {
-        "should_hold": false,
-        "reasons": [],
-        "recommended_status": "하방 가능성",
-        "recommended_direction": "down",
-        "adjusted_confidence": 75
+        "should_hold": [
+          {
+            "axis": "supply",
+            "label": "수급/도축",
+            "items": 2,
+            "has_conflict": true,
+            "severity": "high",
+            "dominant_direction": "up",
+            "weighted_direction": {
+              "up": 4.62,
+              "down": 3.12,
+              "neutral": 0.0
+            },
+            "conflict_ratio": 0.68,
+            "examples": {
+              "up": [
+                {
+                  "title": "“조류 독감 막아라”…경기도 도계장 긴급 점검 - 인천일보",
+                  "source": "인천일보",
+                  "direction": "up",
+                  "quality_score": 81,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBfbVAyU1JSUE1tMEFFOEhSVHNHS2NKcDdqN3B0azYyTnZKRHpMYzNTaE5hbWhGRTdOQkZickFMNE1CcnVlSGNwdlJsUXhQOTljUU0ycXZWZGtNUG5nam1iSi1tMHlUVzVjZlJLb1RKcEc?oc=5"
+                }
+              ],
+              "down": [
+                {
+                  "title": "육계값 하락에 치킨업계 ‘숨통’…“가격보다 수급 안정” - 데일리한국",
+                  "source": "데일리한국",
+                  "direction": "down",
+                  "quality_score": 51,
+                  "source_level": 3,
+                  "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9iQTJlZWktWHRYNTlvekZGLUpPWUQ0NTBDZ0tCRVZpWUJnbkl5NkZhZ2JFaUlmMU1oSVp1MFRGdGNVTDNEcmVvUzBiWEVpTG1TLTAxXzBSRXdBWDFNWmdwdGE0MENwNkZJRWxkOFRFZ9IBc0FVX3lxTE50angxVGExYy1COXB2eVVFdHVvSDVUZFJJeTlDMzMtbEFISnJlOUxST3hvWlhaX21QLWtqRzJ3a2NKeFFsVUlmZUFFU1gwRTc1d1FTNWVDa1FCRmc1Tm5KR3BKeko1OTQxNWRoMHhhOFNMdWs?oc=5"
+                }
+              ],
+              "neutral": []
+            },
+            "memo": "수급/도축 축에서 상방·하방 근거가 동시에 감지되어 high 충돌로 분류"
+          }
+        ],
+        "reasons": [
+          "상·하방 근거 강충돌"
+        ],
+        "recommended_status": "판단 유보",
+        "recommended_direction": "hold",
+        "adjusted_confidence": 56
       }
     },
     {
@@ -514,13 +720,13 @@
       "signal_score": 18,
       "direction": "hold",
       "status": "판단 유보",
-      "quality_score": 74,
+      "quality_score": 73,
       "confidence_score": 40,
       "coverage_rate": 20,
-      "evidence_count": 24,
+      "evidence_count": 21,
       "official_count": 0,
       "direction_counts": {
-        "up": 24,
+        "up": 21,
         "down": 0,
         "neutral": 0,
         "hold": 0
@@ -567,28 +773,28 @@
           "label": "질병/방역",
           "max_score": 20,
           "score": 18,
-          "items": 24,
-          "up": 24,
+          "items": 21,
+          "up": 21,
           "down": 0,
           "neutral": 0,
           "examples": [
             {
-              "title": "장성 종오리 농장서 H5형 AI 항원 확인…24시간 이동중지 - 한국영농신문",
+              "title": "영암군, AI 확진 농장 오리 3만3천마리 살처분 - www.theleader.co.kr",
               "direction": "up",
               "source_level": 3,
               "quality_score": 81
             },
             {
-              "title": "나주시, 영암 오리농장 AI 발생에 거점소독시설 24시간 운영 - 천지일보",
+              "title": "영암군, 고병원성 AI 확산 차단 총력전…오리 3만3천 마리 살처분·24시간 방역체계 가동 - 뉴스21 통신",
               "direction": "up",
               "source_level": 3,
-              "quality_score": 76
+              "quality_score": 81
             },
             {
-              "title": "영암 오리농장서 H5형 AI 검출···긴급 방역 나서 - https://www.theleader.co.kr/",
+              "title": "장성 종오리 농장서 H5형 AI 항원 확인…24시간 이동중지 - 한국영농신문",
               "direction": "up",
               "source_level": 3,
-              "quality_score": 76
+              "quality_score": 81
             }
           ]
         },
@@ -636,14 +842,14 @@
     {
       "id": "EGG",
       "name": "계란",
-      "signal_score": 56,
+      "signal_score": 57,
       "direction": "hold",
       "status": "판단 유보",
-      "quality_score": 58,
-      "confidence_score": 45,
+      "quality_score": 59,
+      "confidence_score": 49,
       "coverage_rate": 100,
       "evidence_count": 17,
-      "official_count": 4,
+      "official_count": 5,
       "direction_counts": {
         "up": 6,
         "down": 3,
@@ -661,7 +867,7 @@
         "price": 16,
         "supply": 19,
         "disease": 13,
-        "policy": 4,
+        "policy": 5,
         "news": 4
       },
       "score_breakdown_labels": {
@@ -676,10 +882,10 @@
           "label": "가격",
           "max_score": 30,
           "score": 16,
-          "items": 7,
+          "items": 6,
           "up": 1,
           "down": 1,
-          "neutral": 5,
+          "neutral": 4,
           "examples": [
             {
               "title": "점심에 계란 프라이 하나 더?…여름엔 ‘금값’ 계란, 가을지나 가격 ‘뚝’[경제뭔데] - 경향신문",
@@ -756,11 +962,11 @@
         "policy": {
           "label": "정책/고시",
           "max_score": 10,
-          "score": 4,
-          "items": 2,
+          "score": 5,
+          "items": 3,
           "up": 0,
           "down": 0,
-          "neutral": 2,
+          "neutral": 3,
           "examples": [
             {
               "title": "3.9만원 수입 계란 4980원에 팔았다…혈세 1200억 쓴 물가 대책 - 중앙일보",
@@ -773,6 +979,12 @@
               "direction": "neutral",
               "source_level": 3,
               "quality_score": 51
+            },
+            {
+              "title": "계란 10구 5300원 돌파, 한달 새 17% 올라…정부 2억3천개 수입한다 - 한겨레",
+              "direction": "neutral",
+              "source_level": 5,
+              "quality_score": 75
             }
           ]
         },
@@ -812,7 +1024,7 @@
         ],
         "recommended_status": "판단 유보",
         "recommended_direction": "hold",
-        "adjusted_confidence": 45
+        "adjusted_confidence": 49
       }
     },
     {
@@ -910,13 +1122,13 @@
               "quality_score": 82
             },
             {
-              "title": "공중방역수의사 적정 인력 수급 관리, 복무 여건 조사 등 처우 개선 추진 - 농림축산식품부",
+              "title": "알림소식 > 보도자료 > 구제역 SAT1형 백신, 접경지역 접종 완료 - 농림축산식품부",
               "direction": "up",
               "source_level": 5,
               "quality_score": 75
             },
             {
-              "title": "알림소식 > 보도자료 > 구제역 방역이 평시 체계로 전환됩니다 - 농림축산식품부",
+              "title": "공중방역수의사 적정 인력 수급 관리, 복무 여건 조사 등 처우 개선 추진 - 농림축산식품부",
               "direction": "up",
               "source_level": 5,
               "quality_score": 75
@@ -949,16 +1161,16 @@
               "quality_score": 75
             },
             {
+              "title": "축산물품질평가원, ‘2026년 소비자단체장 간담회’ 개최 - 농업인신문",
+              "direction": "neutral",
+              "source_level": 5,
+              "quality_score": 75
+            },
+            {
               "title": "K2WebWizard - 농림축산식품부",
               "direction": "neutral",
               "source_level": 5,
               "quality_score": 82
-            },
-            {
-              "title": "농림축산식품부 - - 농림축산식품부",
-              "direction": "neutral",
-              "source_level": 5,
-              "quality_score": 75
             }
           ]
         }
